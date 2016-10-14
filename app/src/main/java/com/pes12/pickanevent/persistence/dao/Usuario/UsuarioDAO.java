@@ -20,15 +20,19 @@ public class UsuarioDAO {
     }
 
 
-    public void guardar()
+    public void guardar(UsuarioEntity _entity)
     {
-        DatabaseReference usuariosRef = database.getReference("usuario");
-        DatabaseReference usuario = usuariosRef.child("1");
-        usuario.child("username").setValue("oscar435");
-        usuario.child("password").setValue("passsimple");
-        usuario.child("email").setValue("oscar@ajshda.com");
-        usuario.child("cm").setValue("0");
-        usuario.child("nickname").setValue("legault");
+        DatabaseReference usuariosRef = database.getReference("usuario"); //recogemos la referencia a la rama de usuarios
+
+
+        DatabaseReference usuario = usuariosRef.child(_entity.getId().toString()); //recogemos la rama con la ID del usuario en concreto
+
+
+        usuario.child(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).setValue(_entity.getUsername()); //insertamos los valores en la key (child) del enumerable, así no nos equivocaremos al escribir
+        usuario.child(UsuarioEntity.ATTRIBUTES.PASSWORD.getValue()).setValue(_entity.getPassword());
+        usuario.child(UsuarioEntity.ATTRIBUTES.EMAIL.getValue()).setValue(_entity.getEmail());
+        usuario.child(UsuarioEntity.ATTRIBUTES.CM.getValue()).setValue(_entity.getCm());
+        usuario.child(UsuarioEntity.ATTRIBUTES.NICKNAME.getValue()).setValue(_entity.getNickname());
 
     }
 }

@@ -5,4 +5,6 @@ package com.pes12.pickanevent.business.Usuario;
  */
 
 public class UsuarioMGR {
+
+
 }
