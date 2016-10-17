@@ -1,11 +1,20 @@
 package com.pes12.pickanevent.persistence.dao.Usuario;
 
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Legault on 14/10/2016.
@@ -14,12 +23,18 @@ import java.util.List;
 public class UsuarioDAO {
 
     private final FirebaseDatabase database;
+    private DatabaseReference bdRefUsuarios;
+    private HashMap<String, UsuarioEntity> mapUsuarios;
 
 
     public UsuarioDAO ()
     {
-        database = FirebaseDatabase.getInstance();
+        System.out.println("inicialitzoooo");
 
+        database = FirebaseDatabase.getInstance();
+        bdRefUsuarios = database.getReference("users");
+        mapUsuarios = new HashMap<>();
+        childListener(); //inicializa mapUsuarios
     }
 
 
@@ -44,16 +59,42 @@ public class UsuarioDAO {
     }
 
 
+    //devuelve un map con todos los usuarios (id y UsuarioEntity)
+    public Map<String,UsuarioEntity> get() {
+        System.out.println("CUANDO RETORNO DEL GET MIDE: " + mapUsuarios.size());
+        return mapUsuarios;
+    }
 
-    public List<UsuarioEntity> get()
-    {
-        List<UsuarioEntity> list = new ArrayList<UsuarioEntity>();
+    private void childListener(){
+        System.out.println("ENTRO A CHILD LISTENER 1");
 
-        DatabaseReference usuariosRef = database.getReference("usuario"); //recogemos la referencia a la rama de usuarios
+        Log.e("hello! here I am", "ugwhwehovewuivhewouvbervioenveruivbwechi helooooooooow");
 
+        bdRefUsuarios.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("ENTRO A CHILD LISTENER 2");
 
+                for (DataSnapshot usuario : dataSnapshot.getChildren()) {
+                    //getValue(Class<T> valueType)
+                    //This method is used to marshall the data contained in this snapshot
+                    // into a class of your choosing.
+                    //https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot
+                    añadirUsuarioMap(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
 
-        return list;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void añadirUsuarioMap(String id, UsuarioEntity usuario) {
+        mapUsuarios.put(id, usuario);
     }
 
 

@@ -18,7 +18,7 @@ public class UsuarioMGR {
 
     public UsuarioMGR()
     {
-       dao= new UsuarioDAO();
+       dao = new UsuarioDAO();
 
     }
 
@@ -41,4 +41,15 @@ public class UsuarioMGR {
         }
         return result;
     }
+
+    //funcion para probar lecturas
+    public void printNicknames() {
+        Map<String,UsuarioEntity> hm = dao.get();
+        System.out.println("Mostrando los valores:");
+        for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
+            System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().getNickname());
+        }
+    }
+
+
 }

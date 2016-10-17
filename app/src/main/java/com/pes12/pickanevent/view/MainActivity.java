@@ -23,7 +23,10 @@ BLOQUE DE TEST
 */
 
         UsuarioMGR uMGR= new UsuarioMGR();
-        UsuarioEntity usuario = new UsuarioEntity();
+        uMGR.printNicknames();
+        System.out.println("FINAL");
+
+        /*UsuarioEntity usuario = new UsuarioEntity();
         Map<String,Boolean> relaciones = new HashMap<>();
         Map<String,UsuarioEntity> user = new HashMap<>();
 
@@ -49,6 +52,7 @@ BLOQUE DE TEST
 
         user=uMGR.guardar(user);
         Log.e("Main Activity","ID despues de guardar: "+user.entrySet().iterator().next().getKey());
+*/
 
     }
 }
