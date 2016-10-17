@@ -1,5 +1,11 @@
 package com.pes12.pickanevent.persistence.entity.Usuario;
 
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Legault on 14/10/2016.
  */
@@ -9,16 +15,11 @@ public class UsuarioEntity {
 
     public UsuarioEntity ()
     {
-        id      =0l;
-        username="";
-        nickname="";
-        password="";
-        email   ="";
-        cm      =false;
+
     }
 
     public enum ATTRIBUTES {
-        ID          ("id"),
+
         USERNAME    ("username"),
         NICKNAME    ("nickname"),
         PASSWORD    ("password"),
@@ -34,10 +35,8 @@ public class UsuarioEntity {
     }
 
 
-    /*ID*/
-    private Long id;
-    public  Long getId() {return id;}
-    public  void setId(Long _id) {id = _id;}
+
+
 
     /*Username*/
     private String username;
@@ -60,10 +59,29 @@ public class UsuarioEntity {
     public  void setEmail(String _email) {email = _email;}
 
     /*CM*/
-    private boolean cm;
-    public  boolean getCm() {return cm;}
-    public  void setCm(boolean _cm) {cm = _cm;}
+    private Boolean cm;
+    public  Boolean getCm() {return cm;}
+    public  void setCm(Boolean _cm) {cm = _cm;}
 
+
+    /*    RELACIONES   */
+
+    /*GRUPOS, si cm==true serán los grupos creados, si cm == false serán los grupos seguidos */
+    private Map<String,Boolean> idGrupos;
+    public  Map<String,Boolean> getIdGrupos() {return idGrupos;}
+    public  void setIdGrupos(Map<String,Boolean> _idGrupos){idGrupos = _idGrupos;}
+
+
+    /*    EVENTOS   */
+    private Map<String,Boolean> idEventos;
+    public  Map<String,Boolean> getIdEventos() {return idEventos;}
+    public  void setIdEventos(Map<String,Boolean> _idEventos){idEventos = _idEventos;}
+
+
+    /*    TAGS   */
+    private Map<String,Boolean> idTags;
+    public  Map<String,Boolean> getIdTags() {return idTags;}
+    public  void setIdTags(Map<String,Boolean> _idTags){idTags = _idTags;}
 
 
 }
