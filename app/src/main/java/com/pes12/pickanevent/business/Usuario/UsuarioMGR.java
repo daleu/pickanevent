@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.business.Usuario;
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.pes12.pickanevent.persistence.dao.Usuario.UsuarioDAO;
@@ -16,9 +17,9 @@ public class UsuarioMGR {
 
     private final UsuarioDAO dao;
 
-    public UsuarioMGR()
+    public UsuarioMGR(Activity _activity)
     {
-       dao = new UsuarioDAO();
+       dao = new UsuarioDAO(_activity);
 
     }
 
@@ -42,14 +43,12 @@ public class UsuarioMGR {
         return result;
     }
 
-    //funcion para probar lecturas
-    public void printNicknames() {
-        Map<String,UsuarioEntity> hm = dao.get();
-        System.out.println("Mostrando los valores:");
-        for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
-            System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().getNickname());
-        }
+    public Map<String,UsuarioEntity> get()
+    {
+        return dao.get();
     }
+
+
 
 
 }

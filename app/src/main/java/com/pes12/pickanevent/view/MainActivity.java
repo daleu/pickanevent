@@ -3,6 +3,7 @@ package com.pes12.pickanevent.view;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
@@ -22,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
 BLOQUE DE TEST
 */
 
-        UsuarioMGR uMGR= new UsuarioMGR();
-        uMGR.printNicknames();
+        UsuarioMGR uMGR= new UsuarioMGR(this);
+
+        Map<String,UsuarioEntity> user =uMGR.get();
+        System.out.println("SIZE AL FINAL "+user.size());
         System.out.println("FINAL");
 
         /*UsuarioEntity usuario = new UsuarioEntity();
@@ -54,5 +57,18 @@ BLOQUE DE TEST
         Log.e("Main Activity","ID despues de guardar: "+user.entrySet().iterator().next().getKey());
 */
 
+    }
+
+    //funcion para probar lecturas
+    public void printNicknames(Map<String,UsuarioEntity> hm) {
+
+        System.out.println("Mostrando los valores:");
+        TextView tv = (TextView)findViewById(R.id.texto);
+        tv.setText("");
+
+        for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
+            tv.setText(tv.getText()+ "\r\n"+entry.getValue().toString());
+            System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
+        }
     }
 }

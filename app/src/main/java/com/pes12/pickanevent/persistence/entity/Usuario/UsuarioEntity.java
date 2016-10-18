@@ -83,5 +83,17 @@ public class UsuarioEntity {
     public  Map<String,Boolean> getIdTags() {return idTags;}
     public  void setIdTags(Map<String,Boolean> _idTags){idTags = _idTags;}
 
-
+    @Override
+    public String toString() {
+        return "UsuarioEntity{" +
+                "\nusername='" + username + '\'' +
+                "\n, nickname='" + nickname + '\'' +
+                "\n, password='" + password + '\'' +
+                "\n, email='" + email + '\'' +
+                "\n, cm=" + cm +
+                "\n, idGrupos=" + idGrupos +
+                "\n, idEventos=" + idEventos +
+                "\n, idTags=" + idTags +
+                '}';
+    }
 }
