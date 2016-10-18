@@ -25,11 +25,9 @@ BLOQUE DE TEST
 
         UsuarioMGR uMGR= new UsuarioMGR(this);
 
-        Map<String,UsuarioEntity> user =uMGR.get();
-        System.out.println("SIZE AL FINAL "+user.size());
-        System.out.println("FINAL");
 
-        /*UsuarioEntity usuario = new UsuarioEntity();
+
+        UsuarioEntity usuario = new UsuarioEntity();
         Map<String,Boolean> relaciones = new HashMap<>();
         Map<String,UsuarioEntity> user = new HashMap<>();
 
@@ -55,7 +53,7 @@ BLOQUE DE TEST
 
         user=uMGR.guardar(user);
         Log.e("Main Activity","ID despues de guardar: "+user.entrySet().iterator().next().getKey());
-*/
+
 
     }
 
@@ -67,7 +65,7 @@ BLOQUE DE TEST
         tv.setText("");
 
         for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
-            tv.setText(tv.getText()+ "\r\n"+entry.getValue().toString());
+            tv.setText(tv.getText()+ "\r\n"+entry.getValue().getUsername());
             System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
         }
     }

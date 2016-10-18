@@ -12,6 +12,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.MainActivity;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -22,7 +23,7 @@ public class UsuarioDAO {
 
     private final FirebaseDatabase database;
     private DatabaseReference bdRefUsuarios;
-    private HashMap<String, UsuarioEntity> mapUsuarios;
+    private LinkedHashMap<String, UsuarioEntity> mapUsuarios;
     private Activity activity;
 
     public UsuarioDAO (Activity _activity)
@@ -32,7 +33,7 @@ public class UsuarioDAO {
         database = FirebaseDatabase.getInstance();
         database.setPersistenceEnabled(true);
         bdRefUsuarios = database.getReference("usuarios");
-        mapUsuarios = new HashMap<>();
+        mapUsuarios = new LinkedHashMap<>();
         activity=_activity;
         initListMainActivity(); //inicializa mapUsuarios
 
@@ -52,12 +53,33 @@ public class UsuarioDAO {
 
     public String crear(UsuarioEntity _entity)
     {
+        bdRefUsuarios.orderByChild("username").equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity ent;
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.getValue() != null) {
+                    System.out.println("YA EXISTE UN USER CON ESE USERNAME");
+                } else {
+                    DatabaseReference usuario = bdRefUsuarios.push();
+                    usuario.setValue(ent);
+                    usuario.getKey();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError arg0) {
+            }
 
-        DatabaseReference usuario = bdRefUsuarios.push();
-        usuario.setValue(_entity);
+            public ValueEventListener setEntity (UsuarioEntity _ent)
+            {
+                ent=_ent;
+                return this;
+            }
+        }.setEntity(_entity));
 
-        return usuario.getKey();
+
+        return "";
     }
+
 
 
     //devuelve un map con todos los usuarios (id y UsuarioEntity)
@@ -68,21 +90,12 @@ public class UsuarioDAO {
     }
 
     private void initListMainActivity(){
-        System.out.println("ENTRO A CHILD LISTENER 1");
 
-        Log.e("hello! here I am", "ugwhwehovewuivhewouvbervioenveruivbwechi helooooooooow");
-
-        bdRefUsuarios.addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("ENTRO A CHILD LISTENER 2");
 
                 for (DataSnapshot usuario : dataSnapshot.getChildren()) {
-                    //getValue(Class<T> valueType)
-                    //This method is used to marshall the data contained in this snapshot
-                    // into a class of your choosing.
-                    //https://firebase.google.com/docs/reference/android/com/google/firebase/database/DataSnapshot
-                    System.out.println("KEY: "+ usuario.getKey() + " USER "+ usuario.getValue(UsuarioEntity.class));
                     añadirUsuarioMap(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
 
                 }
