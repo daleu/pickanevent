@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.persistence.dao.Grupo.GrupoDAO;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
@@ -26,6 +27,7 @@ public class VerInfoGrupo extends AppCompatActivity {
     LinearLayout events;
     ImageView foto;
     String idGrupo;
+    GrupoMGR gMGR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,9 @@ public class VerInfoGrupo extends AppCompatActivity {
 
         //events = (LinearLayout)findViewById(R.id.ev);
 
-        GrupoDAO gDAO = new GrupoDAO(this);
+        //GrupoDAO gDAO = new GrupoDAO(this);
+        gMGR = new GrupoMGR().getInstance();
+        gMGR.getInfoGrupo(this);
 
         //GrupoEntity ge = new GrupoEntity("FCB", "gooool", "", "barcelona", "123", "321");
         //gDAO.crear(ge);

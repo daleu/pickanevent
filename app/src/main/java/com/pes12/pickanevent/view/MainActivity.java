@@ -24,10 +24,11 @@ public class MainActivity extends AppCompatActivity {
 BLOQUE DE TEST
 */
 
-        /*UsuarioMGR uMGR= new UsuarioMGR(this);
 
+        UsuarioMGR uMGR= UsuarioMGR.getInstance();
+        uMGR.getAllUsers(this);
 
-
+/*
         UsuarioEntity usuario = new UsuarioEntity();
         Map<String,Boolean> relaciones = new HashMap<>();
         Map<String,UsuarioEntity> user = new HashMap<>();
