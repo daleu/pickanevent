@@ -1,16 +1,13 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.dao.Usuario.UsuarioDAO;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,10 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //startActivity(new Intent(MainActivity.this, VerInfoGrupo.class));
 /*
 BLOQUE DE TEST
 */
-
+/*
         UsuarioMGR uMGR= new UsuarioMGR(this);
 
 
@@ -54,7 +52,7 @@ BLOQUE DE TEST
         user=uMGR.guardar(user);
         Log.e("Main Activity","ID despues de guardar: "+user.entrySet().iterator().next().getKey());
 
-
+*/
     }
 
     //funcion para probar lecturas
