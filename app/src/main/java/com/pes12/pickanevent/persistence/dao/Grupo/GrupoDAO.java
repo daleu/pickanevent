@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+import com.pes12.pickanevent.view.VerInfoGrupo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -33,9 +34,19 @@ public class GrupoDAO {
         bdRefGrupos = database.getReference("grupos");
         mapGrupos = new LinkedHashMap<>();
         activity=_activity;
-        //initListGrupos(); //inicializa mapGrupos
+        initListGrupos(); //inicializa mapGrupos
 
     }
+
+    public GrupoDAO () {
+
+        database = FirebaseDatabase.getInstance();
+        database.setPersistenceEnabled(true);
+        bdRefGrupos = database.getReference("grupos");
+        mapGrupos = new LinkedHashMap<>();
+
+    }
+
 
 
     public void guardar(String key, GrupoEntity _entity) {
@@ -50,7 +61,7 @@ public class GrupoDAO {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN USER CON ESE USERNAME");
+                    System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
                 } else {
                     DatabaseReference usuario = bdRefGrupos.push();
                     usuario.setValue(ent);
@@ -81,17 +92,19 @@ public class GrupoDAO {
     }
 
 
-    /*private void initListGrupos(){
+    private void initListGrupos(){
 
         bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot usuario : dataSnapshot.getChildren()) {
-                    añadirGrupoMap(usuario.getKey(), usuario.getValue(GrupoEntity.class));
-
+                for (DataSnapshot grupo : dataSnapshot.getChildren()) {
+                    System.out.println("ARRIBO1");
+                    añadirGrupoMap(grupo.getKey(), grupo.getValue(GrupoEntity.class));
                 }
-                ((MainActivity)activity).printNicknames(mapGrupos);
+
+                ((VerInfoGrupo)activity).mostrarInfoGrupo(mapGrupos);
+
             }
 
             @Override
@@ -100,9 +113,15 @@ public class GrupoDAO {
             }
         });
 
-    }*/
+    }
 
     private void añadirGrupoMap(String id, GrupoEntity grupo) {
         mapGrupos.put(id, grupo);
+    }
+
+
+    public GrupoEntity getGrupo(String idGrupo) {
+        System.out.println("ARRIBO 2");
+        return mapGrupos.get(idGrupo);
     }
 }

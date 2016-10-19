@@ -13,6 +13,17 @@ public class GrupoEntity {
 
     }
 
+    public GrupoEntity (String nombre, String descr, String img, String nick, String idtag, String idUs) {
+        setNombreGrupo(nombre);
+        setDescripcion(descr);
+        setImagen(img);
+        setNickname(nick);
+        setIdTagGeneral(idtag);
+        setIdUsuario(idUs);
+
+    }
+
+
     public enum ATTRIBUTES {
 
         NOMBREGRUPO   ("nombregrupo"),
