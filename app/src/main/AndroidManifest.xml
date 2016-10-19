@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.VerInfoGrupo"></activity>
+        <activity android:name=".view.Buscar"></activity>
     </application>
 
 </manifest>

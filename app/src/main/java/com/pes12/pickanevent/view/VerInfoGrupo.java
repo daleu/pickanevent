@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
-import com.pes12.pickanevent.persistence.dao.Grupo.GrupoDAO;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
