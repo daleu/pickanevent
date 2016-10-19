@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
@@ -20,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
 /*
 BLOQUE DE TEST
 */
+
+        UsuarioMGR uMGR= UsuarioMGR.getInstance();
+        uMGR.getAllUsers(this);
+
 /*
-        UsuarioMGR uMGR= new UsuarioMGR(this);
-
-
-
         UsuarioEntity usuario = new UsuarioEntity();
         Map<String,Boolean> relaciones = new HashMap<>();
         Map<String,UsuarioEntity> user = new HashMap<>();
