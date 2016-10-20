@@ -105,17 +105,30 @@
                         android:id="@+id/clockIcon"
                         android:textColor="#000"
                         android:textSize="28sp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="40dp"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Horahorahorahorahorahorahorahorahorahorahorahrahora"
+                        android:id="@+id/textHora"
+                        android:textSize="16sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="43dp"
+                        android:textAlignment="center"/>
+
                 </LinearLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_below="@+id/dollarLayout"
-                    android:orientation="horizontal">
+                    android:layout_alignParentStart="true">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -128,7 +141,130 @@
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="43dp"/>
 
+                    <Button
+                        android:text="Comprar Entradas!"
+                        android:id="@+id/buttonPreus"
+                        android:background="@drawable/botton_application"
+                        android:layout_width="150dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="30dp"
+                        android:radius="20dip"
+                        android:layout_alignBottom="@+id/clockDollar"
+                        android:layout_alignParentEnd="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Precio: num"
+                        android:textAlignment="center"
+                        android:id="@+id/textPreu"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="43dp"
+                        android:layout_marginEnd="84dp"
+                        android:layout_alignBaseline="@+id/buttonPreus"
+                        android:layout_alignBottom="@+id/buttonPreus"
+                        android:layout_alignEnd="@+id/buttonPreus" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutInfo"
+                android:background="#fff"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Localización"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textMap"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layoutPinMap"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/textMap"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/map_icon"
+                        android:id="@+id/mapIcon"
+                        android:textColor="#000"
+                        android:textSize="28sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="43dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LlocLlocLlocLlocLloc"
+                        android:textAlignment="center"
+                        android:id="@+id/textMapa"
+                        android:textSize="16sp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="43dp"/>
+
                 </LinearLayout>
+
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/map"
+                    android:layout_below="@+id/layoutPinMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    class="com.google.android.gms.maps.SupportMapFragment"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutMap"
+                android:background="#fff"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:text="Assistir!"
+                    android:id="@+id/buttonAssistir"
+                    android:background="@drawable/botton_application"
+                    android:layout_width="120dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="30dp"
+                    android:radius="20dip"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:text="Assitencia"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textAssistencia"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 
@@ -136,14 +272,14 @@
                 android:text="Este es el nombre del Evento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView4"
-                android:textSize="28sp"
+                android:id="@+id/textEvento"
+                android:textSize="24sp"
                 android:textStyle="normal|bold"
                 android:textColor="#000"
                 android:textAlignment="center"
-                android:layout_marginBottom="35dp"
-                android:layout_alignBottom="@+id/imagenEvento"
-                android:layout_alignParentStart="true" />
+                android:layout_marginBottom="45dp"
+                android:layout_above="@+id/layoutDescripcion"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 

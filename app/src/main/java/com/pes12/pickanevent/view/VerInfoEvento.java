@@ -16,9 +16,13 @@ public class VerInfoEvento extends AppCompatActivity {
 
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
 
+        //Posar iconos
         TextView clockIcon = (TextView) findViewById(R.id.clockIcon);
         clockIcon.setTypeface(fontAwesomeFont);
-        TextView clockDollar = (TextView) findViewById(R.id.clockDollar);
-        clockDollar.setTypeface(fontAwesomeFont);
+        TextView dollarIcon = (TextView) findViewById(R.id.clockDollar);
+        dollarIcon.setTypeface(fontAwesomeFont);
+        TextView pinIcon = (TextView) findViewById(R.id.mapIcon);
+        pinIcon.setTypeface(fontAwesomeFont);
+
     }
 }
