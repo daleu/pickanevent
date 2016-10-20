@@ -28,11 +28,125 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:id="@+id/imagenEvento"
-                android:layout_height="160dp"
+                android:textSize="28sp"
+                android:layout_height="210dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true" />
 
+            <RelativeLayout
+                android:id="@+id/layoutDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/imagenEvento"
+                android:background="#fff"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Descripción"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textDescripcion"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Descripciónofjfbapasjvosdjvpoask`povnweivjokwvopewnvpwejvpevnewpivnweovnewivonewopvewnvpiewvnweovnweviewnviewpvnwevnewp"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/background_material_dark"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textDescripcion"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutDescripcion"
+                android:background="#fff"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Información"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textInformacion"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dollarLayout"
+                    android:layout_below="@+id/textInformacion"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/clock_icon"
+                        android:id="@+id/clockIcon"
+                        android:textColor="#000"
+                        android:textSize="28sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="40dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dollarLayout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dollar_icon"
+                        android:id="@+id/clockDollar"
+                        android:textColor="#000"
+                        android:textSize="28sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="43dp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:text="Este es el nombre del Evento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textSize="28sp"
+                android:textStyle="normal|bold"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_marginBottom="35dp"
+                android:layout_alignBottom="@+id/imagenEvento"
+                android:layout_alignParentStart="true" />
+
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>

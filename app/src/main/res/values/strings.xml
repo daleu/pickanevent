@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PickAnEvent</string>
+    <string name="clock_icon">&#xf017;</string>
+    <string name="dollar_icon">&#xf155;</string>
 </resources>
