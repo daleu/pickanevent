@@ -7,9 +7,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+import com.pes12.pickanevent.view.Buscar;
 import com.pes12.pickanevent.view.VerInfoGrupo;
 
 import java.util.HashMap;
@@ -124,5 +127,36 @@ public class GrupoMGR {
             }
         }.setActivity(_activity));
 
+    }
+
+    public void getGruposByNombreGrupo(Activity _activity, String text)
+    {
+        Query queryRef = bdRefGrupos.orderByChild("nombreGrupo").startAt(text).endAt(text+"\uf8ff");
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+            Buscar activity;
+            Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot grupo : snapshot.getChildren()) {
+                    System.out.println(grupo.getKey());
+                    map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
+
+                }
+                activity.printNombresGrupo(map);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+            public ValueEventListener setActivity (Activity _activity)
+            {
+                activity=(Buscar) _activity;
+                return this;
+            }
+
+        }.setActivity(_activity));
     }
 }

@@ -60,7 +60,7 @@ public class GrupoEntity {
     /*Nickname*/
     private String nickname;
     public  String getNickname() {return nickname;}
-    public  void setNickname(String _nickname) {nombreGrupo = _nickname;}
+    public  void setNickname(String _nickname) {nickname = _nickname;}
 
     /*idTag General*/
     private String idTagGeneral;
@@ -70,7 +70,7 @@ public class GrupoEntity {
     /*idUsuario*/
     private String idUsuario;
     public  String getIdUsuario() {return idUsuario;}
-    public  void setIdUsuario(String _idUsuario) {nombreGrupo = _idUsuario;}
+    public  void setIdUsuario(String _idUsuario) {idUsuario = _idUsuario;}
 
 
     /*    RELACIONES   */
