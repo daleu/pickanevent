@@ -1,11 +1,9 @@
 package com.pes12.pickanevent.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +16,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
-public class Buscar extends AppCompatActivity {
+public class BuscarActivity extends AppCompatActivity {
 
     private UsuarioMGR uMGR;
     private GrupoMGR gMGR;
@@ -40,8 +38,8 @@ public class Buscar extends AppCompatActivity {
 
                 if(cs.toString().length()!=0)
                 {
-                    uMGR.getUsersByUsername(Buscar.this, tv.getText().toString());
-                    gMGR.getGruposByNombreGrupo(Buscar.this, tv.getText().toString());
+                    uMGR.getUsersByUsername(BuscarActivity.this, tv.getText().toString());
+                    gMGR.getGruposByNombreGrupo(BuscarActivity.this, tv.getText().toString());
                 }
 
                 else{

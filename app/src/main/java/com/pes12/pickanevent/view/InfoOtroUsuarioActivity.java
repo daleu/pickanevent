@@ -3,7 +3,6 @@ package com.pes12.pickanevent.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -12,7 +11,7 @@ import com.pes12.pickanevent.business.Info;
 
 import java.util.List;
 
-public class InfoOtroUsuario extends AppCompatActivity {
+public class InfoOtroUsuarioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +27,8 @@ public class InfoOtroUsuario extends AppCompatActivity {
         //Crear variable con todas las fechas de los eventos que sigue el usuario
         //Crear varibale con todas las imagenes de los eventos que sigue el usuario
 
-        ListAdapter adaptadorGrupos = new CustomAdapterGrupos(this, grupos);
-        ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdeveniments(this, esdeveniments);
+        ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
+        ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, esdeveniments);
 
         ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
         ListView esdevenimentsUsuario = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);

@@ -5,7 +5,7 @@
     android:id="@+id/activity_ver_info_evento"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pes12.pickanevent.view.VerInfoEvento"
+    tools:context="com.pes12.pickanevent.view.VerInfoEventoActivity"
     android:background="#bfffc2">
 
     <include

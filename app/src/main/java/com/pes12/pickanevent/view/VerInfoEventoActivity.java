@@ -30,7 +30,7 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-public class VerInfoEvento extends AppCompatActivity implements OnMapReadyCallback {
+public class VerInfoEventoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private TextView descripcion;
     private TextView titulo;

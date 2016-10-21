@@ -1,10 +1,8 @@
 package com.pes12.pickanevent.business.Usuario;
 
 import android.app.Activity;
-import android.text.Editable;
 import android.util.Log;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,7 +11,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.pes12.pickanevent.view.Buscar;
+import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.MainActivity;
 
 import java.util.HashMap;
@@ -146,7 +144,7 @@ public class UsuarioMGR {
         Query queryRef = bdRefUsuarios.orderByChild("username").startAt(text).endAt(text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
-            Buscar activity;
+            BuscarActivity activity;
             Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -165,7 +163,7 @@ public class UsuarioMGR {
 
             public ValueEventListener setActivity (Activity _activity)
             {
-                activity=(Buscar) _activity;
+                activity=(BuscarActivity) _activity;
                 return this;
             }
 

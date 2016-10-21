@@ -18,8 +18,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-class CustomAdapterEsdeveniments extends ArrayAdapter<Info>  {
-    public CustomAdapterEsdeveniments(Context context, List<Info> info) {
+class CustomAdapterEsdevenimentsActivity extends ArrayAdapter<Info>  {
+    public CustomAdapterEsdevenimentsActivity(Context context, List<Info> info) {
         super(context, R.layout.lista_esdeveniments, info);
     }
 

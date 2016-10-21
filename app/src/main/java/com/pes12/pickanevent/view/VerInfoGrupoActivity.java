@@ -25,7 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VerInfoGrupo extends AppCompatActivity {
+public class VerInfoGrupoActivity extends AppCompatActivity {
 
     TextView nombre;
     TextView descripcion;
