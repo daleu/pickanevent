@@ -123,7 +123,7 @@ public class VerInfoEvento extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
@@ -131,5 +131,5 @@ public class VerInfoEvento extends AppCompatActivity {
             finish();
         }
         return super.onKeyDown(keyCode, event);
-    }
+    }*/
 }
