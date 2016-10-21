@@ -1,7 +1,9 @@
 package com.pes12.pickanevent.business.Usuario;
 
 import android.app.Activity;
+import android.text.Editable;
 import android.util.Log;
+
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -10,6 +12,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+import com.google.firebase.database.Query;
+import com.pes12.pickanevent.view.Buscar;
 import com.pes12.pickanevent.view.MainActivity;
 
 import java.util.HashMap;
@@ -36,6 +40,7 @@ public class UsuarioMGR {
        }
        else return singleton;
     }
+
     private UsuarioMGR()
     {
         //database = FirebaseDatabase.getInstance();
@@ -104,7 +109,6 @@ public class UsuarioMGR {
 
         usuario.setValue(_entity);
 
-
     }
 
     private String crear(UsuarioEntity _entity)
@@ -136,6 +140,34 @@ public class UsuarioMGR {
         return "";
     }
 
+    public void getUsersByUsername(Activity _activity, String text)
+    {
+        Query queryRef = bdRefUsuarios.orderByChild("username").startAt(text).endAt(text+"\uf8ff");
 
+        queryRef.addValueEventListener(new ValueEventListener() {
+            Buscar activity;
+            Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot usuario : snapshot.getChildren()) {
+                    System.out.println(usuario.getKey());
+                    map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
 
+                }
+                activity.printNicknames(map);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+            public ValueEventListener setActivity (Activity _activity)
+            {
+                activity=(Buscar) _activity;
+                return this;
+            }
+
+        }.setActivity(_activity));
+    }
 }

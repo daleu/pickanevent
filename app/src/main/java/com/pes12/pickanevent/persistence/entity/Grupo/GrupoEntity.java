@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Grupo;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -60,7 +62,8 @@ public class GrupoEntity {
     /*Nickname*/
     private String nickname;
     public  String getNickname() {return nickname;}
-    public  void setNickname(String _nickname) {nombreGrupo = _nickname;}
+    public  void setNickname(String _nickname) {nickname = _nickname;}
+
 
     /*idTag General*/
     private String idTagGeneral;
@@ -70,22 +73,29 @@ public class GrupoEntity {
     /*idUsuario*/
     private String idUsuario;
     public  String getIdUsuario() {return idUsuario;}
-    public  void setIdUsuario(String _idUsuario) {nombreGrupo = _idUsuario;}
+    public  void setIdUsuario(String _idUsuario) {idUsuario = _idUsuario;}
 
 
     /*    RELACIONES   */
 
 
     /*    EVENTOS   */
-    private Map<String,Boolean> idEventos;
-    public  Map<String,Boolean> getIdEventos() {return idEventos;}
-    public  void setIdEventos(Map<String,Boolean> _idEventos){idEventos = _idEventos;}
+    private Map<String,String> mapIdEventos;
+    public  Map<String,String> getIdEventos() {return mapIdEventos;}
+    public  void setIdEventos(Map<String,String> _idEventos){mapIdEventos = _idEventos;}
+
 
 
     /*    TAGS_ADICIONALES   */
-    private Map<String,Boolean> idTags;
-    public  Map<String,Boolean> getIdTags() {return idTags;}
-    public  void setIdTags(Map<String,Boolean> _idTags){idTags = _idTags;}
-
+    private Map<String,String> mapIdTags;
+    public  Map<String,String> getIdTags() {return mapIdTags;}
+    public  void setIdTags(Map<String,String> _idTags){mapIdTags = _idTags;}
+    public String getTagsAsString () {
+        String tags = "";
+        for (Map.Entry<String, String> entry: mapIdTags.entrySet()) {
+            tags += entry.getValue() + "        ";
+        }
+        return tags;
+    }
 
 }

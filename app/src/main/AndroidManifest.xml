@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.VerInfoGrupo"></activity>
+        <activity android:name=".view.VerInfoGrupo" />
+        <activity android:name=".view.Buscar" />
+        <activity android:name=".view.VerInfoEvento"></activity>
     </application>
 
 </manifest>
