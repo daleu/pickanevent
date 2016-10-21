@@ -228,7 +228,7 @@
                     android:layout_below="@+id/layoutPinMap"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    class="com.google.android.gms.maps.SupportMapFragment"/>
+                    class="com.google.android.gms.maps.MapFragment"/>
 
             </RelativeLayout>
 

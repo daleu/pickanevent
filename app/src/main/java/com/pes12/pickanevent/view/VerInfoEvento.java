@@ -16,6 +16,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
@@ -23,7 +30,7 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-public class VerInfoEvento extends AppCompatActivity {
+public class VerInfoEvento extends AppCompatActivity implements OnMapReadyCallback {
 
     private TextView descripcion;
     private TextView titulo;
@@ -38,7 +45,9 @@ public class VerInfoEvento extends AppCompatActivity {
     private String idEvento;
     private String web;
 
-    EventoMGR eMGR;
+    private MapFragment mapFragment;
+
+    private EventoMGR eMGR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +97,7 @@ public class VerInfoEvento extends AppCompatActivity {
         titulo = (TextView) findViewById(R.id.textEvento);
         horarios = (TextView) findViewById(R.id.textHora);
         precio = (TextView) findViewById(R.id.textPreu);
-        lugar = (TextView) findViewById(R.id.textMap);
+        lugar = (TextView) findViewById(R.id.textMapa);
 
         descripcion.setText(gEntity.getDescripcion());
         titulo.setText(gEntity.getTitulo());
@@ -110,6 +119,10 @@ public class VerInfoEvento extends AppCompatActivity {
         Bitmap imgBM = StringToBitMap(gEntity.getImagen());
         imagenevento.setImageBitmap(imgBM);
         imagenevento.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        //centrar mapa y poner pinlocation
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     private Bitmap StringToBitMap(String encodedString) {
@@ -121,6 +134,24 @@ public class VerInfoEvento extends AppCompatActivity {
             e.getMessage();
             return null;
         }
+    }
+
+    public void onMapReady(GoogleMap map) {
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        CameraPosition googlePlex = CameraPosition.builder()
+                .target(new LatLng(37.4219999,-122.0862462))
+                .zoom(16)
+                .bearing(0)
+                .tilt(45)
+                .build();
+
+        map.moveCamera(CameraUpdateFactory.newCameraPosition(googlePlex));
+
+        map.addMarker(new MarkerOptions()
+                .position(new LatLng(37.4219999,-122.0862462))
+                .title("Palau Sant Jordi"));
+
     }
 
     @Override
