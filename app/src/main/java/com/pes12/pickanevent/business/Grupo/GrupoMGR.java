@@ -11,9 +11,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
-import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.pes12.pickanevent.view.Buscar;
-import com.pes12.pickanevent.view.VerInfoGrupo;
+import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -105,7 +104,7 @@ public class GrupoMGR {
     public void getInfoGrupo(Activity _activity, String id) {
         bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity g;
-            VerInfoGrupo activity;
+            VerInfoGrupoActivity activity;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 g = dataSnapshot.getValue((GrupoEntity.class)); //<------------
@@ -118,7 +117,7 @@ public class GrupoMGR {
             }
 
             public ValueEventListener setActivity(Activity _activity) {
-                activity = (VerInfoGrupo) _activity;
+                activity = (VerInfoGrupoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));
@@ -129,7 +128,7 @@ public class GrupoMGR {
         Query queryRef = bdRefGrupos.orderByChild("nombreGrupo").startAt(text).endAt(text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
-            Buscar activity;
+            BuscarActivity activity;
             Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -148,7 +147,7 @@ public class GrupoMGR {
 
             public ValueEventListener setActivity (Activity _activity)
             {
-                activity=(Buscar) _activity;
+                activity=(BuscarActivity) _activity;
                 return this;
             }
 

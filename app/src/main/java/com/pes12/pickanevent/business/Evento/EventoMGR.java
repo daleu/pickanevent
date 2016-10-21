@@ -9,8 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
-import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.pes12.pickanevent.view.VerInfoEvento;
+import com.pes12.pickanevent.view.VerInfoEventoActivity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -83,7 +82,7 @@ public class EventoMGR {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
-            VerInfoEvento activity;
+            VerInfoEventoActivity activity;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -99,7 +98,7 @@ public class EventoMGR {
             }
             public ValueEventListener setActivity (Activity _activity)
             {
-                activity=(VerInfoEvento) _activity;
+                activity=(VerInfoEventoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

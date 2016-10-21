@@ -23,7 +23,7 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-public class VerInfoEvento extends AppCompatActivity {
+public class VerInfoEventoActivity extends AppCompatActivity {
 
     private TextView descripcion;
     private TextView titulo;
