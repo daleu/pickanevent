@@ -23,12 +23,12 @@ public class InfoOtroUsuario extends AppCompatActivity {
         //Crear variable con todas las fechas de los eventos que sigue el usuario
         //Crear varibale con todas las imagenes de los eventos que sigue el usuario
 
-        ListAdapter adaptadorGrupos = new CustomAdapterGrupos(this, info/*, imagenes*/);
-        ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdeveniments(this, nombres/*,fechas, imagenes*/);
+       // ListAdapter adaptadorGrupos = new CustomAdapterGrupos(this, info/*, imagenes*/);
+        // ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdeveniments(this, nombres/*,fechas, imagenes*/);
 
         ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
         ListView esdevenimentsUsuario = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
 
-        gruposUsuario.setAdapter(adaptadorGrupos);
+        //gruposUsuario.setAdapter(adaptadorGrupos);
     }
 }
