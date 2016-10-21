@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.text.Editable;
 import android.util.Log;
 
-
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.google.firebase.database.Query;
 import com.pes12.pickanevent.view.Buscar;
 import com.pes12.pickanevent.view.MainActivity;
 
@@ -139,6 +139,7 @@ public class UsuarioMGR {
 
         return "";
     }
+
 
     public void getUsersByUsername(Activity _activity, String text)
     {

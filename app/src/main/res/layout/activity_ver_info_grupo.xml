@@ -10,7 +10,6 @@
     tools:context="com.pes12.pickanevent.view.VerInfoGrupo"
     android:background="#bfffc2">
 
-
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(MainActivity.this, VerInfoGrupo.class));
+        startActivity(new Intent(MainActivity.this, Buscar.class));
 
 /*
 BLOQUE DE TEST
@@ -30,7 +30,7 @@ BLOQUE DE TEST
         UsuarioMGR uMGR= UsuarioMGR.getInstance();
         uMGR.getAllUsers(this);
 
-/*
+
         UsuarioEntity usuario = new UsuarioEntity();
         Map<String,Boolean> relaciones = new HashMap<>();
         Map<String,UsuarioEntity> user = new HashMap<>();

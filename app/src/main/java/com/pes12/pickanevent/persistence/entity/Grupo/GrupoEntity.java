@@ -64,7 +64,6 @@ public class GrupoEntity {
     public  String getNickname() {return nickname;}
     public  void setNickname(String _nickname) {nickname = _nickname;}
 
-
     /*idTag General*/
     private String idTagGeneral;
     public  String getidTagGeneral() {return idTagGeneral;}
