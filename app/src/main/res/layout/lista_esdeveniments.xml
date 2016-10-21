@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/oso"
+        android:layout_alignParentTop="true"
+        android:id="@+id/imageViewEsdv" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:id="@+id/editTextNombreEsdv"
+        android:layout_toEndOf="@+id/imageViewEsdv" />
+
+    <Button
+        android:text="Seguir!"
+        android:layout_width="wrap_content"
+        android:id="@+id/botonSeguirEsdeveniment"
+        android:background="#e3ee34"
+        android:layout_height="26dp"
+        android:layout_alignBottom="@+id/imageViewEsdv"
+        android:layout_alignEnd="@+id/editTextNombreEsdv" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="1 i 2 de Octubre"
+        android:ems="10"
+        android:id="@+id/editTextDataEsdevniment"
+        android:layout_alignBottom="@+id/botonSeguirEsdeveniment"
+        android:layout_marginBottom="13dp"
+        android:layout_toEndOf="@+id/imageViewEsdv"
+        android:layout_width="180dp" />
+</RelativeLayout>

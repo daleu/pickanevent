@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:id="@+id/imageViewGrupo"
+        android:src="@drawable/oso"
+        android:layout_alignParentStart="true"
+        android:contentDescription=""
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_marginEnd="13dp"
+        android:id="@+id/editTextNombreGrupo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageViewGrupo" />
+
+    <Button
+        android:text="Seguir!"
+        android:layout_width="wrap_content"
+        android:id="@+id/botonSeguirGrupo"
+        android:background="#e3ee34"
+        android:layout_height="26dp"
+        android:layout_alignBottom="@+id/imageViewGrupo"
+        android:layout_alignEnd="@+id/editTextNombreGrupo" />
+</RelativeLayout>

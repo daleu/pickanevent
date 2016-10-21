@@ -16,6 +16,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_android_map_api_key" />
+
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +27,8 @@
         <activity android:name=".view.VerInfoGrupo" />
         <activity android:name=".view.CrearEvento" />
         <activity android:name=".view.Buscar" />
-        <activity android:name=".view.VerInfoEvento"></activity>
+        <activity android:name=".view.VerInfoEvento" />
+        <activity android:name=".view.InfoOtroUsuario"></activity>
     </application>
 
 </manifest>
