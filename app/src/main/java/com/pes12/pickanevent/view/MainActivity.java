@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(MainActivity.this, VerInfoGrupo.class));
+        startActivity(new Intent(MainActivity.this, VerInfoEvento.class));
 
 /*
 BLOQUE DE TEST

@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.VerInfoGrupo" />
+        <activity android:name=".view.CrearEvento" />
         <activity android:name=".view.Buscar" />
         <activity android:name=".view.VerInfoEvento"></activity>
     </application>

@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.VerInfoEvento;
 
 import java.util.LinkedHashMap;
@@ -50,9 +51,9 @@ public class EventoMGR {
                 if (snapshot.getValue() != null) {
                     System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
                 } else {
-                    DatabaseReference usuario = bdRefEventos.push();
-                    usuario.setValue(ent);
-                    usuario.getKey();
+                    DatabaseReference evento = bdRefEventos.push();
+                    evento.setValue(ent);
+                    evento.getKey();
                 }
             }
             @Override
@@ -66,6 +67,16 @@ public class EventoMGR {
             }
         }.setEntity(_entity));
         return "";
+    }
+
+    private void actualizar(String key, EventoEntity _entity)
+    {
+
+
+        DatabaseReference evento = bdRefEventos.child(key); //recogemos la rama con la ID del evento en concreto
+
+        evento.setValue(_entity);
+
     }
 
     public void getInfoGrupo(Activity _activity) {
