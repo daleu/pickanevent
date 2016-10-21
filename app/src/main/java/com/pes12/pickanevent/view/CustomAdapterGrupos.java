@@ -5,7 +5,10 @@ package com.pes12.pickanevent.view;
  */
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Info;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +16,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
 
-class CustomAdapterGrupos extends ArrayAdapter<String> {
 
-    public CustomAdapterGrupos(Context context, String[] info) {
+class CustomAdapterGrupos extends ArrayAdapter<Info> {
+
+    public CustomAdapterGrupos(Context context, List<Info> info) {
         super(context, R.layout.lista_grupos, info);
     }
 
@@ -24,12 +29,14 @@ class CustomAdapterGrupos extends ArrayAdapter<String> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.lista_grupos, parent, false);
 
-        String nombreGrupo = getItem(position);
+        String nombreGrupo = getItem(position).primeraLinea;
+        Bitmap img = getItem(position).img;
+
         TextView nombreG = (TextView) customView.findViewById(R.id.editTextNombreGrupo);
         ImageView imagenG = (ImageView) customView.findViewById(R.id.imageViewGrupo);
 
         nombreG.setText(nombreGrupo);
-        imagenG.setImageResource(R.drawable.oso); //Cambiar por imagenes de los grupos
+        imagenG.setImageBitmap(img);; //Cambiar por imagenes de los grupos
 
         return customView;
     }

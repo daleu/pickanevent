@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
@@ -20,6 +21,8 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
+
+import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
 public class CrearEvento extends AppCompatActivity{
 
@@ -30,7 +33,7 @@ public class CrearEvento extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_evento);
+        setContentView(activity_crear_evento);
     }
 
     public void crearEvento(View view) {
@@ -61,7 +64,21 @@ public class CrearEvento extends AppCompatActivity{
 
         eMGR = new EventoMGR().getInstance();
         eMGR.crear(ee);
+        Toast.makeText(this,"Evento creado",Toast.LENGTH_LONG).show();
     }
 
+    public void comprovarCheckBox(View view) {
+        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
+        if (gratuit.isChecked()) {
+            preuText.setFocusable(false);
+            preuText.setText("");
+            preuText.setHint("Escriba el precio del evento");
+        }
+        else {
+            preuText.setFocusableInTouchMode(true);
+            preuText.setFocusable(true);
+        }
+    }
 
 }
