@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -77,9 +78,8 @@ public class VerInfoGrupo extends AppCompatActivity {
 
     }
 
-
     public void mostrarInfoGrupo(Map<String,GrupoEntity> ge) {
-        idGrupo = "-KUWrHrLWxIFa8CCj-_N";
+        idGrupo = "-KUaw6R1kR5Pld7gd5d3";
         GrupoEntity grupo = ge.get(idGrupo);
         nombre.setText(grupo.getNombreGrupo());
         descripcion.setText(grupo.getDescripcion());
@@ -90,7 +90,7 @@ public class VerInfoGrupo extends AppCompatActivity {
         //tags.setText(grupo.getTagsAsString());
         tags.setText(tagsAux);
 
-        //eventos
+        //eventos NO VAAA
         Info info[] = new Info[] {
                 new Info(imgBM, "hola", "adeu"),
                 new Info(imgBM, "hola2", "adeu2")
@@ -113,5 +113,15 @@ public class VerInfoGrupo extends AppCompatActivity {
             e.getMessage();
             return null;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
