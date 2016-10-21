@@ -40,6 +40,7 @@ public class UsuarioMGR {
        }
        else return singleton;
     }
+
     private UsuarioMGR()
     {
         //database = FirebaseDatabase.getInstance();
@@ -107,7 +108,6 @@ public class UsuarioMGR {
         DatabaseReference usuario = bdRefUsuarios.child(key); //recogemos la rama con la ID del usuario en concreto
 
         usuario.setValue(_entity);
-
 
     }
 

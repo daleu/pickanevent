@@ -2,6 +2,7 @@ package com.pes12.pickanevent.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -68,7 +69,7 @@ public class VerInfoEvento extends AppCompatActivity {
                 "http://www.ticketmaster.es",
                 "Palau Sant Jordi",
                 "dissabte, 1 / octubre de 21:00 a 0:00 \n 1 octubre (21:00) - 2 octubre (0:00)");
-        eMGR.crear(ge);
+        //eMGR.crear(ge);
 
     }
 

@@ -21,18 +21,22 @@ public class Buscar extends AppCompatActivity {
 
     private UsuarioMGR uMGR;
     private GrupoMGR gMGR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
 
         uMGR= UsuarioMGR.getInstance();
+
+
         gMGR= GrupoMGR.getInstance();
         final EditText tv = (EditText)findViewById(R.id.inputBusqueda);
         tv.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+
                 if(cs.toString().length()!=0)
                 {
                     uMGR.getUsersByUsername(Buscar.this, tv.getText().toString());
