@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(MainActivity.this, VerInfoEvento.class));
 
 /*
 BLOQUE DE TEST
@@ -73,4 +73,18 @@ BLOQUE DE TEST
             System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
         }
     }
+
+    public void goVerInfoGrupo(View view) {
+        startActivity(new Intent(MainActivity.this, VerInfoGrupo.class));
+    }
+
+    public void goVerInfoEvento(View view) {
+        startActivity(new Intent(MainActivity.this, VerInfoEvento.class));
+    }
+
+    public void goBuscar(View view) {
+        startActivity(new Intent(MainActivity.this, Buscar.class));
+    }
+
+
 }

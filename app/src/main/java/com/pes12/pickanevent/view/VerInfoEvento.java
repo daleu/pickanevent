@@ -79,7 +79,7 @@ public class VerInfoEvento extends AppCompatActivity {
     }
 
     public void mostrarInfoEvento(Map<String,EventoEntity> ge) {
-        idEvento = "-KUaTbYM2S8Y92OuT_ow";
+        idEvento = "-KUavWyMfmX-uxtRqMo5";
         EventoEntity gEntity = ge.get(idEvento);
 
         imagenevento = (ImageView)findViewById(R.id.imagenEvento);
