@@ -74,13 +74,12 @@ public class VerInfoGrupo extends AppCompatActivity {
 
         gMGR.crear(ge);*/
 
-        gMGR.getInfoGrupo(this);
+        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+        gMGR.getInfoGrupo(this, idGrupo);
 
     }
 
-    public void mostrarInfoGrupo(Map<String,GrupoEntity> ge) {
-        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-        GrupoEntity grupo = ge.get(idGrupo);
+    public void mostrarInfoGrupo(GrupoEntity grupo) {
         nombre.setText(grupo.getNombreGrupo());
         descripcion.setText(grupo.getDescripcion());
         String img = grupo.getImagen();

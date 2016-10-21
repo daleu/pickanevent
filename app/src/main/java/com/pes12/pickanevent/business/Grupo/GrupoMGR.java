@@ -102,31 +102,26 @@ public class GrupoMGR {
         return "";
     }
 
-    public void getInfoGrupo(Activity _activity) {
-
-        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
+    public void getInfoGrupo(Activity _activity, String id) {
+        bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
             VerInfoGrupo activity;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                g = dataSnapshot.getValue((GrupoEntity.class)); //<------------
 
-                for (DataSnapshot grupo : dataSnapshot.getChildren()) {
-                    map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
-                }
-                activity.mostrarInfoGrupo(map);
+                activity.mostrarInfoGrupo(g);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("EEEERROOOOR");
             }
-            public ValueEventListener setActivity (Activity _activity)
-            {
-                activity=(VerInfoGrupo) _activity;
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerInfoGrupo) _activity;
                 return this;
             }
         }.setActivity(_activity));
-
     }
 
     public void getGruposByNombreGrupo(Activity _activity, String text)
