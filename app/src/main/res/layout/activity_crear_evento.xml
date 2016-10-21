@@ -127,6 +127,7 @@
                     android:id="@+id/checkBoxGratis"
                     android:layout_alignBaseline="@+id/textoGratis"
                     android:layout_alignBottom="@+id/textoGratis"
+                    android:onClick="comprovarCheckBox"
                     android:layout_toEndOf="@+id/textoGratis" />
 
             </RelativeLayout>

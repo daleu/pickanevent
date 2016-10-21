@@ -55,7 +55,7 @@ public class VerInfoGrupo extends AppCompatActivity {
 
 
         /* COMPRESION IMAGEN PARA GUARDARLA EN FIREBASE COMO STRING*/
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.oso);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.redhot);
         ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
         bm.recycle();
@@ -64,28 +64,28 @@ public class VerInfoGrupo extends AppCompatActivity {
 
 
         gMGR = new GrupoMGR().getInstance();
-        /*GrupoEntity ge = new GrupoEntity("FCB B", "gooool", imageFile, "barcelona", "123", "321");
-        Map<String,String> relaciones = new HashMap<>();
-        relaciones.put("key1","a");
-        relaciones.put("key2","b");
-        relaciones.put("key3","c");
-        ge.setIdEventos(relaciones);
-        ge.setIdTags(relaciones);
+        /*GrupoEntity ge = new GrupoEntity("FCB C", "gooool", imageFile, "barcelona", "123", "321");
+        //Map<String,String> relaciones = new HashMap<>();
+        //relaciones.put("key1","a");
+        //relaciones.put("key2","b");
+        //relaciones.put("key3","c");
+        //ge.setIdEventos(relaciones);
+        //ge.setIdTags(relaciones);
 
         gMGR.crear(ge);*/
 
-        gMGR.getInfoGrupo(this);
+        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+        gMGR.getInfoGrupo(this, idGrupo);
 
     }
 
-    public void mostrarInfoGrupo(Map<String,GrupoEntity> ge) {
-        idGrupo = "-KUaw6R1kR5Pld7gd5d3";
-        GrupoEntity grupo = ge.get(idGrupo);
+    public void mostrarInfoGrupo(GrupoEntity grupo) {
         nombre.setText(grupo.getNombreGrupo());
         descripcion.setText(grupo.getDescripcion());
         String img = grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
+        foto.setScaleType(ImageView.ScaleType.FIT_XY);
         String tagsAux = "Deportes      Futbol      Deportes de equipo      Partidos";
         //tags.setText(grupo.getTagsAsString());
         tags.setText(tagsAux);
@@ -115,7 +115,7 @@ public class VerInfoGrupo extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
@@ -123,5 +123,5 @@ public class VerInfoGrupo extends AppCompatActivity {
             finish();
         }
         return super.onKeyDown(keyCode, event);
-    }
+    }*/
 }
