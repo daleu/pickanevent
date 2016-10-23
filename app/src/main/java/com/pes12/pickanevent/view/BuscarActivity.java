@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
@@ -26,10 +27,12 @@ public class BuscarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
 
-        uMGR= UsuarioMGR.getInstance();
+        //uMGR= UsuarioMGR.getInstance(); VIEJA
+        uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
 
-        gMGR= GrupoMGR.getInstance();
+        //gMGR= GrupoMGR.getInstance();
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
         final EditText tv = (EditText)findViewById(R.id.inputBusqueda);
         tv.addTextChangedListener(new TextWatcher() {
 

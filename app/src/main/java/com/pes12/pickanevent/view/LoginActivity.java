@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.EncodeUtil;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
@@ -27,7 +28,8 @@ BLOQUE DE TEST
 */
 
 
-        UsuarioMGR uMGR= UsuarioMGR.getInstance();
+        //UsuarioMGR uMGR= UsuarioMGR.getInstance(); VIEJA
+        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR(); //NUEVA
 
        UsuarioEntity usuario = new UsuarioEntity();
         Map<String,Boolean> relaciones = new HashMap<>();

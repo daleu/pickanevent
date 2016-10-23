@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
 import java.io.ByteArrayOutputStream;
@@ -65,7 +66,8 @@ public class VerInfoEventoActivity extends AppCompatActivity implements OnMapRea
         pinIcon.setTypeface(fontAwesomeFont);
 
         //Consultar informacion
-        eMGR = new EventoMGR().getInstance();
+        //eMGR = new EventoMGR().getInstance(); VIEJA
+        eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.getInfoGrupo(this);
 
         //Crear Evento

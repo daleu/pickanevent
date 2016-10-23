@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
 import java.io.ByteArrayOutputStream;
@@ -62,7 +63,8 @@ public class CrearEventoActivity extends AppCompatActivity{
         EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
                 url.getText().toString(),localitzacio.getText().toString(),data.getText().toString());
 
-        eMGR = new EventoMGR().getInstance();
+        //eMGR = new EventoMGR().getInstance(); VIEJA
+        eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.crear(ee);
         Toast.makeText(this,"Evento creado",Toast.LENGTH_LONG).show();
     }

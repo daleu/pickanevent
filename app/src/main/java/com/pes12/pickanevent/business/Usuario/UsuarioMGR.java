@@ -10,7 +10,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.EncodeUtil;
-import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.LoginActivity;
@@ -26,12 +25,12 @@ import java.util.Map;
 
 public class UsuarioMGR {
 
-    private final FirebaseDatabase database;
+    private FirebaseDatabase database;
     private DatabaseReference bdRefUsuarios;
-    private static UsuarioMGR singleton;
+    //private static UsuarioMGR singleton;
 
 
-    public static UsuarioMGR getInstance()
+    /*public static UsuarioMGR getInstance()
     {
        if(singleton==null)
        {
@@ -45,7 +44,12 @@ public class UsuarioMGR {
     {
         //database = FirebaseDatabase.getInstance();
         //database.setPersistenceEnabled(true);
-        database = FirebaseSingleton.getInstance();
+        database = FirebaseFactory.getInstance();
+        bdRefUsuarios = database.getReference("usuarios");
+    }*/
+
+    public void inicializarDatabase(FirebaseDatabase database) {
+        this.database = database;
         bdRefUsuarios = database.getReference("usuarios");
     }
 

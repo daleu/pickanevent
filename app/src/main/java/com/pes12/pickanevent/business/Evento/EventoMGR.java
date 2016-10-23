@@ -7,7 +7,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 
@@ -20,11 +19,11 @@ import java.util.Map;
 
 public class EventoMGR {
 
-    private final FirebaseDatabase database;
+    private FirebaseDatabase database;
     private DatabaseReference bdRefEventos;
-    private static EventoMGR singleton;
+    //private static EventoMGR singleton;
 
-    public static EventoMGR getInstance()
+    /*public static EventoMGR getInstance()
     {
         if(singleton==null)
         {
@@ -36,9 +35,14 @@ public class EventoMGR {
 
     public EventoMGR () {
 
-        database = FirebaseSingleton.getInstance();
+        database = FirebaseFactory.getInstance();
         bdRefEventos = database.getReference("eventos");
 
+    }*/
+
+    public void inicializarDatabase(FirebaseDatabase database) {
+        this.database = database;
+        bdRefEventos = database.getReference("eventos");
     }
 
     public String crear(EventoEntity _entity)

@@ -1,17 +1,16 @@
 package com.pes12.pickanevent.persistence;
 
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by usuario on 19/10/2016.
  */
 
-public class FirebaseSingleton {
+public class FirebaseFactory {
 
     private static FirebaseDatabase database;
 
-    public FirebaseSingleton () {
+    private FirebaseFactory() {
 
         database = FirebaseDatabase.getInstance();
         database.setPersistenceEnabled(true);
@@ -22,7 +21,7 @@ public class FirebaseSingleton {
     {
         if(database==null)
         {
-            new FirebaseSingleton();
+            new FirebaseFactory();
             return database;
         }
         else return database;

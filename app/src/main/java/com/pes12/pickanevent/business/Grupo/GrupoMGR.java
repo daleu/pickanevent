@@ -9,7 +9,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
@@ -24,12 +23,12 @@ import java.util.Map;
 
 public class GrupoMGR {
 
-    private final FirebaseDatabase database;
+    private FirebaseDatabase database;
     private DatabaseReference bdRefGrupos;
-    private static GrupoMGR singleton;
+    //private static GrupoMGR singleton;
 
 
-    public static GrupoMGR getInstance()
+    /*public static GrupoMGR getInstance()
     {
         if(singleton==null)
         {
@@ -41,9 +40,14 @@ public class GrupoMGR {
 
     public GrupoMGR () {
 
-        database = FirebaseSingleton.getInstance();
+        database = FirebaseFactory.getInstance();
         bdRefGrupos = database.getReference("grupos");
 
+    }*/
+
+    public void inicializarDatabase(FirebaseDatabase database) {
+        this.database = database;
+        bdRefGrupos = database.getReference("grupos");
     }
 
     public Map<String,GrupoEntity> guardarGrupo(Map<String,GrupoEntity> _entities)
@@ -81,9 +85,9 @@ public class GrupoMGR {
                 if (snapshot.getValue() != null) {
                     System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
                 } else {
-                    DatabaseReference usuario = bdRefGrupos.push();
-                    usuario.setValue(ent);
-                    usuario.getKey();
+                    DatabaseReference grupo = bdRefGrupos.push();
+                    grupo.setValue(ent);
+                    grupo.getKey();
                 }
             }
             @Override

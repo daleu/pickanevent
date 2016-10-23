@@ -19,6 +19,7 @@ import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterListaEventos;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 import java.io.ByteArrayOutputStream;
@@ -62,17 +63,17 @@ public class VerInfoGrupoActivity extends AppCompatActivity {
         byte[] byteArray = bYtE.toByteArray();
         String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
+        //gMGR = new GrupoMGR().getInstance(); //vieja
+        gMGR = MGRFactory.getInstance().getGrupoMGR(); //nueva
 
-        gMGR = new GrupoMGR().getInstance();
-        /*GrupoEntity ge = new GrupoEntity("FCB C", "gooool", imageFile, "barcelona", "123", "321");
-        //Map<String,String> relaciones = new HashMap<>();
-        //relaciones.put("key1","a");
-        //relaciones.put("key2","b");
-        //relaciones.put("key3","c");
-        //ge.setIdEventos(relaciones);
-        //ge.setIdTags(relaciones);
+        GrupoEntity ge = new GrupoEntity("FCB D", "gooool", imageFile, "barcelona", "123", "321");
+        Map<String,Boolean> relaciones = new HashMap<>();
+        relaciones.put("key1",true);
+        relaciones.put("key2",true);
+        ge.setIdEventos(relaciones);
+        ge.setIdTags(relaciones);
 
-        gMGR.crear(ge);*/
+        //gMGR.crear(ge);
 
         idGrupo = "-KUbHqRIqgL1eDGWpHT0";
         gMGR.getInfoGrupo(this, idGrupo);
