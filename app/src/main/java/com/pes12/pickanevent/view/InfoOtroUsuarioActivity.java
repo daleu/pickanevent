@@ -3,22 +3,26 @@ package com.pes12.pickanevent.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 
 import java.util.List;
 
 public class InfoOtroUsuarioActivity extends AppCompatActivity {
 
+    GrupoMGR gMGR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_otro_usuario);
 
-
+        //gMGR = new GrupoMGR().getInstance();
 
         List<Info> grupos = null; //llenar con todos los nombres de los grupos que sigue el ususario
         //Crear variable y añadirla al Adapter que contendra todas las imagenes de los grupos
