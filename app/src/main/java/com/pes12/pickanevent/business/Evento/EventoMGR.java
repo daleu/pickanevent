@@ -82,7 +82,7 @@ public class EventoMGR {
 
     }
 
-    public void getInfoGrupo(Activity _activity) {
+    public void getInfoEvento(Activity _activity) {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();

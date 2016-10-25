@@ -68,7 +68,7 @@ public class VerInfoEventoActivity extends AppCompatActivity implements OnMapRea
         //Consultar informacion
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
-        eMGR.getInfoGrupo(this);
+        eMGR.getInfoEvento(this);
 
         //Crear Evento
         /*Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.redhot);
