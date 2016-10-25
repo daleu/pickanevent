@@ -15,7 +15,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

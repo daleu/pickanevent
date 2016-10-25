@@ -25,7 +25,7 @@ import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
-public class CrearEventoActivity extends AppCompatActivity{
+public class CrearEventoActivity extends BaseActivity{
 
 
 

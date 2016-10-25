@@ -13,7 +13,7 @@ import com.pes12.pickanevent.business.Info;
 
 import java.util.List;
 
-public class InfoOtroUsuarioActivity extends AppCompatActivity {
+public class InfoOtroUsuarioActivity extends BaseActivity {
 
     GrupoMGR gMGR;
 

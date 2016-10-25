@@ -20,7 +20,7 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-public class EditarEventoActivity extends AppCompatActivity {
+public class EditarEventoActivity extends BaseActivity {
     EventoMGR eMGR;
 
     private ImageView imagenEvento;
