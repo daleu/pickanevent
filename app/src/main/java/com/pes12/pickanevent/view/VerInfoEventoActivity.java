@@ -31,7 +31,7 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-public class VerInfoEventoActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
 
     private TextView descripcion;
     private TextView titulo;
@@ -45,6 +45,8 @@ public class VerInfoEventoActivity extends AppCompatActivity implements OnMapRea
 
     private String idEvento;
     private String web;
+    private String latitud;
+    private String longitud;
 
     private MapFragment mapFragment;
 
@@ -107,6 +109,9 @@ public class VerInfoEventoActivity extends AppCompatActivity implements OnMapRea
         precio.setText(gEntity.getPrecio());
         lugar.setText(gEntity.getLocalizacion());
 
+        latitud = gEntity.getLatitud();
+        longitud = gEntity.getLongitud();
+
         web = gEntity.getWebpage();
 
         comprarEntradas.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +147,7 @@ public class VerInfoEventoActivity extends AppCompatActivity implements OnMapRea
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         CameraPosition googlePlex = CameraPosition.builder()
-                .target(new LatLng(37.4219999,-122.0862462))
+                .target(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
                 .zoom(16)
                 .bearing(0)
                 .tilt(45)
@@ -151,7 +156,7 @@ public class VerInfoEventoActivity extends AppCompatActivity implements OnMapRea
         map.moveCamera(CameraUpdateFactory.newCameraPosition(googlePlex));
 
         map.addMarker(new MarkerOptions()
-                .position(new LatLng(37.4219999,-122.0862462))
+                .position(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
                 .title("Palau Sant Jordi"));
 
     }

@@ -25,7 +25,7 @@ import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
-public class CrearEventoActivity extends AppCompatActivity{
+public class CrearEventoActivity extends BaseActivity{
 
 
 
@@ -61,7 +61,7 @@ public class CrearEventoActivity extends AppCompatActivity{
         String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
         EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
-                url.getText().toString(),localitzacio.getText().toString(),data.getText().toString());
+                url.getText().toString(),localitzacio.getText().toString(),data.getText().toString(),"","");
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA

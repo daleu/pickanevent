@@ -13,6 +13,8 @@ public class EventoEntity {
     private String webpage;
     private String localizacion;
     private String horario;
+    private String latitud;
+    private String longitud;
 
 
     public EventoEntity()
@@ -20,7 +22,7 @@ public class EventoEntity {
 
     }
 
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String horario){
+    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String horario, String latitud, String longitud){
         setTitulo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -28,6 +30,8 @@ public class EventoEntity {
         setWebpage(webpage);
         setLocalizacion(localizacion);
         setHorario(horario);
+        setLatitud(latitud);
+        setLongitud(longitud);
     }
 
     public String getTitulo() {
@@ -84,5 +88,21 @@ public class EventoEntity {
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
 }

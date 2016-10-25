@@ -17,7 +17,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
-public class BuscarActivity extends AppCompatActivity {
+public class BuscarActivity extends BaseActivity {
 
     private UsuarioMGR uMGR;
     private GrupoMGR gMGR;
@@ -41,6 +41,7 @@ public class BuscarActivity extends AppCompatActivity {
 
                 if(cs.toString().length()!=0)
                 {
+                    showProgressDialog();
                     uMGR.getUsersByUsername(BuscarActivity.this, tv.getText().toString());
                     gMGR.getGruposByNombreGrupo(BuscarActivity.this, tv.getText().toString());
                 }
@@ -66,6 +67,7 @@ public class BuscarActivity extends AppCompatActivity {
     public void buscar(View view)
     {
         EditText tv = (EditText)findViewById(R.id.inputBusqueda);
+
         uMGR.getUsersByUsername(this,tv.getText().toString());
     }
 

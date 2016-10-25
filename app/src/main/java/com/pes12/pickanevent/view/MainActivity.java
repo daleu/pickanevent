@@ -95,4 +95,8 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
+    public void goInfoOtroUsuario (View view) {
+        startActivity( new Intent(MainActivity.this, InfoOtroUsuarioActivity.class));
+    }
 }
+
