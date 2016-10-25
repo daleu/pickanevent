@@ -32,5 +32,18 @@
         android:text="Buscar"
         android:onClick="goBuscar"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear evento"
+            android:onClick="goCrearEvento"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:onClick="goLogin"/>
+
+
     </LinearLayout>
 </ScrollView>

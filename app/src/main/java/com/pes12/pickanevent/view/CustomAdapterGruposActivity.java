@@ -19,9 +19,9 @@ import android.widget.TextView;
 import java.util.List;
 
 
-class CustomAdapterGrupos extends ArrayAdapter<Info> {
+class CustomAdapterGruposActivity extends ArrayAdapter<Info> {
 
-    public CustomAdapterGrupos(Context context, List<Info> info) {
+    public CustomAdapterGruposActivity(Context context, List<Info> info) {
         super(context, R.layout.lista_grupos, info);
     }
 

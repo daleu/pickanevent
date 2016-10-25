@@ -1,19 +1,18 @@
 package com.pes12.pickanevent.business.Usuario;
 
 import android.app.Activity;
-import android.text.Editable;
 import android.util.Log;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.pes12.pickanevent.persistence.FirebaseSingleton;
+import com.pes12.pickanevent.business.EncodeUtil;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.pes12.pickanevent.view.Buscar;
+import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
 
 import java.util.HashMap;
@@ -26,12 +25,12 @@ import java.util.Map;
 
 public class UsuarioMGR {
 
-    private final FirebaseDatabase database;
+    private FirebaseDatabase database;
     private DatabaseReference bdRefUsuarios;
-    private static UsuarioMGR singleton;
+    //private static UsuarioMGR singleton;
 
 
-    public static UsuarioMGR getInstance()
+    /*public static UsuarioMGR getInstance()
     {
        if(singleton==null)
        {
@@ -45,7 +44,12 @@ public class UsuarioMGR {
     {
         //database = FirebaseDatabase.getInstance();
         //database.setPersistenceEnabled(true);
-        database = FirebaseSingleton.getInstance();
+        database = FirebaseFactory.getInstance();
+        bdRefUsuarios = database.getReference("usuarios");
+    }*/
+
+    public void inicializarDatabase(FirebaseDatabase database) {
+        this.database = database;
         bdRefUsuarios = database.getReference("usuarios");
     }
 
@@ -113,6 +117,7 @@ public class UsuarioMGR {
 
     private String crear(UsuarioEntity _entity)
     {
+
         bdRefUsuarios.orderByChild("username").equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity ent;
             @Override
@@ -146,7 +151,7 @@ public class UsuarioMGR {
         Query queryRef = bdRefUsuarios.orderByChild("username").startAt(text).endAt(text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
-            Buscar activity;
+            BuscarActivity activity;
             Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -165,10 +170,53 @@ public class UsuarioMGR {
 
             public ValueEventListener setActivity (Activity _activity)
             {
-                activity=(Buscar) _activity;
+                activity=(BuscarActivity) _activity;
                 return this;
             }
 
         }.setActivity(_activity));
+    }
+
+    public void login(Activity _activity, String _user, String _password)
+    {
+        Query queryRef = bdRefUsuarios.orderByChild("username").equalTo(_user);
+
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            LoginActivity activity;
+            String password;
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot user : snapshot.getChildren()) {
+                    UsuarioEntity usuario=user.getValue(UsuarioEntity.class);
+                    System.out.println(usuario);
+                    if(usuario!=null && usuario.getPassword()!=null) {
+                        if (usuario.getPassword().equals(EncodeUtil.encodePasswordSHA1(password))) {
+                            System.out.println("Login correcto");
+                        } else System.out.println("Login INcorrecto");
+                    }
+
+                }
+
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+            public ValueEventListener init (Activity _activity, String _password)
+            {
+                password = _password;
+                activity=(LoginActivity) _activity;
+                return this;
+            }
+
+        }.init(_activity,_password));
+
     }
 }

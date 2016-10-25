@@ -5,7 +5,7 @@
     android:id="@+id/activity_ver_info_evento"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pes12.pickanevent.view.VerInfoEvento"
+    tools:context="com.pes12.pickanevent.view.VerInfoEventoActivity"
     android:background="#bfffc2">
 
     <include
@@ -228,7 +228,7 @@
                     android:layout_below="@+id/layoutPinMap"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    class="com.google.android.gms.maps.SupportMapFragment"/>
+                    class="com.google.android.gms.maps.MapFragment"/>
 
             </RelativeLayout>
 

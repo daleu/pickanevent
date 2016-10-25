@@ -3,15 +3,12 @@ package com.pes12.pickanevent.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,16 +72,23 @@ BLOQUE DE TEST
     }
 
     public void goVerInfoGrupo(View view) {
-        startActivity(new Intent(MainActivity.this, VerInfoGrupo.class));
+        startActivity(new Intent(MainActivity.this, VerInfoGrupoActivity.class));
     }
 
     public void goVerInfoEvento(View view) {
-        startActivity(new Intent(MainActivity.this, VerInfoEvento.class));
+        startActivity(new Intent(MainActivity.this, VerInfoEventoActivity.class));
     }
 
     public void goBuscar(View view) {
-        startActivity(new Intent(MainActivity.this, Buscar.class));
+        startActivity(new Intent(MainActivity.this, BuscarActivity.class));
     }
 
+    public void goCrearEvento(View view) {
+        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
+    }
+
+    public void goLogin(View view) {
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+    }
 
 }

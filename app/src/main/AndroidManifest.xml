@@ -24,11 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.VerInfoGrupo" />
-        <activity android:name=".view.CrearEvento" />
-        <activity android:name=".view.Buscar" />
-        <activity android:name=".view.VerInfoEvento" />
-        <activity android:name=".view.InfoOtroUsuario"></activity>
+        <activity android:name=".view.VerInfoGrupoActivity" />
+        <activity android:name=".view.CrearEventoActivity" />
+        <activity android:name=".view.BuscarActivity" />
+        <activity android:name=".view.VerInfoEventoActivity" />
+        <activity android:name=".view.InfoOtroUsuarioActivity"></activity>
+        <activity android:name=".view.LoginActivity"></activity>
     </application>
 
 </manifest>

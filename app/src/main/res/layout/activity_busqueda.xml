@@ -8,7 +8,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 
-    tools:context="com.pes12.pickanevent.view.VerInfoGrupo"
+    tools:context="com.pes12.pickanevent.view.VerInfoGrupoActivity"
     android:background="#bfffc2">
 
     <include

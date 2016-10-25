@@ -1,24 +1,23 @@
 package com.pes12.pickanevent.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
-public class Buscar extends AppCompatActivity {
+public class BuscarActivity extends AppCompatActivity {
 
     private UsuarioMGR uMGR;
     private GrupoMGR gMGR;
@@ -28,10 +27,12 @@ public class Buscar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
 
-        uMGR= UsuarioMGR.getInstance();
+        //uMGR= UsuarioMGR.getInstance(); VIEJA
+        uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
 
-        gMGR= GrupoMGR.getInstance();
+        //gMGR= GrupoMGR.getInstance();
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
         final EditText tv = (EditText)findViewById(R.id.inputBusqueda);
         tv.addTextChangedListener(new TextWatcher() {
 
@@ -40,8 +41,8 @@ public class Buscar extends AppCompatActivity {
 
                 if(cs.toString().length()!=0)
                 {
-                    uMGR.getUsersByUsername(Buscar.this, tv.getText().toString());
-                    gMGR.getGruposByNombreGrupo(Buscar.this, tv.getText().toString());
+                    uMGR.getUsersByUsername(BuscarActivity.this, tv.getText().toString());
+                    gMGR.getGruposByNombreGrupo(BuscarActivity.this, tv.getText().toString());
                 }
 
                 else{
@@ -94,7 +95,7 @@ public class Buscar extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
@@ -102,5 +103,5 @@ public class Buscar extends AppCompatActivity {
             finish();
         }
         return super.onKeyDown(keyCode, event);
-    }
+    }*/
 }

@@ -7,10 +7,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
-import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.pes12.pickanevent.view.VerInfoEvento;
+import com.pes12.pickanevent.view.VerInfoEventoActivity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,11 +19,11 @@ import java.util.Map;
 
 public class EventoMGR {
 
-    private final FirebaseDatabase database;
+    private FirebaseDatabase database;
     private DatabaseReference bdRefEventos;
-    private static EventoMGR singleton;
+    //private static EventoMGR singleton;
 
-    public static EventoMGR getInstance()
+    /*public static EventoMGR getInstance()
     {
         if(singleton==null)
         {
@@ -37,9 +35,14 @@ public class EventoMGR {
 
     public EventoMGR () {
 
-        database = FirebaseSingleton.getInstance();
+        database = FirebaseFactory.getInstance();
         bdRefEventos = database.getReference("eventos");
 
+    }*/
+
+    public void inicializarDatabase(FirebaseDatabase database) {
+        this.database = database;
+        bdRefEventos = database.getReference("eventos");
     }
 
     public String crear(EventoEntity _entity)
@@ -81,7 +84,7 @@ public class EventoMGR {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
-            VerInfoEvento activity;
+            VerInfoEventoActivity activity;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -97,7 +100,7 @@ public class EventoMGR {
             }
             public ValueEventListener setActivity (Activity _activity)
             {
-                activity=(VerInfoEvento) _activity;
+                activity=(VerInfoEventoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

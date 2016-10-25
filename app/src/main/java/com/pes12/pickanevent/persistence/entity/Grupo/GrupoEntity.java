@@ -79,22 +79,16 @@ public class GrupoEntity {
 
 
     /*    EVENTOS   */
-    private Map<String,String> mapIdEventos;
-    public  Map<String,String> getIdEventos() {return mapIdEventos;}
-    public  void setIdEventos(Map<String,String> _idEventos){mapIdEventos = _idEventos;}
+    private Map<String,Boolean> mapIdEventos;
+    public  Map<String,Boolean> getIdEventos() {return mapIdEventos;}
+    public  void setIdEventos(Map<String,Boolean> _idEventos){mapIdEventos = _idEventos;}
 
 
 
     /*    TAGS_ADICIONALES   */
-    private Map<String,String> mapIdTags;
-    public  Map<String,String> getIdTags() {return mapIdTags;}
-    public  void setIdTags(Map<String,String> _idTags){mapIdTags = _idTags;}
-    public String getTagsAsString () {
-        String tags = "";
-        for (Map.Entry<String, String> entry: mapIdTags.entrySet()) {
-            tags += entry.getValue() + "        ";
-        }
-        return tags;
-    }
+    private Map<String,Boolean> mapIdTags;
+    public  Map<String,Boolean> getIdTags() {return mapIdTags;}
+    public  void setIdTags(Map<String,Boolean> _idTags){mapIdTags = _idTags;}
+
 
 }

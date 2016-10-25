@@ -9,11 +9,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.pes12.pickanevent.persistence.FirebaseSingleton;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
-import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.pes12.pickanevent.view.Buscar;
-import com.pes12.pickanevent.view.VerInfoGrupo;
+import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -25,12 +23,12 @@ import java.util.Map;
 
 public class GrupoMGR {
 
-    private final FirebaseDatabase database;
+    private FirebaseDatabase database;
     private DatabaseReference bdRefGrupos;
-    private static GrupoMGR singleton;
+    //private static GrupoMGR singleton;
 
 
-    public static GrupoMGR getInstance()
+    /*public static GrupoMGR getInstance()
     {
         if(singleton==null)
         {
@@ -42,9 +40,14 @@ public class GrupoMGR {
 
     public GrupoMGR () {
 
-        database = FirebaseSingleton.getInstance();
+        database = FirebaseFactory.getInstance();
         bdRefGrupos = database.getReference("grupos");
 
+    }*/
+
+    public void inicializarDatabase(FirebaseDatabase database) {
+        this.database = database;
+        bdRefGrupos = database.getReference("grupos");
     }
 
     public Map<String,GrupoEntity> guardarGrupo(Map<String,GrupoEntity> _entities)
@@ -82,9 +85,9 @@ public class GrupoMGR {
                 if (snapshot.getValue() != null) {
                     System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
                 } else {
-                    DatabaseReference usuario = bdRefGrupos.push();
-                    usuario.setValue(ent);
-                    usuario.getKey();
+                    DatabaseReference grupo = bdRefGrupos.push();
+                    grupo.setValue(ent);
+                    grupo.getKey();
                 }
             }
             @Override
@@ -102,31 +105,26 @@ public class GrupoMGR {
         return "";
     }
 
-    public void getInfoGrupo(Activity _activity) {
-
-        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
-            VerInfoGrupo activity;
+    public void getInfoGrupo(Activity _activity, String id) {
+        bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            VerInfoGrupoActivity activity;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                g = dataSnapshot.getValue((GrupoEntity.class)); //<------------
 
-                for (DataSnapshot grupo : dataSnapshot.getChildren()) {
-                    map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
-                }
-                activity.mostrarInfoGrupo(map);
+                activity.mostrarInfoGrupo(g);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("EEEERROOOOR");
             }
-            public ValueEventListener setActivity (Activity _activity)
-            {
-                activity=(VerInfoGrupo) _activity;
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerInfoGrupoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));
-
     }
 
     public void getGruposByNombreGrupo(Activity _activity, String text)
@@ -134,7 +132,7 @@ public class GrupoMGR {
         Query queryRef = bdRefGrupos.orderByChild("nombreGrupo").startAt(text).endAt(text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
-            Buscar activity;
+            BuscarActivity activity;
             Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -153,7 +151,7 @@ public class GrupoMGR {
 
             public ValueEventListener setActivity (Activity _activity)
             {
-                activity=(Buscar) _activity;
+                activity=(BuscarActivity) _activity;
                 return this;
             }
 

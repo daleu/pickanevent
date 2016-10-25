@@ -7,7 +7,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 
-    tools:context="com.pes12.pickanevent.view.VerInfoGrupo"
+    tools:context="com.pes12.pickanevent.view.VerInfoGrupoActivity"
     android:background="#bfffc2">
 
     <include
@@ -30,9 +30,7 @@
                 android:id="@+id/imagenGrupo"
                 android:layout_height="160dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp" />
+                android:layout_alignParentStart="true" />
 
             <Button
                 android:text="Seguir!"
