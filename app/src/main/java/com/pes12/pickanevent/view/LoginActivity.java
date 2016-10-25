@@ -27,33 +27,37 @@ public class LoginActivity extends BaseActivity {
 BLOQUE DE TEST
 */
 
+        if(getUsuarioActual()==null) {
 
-        //UsuarioMGR uMGR= UsuarioMGR.getInstance(); VIEJA
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR(); //NUEVA
+            //UsuarioMGR uMGR= UsuarioMGR.getInstance(); VIEJA
+            UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR(); //NUEVA
 
-       UsuarioEntity usuario = new UsuarioEntity();
-        Map<String,Boolean> relaciones = new HashMap<>();
-        Map<String,UsuarioEntity> user = new HashMap<>();
+            UsuarioEntity usuario = new UsuarioEntity();
+            Map<String, Boolean> relaciones = new HashMap<>();
+            Map<String, UsuarioEntity> user = new HashMap<>();
 
-        relaciones.put("key1",true);
-        relaciones.put("key2",true);
-        relaciones.put("key3",true);
+            relaciones.put("key1", true);
+            relaciones.put("key2", true);
+            relaciones.put("key3", true);
 
-        usuario.setUsername("PruebaDePassEncoded");
-        usuario.setNickname("I'mATest");
-        usuario.setPassword(EncodeUtil.encodePasswordSHA1("123123"));
-        usuario.setEmail("asd@asdas.com");
-        usuario.setIdEventos(relaciones);
-        usuario.setIdGrupos(relaciones);
-        usuario.setIdTags(relaciones);
+            usuario.setUsername("PruebaDePassEncoded");
+            usuario.setNickname("I'mATest");
+            usuario.setPassword(EncodeUtil.encodePasswordSHA1("123123"));
+            usuario.setEmail("asd@asdas.com");
+            usuario.setIdEventos(relaciones);
+            usuario.setIdGrupos(relaciones);
+            usuario.setIdTags(relaciones);
 
-        user.put("",usuario);
+            user.put("", usuario);
 
-        user=uMGR.guardarUsuario(user);
+            user = uMGR.guardarUsuario(user);
 
-        uMGR.login(this,"PruebaDePassEncoded","123123");
-
+            uMGR.login(this, "PruebaDePassEncoded", "123123");
+        }
+        else System.out.println("YA HAY ALGUIEN LOGEADO\n"+getUsuarioActual());
+        finish();
     }
+
 
 
 

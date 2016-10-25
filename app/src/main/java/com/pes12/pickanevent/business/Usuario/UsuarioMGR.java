@@ -191,10 +191,11 @@ public class UsuarioMGR {
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot user : snapshot.getChildren()) {
                     UsuarioEntity usuario=user.getValue(UsuarioEntity.class);
-                    System.out.println(usuario);
+
                     if(usuario!=null && usuario.getPassword()!=null) {
                         if (usuario.getPassword().equals(EncodeUtil.encodePasswordSHA1(password))) {
                             System.out.println("Login correcto");
+                            activity.setUsuarioActual(usuario);
                         } else System.out.println("Login INcorrecto");
                     }
 

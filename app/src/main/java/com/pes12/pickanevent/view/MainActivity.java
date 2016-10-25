@@ -5,13 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,16 +88,13 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
     }
 
-    public void goEditarEvento(View view) {
-        startActivity(new Intent(MainActivity.this, EditarEventoActivity.class));
-    }
-
     public void goLogin(View view) {
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
-    public void goInfoOtroUsuario (View view) {
-        startActivity( new Intent(MainActivity.this, VerInfoOtroUsuarioActivity.class));
+    public void showUsuarioActual(View view){
+        if(getUsuarioActual()!=null) Toast.makeText(MainActivity.this, (CharSequence) getUsuarioActual().toString(), Toast.LENGTH_SHORT).show();
+        else Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
+
     }
 }
-
