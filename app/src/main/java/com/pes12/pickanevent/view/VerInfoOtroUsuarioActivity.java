@@ -15,6 +15,8 @@ import java.util.List;
 
 public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
+
+
     GrupoMGR gMGR;
 
     @Override
