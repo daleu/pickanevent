@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 
-    tools:context="com.pes12.pickanevent.view.CrearEvento"
+    tools:context="com.pes12.pickanevent.view.CrearEventoActivity"
     android:background="#bfffc2">
 
     <include

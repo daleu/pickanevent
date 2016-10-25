@@ -26,6 +26,7 @@
         </activity>
         <activity android:name=".view.VerInfoGrupoActivity" />
         <activity android:name=".view.CrearEventoActivity" />
+        <activity android:name=".view.EditarEventoActivity" />
         <activity android:name=".view.BuscarActivity" />
         <activity android:name=".view.VerInfoEventoActivity" />
         <activity android:name=".view.VerInfoOtroUsuarioActivity"></activity>

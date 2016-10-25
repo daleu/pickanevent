@@ -46,12 +46,19 @@
             android:onClick="goLogin"/>
 
         <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar evento"
+            android:onClick="goEditarEvento"/>
+
+        <Button
             android:text="VER OTRO USUARIO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:layout_weight="0.14"
             android:onClick="goInfoOtroUsuario" />
+
 
 
     </LinearLayout>

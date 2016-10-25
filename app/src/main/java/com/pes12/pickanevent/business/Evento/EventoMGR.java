@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 
 import java.util.LinkedHashMap;
@@ -101,6 +102,32 @@ public class EventoMGR {
             public ValueEventListener setActivity (Activity _activity)
             {
                 activity=(VerInfoEventoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getInfoEventoEditar(Activity _activity) {
+
+        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+            Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
+            EditarEventoActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot evento : dataSnapshot.getChildren()) {
+                    map.put(evento.getKey(), evento.getValue(EventoEntity.class));
+                }
+                activity.mostrarInfoEvento(map);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("EEEERROOOOR");
+            }
+            public ValueEventListener setActivity (Activity _activity)
+            {
+                activity=(EditarEventoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

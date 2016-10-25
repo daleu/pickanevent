@@ -30,11 +30,11 @@ public class EditarEventoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_evento);
         eMGR = MGRFactory.getInstance().getEventoMGR();
-        eMGR.getInfoEvento(this);
+        eMGR.getInfoEventoEditar(this);
     }
 
     public void mostrarInfoEvento (Map<String,EventoEntity> ge) {
-        String idEvento = "";
+        String idEvento = "-KUvpkweDzzNk0P3bqhY";
         EventoEntity evento = ge.get(idEvento);
 
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
@@ -62,6 +62,8 @@ public class EditarEventoActivity extends BaseActivity {
         localitzacio.setText(evento.getLocalizacion());
         url.setText(evento.getWebpage());
 
+
+        imagenEvento = (ImageView) findViewById(R.id.imagenEvento);
         Bitmap imgBM = StringToBitMap(img);
         imagenEvento.setImageBitmap(imgBM);
         imagenEvento.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -106,7 +108,7 @@ public class EditarEventoActivity extends BaseActivity {
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
-        eMGR.crear(ee);
-        Toast.makeText(this,"Evento creado",Toast.LENGTH_LONG).show();
+        eMGR.actualizar("-KUvpkweDzzNk0P3bqhY",ee);
+        Toast.makeText(this,"Evento guardado",Toast.LENGTH_LONG).show();
     }
 }
