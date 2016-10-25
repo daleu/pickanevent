@@ -156,7 +156,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         map.moveCamera(CameraUpdateFactory.newCameraPosition(googlePlex));
 
         map.addMarker(new MarkerOptions()
-                .position(new LatLng(37.4219999,-122.0862462))
+                .position(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
                 .title("Palau Sant Jordi"));
 
     }
