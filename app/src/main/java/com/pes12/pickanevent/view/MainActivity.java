@@ -11,12 +11,12 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_editar_evento);
 
 
 /*
@@ -91,4 +91,8 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
+    public void goInfoOtroUsuario (View view) {
+        startActivity( new Intent(MainActivity.this, InfoOtroUsuarioActivity.class));
+    }
 }
+
