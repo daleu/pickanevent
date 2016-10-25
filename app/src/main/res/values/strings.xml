@@ -3,6 +3,7 @@
     <string name="clock_icon">&#xf017;</string>
     <string name="dollar_icon">&#xf155;</string>
     <string name="map_icon">&#xf041;</string>
+    <string name="loading">Retrieving data...</string>
     <string name="google_android_map_api_key">AIzaSyDcy7UoZ4LGYEBOp-8E4cJzsh1Tik9Hrro</string>
 
 </resources>

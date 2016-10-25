@@ -11,12 +11,12 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_evento);
+        setContentView(R.layout.activity_main);
 
 
 /*

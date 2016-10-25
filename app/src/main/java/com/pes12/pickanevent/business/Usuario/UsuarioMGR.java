@@ -148,6 +148,7 @@ public class UsuarioMGR {
 
     public void getUsersByUsername(Activity _activity, String text)
     {
+
         Query queryRef = bdRefUsuarios.orderByChild("username").startAt(text).endAt(text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -161,6 +162,7 @@ public class UsuarioMGR {
 
                 }
                 activity.printNicknames(map);
+                activity.hideProgressDialog();
             }
 
             @Override
