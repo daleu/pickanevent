@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    tools:context="com.pes12.pickanevent.view.EditarEvento"
+    android:background="#bfffc2">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        ></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/marcoContenido"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingTop="5dp"
+                android:scrollbars="vertical"
+                android:background="#fff"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/imagenEvento"
+                android:layout_alignParentStart="true"
+                android:layout_height="620dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imagenEvento"
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="Escriba el nombre del evento"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorNEvento"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignTop="@+id/marcoContenido"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="Escribe la descripción de tu evento"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorDescr"
+                android:layout_height="184dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editorNEvento"
+                android:elevation="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_centerInParent="false"
+                android:layout_centerVertical="false"
+                android:gravity="top"/>
+
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/editorDescr"
+                android:layout_marginTop="10dp"
+                android:id="@+id/relative">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:text="El evento será gratuito?"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColor="#000"
+                    android:id="@+id/textoGratis"
+                    android:background="#FFF"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="10dp"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkBoxGratis"
+                    android:layout_alignBaseline="@+id/textoGratis"
+                    android:layout_alignBottom="@+id/textoGratis"
+                    android:onClick="comprovarCheckBox"
+                    android:layout_toEndOf="@+id/textoGratis" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="Escriba el precio del evento"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorPrecio"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/relative"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="En el caso que se puedan comprar online, escribe la URL de venta de entradas"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorEntradas"
+                android:layout_height="75dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editorPrecio"
+                android:layout_centerHorizontal="true"
+                android:gravity="top" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="Escriba el lugar del evento"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorLugar"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editorEntradas"
+                android:layout_centerHorizontal="true" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/editorLugar"
+                android:layout_marginTop="10dp"
+                android:id="@+id/relative2">
+
+                <EditText
+                    android:layout_width="250dp"
+                    android:inputType="textPersonName"
+                    android:hint="dd/mm/yyyy hh:mm"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorFecha"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick=""
+                    android:src="@android:drawable/ic_menu_today"
+                    android:id="@+id/imageButtonCalendar"
+                    android:layout_toEndOf="@+id/editorFecha" />
+
+
+            </RelativeLayout>
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/calendarView"
+                android:layout_alignParentBottom="true"
+                android:background="#FFF"
+                android:layout_alignStart="@+id/marcoContenido"
+                android:layout_below="@+id/relative2"
+                android:layout_alignEnd="@+id/marcoContenido"
+                tools:visibility="invisible"
+                />
+
+            <Button
+                android:text="Guardar Cambios"
+                android:id="@+id/buttonAcceptar"
+                android:background="@drawable/botton_application"
+                android:layout_width="150dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="30dp"
+                android:radius="20dip"
+                android:onClick="guardarEvento"
+                android:layout_alignBottom="@+id/marcoContenido"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
