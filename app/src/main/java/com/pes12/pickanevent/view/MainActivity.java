@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_evento);
+        setContentView(R.layout.activity_main);
 
 
 /*
@@ -85,6 +85,10 @@ BLOQUE DE TEST
 
     public void goCrearEvento(View view) {
         startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
+    }
+
+    public void goEditarEvento(View view) {
+        startActivity(new Intent(MainActivity.this, EditarEventoActivity.class));
     }
 
     public void goLogin(View view) {
