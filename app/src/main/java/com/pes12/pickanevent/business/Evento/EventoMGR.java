@@ -69,17 +69,15 @@ public class EventoMGR {
         return "";
     }
 
-    private void actualizar(String key, EventoEntity _entity)
+    public void actualizar(String key, EventoEntity _entity)
     {
-
-
         DatabaseReference evento = bdRefEventos.child(key); //recogemos la rama con la ID del evento en concreto
 
         evento.setValue(_entity);
 
     }
 
-    public void getInfoGrupo(Activity _activity) {
+    public void getInfoEvento(Activity _activity) {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
