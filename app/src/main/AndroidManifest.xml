@@ -28,7 +28,7 @@
         <activity android:name=".view.CrearEventoActivity" />
         <activity android:name=".view.BuscarActivity" />
         <activity android:name=".view.VerInfoEventoActivity" />
-        <activity android:name=".view.InfoOtroUsuarioActivity"></activity>
+        <activity android:name=".view.VerInfoOtroUsuarioActivity"></activity>
         <activity android:name=".view.LoginActivity"></activity>
     </application>
 

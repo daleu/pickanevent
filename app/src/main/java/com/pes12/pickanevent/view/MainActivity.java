@@ -92,7 +92,7 @@ BLOQUE DE TEST
     }
 
     public void goInfoOtroUsuario (View view) {
-        startActivity( new Intent(MainActivity.this, InfoOtroUsuarioActivity.class));
+        startActivity( new Intent(MainActivity.this, VerInfoOtroUsuarioActivity.class));
     }
 }
 

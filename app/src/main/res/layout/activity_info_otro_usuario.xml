@@ -4,7 +4,7 @@
     android:id="@+id/activity_other_user_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pes12.pickanevent.view.InfoOtroUsuarioActivity"
+    tools:context="com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity"
     android:background="#bfffc2">
 
     <include
