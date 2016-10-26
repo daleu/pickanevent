@@ -10,11 +10,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.EncodeUtil;
+import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -156,12 +158,14 @@ public class UsuarioMGR {
             Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                ArrayList<Info> n = new ArrayList<Info>();
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                     System.out.println(usuario.getKey());
-                    map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
+                   // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
+                    n.add(new Info(null,usuario.getKey(),usuario.getValue(UsuarioEntity.class).getUsername()));
 
                 }
-                activity.printNicknames(map);
+                activity.printNicknames(n);
                 activity.hideProgressDialog();
             }
 

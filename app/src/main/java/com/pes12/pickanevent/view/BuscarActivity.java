@@ -5,16 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.AdapterListaEventos;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
+import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class BuscarActivity extends BaseActivity {
@@ -72,29 +77,23 @@ public class BuscarActivity extends BaseActivity {
     }
 
     //funcion para probar lecturas
-    public void printNicknames(Map<String,UsuarioEntity> hm) {
+    public void printNicknames(ArrayList<Info> info) {
 
-        System.out.println("Mostrando los valores:");
-        TextView tv = (TextView)findViewById(R.id.texto);
-        tv.setText("Usuarios:\n");
-        if(hm.entrySet().size()==0)tv.setText(tv.getText()+"No hay usuarios que coincidan.");
-        for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
-            tv.setText(tv.getText()+entry.getValue().getUsername());
-            System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
-        }
+        ListView lv  =(ListView)findViewById(R.id.lvUsers);
+
+        //arraylist Append
+        AdapterListaEventos ale = new AdapterListaEventos(BuscarActivity.this,R.layout.vista_evento_en_lista,info);
+        lv.setAdapter(ale);
     }
 
-    public void printNombresGrupo(Map<String, GrupoEntity> hm) {
+    public void printNombresGrupo(ArrayList<Info> info) {
 
 
-        System.out.println("Mostrando los valores:");
-        TextView tv = (TextView)findViewById(R.id.texto2);
-        tv.setText("\nGrupos:\r\n");
-        if(hm.entrySet().size()==0)tv.setText(tv.getText()+"No hay grupos que coincidan.");
-        for (Map.Entry<String, GrupoEntity> entry : hm.entrySet()) {
-            tv.setText(tv.getText()+entry.getValue().getNombreGrupo());
-            System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
-        }
+        ListView lv  =(ListView)findViewById(R.id.lvGrupos);
+
+        //arraylist Append
+        AdapterListaEventos ale = new AdapterListaEventos(BuscarActivity.this,R.layout.vista_evento_en_lista,info);
+        lv.setAdapter(ale);
     }
 
     /*@Override

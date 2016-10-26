@@ -9,10 +9,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -136,12 +139,14 @@ public class GrupoMGR {
             Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                ArrayList<Info> n = new ArrayList<Info>();
                 for (DataSnapshot grupo : snapshot.getChildren()) {
                     System.out.println(grupo.getKey());
-                    map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
+                    //map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
+                    n.add(new Info(null,grupo.getKey(),grupo.getValue(GrupoEntity.class).getNombreGrupo()));
 
                 }
-                activity.printNombresGrupo(map);
+                activity.printNombresGrupo(n);
             }
 
             @Override

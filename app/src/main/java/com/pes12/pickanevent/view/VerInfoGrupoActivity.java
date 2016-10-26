@@ -97,11 +97,11 @@ public class VerInfoGrupoActivity extends BaseActivity {
                 new Info(imgBM, "hola2", "adeu2")
         };
 
-        AdapterListaEventos ad = new AdapterListaEventos(this, R.layout.vista_evento_en_lista , info);
+        //AdapterListaEventos ad = new AdapterListaEventos(this, R.layout.vista_evento_en_lista , info); HE COMENTADO ESTO AL CAMBIAR EL ADAPTER
         View header = getLayoutInflater().inflate(R.layout.vista_evento_en_lista, null);
         eventos.addHeaderView(header);
 
-        eventos.setAdapter(ad);
+       // eventos.setAdapter(ad); HE COMENTADO ESTO AL CAMBIAR EL ADAPTER
 
     }
 

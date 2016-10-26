@@ -14,35 +14,43 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Clara on 20/10/2016.
  */
 
 public class AdapterListaEventos extends ArrayAdapter<Info> {
 
-    Info datos[];
+   // Info datos[];
+    ArrayList<Info> infos;
     int layoutId;
     private Context context;
 
 
 
-    public AdapterListaEventos(Context context, int layoutId, Info[] info) {
+    public AdapterListaEventos(Context context, int layoutId, ArrayList<Info> info) {
         super(context, layoutId, info);
         this.context = context;
         this.layoutId = layoutId;
-        datos = info;
+        infos = info;
 
     }
 
     @Override
     public int getCount() {
-        return datos.length;
+        return infos.size();
     }
 
 
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    @Override
+    public Info getItem(int position) {
+        return infos.get(position);
     }
 
     @Override
@@ -64,7 +72,7 @@ public class AdapterListaEventos extends ArrayAdapter<Info> {
             holder = (AdapterHolder)vistaEvent.getTag();
         }
 
-        Info componentes = datos[position];
+        Info componentes = getItem(position);
         holder.img.setImageBitmap(componentes.img);
         holder.l1.setText(componentes.primeraLinea);
         holder.l2.setText(componentes.segonaLinea);
