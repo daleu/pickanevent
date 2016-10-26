@@ -128,6 +128,7 @@ public class GrupoMGR {
                 return this;
             }
         }.setActivity(_activity));
+
     }
 
     public void getGruposByNombreGrupo(Activity _activity, String text)

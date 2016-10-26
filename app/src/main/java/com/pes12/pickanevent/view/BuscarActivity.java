@@ -1,26 +1,21 @@
 package com.pes12.pickanevent.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.AdapterListaEventos;
+import com.pes12.pickanevent.business.AdapterLista;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
-import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class BuscarActivity extends BaseActivity {
 
@@ -82,7 +77,7 @@ public class BuscarActivity extends BaseActivity {
         ListView lv  =(ListView)findViewById(R.id.lvUsers);
 
         //arraylist Append
-        AdapterListaEventos ale = new AdapterListaEventos(BuscarActivity.this,R.layout.vista_evento_en_lista,info);
+        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,info);
         lv.setAdapter(ale);
     }
 
@@ -92,7 +87,7 @@ public class BuscarActivity extends BaseActivity {
         ListView lv  =(ListView)findViewById(R.id.lvGrupos);
 
         //arraylist Append
-        AdapterListaEventos ale = new AdapterListaEventos(BuscarActivity.this,R.layout.vista_evento_en_lista,info);
+        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,info);
         lv.setAdapter(ale);
     }
 

@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by Clara on 20/10/2016.
  */
 
-public class AdapterListaEventos extends ArrayAdapter<Info> {
+public class AdapterLista extends ArrayAdapter<Info> {
 
    // Info datos[];
     ArrayList<Info> infos;
@@ -29,7 +29,7 @@ public class AdapterListaEventos extends ArrayAdapter<Info> {
 
 
 
-    public AdapterListaEventos(Context context, int layoutId, ArrayList<Info> info) {
+    public AdapterLista(Context context, int layoutId, ArrayList<Info> info) {
         super(context, layoutId, info);
         this.context = context;
         this.layoutId = layoutId;
