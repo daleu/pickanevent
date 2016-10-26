@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.view;
 
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -31,6 +32,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     String idGrupo;
     String idEvento;
 
+
     UsuarioMGR uMGR;
     GrupoMGR gMGR;
     EventoMGR eMGR;
@@ -51,8 +53,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         eMGR = MGRFactory.getInstance().getEventoMGR();
 
-        idUsuario = "Aser2";
-        uMGR.getUsersByUsername(this, idUsuario);
+        idUsuario = "-KUHeQd1dR1FT3FmbPLu";
+        uMGR.getInfoUsuario(this, idUsuario);
 
 
         //gMGR = new GrupoMGR().getInstance();
@@ -74,15 +76,12 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         //esdevenimentsUsuario.setAdapter(adaptadorEsdeveniments);
     }
 
-    public void infoUsuario(Map<String,UsuarioEntity> hm) {
+    public void mostrarInfoUsuario(UsuarioEntity usuario) {
+        nombre.setText(usuario.getNickname());
+        //foto.setImageResource(R.drawable.oso); //Cambiar con imagen de usuario
+        Map<String,Boolean> idGrupos = usuario.getIdGrupos();
+        Map<String,Boolean> idEventos = usuario.getIdEventos();
 
-        System.out.println("Mostrando los valores:");
-        nombre.setText("");
-
-        for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
-            nombre.setText(nombre.getText()+ "\r\n"+entry.getValue().getNickname());
-            System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
-        }
     }
 
 }

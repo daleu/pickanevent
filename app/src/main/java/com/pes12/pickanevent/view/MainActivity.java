@@ -92,6 +92,10 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
+    public void goOtroUsuario(View view) {
+        startActivity(new Intent(MainActivity.this, VerInfoOtroUsuarioActivity.class));
+    }
+
     public void showUsuarioActual(View view){
         if(getUsuarioActual()!=null) Toast.makeText(MainActivity.this, (CharSequence) getUsuarioActual().toString(), Toast.LENGTH_SHORT).show();
         else Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();

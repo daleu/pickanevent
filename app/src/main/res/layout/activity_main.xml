@@ -50,6 +50,13 @@
             android:text="Usuario logeado?"
             android:onClick="showUsuarioActual"/>
 
+        <Button
+            android:text="INFO OTRO USUARIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:onClick="goOtroUsuario" />
+
 
     </LinearLayout>
 </ScrollView>

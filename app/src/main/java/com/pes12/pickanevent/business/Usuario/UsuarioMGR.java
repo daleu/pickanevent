@@ -11,10 +11,13 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.EncodeUtil;
 import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
+import com.pes12.pickanevent.view.VerInfoGrupoActivity;
+import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -225,5 +228,27 @@ public class UsuarioMGR {
 
         }.init(_activity,_password));
 
+    }
+
+    public void getInfoUsuario(Activity _activity, String id) {
+        bdRefUsuarios.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            VerInfoOtroUsuarioActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                u = dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.mostrarInfoUsuario(u);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("EEEERROOOOR");
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerInfoOtroUsuarioActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 }
