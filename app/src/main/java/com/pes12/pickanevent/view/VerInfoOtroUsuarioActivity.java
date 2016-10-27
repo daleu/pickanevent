@@ -19,8 +19,10 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,8 +37,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     String idGrupo;
     String idEvento;
 
-    List<Info> grupos;
-    List<Info> eventos;
+    ArrayList<Info> grupos;
+    ArrayList<Info> eventos;
 
     UsuarioMGR uMGR;
     GrupoMGR gMGR;
@@ -64,39 +66,50 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
         //gMGR = new GrupoMGR().getInstance();
 
-        grupos = null; //llenar con todos los nombres de los grupos que sigue el ususario
+        //llenar con todos los nombres de los grupos que sigue el ususario
         //Crear variable y añadirla al Adapter que contendra todas las imagenes de los grupos
 
         eventos = null;//Crear variable con los nombres de todos los eventos que siga el usuario
         //Crear variable con todas las fechas de los eventos que sigue el usuario
         //Crear varibale con todas las imagenes de los eventos que sigue el usuario
 
-        ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
-        ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
+        //ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
+        //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
 
-        ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
-        ListView esdevenimentsUsuario = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
+        //ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
+        //ListView esdevenimentsUsuario = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
 
-        gruposUsuario.setAdapter(adaptadorGrupos);
-        esdevenimentsUsuario.setAdapter(adaptadorEsdeveniments);
+        //gruposUsuario.setAdapter(adaptadorGrupos);
+        //esdevenimentsUsuario.setAdapter(adaptadorEsdeveniments);
+
     }
 
     public void mostrarInfoUsuario(UsuarioEntity usuario) {
         nombre.setText(usuario.getNickname());
+        //System.out.println(usuario.getNickname());
         foto.setImageResource(R.drawable.oso); //Cambiar con imagen de usuario
         Map<String,Boolean> idGrupos = usuario.getIdGrupos();
         Map<String,Boolean> idEventos = usuario.getIdEventos();
-        for (int i=0; i < idGrupos.size(); ++i){
-            //gMGR.getInfoGrupo(this,);
-        }
-        for (int i=0; i < idEventos.size(); ++i){
+        //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
+          //  System.out.println(entry.getKey() + "/" + entry.getValue());
+            //if(entry.getValue()) {
+                idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+                //gMGR.getInfoGrupoUsuario(this,/*entry.getKey()*/idGrupo);
+            //}
+        //}
+        //for (int i=0; i < idEventos.size(); ++i){
             //eMGR.getInfoEvento(this,);
-        }
+        //}
     }
 
-    public void rellenarListaGrupos (EventoEntity grupo){
-        Info info = new Info(StringToBitMap(grupo.getImagen()),grupo.getTitulo(),null);
+    public void rellenarListaGrupos (GrupoEntity grupo){
+        //System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        Bitmap imBM = StringToBitMap(grupo.getImagen());
+        Info info=null;
+        info.setImg(imBM);
+        info.setPrimeraLinea(grupo.getNickname());
         grupos.add(info);
+        //System.out.println(grupos.get(0).primeraLinea);
     }
 
     public void rellenarListaEventos (EventoEntity evento) {
