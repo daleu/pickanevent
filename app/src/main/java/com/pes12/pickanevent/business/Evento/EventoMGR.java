@@ -8,8 +8,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
+import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -128,6 +130,30 @@ public class EventoMGR {
             public ValueEventListener setActivity (Activity _activity)
             {
                 activity=(EditarEventoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getInfoEventoUsuario(Activity _activity, String id) {
+        bdRefEventos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            EventoEntity e;
+            VerInfoOtroUsuarioActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                e = dataSnapshot.getValue((EventoEntity.class));
+                //System.out.println(g.getNickname());
+                //System.out.println(g.getImagen());//<------------
+
+                activity.rellenarListaEventos(e);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("EEEERROOOOR");
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerInfoOtroUsuarioActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

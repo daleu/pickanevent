@@ -21,12 +21,14 @@ public class BuscarActivity extends BaseActivity {
 
     private UsuarioMGR uMGR;
     private GrupoMGR gMGR;
-
+    private TextView tv;
+    private TextView tv2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
-
+        tv2 = (TextView)findViewById(R.id.texto2);
+        tv = (TextView)findViewById(R.id.texto);
         //uMGR= UsuarioMGR.getInstance(); VIEJA
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
@@ -47,8 +49,7 @@ public class BuscarActivity extends BaseActivity {
                 }
 
                 else{
-                    TextView tv = (TextView)findViewById(R.id.texto);
-                    TextView tv2 = (TextView)findViewById(R.id.texto2);
+
                     tv2.setText("");
                     tv.setText("");
                 }
@@ -74,6 +75,7 @@ public class BuscarActivity extends BaseActivity {
     //funcion para probar lecturas
     public void printNicknames(ArrayList<Info> info) {
 
+        tv.setText("Usuarios");
         ListView lv  =(ListView)findViewById(R.id.lvUsers);
 
         //arraylist Append
@@ -82,7 +84,7 @@ public class BuscarActivity extends BaseActivity {
     }
 
     public void printNombresGrupo(ArrayList<Info> info) {
-
+        tv2.setText("Grupos");
 
         ListView lv  =(ListView)findViewById(R.id.lvGrupos);
 
