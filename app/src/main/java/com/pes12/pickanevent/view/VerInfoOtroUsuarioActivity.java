@@ -122,8 +122,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         grupos.add(info);
         System.out.println(grupos.get(0).primeraLinea);
         System.out.println(grupos.get(0).segonaLinea);
-        //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
-        //listaEventos.setAdapter(adaptadorEsdeveniments);
+        ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
+        listaEventos.setAdapter(adaptadorEsdeveniments);
     }
 
     private Bitmap StringToBitMap(String encodedString) {
