@@ -29,7 +29,8 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:orientation="vertical"
-            tools:context="com.pes12.pickanevent.view.MainActivity">
+            tools:context="com.pes12.pickanevent.view.MainActivity"
+            android:weightSum="1">
 
 
                 <EditText
@@ -48,7 +49,8 @@
             <ListView
                 android:id="@+id/lvUsers"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="171dp"
+                 />
 
             <TextView
                 android:id="@+id/texto2"
@@ -58,7 +60,7 @@
             <ListView
                 android:id="@+id/lvGrupos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="191dp" />
 
         </LinearLayout>
     </ScrollView>
