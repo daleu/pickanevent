@@ -54,6 +54,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         foto = (ImageView)findViewById(R.id.imagenOtroUsuario);
         listaGrupos = (ListView) findViewById(R.id.listaGruposUsuario);
         listaEventos = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
+        grupos = new ArrayList<Info>();
+        eventos= new ArrayList<Info>();
         ///////////////////////////////////////////////////////////////////////
 
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
@@ -91,30 +93,43 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Map<String,Boolean> idGrupos = usuario.getIdGrupos();
         Map<String,Boolean> idEventos = usuario.getIdEventos();
         //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
-          //  System.out.println(entry.getKey() + "/" + entry.getValue());
+            //System.out.println(entry.getKey() + "/" + entry.getValue());
             //if(entry.getValue()) {
                 idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-                //gMGR.getInfoGrupoUsuario(this,/*entry.getKey()*/idGrupo);
+                gMGR.getInfoGrupoUsuario(this,/*entry.getKey()*/idGrupo);
             //}
         //}
-        //for (int i=0; i < idEventos.size(); ++i){
-            //eMGR.getInfoEvento(this,);
+        //for (Map.Entry<String, Boolean> entry : idEventos.entrySet()){
+                //System.out.println(entry.getKey() + "/" + entry.getValue());
+                //if(entry.getValue()) {
+                    idEvento = "-KUavWyMfmX-uxtRqMo5";
+                    eMGR.getInfoEventoUsuario(this,/*entry.getKey()*/idEvento);
+                //}
         //}
     }
 
     public void rellenarListaGrupos (GrupoEntity grupo){
-        //System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Bitmap imBM = StringToBitMap(grupo.getImagen());
-        Info info=null;
-        info.setImg(imBM);
-        info.setPrimeraLinea(grupo.getNickname());
+        System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        //System.out.println(grupo.getImagen());
+        String img = grupo.getImagen();
+        Bitmap imBM = StringToBitMap(img);
+        String nombreGrupo = grupo.getNombreGrupo();
+        Info info = new Info(imBM, nombreGrupo, "adeu");
         grupos.add(info);
-        //System.out.println(grupos.get(0).primeraLinea);
+        System.out.println(grupos.get(0).primeraLinea);
     }
 
     public void rellenarListaEventos (EventoEntity evento) {
-        Info info = new Info(StringToBitMap(evento.getImagen()), evento.getTitulo(), evento.getHorario());
-        eventos.add(info);
+        System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        //System.out.println(grupo.getImagen());
+        String img = evento.getImagen();
+        Bitmap imBM = StringToBitMap(img);
+        String nombreGrupo = evento.getTitulo();
+        String horario = evento.getHorario();
+        Info info = new Info(imBM, nombreGrupo, horario);
+        grupos.add(info);
+        System.out.println(grupos.get(0).primeraLinea);
+        System.out.println(grupos.get(0).segonaLinea);
     }
 
     private Bitmap StringToBitMap(String encodedString) {

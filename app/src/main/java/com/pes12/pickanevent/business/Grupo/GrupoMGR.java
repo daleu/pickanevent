@@ -138,7 +138,8 @@ public class GrupoMGR {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 g = dataSnapshot.getValue((GrupoEntity.class));
-                System.out.println(g.getNickname());//<------------
+                //System.out.println(g.getNickname());
+                //System.out.println(g.getImagen());//<------------
 
                 activity.rellenarListaGrupos(g);
             }
