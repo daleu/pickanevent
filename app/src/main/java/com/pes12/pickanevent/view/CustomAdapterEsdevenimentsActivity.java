@@ -16,10 +16,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class CustomAdapterEsdevenimentsActivity extends ArrayAdapter<Info>  {
-    public CustomAdapterEsdevenimentsActivity(Context context, List<Info> info) {
+
+    public CustomAdapterEsdevenimentsActivity(Context context, ArrayList<Info> info) {
         super(context, R.layout.lista_esdeveniments, info);
     }
 

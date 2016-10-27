@@ -65,23 +65,13 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         idUsuario = "-KUHeQd1dR1FT3FmbPLu";
         uMGR.getInfoUsuario(this, idUsuario);
 
-
-        //gMGR = new GrupoMGR().getInstance();
-
-        //llenar con todos los nombres de los grupos que sigue el ususario
-        //Crear variable y añadirla al Adapter que contendra todas las imagenes de los grupos
-
-        eventos = null;//Crear variable con los nombres de todos los eventos que siga el usuario
-        //Crear variable con todas las fechas de los eventos que sigue el usuario
-        //Crear varibale con todas las imagenes de los eventos que sigue el usuario
-
         //ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
         //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
 
         //ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
         //ListView esdevenimentsUsuario = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
 
-        //gruposUsuario.setAdapter(adaptadorGrupos);
+        //listaGrupos.setAdapter(adaptadorGrupos);
         //esdevenimentsUsuario.setAdapter(adaptadorEsdeveniments);
 
     }
@@ -117,11 +107,13 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Info info = new Info(imBM, nombreGrupo, "adeu");
         grupos.add(info);
         System.out.println(grupos.get(0).primeraLinea);
+        ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
+        listaGrupos.setAdapter(adaptadorGrupos);
     }
 
     public void rellenarListaEventos (EventoEntity evento) {
         System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        //System.out.println(grupo.getImagen());
+        System.out.println(evento.getHorario());
         String img = evento.getImagen();
         Bitmap imBM = StringToBitMap(img);
         String nombreGrupo = evento.getTitulo();
@@ -130,6 +122,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         grupos.add(info);
         System.out.println(grupos.get(0).primeraLinea);
         System.out.println(grupos.get(0).segonaLinea);
+        //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
+        //listaEventos.setAdapter(adaptadorEsdeveniments);
     }
 
     private Bitmap StringToBitMap(String encodedString) {

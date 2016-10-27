@@ -16,12 +16,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 class CustomAdapterGruposActivity extends ArrayAdapter<Info> {
 
-    public CustomAdapterGruposActivity(Context context, List<Info> info) {
+    public CustomAdapterGruposActivity(Context context, ArrayList<Info> info) {
         super(context, R.layout.lista_grupos, info);
     }
 

@@ -51,7 +51,8 @@
                 android:layout_below="@+id/listaGruposUsuario"
                 android:id="@+id/listaEsdevenimentsUsuario"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="7dp" />
+                android:layout_marginTop="7dp"
+                tools:ignore="NestedScrolling" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,7 +70,8 @@
                 android:id="@+id/listaGruposUsuario"
                 android:layout_marginTop="8dp"
                 android:layout_below="@+id/textNombreUsuario"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                tools:ignore="NestedScrolling" />
 
             <TextView
                 android:layout_width="wrap_content"
