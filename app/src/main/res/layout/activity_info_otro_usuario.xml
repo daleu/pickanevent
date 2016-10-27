@@ -47,12 +47,18 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="118dp"
-                android:layout_below="@+id/listaGruposUsuario"
+                android:id="@+id/listaGruposUsuario"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/textNombreUsuario"
+                android:layout_alignParentStart="true"
+                android:layout_height="130dp" />
+
+            <ListView
+                android:layout_width="match_parent"
                 android:id="@+id/listaEsdevenimentsUsuario"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="7dp"
-                tools:ignore="NestedScrolling" />
+                android:layout_below="@+id/editTextEsdeveniments"
+                android:layout_height="130dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,18 +66,9 @@
                 android:inputType="textPersonName"
                 android:text="Grups"
                 android:ems="10"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/editTextGrups" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="118dp"
-                android:id="@+id/listaGruposUsuario"
-                android:layout_marginTop="8dp"
+                android:id="@+id/editTextGrups"
                 android:layout_below="@+id/textNombreUsuario"
-                android:layout_alignParentStart="true"
-                tools:ignore="NestedScrolling" />
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,9 +77,8 @@
                 android:text="Esdeveniments"
                 android:ems="10"
                 android:id="@+id/editTextEsdeveniments"
-                android:layout_below="@+id/editTextGrups"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="316dp" />
+                android:layout_below="@+id/listaGruposUsuario"
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 
