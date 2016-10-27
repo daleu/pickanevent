@@ -87,10 +87,10 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Map<String,Boolean> idGrupos = usuario.getIdGrupos();
         Map<String,Boolean> idEventos = usuario.getIdEventos();
         for (int i=0; i < idGrupos.size(); ++i){
-            //rellenarListaGrupos();
+            //gMGR.getInfoGrupo(this,);
         }
         for (int i=0; i < idEventos.size(); ++i){
-            //rellenarListaEventos()
+            //eMGR.getInfoEvento(this,);
         }
     }
 
