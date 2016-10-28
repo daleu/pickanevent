@@ -26,6 +26,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.Map;
 
 import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
@@ -49,12 +50,8 @@ public class EditarEventoActivity extends BaseActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                if (day < 10 || month < 10) {
-                    if (day < 10 && month < 10) data.setText("0" + day + "/0" + month + "/" + year);
-                    else if (day < 10) data.setText("0" + day + "/" + month + "/" + year);
-                    else if (month < 10) data.setText(day + "/0" + month + "/" + year);
-                }
-                else data.setText(day + "/" + month + "/" + year);
+                data.setText(day + " de " + getNomMes(month) + " de " + year);
+
             }
         });
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
@@ -124,7 +121,7 @@ public class EditarEventoActivity extends BaseActivity {
 
 
         ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
+        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
         image.recycle();
         byte[] byteArray = bYtE.toByteArray();
         String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
@@ -192,5 +189,22 @@ public class EditarEventoActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+    private String getNomMes(int month) {
+        String nom;
+        if (month == 1) nom = "Enero";
+        else if (month == 2) nom = "Febrero";
+        else if (month == 3) nom = "Marzo";
+        else if (month == 4) nom = "Abril";
+        else if (month == 5) nom = "Mayo";
+        else if (month == 6) nom = "Junio";
+        else if (month == 7) nom = "Julio";
+        else if (month == 8) nom = "Agosto";
+        else if (month == 9) nom = "Septiembre";
+        else if (month == 10) nom = "Octubre";
+        else if (month == 11) nom = "Noviembre";
+        else nom = "Diciembre";
+        return nom;
     }
 }

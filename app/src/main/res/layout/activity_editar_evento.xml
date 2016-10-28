@@ -226,6 +226,7 @@
                     android:onClick="mostrarCalendar"
                     android:src="@android:drawable/ic_menu_today"
                     android:id="@+id/imageButtonCalendar"
+                    android:layout_alignParentBottom="true"
                     android:layout_toEndOf="@+id/editorFecha" />
 
 
