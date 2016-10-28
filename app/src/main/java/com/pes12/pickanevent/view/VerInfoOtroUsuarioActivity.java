@@ -102,7 +102,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     }
 
     public void rellenarListaGrupos (GrupoEntity grupo){
-        System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        //System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(grupo.getImagen());
         String img = grupo.getImagen();
         Bitmap imBM = StringToBitMap(img);
