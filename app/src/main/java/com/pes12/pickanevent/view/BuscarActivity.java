@@ -21,14 +21,18 @@ public class BuscarActivity extends BaseActivity {
 
     private UsuarioMGR uMGR;
     private GrupoMGR gMGR;
-    private TextView tv;
+    private TextView tv1;
     private TextView tv2;
+    private ListView lvu;
+    private ListView lvg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda);
         tv2 = (TextView)findViewById(R.id.texto2);
-        tv = (TextView)findViewById(R.id.texto);
+        tv1 = (TextView)findViewById(R.id.texto);
+        lvu  =(ListView)findViewById(R.id.lvUsers);
+        lvg  =(ListView)findViewById(R.id.lvGrupos);
         //uMGR= UsuarioMGR.getInstance(); VIEJA
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
@@ -49,9 +53,8 @@ public class BuscarActivity extends BaseActivity {
                 }
 
                 else{
-
-                    tv2.setText("");
-                    tv.setText("");
+                    lvu.setAdapter(null);
+                    lvg.setAdapter(null);
                 }
             }
 
@@ -65,32 +68,28 @@ public class BuscarActivity extends BaseActivity {
 
     }
 
-    public void buscar(View view)
-    {
-        EditText tv = (EditText)findViewById(R.id.inputBusqueda);
 
-        uMGR.getUsersByUsername(this,tv.getText().toString());
-    }
 
     //funcion para probar lecturas
     public void printNicknames(ArrayList<Info> info) {
 
-        tv.setText("Usuarios");
-        ListView lv  =(ListView)findViewById(R.id.lvUsers);
+        tv1.setText("Usuarios");
+
 
         //arraylist Append
         AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,info);
-        lv.setAdapter(ale);
+        lvu.setAdapter(ale);
     }
 
     public void printNombresGrupo(ArrayList<Info> info) {
         tv2.setText("Grupos");
 
-        ListView lv  =(ListView)findViewById(R.id.lvGrupos);
+
 
         //arraylist Append
         AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,info);
-        lv.setAdapter(ale);
+        lvg.setAdapter(ale);
+
     }
 
     /*@Override
