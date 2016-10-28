@@ -49,6 +49,9 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_otro_usuario);
 
+        //Progres dialog
+        showProgressDialog();
+
         //Inicializaciones
         nombre = (TextView)findViewById(R.id.textNombreUsuario);
         foto = (ImageView)findViewById(R.id.imagenOtroUsuario);
@@ -79,7 +82,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     public void mostrarInfoUsuario(UsuarioEntity usuario) {
         nombre.setText(usuario.getNickname());
         //System.out.println(usuario.getNickname());
-        foto.setImageResource(R.drawable.oso); //Cambiar con imagen de usuario
+        foto.setImageResource(R.drawable.redhot); //Cambiar con imagen de usuario
         Map<String,Boolean> idGrupos = usuario.getIdGrupos();
         Map<String,Boolean> idEventos = usuario.getIdEventos();
         //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
@@ -106,24 +109,26 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         String nombreGrupo = grupo.getNombreGrupo();
         Info info = new Info(imBM, nombreGrupo, "adeu");
         grupos.add(info);
-        System.out.println(grupos.get(0).primeraLinea);
+        //System.out.println(grupos.get(0).primeraLinea);
         ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
         listaGrupos.setAdapter(adaptadorGrupos);
+        //hideProgressDialog();
     }
 
     public void rellenarListaEventos (EventoEntity evento) {
-        System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println(evento.getHorario());
+        //System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        //System.out.println(evento.getHorario());
         String img = evento.getImagen();
         Bitmap imBM = StringToBitMap(img);
         String nombreGrupo = evento.getTitulo();
         String horario = evento.getHorario();
         Info info = new Info(imBM, nombreGrupo, horario);
         grupos.add(info);
-        System.out.println(grupos.get(0).primeraLinea);
-        System.out.println(grupos.get(0).segonaLinea);
+        //System.out.println(grupos.get(0).primeraLinea);
+        //System.out.println(grupos.get(0).segonaLinea);
         ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
         listaEventos.setAdapter(adaptadorEsdeveniments);
+        hideProgressDialog();
     }
 
     private Bitmap StringToBitMap(String encodedString) {
