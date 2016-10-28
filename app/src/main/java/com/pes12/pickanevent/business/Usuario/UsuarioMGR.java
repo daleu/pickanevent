@@ -56,6 +56,7 @@ public class UsuarioMGR {
     public void inicializarDatabase(FirebaseDatabase database) {
         this.database = database;
         bdRefUsuarios = database.getReference("usuarios");
+        bdRefUsuarios.keepSynced(true);
     }
 
 
