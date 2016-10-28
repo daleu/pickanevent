@@ -46,6 +46,7 @@ public class EventoMGR {
     public void inicializarDatabase(FirebaseDatabase database) {
         this.database = database;
         bdRefEventos = database.getReference("eventos");
+        bdRefEventos.keepSynced(true);
     }
 
     public String crear(EventoEntity _entity)

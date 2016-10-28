@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:id="@+id/imageViewEsdv" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -31,7 +31,7 @@
         android:layout_alignBottom="@+id/imageViewEsdv"
         android:layout_alignEnd="@+id/editTextNombreEsdv" />
 
-    <EditText
+    <TextView
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="1 i 2 de Octubre"

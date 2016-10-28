@@ -52,6 +52,7 @@ public class GrupoMGR {
     public void inicializarDatabase(FirebaseDatabase database) {
         this.database = database;
         bdRefGrupos = database.getReference("grupos");
+        bdRefGrupos.keepSynced(true);
     }
 
     public Map<String,GrupoEntity> guardarGrupo(Map<String,GrupoEntity> _entities)

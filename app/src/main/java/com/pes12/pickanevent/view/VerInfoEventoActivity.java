@@ -56,6 +56,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_evento);
+        showProgressDialog();
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -130,6 +131,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         //centrar mapa y poner pinlocation
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        hideProgressDialog();
     }
 
     private Bitmap StringToBitMap(String encodedString) {
