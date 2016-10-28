@@ -6,6 +6,6 @@ package com.pes12.pickanevent.view;
 
 public class ViewUtils {
 
-
+    //Aquesta classe incloura totes les funcions comunes que son utilitzades per mes de una classe de la capa view
 
 }

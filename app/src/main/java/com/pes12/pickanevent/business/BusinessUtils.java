@@ -6,5 +6,6 @@ package com.pes12.pickanevent.business;
 
 public class BusinessUtils {
 
-    //Aquesta classe incloura totes les funcions comunes que son utilitzades per mes de una classe
+    //Aquesta classe incloura totes les funcions comunes que son utilitzades per mes de una classe de la capa business
+
 }

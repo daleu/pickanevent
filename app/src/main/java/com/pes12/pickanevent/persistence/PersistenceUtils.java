@@ -5,5 +5,5 @@ package com.pes12.pickanevent.persistence;
  */
 
 public class PersistenceUtils {
-    //Aquesta classe incloura totes les funcions comunes que son utilitzades per mes de una classe
+    //Aquesta classe incloura totes les funcions comunes que son utilitzades per mes de una classe de la capa persistence
 }
