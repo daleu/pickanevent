@@ -59,7 +59,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="Descripciónofjfbapasjvosdjvpoask`povnweivjokwvopewnvpwejvpevnewpivnweovnewivonewopvewnvpiewvnweovnweviewnviewpvnwevnewp"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
                     android:textSize="16sp"
@@ -113,7 +112,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Horahorahorahorahorahorahorahorahorahorahorahrahora"
                         android:id="@+id/textHora"
                         android:textSize="16sp"
                         android:layout_marginRight="10dp"
@@ -156,7 +154,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Precio: num"
                         android:textAlignment="center"
                         android:id="@+id/textPreu"
                         android:textSize="16sp"
@@ -213,7 +210,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="LlocLlocLlocLlocLloc"
                         android:textAlignment="center"
                         android:id="@+id/textMapa"
                         android:textSize="16sp"
@@ -270,7 +266,6 @@
             </RelativeLayout>
 
             <TextView
-                android:text="Este es el nombre del Evento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textEvento"
