@@ -47,7 +47,8 @@
                 android:id="@+id/imagenEvento"
                 android:layout_height="160dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:onClick="abrirGaleria"/>
 
             <EditText
                 android:layout_width="match_parent"
