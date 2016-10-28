@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 public class EditarEventoActivity extends BaseActivity {
     EventoMGR eMGR;
+    String idEvento = "-KUvpkweDzzNk0P3bqhY";
 
     private ImageView imagenEvento;
 
@@ -31,10 +33,23 @@ public class EditarEventoActivity extends BaseActivity {
         setContentView(R.layout.activity_editar_evento);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this);
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+        calendar.setVisibility(View.INVISIBLE);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
+                EditText data = (EditText) findViewById(R.id.editorFecha);
+                if (day < 10 || month < 10) {
+                    if (day < 10 && month < 10) data.setText("0" + day + "/0" + month + "/" + year);
+                    else if (day < 10) data.setText("0" + day + "/" + month + "/" + year);
+                    else if (month < 10) data.setText(day + "/0" + month + "/" + year);
+                }
+                else data.setText(day + "/" + month + "/" + year);
+            }
+        });
     }
 
     public void mostrarInfoEvento (Map<String,EventoEntity> ge) {
-        String idEvento = "-KUvpkweDzzNk0P3bqhY";
         EventoEntity evento = ge.get(idEvento);
 
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
@@ -108,7 +123,31 @@ public class EditarEventoActivity extends BaseActivity {
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
-        eMGR.actualizar("-KUvpkweDzzNk0P3bqhY",ee);
+        eMGR.actualizar(idEvento,ee);
         Toast.makeText(this,"Evento guardado",Toast.LENGTH_LONG).show();
+    }
+
+    public void comprovarCheckBox(View view) {
+        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
+        if (gratuit.isChecked()) {
+            preuText.setFocusable(false);
+            preuText.setText("");
+            preuText.setHint("Escriba el precio del evento");
+        }
+        else {
+            preuText.setFocusableInTouchMode(true);
+            preuText.setFocusable(true);
+        }
+    }
+
+    public void mostrarCalendar(View view) {
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+        if (calendar.getVisibility() == view.VISIBLE) {
+            calendar.setVisibility(view.INVISIBLE);
+        }
+        else {
+            calendar.setVisibility(view.VISIBLE);
+        }
     }
 }

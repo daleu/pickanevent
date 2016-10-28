@@ -88,6 +88,10 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
     }
 
+    public void goEditarEvento(View view) {
+        startActivity(new Intent(MainActivity.this, EditarEventoActivity.class));
+    }
+
     public void goLogin(View view) {
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +36,20 @@ public class CrearEventoActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_crear_evento);
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+        calendar.setVisibility(View.INVISIBLE);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
+                EditText data = (EditText) findViewById(R.id.editorFecha);
+                if (day < 10 || month < 10) {
+                    if (day < 10 && month < 10) data.setText("0" + day + "/0" + month + "/" + year);
+                    else if (day < 10) data.setText("0" + day + "/" + month + "/" + year);
+                    else if (month < 10) data.setText(day + "/0" + month + "/" + year);
+                }
+                else data.setText(day + "/" + month + "/" + year);
+            }
+        });
     }
 
     public void crearEvento(View view) {
@@ -80,6 +95,16 @@ public class CrearEventoActivity extends BaseActivity{
         else {
             preuText.setFocusableInTouchMode(true);
             preuText.setFocusable(true);
+        }
+    }
+
+    public void mostrarCalendar(View view) {
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+        if (calendar.getVisibility() == view.VISIBLE) {
+            calendar.setVisibility(view.INVISIBLE);
+        }
+        else {
+            calendar.setVisibility(view.VISIBLE);
         }
     }
 
