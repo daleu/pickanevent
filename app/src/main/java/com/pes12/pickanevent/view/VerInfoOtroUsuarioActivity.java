@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.AdapterLista;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
@@ -110,8 +111,9 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Info info = new Info(imBM, nombreGrupo, "adeu");
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
-        ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
-        listaGrupos.setAdapter(adaptadorGrupos);
+        //ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
+        AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this,R.layout.vista_adapter_lista,eventos);
+        listaGrupos.setAdapter(ale);
         //hideProgressDialog();
     }
 
@@ -126,8 +128,9 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
         //System.out.println(grupos.get(0).segonaLinea);
-        ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
-        listaEventos.setAdapter(adaptadorEsdeveniments);
+        //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
+        AdapterLista alg = new AdapterLista(VerInfoOtroUsuarioActivity.this,R.layout.vista_adapter_lista,grupos);
+        listaEventos.setAdapter(alg);
         hideProgressDialog();
     }
 
