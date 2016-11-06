@@ -13,12 +13,17 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class VerInfoGrupoActivity extends BaseActivity {
 
@@ -30,6 +35,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     String idGrupo;
     GrupoMGR gMGR;
+    EventoMGR eMGR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +47,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         foto = (ImageView)findViewById(R.id.imagenGrupo);
         tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
+        eMGR = MGRFactory.getInstance().getEventoMGR();
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
         /////////////////////////////////////////////////
 
-        gMGR = MGRFactory.getInstance().getGrupoMGR();
-        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+
+        idGrupo = "-KUl_ie2eRYXdXKVJffQ";
 
         showProgressDialog();
 
@@ -78,31 +86,28 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     }
 
-    public void mostrarInfoGrupo(GrupoEntity grupo) {
-        nombre.setText(grupo.getNombreGrupo());
-        descripcion.setText(grupo.getDescripcion());
-        String img = grupo.getImagen();
+    public void mostrarInfoGrupo(GrupoEntity _grupo) {
+
+        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos());
+
+        nombre.setText(_grupo.getNombreGrupo());
+        descripcion.setText(_grupo.getDescripcion());
+        String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
         String tagsAux = "Deportes      Futbol      Deportes de equipo      Partidos";
         //tags.setText(grupo.getTagsAsString());
         tags.setText(tagsAux);
+    }
 
 
-        ArrayList<Info> listaEventos = new ArrayList<Info>();
-        listaEventos.add(new Info(imgBM,"Titulo evento 1","detalles evento 1", "seguir!"));
-        listaEventos.add(new Info(imgBM,"Titulo evento 2","detalles evento 2", "seguir!"));
 
-        //arraylist Append
-        AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,listaEventos);
+    public void mostrarEventosGrupo(ArrayList<Info> info) {
+        AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,info);
         eventos.setAdapter(ale);
 
-
-
         hideProgressDialog();
-
-
     }
 
     private Bitmap StringToBitMap(String encodedString) {

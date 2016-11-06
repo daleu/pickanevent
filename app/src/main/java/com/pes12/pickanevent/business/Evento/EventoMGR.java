@@ -1,18 +1,25 @@
 package com.pes12.pickanevent.business.Evento;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 
+import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
+import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -158,5 +165,47 @@ public class EventoMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void getInfoEventosGrupo(Activity _activity, Map<String, Boolean> _idS) {
+        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<Info> info = new ArrayList();
+            VerInfoGrupoActivity activity;
+            String id;
+            Map<String, Boolean> idS;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot evento : dataSnapshot.getChildren()) {
+                    EventoEntity e = evento.getValue(EventoEntity.class);
+                    if (idS.containsKey(evento.getKey())) {
+                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), "Asistir!"));
+                    }
+                }
+                activity.mostrarEventosGrupo(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("EEEERROOOOR");
+            }
+            public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)
+            {
+                activity=(VerInfoGrupoActivity) _activity;
+                idS = _idS;
+                return this;
+            }
+        }.setActivity(_activity, _idS));
+    }
+
+    private Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 }

@@ -153,7 +153,8 @@
                 android:layout_below="@+id/EventosTitulo"
                 android:layout_alignStart="@+id/EventosTitulo"
                 android:layout_marginRight="15dp"
-                android:layout_height="105dp" />
+                android:layout_height="105dp"
+                android:background="#ffff" />
 
 
         </RelativeLayout>
