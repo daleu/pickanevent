@@ -170,7 +170,7 @@ public class GrupoMGR {
                 for (DataSnapshot grupo : snapshot.getChildren()) {
                     System.out.println(grupo.getKey());
                     //map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
-                    n.add(new Info(null,grupo.getKey(),grupo.getValue(GrupoEntity.class).getNombreGrupo()));
+                    n.add(new Info(null,grupo.getKey(),grupo.getValue(GrupoEntity.class).getNombreGrupo(), "seguir!"));
 
                 }
                 activity.printNombresGrupo(n);

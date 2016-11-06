@@ -20,10 +20,30 @@ android:layout_height="match_parent">
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp" />
 
-    <TextView android:id="@+id/text2" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:text="segunda linea"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView android:id="@+id/text2" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="segunda linea"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <Button
+            android:text="Button"
+            android:id="@+id/button"
+            android:background="@drawable/boton_amarillo_custom"
+            android:bottomRightRadius="10dp"
+            android:bottomLeftRadius="10dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:layout_width="80dp"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_height="25dp" />
+    </RelativeLayout>
 
 </LinearLayout>
 

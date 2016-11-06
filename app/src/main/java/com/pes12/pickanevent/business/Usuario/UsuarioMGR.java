@@ -166,7 +166,7 @@ public class UsuarioMGR {
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                     System.out.println(usuario.getKey());
                    // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
-                    n.add(new Info(null,usuario.getKey(),usuario.getValue(UsuarioEntity.class).getUsername()));
+                    n.add(new Info(null,usuario.getKey(),usuario.getValue(UsuarioEntity.class).getUsername(), "seguir!"));
 
                 }
                 activity.printNicknames(n);

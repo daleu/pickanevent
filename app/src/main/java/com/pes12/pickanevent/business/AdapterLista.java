@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,8 +64,9 @@ public class AdapterLista extends ArrayAdapter<Info> {
 
             holder = new AdapterHolder();
             holder.img = (ImageView)vistaEvent.findViewById(R.id.icon);
-            holder.l1 = (TextView)vistaEvent.findViewById(R.id.text1);
-            holder.l2 = (TextView)vistaEvent.findViewById(R.id.text2);
+            holder.linea1 = (TextView)vistaEvent.findViewById(R.id.text1);
+            holder.linea2 = (TextView)vistaEvent.findViewById(R.id.text2);
+            holder.button = (Button) vistaEvent.findViewById(R.id.button);
 
             vistaEvent.setTag(holder);
         }
@@ -74,15 +76,17 @@ public class AdapterLista extends ArrayAdapter<Info> {
 
         Info componentes = getItem(position);
         holder.img.setImageBitmap(componentes.img);
-        holder.l1.setText(componentes.primeraLinea);
-        holder.l2.setText(componentes.segonaLinea);
+        holder.linea1.setText(componentes.primeraLinea);
+        holder.linea2.setText(componentes.segonaLinea);
+        holder.button.setText(componentes.textoBoton);
         return vistaEvent;
     }
 
     static class AdapterHolder {
         ImageView img;
-        TextView l1;
-        TextView l2;
+        TextView linea1;
+        TextView linea2;
+        Button button;
     }
 
 }

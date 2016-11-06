@@ -28,12 +28,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
     TextView tags;
     ListView eventos;
 
-    LinearLayout events;
-
     String idGrupo;
     GrupoMGR gMGR;
-
-    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,15 +89,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
         //tags.setText(grupo.getTagsAsString());
         tags.setText(tagsAux);
 
-        //eventos NO VAAA
-        Info info[] = new Info[] {
-                new Info(imgBM, "hola", "adeu"),
-                new Info(imgBM, "hola2", "adeu2")
-        };
 
         ArrayList<Info> listaEventos = new ArrayList<Info>();
-        listaEventos.add(new Info(imgBM,"Titulo evento 1","detalles evento 1"));
-        listaEventos.add(new Info(imgBM,"Titulo evento 2","detalles evento 2"));
+        listaEventos.add(new Info(imgBM,"Titulo evento 1","detalles evento 1", "seguir!"));
+        listaEventos.add(new Info(imgBM,"Titulo evento 2","detalles evento 2", "seguir!"));
 
         //arraylist Append
         AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,listaEventos);
