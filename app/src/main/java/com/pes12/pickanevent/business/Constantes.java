@@ -8,9 +8,9 @@ public final class Constantes {
 
 
     /* CAMPOS DE LA BASE DE DATOS */
-    public static final String BBDD_TABLA_EVENTOS = "Eventos";
-    public static final String BBDD_TABLA_GRUPOS = "Grupos";
-    public static final String BBDD_TABLA_TAGS = "Tags";
+    public static final String BBDD_TABLA_EVENTOS = "eventos";
+    public static final String BBDD_TABLA_GRUPOS = "grupos";
+    public static final String BBDD_TABLA_TAGS = "tags";
     public static final String BBDD_ATRIBUTO_NOMBRE_EVENTO = "nombreEvento";
     public static final String BBDD_ATRIBUTO_NOMBRE_GRUPO = "nombreGrupo";
     public static final String BBDD_ATRIBUTO_NOMBRE_TAG = "nombreTag";
