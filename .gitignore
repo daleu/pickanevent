@@ -10,3 +10,4 @@
 /captures
 .externalNativeBuild
 /.idea/modules.xml
+/.idea/gradle.xml

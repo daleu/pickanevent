@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@string/DEFAULT_NOMBRE"
         android:ems="10"
         android:layout_marginEnd="13dp"
         android:id="@+id/editTextNombreGrupo"
@@ -26,7 +26,7 @@
         android:layout_toEndOf="@+id/imageViewGrupo" />
 
     <Button
-        android:text="Seguir!"
+        android:text="@string/DEFAULT_SEGUIR"
         android:layout_width="wrap_content"
         android:id="@+id/botonSeguirGrupo"
         android:background="#e3ee34"
