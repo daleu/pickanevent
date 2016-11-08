@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
@@ -51,7 +52,7 @@ public class GrupoMGR {
 
     public void inicializarDatabase(FirebaseDatabase database) {
         this.database = database;
-        bdRefGrupos = database.getReference("grupos");
+        bdRefGrupos = database.getReference(Constantes.BBDD_TABLA_GRUPOS);
         bdRefGrupos.keepSynced(true);
     }
 
@@ -83,12 +84,12 @@ public class GrupoMGR {
 
     public String crear(GrupoEntity _entity)
     {
-        bdRefGrupos.orderByChild("nombreGrupo").equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefGrupos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_GRUPO).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity ent;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
                 } else {
                     DatabaseReference grupo = bdRefGrupos.push();
                     grupo.setValue(ent);
@@ -122,7 +123,7 @@ public class GrupoMGR {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -147,7 +148,7 @@ public class GrupoMGR {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -159,7 +160,7 @@ public class GrupoMGR {
 
     public void getGruposByNombreGrupo(Activity _activity, String text)
     {
-        Query queryRef = bdRefGrupos.orderByChild("nombreGrupo").startAt(text).endAt(text+"\uf8ff");
+        Query queryRef = bdRefGrupos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_GRUPO).startAt(text).endAt(text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;

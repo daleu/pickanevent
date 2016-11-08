@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
@@ -26,18 +27,18 @@ public class TagMGR {
 
     public void inicializarDatabase(FirebaseDatabase database) {
         this.database = database;
-        bdRefTags = database.getReference("tags");
+        bdRefTags = database.getReference(Constantes.BBDD_TABLA_TAGS);
         bdRefTags.keepSynced(true);
     }
 
     public String crear(TagEntity _entity)
     {
-        bdRefTags.orderByChild("nombreTag").equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN TAG CON ESE NOMBRE");
+                    System.out.println(Constantes.ERROR_EXISTE_TAG);
                 } else {
                     DatabaseReference grupo = bdRefTags.push();
                     grupo.setValue(ent);
@@ -78,7 +79,7 @@ public class TagMGR {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)
             {

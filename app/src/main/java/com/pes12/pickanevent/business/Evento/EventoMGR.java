@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
@@ -52,18 +53,18 @@ public class EventoMGR {
 
     public void inicializarDatabase(FirebaseDatabase database) {
         this.database = database;
-        bdRefEventos = database.getReference("eventos");
+        bdRefEventos = database.getReference(Constantes.BBDD_TABLA_EVENTOS);
         bdRefEventos.keepSynced(true);
     }
 
     public String crear(EventoEntity _entity)
     {
-        bdRefEventos.orderByChild("nombreEvento").equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefEventos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_EVENTO).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
                 } else {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
@@ -107,7 +108,7 @@ public class EventoMGR {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity)
             {
@@ -133,7 +134,7 @@ public class EventoMGR {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity)
             {
@@ -157,7 +158,7 @@ public class EventoMGR {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -187,7 +188,7 @@ public class EventoMGR {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)
             {
