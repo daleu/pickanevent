@@ -92,7 +92,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
         eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos());
-        tMGR.getInfoTag(this, _grupo.getIdTags());
+        Map<String,Boolean> tagsMap = _grupo.getIdTags();
+        tagsMap.put(_grupo.getidTagGeneral(),true);
+        tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
         descripcion.setText(_grupo.getDescripcion());
@@ -103,12 +105,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     }
 
-
-
     public void mostrarEventosGrupo(ArrayList<Info> info) {
         AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,info);
         eventos.setAdapter(ale);
-
         hideProgressDialog();
     }
 
