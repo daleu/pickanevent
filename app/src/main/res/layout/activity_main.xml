@@ -62,7 +62,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goEditarEvento" />
-
+        <Button
+            android:text="Crear Usuaio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goCrearUsuario" />
 
     </LinearLayout>
 </ScrollView>
