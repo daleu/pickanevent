@@ -109,4 +109,9 @@ BLOQUE DE TEST
         else Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
 
     }
+
+    public void goCrearUsuario(View view) {
+        startActivity(new Intent(MainActivity.this, CrearUsuarioActivity.class));
+    }
+
 }

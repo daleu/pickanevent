@@ -13,6 +13,7 @@ import com.pes12.pickanevent.business.EncodeUtil;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
@@ -111,7 +112,7 @@ public class UsuarioMGR {
 
 
 
-    private void actualizar(String key, UsuarioEntity _entity)
+    public void actualizar(String key, UsuarioEntity _entity)
     {
 
 
@@ -248,6 +249,28 @@ public class UsuarioMGR {
 
             public ValueEventListener setActivity(Activity _activity) {
                 activity = (VerInfoOtroUsuarioActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getUsuarioLogin(BaseActivity _activity, String uid) {
+        bdRefUsuarios.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            BaseActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                u = dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.setUsuarioActual(u);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("EEEERROOOOR");
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (BaseActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));
