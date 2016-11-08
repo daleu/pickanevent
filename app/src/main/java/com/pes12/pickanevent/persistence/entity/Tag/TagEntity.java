@@ -1,4 +1,4 @@
-package com.pes12.pickanevent.persistence.entity.Tags;
+package com.pes12.pickanevent.persistence.entity.Tag;
 
 /**
  * Created by Clara on 08/11/2016.
@@ -12,6 +12,17 @@ public class TagEntity {
 
     public TagEntity (String nombre) {
         setNombreTag(nombre);
+    }
+
+    public enum ATTRIBUTES {
+
+        NOMBRETAG   ("nombreTag");
+
+        private String value;
+
+        ATTRIBUTES(String _value){value=_value;};
+
+        public String getValue(){return value;};
     }
 
     /*nombreTag*/
