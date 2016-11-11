@@ -114,4 +114,8 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, CrearUsuarioActivity.class));
     }
 
+    public void goVerEventosUsuariosQueSigo (View view) {
+        startActivity(new Intent(MainActivity.this, VerEventosUsuariosQueSigoActivity.class));
+    }
+
 }

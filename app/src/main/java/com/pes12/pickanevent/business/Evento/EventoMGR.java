@@ -16,12 +16,14 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
+import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -172,7 +174,6 @@ public class EventoMGR {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             ArrayList<Info> info = new ArrayList();
             VerInfoGrupoActivity activity;
-            String id;
             Map<String, Boolean> idS;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -208,5 +209,37 @@ public class EventoMGR {
             e.getMessage();
             return null;
         }
+    }
+
+
+    public void getInfoEventosUsuarios(Activity _activity, Map<String, List<String>> _usuariosPorEvento) {
+        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+            VerEventosUsuariosQueSigoActivity activity;
+            Map<String, List<String>> usuariosPorEvento;
+            ArrayList<Info> info = new ArrayList<Info>();
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot evento : dataSnapshot.getChildren()) {
+                    EventoEntity e = evento.getValue(EventoEntity.class);
+                    if (usuariosPorEvento.containsKey(evento.getKey())) {
+                        info.add(new Info(StringToBitMap(e.getImagen()), evento.getValue().toString(), e.getTitulo(), "Asistir!"));
+                    }
+                }
+
+                activity.mostrarInfoEventosUsuariosSeguidos(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+            public ValueEventListener setActivity (Activity _activity, Map<String, List<String>> _usuariosPorEvento)
+            {
+                activity=(VerEventosUsuariosQueSigoActivity) _activity;
+                usuariosPorEvento = _usuariosPorEvento;
+                return this;
+            }
+        }.setActivity(_activity, _usuariosPorEvento));
     }
 }

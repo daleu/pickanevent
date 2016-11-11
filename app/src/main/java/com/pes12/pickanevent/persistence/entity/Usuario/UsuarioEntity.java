@@ -90,6 +90,11 @@ public class UsuarioEntity {
     public  Map<String,Boolean> getIdTags() {return idTags;}
     public  void setIdTags(Map<String,Boolean> _idTags){idTags = _idTags;}
 
+    /*    USUARIOS SEGUIDOS    */
+    private Map<String,Boolean> idUsuarios;
+    public Map<String,Boolean> getIdUsuarios() {return idUsuarios;}
+    public void setIdUsuarios (Map<String,Boolean> _idUsuarios) {idUsuarios = _idUsuarios;}
+
     @Override
     public String toString() {
         return "UsuarioEntity{" +
