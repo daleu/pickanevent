@@ -8,7 +8,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 
-    tools:context="com.pes12.pickanevent.view.CrearUsuarioActivity"
+    tools:context="com.pes12.pickanevent.view.LoginActivity"
     android:background="#bfffc2">
 
     <include
@@ -16,9 +16,7 @@
         layout="@layout/toolbar"
         ></include>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/activity_main"
@@ -29,7 +27,7 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:orientation="vertical"
-            tools:context="com.pes12.pickanevent.view.CrearUsuarioActivity"
+            tools:context="com.pes12.pickanevent.view.LoginActivity"
             android:weightSum="1">
 
 
@@ -47,28 +45,16 @@
                     android:inputType = "textPassword"
 
                     />
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="example123"
 
-                />
-
-            <CheckBox
-                android:text="@string/DEFAULT_CM"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/cm" />
 
             <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/DEFAULT_CREAR_USUARIO"
-                    android:onClick="crearUsuario"/>
+                    android:text="@string/DEFAULT_LOGIN"
+                    android:onClick="login"/>
 
 
 
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>
