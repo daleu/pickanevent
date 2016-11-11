@@ -12,12 +12,12 @@ public class Info {
     public String segonaLinea;
     public String textoBoton;
 
-    public Info(Bitmap img, String primeraLinea, String segonaLinea, String textoBoton) {
+    public Info(Bitmap _img, String _primeraLinea, String _segonaLinea, String _textoBoton) {
         super();
-        this.img = img;
-        this.primeraLinea = primeraLinea;
-        this.segonaLinea = segonaLinea;
-        this.textoBoton = textoBoton;
+        this.img = _img;
+        this.primeraLinea = _primeraLinea;
+        this.segonaLinea = _segonaLinea;
+        this.textoBoton = _textoBoton;
     }
 
     public Bitmap getImg(){ return img;}
@@ -25,8 +25,8 @@ public class Info {
     public String getSegonaLinea() {return segonaLinea;}
     public String getTextoBoton() {return textoBoton;}
 
-    public void setImg (Bitmap img) {this.img = img;}
-    public void setPrimeraLinea (String primeraLinea) {this.primeraLinea = primeraLinea;}
-    public void setSegonaLinea (String segonaLinea) {this.segonaLinea = segonaLinea;}
-    public void setTextoBoton (String textoBoton) {this.textoBoton = textoBoton;}
+    public void setImg (Bitmap _img) {this.img = _img;}
+    public void setPrimeraLinea (String _primeraLinea) {this.primeraLinea = _primeraLinea;}
+    public void setSegonaLinea (String _segonaLinea) {this.segonaLinea = _segonaLinea;}
+    public void setTextoBoton (String _textoBoton) {this.textoBoton = _textoBoton;}
 }

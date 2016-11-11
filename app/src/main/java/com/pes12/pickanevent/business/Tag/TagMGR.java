@@ -25,9 +25,9 @@ public class TagMGR {
     private FirebaseDatabase database;
     private DatabaseReference bdRefTags;
 
-    public void inicializarDatabase(FirebaseDatabase database) {
-        this.database = database;
-        bdRefTags = database.getReference(Constantes.BBDD_TABLA_TAGS);
+    public void inicializarDatabase(FirebaseDatabase _database) {
+        this.database = _database;
+        bdRefTags = _database.getReference(Constantes.BBDD_TABLA_TAGS);
         bdRefTags.keepSynced(true);
     }
 
@@ -36,8 +36,8 @@ public class TagMGR {
         bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() != null) {
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_TAG);
                 } else {
                     DatabaseReference grupo = bdRefTags.push();
@@ -46,7 +46,7 @@ public class TagMGR {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError arg0) {
+            public void onCancelled(DatabaseError _arg0) {
             }
 
             public ValueEventListener setEntity (TagEntity _ent)
@@ -66,9 +66,9 @@ public class TagMGR {
             VerInfoGrupoActivity activity;
             Map<String, Boolean> idS;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot tag : dataSnapshot.getChildren()) {
+                for (DataSnapshot tag : _dataSnapshot.getChildren()) {
                     TagEntity t = tag.getValue(TagEntity.class);
                     if (idS.containsKey(tag.getKey())) {
                         info.add(t.getNombreTag());
@@ -78,7 +78,7 @@ public class TagMGR {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)

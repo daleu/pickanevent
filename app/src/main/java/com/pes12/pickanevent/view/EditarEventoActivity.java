@@ -39,8 +39,8 @@ public class EditarEventoActivity extends BaseActivity {
     private ImageView imagenEvento;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_editar_evento);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this);
@@ -50,7 +50,7 @@ public class EditarEventoActivity extends BaseActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
 
             }
         });
@@ -59,8 +59,8 @@ public class EditarEventoActivity extends BaseActivity {
 
     }
 
-    public void mostrarInfoEvento (Map<String,EventoEntity> ge) {
-        EventoEntity evento = ge.get(idEvento);
+    public void mostrarInfoEvento (Map<String,EventoEntity> _ge) {
+        EventoEntity evento = _ge.get(idEvento);
 
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
         EditText descripcio = (EditText) findViewById(R.id.editorDescr);
@@ -93,9 +93,9 @@ public class EditarEventoActivity extends BaseActivity {
         imagenEvento.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
-    private Bitmap StringToBitMap(String encodedString) {
+    private Bitmap StringToBitMap(String _encodedString) {
         try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
             return bitmap;
         } catch (Exception e) {
@@ -104,7 +104,7 @@ public class EditarEventoActivity extends BaseActivity {
         }
     }
 
-    public void guardarEvento (View view) {
+    public void guardarEvento (View _view) {
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
         EditText descripcio = (EditText) findViewById(R.id.editorDescr);
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
@@ -135,7 +135,7 @@ public class EditarEventoActivity extends BaseActivity {
         Toast.makeText(this,"Evento guardado",Toast.LENGTH_LONG).show();
     }
 
-    public void comprovarCheckBox(View view) {
+    public void comprovarCheckBox(View _view) {
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
         if (gratuit.isChecked()) {
@@ -149,17 +149,17 @@ public class EditarEventoActivity extends BaseActivity {
         }
     }
 
-    public void mostrarCalendar(View view) {
+    public void mostrarCalendar(View _view) {
         CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
-        if (calendar.getVisibility() == view.VISIBLE) {
-            calendar.setVisibility(view.INVISIBLE);
+        if (calendar.getVisibility() == _view.VISIBLE) {
+            calendar.setVisibility(_view.INVISIBLE);
         }
         else {
-            calendar.setVisibility(view.VISIBLE);
+            calendar.setVisibility(_view.VISIBLE);
         }
     }
 
-    public void abrirGaleria (View view) {
+    public void abrirGaleria (View _view) {
         Intent galeria = new Intent(Intent.ACTION_PICK);
         File directorio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         String dirGaleria = directorio.getPath();
@@ -171,10 +171,10 @@ public class EditarEventoActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == GALERIA_REQUEST) {
-                Uri imageUri = data.getData();
+    protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
+        if (_resultCode == RESULT_OK) {
+            if (_requestCode == GALERIA_REQUEST) {
+                Uri imageUri = _data.getData();
                 InputStream inputStream;
                 try {
                     inputStream = getContentResolver().openInputStream(imageUri);
@@ -189,22 +189,5 @@ public class EditarEventoActivity extends BaseActivity {
                 }
             }
         }
-    }
-
-    private String getNomMes(int month) {
-        String nom;
-        if (month == 1) nom = "Enero";
-        else if (month == 2) nom = "Febrero";
-        else if (month == 3) nom = "Marzo";
-        else if (month == 4) nom = "Abril";
-        else if (month == 5) nom = "Mayo";
-        else if (month == 6) nom = "Junio";
-        else if (month == 7) nom = "Julio";
-        else if (month == 8) nom = "Agosto";
-        else if (month == 9) nom = "Septiembre";
-        else if (month == 10) nom = "Octubre";
-        else if (month == 11) nom = "Noviembre";
-        else nom = "Diciembre";
-        return nom;
     }
 }
