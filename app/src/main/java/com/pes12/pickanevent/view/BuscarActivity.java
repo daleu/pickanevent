@@ -26,8 +26,8 @@ public class BuscarActivity extends BaseActivity {
     private ListView lvu;
     private ListView lvg;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_busqueda);
         tv2 = (TextView)findViewById(R.id.texto2);
         tv1 = (TextView)findViewById(R.id.texto);
@@ -43,9 +43,9 @@ public class BuscarActivity extends BaseActivity {
         tv.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+            public void onTextChanged(CharSequence _cs, int _arg1, int _arg2, int _arg3) {
 
-                if(cs.toString().length()!=0)
+                if(_cs.toString().length()!=0)
                 {
                     showProgressDialog();
                     uMGR.getUsersByUsername(BuscarActivity.this, tv.getText().toString());
@@ -59,10 +59,10 @@ public class BuscarActivity extends BaseActivity {
             }
 
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) { }
+            public void beforeTextChanged(CharSequence _arg0, int _arg1, int _arg2, int _arg3) { }
 
             @Override
-            public void afterTextChanged(Editable arg0) { }
+            public void afterTextChanged(Editable _arg0) { }
 
         });
 
@@ -71,23 +71,23 @@ public class BuscarActivity extends BaseActivity {
 
 
     //funcion para probar lecturas
-    public void printNicknames(ArrayList<Info> info) {
+    public void printNicknames(ArrayList<Info> _info) {
 
         tv1.setText("Usuarios");
 
 
         //arraylist Append
-        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,info);
+        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,_info);
         lvu.setAdapter(ale);
     }
 
-    public void printNombresGrupo(ArrayList<Info> info) {
+    public void printNombresGrupo(ArrayList<Info> _info) {
         tv2.setText("Grupos");
 
 
 
         //arraylist Append
-        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,info);
+        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,_info);
         lvg.setAdapter(ale);
 
     }

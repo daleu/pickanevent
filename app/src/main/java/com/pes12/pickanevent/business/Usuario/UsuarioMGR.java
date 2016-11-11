@@ -59,9 +59,9 @@ public class UsuarioMGR {
         bdRefUsuarios = database.getReference("usuarios");
     }*/
 
-    public void inicializarDatabase(FirebaseDatabase database) {
-        this.database = database;
-        bdRefUsuarios = database.getReference("usuarios");
+    public void inicializarDatabase(FirebaseDatabase _database) {
+        this.database = _database;
+        bdRefUsuarios = _database.getReference(Constantes.BBDD_TABLA_USUARIOS);
         bdRefUsuarios.keepSynced(true);
     }
 
@@ -91,9 +91,9 @@ public class UsuarioMGR {
             Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
             MainActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot usuario : dataSnapshot.getChildren()) {
+                for (DataSnapshot usuario : _dataSnapshot.getChildren()) {
                     map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
 
                 }
@@ -101,8 +101,8 @@ public class UsuarioMGR {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity (Activity _activity)
@@ -117,11 +117,11 @@ public class UsuarioMGR {
 
 
 
-    public void actualizar(String key, UsuarioEntity _entity)
+    public void actualizar(String _key, UsuarioEntity _entity)
     {
 
 
-        DatabaseReference usuario = bdRefUsuarios.child(key); //recogemos la rama con la ID del usuario en concreto
+        DatabaseReference usuario = bdRefUsuarios.child(_key); //recogemos la rama con la ID del usuario en concreto
 
         usuario.setValue(_entity);
 
@@ -130,12 +130,12 @@ public class UsuarioMGR {
     private String crear(UsuarioEntity _entity)
     {
 
-        bdRefUsuarios.orderByChild("username").equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefUsuarios.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_USUARIO).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity ent;
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN USER CON ESE USERNAME");
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
+                    System.out.println(Constantes.ERROR_EXISTE_USUARIO);
                 } else {
                     DatabaseReference usuario = bdRefUsuarios.push();
                     usuario.setValue(ent);
@@ -143,7 +143,7 @@ public class UsuarioMGR {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError arg0) {
+            public void onCancelled(DatabaseError _arg0) {
             }
 
             public ValueEventListener setEntity (UsuarioEntity _ent)
@@ -158,10 +158,10 @@ public class UsuarioMGR {
     }
 
 
-    public void getUsersByUsername(Activity _activity, String text)
+    public void getUsersByUsername(Activity _activity, String _text)
     {
 
-        Query queryRef = bdRefUsuarios.orderByChild("username").startAt(text).endAt(text+"\uf8ff");
+        Query queryRef = bdRefUsuarios.orderByChild(Constantes.BBDD_TABLA_USUARIOS).startAt(_text).endAt(_text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;
@@ -180,7 +180,7 @@ public class UsuarioMGR {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(DatabaseError _databaseError) {
 
             }
 
@@ -195,22 +195,22 @@ public class UsuarioMGR {
 
     public void login(Activity _activity, String _user, String _password)
     {
-        Query queryRef = bdRefUsuarios.orderByChild("username").equalTo(_user);
+        Query queryRef = bdRefUsuarios.orderByChild(Constantes.BBDD_TABLA_USUARIOS).equalTo(_user);
 
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             LoginActivity activity;
             String password;
 
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot user : snapshot.getChildren()) {
+            public void onDataChange(DataSnapshot _snapshot) {
+                for (DataSnapshot user : _snapshot.getChildren()) {
                     UsuarioEntity usuario=user.getValue(UsuarioEntity.class);
 
                     if(usuario!=null && usuario.getPassword()!=null) {
                         if (usuario.getPassword().equals(EncodeUtil.encodePasswordSHA1(password))) {
-                            System.out.println("Login correcto");
+                            System.out.println(Constantes.LOG_LOGIN_CORRECTO);
                             activity.setUsuarioActual(usuario);
-                        } else System.out.println("Login INcorrecto");
+                        } else System.out.println(Constantes.LOG_LOGIN_INCORRECTO);
                     }
 
                 }
@@ -222,7 +222,7 @@ public class UsuarioMGR {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(DatabaseError _databaseError) {
 
             }
 
@@ -237,19 +237,19 @@ public class UsuarioMGR {
 
     }
 
-    public void getInfoUsuario(Activity _activity, String id) {
-        bdRefUsuarios.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getInfoUsuario(Activity _activity, String _id) {
+        bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             VerInfoOtroUsuarioActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                u = dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.mostrarInfoUsuario(u);
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -259,19 +259,19 @@ public class UsuarioMGR {
         }.setActivity(_activity));
     }
 
-    public void getUsuarioLogin(BaseActivity _activity, String uid) {
-        bdRefUsuarios.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getUsuarioLogin(BaseActivity _activity, String _uid) {
+        bdRefUsuarios.child(_uid).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             BaseActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                u = dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.setUsuarioActual(u);
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {

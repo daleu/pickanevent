@@ -53,8 +53,8 @@ public class BaseActivity extends AppCompatActivity {
     public FirebaseAuth getAuth(){return mAuth;};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         initAuth();
 
     }

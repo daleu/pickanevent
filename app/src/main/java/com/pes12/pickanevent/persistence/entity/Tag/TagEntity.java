@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Tag;
 
+import com.pes12.pickanevent.business.Constantes;
+
 /**
  * Created by Clara on 08/11/2016.
  */

@@ -55,7 +55,7 @@
                 />
 
             <CheckBox
-                android:text="CM"
+                android:text="@string/DEFAULT_CM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/cm" />
@@ -63,7 +63,7 @@
             <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Crear Usuario"
+                    android:text="@string/DEFAULT_CREAR_USUARIO"
                     android:onClick="crearUsuario"/>
 
 

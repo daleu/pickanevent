@@ -38,5 +38,7 @@
     <string name="DEFAULT_DATES_LLISTA_ESDEVENIMENT">1 i 2 de Octubre</string>
     <string name="DEFAULT_BOTON">Button</string>
     <string name="DEFAULT_SEGUNDA_LINEA">segunda linea</string>
+    <string name="DEFAULT_CM">CM</string>
+    <string name="DEFAULT_CREAR_USUARIO">Crear Usuario</string>
 
 </resources>
