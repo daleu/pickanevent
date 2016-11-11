@@ -52,7 +52,7 @@ public class CrearEventoActivity extends BaseActivity{
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
         final CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
@@ -61,7 +61,7 @@ public class CrearEventoActivity extends BaseActivity{
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFechaFinal);
-                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
@@ -96,7 +96,7 @@ public class CrearEventoActivity extends BaseActivity{
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.crear(ee);
-        Toast.makeText(this,"Evento creado",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.DEFAULT_EVENTO_CREADO,Toast.LENGTH_LONG).show();
     }
 
     public void comprovarCheckBox(View _view) {

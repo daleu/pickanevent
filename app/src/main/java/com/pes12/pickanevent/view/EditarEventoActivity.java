@@ -50,7 +50,7 @@ public class EditarEventoActivity extends BaseActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
 
             }
         });

@@ -40,5 +40,18 @@
     <string name="DEFAULT_SEGUNDA_LINEA">segunda linea</string>
     <string name="DEFAULT_CM">CM</string>
     <string name="DEFAULT_CREAR_USUARIO">Crear Usuario</string>
+    <string name="MES_ENERO">Enero</string>
+    <string name="MES_FEBRERO">Febrero</string>
+    <string name="MES_MARZO">Marzo</string>
+    <string name="MES_ABRIL">Abril</string>
+    <string name="MES_MAYO">Mayo</string>
+    <string name="MES_JUNIO">Junio</string>
+    <string name="MES_JULIO">Julio</string>
+    <string name="MES_AGOSTO">Agosto</string>
+    <string name="MES_SETIEMBRE">Setiembre</string>
+    <string name="MES_OCTUBRE">Octubre</string>
+    <string name="MES_NOVIEMBRE">Noviembre</string>
+    <string name="MES_DICIEMBRE">Diciembre</string>
+    <string name="DEFAULT_EVENTO_CREADO">Evento creado</string>
 
 </resources>
