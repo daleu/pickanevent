@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
@@ -49,9 +50,9 @@ public class GrupoMGR {
 
     }*/
 
-    public void inicializarDatabase(FirebaseDatabase database) {
-        this.database = database;
-        bdRefGrupos = database.getReference("grupos");
+    public void inicializarDatabase(FirebaseDatabase _database) {
+        this.database = _database;
+        bdRefGrupos = _database.getReference(Constantes.BBDD_TABLA_GRUPOS);
         bdRefGrupos.keepSynced(true);
     }
 
@@ -76,19 +77,19 @@ public class GrupoMGR {
         return result;
     }
 
-    private void actualizar(String key, GrupoEntity _entity) {
-        DatabaseReference grupo = bdRefGrupos.child(key); //recogemos la rama con la ID del grupo en concreto
+    private void actualizar(String _key, GrupoEntity _entity) {
+        DatabaseReference grupo = bdRefGrupos.child(_key); //recogemos la rama con la ID del grupo en concreto
         grupo.setValue(_entity);
     }
 
     public String crear(GrupoEntity _entity)
     {
-        bdRefGrupos.orderByChild("nombreGrupo").equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefGrupos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_GRUPO).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity ent;
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
                 } else {
                     DatabaseReference grupo = bdRefGrupos.push();
                     grupo.setValue(ent);
@@ -96,7 +97,7 @@ public class GrupoMGR {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError arg0) {
+            public void onCancelled(DatabaseError _arg0) {
             }
 
             public ValueEventListener setEntity (GrupoEntity _ent)
@@ -115,14 +116,14 @@ public class GrupoMGR {
             GrupoEntity g;
             VerInfoGrupoActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                g = dataSnapshot.getValue((GrupoEntity.class)); //<------------
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class)); //<------------
 
                 activity.mostrarInfoGrupo(g);
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -133,21 +134,21 @@ public class GrupoMGR {
 
     }
 
-    public void getInfoGrupoUsuario(Activity _activity, String id) {
-        bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getInfoGrupoUsuario(Activity _activity, String _id) {
+        bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity g;
             VerInfoOtroUsuarioActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                g = dataSnapshot.getValue((GrupoEntity.class));
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class));
                 //System.out.println(g.getNickname());
                 //System.out.println(g.getImagen());//<------------
 
                 activity.rellenarListaGrupos(g);
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -157,17 +158,17 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
-    public void getGruposByNombreGrupo(Activity _activity, String text)
+    public void getGruposByNombreGrupo(Activity _activity, String _text)
     {
-        Query queryRef = bdRefGrupos.orderByChild("nombreGrupo").startAt(text).endAt(text+"\uf8ff");
+        Query queryRef = bdRefGrupos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_GRUPO).startAt(_text).endAt(_text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;
             Map<String,GrupoEntity> map = new LinkedHashMap<String,GrupoEntity>();
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(DataSnapshot _snapshot) {
                 ArrayList<Info> n = new ArrayList<Info>();
-                for (DataSnapshot grupo : snapshot.getChildren()) {
+                for (DataSnapshot grupo : _snapshot.getChildren()) {
                     System.out.println(grupo.getKey());
                     //map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
                     n.add(new Info(null,grupo.getKey(),grupo.getValue(GrupoEntity.class).getNombreGrupo(), "seguir!"));
@@ -177,7 +178,7 @@ public class GrupoMGR {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(DatabaseError _databaseError) {
 
             }
 

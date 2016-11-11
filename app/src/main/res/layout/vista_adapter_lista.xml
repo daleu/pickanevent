@@ -26,7 +26,7 @@ android:layout_height="match_parent">
         android:layout_height="match_parent">
 
         <Button
-            android:text="Button"
+            android:text="@string/DEFAULT_BOTON"
             android:id="@+id/button"
             android:background="@drawable/boton_amarillo_custom"
             android:bottomRightRadius="10dp"
@@ -40,8 +40,10 @@ android:layout_height="match_parent">
             android:layout_height="25dp"
             android:layout_width="70dp" />
 
-        <TextView android:id="@+id/text2" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="segunda linea"
+        <TextView android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/DEFAULT_SEGUNDA_LINEA"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="75dp"
             android:layout_alignParentTop="true"

@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="Descripción"
+                    android:text="@string/DEFAULT_DESCRIPCION"
                     android:textSize="16sp"
                     android:textStyle="normal|bold"
                     android:textColor="#000"
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="Información"
+                    android:text="@string/DEFAULT_INFORMACION"
                     android:textSize="16sp"
                     android:textStyle="normal|bold"
                     android:textColor="#000"
@@ -141,7 +141,7 @@
                         android:layout_marginLeft="43dp"/>
 
                     <Button
-                        android:text="Comprar Entradas!"
+                        android:text="@string/DEFAULT_COMPRAR_ENTRADAS"
                         android:id="@+id/buttonPreus"
                         android:background="@drawable/botton_application"
                         android:layout_width="150dp"
@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="Localización"
+                    android:text="@string/DEFAULT_LOCALIZACION"
                     android:textSize="16sp"
                     android:textStyle="normal|bold"
                     android:textColor="#000"
@@ -239,7 +239,7 @@
                 android:layout_marginBottom="10dp">
 
                 <Button
-                    android:text="Assistir!"
+                    android:text="@string/DEFAULT_ASSISTIR"
                     android:id="@+id/buttonAssistir"
                     android:background="@drawable/botton_application"
                     android:layout_width="120dp"
@@ -254,7 +254,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:text="Assitencia"
+                    android:text="@string/DEFAULT_ASISTENCIA"
                     android:textSize="16sp"
                     android:textStyle="normal|bold"
                     android:textColor="#000"

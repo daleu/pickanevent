@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
@@ -50,20 +51,20 @@ public class EventoMGR {
 
     }*/
 
-    public void inicializarDatabase(FirebaseDatabase database) {
-        this.database = database;
-        bdRefEventos = database.getReference("eventos");
+    public void inicializarDatabase(FirebaseDatabase _database) {
+        this.database = _database;
+        bdRefEventos = _database.getReference(Constantes.BBDD_TABLA_EVENTOS);
         bdRefEventos.keepSynced(true);
     }
 
     public String crear(EventoEntity _entity)
     {
-        bdRefEventos.orderByChild("nombreEvento").equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefEventos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_EVENTO).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
-                    System.out.println("YA EXISTE UN GRUPO CON ESE NOMBRE");
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
                 } else {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
@@ -83,9 +84,9 @@ public class EventoMGR {
         return "";
     }
 
-    public void actualizar(String key, EventoEntity _entity)
+    public void actualizar(String _key, EventoEntity _entity)
     {
-        DatabaseReference evento = bdRefEventos.child(key); //recogemos la rama con la ID del evento en concreto
+        DatabaseReference evento = bdRefEventos.child(_key); //recogemos la rama con la ID del evento en concreto
 
         evento.setValue(_entity);
 
@@ -107,7 +108,7 @@ public class EventoMGR {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity)
             {
@@ -123,17 +124,17 @@ public class EventoMGR {
             Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
             EditarEventoActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot evento : dataSnapshot.getChildren()) {
+                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
                 }
                 activity.mostrarInfoEvento(map);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity)
             {
@@ -143,21 +144,21 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoUsuario(Activity _activity, String id) {
-        bdRefEventos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getInfoEventoUsuario(Activity _activity, String _id) {
+        bdRefEventos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity e;
             VerInfoOtroUsuarioActivity activity;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                e = dataSnapshot.getValue((EventoEntity.class));
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                e = _dataSnapshot.getValue((EventoEntity.class));
                 //System.out.println(g.getNickname());
                 //System.out.println(g.getImagen());//<------------
 
                 activity.rellenarListaEventos(e);
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
 
             public ValueEventListener setActivity(Activity _activity) {
@@ -174,9 +175,9 @@ public class EventoMGR {
             String id;
             Map<String, Boolean> idS;
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot evento : dataSnapshot.getChildren()) {
+                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
                         info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), "Asistir!"));
@@ -186,8 +187,8 @@ public class EventoMGR {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("EEEERROOOOR");
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
             }
             public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)
             {
@@ -198,9 +199,9 @@ public class EventoMGR {
         }.setActivity(_activity, _idS));
     }
 
-    private Bitmap StringToBitMap(String encodedString) {
+    private Bitmap StringToBitMap(String _encodedString) {
         try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
             return bitmap;
         } catch (Exception e) {

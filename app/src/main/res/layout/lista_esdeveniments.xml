@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@string/DEFAULT_NOMBRE"
         android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -23,7 +23,7 @@
         android:layout_toEndOf="@+id/imageViewEsdv" />
 
     <Button
-        android:text="Seguir!"
+        android:text="@string/DEFAULT_SEGUIR"
         android:layout_width="wrap_content"
         android:id="@+id/botonSeguirEsdeveniment"
         android:background="#e3ee34"
@@ -34,7 +34,7 @@
     <TextView
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="1 i 2 de Octubre"
+        android:text="@string/DEFAULT_DATES_LLISTA_ESDEVENIMENT"
         android:ems="10"
         android:id="@+id/editTextDataEsdevniment"
         android:layout_alignBottom="@+id/botonSeguirEsdeveniment"

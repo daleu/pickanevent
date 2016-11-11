@@ -8,16 +8,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.Tag.TagMGR;
+import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
 
+    private boolean cm = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
 /*
@@ -105,4 +111,20 @@ BLOQUE DE TEST
         else Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
 
     }
+
+    public void goCrearUsuario(View view) {
+        startActivity(new Intent(MainActivity.this, CrearUsuarioActivity.class));
+    }
+
+    public void cambiarModo(View view){
+        if (cm == true) {
+            cm = false;
+            Toast.makeText(this, "Modo Usuario", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            cm = true;
+            Toast.makeText(this, "Modo CM", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

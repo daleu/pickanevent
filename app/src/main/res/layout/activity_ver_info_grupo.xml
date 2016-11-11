@@ -33,7 +33,7 @@
                 android:layout_alignParentStart="true" />
 
             <Button
-                android:text="Seguir!"
+                android:text="@string/DEFAULT_SEGUIR"
                 android:layout_width="wrap_content"
                 android:id="@+id/seguir"
                 android:background="@drawable/boton_amarillo_custom"
@@ -57,7 +57,7 @@
                 android:layout_marginTop="5dp" />
 
             <TextView
-                android:text="Descripción"
+                android:text="@string/DEFAULT_DESCRIPCION"
                 android:layout_width="match_parent"
                 android:id="@+id/descr"
                 android:fontFamily="sans-serif"
@@ -91,7 +91,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
-                android:text="Etiquetas"
+                android:text="@string/DEFAULT_ETIQUETAS"
                 android:layout_width="match_parent"
                 android:id="@+id/etiquetas"
                 android:fontFamily="sans-serif"
@@ -129,7 +129,7 @@
                 android:paddingBottom="10dp" />
 
             <TextView
-                android:text="Eventos"
+                android:text="@string/DEFAULT_EVENTOS"
                 android:layout_width="match_parent"
                 android:id="@+id/EventosTitulo"
                 android:fontFamily="sans-serif"

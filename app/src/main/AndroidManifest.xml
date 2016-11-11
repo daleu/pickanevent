@@ -32,6 +32,7 @@
         <activity android:name=".view.VerInfoEventoActivity" />
         <activity android:name=".view.VerInfoOtroUsuarioActivity"></activity>
         <activity android:name=".view.LoginActivity"></activity>
+        <activity android:name=".view.CrearUsuarioActivity"></activity>
     </application>
 
 </manifest>

@@ -53,7 +53,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Escriba el nombre del evento"
+                android:hint="@string/ESCRIBE_NOMBRE_EVENTO"
                 android:ems="10"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="5dp"
@@ -73,7 +73,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Escribe la descripción de tu evento"
+                android:hint="@string/ESCRIBE_DESCRIPCION_EVENTO"
                 android:ems="10"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="5dp"
@@ -109,7 +109,7 @@
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
-                    android:text="El evento será gratuito?"
+                    android:text="@string/EVENTO_GRATUITO_PREG"
                     android:fontFamily="sans-serif"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -136,7 +136,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Escriba el precio del evento"
+                android:hint="@string/ESCRIBE_PRECIO_EVENTO"
                 android:ems="10"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="5dp"
@@ -156,7 +156,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Escribe la URL de venta de entradas"
+                android:hint="@string/ESCRIBE_URL_ENTRADAS"
                 android:ems="10"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="5dp"
@@ -175,10 +175,10 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="top" />
 
-            <AutoCompleteTextView
+            <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Escriba el lugar del evento"
+                android:hint="@string/ESCRIBE_LUGAR_EVENTO"
                 android:ems="10"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="5dp"
@@ -198,7 +198,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Primer día del evento"
+                android:hint="@string/PRIMER_DIA"
                 android:ems="10"
                 android:cursorVisible="true"
                 android:focusable="false"
@@ -216,11 +216,11 @@
                 android:layout_below="@+id/editorLugar"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp" />
-
+                    android:layout_marginRight="25dp" />
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Último día del evento(opcional)"
+                android:hint="@string/ULTIMO_DIA"
                 android:ems="10"
                 android:cursorVisible="false"
                 android:focusable="false"
@@ -259,7 +259,7 @@
                 android:layout_marginRight="25dp" />
 
             <Button
-                android:text="Crear Evento"
+                android:text="@string/DEFAULT_CREAR_EVENTO"
                 android:id="@+id/buttonAcceptar"
                 android:background="@drawable/botton_application"
                 android:layout_width="150dp"

@@ -30,11 +30,11 @@ public class AdapterLista extends ArrayAdapter<Info> {
 
 
 
-    public AdapterLista(Context context, int layoutId, ArrayList<Info> info) {
-        super(context, layoutId, info);
-        this.context = context;
-        this.layoutId = layoutId;
-        infos = info;
+    public AdapterLista(Context _context, int _layoutId, ArrayList<Info> _info) {
+        super(_context, _layoutId, _info);
+        this.context = _context;
+        this.layoutId = _layoutId;
+        infos = _info;
 
     }
 
@@ -45,22 +45,22 @@ public class AdapterLista extends ArrayAdapter<Info> {
 
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int _position) {
+        return _position;
     }
 
     @Override
-    public Info getItem(int position) {
-        return infos.get(position);
+    public Info getItem(int _position) {
+        return infos.get(_position);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int _position, View _convertView, ViewGroup _parent) {
         AdapterHolder holder;
-        View vistaEvent =convertView;
+        View vistaEvent =_convertView;
         if (vistaEvent == null) {
             LayoutInflater inf = ((Activity)context).getLayoutInflater();
-            vistaEvent = inf.inflate(layoutId, parent, false);
+            vistaEvent = inf.inflate(layoutId, _parent, false);
 
             holder = new AdapterHolder();
             holder.img = (ImageView)vistaEvent.findViewById(R.id.icon);
@@ -74,7 +74,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
             holder = (AdapterHolder)vistaEvent.getTag();
         }
 
-        Info componentes = getItem(position);
+        Info componentes = getItem(_position);
         holder.img.setImageBitmap(componentes.img);
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);

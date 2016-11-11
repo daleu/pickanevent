@@ -17,6 +17,7 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
@@ -36,6 +37,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     String idGrupo;
     GrupoMGR gMGR;
     EventoMGR eMGR;
+    TagMGR tMGR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         eventos = (ListView) findViewById(R.id.event);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
+        tMGR = MGRFactory.getInstance().getTagMGR();
         /////////////////////////////////////////////////
 
 
@@ -89,6 +92,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
         eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos());
+        Map<String,Boolean> tagsMap = _grupo.getIdTags();
+        tagsMap.put(_grupo.getidTagGeneral(),true);
+        tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
         descripcion.setText(_grupo.getDescripcion());
@@ -96,17 +102,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
-        String tagsAux = "Deportes      Futbol      Deportes de equipo      Partidos";
-        //tags.setText(grupo.getTagsAsString());
-        tags.setText(tagsAux);
+
     }
-
-
 
     public void mostrarEventosGrupo(ArrayList<Info> info) {
         AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,info);
         eventos.setAdapter(ale);
-
         hideProgressDialog();
     }
 
@@ -119,6 +120,14 @@ public class VerInfoGrupoActivity extends BaseActivity {
             e.getMessage();
             return null;
         }
+    }
+
+    public void mostrarTags(ArrayList<String> info) {
+        String tagsAsString = "";
+        for (int i = 0; i < info.size(); ++i) {
+            tagsAsString += info.get(i) + "     ";
+        }
+        tags.setText(tagsAsString);
     }
 
     /*@Override

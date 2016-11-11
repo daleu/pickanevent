@@ -18,6 +18,13 @@ public class UsuarioEntity {
 
     }
 
+    public UsuarioEntity(String nickname, Boolean cm) {
+
+        this.nickname = nickname;
+        
+        this.cm = cm;
+    }
+
     public enum ATTRIBUTES {
 
         USERNAME    ("username"),

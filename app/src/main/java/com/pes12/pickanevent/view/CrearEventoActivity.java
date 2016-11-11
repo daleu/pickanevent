@@ -43,8 +43,8 @@ public class CrearEventoActivity extends BaseActivity {
     Bitmap image;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         setContentView(activity_crear_evento);
         final CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
         calendar.setVisibility(View.INVISIBLE);
@@ -52,7 +52,7 @@ public class CrearEventoActivity extends BaseActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
             }
         });
         final CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
@@ -61,7 +61,7 @@ public class CrearEventoActivity extends BaseActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFechaFinal);
-                data.setText(day + " de " + getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
             }
         });
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
@@ -85,7 +85,7 @@ public class CrearEventoActivity extends BaseActivity {
 
     }
 
-    public void crearEvento(View view) {
+    public void crearEvento(View _view) {
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
         EditText descripcio = (EditText) findViewById(R.id.editorDescr);
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
@@ -126,7 +126,7 @@ public class CrearEventoActivity extends BaseActivity {
         Toast.makeText(this,"Evento creado",Toast.LENGTH_LONG).show();
     }
 
-    public void comprovarCheckBox(View view) {
+    public void comprovarCheckBox(View _view) {
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
         if (gratuit.isChecked()) {
@@ -140,31 +140,31 @@ public class CrearEventoActivity extends BaseActivity {
         }
     }
 
-    public void mostrarCalendar(View view) {
+    public void mostrarCalendar(View _view) {
         CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
         CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
-        if (calendar.getVisibility() == view.VISIBLE) {
-            calendar.setVisibility(view.INVISIBLE);
+        if (calendar.getVisibility() == _view.VISIBLE) {
+            calendar.setVisibility(_view.INVISIBLE);
         }
         else {
-            calendar.setVisibility(view.VISIBLE);
-            calendarFinal.setVisibility(view.INVISIBLE);
+            calendar.setVisibility(_view.VISIBLE);
+            calendarFinal.setVisibility(_view.INVISIBLE);
         }
     }
 
-    public void mostrarCalendarFinal(View view) {
+    public void mostrarCalendarFinal(View _view) {
         CalendarView calendar = (CalendarView) findViewById(R.id.calendarViewFinal);
         CalendarView calendarInicial = (CalendarView) findViewById(R.id.calendarView);
-        if (calendar.getVisibility() == view.VISIBLE) {
-            calendar.setVisibility(view.INVISIBLE);
+        if (calendar.getVisibility() == _view.VISIBLE) {
+            calendar.setVisibility(_view.INVISIBLE);
         }
         else {
-            calendar.setVisibility(view.VISIBLE);
-            calendarInicial.setVisibility(view.INVISIBLE);
+            calendar.setVisibility(_view.VISIBLE);
+            calendarInicial.setVisibility(_view.INVISIBLE);
         }
     }
 
-    public void abrirGaleria (View view) {
+    public void abrirGaleria (View _view) {
         Intent galeria = new Intent(Intent.ACTION_PICK);
         File directorio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         String dirGaleria = directorio.getPath();
@@ -176,10 +176,10 @@ public class CrearEventoActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == GALERIA_REQUEST) {
-                Uri imageUri = data.getData();
+    protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
+        if (_resultCode == RESULT_OK) {
+            if (_requestCode == GALERIA_REQUEST) {
+                Uri imageUri = _data.getData();
                 InputStream inputStream;
                 try {
                     inputStream = getContentResolver().openInputStream(imageUri);
@@ -194,22 +194,5 @@ public class CrearEventoActivity extends BaseActivity {
                 }
             }
         }
-    }
-
-    private String getNomMes(int month) {
-        String nom;
-        if (month == 1) nom = "Enero";
-        else if (month == 2) nom = "Febrero";
-        else if (month == 3) nom = "Marzo";
-        else if (month == 4) nom = "Abril";
-        else if (month == 5) nom = "Mayo";
-        else if (month == 6) nom = "Junio";
-        else if (month == 7) nom = "Julio";
-        else if (month == 8) nom = "Agosto";
-        else if (month == 9) nom = "Septiembre";
-        else if (month == 10) nom = "Octubre";
-        else if (month == 11) nom = "Noviembre";
-        else nom = "Diciembre";
-        return nom;
     }
 }

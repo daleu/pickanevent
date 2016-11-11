@@ -69,8 +69,6 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         idUsuario = "-KUHeQd1dR1FT3FmbPLu";
         uMGR.getInfoUsuario(this, idUsuario);
 
-        //ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
-        //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
 
         //ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
         //ListView esdevenimentsUsuario = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
@@ -111,7 +109,6 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Info info = new Info(imBM, nombreGrupo, "adeu", "seguir!");
         eventos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
-        //ListAdapter adaptadorGrupos = new CustomAdapterGruposActivity(this, grupos);
         AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this,R.layout.vista_adapter_lista,eventos);
         listaGrupos.setAdapter(ale);
         //hideProgressDialog();
@@ -128,7 +125,6 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
         //System.out.println(grupos.get(0).segonaLinea);
-        //ListAdapter adaptadorEsdeveniments = new CustomAdapterEsdevenimentsActivity(this, eventos);
         AdapterLista alg = new AdapterLista(VerInfoOtroUsuarioActivity.this,R.layout.vista_adapter_lista,grupos);
         listaEventos.setAdapter(alg);
         hideProgressDialog();

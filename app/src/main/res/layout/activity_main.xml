@@ -18,51 +18,62 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VerInfoGrupo"
+            android:text="@string/DEFAULT_VER_INFO_GRUPO"
             android:onClick="goVerInfoGrupo"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VerInfoEvento"
+            android:text="@string/DEFAULT_VER_INFO_EVENTO"
             android:onClick="goVerInfoEvento"/>
 
         <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buscar"
+        android:text="@string/DEFAULT_BUSCAR"
         android:onClick="goBuscar"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crear evento"
+            android:text="@string/DEFAULT_CREAR_EVENTO"
             android:onClick="goCrearEvento"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/DEFAULT_LOGIN"
             android:onClick="goLogin"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuario logeado?"
+            android:text="@string/DEFAULT_USUARIO_LOGUEADO_PREG"
             android:onClick="showUsuarioActual"/>
 
         <Button
-            android:text="INFO OTRO USUARIO"
+            android:text="@string/DEFAULT_INFORMACION_OTRO_USUARIO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:onClick="goOtroUsuario" />
 
         <Button
-            android:text="Editar evento"
+            android:text="@string/DEFAULT_EDITAR_EVENTO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goEditarEvento" />
+        <Button
+            android:text="Crear Usuaio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goCrearUsuario" />
 
+        <Button
+            android:text="CAMBIAR MODO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonCambiarModo"
+            android:onClick="cambiarModo" />
 
     </LinearLayout>
 </ScrollView>
