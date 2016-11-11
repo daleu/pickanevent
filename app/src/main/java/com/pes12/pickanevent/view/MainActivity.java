@@ -17,6 +17,8 @@ import java.util.Map;
 
 public class MainActivity extends BaseActivity {
 
+    private boolean cm = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +118,17 @@ BLOQUE DE TEST
 
     public void goVerEventosUsuariosQueSigo (View view) {
         startActivity(new Intent(MainActivity.this, VerEventosUsuariosQueSigoActivity.class));
+    }
+
+    public void cambiarModo(View view){
+        if (cm == true) {
+            cm = false;
+            Toast.makeText(this, "Modo Usuario", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            cm = true;
+            Toast.makeText(this, "Modo CM", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

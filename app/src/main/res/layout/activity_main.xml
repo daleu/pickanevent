@@ -76,5 +76,12 @@
             android:onClick="goVerEventosUsuariosQueSigo"
             android:id="@+id/button7" />
 
+        <Button
+            android:text="CAMBIAR MODO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonCambiarModo"
+            android:onClick="cambiarModo" />
+
     </LinearLayout>
 </ScrollView>
