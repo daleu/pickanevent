@@ -40,7 +40,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/imagenEvento"
                 android:layout_alignParentStart="true"
-                android:layout_height="670dp" />
+                android:layout_height="740dp" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -195,77 +195,68 @@
                 android:layout_below="@+id/editorEntradas"
                 android:layout_centerHorizontal="true" />
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="@string/PRIMER_DIA"
+                android:ems="10"
+                android:cursorVisible="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorFecha"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginTop="10dp"
                 android:layout_below="@+id/editorLugar"
-                android:layout_marginTop="10dp"
-                android:id="@+id/relative2">
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:inputType="textPersonName"
-                    android:hint="@string/PRIMER_DIA"
-                    android:ems="10"
-                    android:fontFamily="sans-serif"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="18sp"
-                    android:textColorHint="#8a939d"
-                    android:id="@+id/editorFecha"
-                    android:layout_height="46dp"
-                    android:background="#eceff1"
-                    android:textStyle="normal"
-                    android:layout_marginLeft="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
                     android:layout_marginRight="25dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="mostrarCalendar"
-                    android:src="@android:drawable/ic_menu_today"
-                    android:id="@+id/imageButtonCalendar"
-                    android:layout_toEndOf="@+id/editorFecha" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:layout_below="@+id/relative2"
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="@string/ULTIMO_DIA"
+                android:ems="10"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorFechaFinal"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
                 android:layout_marginTop="10dp"
-                android:id="@+id/relative3">
+                android:layout_below="@+id/editorFecha"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
 
-                <EditText
-                    android:layout_width="250dp"
-                    android:inputType="textPersonName"
-                    android:hint="@string/ULTIMO_DIA"
-                    android:ems="10"
-                    android:fontFamily="sans-serif"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="18sp"
-                    android:textColorHint="#8a939d"
-                    android:id="@+id/editorFechaFinal"
-                    android:layout_height="46dp"
-                    android:background="#eceff1"
-                    android:textStyle="normal"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="mostrarCalendarFinal"
-                    android:src="@android:drawable/ic_menu_today"
-                    android:id="@+id/imageButtonCalendarFinal"
-                    android:layout_toEndOf="@+id/editorFechaFinal" />
-
-
-            </RelativeLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="Hora del evento (hh.mm)"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/hora"
+                android:layout_below="@+id/editorFechaFinal"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
 
             <Button
                 android:text="@string/DEFAULT_CREAR_EVENTO"
@@ -277,9 +268,9 @@
                 android:radius="20dip"
                 android:onClick="crearEvento"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/relative3"
+                android:layout_below="@+id/hora"
                 android:layout_marginBottom="15dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="20dp" />
 
             <CalendarView
                 android:layout_width="match_parent"

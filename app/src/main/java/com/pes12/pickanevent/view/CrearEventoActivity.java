@@ -35,7 +35,7 @@ import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
-public class CrearEventoActivity extends BaseActivity{
+public class CrearEventoActivity extends BaseActivity {
 
 
     public static final int GALERIA_REQUEST = 20;
@@ -52,7 +52,7 @@ public class CrearEventoActivity extends BaseActivity{
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
         final CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
@@ -61,11 +61,28 @@ public class CrearEventoActivity extends BaseActivity{
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFechaFinal);
-                data.setText(day + " de " + ViewUtils.getNomMes(month) + " de " + year);
+                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
+        EditText hora = (EditText) findViewById(R.id.hora);
         preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        EditText data = (EditText) findViewById(R.id.editorFecha);
+        EditText dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mostrarCalendar(view);
+            }
+        });
+        dataFinal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mostrarCalendarFinal(view);
+            }
+        });
+
     }
 
     public void crearEvento(View _view) {
@@ -81,6 +98,8 @@ public class CrearEventoActivity extends BaseActivity{
         EditText url = (EditText) findViewById(R.id.editorEntradas);
         EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
         EditText data = (EditText) findViewById(R.id.editorFecha);
+        EditText dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
+        EditText hora = (EditText) findViewById(R.id.hora);
 
 
 
@@ -90,13 +109,21 @@ public class CrearEventoActivity extends BaseActivity{
         byte[] byteArray = bYtE.toByteArray();
         String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
-        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
-                url.getText().toString(),localitzacio.getText().toString(),data.getText().toString(),"","");
+        EventoEntity ee;
+        if (dataFinal.getText().toString().matches("")) {
+             ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
+                    url.getText().toString(), localitzacio.getText().toString(),
+                     "El " + data.getText().toString() + " a las " + hora.getText().toString(), "", "");
+        } else {
+            String interval = "Del " + data.getText().toString() + " al " + dataFinal.getText().toString() + " a las " + hora.getText().toString();
+            ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
+                    url.getText().toString(), localitzacio.getText().toString(), interval, "", "");
+        }
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.crear(ee);
-        Toast.makeText(this,"Evento creado",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,R.string.DEFAULT_EVENTO_CREADO,Toast.LENGTH_LONG).show();
     }
 
     public void comprovarCheckBox(View _view) {

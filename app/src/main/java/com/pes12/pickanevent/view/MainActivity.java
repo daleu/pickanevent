@@ -22,8 +22,8 @@ public class MainActivity extends BaseActivity {
     private boolean cm = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
@@ -89,53 +89,53 @@ BLOQUE DE TEST
     }
 
     //funcion para probar lecturas
-    public void printNicknames(Map<String,UsuarioEntity> hm) {
+    public void printNicknames(Map<String,UsuarioEntity> _hm) {
 
         System.out.println("Mostrando los valores:");
         TextView tv = (TextView)findViewById(R.id.texto);
         tv.setText("");
 
-        for (Map.Entry<String, UsuarioEntity> entry : hm.entrySet()) {
+        for (Map.Entry<String, UsuarioEntity> entry : _hm.entrySet()) {
             tv.setText(tv.getText()+ "\r\n"+entry.getValue().getUsername());
             System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
         }
     }
 
-    public void goVerInfoGrupo(View view) {
+    public void goVerInfoGrupo(View _view) {
         startActivity(new Intent(MainActivity.this, VerInfoGrupoActivity.class));
     }
 
-    public void goVerInfoEvento(View view) {
+    public void goVerInfoEvento(View _view) {
         startActivity(new Intent(MainActivity.this, VerInfoEventoActivity.class));
     }
 
-    public void goBuscar(View view) {
+    public void goBuscar(View _view) {
         startActivity(new Intent(MainActivity.this, BuscarActivity.class));
     }
 
-    public void goCrearEvento(View view) {
+    public void goCrearEvento(View _view) {
         startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
     }
 
-    public void goEditarEvento(View view) {
+    public void goEditarEvento(View _view) {
         startActivity(new Intent(MainActivity.this, EditarEventoActivity.class));
     }
 
-    public void goLogin(View view) {
+    public void goLogin(View _view) {
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
-    public void goOtroUsuario(View view) {
+    public void goOtroUsuario(View _view) {
         startActivity(new Intent(MainActivity.this, VerInfoOtroUsuarioActivity.class));
     }
 
-    public void showUsuarioActual(View view){
+    public void showUsuarioActual(View _view){
         if(getUsuarioActual()!=null) Toast.makeText(MainActivity.this, (CharSequence) getUsuarioActual().toString(), Toast.LENGTH_SHORT).show();
         else Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
 
     }
 
-    public void goCrearUsuario(View view) {
+    public void goCrearUsuario(View _view) {
         startActivity(new Intent(MainActivity.this, CrearUsuarioActivity.class));
     }
 
@@ -143,7 +143,7 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, VerEventosUsuariosQueSigoActivity.class));
     }
 
-    public void cambiarModo(View view){
+    public void cambiarModo(View _view){
         if (cm == true) {
             cm = false;
             Toast.makeText(this, "Modo Usuario", Toast.LENGTH_SHORT).show();
