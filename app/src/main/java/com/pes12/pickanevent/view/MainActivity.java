@@ -10,9 +10,11 @@ import android.widget.Toast;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
+import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
@@ -30,28 +32,49 @@ public class MainActivity extends BaseActivity {
 BLOQUE DE TEST
 */
 
-/*
-        UsuarioMGR uMGR= UsuarioMGR.getInstance();
-        uMGR.getAllUsers(this);
+
+        UsuarioMGR uMGR= MGRFactory.getInstance().getUsuarioMGR();
+        //uMGR.getAllUsers(this);
 
 
-        UsuarioEntity usuario = new UsuarioEntity();
-        Map<String,Boolean> relaciones = new HashMap<>();
+        UsuarioEntity usuario1 = new UsuarioEntity();
+        UsuarioEntity usuario2 = new UsuarioEntity();
+        UsuarioEntity usuario3 = new UsuarioEntity();
+        Map<String,Boolean> eventos = new HashMap<>();
+        Map<String,Boolean> usuarios = new HashMap<>();
+
         Map<String,UsuarioEntity> user = new HashMap<>();
 
-        relaciones.put("key1",true);
-        relaciones.put("key2",true);
-        relaciones.put("key3",true);
+        eventos.put("-KUbD9XAGOYClVDTyI0H", true); //e1
+        //usu1
+        usuario1.setUsername("usu1");
+        usuario1.setNickname("nickusu1");
+        usuario1.setPassword("pass1");
+        usuario1.setEmail("email1@asdas.com");
+        usuario1.setIdEventos(eventos);
 
-        usuario.setUsername("TestDeDAO");
-        usuario.setNickname("SoyUnTest");
-        usuario.setPassword("pass123");
-        usuario.setEmail("asd@asdas.com");
-        usuario.setIdEventos(relaciones);
-        usuario.setIdGrupos(relaciones);
-        usuario.setIdTags(relaciones);
+        eventos = new HashMap<>();
+        eventos.put("-KV9U5W-oL1c7xF9fXt4",true); //e3
+        //usu3
+        usuario2.setUsername("usu3");
+        usuario2.setNickname("nickusu3");
+        usuario2.setPassword("pass3");
+        usuario2.setEmail("email3@asdas.com");
+        usuario2.setIdEventos(eventos);
 
-        user.put("",usuario);
+        eventos.put("-KUavWyMfmX-uxtRqMo5",true); //e2
+        //usu2
+        usuario3.setUsername("usu2");
+        usuario3.setNickname("nickusu2");
+        usuario3.setPassword("pass2");
+        usuario3.setEmail("email2@asdas.com");
+        usuario3.setIdEventos(eventos);
+
+        //usuarios.put(, true);
+        //usuarios.put(, true);
+        //usuario1.setIdUsuarios(usuarios);
+
+        /*user.put("",usuario);
 
         user=uMGR.guardar(user);
 
@@ -60,8 +83,8 @@ BLOQUE DE TEST
         usuario.setNickname("holadola");
 
         user=uMGR.guardar(user);
-        Log.e("Main Activity","ID despues de guardar: "+user.entrySet().iterator().next().getKey());
-*/
+        Log.e("Main Activity","ID despues de guardar: "+user.entrySet().iterator().next().getKey());*/
+
 
     }
 
