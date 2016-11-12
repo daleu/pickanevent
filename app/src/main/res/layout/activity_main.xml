@@ -73,8 +73,7 @@
             android:text="evetos usuarios que sigo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="goVerEventosUsuariosQueSigo"
-            android:id="@+id/button7" />
+            android:onClick="goVerEventosUsuariosQueSigo" />
 
         <Button
             android:text="CAMBIAR MODO"

@@ -127,7 +127,7 @@ public class UsuarioMGR {
 
     }
 
-    private String crear(UsuarioEntity _entity)
+    public String crear(UsuarioEntity _entity)
     {
 
         bdRefUsuarios.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_USUARIO).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -254,6 +254,28 @@ public class UsuarioMGR {
 
             public ValueEventListener setActivity(Activity _activity) {
                 activity = (VerInfoOtroUsuarioActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getInfoUsuarioActivityVerEventosUsuarios(Activity _activity, String _id) {
+        bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            VerEventosUsuariosQueSigoActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.mostrarInfoUsuario(u);
+            }
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerEventosUsuariosQueSigoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

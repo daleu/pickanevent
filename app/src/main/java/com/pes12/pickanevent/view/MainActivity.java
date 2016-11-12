@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
 BLOQUE DE TEST
 */
 
-
+/*
         UsuarioMGR uMGR= MGRFactory.getInstance().getUsuarioMGR();
         //uMGR.getAllUsers(this);
 
@@ -70,11 +70,16 @@ BLOQUE DE TEST
         usuario3.setEmail("email2@asdas.com");
         usuario3.setIdEventos(eventos);
 
+        usuarios.put("-KWMemvaQzFXxDTfF4zG",true);
+        usuarios.put("-KWMemvpLMu62EajFZ2b",true);
+        uMGR.crear(usuario1);
+
+        usuario1.setIdUsuarios(usuarios);
         //usuarios.put(, true);
         //usuarios.put(, true);
         //usuario1.setIdUsuarios(usuarios);
 
-        /*user.put("",usuario);
+        user.put("",usuario);
 
         user=uMGR.guardar(user);
 
@@ -139,7 +144,8 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, CrearUsuarioActivity.class));
     }
 
-    public void goVerEventosUsuariosQueSigo (View view) {
+    public void goVerEventosUsuariosQueSigo(View _view) {
+        System.out.println("CLICOOO");
         startActivity(new Intent(MainActivity.this, VerEventosUsuariosQueSigoActivity.class));
     }
 

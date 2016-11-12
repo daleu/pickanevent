@@ -223,7 +223,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (usuariosPorEvento.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), evento.getValue().toString(), e.getTitulo(), "Asistir!"));
+                        info.add(new Info(StringToBitMap(e.getImagen()), "Asistiran: "+ usuariosPorEvento.get(evento.getKey()).toString() , e.getTitulo(), "Asistir!"));
                     }
                 }
 
