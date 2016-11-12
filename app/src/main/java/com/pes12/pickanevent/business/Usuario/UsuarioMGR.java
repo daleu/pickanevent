@@ -1,6 +1,9 @@
 package com.pes12.pickanevent.business.Usuario;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +21,7 @@ import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
+import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
@@ -123,7 +127,7 @@ public class UsuarioMGR {
 
     }
 
-    private String crear(UsuarioEntity _entity)
+    public String crear(UsuarioEntity _entity)
     {
 
         bdRefUsuarios.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_USUARIO).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -255,6 +259,28 @@ public class UsuarioMGR {
         }.setActivity(_activity));
     }
 
+    public void getInfoUsuarioActivityVerEventosUsuarios(Activity _activity, String _id) {
+        bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            VerEventosUsuariosQueSigoActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.mostrarInfoUsuario(u);
+            }
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerEventosUsuariosQueSigoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
     public void getUsuarioLogin(BaseActivity _activity, String _uid) {
         bdRefUsuarios.child(_uid).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
@@ -275,5 +301,46 @@ public class UsuarioMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void getUsers(Activity _activity, Map<String, Boolean> _idU) {
+        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+            Map<String,Map<String,Boolean>> info = new LinkedHashMap<String, Map<String, Boolean>>();
+            VerEventosUsuariosQueSigoActivity activity;
+            Map<String, Boolean> idU;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot usuario : dataSnapshot.getChildren()) {
+                    UsuarioEntity u = usuario.getValue(UsuarioEntity.class);
+                    if (idU.containsKey(usuario.getKey())) {
+                        info.put(u.getNickname(), u.getIdEventos());
+                    }
+                }
+                activity.infoUsuarios(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+            public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idU)
+            {
+                activity=(VerEventosUsuariosQueSigoActivity) _activity;
+                idU = _idU;
+                return this;
+            }
+        }.setActivity(_activity, _idU));
+    }
+
+    private Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 }
