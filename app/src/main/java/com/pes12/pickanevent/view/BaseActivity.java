@@ -59,6 +59,11 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void signOut(){
+        mAuth.signOut();
+        usuarioActual=null;
+    }
+
     private void initAuth()
     {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();

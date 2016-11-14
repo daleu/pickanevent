@@ -44,16 +44,28 @@ public class LoginActivity extends BaseActivity {
         getAuth().signInWithEmailAndPassword(correo.getText().toString(),password).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(LoginActivity.this,  "Login Correcto! " +correo.getText().toString(),
-                        Toast.LENGTH_SHORT).show();
-                UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-
-                uMGR.getUsuarioLogin(LoginActivity.this,task.getResult().getUser().getUid());
-                LoginActivity.this.finish();
                 if (!task.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this,Constantes.ERROR_CREAR_USUARIO,
+                    Toast.makeText(LoginActivity.this,"Login incorrecto",
                             Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                if (task.getResult().getUser().isEmailVerified()) {
+                    Toast.makeText(LoginActivity.this,  "Login Correcto! " +correo.getText().toString(),
+                            Toast.LENGTH_SHORT).show();
+                    UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
+
+                    uMGR.getUsuarioLogin(LoginActivity.this,task.getResult().getUser().getUid());
+                    LoginActivity.this.finish();
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this,  "Correo no verificado! " +correo.getText().toString(),
+                            Toast.LENGTH_SHORT).show();
+                    signOut();
+                }
+
+
 
                 // ...
             }

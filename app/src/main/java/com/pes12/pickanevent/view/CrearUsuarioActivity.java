@@ -49,16 +49,20 @@ public class CrearUsuarioActivity extends BaseActivity {
         getAuth().createUserWithEmailAndPassword(correo.getText().toString(),password).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(CrearUsuarioActivity.this,Constantes.ERROR_CREAR_USUARIO,
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Toast.makeText(CrearUsuarioActivity.this, Constantes.LOG_USUARI_CREADO_CORRECTO + ' ' +correo.getText().toString(),
                         Toast.LENGTH_SHORT).show();
                  UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
                 uMGR.actualizar(task.getResult().getUser().getUid(),new UsuarioEntity(username.getText().toString(),cm.isChecked()));
+                task.getResult().getUser().sendEmailVerification();
+                signOut();
                 CrearUsuarioActivity.this.finish();
-                if (!task.isSuccessful()) {
-                    Toast.makeText(CrearUsuarioActivity.this,Constantes.ERROR_CREAR_USUARIO,
-                            Toast.LENGTH_SHORT).show();
-                }
+
 
                 // ...
             }
