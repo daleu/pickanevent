@@ -61,7 +61,7 @@ public class EventoMGR {
 
     public String crear(EventoEntity _entity)
     {
-        bdRefEventos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_EVENTO).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefEventos.orderByChild("titulo").equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
