@@ -42,9 +42,12 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
 
     }
 
+    private Map<String, Boolean> eventosUsuario;
+
     public void mostrarInfoUsuario(UsuarioEntity _usuario) {
         System.out.println("L'usuari " + _usuario.getNickname() + " te " + _usuario.getIdUsuarios().size() + " usuaris que segueix");
         //obtengo el username y los eventos que siguen los usuarios a los que sigo en la funcion info Usuarios
+        eventosUsuario = _usuario.getIdEventos();
         uMGR.getUsers(this, _usuario.getIdUsuarios());
 
     }
@@ -57,7 +60,7 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         // el evento (String) y todos los usuarios que asistiran(List<String>)
         Map<String, List<String>> usuariosPorEvento = new HashMap<>();
         //loop por los usuarios
-        Map<String,Boolean> eventosTratados = new HashMap<>();
+        Map<String,Boolean> eventosTratados = eventosUsuario;
         for (Map.Entry<String, Map<String,Boolean>> infoUsu: _info.entrySet()) {
             System.out.println("L'usuari "+ infoUsu.getKey()+ " te " + infoUsu.getValue().size() + " event/s");
             ArrayList<String> usernames = new ArrayList<>();
