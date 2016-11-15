@@ -28,6 +28,7 @@ public class CrearUsuarioActivity extends BaseActivity {
 
     private  EditText correo;
     private  EditText pass;
+    private  EditText repepass;
     private  EditText username;
     private  CheckBox cm;
 
@@ -37,6 +38,7 @@ public class CrearUsuarioActivity extends BaseActivity {
         setContentView(R.layout.activity_crear_usuario);
         correo= (EditText)findViewById(R.id.correo);
         pass= (EditText)findViewById(R.id.pass);
+        repepass= (EditText)findViewById(R.id.repepass);
         username=(EditText)findViewById(R.id.username);
         cm=(CheckBox)findViewById(R.id.cm);
     }
@@ -44,7 +46,12 @@ public class CrearUsuarioActivity extends BaseActivity {
 
     public void crearUsuario(View _view)
     {
-
+        if(!pass.getText().toString().equals(repepass.getText().toString()))
+        {
+            Toast.makeText(CrearUsuarioActivity.this,"Los passwords no coinciden",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         String password = EncodeUtil.encodePasswordSHA1(pass.getText().toString());
         getAuth().createUserWithEmailAndPassword(correo.getText().toString(),password).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
             @Override
@@ -56,7 +63,7 @@ public class CrearUsuarioActivity extends BaseActivity {
                 }
                 Toast.makeText(CrearUsuarioActivity.this, Constantes.LOG_USUARI_CREADO_CORRECTO + ' ' +correo.getText().toString(),
                         Toast.LENGTH_SHORT).show();
-                 UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
+                UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
                 uMGR.actualizar(task.getResult().getUser().getUid(),new UsuarioEntity(username.getText().toString(),cm.isChecked()));
                 task.getResult().getUser().sendEmailVerification();

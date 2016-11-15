@@ -74,6 +74,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goVerEventosUsuariosQueSigo" />
+        <Button
+            android:text="SIGN OUT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goSignOut" />
 
         <Button
             android:text="CAMBIAR MODO"

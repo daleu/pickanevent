@@ -160,4 +160,9 @@ BLOQUE DE TEST
         }
     }
 
+    public void goSignOut(View _view)
+    {
+        signOut();
+    }
+
 }

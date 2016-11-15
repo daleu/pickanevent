@@ -45,27 +45,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType = "textPassword"
+                    />
+                <EditText
+                    android:id="@+id/repepass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType = "textPassword"
+                    />
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="example123"
 
                     />
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="example123"
 
-                />
-
-            <CheckBox
-                android:text="@string/DEFAULT_CM"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/cm" />
-
-            <Button
-                    android:layout_width="fill_parent"
+                <CheckBox
+                    android:text="@string/DEFAULT_CM"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/DEFAULT_CREAR_USUARIO"
-                    android:onClick="crearUsuario"/>
+                    android:id="@+id/cm" />
+
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/DEFAULT_CREAR_USUARIO"
+                        android:onClick="crearUsuario"/>
 
 
 
