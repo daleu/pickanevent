@@ -31,7 +31,10 @@
             android:orientation="vertical"
             tools:context="com.pes12.pickanevent.view.CrearUsuarioActivity"
             android:weightSum="1">
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo"/>
 
                 <EditText
                     android:id="@+id/correo"
@@ -40,18 +43,30 @@
                     android:hint="alguien@correo.com"
                     android:inputType="textEmailAddress"
                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contraseña"/>
                 <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType = "textPassword"
                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Repite contraseña"/>
                 <EditText
                     android:id="@+id/repepass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType = "textPassword"
                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de usuario"/>
                 <EditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
