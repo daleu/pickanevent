@@ -170,10 +170,11 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventosGrupo(Activity _activity, Map<String, Boolean> _idS) {
+    public void getInfoEventosGrupo(Activity _activity, Map<String, Boolean> _idS, final Boolean cm) {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             ArrayList<Info> info = new ArrayList();
             VerInfoGrupoActivity activity;
+            String id;
             Map<String, Boolean> idS;
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
@@ -181,7 +182,9 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), "Asistir!"));
+                        String textoBoton = "Asistir!";
+                        if (cm == true) textoBoton = "Editar";
+                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), textoBoton));
                     }
                 }
                 activity.mostrarEventosGrupo(info);

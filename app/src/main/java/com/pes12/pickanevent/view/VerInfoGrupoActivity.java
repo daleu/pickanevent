@@ -38,6 +38,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     GrupoMGR gMGR;
     EventoMGR eMGR;
     TagMGR tMGR;
+    Boolean cm = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
         tMGR = MGRFactory.getInstance().getTagMGR();
         /////////////////////////////////////////////////
 
+        Bundle b = getIntent().getExtras(); //Para pruebas
+        if(b != null)
+            cm = b.getBoolean("key");
 
         idGrupo = "-KUl_ie2eRYXdXKVJffQ";
 
@@ -91,7 +95,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
-        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos());
+        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(),cm);
         Map<String,Boolean> tagsMap = _grupo.getIdTags();
         tagsMap.put(_grupo.getidTagGeneral(),true);
         tMGR.getInfoTag(this, tagsMap);
