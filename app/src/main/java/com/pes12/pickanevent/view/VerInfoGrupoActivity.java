@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -33,6 +34,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     ImageView foto;
     TextView tags;
     ListView eventos;
+    Button boton;
 
     String idGrupo;
     GrupoMGR gMGR;
@@ -50,6 +52,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         foto = (ImageView)findViewById(R.id.imagenGrupo);
         tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
+        boton = (Button)findViewById(R.id.seguir);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
@@ -57,7 +60,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         Bundle b = getIntent().getExtras(); //Para pruebas
         cm = b.getBoolean("CM");
-        System.out.println("Valor CM "+ cm);
+        //System.out.println("Valor CM "+ cm);
 
         idGrupo = "-KUl_ie2eRYXdXKVJffQ";
 
@@ -102,6 +105,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         nombre.setText(_grupo.getNombreGrupo());
         descripcion.setText(_grupo.getDescripcion());
+        String texto = "SEGUIR!";
+        if (cm) texto = "EDITAR";
+        boton.setText(texto);
         String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
