@@ -183,7 +183,8 @@ public class EventoMGR {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
                         String textoBoton = "Asistir!";
-                        if (cm == true) textoBoton = "Editar";
+                        if (cm) textoBoton = "Editar";
+                        System.out.println(textoBoton+ ""+ cm);
                         info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), textoBoton));
                     }
                 }

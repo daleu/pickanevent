@@ -109,9 +109,10 @@ BLOQUE DE TEST
     public void goVerInfoGrupo(View _view) {
         Intent intent = new Intent(MainActivity.this, VerInfoGrupoActivity.class);
         Bundle b = new Bundle();
+        System.out.println("CM Antes de passar -------------------------------------------------------- " + cm);
         b.putBoolean("CM", cm); //bool de si es CM o no
         intent.putExtras(b);
-        startActivity(new Intent(MainActivity.this, VerInfoGrupoActivity.class));
+        startActivity(intent);
     }
 
     public void goVerInfoEvento(View _view) {
@@ -157,10 +158,12 @@ BLOQUE DE TEST
         if (cm) {
             cm = false;
             Toast.makeText(this, "Modo Usuario", Toast.LENGTH_SHORT).show();
+            System.out.println("CM Despues del canvio" + cm);
         }
         else {
             cm = true;
             Toast.makeText(this, "Modo CM", Toast.LENGTH_SHORT).show();
+            System.out.println("CM Despues del canvio" + cm);
         }
     }
 
