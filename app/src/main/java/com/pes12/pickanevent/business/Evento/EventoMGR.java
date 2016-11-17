@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.business.Evento;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -16,11 +17,13 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
+import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -241,5 +244,35 @@ public class EventoMGR {
                 return this;
             }
         }.setActivity(_activity, _usuariosPorEvento));
+    }
+
+    public void getInfoEventosUsuarioFromFragment(Fragment _activity, Map<String, Boolean> _idS) {
+        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<Info> info = new ArrayList();
+            TimelineFragment activity;
+            Map<String, Boolean> idS;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
+                    EventoEntity e = evento.getValue(EventoEntity.class);
+                    if (idS.containsKey(evento.getKey())) {
+                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), "Asistir!"));
+                    }
+                }
+                activity.mostrarEventosUsuario(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity, Map<String, Boolean> _idS) {
+                activity = (TimelineFragment) _activity;
+                idS = _idS;
+                return this;
+            }
+        }.setActivity(_activity, _idS));
     }
 }

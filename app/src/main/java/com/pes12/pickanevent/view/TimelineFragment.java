@@ -1,14 +1,27 @@
 package com.pes12.pickanevent.view;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +40,13 @@ public class TimelineFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    EventoMGR eMGR;
+    UsuarioMGR uMGR;
+
+    ListView eventos;
+
+    String idUsuario;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,13 +79,23 @@ public class TimelineFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        eMGR = MGRFactory.getInstance().getEventoMGR();
+        uMGR = MGRFactory.getInstance().getUsuarioMGR();
+
+        idUsuario = "-KWMemvpLMu62EajFZ2b";
+
+        uMGR.getEventsFromUserFromFragment(this, idUsuario);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timeline, container, false);
+        View view = inflater.inflate(R.layout.fragment_timeline, container, false);
+        eventos = (ListView) view.findViewById(R.id.eventtimeline);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +135,18 @@ public class TimelineFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    public void getUsuarioEvents(UsuarioEntity _usuario){
+        eMGR.getInfoEventosUsuarioFromFragment(this, _usuario.getIdEventos());
+    }
+
+    public void mostrarEventosUsuario(ArrayList<Info> info) {
+        Log.d("ACTIVITY", String.valueOf(getActivity()));
+        Log.d("LAYOUT", String.valueOf(R.layout.vista_adapter_lista));
+        Log.d("ACTIVITY", String.valueOf(info));
+        AdapterLista ale = new AdapterLista(getActivity(),R.layout.vista_adapter_lista,info);
+        eventos.setAdapter(ale);
     }
 }
