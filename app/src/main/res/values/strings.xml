@@ -53,5 +53,11 @@
     <string name="MES_NOVIEMBRE">Noviembre</string>
     <string name="MES_DICIEMBRE">Diciembre</string>
     <string name="DEFAULT_EVENTO_CREADO">Evento creado</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>

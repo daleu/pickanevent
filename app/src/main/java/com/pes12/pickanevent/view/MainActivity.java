@@ -160,6 +160,11 @@ BLOQUE DE TEST
         }
     }
 
+    public void goNavBar(View _view) {
+        System.out.println("HiiiHiiiHiiiiiiiii!");
+        startActivity(new Intent(MainActivity.this, NavigationDrawer.class));
+    }
+
     public void goSignOut(View _view)
     {
         signOut();

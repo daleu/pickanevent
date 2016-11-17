@@ -87,5 +87,12 @@
             android:id="@+id/buttonCambiarModo"
             android:onClick="cambiarModo" />
 
+        <Button
+            android:text="Navigation Drawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NavBar"
+            android:onClick="goNavBar" />
+
     </LinearLayout>
 </ScrollView>
