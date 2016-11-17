@@ -93,7 +93,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void mostrarInfoEvento(Map<String,EventoEntity> ge) {
-        idEvento = "-KUavWyMfmX-uxtRqMo5";
+        idEvento = "-KWnZoC88q5OZrOjBhGp";
         EventoEntity gEntity = ge.get(idEvento);
 
         imagenevento = (ImageView)findViewById(R.id.imagenEvento);
