@@ -34,7 +34,8 @@ public class GrupoEntity {
         IMAGEN      ("imagen"),
         NICKNAME    ("nickname"),
         IDTAG       ("idtag"),
-        IDUSUARIO   ("idusuario"); //creador
+        IDUSUARIO   ("idusuario"), //creador
+        WEBPAGE     ("webpage");
 
 
         private String value;
@@ -74,6 +75,17 @@ public class GrupoEntity {
     private String idUsuario;
     public  String getIdUsuario() {return idUsuario;}
     public  void setIdUsuario(String _idUsuario) {idUsuario = _idUsuario;}
+
+    /*webPage*/
+    private String webpage;
+    public String getWebpage() {
+        return webpage;
+    }
+    public void setWebpage(String _webpage) {
+        this.webpage = _webpage;
+    }
+
+
 
 
     /*    RELACIONES   */
