@@ -1,8 +1,10 @@
 package com.pes12.pickanevent.business;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
+import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR;
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.FirebaseFactory;
@@ -14,12 +16,14 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 public class MGRFactory {
 
-    public final EventoMGR eventoMGR;
-    public final GrupoMGR grupoMGR;
-    public final UsuarioMGR usuarioMGR;
-    public final TagMGR tagMGR;
-    public final FirebaseDatabase databse;
-    public static MGRFactory mgrFactory;
+    private final EventoMGR eventoMGR;
+    private final GrupoMGR grupoMGR;
+    private final UsuarioMGR usuarioMGR;
+    private final TagMGR tagMGR;
+    private final ImagenPerfilUsuarioMGR ipuMGR;
+    private final FirebaseDatabase databse;
+    private final FirebaseStorage storage;
+    private static MGRFactory mgrFactory;
 
 
     private MGRFactory() {
@@ -27,11 +31,15 @@ public class MGRFactory {
         grupoMGR = new GrupoMGR();
         usuarioMGR = new UsuarioMGR();
         tagMGR = new TagMGR();
+        ipuMGR = new ImagenPerfilUsuarioMGR();
         databse = FirebaseFactory.getInstance();
+        storage= FirebaseStorage.getInstance();
+
         eventoMGR.inicializarDatabase(databse);
         grupoMGR.inicializarDatabase(databse);
         usuarioMGR.inicializarDatabase(databse);
         tagMGR.inicializarDatabase(databse);
+        ipuMGR.inicializarDatabase(storage);
     }
 
     public static MGRFactory getInstance() {
@@ -55,5 +63,9 @@ public class MGRFactory {
 
     public TagMGR getTagMGR() {
         return tagMGR;
+    }
+
+    public ImagenPerfilUsuarioMGR getImagenPerfilUsuarioMGR() {
+        return ipuMGR;
     }
 }
