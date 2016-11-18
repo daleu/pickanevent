@@ -145,7 +145,6 @@ BLOQUE DE TEST
     }
 
     public void goVerEventosUsuariosQueSigo(View _view) {
-        System.out.println("CLICOOO");
         startActivity(new Intent(MainActivity.this, VerEventosUsuariosQueSigoActivity.class));
     }
 
@@ -163,6 +162,10 @@ BLOQUE DE TEST
     public void goSignOut(View _view)
     {
         signOut();
+    }
+
+    public void goCrearGrupo(View _view) {
+        startActivity(new Intent(MainActivity.this, CrearGrupoActivity.class));
     }
 
 }

@@ -87,5 +87,12 @@
             android:id="@+id/buttonCambiarModo"
             android:onClick="cambiarModo" />
 
+        <Button
+            android:text="Crear Grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonCrearGrupo"
+            android:onClick="goCrearGrupo" />
+
     </LinearLayout>
 </ScrollView>

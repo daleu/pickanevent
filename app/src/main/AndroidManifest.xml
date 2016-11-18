@@ -33,9 +33,9 @@
         <activity android:name=".view.VerInfoOtroUsuarioActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.CrearUsuarioActivity" />
-        <activity android:name=".view.BuscarEventoActivity"></activity>
-        <activity android:name=".view.VerEventosUsuariosQueSigoActivity"></activity>
-
+        <activity android:name=".view.BuscarEventoActivity" />
+        <activity android:name=".view.VerEventosUsuariosQueSigoActivity" />
+        <activity android:name=".view.CrearGrupoActivity"></activity>
     </application>
 
 </manifest>

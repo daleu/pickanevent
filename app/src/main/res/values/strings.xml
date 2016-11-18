@@ -53,5 +53,9 @@
     <string name="MES_NOVIEMBRE">Noviembre</string>
     <string name="MES_DICIEMBRE">Diciembre</string>
     <string name="DEFAULT_EVENTO_CREADO">Evento creado</string>
+    <string name="DEFAULT_CREAR_GRUPO">Crear grupo</string>
+    <string name="ESCRIBE_NOMBRE_GRUPO">Escriba el nombre del grupo</string>
+    <string name="ESCRIBE_DESCRIPCION_GRUPO">Escribe la descripción de tu grupo</string>
+    <string name="ESCRIBE_TAG_PRINCIPAL_GRUPO">Escribe el tag principal de tu grupo</string>
 
 </resources>
