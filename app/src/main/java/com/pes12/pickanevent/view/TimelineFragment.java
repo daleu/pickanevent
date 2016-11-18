@@ -41,6 +41,8 @@ public class TimelineFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ProgressDialog mProgressDialog;
+
     EventoMGR eMGR;
     UsuarioMGR uMGR;
 
@@ -75,6 +77,9 @@ public class TimelineFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        showProgressDialog();
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -148,5 +153,25 @@ public class TimelineFragment extends Fragment {
         Log.d("ACTIVITY", String.valueOf(info));
         AdapterLista ale = new AdapterLista(getActivity(),R.layout.vista_adapter_lista,info);
         eventos.setAdapter(ale);
+
+        hideProgressDialog();
     }
+
+
+    public void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(getContext());
+            mProgressDialog.setMessage(getString(R.string.loading));
+            mProgressDialog.setIndeterminate(true);
+        }
+
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
 }
