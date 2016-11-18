@@ -48,7 +48,7 @@ public class BuscarActivity extends BaseActivity {
                 if(_cs.toString().length()!=0)
                 {
                     showProgressDialog();
-                    uMGR.getUsersByUsername(BuscarActivity.this, tv.getText().toString());
+                    uMGR.getUsersByNickname(BuscarActivity.this, tv.getText().toString());
                     gMGR.getGruposByNombreGrupo(BuscarActivity.this, tv.getText().toString());
                 }
 

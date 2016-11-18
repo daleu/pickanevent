@@ -163,10 +163,10 @@ public class UsuarioMGR {
     }
 
 
-    public void getUsersByUsername(Activity _activity, String _text)
+    public void getUsersByNickname(Activity _activity, String _text)
     {
 
-        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).startAt(_text).endAt(_text+"\uf8ff");
+        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.NICKNAME.getValue()).startAt(_text).endAt(_text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;
@@ -177,7 +177,7 @@ public class UsuarioMGR {
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                     System.out.println(usuario.getKey());
                    // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
-                    n.add(new Info(null,usuario.getKey(),usuario.getValue(UsuarioEntity.class).getUsername(), "seguir!"));
+                    n.add(new Info(null,usuario.getKey(),usuario.getValue(UsuarioEntity.class).getNickname(), "seguir!"));
 
                 }
                 activity.printNicknames(n);
@@ -198,49 +198,7 @@ public class UsuarioMGR {
         }.setActivity(_activity));
     }
 
-    public void login(Activity _activity, String _user, String _password)
-    {
-        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).equalTo(_user);
 
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            LoginActivity activity;
-            String password;
-
-            @Override
-            public void onDataChange(DataSnapshot _snapshot) {
-                for (DataSnapshot user : _snapshot.getChildren()) {
-                    UsuarioEntity usuario=user.getValue(UsuarioEntity.class);
-
-                    if(usuario!=null && usuario.getPassword()!=null) {
-                        if (usuario.getPassword().equals(EncodeUtil.encodePasswordSHA1(password))) {
-                            System.out.println(Constantes.LOG_LOGIN_CORRECTO);
-                            activity.setUsuarioActual(usuario);
-                        } else System.out.println(Constantes.LOG_LOGIN_INCORRECTO);
-                    }
-
-                }
-
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError _databaseError) {
-
-            }
-
-            public ValueEventListener init (Activity _activity, String _password)
-            {
-                password = _password;
-                activity=(LoginActivity) _activity;
-                return this;
-            }
-
-        }.init(_activity,_password));
-
-    }
 
     public void getInfoUsuarioGrupos(Activity _activity, String _id) {
         bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
