@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static java.lang.Math.abs;
-import static java.lang.Math.random;
 
 /**
  * Created by p4triot on 10/11/2016.
@@ -29,8 +28,7 @@ public class FillDatabase {
     private static final int max_evs_per_grup = 10*multiplier; //els grups tindran entre 0 i 10 events
     private static final int max_users_seguits = (num_usuaris/2)*multiplier; //els usuaris seguiran entre 0 i 50 usuaris
     private static final int max_groups_seguits = (num_grups/2)*multiplier; //els usuaris seguiran com a molt entre 0 i 10 grups
-    private static final int max_events_assistir = ((num_grups*max_evs_per_grup)/4)*multiplier;
-    private static final int max_events_no_assistir = max_events_assistir-((num_grups*max_evs_per_grup)/4)*multiplier;
+    private static final int max_event_asistencia = ((num_grups*max_evs_per_grup)/4)*multiplier;
 
     private ArrayList<String> ids_cms = new ArrayList<>();
     private ArrayList<String> ids_users = new ArrayList<>();
@@ -79,7 +77,7 @@ public class FillDatabase {
             temp_grp.setNombreGrupo(groupname);
             temp_grp.setDescripcion(descripcio);
             temp_grp.setWebpage(webpage);
-            String idCreador = ids_cms.get(i% ids_cms.size());
+            String idCreador = ids_cms.get(i%ids_cms.size());
             int num_tags = i%max_tags_per_group;
             String idGrup = Insertar_grup(temp_grp, idCreador, num_tags);
             ids_grups.add(idGrup);
@@ -111,7 +109,7 @@ public class FillDatabase {
         }
     }
 
-    private void generacio_seguiments() {
+    private void generacio_seguiments_usuaris() {
         for (int j = 0; j < ids_users.size(); ++j) {
             String idUsuari = ids_users.get(j);
             int max_seguits = ((j*12345689) % max_users_seguits ) % ids_users.size();
@@ -123,10 +121,21 @@ public class FillDatabase {
         }
     }
 
+    private void generacio_seguiments_grups() {
+        for (int j = 0; j < ids_users.size(); ++j) {
+            String idUsuari = ids_users.get(j);
+            int max_seguits = ((j*12345689) % max_groups_seguits ) % ids_grups.size();
+            for (int i = 0; i < max_seguits; ++i) {
+                int seguir = (i + j) % ids_grups.size();
+                Insertar_seguimentUsuari(idUsuari, ids_grups.get(seguir));
+            }
+        }
+    }
+
     private void generacio_asistencies() {
         for (int j = 0; j < ids_users.size(); ++j) {
             String idUsuari = ids_users.get(j);
-            int max_assistits = ((j*12345689) % max_events_assistir ) % ids_events.size();
+            int max_assistits = ((j*12345689) % max_event_asistencia) % ids_events.size();
             for (int i = 0; i < max_assistits; ++i) {
                 int assistir = (i + j) % ids_events.size();
                 if (i%2 == 0)
@@ -301,7 +310,7 @@ public class FillDatabase {
                 hour%=24;
                 day++;
             }
-            dataFinal = new Date(year, month, day, hour, min);
+            dataFinal = new Date(year-1900, month, day, hour, min);
         }
         else {
             day += (j+1);
@@ -313,7 +322,7 @@ public class FillDatabase {
                 month%=11;
                 year++;
             }
-            dataFinal = new Date(year, month, day, hour, min);
+            dataFinal = new Date(year-1900, month, day, hour, min);
         }
         Date[] dates = {dataInici, dataFinal};
         return dates;
