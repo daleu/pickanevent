@@ -2,49 +2,92 @@ package com.pes12.pickanevent.view;
 
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.text.InputType;
+import android.text.Spanned;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.AutocompletePrediction;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
-public class CrearEventoActivity extends BaseActivity {
+public class CrearEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
 
 
     public static final int GALERIA_REQUEST = 20;
     EventoMGR eMGR;
     Bitmap image;
 
+    //------------------- GOOGLE PLACES API ------------------
+    protected GoogleApiClient mGoogleApiClient;
+
+    private PlaceAutocompleteAdapter mAdapter;
+
+    private AutoCompleteTextView mAutocompleteView;
+
+    private static final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
+            new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
+
+    String lat;
+    String lng;
+
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+
+        //-------------- GOOGLE PLACES API -------------
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, 0 /* clientId */, (GoogleApiClient.OnConnectionFailedListener) this)
+                .addApi(Places.GEO_DATA_API)
+                .build();
+        //-----------------------------------------------
+
+
         setContentView(activity_crear_evento);
         final CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
         calendar.setVisibility(View.INVISIBLE);
@@ -83,6 +126,20 @@ public class CrearEventoActivity extends BaseActivity {
             }
         });
 
+
+        //--------------------- GOOGLE PLACES API -----------------
+        // Retrieve the AutoCompleteTextView that will display Place suggestions.
+        mAutocompleteView = (AutoCompleteTextView)
+                findViewById(R.id.editorLugar);
+
+        // Register a listener that receives callbacks when a suggestion has been selected
+        mAutocompleteView.setOnItemClickListener(mAutocompleteClickListener);
+
+        // Set up the adapter that will retrieve suggestions from the Places Geo Data API that cover
+        // the entire world.
+        mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, BOUNDS_GREATER_SYDNEY,
+                null);
+        mAutocompleteView.setAdapter(mAdapter);
     }
 
     public void crearEvento(View _view) {
@@ -113,11 +170,11 @@ public class CrearEventoActivity extends BaseActivity {
         if (dataFinal.getText().toString().matches("")) {
              ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
                     url.getText().toString(), localitzacio.getText().toString(),
-                     "El " + data.getText().toString() + " a las " + hora.getText().toString(), "", "");
+                     "El " + data.getText().toString() + " a las " + hora.getText().toString(), lat, lng);
         } else {
             String interval = "Del " + data.getText().toString() + " al " + dataFinal.getText().toString() + " a las " + hora.getText().toString();
             ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
-                    url.getText().toString(), localitzacio.getText().toString(), interval, "", "");
+                    url.getText().toString(), localitzacio.getText().toString(), interval, lat, lng);
         }
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
@@ -132,7 +189,7 @@ public class CrearEventoActivity extends BaseActivity {
         if (gratuit.isChecked()) {
             preuText.setFocusable(false);
             preuText.setText("");
-            preuText.setHint("Escriba el precio del evento");
+            preuText.setHint(R.string.ESCRIBE_PRECIO_EVENTO);
         }
         else {
             preuText.setFocusableInTouchMode(true);
@@ -194,5 +251,69 @@ public class CrearEventoActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+
+    //---------------------- GOOGLE PLACES API ---------------
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private AdapterView.OnItemClickListener mAutocompleteClickListener
+            = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            final AutocompletePrediction item = mAdapter.getItem(position);
+            final String placeId = item.getPlaceId();
+            final CharSequence primaryText = item.getPrimaryText(null);
+
+            //Toast.makeText(activity_crear_evento, "Autocomplete item selected: " + primaryText, Toast.LENGTH_SHORT);
+
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
+
+            Toast.makeText(getApplicationContext(), "Clicked: " + primaryText,
+                    Toast.LENGTH_SHORT).show();
+            //Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
+        }
+    };
+
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
+            = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                // Request did not complete successfully
+                //Log.e(TAG, "Place query did not complete. Error: " + places.getStatus().toString());
+                places.release();
+                return;
+            }
+            // Get the Place object from the buffer.
+            final Place place = places.get(0);
+            final LatLng latlng = place.getLatLng();
+            String coordenades[] = latlng.toString().split(",");
+            lat = coordenades[0].substring(10);
+            lng = coordenades[1].replace(")","");
+
+
+            //Log.i(TAG, "Place details received: " + place.getName());
+
+            places.release();
+        }
+    };
+
+    private static Spanned formatPlaceDetails(Resources res, CharSequence name, String id,
+                                              CharSequence address, CharSequence phoneNumber, Uri websiteUri) {
+        //Log.e(TAG, res.getString(R.string.place_details, name, id, address, phoneNumber,
+                //websiteUri));
+        //return Html.fromHtml(res.getString(R.string.place_details, name, id, address, phoneNumber,
+              //  websiteUri));
+
+        return Html.fromHtml(res.getString(R.string.place_details, name, id, address, phoneNumber,
+                websiteUri));
     }
 }

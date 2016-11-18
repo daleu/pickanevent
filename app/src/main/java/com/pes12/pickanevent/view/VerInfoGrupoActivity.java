@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,11 +28,13 @@ public class VerInfoGrupoActivity extends BaseActivity {
     ImageView foto;
     TextView tags;
     ListView eventos;
+    Button boton;
 
     String idGrupo;
     GrupoMGR gMGR;
     EventoMGR eMGR;
     TagMGR tMGR;
+    Boolean cm = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +46,15 @@ public class VerInfoGrupoActivity extends BaseActivity {
         foto = (ImageView)findViewById(R.id.imagenGrupo);
         tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
+        boton = (Button)findViewById(R.id.seguir);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
         /////////////////////////////////////////////////
 
+        Bundle b = getIntent().getExtras(); //Para pruebas
+        cm = b.getBoolean("CM");
+        //System.out.println("Valor CM "+ cm);
 
         idGrupo = "-KUl_ie2eRYXdXKVJffQ";
 
@@ -85,13 +92,16 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
-        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos());
+        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(),cm);
         Map<String,Boolean> tagsMap = _grupo.getIdTags();
         tagsMap.put(_grupo.getidTagGeneral(),true);
         tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
         descripcion.setText(_grupo.getDescripcion());
+        String texto = "SEGUIR!";
+        if (cm) texto = "EDITAR";
+        boton.setText(texto);
         String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);

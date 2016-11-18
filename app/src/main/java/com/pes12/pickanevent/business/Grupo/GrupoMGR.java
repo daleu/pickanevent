@@ -14,6 +14,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
@@ -153,6 +154,30 @@ public class GrupoMGR {
 
             public ValueEventListener setActivity(Activity _activity) {
                 activity = (VerInfoOtroUsuarioActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getInfoGruposCreados(Activity _activity, String _id) {
+        bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            VerGruposCreadosActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class));
+                //System.out.println(g.getNickname());
+                //System.out.println(g.getImagen());//<------------
+
+                activity.rellenarListaGrupos(g);
+            }
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerGruposCreadosActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

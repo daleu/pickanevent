@@ -13,7 +13,8 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.pes12.pickanevent.view.MainActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <Button
             android:layout_width="wrap_content"
@@ -81,6 +82,14 @@
             android:onClick="goSignOut" />
 
         <Button
+            android:text="VER INFORMACIÓN DE GRUPOS CREADOS"
+            android:layout_width="269dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonVerInformacionDeGruposCreados"
+            android:layout_weight="0.05"
+            android:onClick="goVerGruposCreados" />
+
+        <Button
             android:text="CAMBIAR MODO"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,6 +102,13 @@
             android:layout_height="match_parent"
             android:id="@+id/buttonCrearGrupo"
             android:onClick="goCrearGrupo" />
+
+        <Button
+            android:text="Navigation Drawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NavBar"
+            android:onClick="goNavBar" />
 
     </LinearLayout>
 </ScrollView>

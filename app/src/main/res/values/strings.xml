@@ -20,6 +20,7 @@
     <string name="DEFAULT_NOMBRE_USUARIO">Nombre del Usuario</string>
     <string name="DEFAULT_GRUPOS">Grupos</string>
     <string name="DEFAULT_EVENTOS">Eventos</string>
+    <string name="DEFAULT_PROXIMOS_EVENTOS">Proximos Eventos</string>
     <string name="DEFAULT_VER_INFO_GRUPO">Ver información del grupo</string>
     <string name="DEFAULT_VER_INFO_EVENTO">Ver información del evento</string>
     <string name="DEFAULT_BUSCAR">Buscar</string>
@@ -57,5 +58,12 @@
     <string name="ESCRIBE_NOMBRE_GRUPO">Escriba el nombre del grupo</string>
     <string name="ESCRIBE_DESCRIPCION_GRUPO">Escribe la descripción de tu grupo</string>
     <string name="ESCRIBE_TAG_PRINCIPAL_GRUPO">Escribe el tag principal de tu grupo</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="place_details">&lt;b&gt;%1$s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Place Id: %2$s&lt;/i&gt;&lt;br/&gt;Address: %3$s&lt;br/&gt;Phone: %4$s&lt;br/&gt;Website: %5$s</string>
 </resources>
