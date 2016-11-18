@@ -35,6 +35,7 @@ public class FillDatabase {
     private ArrayList<String> ids_tags = new ArrayList<>();
     private ArrayList<String> ids_grups = new ArrayList<>();
     private ArrayList<String> ids_events = new ArrayList<>();
+    private ArrayList<String> developer_ids = new ArrayList<>();
 
     //creacio usuaris: nickname i psw son el mateix
     private void creacio_usuaris() {
@@ -52,6 +53,11 @@ public class FillDatabase {
             else
                 ids_users.add(userId);
         }
+
+        //Afegim un compte per cadascun dels membres del grup
+        String[] developers = {"Victor", "Clara", "Oscar", "David", "Jordi", "Edgar", "Jan"};
+        for (String dev : developers)
+            developer_ids.add(Insertar_usuari(new UsuarioEntity(dev, false), dev + "@pickevent.upc", dev));
     }
 
     private void creacio_tags() {
