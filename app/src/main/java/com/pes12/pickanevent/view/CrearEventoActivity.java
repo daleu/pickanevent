@@ -132,7 +132,7 @@ public class CrearEventoActivity extends BaseActivity {
         if (gratuit.isChecked()) {
             preuText.setFocusable(false);
             preuText.setText("");
-            preuText.setHint("Escriba el precio del evento");
+            preuText.setHint(R.string.ESCRIBE_PRECIO_EVENTO);
         }
         else {
             preuText.setFocusableInTouchMode(true);
