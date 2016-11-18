@@ -3,6 +3,8 @@ package com.pes12.pickanevent.business.Usuario;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Base64;
 import android.util.Log;
 
@@ -21,7 +23,10 @@ import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
+import com.pes12.pickanevent.view.NavigationDrawer;
+import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
+import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
@@ -237,6 +242,28 @@ public class UsuarioMGR {
 
     }
 
+    public void getInfoUsuarioGrupos(Activity _activity, String _id) {
+        bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            VerGruposCreadosActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.mostrarInfoUsuarioGrupos(u);
+            }
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerGruposCreadosActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
     public void getInfoUsuario(Activity _activity, String _id) {
         bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
@@ -342,5 +369,27 @@ public class UsuarioMGR {
             e.getMessage();
             return null;
         }
+    }
+
+    public void getEventsFromUserFromFragment(Fragment _activity, String _idUsuario) {
+        bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            TimelineFragment activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.getUsuarioEvents(u);
+            }
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity) {
+                activity = (TimelineFragment) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 }

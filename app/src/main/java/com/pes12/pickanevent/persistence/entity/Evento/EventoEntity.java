@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Evento;
 
+import java.util.Date;
+
 /**
  * Created by aleue on 21/10/2016.
  */
@@ -13,9 +15,10 @@ public class EventoEntity {
     private String webpage;
     private String localizacion;
     private String horario;
+    private Date dataInici;
+    private Date dataFinal;
     private String latitud;
     private String longitud;
-
 
     public EventoEntity()
     {
@@ -104,5 +107,21 @@ public class EventoEntity {
 
     public void setLongitud(String longitud) {
         this.longitud = longitud;
+    }
+
+    public Date getDataInici() {
+        return dataInici;
+    }
+
+    public void setDataInici(Date dataInici) {
+        this.dataInici = dataInici;
+    }
+
+    public Date getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(Date dataFinal) {
+        this.dataFinal = dataFinal;
     }
 }
