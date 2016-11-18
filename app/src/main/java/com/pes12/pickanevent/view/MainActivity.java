@@ -154,6 +154,10 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, VerEventosUsuariosQueSigoActivity.class));
     }
 
+    public void goVerGruposCreados(View _view) {
+        startActivity(new Intent(MainActivity.this, VerGruposCreadosActivity.class));
+    }
+
     public void cambiarModo(View _view){
         if (cm) {
             cm = false;
