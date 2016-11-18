@@ -74,7 +74,7 @@ public class VerGruposCreadosActivity extends BaseActivity {
         //System.out.println(grupos.get(0).primeraLinea);
         AdapterLista ale = new AdapterLista(VerGruposCreadosActivity.this,R.layout.vista_adapter_lista,grupos);
         listaGrupos.setAdapter(ale);
-        //hideProgressDialog();
+        hideProgressDialog();
     }
 
     private Bitmap StringToBitMap(String encodedString) {
