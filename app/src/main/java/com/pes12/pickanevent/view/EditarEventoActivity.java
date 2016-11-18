@@ -1,17 +1,33 @@
 package com.pes12.pickanevent.view;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.AutocompletePrediction;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.text.InputType;
+import android.text.Spanned;
 import android.util.Base64;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -31,16 +47,37 @@ import java.util.Map;
 
 import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
 
-public class EditarEventoActivity extends BaseActivity {
+public class EditarEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
     EventoMGR eMGR;
-    String idEvento = "-KV9U5W-oL1c7xF9fXt4";
+    String idEvento = "-KWnZoC88q5OZrOjBhGp";
     Bitmap image;
 
     private ImageView imagenEvento;
 
+    //------------------- GOOGLE PLACES API ------------------
+    protected GoogleApiClient mGoogleApiClient;
+
+    private PlaceAutocompleteAdapter mAdapter;
+
+    private AutoCompleteTextView mAutocompleteView;
+
+    private static final LatLngBounds bounds =
+            new LatLngBounds( new LatLng( 35.871045, -9.919695 ), new LatLng( 42.957396, 4.729860 ) );
+
+    String lat;
+    String lng;
+
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+
+        //-------------- GOOGLE PLACES API -------------
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, 0 /* clientId */, (GoogleApiClient.OnConnectionFailedListener) this)
+                .addApi(Places.GEO_DATA_API)
+                .build();
+        //-----------------------------------------------
+
         setContentView(R.layout.activity_editar_evento);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this);
@@ -56,6 +93,20 @@ public class EditarEventoActivity extends BaseActivity {
         });
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
         preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+
+        //--------------------- GOOGLE PLACES API -----------------
+        // Retrieve the AutoCompleteTextView that will display Place suggestions.
+        mAutocompleteView = (AutoCompleteTextView)
+                findViewById(R.id.editorLugar);
+
+        // Register a listener that receives callbacks when a suggestion has been selected
+        mAutocompleteView.setOnItemClickListener(mAutocompleteClickListener);
+
+        // Set up the adapter that will retrieve suggestions from the Places Geo Data API that cover
+        // the entire world.
+        mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, bounds,
+                null);
+        mAutocompleteView.setAdapter(mAdapter);
 
     }
 
@@ -127,7 +178,7 @@ public class EditarEventoActivity extends BaseActivity {
         String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
         EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
-                url.getText().toString(),localitzacio.getText().toString(),data.getText().toString(),"","");
+                url.getText().toString(),localitzacio.getText().toString(),data.getText().toString(),lat,lng);
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
@@ -189,5 +240,68 @@ public class EditarEventoActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+    //---------------------- GOOGLE PLACES API ---------------
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private AdapterView.OnItemClickListener mAutocompleteClickListener
+            = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            final AutocompletePrediction item = mAdapter.getItem(position);
+            final String placeId = item.getPlaceId();
+            final CharSequence primaryText = item.getPrimaryText(null);
+
+            //Toast.makeText(activity_crear_evento, "Autocomplete item selected: " + primaryText, Toast.LENGTH_SHORT);
+
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
+
+            Toast.makeText(getApplicationContext(), "Clicked: " + primaryText,
+                    Toast.LENGTH_SHORT).show();
+            //Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
+        }
+    };
+
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
+            = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                // Request did not complete successfully
+                //Log.e(TAG, "Place query did not complete. Error: " + places.getStatus().toString());
+                places.release();
+                return;
+            }
+            // Get the Place object from the buffer.
+            final Place place = places.get(0);
+            final LatLng latlng = place.getLatLng();
+            String coordenades[] = latlng.toString().split(",");
+            lat = coordenades[0].substring(10);
+            lng = coordenades[1].replace(")","");
+
+
+            //Log.i(TAG, "Place details received: " + place.getName());
+
+            places.release();
+        }
+    };
+
+    private static Spanned formatPlaceDetails(Resources res, CharSequence name, String id,
+                                              CharSequence address, CharSequence phoneNumber, Uri websiteUri) {
+        //Log.e(TAG, res.getString(R.string.place_details, name, id, address, phoneNumber,
+        //websiteUri));
+        //return Html.fromHtml(res.getString(R.string.place_details, name, id, address, phoneNumber,
+        //  websiteUri));
+
+        return Html.fromHtml(res.getString(R.string.place_details, name, id, address, phoneNumber,
+                websiteUri));
     }
 }

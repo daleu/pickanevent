@@ -70,8 +70,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
     private AutoCompleteTextView mAutocompleteView;
 
-    private static final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
-            new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
+    private static final LatLngBounds bounds =
+    new LatLngBounds( new LatLng( 35.871045, -9.919695 ), new LatLng( 42.957396, 4.729860 ) );
 
     String lat;
     String lng;
@@ -137,7 +137,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
         // Set up the adapter that will retrieve suggestions from the Places Geo Data API that cover
         // the entire world.
-        mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, BOUNDS_GREATER_SYDNEY,
+        mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, bounds,
                 null);
         mAutocompleteView.setAdapter(mAdapter);
     }

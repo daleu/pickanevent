@@ -97,6 +97,13 @@
             android:onClick="cambiarModo" />
 
         <Button
+            android:text="Crear Grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonCrearGrupo"
+            android:onClick="goCrearGrupo" />
+
+        <Button
             android:text="Navigation Drawer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

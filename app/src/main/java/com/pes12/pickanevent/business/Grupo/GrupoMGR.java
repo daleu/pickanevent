@@ -85,7 +85,7 @@ public class GrupoMGR {
 
     public String crear(GrupoEntity _entity)
     {
-        bdRefGrupos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_GRUPO).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity ent;
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
@@ -185,7 +185,7 @@ public class GrupoMGR {
 
     public void getGruposByNombreGrupo(Activity _activity, String _text)
     {
-        Query queryRef = bdRefGrupos.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_GRUPO).startAt(_text).endAt(_text+"\uf8ff");
+        Query queryRef = bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).startAt(_text).endAt(_text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;
