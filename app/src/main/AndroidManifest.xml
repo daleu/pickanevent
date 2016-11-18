@@ -35,6 +35,7 @@
         <activity android:name=".view.CrearUsuarioActivity" />
         <activity android:name=".view.BuscarEventoActivity" />
         <activity android:name=".view.VerEventosUsuariosQueSigoActivity" />
+        <activity android:name=".view.CrearGrupoActivity"></activity>
         <activity
             android:name=".view.NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
