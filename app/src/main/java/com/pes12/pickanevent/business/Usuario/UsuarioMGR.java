@@ -166,7 +166,7 @@ public class UsuarioMGR {
     public void getUsersByUsername(Activity _activity, String _text)
     {
 
-        Query queryRef = bdRefUsuarios.orderByChild(Constantes.BBDD_TABLA_USUARIOS).startAt(_text).endAt(_text+"\uf8ff");
+        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).startAt(_text).endAt(_text+"\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;
@@ -200,7 +200,7 @@ public class UsuarioMGR {
 
     public void login(Activity _activity, String _user, String _password)
     {
-        Query queryRef = bdRefUsuarios.orderByChild(Constantes.BBDD_TABLA_USUARIOS).equalTo(_user);
+        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).equalTo(_user);
 
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             LoginActivity activity;

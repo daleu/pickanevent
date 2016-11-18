@@ -29,7 +29,7 @@ public class GrupoEntity {
 
     public enum ATTRIBUTES {
 
-        NOMBREGRUPO   ("nombregrupo"),
+        NOMBREGRUPO   ("nombreGrupo"),
         DESCRIPCION ("descripcion"),
         IMAGEN      ("imagen"),
         NICKNAME    ("nickname"),
