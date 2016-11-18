@@ -2,6 +2,8 @@ package com.pes12.pickanevent.view;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -35,10 +37,17 @@ public class NavigationDrawer extends BaseActivity
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.main_fragment, new TimelineFragment());
-        ft.addToBackStack("tag_back");
-        ft.commit();
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        fragmentClass = TimelineFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
     }
 
     @Override
