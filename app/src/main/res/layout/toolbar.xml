@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/gobackbutton"
             android:background="@null"
-            android:src="@drawable/ic_keyboard_backspace_black_24dp"
+            android:src="@drawable/ic_keyboard_backspace_white_24dp"
             android:layout_alignParentEnd="true"
             android:onClick="goBack"
             android:layout_alignParentRight="true"/>
