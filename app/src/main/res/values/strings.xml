@@ -9,6 +9,7 @@
     <string name="ESCRIBE_NOMBRE_EVENTO">Escriba el nombre del evento</string>
     <string name="EVENTO_GRATUITO_PREG">El evento será gratuito?</string>
     <string name="DEFAULT_CREAR_EVENTO">Crear Evento</string>
+    <string name="DEFAULT_BUSCAR_EVENTO">Buscar Evento</string>
     <string name="ESCRIBE_DESCRIPCION_EVENTO">Escribe la descripción de tu evento</string>
     <string name="ESCRIBE_PRECIO_EVENTO">Escriba el precio del evento</string>
     <string name="ESCRIBE_URL_ENTRADAS">En el caso que se puedan comprar online, escribe la URL de venta de entradas</string>

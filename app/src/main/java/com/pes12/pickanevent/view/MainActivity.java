@@ -1,20 +1,14 @@
 package com.pes12.pickanevent.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.MGRFactory;
-import com.pes12.pickanevent.business.Tag.TagMGR;
-import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
@@ -182,6 +176,10 @@ BLOQUE DE TEST
 
     public void goCrearGrupo(View _view) {
         startActivity(new Intent(MainActivity.this, CrearGrupoActivity.class));
+    }
+
+    public void goBuscarEvento(View _view) {
+        startActivity(new Intent(MainActivity.this, BuscarEventoActivity.class));
     }
 
 }

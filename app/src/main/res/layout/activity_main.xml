@@ -110,5 +110,12 @@
             android:id="@+id/NavBar"
             android:onClick="goNavBar" />
 
+        <Button
+            android:text="Buscar Evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonBuscarEvento"
+            android:onClick="goBuscarEvento" />
+
     </LinearLayout>
 </ScrollView>
