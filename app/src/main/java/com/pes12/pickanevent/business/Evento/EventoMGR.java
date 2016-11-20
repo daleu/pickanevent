@@ -1,12 +1,11 @@
 package com.pes12.pickanevent.business.Evento;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
 import android.util.Base64;
 
-import com.google.android.gms.common.api.BooleanResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,7 +14,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -23,7 +22,6 @@ import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -144,6 +142,35 @@ public class EventoMGR {
             public ValueEventListener setActivity (Activity _activity)
             {
                 activity=(EditarEventoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+    public void getInfoEventoElegido(Activity _activity, String _attr, String _val) {
+        final String aux = _attr;
+        final String aux2 = _val;
+        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+            BuscarEventoActivity activity;
+            EventoEntity e = new EventoEntity();
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+
+                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
+                    if (aux.equals("titulo") && aux2.equals(evento.getValue(EventoEntity.class).getTitulo())) {
+                        e = evento.getValue(EventoEntity.class);
+                    }
+                }
+                activity.mostrarInfoEventoElegido(e);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+            public ValueEventListener setActivity (Activity _activity)
+            {
+                activity=(BuscarEventoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

@@ -6,20 +6,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
 public class BuscarEventoActivity extends BaseActivity {
 
+    EventoMGR eMGR;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_buscar_evento);
-        //EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
-        //textoEvento.setVisibility(View.INVISIBLE);
-        //EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
-        //textoLugar.setVisibility(View.INVISIBLE);
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.options_array
                 ,android.R.layout.simple_spinner_item);
@@ -55,4 +56,18 @@ public class BuscarEventoActivity extends BaseActivity {
             }
         });
     }
+    public void buscarEvento(View _view) {
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        eMGR = MGRFactory.getInstance().getEventoMGR();
+        if(spinner.getSelectedItem().toString().equals("Evento")) {
+            EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
+            if (textoEvento.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
+            else eMGR.getInfoEventoElegido(this,"titulo",textoEvento.getText().toString());
+        }
+    }
+    public void mostrarInfoEventoElegido(EventoEntity _evento) {
+        if (_evento.isEmpty()) Toast.makeText(this,R.string.EVENTO_NO_ENCONTRADO,Toast.LENGTH_LONG).show();
+        else Toast.makeText(this,_evento.getTitulo(),Toast.LENGTH_LONG).show();
+    }
+
 }

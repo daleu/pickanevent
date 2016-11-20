@@ -9,6 +9,10 @@
     tools:context="com.pes12.pickanevent.view.CrearEventoActivity"
     android:background="#bfffc2">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        ></include>
 
     <Button
         android:text="@string/DEFAULT_BUSCAR_EVENTO"
@@ -18,6 +22,7 @@
         android:layout_marginRight="10dp"
         android:layout_height="30dp"
         android:radius="20dip"
+        android:onClick="buscarEvento"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/selectLugar"
         android:layout_centerHorizontal="true" />
@@ -34,25 +39,33 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:inputType="textPersonName"
-        android:text="@string/ESCRIBE_NOMBRE_EVENTO"
+        android:hint="@string/ESCRIBE_NOMBRE_EVENTO"
+        android:textColorHint="#8a939d"
         android:ems="10"
-        android:layout_marginTop="33dp"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="28dp"
         android:id="@+id/selectEvento"
+        android:background="#eceff1"
+        android:textStyle="normal"
         android:layout_below="@+id/spinner"
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:inputType="textPersonName"
-        android:text="@string/ESCRIBE_LUGAR_EVENTO"
+        android:hint="@string/ESCRIBE_LUGAR_EVENTO"
+        android:textColorHint="#8a939d"
         android:ems="10"
+        android:fontFamily="sans-serif"
         android:id="@+id/selectLugar"
-        android:layout_alignBaseline="@+id/selectEvento"
-        android:layout_alignBottom="@+id/selectEvento"
-        android:layout_alignStart="@+id/selectEvento" />
+        android:background="#eceff1"
+        android:textStyle="normal"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -36,6 +36,7 @@ public class EventoEntity {
         setLatitud(latitud);
         setLongitud(longitud);
     }
+    public boolean isEmpty() {return (titulo == null);}
 
     public String getTitulo() {
         return titulo;
