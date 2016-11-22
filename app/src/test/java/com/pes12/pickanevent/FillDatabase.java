@@ -53,7 +53,6 @@ public class FillDatabase {
             else
                 ids_users.add(userId);
         }
-
         //Afegim un compte per cadascun dels membres del grup
         String[] developers = {"Victor", "Clara", "Oscar", "David", "Jordi", "Edgar", "Jan"};
         for (String dev : developers)

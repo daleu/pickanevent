@@ -42,7 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public UsuarioEntity getUsuarioActual()
+    public static UsuarioEntity getUsuarioActual()
     {
         return usuarioActual;
     }
