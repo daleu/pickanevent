@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.business.Grupo;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +15,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
@@ -214,5 +216,35 @@ public class GrupoMGR {
             }
 
         }.setActivity(_activity));
+    }
+
+    public void getGrupoEventosForFragment(Fragment _activity, Map<String, Boolean> _idU) {
+        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
+            Map<String,Map<String,Boolean>> info = new LinkedHashMap<String, Map<String, Boolean>>();
+            TimelineFragment activity;
+            Map<String, Boolean> idU;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot grupo : dataSnapshot.getChildren()) {
+                    GrupoEntity u = grupo.getValue(GrupoEntity.class);
+                    if (idU.containsKey(grupo.getKey())) {
+                        info.put(u.getNombreGrupo(), u.getIdEventos());
+                    }
+                }
+                activity.getAllGrupoEvents(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+            public ValueEventListener setActivity (Fragment _activity, Map<String, Boolean> _idU)
+            {
+                activity=(TimelineFragment) _activity;
+                idU = _idU;
+                return this;
+            }
+        }.setActivity(_activity, _idU));
     }
 }

@@ -159,7 +159,17 @@ public class TimelineFragment extends Fragment {
     public void getAllUsersEvents (Map<String, Map<String, Boolean>> _usrs){
         _usrs.put(myUser.getUsername(),myUser.getIdEventos());
         listEvents = _usrs;
-        //gMGR.get
+        gMGR.getGrupoEventosForFragment(this,myUser.getIdGrupos());
+    }
+
+    public void getAllGrupoEvents (Map<String, Map<String, Boolean>> _info){
+        listEvents.putAll(_info);
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        for (String key: listEvents.keySet()) {
+            Map<String, Boolean> aux = listEvents.get(key);
+            map.putAll(aux);
+        }
+        eMGR.getInfoEventosUsuarioFromFragment(this,map);
     }
 
     public void mostrarEventosUsuario(ArrayList<Info> info) {
