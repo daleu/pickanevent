@@ -229,7 +229,7 @@ public class GrupoMGR {
                 for (DataSnapshot grupo : dataSnapshot.getChildren()) {
                     GrupoEntity u = grupo.getValue(GrupoEntity.class);
                     if (idU.containsKey(grupo.getKey())) {
-                        info.put(u.getNombreGrupo(), u.getIdEventos());
+                        if(u.getIdEventos()!=null) info.put(u.getNombreGrupo(), u.getIdEventos());
                     }
                 }
                 activity.getAllGrupoEvents(info);

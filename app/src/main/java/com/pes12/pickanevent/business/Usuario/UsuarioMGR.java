@@ -329,7 +329,7 @@ public class UsuarioMGR {
         }
     }
 
-    public void getEventsFromUserFromFragment(Fragment _activity, String _idUsuario) {
+    public void getUserFromFragment(Fragment _activity, String _idUsuario) {
         bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             TimelineFragment activity;

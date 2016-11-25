@@ -18,11 +18,9 @@ import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,7 +95,7 @@ public class TimelineFragment extends Fragment {
 
         idUsuario = "-KWMg9DPDSeFOLCWmVcg";
 
-        uMGR.getEventsFromUserFromFragment(this, idUsuario);
+        uMGR.getUserFromFragment(this, idUsuario);
 
     }
 
