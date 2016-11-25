@@ -66,6 +66,11 @@ public class BuscarEventoActivity extends BaseActivity {
             if (textoEvento.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
             else eMGR.getInfoEventoElegido(this,"titulo",textoEvento.getText().toString());
         }
+        if(spinner.getSelectedItem().toString().equals("Lugar")) {
+            EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
+            if (textoLugar.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
+            else eMGR.getInfoEventoElegido(this,"localizacion",textoLugar.getText().toString());
+        }
     }
     public void mostrarInfoEventoElegido(ArrayList<EventoEntity> _eventos) {
         if (_eventos.isEmpty()) Toast.makeText(this,R.string.EVENTO_NO_ENCONTRADO,Toast.LENGTH_LONG).show();
