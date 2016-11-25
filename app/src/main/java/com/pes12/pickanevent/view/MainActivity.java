@@ -20,8 +20,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
 /*
 BLOQUE DE TEST
 */
@@ -180,6 +178,10 @@ BLOQUE DE TEST
 
     public void goBuscarEvento(View _view) {
         startActivity(new Intent(MainActivity.this, BuscarEventoActivity.class));
+    }
+
+    public void goIndicarTags(View _view) {
+        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class));
     }
 
 }

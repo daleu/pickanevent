@@ -117,5 +117,12 @@
             android:id="@+id/buttonBuscarEvento"
             android:onClick="goBuscarEvento" />
 
+        <Button
+            android:text="Indicar tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:onClick="goIndicarTags" />
+
     </LinearLayout>
 </ScrollView>

@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class CrearGrupoActivity extends AppCompatActivity {
+public class CrearGrupoActivity extends BaseActivity {
 
     ImageView foto;
     EditText nombre;

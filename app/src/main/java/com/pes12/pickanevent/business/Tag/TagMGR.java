@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
+import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
 import java.util.ArrayList;
@@ -55,8 +56,6 @@ public class TagMGR {
                 return this;
             }
         }.setEntity(_entity));
-
-
         return "";
     }
 
@@ -88,5 +87,31 @@ public class TagMGR {
                 return this;
             }
         }.setActivity(_activity, _idS));
+    }
+
+    public void getTodosLosTags(Activity _activity) {
+        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<String> info = new ArrayList();
+            IndicarTagsActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                info.clear();
+                for (DataSnapshot tag : _dataSnapshot.getChildren()) {
+                    TagEntity t = tag.getValue(TagEntity.class);
+                    info.add(t.getNombreTag());
+                }
+                activity.mostrarTags(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+            public ValueEventListener setActivity (Activity _activity)
+            {
+                activity=(IndicarTagsActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 }
