@@ -39,7 +39,7 @@
             android:layout_below="@+id/EventosTituloMainline"
             android:layout_alignStart="@+id/EventosTituloMainline"
             android:layout_marginRight="15dp"
-            android:layout_height="105dp" />
+            android:layout_height="wrap_content" />
 
         </RelativeLayout>
     </ScrollView>

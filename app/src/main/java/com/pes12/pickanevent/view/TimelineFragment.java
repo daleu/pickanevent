@@ -152,22 +152,25 @@ public class TimelineFragment extends Fragment {
 
     public void getUsuarioEvents(UsuarioEntity _usuario){
         myUser = _usuario;
-        uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
+        if(myUser.getIdUsuarios() != null) uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
+        else getAllUsersEvents(null);
         //eMGR.getInfoEventosUsuarioFromFragment(this, _usuario.getIdEventos());
     }
 
     public void getAllUsersEvents (Map<String, Map<String, Boolean>> _usrs){
-        _usrs.put(myUser.getUsername(),myUser.getIdEventos());
-        listEvents = _usrs;
-        Log.e("PROVA!","Holaaaaaaaaaaaaaaah! " + myUser.getIdGrupos());
+        if(_usrs != null) {
+            _usrs.put(myUser.getUsername(), myUser.getIdEventos());
+            listEvents = _usrs;
+        }
+        else {
+            listEvents.put(myUser.getUsername(), myUser.getIdEventos());
+        }
         if(myUser.getIdGrupos()==null) getAllGrupoEvents(null);
         else gMGR.getGrupoEventosForFragment(this,myUser.getIdGrupos());
     }
 
     public void getAllGrupoEvents (Map<String, Map<String, Boolean>> _info){
-        if (_info != null) {
-            listEvents.putAll(_info);
-        }
+        if (_info != null)listEvents.putAll(_info);
         Map<String, Boolean> map = new HashMap<String, Boolean>();
         for (String key: listEvents.keySet()) {
             Map<String, Boolean> aux = listEvents.get(key);
