@@ -10,18 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,10 +46,13 @@ public class TimelineFragment extends Fragment {
 
     EventoMGR eMGR;
     UsuarioMGR uMGR;
+    GrupoMGR gMGR;
 
     ListView eventos;
 
     String idUsuario;
+    UsuarioEntity myUser;
+    Map<String, Map<String, Boolean>> listEvents;
 
     private OnFragmentInteractionListener mListener;
 
@@ -87,10 +91,11 @@ public class TimelineFragment extends Fragment {
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "-KWMemvpLMu62EajFZ2b";
+        idUsuario = "-KWMg9DPDSeFOLCWmVcg";
 
-        uMGR.getEventsFromUserFromFragment(this, idUsuario);
+        uMGR.getUserFromFragment(this, idUsuario);
 
     }
 
@@ -144,7 +149,32 @@ public class TimelineFragment extends Fragment {
 
 
     public void getUsuarioEvents(UsuarioEntity _usuario){
-        eMGR.getInfoEventosUsuarioFromFragment(this, _usuario.getIdEventos());
+        myUser = _usuario;
+        if(myUser.getIdUsuarios() != null) uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
+        else getAllUsersEvents(null);
+        //eMGR.getInfoEventosUsuarioFromFragment(this, _usuario.getIdEventos());
+    }
+
+    public void getAllUsersEvents (Map<String, Map<String, Boolean>> _usrs){
+        if(_usrs != null) {
+            _usrs.put(myUser.getUsername(), myUser.getIdEventos());
+            listEvents = _usrs;
+        }
+        else {
+            listEvents.put(myUser.getUsername(), myUser.getIdEventos());
+        }
+        if(myUser.getIdGrupos()==null) getAllGrupoEvents(null);
+        else gMGR.getGrupoEventosForFragment(this,myUser.getIdGrupos());
+    }
+
+    public void getAllGrupoEvents (Map<String, Map<String, Boolean>> _info){
+        if (_info != null)listEvents.putAll(_info);
+        Map<String, Boolean> map = new HashMap<String, Boolean>();
+        for (String key: listEvents.keySet()) {
+            Map<String, Boolean> aux = listEvents.get(key);
+            map.putAll(aux);
+        }
+        eMGR.getInfoEventosUsuarioFromFragment(this,map);
     }
 
     public void mostrarEventosUsuario(ArrayList<Info> info) {

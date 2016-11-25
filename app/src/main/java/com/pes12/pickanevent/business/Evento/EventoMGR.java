@@ -148,20 +148,22 @@ public class EventoMGR {
     }
     public void getInfoEventoElegido(Activity _activity, String _attr, String _val) {
         final String aux = _attr;
-        final String aux2 = _val;
+        final CharSequence aux2 = _val.toLowerCase();
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             BuscarEventoActivity activity;
-            EventoEntity e = new EventoEntity();
-
+            ArrayList<EventoEntity> eventsElegits = new ArrayList<EventoEntity>();
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
-                    if (aux.equals("titulo") && aux2.equals(evento.getValue(EventoEntity.class).getTitulo())) {
-                        e = evento.getValue(EventoEntity.class);
+                    if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
+                        eventsElegits.add(evento.getValue(EventoEntity.class));
+                    }
+                    else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
+                        eventsElegits.add(evento.getValue(EventoEntity.class));
                     }
                 }
-                activity.mostrarInfoEventoElegido(e);
+                activity.mostrarInfoEventoElegido(eventsElegits);
             }
 
             @Override

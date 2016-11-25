@@ -13,6 +13,8 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
+import java.util.ArrayList;
+
 public class BuscarEventoActivity extends BaseActivity {
 
     EventoMGR eMGR;
@@ -64,10 +66,19 @@ public class BuscarEventoActivity extends BaseActivity {
             if (textoEvento.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
             else eMGR.getInfoEventoElegido(this,"titulo",textoEvento.getText().toString());
         }
+        if(spinner.getSelectedItem().toString().equals("Lugar")) {
+            EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
+            if (textoLugar.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
+            else eMGR.getInfoEventoElegido(this,"localizacion",textoLugar.getText().toString());
+        }
     }
-    public void mostrarInfoEventoElegido(EventoEntity _evento) {
-        if (_evento.isEmpty()) Toast.makeText(this,R.string.EVENTO_NO_ENCONTRADO,Toast.LENGTH_LONG).show();
-        else Toast.makeText(this,_evento.getTitulo(),Toast.LENGTH_LONG).show();
+    public void mostrarInfoEventoElegido(ArrayList<EventoEntity> _eventos) {
+        if (_eventos.isEmpty()) Toast.makeText(this,R.string.EVENTO_NO_ENCONTRADO,Toast.LENGTH_LONG).show();
+        else {
+            for (int i = 0; i < _eventos.size(); ++i) {
+                Toast.makeText(this, _eventos.get(i).getTitulo(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
 }

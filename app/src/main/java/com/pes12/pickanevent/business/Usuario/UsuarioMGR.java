@@ -329,7 +329,7 @@ public class UsuarioMGR {
         }
     }
 
-    public void getEventsFromUserFromFragment(Fragment _activity, String _idUsuario) {
+    public void getUserFromFragment(Fragment _activity, String _idUsuario) {
         bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             TimelineFragment activity;
@@ -349,5 +349,35 @@ public class UsuarioMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void getUsersForFragment(Fragment _activity, Map<String, Boolean> _idU) {
+        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+            Map<String,Map<String,Boolean>> info = new LinkedHashMap<String, Map<String, Boolean>>();
+            TimelineFragment activity;
+            Map<String, Boolean> idU;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot usuario : dataSnapshot.getChildren()) {
+                    UsuarioEntity u = usuario.getValue(UsuarioEntity.class);
+                    if (idU.containsKey(usuario.getKey())) {
+                        info.put(u.getNickname(), u.getIdEventos());
+                    }
+                }
+                activity.getAllUsersEvents(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+            public ValueEventListener setActivity (Fragment _activity, Map<String, Boolean> _idU)
+            {
+                activity=(TimelineFragment) _activity;
+                idU = _idU;
+                return this;
+            }
+        }.setActivity(_activity, _idU));
     }
 }
