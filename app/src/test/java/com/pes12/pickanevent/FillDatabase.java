@@ -7,6 +7,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import static java.lang.Math.abs;
 
@@ -22,7 +23,7 @@ public class FillDatabase {
     private static final int num_grups = 20*multiplier;
 
     private static final int num_tags = 10*multiplier;
-    private static final int max_tags_per_event = 3*(multiplier/3);
+    private static final int max_tags_per_user = 3*(multiplier/3);
     private static final int max_tags_per_group = 3*(multiplier/3);
 
     private static final int max_evs_per_grup = 10*multiplier; //els grups tindran entre 0 i 10 events
@@ -31,11 +32,31 @@ public class FillDatabase {
     private static final int max_event_asistencia = ((num_grups*max_evs_per_grup)/4)*multiplier;
 
     private ArrayList<String> ids_cms = new ArrayList<>();
+    private ArrayList<String> name_cms = new ArrayList<>();
     private ArrayList<String> ids_users = new ArrayList<>();
-    private ArrayList<String> ids_tags = new ArrayList<>();
+    private ArrayList<String> name_users = new ArrayList<>();
+    private ArrayList<String> ids_tags = new ArrayList<String>();
+    private ArrayList<String> name_tags = new ArrayList<>();
     private ArrayList<String> ids_grups = new ArrayList<>();
+    private ArrayList<String> name_grups = new ArrayList<>();
+    private ArrayList<String> creador_grups = new ArrayList<>();
     private ArrayList<String> ids_events = new ArrayList<>();
-    private ArrayList<String> developer_ids = new ArrayList<>();
+    private ArrayList<String> name_events = new ArrayList<>();
+    private ArrayList<String> ids_devs = new ArrayList<>();
+    private ArrayList<String> name_devs = new ArrayList<>();
+
+    //creacio tags
+    private void creacio_tags() {
+        ArrayList<String> tagnames = TagNames.getTagNames();
+        for (int i=0; i<num_tags; ++i) {
+            String suffix = (i>tagnames.size())? Integer.toString(i) : "";
+            String tagname = tagnames.get(i%(tagnames.size())) + suffix;
+            TagEntity temp_tag = new TagEntity(tagname) ;
+            String idTag = Insertar_tag(temp_tag);
+            ids_tags.add(idTag);
+            name_tags.add(tagname);
+        }
+    }
 
     //creacio usuaris: nickname i psw son el mateix
     private void creacio_usuaris() {
@@ -48,27 +69,24 @@ public class FillDatabase {
             String email = nickname + "@pickanevent.upc";
             String password = nickname;
             String userId = Insertar_usuari(temp_usr, email, password);
-            if (cm)
+            if (cm) {
                 ids_cms.add(userId);
-            else
+                name_cms.add(nickname);
+            }
+            else {
                 ids_users.add(userId);
+                name_users.add(nickname);
+            }
         }
         //Afegim un compte per cadascun dels membres del grup
         String[] developers = {"Victor", "Clara", "Oscar", "David", "Jordi", "Edgar", "Jan"};
-        for (String dev : developers)
-            developer_ids.add(Insertar_usuari(new UsuarioEntity(dev, false), dev + "@pickevent.upc", dev));
-    }
-
-    private void creacio_tags() {
-        ArrayList<String> tagnames = TagNames.getTagNames();
-        for (int i=0; i<num_tags; ++i) {
-            String suffix = (i>tagnames.size())? Integer.toString(i) : "";
-            String tagname = tagnames.get(i%(tagnames.size())) + suffix;
-            TagEntity temp_tag = new TagEntity(tagname) ;
-            String idTag = Insertar_tag(temp_tag);
-            ids_tags.add(idTag);
+        for (String dev : developers) {
+            String id = Insertar_usuari(new UsuarioEntity(dev, false), dev + "@pickevent.upc", dev);
+            ids_devs.add(id);
+            name_devs.add(dev);
         }
     }
+
 
     private void creacio_grups() {
         ArrayList<String> groupnames = Groupnames.getGroupNames();
@@ -83,9 +101,10 @@ public class FillDatabase {
             temp_grp.setDescripcion(descripcio);
             temp_grp.setWebpage(webpage);
             String idCreador = ids_cms.get(i%ids_cms.size());
-            int num_tags = i%max_tags_per_group;
-            String idGrup = Insertar_grup(temp_grp, idCreador, num_tags);
+            String idGrup = Insertar_grup(temp_grp, idCreador);
             ids_grups.add(idGrup);
+            name_grups.add(groupname);
+            creador_grups.add(idCreador);
         }
     }
 
@@ -93,6 +112,7 @@ public class FillDatabase {
         ArrayList<String> eventnames = Eventnames.getEventnames();
         for (int i=0; i<ids_grups.size(); ++i){
             String idGrupCreador = ids_grups.get(i);
+            String idUserCreador = creador_grups.get(i);
             for (int j=0; j<(i%max_evs_per_grup); ++j) {
                 String eventname = eventnames.get(j%(eventnames.size()));
                 EventoEntity temp_evt = new EventoEntity();
@@ -107,9 +127,9 @@ public class FillDatabase {
                 temp_evt.setDataFinal(dates[1]);
                 temp_evt.setLongitud(Integer.toString((i+j+1)*10));
                 temp_evt.setLatitud(Integer.toString(abs(j+i+-1)*10));
-                int num_tags = j%max_tags_per_event;
-                String idEvent = Insertar_event(temp_evt, idGrupCreador, num_tags);
+                String idEvent = Insertar_event(temp_evt, idGrupCreador, idUserCreador);
                 ids_events.add(idEvent);
+                name_events.add(eventname);
             }
         }
     }
@@ -121,7 +141,7 @@ public class FillDatabase {
             for (int i = 0; i < max_seguits; ++i) {
                 int seguir = (i + j) % ids_users.size();
                 if (i != j)
-                    Insertar_seguimentUsuari(idUsuari, ids_users.get(seguir));
+                    Insertar_seguimentUsuari(idUsuari, seguir);
             }
         }
     }
@@ -132,7 +152,7 @@ public class FillDatabase {
             int max_seguits = ((j*12345689) % max_groups_seguits ) % ids_grups.size();
             for (int i = 0; i < max_seguits; ++i) {
                 int seguir = (i + j) % ids_grups.size();
-                Insertar_seguimentUsuari(idUsuari, ids_grups.get(seguir));
+                Insertar_seguimentUsuari(idUsuari, seguir);
             }
         }
     }
@@ -144,11 +164,49 @@ public class FillDatabase {
             for (int i = 0; i < max_assistits; ++i) {
                 int assistir = (i + j) % ids_events.size();
                 if (i%2 == 0)
-                    Insertar_asistenciaEvent(idUsuari, ids_events.get(assistir));
+                    Insertar_asistenciaEvent(idUsuari, assistir);
                 else
-                    Insertar_noAsistenciaEvent(idUsuari, ids_events.get(assistir));
+                    Insertar_noAsistenciaEvent(idUsuari, assistir);
             }
         }
+    }
+
+    private void generacio_tags_usuario() {
+        for (int i=0; i<ids_users.size(); ++i) {
+            int num_tags = (i%max_tags_per_user)%ids_tags.size();
+            int[] posTags = new int[num_tags];
+            for (int j=0; j<num_tags; ++j) {
+                int offset = max_tags_per_user - num_tags;
+                posTags[j] = j+offset;
+            }
+            Insert_tags_user(i, posTags);
+        }
+    }
+
+    private void generacio_tags_groups() {
+        for (int i=0; i<ids_grups.size(); ++i) {
+            int num_tags = (i%max_tags_per_group)%ids_tags.size();
+            int[] posTags = new int[num_tags];
+            for (int j=0; j<num_tags; ++j) {
+                int offset = max_tags_per_group - num_tags;
+                posTags[j] = j+offset;
+            }
+            Insert_tags_grup(i, posTags);
+        }
+    }
+
+    private void Insert_tags_user(int user_position, int[] posTags) {
+        //user_position per obtenir la id i el nickname de ids_users/name_users
+        //posTags per tenir la llista de posicions a obtenir el id/tagname de ids_tags/name_tags
+        //cal insertar a la taula Usuaris del idUser tots els tags amb el idTag i el nom del tag.
+        //cal insertar a la taula tags el idUser i el nickname del user per a cada idTag a la llista
+    }
+
+    private void Insert_tags_grup(int grup_position, int[] posTags) {
+        //grup_position per obtenir la id i el name de ids_grups/name_grups
+        //posTags per tenir la llista de posicions a obtenir el id/tagname de ids_tags/name_tags
+        //cal insertar a la taula Grups del idGrup tots els tags amb el idTag i el nom del tag.
+        //cal insertar a la taula tags el idGrup i el nickname del user per a cada idTag a la llista
     }
 
     private String Insertar_usuari(UsuarioEntity usr, String email, String psw) {
@@ -161,27 +219,25 @@ public class FillDatabase {
         return "";
     }
 
-    private String Insertar_grup(GrupoEntity grp, String idCreador, int num_tags) {
-        //redundancia de dades de tags del grup a GRUPS i de grups del tag a TAGS
+    private String Insertar_grup(GrupoEntity grp, String idCreador) {
         //redundancia de dades de grups creats al CM i de creador al GRUP
         //retornar idGrup
         return "";
     }
 
-    private String Insertar_event(EventoEntity evt, String idGrupCreador, int num_tags) {
-        //redundancia de dades de tags del event a EVENTS i de events del tag a TAGS
+    private String Insertar_event(EventoEntity evt, String idGrupCreador, String idUserCreador) {
         //retornar idEvent
         return "";
     }
 
-    private void Insertar_seguimentUsuari(String idSeguidor, String idSeguit) {
+    private void Insertar_seguimentUsuari(String idSeguidor, int posIdSeguit) {
     }
 
-    private void Insertar_asistenciaEvent(String idAsistidor, String idEvent) {
+    private void Insertar_asistenciaEvent(String idAsistidor, int posIdEvent) {
         //redundancia de dades de usuari i events. Cal inserir a tots dos.
     }
 
-    private void Insertar_noAsistenciaEvent(String idAsistidor, String idEvent) {
+    private void Insertar_noAsistenciaEvent(String idAsistidor, int posIdEvent) {
         //redundancia de dades de usuari i events. Cal inserir a tots dos.
     }
 
