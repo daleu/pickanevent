@@ -225,7 +225,7 @@ public class GrupoMGR {
             Map<String, Boolean> idU;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                //System.out.println(dataSnapshot);
                 for (DataSnapshot grupo : dataSnapshot.getChildren()) {
                     GrupoEntity u = grupo.getValue(GrupoEntity.class);
                     if (idU.containsKey(grupo.getKey())) {
