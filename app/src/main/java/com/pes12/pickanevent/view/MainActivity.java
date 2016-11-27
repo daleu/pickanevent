@@ -7,8 +7,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {

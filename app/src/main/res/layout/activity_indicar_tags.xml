@@ -21,7 +21,9 @@
             android:layout_marginTop="15dp"
             android:layout_above="@+id/button4"
             android:layout_marginBottom="10dp"
-            android:id="@+id/eventos" />
+            android:id="@+id/eventos"
+            android:clickable="true"
+            android:clipChildren="true" />
 
         <Button
             android:text="Siguiente"
@@ -32,7 +34,8 @@
             android:layout_marginRight="15dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="15dp"
+            android:onClick="actualizarPreferencias" />
 
         <TextView
             android:text="Recuerda que debes escoger un mínimo de 3 tags"

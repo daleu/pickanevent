@@ -51,6 +51,11 @@ public class BaseActivity extends AppCompatActivity {
         usuarioActual=_usuarioActual;
     }
 
+    public void actualizarUsuario () {
+        uMGR.actualizar(mAuth.getCurrentUser().getUid(), usuarioActual);
+    }
+
+
     public FirebaseAuth getAuth(){return mAuth;};
 
     @Override

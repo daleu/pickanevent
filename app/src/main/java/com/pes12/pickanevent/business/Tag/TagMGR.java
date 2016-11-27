@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
@@ -91,14 +92,15 @@ public class TagMGR {
 
     public void getTodosLosTags(Activity _activity) {
         bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
-            ArrayList<String> info = new ArrayList();
+            ArrayList<InfoTags> info = new ArrayList();
             IndicarTagsActivity activity;
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 info.clear();
                 for (DataSnapshot tag : _dataSnapshot.getChildren()) {
                     TagEntity t = tag.getValue(TagEntity.class);
-                    info.add(t.getNombreTag());
+                    InfoTags iTag = new InfoTags(t.getNombreTag(), false, tag.getKey());
+                    info.add(iTag);
                 }
                 activity.mostrarTags(info);
             }
