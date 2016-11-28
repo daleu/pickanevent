@@ -14,25 +14,24 @@ public class GenerateJocProves {
         printJson();
     }
 
-    private static final int multiplier = 1;
+    private static final int multiplier = 20;
     //valors
     private static final int num_users = 10*multiplier;
-    private static final int num_cms = 1*multiplier;
-    private static final int num_tags = 1*multiplier;
+    private static final int num_cms = (multiplier>1)? 1*multiplier : 2;
+    private static final int num_tags = (multiplier>1)? 1*multiplier : 2;
     private static int num_grps = 0; //contador, no editar
     private static int num_evts = 0; //contador, no editar
     //maxims
-    private static final int max_grps_x_cm =  1*multiplier;
-    private static final int max_evts_x_grp = 1*multiplier;
+    private static final int max_grps_x_cm =  (multiplier>1)? 1*multiplier : 2;
+    private static final int max_evts_x_grp = (multiplier>1)? 1*multiplier : 2;
     private static final int max_tags_x_usr = Math.min(10*multiplier, num_tags);
     private static final int max_tags_x_grp = Math.min(10*multiplier, num_tags);
     //valors relacions
     private static final int max_users_seguits = Math.min(1*multiplier,num_users);
-    private static final int max_grps_seguits = 1*multiplier; //Math.min(10,num_grps). A calcular en ejecucion
+    private static final int max_grps_seguits = (multiplier>1)? 1*multiplier : 2; //Math.min(10,num_grps). A calcular en ejecucion
     private static final int max_evts_assists = 2*multiplier; //Math.min(10,num_evts). A calcular en ejecucion
     //llistes
-    private static ArrayList<Usuario> cms = new ArrayList<Usuario>(num_cms);
-    private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>(num_users);
+    private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>(num_users+num_cms);
     private static ArrayList<Tag> tags = new ArrayList<Tag>(num_tags);
     private static ArrayList<Grupo> grupos = new ArrayList<Grupo>();
     private static ArrayList<Evento> eventos = new ArrayList<Evento>();
@@ -59,7 +58,7 @@ public class GenerateJocProves {
         //creem num_cms cms
         for (int i=0; i<num_cms; i++) {
             Usuario c = new Usuario();
-            cms.add(c);
+            usuarios.add(c);
             c.cm = true;
             c.email = "cm"+i+"@pickanevent.com";
             c.password = "pickanevent";

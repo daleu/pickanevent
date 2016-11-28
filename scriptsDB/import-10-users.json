@@ -1,0 +1,157 @@
+{
+  "Usuarios": {
+    "cm0-1480363220611": {
+      "id": "cm0-1480363220611",
+      "email": "cm0@pickanevent.com",
+      "password": "pickanevent",
+      "username": "cm0",
+      "nickname": "cm0",
+      "bio": "Esta es la descripcion de cm0",
+      "cm": true
+    },
+    "cm1-1480363220611": {
+      "id": "cm1-1480363220611",
+      "email": "cm1@pickanevent.com",
+      "password": "pickanevent",
+      "username": "cm1",
+      "nickname": "cm1",
+      "bio": "Esta es la descripcion de cm1",
+      "cm": true,
+      "idGrupos": {
+        "grp0-1480363220611": "Villanos"
+      }
+    },
+    "usr0-1480363220612": {
+      "id": "usr0-1480363220612",
+      "email": "usr0@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr0",
+      "nickname": "Deadpool",
+      "bio": "Esta es la bio-descripcion del usuario usr0",
+      "cm": false
+    },
+    "usr1-1480363220612": {
+      "id": "usr1-1480363220612",
+      "email": "usr1@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr1",
+      "nickname": "IronMan",
+      "bio": "Esta es la bio-descripcion del usuario usr1",
+      "cm": false,
+      "idTags": {
+        "tag0-1480363220611": "Venganza"
+      }
+    },
+    "usr2-1480363220612": {
+      "id": "usr2-1480363220612",
+      "email": "usr2@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr2",
+      "nickname": "Thor",
+      "bio": "Esta es la bio-descripcion del usuario usr2",
+      "cm": false
+    },
+    "usr3-1480363220612": {
+      "id": "usr3-1480363220612",
+      "email": "usr3@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr3",
+      "nickname": "Hulk",
+      "bio": "Esta es la bio-descripcion del usuario usr3",
+      "cm": false,
+      "idTags": {
+        "tag0-1480363220611": "Venganza"
+      }
+    },
+    "usr4-1480363220612": {
+      "id": "usr4-1480363220612",
+      "email": "usr4@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr4",
+      "nickname": "Antman",
+      "bio": "Esta es la bio-descripcion del usuario usr4",
+      "cm": false
+    },
+    "usr5-1480363220612": {
+      "id": "usr5-1480363220612",
+      "email": "usr5@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr5",
+      "nickname": "CapitanAmerica",
+      "bio": "Esta es la bio-descripcion del usuario usr5",
+      "cm": false,
+      "idTags": {
+        "tag0-1480363220611": "Venganza"
+      }
+    },
+    "usr6-1480363220612": {
+      "id": "usr6-1480363220612",
+      "email": "usr6@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr6",
+      "nickname": "DrStrange",
+      "bio": "Esta es la bio-descripcion del usuario usr6",
+      "cm": false
+    },
+    "usr7-1480363220612": {
+      "id": "usr7-1480363220612",
+      "email": "usr7@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr7",
+      "nickname": "Batman",
+      "bio": "Esta es la bio-descripcion del usuario usr7",
+      "cm": false,
+      "idTags": {
+        "tag0-1480363220611": "Venganza"
+      }
+    },
+    "usr8-1480363220612": {
+      "id": "usr8-1480363220612",
+      "email": "usr8@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr8",
+      "nickname": "Superman",
+      "bio": "Esta es la bio-descripcion del usuario usr8",
+      "cm": false
+    },
+    "usr9-1480363220612": {
+      "id": "usr9-1480363220612",
+      "email": "usr9@pickanevent.com",
+      "password": "pickanevent",
+      "username": "usr9",
+      "nickname": "WonderWoman",
+      "bio": "Esta es la bio-descripcion del usuario usr9",
+      "cm": false,
+      "idTags": {
+        "tag0-1480363220611": "Venganza"
+      }
+    }
+  },
+  "Grupos": {
+    "grp0-1480363220611": {
+      "id": "grp0-1480363220611",
+      "nombreGrupo": "Villanos",
+      "descripcion": "Esta es la descripcion del grupo creado por cm1",
+      "nickname": "cm1",
+      "idUsuario": "cm1-1480363220611"
+    }
+  },
+  "Tags": {
+    "tag0-1480363220611": {
+      "id": "tag0-1480363220611",
+      "nombreTag": "Venganza",
+      "idUsuarios": {
+        "usr9-1480363220612": "WonderWoman",
+        "usr1-1480363220612": "IronMan",
+        "usr5-1480363220612": "CapitanAmerica",
+        "usr7-1480363220612": "Batman",
+        "usr3-1480363220612": "Hulk"
+      }
+    },
+    "tag1-1480363220611": {
+      "id": "tag1-1480363220611",
+      "nombreTag": "Justicia"
+    }
+  },
+  "Eventos": {}
+}
