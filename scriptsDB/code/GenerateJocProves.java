@@ -1,5 +1,3 @@
-package com.pes12.pickanevent;
-
 import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +7,7 @@ import java.util.HashMap;
  * Created by p4triot on 28/11/2016.
  */
 
-public class FillDatabaseJson {
+public class GenerateJocProves {
 
 
     public static void main(String[] args) {
@@ -106,7 +104,7 @@ public class FillDatabaseJson {
         }
 
         //creem num_users users
-        for (int i=0; i<num_users; ++i) {
+        for (int i=0; i<num_users; i++) {
             Usuario u = usuarios.get(i);
             long idLong = System.currentTimeMillis();
             u.id = "usr" + i + "-" + String.valueOf(idLong);
