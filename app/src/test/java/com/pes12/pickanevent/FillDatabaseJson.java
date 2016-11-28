@@ -152,50 +152,103 @@ public class FillDatabaseJson {
     private void printJson() {
         System.out.println("{");
         System.out.println("\"Usuarios\": {");
-            for (Usuario u : usuarios) {
-                System.out.println("\"" + u.id + "\" : {");
-                System.out.println("\"id\": " + "\"" + u.id + "\"");
-                System.out.println("\"email\": " + "\"" + u.email + "\",");
-                System.out.println("\"password\": " + "\"" + u.password + "\",");
-                System.out.println("\"username\": " + "\"" + u.username + "\",");
-                System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
-                System.out.println("\"bio\": " + "\"" + u.bio + "\",");
-                System.out.println("\"cm\": " + String.valueOf(u.cm) + ",");
-                if (u.idUsuarios.size() > 0) {
-                    System.out.println("\"idUsuarios\": {");
-                    for (String key : u.idUsuarios.keySet())
-                        System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\",");
-                    System.out.println("},");
-                }
-                if (u.idGrupos.size() > 0) {
-                    System.out.println("\"idGrupos\": {");
-                    for (String key : u.idGrupos.keySet())
-                        System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\",");
-                    System.out.println("},");
-                }
-                if (u.idEventos.size() > 0) {
-                    System.out.println("\"idEventos\": {");
-                    for (String key : u.idEventos.keySet())
-                        System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\",");
-                    System.out.println("},");
-                }
-                if (u.idEventosNo.size() > 0) {
-                    System.out.println("\"idEventosNo\": {");
-                    for (String key : u.idEventosNo.keySet())
-                        System.out.println("\"" + key + "\": \"" + u.idEventosNo.get(key) + "\",");
-                    System.out.println("},");
-                }
-                if (u.idTags.size() > 0) {
-                    System.out.println("\"idTags\": {");
-                    for (String key : u.idTags.keySet())
-                        System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\",");
-                    System.out.println("},");
-                }
+        for (Usuario u : usuarios) {
+            System.out.println("\"" + u.id + "\" : {");
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"email\": " + "\"" + u.email + "\",");
+            System.out.println("\"password\": " + "\"" + u.password + "\",");
+            System.out.println("\"username\": " + "\"" + u.username + "\",");
+            System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
+            System.out.println("\"bio\": " + "\"" + u.bio + "\",");
+            System.out.println("\"cm\": " + String.valueOf(u.cm) + ",");
+            if (u.idUsuarios.size() > 0) {
+                System.out.println("\"idUsuarios\": {");
+                for (String key : u.idUsuarios.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\",");
+                System.out.println("},");
             }
+            if (u.idGrupos.size() > 0) {
+                System.out.println("\"idGrupos\": {");
+                for (String key : u.idGrupos.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\",");
+                System.out.println("},");
+            }
+            if (u.idEventos.size() > 0) {
+                System.out.println("\"idEventos\": {");
+                for (String key : u.idEventos.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\",");
+                System.out.println("},");
+            }
+            if (u.idEventosNo.size() > 0) {
+                System.out.println("\"idEventosNo\": {");
+                for (String key : u.idEventosNo.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idEventosNo.get(key) + "\",");
+                System.out.println("},");
+            }
+            if (u.idTags.size() > 0) {
+                System.out.println("\"idTags\": {");
+                for (String key : u.idTags.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\",");
+                System.out.println("},");
+            }
+        }
         System.out.println("},"); //hem acabat els usuaris
         System.out.println("\"Grupos\": {");
-        
+        for (Grupo u : grupos) {
+            System.out.println("\"" + u.id + "\" : {");
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"nombreGrupo\": " + "\"" + u.nombreGrupo + "\",");
+            System.out.println("\"descripcion\": " + "\"" + u.descripcion + "\",");
+            System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
+            System.out.println("\"idUsuario\": " + "\"" + u.idUsuario + "\",");
+            if (u.idTags.size() > 0) {
+                System.out.println("\"idTags\": {");
+                for (String key : u.idTags.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\",");
+                System.out.println("},");
+            }
+            if (u.idEventos.size() > 0) {
+                System.out.println("\"idEventos\": {");
+                for (String key : u.idEventos.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\",");
+                System.out.println("},");
+            }
+        }
         System.out.println("},"); //hem acabat els grups
+        System.out.println("\"Tags\": {");
+        for (Tag u : tags) {
+            System.out.println("\"" + u.id + "\" : {");
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"nombreTag\": " + "\"" + u.nombreTag + "\",");
+            if (u.idUsuarios.size() > 0) {
+                System.out.println("\"idUsuarios\": {");
+                for (String key : u.idUsuarios.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\",");
+                System.out.println("},");
+            }
+            if (u.idGrupos.size() > 0) {
+                System.out.println("\"idGrupos\": {");
+                for (String key : u.idGrupos.keySet())
+                    System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\",");
+                System.out.println("},");
+            }
+        }
+        System.out.println("},"); //hem acabat els tags
+        System.out.println("\"Eventos\": {");
+        for (Evento u : eventos) {
+            System.out.println("\"" + u.id + "\" : {");
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"titulo\": " + "\"" + u.titulo + "\",");
+            System.out.println("\"descripcion\": " + "\"" + u.descripcion + "\",");
+            System.out.println("\"localizacion\": " + "\"" + u.localizacion + "\",");
+            System.out.println("\"dataInici\": " + "\"" + u.dataInici + "\",");
+            System.out.println("\"dataFinal\": " + "\"" + u.dataFinal + "\",");
+            System.out.println("\"precio\": " + "\"" + u.precio + "\",");
+            System.out.println("\"webpage\": " + "\"" + u.webpage + "\",");
+            System.out.println("\"latitud\": " + "\"" + u.latitud + "\",");
+            System.out.println("\"longitud\": " + "\"" + u.longitud + "\"");
+        }
+        System.out.println("},"); //hem acabat els events
     }
 
     //class helpers to make the list
