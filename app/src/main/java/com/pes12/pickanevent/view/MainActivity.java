@@ -187,4 +187,7 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class));
     }
 
+    public void goVerMiPerfil(View _view) {
+        startActivity(new Intent(MainActivity.this, PerfilUsuarioActivity.class));
+    }
 }

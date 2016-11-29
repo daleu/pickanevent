@@ -14,7 +14,7 @@ public class GenerateJocProves {
         printJson();
     }
 
-    private static final int multiplier = 20;
+    private static final int multiplier = 100;
     //valors
     private static final int num_users = 10*multiplier;
     private static final int num_cms = (multiplier>1)? 1*multiplier : 2;
@@ -97,9 +97,10 @@ public class GenerateJocProves {
                     e.webpage = "www." +  separated[0] + getSufix(i, eventnames.size()) + ".com";
                     e.precio = String.valueOf(11*k);
                     e.localizacion = "C/Falsa 123, Springfield, Colorado";
+                    e.idGrup = g.id;
                     Date[] dates = generateDates(k);
                     e.dataInici = String.valueOf(dates[0]);
-                    e.dataFinal = String.valueOf(dates[1]);               
+                    e.dataFinal = String.valueOf(dates[1]);
                     ++num_evts;
                     g.idEventos.put(e.id, e.titulo);
                     c.idEventos.put(e.id, e.titulo);
@@ -126,8 +127,6 @@ public class GenerateJocProves {
                 String idTag = tags.get(j).id;
                 String nombreTag = tags.get(j).nombreTag;
                 u.idTags.put(idTag, nombreTag);
-                Tag t = getTagById(idTag);
-                t.idUsuarios.put(u.id, u.nickname);
             }
             //cada usuario sigue a unos cuantos grupos
             int mgs = Math.min(max_grps_seguits,num_grps);
@@ -141,10 +140,7 @@ public class GenerateJocProves {
             for (int j=0; mea>0 && j<(i%mea); j++) {
                 String idEvento = eventos.get(j).id;
                 String tituloEvento = eventos.get(j).titulo;
-                if (j%2 == 0)
-                    u.idEventos.put(idEvento, tituloEvento);
-                else
-                    u.idEventosNo.put(idEvento, tituloEvento);
+                u.idEventos.put(idEvento, tituloEvento);
             }
             //cada usuario sigue a unos cuantos usuarios
             int mus = Math.min(max_users_seguits, num_users);
@@ -160,7 +156,7 @@ public class GenerateJocProves {
 
     private static void printJson() {
         System.out.println("{");
-        System.out.println("\"Usuarios\": {");
+        System.out.println("\"usuarios\": {");
         boolean first = true;
         boolean first2 = true;
         for (Usuario u : usuarios) {
@@ -206,16 +202,6 @@ public class GenerateJocProves {
                 }
                 System.out.println("}");
             }
-            if (u.idEventosNo.size() > 0) {
-                System.out.print(",");
-                System.out.println("\"idEventosNo\": {");
-                first2 = true;
-                for (String key : u.idEventosNo.keySet()){
-                    if (!first2) System.out.print(","); else first2 = false;
-                    System.out.println("\"" + key + "\": \"" + u.idEventosNo.get(key) + "\"");
-                }
-                System.out.println("}");
-            }
             if (u.idTags.size() > 0) {
                 System.out.print(",");
                 System.out.println("\"idTags\": {");
@@ -229,7 +215,7 @@ public class GenerateJocProves {
             System.out.println("}");
         }
         System.out.println("},"); //hem acabat els usuaris
-        System.out.println("\"Grupos\": {");
+        System.out.println("\"grupos\": {");
         first = true;
         for (Grupo u : grupos) {
             if (!first)
@@ -265,7 +251,7 @@ public class GenerateJocProves {
             System.out.println("}");
         }
         System.out.println("},"); //hem acabat els grups
-        System.out.println("\"Tags\": {");
+        System.out.println("\"tags\": {");
         first = true;
         for (Tag u : tags) {
             if (!first)
@@ -275,16 +261,6 @@ public class GenerateJocProves {
             System.out.println("\"" + u.id + "\" : {");
             System.out.println("\"id\": " + "\"" + u.id + "\",");
             System.out.println("\"nombreTag\": " + "\"" + u.nombreTag + "\"");
-            if (u.idUsuarios.size() > 0) {
-                System.out.println(",");
-                System.out.println("\"idUsuarios\": {");
-                first2 = true;
-                for (String key : u.idUsuarios.keySet()) {
-                    if (!first2) System.out.print(","); else first2 = false;
-                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\"");
-                }
-                System.out.println("}");
-            }
             if (u.idGrupos.size() > 0) {
                 System.out.println(",");
                 System.out.println("\"idGrupos\": {");
@@ -298,7 +274,7 @@ public class GenerateJocProves {
             System.out.println("}");
         }
         System.out.println("},"); //hem acabat els tags
-        System.out.println("\"Eventos\": {");
+        System.out.println("\"eventos\": {");
         first = true;
         for (Evento u : eventos) {
             if (!first)
@@ -315,7 +291,8 @@ public class GenerateJocProves {
             System.out.println("\"precio\": " + "\"" + u.precio + "\",");
             System.out.println("\"webpage\": " + "\"" + u.webpage + "\",");
             System.out.println("\"latitud\": " + "\"" + u.latitud + "\",");
-            System.out.println("\"longitud\": " + "\"" + u.longitud + "\"");
+            System.out.println("\"longitud\": " + "\"" + u.longitud + "\",");
+            System.out.println("\"idGrup\": " + "\"" + u.idGrup + "\"");
             System.out.println("}");
         }
         System.out.println("}"); //hem acabat els events
@@ -331,10 +308,10 @@ public class GenerateJocProves {
         public String precio;
         public String latitud;
         public String longitud;
-        public String imagen;
         public String localizacion;
         public String dataInici;
         public String dataFinal;
+        public String idGrup;
     }
 
     public static class Usuario {
@@ -344,10 +321,8 @@ public class GenerateJocProves {
         public String nickname;
         public String password;
         public String bio;
-        public String imagen;
         public Boolean cm;
         HashMap<String,String> idEventos = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
-        HashMap<String,String> idEventosNo = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
         HashMap<String,String> idGrupos = new HashMap<String,String>(); //key: idEvt, value: nombreGrupo
         HashMap<String,String> idTags = new HashMap<String,String>(); //key: idEvt, value: nombreTag
         HashMap<String,String> idUsuarios = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
@@ -357,7 +332,6 @@ public class GenerateJocProves {
         public String id;
         public String descripcion;
         public String idUsuario;
-        public String imagen;
         public String nickname;
         public String nombreGrupo;
         HashMap<String,String> idEventos = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
@@ -367,7 +341,6 @@ public class GenerateJocProves {
     public static class Tag {
         public String id;
         public String nombreTag;
-        HashMap<String,String> idUsuarios = new HashMap<String,String>(); //key: idUsr, value: nickname
         HashMap<String,String> idGrupos = new HashMap<String,String>(); //key: idGrp, value: nombreGrupo
     }
 
