@@ -14,7 +14,6 @@ public class EventoEntity {
     private String precio;
     private String webpage;
     private String localizacion;
-    private String horario;
     private String dataInici;
     private String dataFinal;
     private String latitud;
@@ -25,7 +24,7 @@ public class EventoEntity {
 
     }
 
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String horario, String latitud, String longitud){
+    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, Date dataInici, Date dataFinal){
         setTitulo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -34,6 +33,8 @@ public class EventoEntity {
         setLocalizacion(localizacion);
         setLatitud(latitud);
         setLongitud(longitud);
+        setDataInici(dataInici);
+        setDataFinal(dataFinal);
     }
     public boolean isEmpty() {return (titulo == null);}
 
@@ -101,19 +102,23 @@ public class EventoEntity {
         this.longitud = longitud;
     }
 
-    public String getDataInici() {
-        return dataInici;
+    public Date getDataInici() {
+        Date d = new Date(dataInici);
+        return d;
     }
 
-    public void setDataInici(String dataInici) {
-        this.dataInici = dataInici;
+    public void setDataInici(Date dataInici) {
+        String s = String.valueOf(dataInici);
+        this.dataInici = s;
     }
 
-    public String getDataFinal() {
-        return dataFinal;
+    public Date getDataFinal() {
+        Date d = new Date(dataFinal);
+        return d;
     }
 
-    public void setDataFinal(String dataFinal) {
-        this.dataFinal = dataFinal;
+    public void setDataFinal(Date dataFinal) {
+        String s = String.valueOf(dataFinal);
+        this.dataFinal = s;
     }
 }
