@@ -33,7 +33,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     Boolean esCM;
 
-    Map<String,Boolean> mapIdTags;
+    Map<String,String> mapIdTags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     public void actualizarChecked(InfoTags infoTag) {
 
         if (infoTag.getChecked()) { //se ha marcado -> deberemos añadirlo al map de seleccionados
-            mapIdTags.put(infoTag.getIdTag(), true);
+            mapIdTags.put(infoTag.getIdTag(), "blabla");
             System.out.println("El tamaño ahora es de: (marcar)" + mapIdTags.size());
         }
         else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados

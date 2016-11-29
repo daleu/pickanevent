@@ -218,11 +218,11 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
-    public void getGrupoEventosForFragment(Fragment _activity, Map<String, Boolean> _idU) {
+    public void getGrupoEventosForFragment(Fragment _activity, Map<String, String> _idU) {
         bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,Map<String,Boolean>> info = new LinkedHashMap<String, Map<String, Boolean>>();
+            Map<String,Map<String,String>> info = new LinkedHashMap<String, Map<String, String>>();
             TimelineFragment activity;
-            Map<String, Boolean> idU;
+            Map<String, String> idU;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //System.out.println(dataSnapshot);
@@ -239,7 +239,7 @@ public class GrupoMGR {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Fragment _activity, Map<String, Boolean> _idU)
+            public ValueEventListener setActivity (Fragment _activity, Map<String, String> _idU)
             {
                 activity=(TimelineFragment) _activity;
                 idU = _idU;

@@ -53,7 +53,7 @@ public class VerGruposCreadosActivity extends BaseActivity {
 
     public void mostrarInfoUsuarioGrupos(UsuarioEntity usuario) {
 
-        Map<String,Boolean> idGrupos = usuario.getIdGrupos();
+        Map<String,String> idGrupos = usuario.getIdGrupos();
 
         //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
             //System.out.println(entry.getKey() + "/" + entry.getValue());

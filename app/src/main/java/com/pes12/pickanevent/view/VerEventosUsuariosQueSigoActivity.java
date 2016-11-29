@@ -42,7 +42,7 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
 
     }
 
-    private Map<String, Boolean> eventosUsuario;
+    private Map<String, String> eventosUsuario;
 
     public void mostrarInfoUsuario(UsuarioEntity _usuario) {
         System.out.println("L'usuari " + _usuario.getNickname() + " te " + _usuario.getIdUsuarios().size() + " usuaris que segueix");
@@ -53,20 +53,20 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
     }
 
     //el string sera el username y el map los eventos que sigue ese usuario
-    public void infoUsuarios(Map<String,Map<String,Boolean>> _info) {
+    public void infoUsuarios(Map<String,Map<String,String>> _info) {
         System.out.println("Arribo la informacio de " + _info.size() + " usuaris");
 
         //debo "eliminar" los eventos repetidos y crear una lista nueva en la que habra
         // el evento (String) y todos los usuarios que asistiran(List<String>)
         Map<String, List<String>> usuariosPorEvento = new HashMap<>();
         //loop por los usuarios
-        Map<String,Boolean> eventosTratados = eventosUsuario;
-        for (Map.Entry<String, Map<String,Boolean>> infoUsu: _info.entrySet()) {
+        Map<String,String> eventosTratados = eventosUsuario;
+        for (Map.Entry<String, Map<String,String>> infoUsu: _info.entrySet()) {
             System.out.println("L'usuari "+ infoUsu.getKey()+ " te " + infoUsu.getValue().size() + " event/s");
             ArrayList<String> usernames = new ArrayList<>();
 
             //loop por los eventos del usuario del bucle externo
-            for (Map.Entry<String,Boolean> eventoUsu: infoUsu.getValue().entrySet()) {
+            for (Map.Entry<String,String> eventoUsu: infoUsu.getValue().entrySet()) {
                 //mirare que eventos de otros usuarios coinciden con el mio
                 //antes de empezar la iteracion compruebo si ya he tratado ese evento
                 //al final del bucle guardare todos los usuarios que asisten a ese evento
@@ -87,10 +87,10 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         eMGR.getInfoEventosUsuarios(this, usuariosPorEvento);
     }
 
-    private ArrayList<String> usuariosQueAssistiran(Map<String, Map<String, Boolean>> _info, Map.Entry<String, Boolean> _eventoUsu) {
+    private ArrayList<String> usuariosQueAssistiran(Map<String, Map<String, String>> _info, Map.Entry<String, String> _eventoUsu) {
         ArrayList<String> usernames = new ArrayList<>();
-        for (Map.Entry<String, Map<String,Boolean>> infoUsu: _info.entrySet()) {
-            for (Map.Entry<String,Boolean> eventoUsu: infoUsu.getValue().entrySet()) {
+        for (Map.Entry<String, Map<String,String>> infoUsu: _info.entrySet()) {
+            for (Map.Entry<String,String> eventoUsu: infoUsu.getValue().entrySet()) {
                 if (eventoUsu.getKey().equals(_eventoUsu.getKey())) {
                     usernames.add(infoUsu.getKey());
                 }

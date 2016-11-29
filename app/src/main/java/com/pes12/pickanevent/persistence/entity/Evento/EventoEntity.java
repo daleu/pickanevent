@@ -15,8 +15,8 @@ public class EventoEntity {
     private String webpage;
     private String localizacion;
     private String horario;
-    private Date dataInici;
-    private Date dataFinal;
+    private String dataInici;
+    private String dataFinal;
     private String latitud;
     private String longitud;
 
@@ -110,19 +110,19 @@ public class EventoEntity {
         this.longitud = longitud;
     }
 
-    public Date getDataInici() {
+    public String getDataInici() {
         return dataInici;
     }
 
-    public void setDataInici(Date dataInici) {
+    public void setDataInici(String dataInici) {
         this.dataInici = dataInici;
     }
 
-    public Date getDataFinal() {
+    public String getDataFinal() {
         return dataFinal;
     }
 
-    public void setDataFinal(Date dataFinal) {
+    public void setDataFinal(String dataFinal) {
         this.dataFinal = dataFinal;
     }
 }

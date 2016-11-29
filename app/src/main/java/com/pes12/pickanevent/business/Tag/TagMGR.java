@@ -60,11 +60,11 @@ public class TagMGR {
         return "";
     }
 
-    public void getInfoTag(Activity _activity, Map<String, Boolean> _idS) {
+    public void getInfoTag(Activity _activity, Map<String, String> _idS) {
         bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
             ArrayList<String> info = new ArrayList();
             VerInfoGrupoActivity activity;
-            Map<String, Boolean> idS;
+            Map<String, String> idS;
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
@@ -81,7 +81,7 @@ public class TagMGR {
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)
+            public ValueEventListener setActivity (Activity _activity, Map<String, String> _idS)
             {
                 activity=(VerInfoGrupoActivity) _activity;
                 idS = _idS;

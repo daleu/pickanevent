@@ -288,11 +288,11 @@ public class UsuarioMGR {
         }.setActivity(_activity));
     }
 
-    public void getUsers(Activity _activity, Map<String, Boolean> _idU) {
+    public void getUsers(Activity _activity, Map<String, String> _idU) {
         bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,Map<String,Boolean>> info = new LinkedHashMap<String, Map<String, Boolean>>();
+            Map<String,Map<String,String>> info = new LinkedHashMap<String, Map<String, String>>();
             VerEventosUsuariosQueSigoActivity activity;
-            Map<String, Boolean> idU;
+            Map<String, String> idU;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -309,7 +309,7 @@ public class UsuarioMGR {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idU)
+            public ValueEventListener setActivity (Activity _activity, Map<String, String> _idU)
             {
                 activity=(VerEventosUsuariosQueSigoActivity) _activity;
                 idU = _idU;
@@ -351,11 +351,11 @@ public class UsuarioMGR {
         }.setActivity(_activity));
     }
 
-    public void getUsersForFragment(Fragment _activity, Map<String, Boolean> _idU) {
+    public void getUsersForFragment(Fragment _activity, Map<String, String> _idU) {
         bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,Map<String,Boolean>> info = new LinkedHashMap<String, Map<String, Boolean>>();
+            Map<String,Map<String,String>> info = new LinkedHashMap<String, Map<String, String>>();
             TimelineFragment activity;
-            Map<String, Boolean> idU;
+            Map<String, String> idU;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -372,7 +372,7 @@ public class UsuarioMGR {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Fragment _activity, Map<String, Boolean> _idU)
+            public ValueEventListener setActivity (Fragment _activity, Map<String, String> _idU)
             {
                 activity=(TimelineFragment) _activity;
                 idU = _idU;
