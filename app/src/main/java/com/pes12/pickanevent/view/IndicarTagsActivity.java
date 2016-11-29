@@ -12,11 +12,13 @@ import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterTags;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.IEstadoCheckBox;
 import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 
 import java.util.ArrayList;
@@ -30,10 +32,13 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     TagMGR tMGR;
     UsuarioMGR uMGR;
+    GrupoMGR gMGR;
 
     Boolean esCM;
 
     Map<String,String> mapIdTags;
+    String idGrupo;
+    ArrayList<InfoTags> info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +51,8 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         esCM = getUsuarioActual().getCm();
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
-
+            Bundle b = getIntent().getExtras();
+            idGrupo = b.getString("idGrupo");
             botonNuevo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -78,32 +84,49 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         tMGR = MGRFactory.getInstance().getTagMGR();
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR.getTodosLosTags(this);
     }
 
-    public void mostrarTags(ArrayList<InfoTags> info) {
-        mapIdTags = getUsuarioActual().getIdTags();
-        if (mapIdTags == null) {
-            mapIdTags = new LinkedHashMap<>();
+    public void mostrarTags(ArrayList<InfoTags> _info) {
+        info = _info;
+        if (!esCM) {
+            mapIdTags = getUsuarioActual().getIdTags();
+            tratarInfo(mapIdTags);
         }
-        //bucle que cambiara el estado de los tags a true si ya estan relacionados con el usuario
+        else {
+            gMGR.getGrupoParaTags(this, idGrupo);
+        }
+    }
+
+    public void mostrarTagsGrupo(GrupoEntity g) {
+        mapIdTags = g.getIdTags();
+        tratarInfo(mapIdTags);
+    }
+
+    public void tratarInfo(Map<String,String> _mapIdTags) {
+        if (_mapIdTags == null) {
+            _mapIdTags = new LinkedHashMap<>();
+        }
+        //bucle que cambiara el estado de los tags a true si ya estan relacionados con el grupo
         for (int i = 0; i < info.size(); ++i) {
-            if (mapIdTags.containsKey(info.get(i).getIdTag())) {
+            if (_mapIdTags.containsKey(info.get(i).getIdTag())) {
                 info.get(i).setChecked(true);
             }
         }
 
-        AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this,R.layout.vista_adapter_tags,info);
+        AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
         tags.setAdapter(adapterTags);
-
-        System.out.println("Inicialmente el tamaño es:" + mapIdTags.size());
     }
 
     public void actualizarPreferencias(View view) {
         if (!esCM && mapIdTags.size() < 3) {
             Toast.makeText(IndicarTagsActivity.this,"Indica un mínimo de 3 tags", Toast.LENGTH_SHORT).show();
         }
-        else { //para un grupo solo es obligatorio el tag principal
+        else if (esCM){ //para un grupo solo es obligatorio el tag principal
+
+        }
+        else {
             getUsuarioActual().setIdTags(mapIdTags);
             actualizarUsuario();
         }
@@ -113,12 +136,10 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     public void actualizarChecked(InfoTags infoTag) {
 
         if (infoTag.getChecked()) { //se ha marcado -> deberemos añadirlo al map de seleccionados
-            mapIdTags.put(infoTag.getIdTag(), "blabla");
-            System.out.println("El tamaño ahora es de: (marcar)" + mapIdTags.size());
+            mapIdTags.put(infoTag.getIdTag(), infoTag.getNombreTag());
         }
         else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados
             mapIdTags.remove(infoTag.getIdTag());
-            System.out.println("El tamaño ahora es de: (desmarcar)" + mapIdTags.size());
         }
 
     }

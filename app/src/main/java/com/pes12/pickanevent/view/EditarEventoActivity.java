@@ -124,7 +124,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         nomEvent.setText(evento.getTitulo());
         descripcio.setText(evento.getDescripcion());
         String img = evento.getImagen();
-        data.setText(evento.getHorario());
+        data.setText("horario");
         if (evento.getPrecio().equals("-1")) {
             gratuit.setChecked(true);
             preuText.setFocusable(false);

@@ -15,6 +15,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
@@ -121,7 +122,6 @@ public class GrupoMGR {
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 g = _dataSnapshot.getValue((GrupoEntity.class)); //<------------
-
                 activity.mostrarInfoGrupo(g);
             }
             @Override
@@ -246,5 +246,26 @@ public class GrupoMGR {
                 return this;
             }
         }.setActivity(_activity, _idU));
+    }
+
+    public void getGrupoParaTags(Activity _activity, String _id) {
+        bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            IndicarTagsActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class));
+                activity.mostrarTagsGrupo(g);
+            }
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (IndicarTagsActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 }

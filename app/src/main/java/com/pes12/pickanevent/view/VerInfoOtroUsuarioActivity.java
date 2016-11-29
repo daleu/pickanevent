@@ -120,7 +120,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         String img = evento.getImagen();
         Bitmap imBM = StringToBitMap(img);
         String nombreGrupo = evento.getTitulo();
-        String horario = evento.getHorario();
+        String horario = "horario";
         Info info = new Info(imBM, nombreGrupo, horario, "seguir!");
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
