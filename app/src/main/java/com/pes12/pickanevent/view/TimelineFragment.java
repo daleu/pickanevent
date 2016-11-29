@@ -93,7 +93,7 @@ public class TimelineFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "-KWMg9DPDSeFOLCWmVcg";
+        idUsuario = "usr17-1480427610885";
 
         uMGR.getUserFromFragment(this, idUsuario);
 
@@ -150,7 +150,9 @@ public class TimelineFragment extends Fragment {
 
     public void getUsuarioEvents(UsuarioEntity _usuario){
         myUser = _usuario;
-        if(myUser.getIdUsuarios() != null) uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
+        if(_usuario.getIdUsuarios() != null){
+            uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
+        }
         else getAllUsersEvents(null);
         //eMGR.getInfoEventosUsuarioFromFragment(this, _usuario.getIdEventos());
     }
@@ -172,7 +174,7 @@ public class TimelineFragment extends Fragment {
         Map<String, String> map = new HashMap<String, String>();
         for (String key: listEvents.keySet()) {
             Map<String, String> aux = listEvents.get(key);
-            map.putAll(aux);
+            if(aux != null) map.putAll(aux);
         }
         eMGR.getInfoEventosUsuarioFromFragment(this,map);
     }

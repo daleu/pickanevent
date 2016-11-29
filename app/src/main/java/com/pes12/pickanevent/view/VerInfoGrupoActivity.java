@@ -94,7 +94,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(),cm);
         Map<String,String> tagsMap = _grupo.getIdTags();
-        tagsMap.put(_grupo.getidTagGeneral(), "rhefdh");
+        tagsMap.put(_grupo.getidTagGeneral(),"blabla");
         tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
