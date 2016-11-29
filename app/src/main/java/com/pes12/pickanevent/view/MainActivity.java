@@ -189,4 +189,7 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", "-KUl_ie2eRYXdXKVJffQ"));
     }
 
+    public void goVerMiPerfil(View _view) {
+        startActivity(new Intent(MainActivity.this, PerfilUsuarioActivity.class));
+    }
 }

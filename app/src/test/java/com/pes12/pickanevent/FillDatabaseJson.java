@@ -1,6 +1,3 @@
-package com.pes12.pickanevent;
-
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,7 +6,7 @@ import java.util.HashMap;
  * Created by p4triot on 28/11/2016.
  */
 
-public class FillDatabaseJson {
+public class GenerateJocProves {
 
 
     public static void main(String[] args) {
@@ -17,46 +14,51 @@ public class FillDatabaseJson {
         printJson();
     }
 
-    private static final int multiplier = 1;
+    private static final int multiplier = 20;
     //valors
-    private static final int num_users = 100*multiplier;
-    private static final int num_cms = 10*multiplier;
-    private static final int num_tags = 10*multiplier;
+    private static final int num_users = 10*multiplier;
+    private static final int num_cms = (multiplier>1)? 1*multiplier : 2;
+    private static final int num_tags = (multiplier>1)? 1*multiplier : 2;
     private static int num_grps = 0; //contador, no editar
     private static int num_evts = 0; //contador, no editar
     //maxims
-    private static final int max_grps_x_cm =  10*multiplier;
-    private static final int max_evts_x_grp = 10*multiplier;
+    private static final int max_grps_x_cm =  (multiplier>1)? 1*multiplier : 2;
+    private static final int max_evts_x_grp = (multiplier>1)? 1*multiplier : 2;
     private static final int max_tags_x_usr = Math.min(10*multiplier, num_tags);
     private static final int max_tags_x_grp = Math.min(10*multiplier, num_tags);
     //valors relacions
-    private static final int max_users_seguits = Math.min(10,num_users);
-    private static final int max_grps_seguits = 10*multiplier; //Math.min(10,num_grps). A calcular en ejecucion
-    private static final int max_evts_assists = 20*multiplier; //Math.min(10,num_evts). A calcular en ejecucion
+    private static final int max_users_seguits = Math.min(1*multiplier,num_users);
+    private static final int max_grps_seguits = (multiplier>1)? 1*multiplier : 2; //Math.min(10,num_grps). A calcular en ejecucion
+    private static final int max_evts_assists = 2*multiplier; //Math.min(10,num_evts). A calcular en ejecucion
     //llistes
-    private static ArrayList<Usuario> cms = new ArrayList<Usuario>(num_cms);
-    private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>(num_users);
+    private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>(num_users+num_cms);
     private static ArrayList<Tag> tags = new ArrayList<Tag>(num_tags);
     private static ArrayList<Grupo> grupos = new ArrayList<Grupo>();
     private static ArrayList<Evento> eventos = new ArrayList<Evento>();
     //llistes strings
-    private static ArrayList<String> nicknames = Nicknames.getNicknames();
-    private static ArrayList<String> groupnames = Groupnames.getGroupNames();
-    private static ArrayList<String> tagnames = TagNames.getTagNames();
-    private static ArrayList<String> eventnames = Eventnames.getEventnames();
+    private static final Nicknames nicksList = new Nicknames();
+    private static final Groupnames groupsList = new Groupnames();
+    private static final TagNames tagsList = new TagNames();
+    private static final Eventnames eventsList = new Eventnames();
+    private static ArrayList<String> nicknames = nicksList.getNicknames();
+    private static ArrayList<String> groupnames = groupsList.getGroupNames();
+    private static ArrayList<String> tagnames = tagsList.getTagNames();
+    private static ArrayList<String> eventnames = eventsList.getEventnames();
 
     private static void generacio_joc_proves() {
         //creem num_tags tags
-        for (int i = 0; i < tags.size(); i++) {
-            Tag t = tags.get(i);
+        for (int i = 0; i < num_tags; i++) {
+            Tag t = new Tag();
+            tags.add(t);
             long idLong = System.currentTimeMillis();
             t.id = "tag" + i + "-" + String.valueOf(idLong);
             t.nombreTag = tagnames.get(i % tagnames.size()) + getSufix(i, tagnames.size());
         }
 
         //creem num_cms cms
-        for (int i=0; i<cms.size(); i++) {
-            Usuario c = cms.get(i);
+        for (int i=0; i<num_cms; i++) {
+            Usuario c = new Usuario();
+            usuarios.add(c);
             c.cm = true;
             c.email = "cm"+i+"@pickanevent.com";
             c.password = "pickanevent";
@@ -68,6 +70,7 @@ public class FillDatabaseJson {
             //cada cm crea una quantitat de grups
             for (int j=0; j<(i%max_grps_x_cm); j++) {
                 Grupo g = new Grupo();
+                grupos.add(g);
                 g.descripcion = "Esta es la descripcion del grupo creado por cm"+i;
                 g.nombreGrupo = groupnames.get((j+i)%groupnames.size());
                 g.idUsuario = c.id;
@@ -84,30 +87,32 @@ public class FillDatabaseJson {
                 //cada group crea una quantitat de events
                 for (int k=0; k<(j%max_evts_x_grp); k++) {
                     Evento e = new Evento();
+                    eventos.add(e);
                     e.id = "Evt" + num_evts + "-" + String.valueOf(idLong);
                     e.descripcion = "Esta es la descripcion del evento " + num_evts;
                     e.titulo = eventnames.get(k%eventnames.size()) + getSufix(i, eventnames.size());
                     e.latitud = "41.361585";
                     e.longitud = "2.1507653";
-                    e.webpage = "www." +  e.titulo + ".com";
+                    String separated[] = e.titulo.split(" ");
+                    e.webpage = "www." +  separated[0] + getSufix(i, eventnames.size()) + ".com";
                     e.precio = String.valueOf(11*k);
                     e.localizacion = "C/Falsa 123, Springfield, Colorado";
                     Date[] dates = generateDates(k);
                     e.dataInici = String.valueOf(dates[0]);
                     e.dataFinal = String.valueOf(dates[1]);
-                    eventos.add(e);
                     ++num_evts;
                     g.idEventos.put(e.id, e.titulo);
                     c.idEventos.put(e.id, e.titulo);
                 }
-                grupos.add(g);
+                c.idGrupos.put(g.id, g.nombreGrupo);
                 ++num_grps;
             }
         }
 
         //creem num_users users
-        for (int i=0; i<num_users; ++i) {
-            Usuario u = usuarios.get(i);
+        for (int i=0; i<num_users; i++) {
+            Usuario u = new Usuario();
+            usuarios.add(u);
             long idLong = System.currentTimeMillis();
             u.id = "usr" + i + "-" + String.valueOf(idLong);
             u.email = "usr" + i + "@pickanevent.com";
@@ -126,20 +131,17 @@ public class FillDatabaseJson {
             }
             //cada usuario sigue a unos cuantos grupos
             int mgs = Math.min(max_grps_seguits,num_grps);
-            for (int j=0; j<(i%mgs); j++) {
+            for (int j=0; mgs>0 && j<(i%mgs); j++) {
                 String idGrupo = grupos.get(j).id;
                 String nombreGrupo = grupos.get(j).nombreGrupo;
                 u.idGrupos.put(idGrupo, nombreGrupo);
             }
             //cada usuario asiste o NO asiste unos cuantos eventos
             int mea = Math.min(max_evts_assists, num_evts);
-            for (int j=0; j<(i%mea); j++) {
+            for (int j=0; mea>0 && j<(i%mea); j++) {
                 String idEvento = eventos.get(j).id;
                 String tituloEvento = eventos.get(j).titulo;
-                if (j%2 == 0)
-                    u.idEventos.put(idEvento, tituloEvento);
-                else
-                    u.idEventosNo.put(idEvento, tituloEvento);
+                u.idEventos.put(idEvento, tituloEvento);
             }
             //cada usuario sigue a unos cuantos usuarios
             int mus = Math.min(max_users_seguits, num_users);
@@ -156,92 +158,142 @@ public class FillDatabaseJson {
     private static void printJson() {
         System.out.println("{");
         System.out.println("\"Usuarios\": {");
+        boolean first = true;
+        boolean first2 = true;
         for (Usuario u : usuarios) {
+            if (!first)
+                System.out.print(",");
+            else
+                first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"id\": " + "\"" + u.id + "\",");
             System.out.println("\"email\": " + "\"" + u.email + "\",");
             System.out.println("\"password\": " + "\"" + u.password + "\",");
             System.out.println("\"username\": " + "\"" + u.username + "\",");
             System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
             System.out.println("\"bio\": " + "\"" + u.bio + "\",");
-            System.out.println("\"cm\": " + String.valueOf(u.cm) + ",");
+            System.out.println("\"cm\": " + String.valueOf(u.cm));
             if (u.idUsuarios.size() > 0) {
+                System.out.print(",");
                 System.out.println("\"idUsuarios\": {");
-                for (String key : u.idUsuarios.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idUsuarios.keySet()) {
+                    if (!first2){ System.out.print(","); }else{ first2 = false;}
+                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\"");
+                }
+                System.out.println("}");
             }
             if (u.idGrupos.size() > 0) {
+                System.out.print(",");
                 System.out.println("\"idGrupos\": {");
-                for (String key : u.idGrupos.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idGrupos.keySet()){
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\"");
+                }
+                System.out.println("}");
             }
             if (u.idEventos.size() > 0) {
+                System.out.print(",");
                 System.out.println("\"idEventos\": {");
-                for (String key : u.idEventos.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\",");
-                System.out.println("},");
-            }
-            if (u.idEventosNo.size() > 0) {
-                System.out.println("\"idEventosNo\": {");
-                for (String key : u.idEventosNo.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idEventosNo.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idEventos.keySet()){
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\"");
+                }
+                System.out.println("}");
             }
             if (u.idTags.size() > 0) {
+                System.out.print(",");
                 System.out.println("\"idTags\": {");
-                for (String key : u.idTags.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idTags.keySet()) {
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\"");
+                }
+                System.out.println("}");
             }
+            System.out.println("}");
         }
         System.out.println("},"); //hem acabat els usuaris
         System.out.println("\"Grupos\": {");
+        first = true;
         for (Grupo u : grupos) {
+            if (!first)
+                System.out.print(",");
+            else
+                first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"id\": " + "\"" + u.id + "\",");
             System.out.println("\"nombreGrupo\": " + "\"" + u.nombreGrupo + "\",");
             System.out.println("\"descripcion\": " + "\"" + u.descripcion + "\",");
             System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
-            System.out.println("\"idUsuario\": " + "\"" + u.idUsuario + "\",");
+            System.out.println("\"idUsuario\": " + "\"" + u.idUsuario + "\"");
             if (u.idTags.size() > 0) {
+                System.out.println(",");
                 System.out.println("\"idTags\": {");
-                for (String key : u.idTags.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idTags.keySet()) {
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idTags.get(key) + "\"");
+                }
+                System.out.println("}");
             }
             if (u.idEventos.size() > 0) {
+                System.out.println(",");
                 System.out.println("\"idEventos\": {");
-                for (String key : u.idEventos.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idEventos.keySet()) {
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idEventos.get(key) + "\"");
+                }
+                System.out.println("}");
             }
+            System.out.println("}");
         }
         System.out.println("},"); //hem acabat els grups
         System.out.println("\"Tags\": {");
+        first = true;
         for (Tag u : tags) {
+            if (!first)
+                System.out.print(",");
+            else
+                first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
-            System.out.println("\"nombreTag\": " + "\"" + u.nombreTag + "\",");
+            System.out.println("\"id\": " + "\"" + u.id + "\",");
+            System.out.println("\"nombreTag\": " + "\"" + u.nombreTag + "\"");
             if (u.idUsuarios.size() > 0) {
+                System.out.println(",");
                 System.out.println("\"idUsuarios\": {");
-                for (String key : u.idUsuarios.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idUsuarios.keySet()) {
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idUsuarios.get(key) + "\"");
+                }
+                System.out.println("}");
             }
             if (u.idGrupos.size() > 0) {
+                System.out.println(",");
                 System.out.println("\"idGrupos\": {");
-                for (String key : u.idGrupos.keySet())
-                    System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\",");
-                System.out.println("},");
+                first2 = true;
+                for (String key : u.idGrupos.keySet()) {
+                    if (!first2) System.out.print(","); else first2 = false;
+                    System.out.println("\"" + key + "\": \"" + u.idGrupos.get(key) + "\"");
+                }
+                System.out.println("}");
             }
+            System.out.println("}");
         }
         System.out.println("},"); //hem acabat els tags
         System.out.println("\"Eventos\": {");
+        first = true;
         for (Evento u : eventos) {
+            if (!first)
+                System.out.print(",");
+            else
+                first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println("\"id\": " + "\"" + u.id + "\",");
             System.out.println("\"titulo\": " + "\"" + u.titulo + "\",");
             System.out.println("\"descripcion\": " + "\"" + u.descripcion + "\",");
             System.out.println("\"localizacion\": " + "\"" + u.localizacion + "\",");
@@ -251,8 +303,10 @@ public class FillDatabaseJson {
             System.out.println("\"webpage\": " + "\"" + u.webpage + "\",");
             System.out.println("\"latitud\": " + "\"" + u.latitud + "\",");
             System.out.println("\"longitud\": " + "\"" + u.longitud + "\"");
+            System.out.println("}");
         }
-        System.out.println("},"); //hem acabat els events
+        System.out.println("}"); //hem acabat els events
+        System.out.println("}");
     }
 
     //class helpers to make the list
@@ -264,7 +318,6 @@ public class FillDatabaseJson {
         public String precio;
         public String latitud;
         public String longitud;
-        public String imagen;
         public String localizacion;
         public String dataInici;
         public String dataFinal;
@@ -277,31 +330,28 @@ public class FillDatabaseJson {
         public String nickname;
         public String password;
         public String bio;
-        public String imagen;
         public Boolean cm;
-        HashMap<String,String> idEventos; //key: idEvt, value: tituloEvt
-        HashMap<String,String> idEventosNo; //key: idEvt, value: tituloEvt
-        HashMap<String,String> idGrupos; //key: idEvt, value: nombreGrupo
-        HashMap<String,String> idTags; //key: idEvt, value: nombreTag
-        HashMap<String,String> idUsuarios; //key: idEvt, value: tituloEvt
+        HashMap<String,String> idEventos = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
+        HashMap<String,String> idGrupos = new HashMap<String,String>(); //key: idEvt, value: nombreGrupo
+        HashMap<String,String> idTags = new HashMap<String,String>(); //key: idEvt, value: nombreTag
+        HashMap<String,String> idUsuarios = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
     }
 
     public static class Grupo {
         public String id;
         public String descripcion;
         public String idUsuario;
-        public String imagen;
         public String nickname;
         public String nombreGrupo;
-        HashMap<String,String> idEventos; //key: idEvt, value: tituloEvt
-        HashMap<String,String> idTags; //key: idTag, value: nombreTag
+        HashMap<String,String> idEventos = new HashMap<String,String>(); //key: idEvt, value: tituloEvt
+        HashMap<String,String> idTags = new HashMap<String,String>(); //key: idTag, value: nombreTag
     }
 
     public static class Tag {
         public String id;
         public String nombreTag;
-        HashMap<String,String> idUsuarios; //key: idUsr, value: nickname
-        HashMap<String,String> idGrupos; //key: idGrp, value: nombreGrupo
+        HashMap<String,String> idUsuarios = new HashMap<String,String>(); //key: idUsr, value: nickname
+        HashMap<String,String> idGrupos = new HashMap<String,String>(); //key: idGrp, value: nombreGrupo
     }
 
     //helping functions
