@@ -106,7 +106,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         descripcion.setText(gEntity.getDescripcion());
         titulo.setText(gEntity.getTitulo());
-        horarios.setText(gEntity.getHorario());
+        horarios.setText("horario");
         precio.setText(gEntity.getPrecio());
         lugar.setText(gEntity.getLocalizacion());
 

@@ -14,7 +14,6 @@ public class EventoEntity {
     private String precio;
     private String webpage;
     private String localizacion;
-    private String horario;
     private Date dataInici;
     private Date dataFinal;
     private String latitud;
@@ -32,7 +31,6 @@ public class EventoEntity {
         setPrecio(precio);
         setWebpage(webpage);
         setLocalizacion(localizacion);
-        setHorario(horario);
         setLatitud(latitud);
         setLongitud(longitud);
     }
@@ -84,14 +82,6 @@ public class EventoEntity {
 
     public void setLocalizacion(String localizacion) {
         this.localizacion = localizacion;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
     }
 
     public String getLatitud() {

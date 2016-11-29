@@ -56,7 +56,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "-KUl_ie2eRYXdXKVJffQ";
+        idGrupo = "grp8-1480427610872";
 
         showProgressDialog();
 
@@ -93,8 +93,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
         eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(),cm);
-        Map<String,Boolean> tagsMap = _grupo.getIdTags();
-        tagsMap.put(_grupo.getidTagGeneral(),true);
+        Map<String,String> tagsMap = _grupo.getIdTags();
+        tagsMap.put(_grupo.getidTagGeneral(), "rhefdh");
         tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());

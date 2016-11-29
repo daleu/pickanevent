@@ -202,12 +202,12 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventosGrupo(Activity _activity, Map<String, Boolean> _idS, final Boolean cm) {
+    public void getInfoEventosGrupo(Activity _activity, Map<String, String> _idS, final Boolean cm) {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             ArrayList<Info> info = new ArrayList();
             VerInfoGrupoActivity activity;
             String id;
-            Map<String, Boolean> idS;
+            Map<String, String> idS;
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
@@ -217,7 +217,7 @@ public class EventoMGR {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
                         System.out.println(textoBoton+ ""+ cm);
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), textoBoton));
+                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), "horariii", textoBoton));
                     }
                 }
                 activity.mostrarEventosGrupo(info);
@@ -227,7 +227,7 @@ public class EventoMGR {
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Activity _activity, Map<String, Boolean> _idS)
+            public ValueEventListener setActivity (Activity _activity, Map<String, String> _idS)
             {
                 activity=(VerInfoGrupoActivity) _activity;
                 idS = _idS;
@@ -279,18 +279,18 @@ public class EventoMGR {
         }.setActivity(_activity, _usuariosPorEvento));
     }
 
-    public void getInfoEventosUsuarioFromFragment(Fragment _activity, Map<String, Boolean> _idS) {
+    public void getInfoEventosUsuarioFromFragment(Fragment _activity, Map<String, String> _idS) {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             ArrayList<Info> info = new ArrayList();
             TimelineFragment activity;
-            Map<String, Boolean> idS;
+            Map<String, String> idS;
 
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), e.getHorario(), "Asistir!"));
+                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), "horario", "Asistir!"));
                     }
                 }
                 activity.mostrarEventosUsuario(info);
@@ -301,7 +301,7 @@ public class EventoMGR {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
 
-            public ValueEventListener setActivity(Fragment _activity, Map<String, Boolean> _idS) {
+            public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idS) {
                 activity = (TimelineFragment) _activity;
                 idS = _idS;
                 return this;

@@ -74,26 +74,26 @@ public class UsuarioEntity {
     /*    RELACIONES   */
 
     /*GRUPOS, si cm==true serán los grupos creados, si cm == false serán los grupos seguidos */
-    private Map<String,Boolean> idGrupos;
-    public  Map<String,Boolean> getIdGrupos() {return idGrupos;}
-    public  void setIdGrupos(Map<String,Boolean> _idGrupos){idGrupos = _idGrupos;}
+    private Map<String,String> idGrupos;
+    public  Map<String,String> getIdGrupos() {return idGrupos;}
+    public  void setIdGrupos(Map<String,String> _idGrupos){idGrupos = _idGrupos;}
 
 
     /*    EVENTOS   */
-    private Map<String,Boolean> idEventos;
-    public  Map<String,Boolean> getIdEventos() {return idEventos;}
-    public  void setIdEventos(Map<String,Boolean> _idEventos){idEventos = _idEventos;}
+    private Map<String,String> idEventos;
+    public  Map<String,String> getIdEventos() {return idEventos;}
+    public  void setIdEventos(Map<String,String> _idEventos){idEventos = _idEventos;}
 
 
     /*    TAGS   */
-    private Map<String,Boolean> idTags;
-    public  Map<String,Boolean> getIdTags() {return idTags;}
-    public  void setIdTags(Map<String,Boolean> _idTags){idTags = _idTags;}
+    private Map<String,String> idTags;
+    public  Map<String,String> getIdTags() {return idTags;}
+    public  void setIdTags(Map<String,String> _idTags){idTags = _idTags;}
 
     /*    USUARIOS SEGUIDOS    */
-    private Map<String,Boolean> idUsuarios;
-    public Map<String,Boolean> getIdUsuarios() {return idUsuarios;}
-    public void setIdUsuarios (Map<String,Boolean> _idUsuarios) {idUsuarios = _idUsuarios;}
+    private Map<String,String> idUsuarios;
+    public Map<String,String> getIdUsuarios() {return idUsuarios;}
+    public void setIdUsuarios (Map<String,String> _idUsuarios) {idUsuarios = _idUsuarios;}
 
     @Override
     public String toString() {

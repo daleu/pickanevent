@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.HashMap;
@@ -184,7 +185,8 @@ BLOQUE DE TEST
     }
 
     public void goIndicarTags(View _view) {
-        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class));
+        //extra per simular el cas CM
+        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", "-KUl_ie2eRYXdXKVJffQ"));
     }
 
 }

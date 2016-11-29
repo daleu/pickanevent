@@ -82,8 +82,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         nombre.setText(usuario.getNickname());
         //System.out.println(usuario.getNickname());
         foto.setImageResource(R.drawable.redhot); //Cambiar con imagen de usuario
-        Map<String,Boolean> idGrupos = usuario.getIdGrupos();
-        Map<String,Boolean> idEventos = usuario.getIdEventos();
+        Map<String,String> idGrupos = usuario.getIdGrupos();
+        Map<String,String> idEventos = usuario.getIdEventos();
         //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
             //System.out.println(entry.getKey() + "/" + entry.getValue());
             //if(entry.getValue()) {
@@ -120,7 +120,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         String img = evento.getImagen();
         Bitmap imBM = StringToBitMap(img);
         String nombreGrupo = evento.getTitulo();
-        String horario = evento.getHorario();
+        String horario = "horario";
         Info info = new Info(imBM, nombreGrupo, horario, "seguir!");
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
