@@ -5,27 +5,21 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -43,17 +37,11 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
-import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
@@ -96,7 +84,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
+                data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
         final CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
@@ -105,7 +93,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFechaFinal);
-                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
+                data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
         EditText preuText = (EditText) findViewById(R.id.editorPrecio);
@@ -144,35 +132,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     }
 
     public void crearEvento(View _view) {
-        EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
-        EditText descripcio = (EditText) findViewById(R.id.editorDescr);
-        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
-        String preu;
-        if (gratuit.isChecked()) preu = "-1";
-        else {
-            EditText preuText = (EditText) findViewById(R.id.editorPrecio);
-            preu = preuText.getText().toString();
-        }
-        EditText url = (EditText) findViewById(R.id.editorEntradas);
-        EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
-        EditText dataInici = (EditText) findViewById(R.id.editorFecha);
-        EditText dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
-        EditText hora = (EditText) findViewById(R.id.hora);
-
-        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-        image.recycle();
-        byte[] byteArray = bYtE.toByteArray();
-        String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
-        EventoEntity ee;
-        Date dataIn = new Date(dataInici.getText().toString());
-        Date dataFi = new Date(dataFinal.getText().toString());
-        ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
-                url.getText().toString(), localitzacio.getText().toString(), lat, lng, dataIn, dataFi);
-
-        //eMGR = new EventoMGR().getInstance(); VIEJA
-        eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
+        EventoEntity ee = parseEventViewToEntity(image, lat, lng);
+        eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.crear(ee);
         Toast.makeText(this,R.string.DEFAULT_EVENTO_CREADO,Toast.LENGTH_LONG).show();
     }

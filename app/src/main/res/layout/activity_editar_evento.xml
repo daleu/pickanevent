@@ -271,7 +271,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_height="30dp"
                 android:radius="20dip"
-                android:onClick="guardarEvento"
+                android:onClick="updateEvento"
                 android:layout_alignBottom="@+id/marcoContenido"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="15dp" />

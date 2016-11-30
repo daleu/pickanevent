@@ -1,18 +1,26 @@
 package com.pes12.pickanevent.view;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
+import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+
+import java.io.ByteArrayOutputStream;
+import java.util.Date;
 
 /**
  * Created by Legault on 25/10/2016.
@@ -105,5 +113,28 @@ public class BaseActivity extends AppCompatActivity {
 
     public void goBack(View _view) {
         onBackPressed();
+    }
+
+    public EventoEntity parseEventViewToEntity(Bitmap image, String lat, String lng) {
+        EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
+        EditText descripcio = (EditText) findViewById(R.id.editorDescr);
+        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        String preu = (gratuit.isChecked())? null : ((EditText)findViewById(R.id.editorPrecio)).toString();
+        EditText url = (EditText) findViewById(R.id.editorEntradas);
+        EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
+        EditText primerDia = (EditText) findViewById(R.id.editorFecha);
+        EditText ultimoDia = (EditText) findViewById(R.id.editorFechaFinal);
+
+        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+        image.recycle();
+        byte[] byteArray = bYtE.toByteArray();
+        String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+        Date dataIn = new Date(primerDia.getText().toString());
+        Date dataFi = new Date(ultimoDia.getText().toString());
+        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
+                url.getText().toString(),localitzacio.getText().toString(),lat,lng, dataIn, dataFi);
+        return ee;
     }
 }

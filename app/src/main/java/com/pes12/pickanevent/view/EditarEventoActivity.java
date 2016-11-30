@@ -20,7 +20,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
@@ -42,7 +41,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -88,7 +86,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + ViewUtils.getNomMes(month, getApplicationContext()) + " de " + year);
+                data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
 
             }
         });
@@ -156,33 +154,13 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         }
     }
 
-    public void guardarEvento (View _view) {
-        EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
-        EditText descripcio = (EditText) findViewById(R.id.editorDescr);
-        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
-        String preu = (gratuit.isChecked())? null : ((EditText)findViewById(R.id.editorPrecio)).toString();
-        EditText url = (EditText) findViewById(R.id.editorEntradas);
-        EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
-        EditText primerDia = (EditText) findViewById(R.id.editorFecha);
-        EditText ultimoDia = (EditText) findViewById(R.id.editorFechaFinal);
-
-
-
-        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-        image.recycle();
-        byte[] byteArray = bYtE.toByteArray();
-        String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
-        Date dataIn = new Date(primerDia.getText().toString());
-        Date dataFi = new Date(ultimoDia.getText().toString());
-        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
-                url.getText().toString(),localitzacio.getText().toString(),lat,lng, dataIn, dataFi);
-
-        //eMGR = new EventoMGR().getInstance(); VIEJA
-        eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
+    public void updateEvento(View _view) {
+        //cridem a la funcio compartida entre la creacio/edicio event
+        EventoEntity ee = parseEventViewToEntity(image, lat, lng);
+        //guardem
+        eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.actualizar(idEvento,ee);
-        Toast.makeText(this,"Evento guardado",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Evento editado",Toast.LENGTH_LONG).show();
     }
 
     public void comprovarCheckBox(View _view) {
