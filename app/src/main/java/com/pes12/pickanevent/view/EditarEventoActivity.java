@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
@@ -159,15 +160,11 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
         EditText descripcio = (EditText) findViewById(R.id.editorDescr);
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
-        String preu;
-        if (gratuit.isChecked()) preu = "-1";
-        else {
-            EditText preuText = (EditText) findViewById(R.id.editorPrecio);
-            preu = preuText.getText().toString();
-        }
+        String preu = (gratuit.isChecked())? null : ((EditText)findViewById(R.id.editorPrecio)).toString();
         EditText url = (EditText) findViewById(R.id.editorEntradas);
         EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
-        EditText data = (EditText) findViewById(R.id.editorFecha);
+        EditText primerDia = (EditText) findViewById(R.id.editorFecha);
+        EditText ultimoDia = (EditText) findViewById(R.id.editorFechaFinal);
 
 
 
@@ -177,8 +174,10 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         byte[] byteArray = bYtE.toByteArray();
         String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
+        Date dataIn = new Date(primerDia.getText().toString());
+        Date dataFi = new Date(ultimoDia.getText().toString());
         EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
-                url.getText().toString(),localitzacio.getText().toString(),data.getText().toString(),lat,lng);
+                url.getText().toString(),localitzacio.getText().toString(),lat,lng, dataIn, dataFi);
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA

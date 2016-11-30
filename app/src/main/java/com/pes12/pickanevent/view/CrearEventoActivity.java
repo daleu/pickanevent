@@ -51,6 +51,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
@@ -154,11 +155,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         }
         EditText url = (EditText) findViewById(R.id.editorEntradas);
         EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
-        EditText data = (EditText) findViewById(R.id.editorFecha);
+        EditText dataInici = (EditText) findViewById(R.id.editorFecha);
         EditText dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
         EditText hora = (EditText) findViewById(R.id.hora);
-
-
 
         ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
@@ -167,15 +166,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
         EventoEntity ee;
-        if (dataFinal.getText().toString().matches("")) {
-             ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
-                    url.getText().toString(), localitzacio.getText().toString(),
-                     "El " + data.getText().toString() + " a las " + hora.getText().toString(), lat, lng);
-        } else {
-            String interval = "Del " + data.getText().toString() + " al " + dataFinal.getText().toString() + " a las " + hora.getText().toString();
-            ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
-                    url.getText().toString(), localitzacio.getText().toString(), interval, lat, lng);
-        }
+        Date dataIn = new Date(dataInici.getText().toString());
+        Date dataFi = new Date(dataFinal.getText().toString());
+        ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu,
+                url.getText().toString(), localitzacio.getText().toString(), lat, lng, dataIn, dataFi);
 
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
