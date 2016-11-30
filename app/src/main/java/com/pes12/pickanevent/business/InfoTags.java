@@ -19,20 +19,20 @@ public class InfoTags {
         return nombreTag;
     }
 
-    public Boolean getChecked() {
-        return checked;
-    }
-
-    public String getIdTag() {
-        return idTag;
-    }
-
     public void setNombreTag(String _nombreTag) {
         this.nombreTag = _nombreTag;
     }
 
+    public Boolean getChecked() {
+        return checked;
+    }
+
     public void setChecked(Boolean _checked) {
         this.checked = _checked;
+    }
+
+    public String getIdTag() {
+        return idTag;
     }
 
 }

@@ -1,7 +1,5 @@
 package com.pes12.pickanevent.persistence.entity.Grupo;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -10,12 +8,30 @@ import java.util.Map;
 
 public class GrupoEntity {
 
-    public GrupoEntity ()
-    {
+    /*NombreGrupo*/
+    private String nombreGrupo;
+    /*Descripcion*/
+    private String descripcion;
+    /*Imagen*/
+    private String imagen;
+    /*Nickname*/
+    private String nickname;
+    /*idTag General*/
+    private String idTagGeneral;
+    /*idUsuario*/
+    private String idUsuario;
+    /*webPage*/
+    private String webpage;
+    /*    EVENTOS   */
+    private Map<String, String> mapIdEventos;
+    /*    TAGS_ADICIONALES   */
+    private Map<String, String> mapIdTags;
+
+    public GrupoEntity() {
 
     }
 
-    public GrupoEntity (String nombre, String descr, String img, String nick, String idTagGeneral, String idtag, String idUs) {
+    public GrupoEntity(String nombre, String descr, String img, String nick, String idTagGeneral, String idtag, String idUs) {
         setNombreGrupo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -26,63 +42,56 @@ public class GrupoEntity {
 
     }
 
-
-    public enum ATTRIBUTES {
-
-        NOMBREGRUPO   ("nombreGrupo"),
-        DESCRIPCION ("descripcion"),
-        IMAGEN      ("imagen"),
-        NICKNAME    ("nickname"),
-        IDTAG       ("idtag"),
-        IDUSUARIO   ("idusuario"), //creador
-        WEBPAGE     ("webpage");
-
-
-        private String value;
-
-        ATTRIBUTES(String _value){value=_value;};
-
-        public String getValue(){return value;};
+    public String getNombreGrupo() {
+        return nombreGrupo;
     }
 
+    public void setNombreGrupo(String _groupname) {
+        nombreGrupo = _groupname;
+    }
 
-    /*NombreGrupo*/
-    private String nombreGrupo;
-    public  String getNombreGrupo() {return nombreGrupo;}
-    public  void setNombreGrupo(String _groupname) {nombreGrupo = _groupname;}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-    /*Descripcion*/
-    private String descripcion;
-    public  String getDescripcion() {return descripcion;}
-    public  void setDescripcion(String _descripcion) {descripcion = _descripcion;}
+    public void setDescripcion(String _descripcion) {
+        descripcion = _descripcion;
+    }
 
-    /*Imagen*/
-    private String imagen;
-    public  String getImagen() {return imagen;}
-    public  void setImagen(String _imagen) {imagen = _imagen;}
+    public String getImagen() {
+        return imagen;
+    }
 
-    /*Nickname*/
-    private String nickname;
-    public  String getNickname() {return nickname;}
-    public  void setNickname(String _nickname) {nickname = _nickname;}
+    public void setImagen(String _imagen) {
+        imagen = _imagen;
+    }
 
-    /*idTag General*/
-    private String idTagGeneral;
-    public  String getidTagGeneral() {return idTagGeneral;}
-    public  void setIdTagGeneral(String _idTagGeneral) {idTagGeneral = _idTagGeneral;}
+    public String getNickname() {
+        return nickname;
+    }
 
-    /*idUsuario*/
-    private String idUsuario;
-    public  String getIdUsuario() {return idUsuario;}
-    public  void setIdUsuario(String _idUsuario) {idUsuario = _idUsuario;}
+    public void setNickname(String _nickname) {
+        nickname = _nickname;
+    }
 
-    /*webPage*/
-    private String webpage;
+    public String getidTagGeneral() {
+        return idTagGeneral;
+    }
+
+    public void setIdTagGeneral(String _idTagGeneral) {
+        idTagGeneral = _idTagGeneral;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String _idUsuario) {
+        idUsuario = _idUsuario;
+    }
+
     public String getWebpage() {
         return webpage;
-    }
-    public void setWebpage(String _webpage) {
-        this.webpage = _webpage;
     }
 
 
@@ -90,18 +99,51 @@ public class GrupoEntity {
 
     /*    RELACIONES   */
 
+    public void setWebpage(String _webpage) {
+        this.webpage = _webpage;
+    }
 
-    /*    EVENTOS   */
-    private Map<String,String> mapIdEventos;
-    public  Map<String,String> getIdEventos() {return mapIdEventos;}
-    public  void setIdEventos(Map<String,String> _idEventos){mapIdEventos = _idEventos;}
+    public Map<String, String> getIdEventos() {
+        return mapIdEventos;
+    }
+
+    public void setIdEventos(Map<String, String> _idEventos) {
+        mapIdEventos = _idEventos;
+    }
+
+    public Map<String, String> getIdTags() {
+        return mapIdTags;
+    }
+
+    public void setIdTags(Map<String, String> _idTags) {
+        mapIdTags = _idTags;
+    }
+
+    public enum ATTRIBUTES {
+
+        NOMBREGRUPO("nombreGrupo"),
+        DESCRIPCION("descripcion"),
+        IMAGEN("imagen"),
+        NICKNAME("nickname"),
+        IDTAG("idtag"),
+        IDUSUARIO("idusuario"), //creador
+        WEBPAGE("webpage");
 
 
+        private String value;
 
-    /*    TAGS_ADICIONALES   */
-    private Map<String,String> mapIdTags;
-    public  Map<String,String> getIdTags() {return mapIdTags;}
-    public  void setIdTags(Map<String,String> _idTags){mapIdTags = _idTags;}
+        ATTRIBUTES(String _value) {
+            value = _value;
+        }
+
+        ;
+
+        public String getValue() {
+            return value;
+        }
+
+        ;
+    }
 
 
 }

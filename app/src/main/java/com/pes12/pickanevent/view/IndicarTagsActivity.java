@@ -1,7 +1,7 @@
 package com.pes12.pickanevent.view;
 
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,11 +22,10 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox{
+public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox {
 
     ListView tags;
 
@@ -36,7 +35,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     Boolean esCM;
 
-    Map<String,String> mapIdTags;
+    Map<String, String> mapIdTags;
     String idGrupo;
     ArrayList<InfoTags> info;
 
@@ -75,9 +74,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     builder.show();
                 }
             });
-        }
-
-        else { //el usuario no es CM: no mostrar ni el texto ni el boton superiores
+        } else { //el usuario no es CM: no mostrar ni el texto ni el boton superiores
             botonNuevo.setVisibility(View.INVISIBLE);
             textoNuevoTag.setVisibility(View.INVISIBLE);
         }
@@ -93,8 +90,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         if (!esCM) {
             mapIdTags = getUsuarioActual().getIdTags();
             tratarInfo(mapIdTags);
-        }
-        else {
+        } else {
             gMGR.getGrupoParaTags(this, idGrupo);
         }
     }
@@ -104,7 +100,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         tratarInfo(mapIdTags);
     }
 
-    public void tratarInfo(Map<String,String> _mapIdTags) {
+    public void tratarInfo(Map<String, String> _mapIdTags) {
         if (_mapIdTags == null) {
             _mapIdTags = new LinkedHashMap<>();
         }
@@ -121,12 +117,10 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     public void actualizarPreferencias(View view) {
         if (!esCM && mapIdTags.size() < 3) {
-            Toast.makeText(IndicarTagsActivity.this,"Indica un mínimo de 3 tags", Toast.LENGTH_SHORT).show();
-        }
-        else if (esCM){ //para un grupo solo es obligatorio el tag principal
+            Toast.makeText(IndicarTagsActivity.this, "Indica un mínimo de 3 tags", Toast.LENGTH_SHORT).show();
+        } else if (esCM) { //para un grupo solo es obligatorio el tag principal
 
-        }
-        else {
+        } else {
             getUsuarioActual().setIdTags(mapIdTags);
             actualizarUsuario();
         }
@@ -137,8 +131,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         if (infoTag.getChecked()) { //se ha marcado -> deberemos añadirlo al map de seleccionados
             mapIdTags.put(infoTag.getIdTag(), infoTag.getNombreTag());
-        }
-        else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados
+        } else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados
             mapIdTags.remove(infoTag.getIdTag());
         }
 

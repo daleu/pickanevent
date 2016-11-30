@@ -41,12 +41,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_grupo);
         //////inicializacion elementos pantalla//////////
-        nombre = (TextView)findViewById(R.id.nombreGrupo);
-        descripcion = (TextView)findViewById(R.id.descripcion);
-        foto = (ImageView)findViewById(R.id.imagenGrupo);
+        nombre = (TextView) findViewById(R.id.nombreGrupo);
+        descripcion = (TextView) findViewById(R.id.descripcion);
+        foto = (ImageView) findViewById(R.id.imagenGrupo);
         tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
-        boton = (Button)findViewById(R.id.seguir);
+        boton = (Button) findViewById(R.id.seguir);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
@@ -61,7 +61,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
         showProgressDialog();
 
         gMGR.getInfoGrupo(this, idGrupo);
-
 
 
         //PARA HACER QUE SEA SCROLLEABLE
@@ -87,14 +86,13 @@ public class VerInfoGrupoActivity extends BaseActivity {
         //gMGR.crear(ge);
 
 
-
     }
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
-        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(),cm);
-        Map<String,String> tagsMap = _grupo.getIdTags();
-        tagsMap.put(_grupo.getidTagGeneral(),"blabla");
+        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
+        Map<String, String> tagsMap = _grupo.getIdTags();
+        tagsMap.put(_grupo.getidTagGeneral(), "blabla");
         tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
@@ -110,7 +108,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void mostrarEventosGrupo(ArrayList<Info> info) {
-        AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,info);
+        AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this, R.layout.vista_adapter_lista, info);
         eventos.setAdapter(ale);
         hideProgressDialog();
     }

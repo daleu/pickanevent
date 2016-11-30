@@ -1,6 +1,5 @@
 package com.pes12.pickanevent.business;
 
-import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BaseActivity;
 
 /**

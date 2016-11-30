@@ -2,14 +2,12 @@ package com.pes12.pickanevent.business.Tag;
 
 import android.app.Activity;
 
-import com.google.firebase.auth.api.model.StringList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
-import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
@@ -33,10 +31,10 @@ public class TagMGR {
         bdRefTags.keepSynced(true);
     }
 
-    public String crear(TagEntity _entity)
-    {
+    public String crear(TagEntity _entity) {
         bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
+
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
@@ -47,13 +45,13 @@ public class TagMGR {
                     grupo.getKey();
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError _arg0) {
             }
 
-            public ValueEventListener setEntity (TagEntity _ent)
-            {
-                ent=_ent;
+            public ValueEventListener setEntity(TagEntity _ent) {
+                ent = _ent;
                 return this;
             }
         }.setEntity(_entity));
@@ -65,6 +63,7 @@ public class TagMGR {
             ArrayList<String> info = new ArrayList();
             VerInfoGrupoActivity activity;
             Map<String, String> idS;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
@@ -81,9 +80,9 @@ public class TagMGR {
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Activity _activity, Map<String, String> _idS)
-            {
-                activity=(VerInfoGrupoActivity) _activity;
+
+            public ValueEventListener setActivity(Activity _activity, Map<String, String> _idS) {
+                activity = (VerInfoGrupoActivity) _activity;
                 idS = _idS;
                 return this;
             }
@@ -94,6 +93,7 @@ public class TagMGR {
         bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
             ArrayList<InfoTags> info = new ArrayList();
             IndicarTagsActivity activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 info.clear();
@@ -109,9 +109,9 @@ public class TagMGR {
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Activity _activity)
-            {
-                activity=(IndicarTagsActivity) _activity;
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (IndicarTagsActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

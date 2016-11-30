@@ -3,12 +3,9 @@ package com.pes12.pickanevent.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,7 +21,6 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class VerInfoOtroUsuarioActivity extends BaseActivity {
@@ -54,12 +50,12 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         showProgressDialog();
 
         //Inicializaciones
-        nombre = (TextView)findViewById(R.id.textNombreUsuario);
-        foto = (ImageView)findViewById(R.id.imagenOtroUsuario);
+        nombre = (TextView) findViewById(R.id.textNombreUsuario);
+        foto = (ImageView) findViewById(R.id.imagenOtroUsuario);
         listaGrupos = (ListView) findViewById(R.id.listaGruposUsuario);
         listaEventos = (ListView) findViewById(R.id.listaEsdevenimentsUsuario);
         grupos = new ArrayList<Info>();
-        eventos= new ArrayList<Info>();
+        eventos = new ArrayList<Info>();
         ///////////////////////////////////////////////////////////////////////
 
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
@@ -82,25 +78,25 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         nombre.setText(usuario.getNickname());
         //System.out.println(usuario.getNickname());
         foto.setImageResource(R.drawable.redhot); //Cambiar con imagen de usuario
-        Map<String,String> idGrupos = usuario.getIdGrupos();
-        Map<String,String> idEventos = usuario.getIdEventos();
+        Map<String, String> idGrupos = usuario.getIdGrupos();
+        Map<String, String> idEventos = usuario.getIdEventos();
         //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
-            //System.out.println(entry.getKey() + "/" + entry.getValue());
-            //if(entry.getValue()) {
-                idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-                gMGR.getInfoGrupoUsuario(this,/*entry.getKey()*/idGrupo);
-            //}
+        //System.out.println(entry.getKey() + "/" + entry.getValue());
+        //if(entry.getValue()) {
+        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+        gMGR.getInfoGrupoUsuario(this,/*entry.getKey()*/idGrupo);
+        //}
         //}
         //for (Map.Entry<String, Boolean> entry : idEventos.entrySet()){
-                //System.out.println(entry.getKey() + "/" + entry.getValue());
-                //if(entry.getValue()) {
-                    idEvento = "-KUavWyMfmX-uxtRqMo5";
-                    eMGR.getInfoEventoUsuario(this,/*entry.getKey()*/idEvento);
-                //}
+        //System.out.println(entry.getKey() + "/" + entry.getValue());
+        //if(entry.getValue()) {
+        idEvento = "-KUavWyMfmX-uxtRqMo5";
+        eMGR.getInfoEventoUsuario(this,/*entry.getKey()*/idEvento);
+        //}
         //}
     }
 
-    public void rellenarListaGrupos (GrupoEntity grupo){
+    public void rellenarListaGrupos(GrupoEntity grupo) {
         //System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(grupo.getImagen());
         String img = grupo.getImagen();
@@ -109,12 +105,12 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Info info = new Info(imBM, nombreGrupo, "adeu", "seguir!");
         eventos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
-        AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this,R.layout.vista_adapter_lista,eventos);
+        AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
         listaGrupos.setAdapter(ale);
         //hideProgressDialog();
     }
 
-    public void rellenarListaEventos (EventoEntity evento) {
+    public void rellenarListaEventos(EventoEntity evento) {
         //System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(evento.getHorario());
         String img = evento.getImagen();
@@ -125,7 +121,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
         //System.out.println(grupos.get(0).segonaLinea);
-        AdapterLista alg = new AdapterLista(VerInfoOtroUsuarioActivity.this,R.layout.vista_adapter_lista,grupos);
+        AdapterLista alg = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, grupos);
         listaEventos.setAdapter(alg);
         hideProgressDialog();
     }

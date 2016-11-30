@@ -6,14 +6,14 @@ package com.pes12.pickanevent.business;
 
 public enum Enumeracio {
 
-    TestEnum(1,"Testeig","DEFAULT_TESTEIG"),
+    TestEnum(1, "Testeig", "DEFAULT_TESTEIG"),
     TestEnum2(2, "Testeig", "DEFAULT_TESTEIG");
 
     private int codi;
     private String nom;
     private String literal;
 
-    Enumeracio(int codi, String nom, String literal){
+    Enumeracio(int codi, String nom, String literal) {
         this.codi = codi;
         this.nom = nom;
         this.literal = literal;

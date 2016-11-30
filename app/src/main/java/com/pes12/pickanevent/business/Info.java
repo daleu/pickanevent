@@ -20,13 +20,35 @@ public class Info {
         this.textoBoton = _textoBoton;
     }
 
-    public Bitmap getImg(){ return img;}
-    public String getPrimeraLinea() {return primeraLinea;}
-    public String getSegonaLinea() {return segonaLinea;}
-    public String getTextoBoton() {return textoBoton;}
+    public Bitmap getImg() {
+        return img;
+    }
 
-    public void setImg (Bitmap _img) {this.img = _img;}
-    public void setPrimeraLinea (String _primeraLinea) {this.primeraLinea = _primeraLinea;}
-    public void setSegonaLinea (String _segonaLinea) {this.segonaLinea = _segonaLinea;}
-    public void setTextoBoton (String _textoBoton) {this.textoBoton = _textoBoton;}
+    public void setImg(Bitmap _img) {
+        this.img = _img;
+    }
+
+    public String getPrimeraLinea() {
+        return primeraLinea;
+    }
+
+    public void setPrimeraLinea(String _primeraLinea) {
+        this.primeraLinea = _primeraLinea;
+    }
+
+    public String getSegonaLinea() {
+        return segonaLinea;
+    }
+
+    public void setSegonaLinea(String _segonaLinea) {
+        this.segonaLinea = _segonaLinea;
+    }
+
+    public String getTextoBoton() {
+        return textoBoton;
+    }
+
+    public void setTextoBoton(String _textoBoton) {
+        this.textoBoton = _textoBoton;
+    }
 }

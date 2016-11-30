@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -28,11 +27,19 @@ import java.util.Date;
 
 public class BaseActivity extends AppCompatActivity {
 
+    private static UsuarioEntity usuarioActual;
     private ProgressDialog mProgressDialog;
-    private static UsuarioEntity  usuarioActual;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
     private UsuarioMGR uMGR;
+
+    public static UsuarioEntity getUsuarioActual() {
+        return usuarioActual;
+    }
+
+    public void setUsuarioActual(UsuarioEntity _usuarioActual) {
+        usuarioActual = _usuarioActual;
+    }
 
     public void showProgressDialog() {
         if (mProgressDialog == null) {
@@ -50,21 +57,16 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public static UsuarioEntity getUsuarioActual()
-    {
-        return usuarioActual;
-    }
-    public void setUsuarioActual(UsuarioEntity _usuarioActual)
-    {
-        usuarioActual=_usuarioActual;
-    }
-
-    public void actualizarUsuario () {
+    public void actualizarUsuario() {
         uMGR.actualizar(mAuth.getCurrentUser().getUid(), usuarioActual);
     }
 
 
-    public FirebaseAuth getAuth(){return mAuth;};
+    public FirebaseAuth getAuth() {
+        return mAuth;
+    }
+
+    ;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -73,13 +75,12 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    public void signOut(){
+    public void signOut() {
         mAuth.signOut();
-        usuarioActual=null;
+        usuarioActual = null;
     }
 
-    private void initAuth()
-    {
+    private void initAuth() {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -87,7 +88,7 @@ public class BaseActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    uMGR.getUsuarioLogin(BaseActivity.this,user.getUid());
+                    uMGR.getUsuarioLogin(BaseActivity.this, user.getUid());
 
                 } else {
                     // User is signed out
@@ -98,6 +99,7 @@ public class BaseActivity extends AppCompatActivity {
         };
         // ...
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -119,22 +121,24 @@ public class BaseActivity extends AppCompatActivity {
         EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
         EditText descripcio = (EditText) findViewById(R.id.editorDescr);
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
-        String preu = (gratuit.isChecked())? null : ((EditText)findViewById(R.id.editorPrecio)).toString();
+        String preu = (gratuit.isChecked()) ? null : ((EditText) findViewById(R.id.editorPrecio)).toString();
         EditText url = (EditText) findViewById(R.id.editorEntradas);
         EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
         EditText primerDia = (EditText) findViewById(R.id.editorFecha);
         EditText ultimoDia = (EditText) findViewById(R.id.editorFechaFinal);
 
-        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-        image.recycle();
-        byte[] byteArray = bYtE.toByteArray();
-        String imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        String imatge = null;
+        if (image != null) {
+            ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+            image.recycle();
+            byte[] byteArray = bYtE.toByteArray();
+            imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        }
 
         Date dataIn = new Date(primerDia.getText().toString());
         Date dataFi = new Date(ultimoDia.getText().toString());
-        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),descripcio.getText().toString(),imatge,preu,
-                url.getText().toString(),localitzacio.getText().toString(),lat,lng, dataIn, dataFi);
+        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu, url.getText().toString(), localitzacio.getText().toString(), lat, lng, dataIn, dataFi);
         return ee;
     }
 }

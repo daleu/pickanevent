@@ -2,13 +2,10 @@ package com.pes12.pickanevent.business;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,11 +20,10 @@ import java.util.ArrayList;
 
 public class AdapterLista extends ArrayAdapter<Info> {
 
-   // Info datos[];
+    // Info datos[];
     ArrayList<Info> infos;
     int layoutId;
     private Context context;
-
 
 
     public AdapterLista(Context _context, int _layoutId, ArrayList<Info> _info) {
@@ -57,21 +53,20 @@ public class AdapterLista extends ArrayAdapter<Info> {
     @Override
     public View getView(int _position, View _convertView, ViewGroup _parent) {
         AdapterHolder holder;
-        View vistaEvent =_convertView;
+        View vistaEvent = _convertView;
         if (vistaEvent == null) {
-            LayoutInflater inf = ((Activity)context).getLayoutInflater();
+            LayoutInflater inf = ((Activity) context).getLayoutInflater();
             vistaEvent = inf.inflate(layoutId, _parent, false);
 
             holder = new AdapterHolder();
-            holder.img = (ImageView)vistaEvent.findViewById(R.id.icon);
-            holder.linea1 = (TextView)vistaEvent.findViewById(R.id.text1);
-            holder.linea2 = (TextView)vistaEvent.findViewById(R.id.text2);
+            holder.img = (ImageView) vistaEvent.findViewById(R.id.icon);
+            holder.linea1 = (TextView) vistaEvent.findViewById(R.id.text1);
+            holder.linea2 = (TextView) vistaEvent.findViewById(R.id.text2);
             holder.button = (Button) vistaEvent.findViewById(R.id.button);
 
             vistaEvent.setTag(holder);
-        }
-        else {
-            holder = (AdapterHolder)vistaEvent.getTag();
+        } else {
+            holder = (AdapterHolder) vistaEvent.getTag();
         }
 
         Info componentes = getItem(_position);
