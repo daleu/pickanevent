@@ -10,11 +10,12 @@ public class GenerateJocProves {
 
 
     public static void main(String[] args) {
+        generacio_hardcoded();
         generacio_joc_proves();
         printJson();
     }
 
-    private static final int multiplier = 100;
+    private static final int multiplier = 1;
     //valors
     private static final int num_users = 10*multiplier;
     private static final int num_cms = (multiplier>1)? 1*multiplier : 2;
@@ -32,6 +33,7 @@ public class GenerateJocProves {
     private static final int max_evts_assists = 2*multiplier; //Math.min(10,num_evts). A calcular en ejecucion
     //llistes
     private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>(num_users+num_cms);
+    private static ArrayList<Usuario> harcodedUsers = new ArrayList<Usuario>();
     private static ArrayList<Tag> tags = new ArrayList<Tag>(num_tags);
     private static ArrayList<Grupo> grupos = new ArrayList<Grupo>();
     private static ArrayList<Evento> eventos = new ArrayList<Evento>();
@@ -44,6 +46,34 @@ public class GenerateJocProves {
     private static ArrayList<String> groupnames = groupsList.getGroupNames();
     private static ArrayList<String> tagnames = tagsList.getTagNames();
     private static ArrayList<String> eventnames = eventsList.getEventnames();
+
+    private static Usuario createU(String id, String nickname, Boolean cm) {
+        Usuario u = new Usuario();
+        u.id = id;
+        u.nickname = nickname;
+        u.cm = cm;
+        return u;
+    }
+
+    private static void generacio_hardcoded() {
+        ArrayList<Usuario> l = harcodedUsers;
+        l.add(createU("2u9PWFE9uIhJTLVWfMW0wFH8Axt1", "p4triot", false));
+        l.add(createU("AmI3weLwUfdn7HNxJ2yhp2gBja82", "clara.gaset", true));
+        l.add(createU("OJIkFM2MVkY1EtOL8MELNYitJwO2", "claraaaa", false));
+        l.add(createU("Qch3yrsCXwgyL4os8ujikGVaNwW2", "aleueet", false));
+        l.add(createU("S8P83FZ1RLabdWFODCVZmUajWBs1", "PD", false));
+        l.add(createU("VSDWkL1WEqPEnAwSpTs8Oxi3WXz1", "PES", false));
+        l.add(createU("bcAaacBmcTa31VRZwhBejjeOTYT2", "leg", false));
+        l.add(createU("gIHcRzhypsY0tWkqjvIWkMNcEmZ2", "nuevotest", false));
+        l.add(createU("gm1NcZBCG2WcKmZ1fjPgWdhjSTB2", "claraaa", false));
+        l.add(createU("haIMoULYKRhynBStMtfQl2c9SxC2", "pop", false));
+        l.add(createU("hoQHu0NgpoT8bHJe97h2xfE3UAy2", "lega", false));
+        l.add(createU("jdcrPj4xCnNbwHXbY4o5upwY3i63", "123", true));
+        l.add(createU("lvKSWbg21Qgye7CGsqIXtdSsGck2", "z", false));
+        l.add(createU("n8ZrXPm2e0PvyiES4j1RK9CD4J12", "clara.gaset", true));
+        l.add(createU("vmSgGHa4RCPBXbORH64tZAgB5sG2", "Legault", true));
+
+    }
 
     private static void generacio_joc_proves() {
         //creem num_tags tags
@@ -65,6 +95,7 @@ public class GenerateJocProves {
             c.nickname = "cm"+i;
             c.username = "cm"+i;
             c.bio = "Esta es la descripcion de cm"+i;
+            if (i%2 == 0) c.bio = null;
             long idLong = System.currentTimeMillis();
             c.id = "cm" + i + "-" + String.valueOf(idLong);
             //cada cm crea una quantitat de grups
@@ -72,6 +103,7 @@ public class GenerateJocProves {
                 Grupo g = new Grupo();
                 grupos.add(g);
                 g.descripcion = "Esta es la descripcion del grupo creado por cm"+i;
+                if (j%5 == 0) g.descripcion = null;
                 g.nombreGrupo = groupnames.get((j+i)%groupnames.size());
                 g.idUsuario = c.id;
                 g.nickname = c.nickname;
@@ -90,17 +122,22 @@ public class GenerateJocProves {
                     eventos.add(e);
                     e.id = "Evt" + num_evts + "-" + String.valueOf(idLong);
                     e.descripcion = "Esta es la descripcion del evento " + num_evts;
+                    if (k%5 == 0) e.descripcion = null;
                     e.titulo = eventnames.get(k%eventnames.size()) + getSufix(i, eventnames.size());
                     e.latitud = "41.361585";
                     e.longitud = "2.1507653";
+                    e.localizacion = "C/Falsa 123, Springfield, Colorado";
+                    if (k%4 == 0) {e.latitud = null; e.longitud = null; e.localizacion = null;}
                     String separated[] = e.titulo.split(" ");
                     e.webpage = "www." +  separated[0] + getSufix(i, eventnames.size()) + ".com";
+                    if (k%3 == 0) e.webpage = null;
                     e.precio = String.valueOf(11*k);
-                    e.localizacion = "C/Falsa 123, Springfield, Colorado";
+                    if (k%2 == 0) e.precio = null;
                     e.idGrup = g.id;
                     Date[] dates = generateDates(k);
                     e.dataInici = String.valueOf(dates[0]);
                     e.dataFinal = String.valueOf(dates[1]);
+                    if (k%4 == 1) e.dataFinal = null;
                     ++num_evts;
                     g.idEventos.put(e.id, e.titulo);
                     c.idEventos.put(e.id, e.titulo);
@@ -121,7 +158,9 @@ public class GenerateJocProves {
             u.username = "usr" + i;
             u.nickname = nicknames.get(i%nicknames.size()) + getSufix(i, nicknames.size());
             u.cm = false;
+            if (i%3 == 0) u.cm = null;
             u.bio = "Esta es la bio-descripcion del usuario usr"+i;
+            if (i%2 == 0) u.bio = null;
             //cada usuario se añade unos cuantos tags
             for (int j=0; j<(i%max_tags_x_usr); j++) {
                 String idTag = tags.get(j).id;
@@ -159,19 +198,25 @@ public class GenerateJocProves {
         System.out.println("\"usuarios\": {");
         boolean first = true;
         boolean first2 = true;
+        usuarios.addAll(harcodedUsers);
         for (Usuario u : usuarios) {
             if (!first)
                 System.out.print(",");
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\",");
-            System.out.println("\"email\": " + "\"" + u.email + "\",");
-            System.out.println("\"password\": " + "\"" + u.password + "\",");
-            System.out.println("\"username\": " + "\"" + u.username + "\",");
-            System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
-            System.out.println("\"bio\": " + "\"" + u.bio + "\",");
-            System.out.println("\"cm\": " + String.valueOf(u.cm));
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            if (u.email != null)
+                System.out.println(",\"email\": " + "\"" + u.email + "\"");
+            if (u.password != null)
+                System.out.println(",\"password\": " + "\"" + u.password + "\"");
+            if (u.username != null)
+                System.out.println(",\"username\": " + "\"" + u.username + "\"");
+            System.out.println(",\"nickname\": " + "\"" + u.nickname + "\"");
+            if (u.bio != null)
+                System.out.println(",\"bio\": " + "\"" + u.bio + "\"");
+            if (u.cm != null)
+                System.out.println(",\"cm\": " + String.valueOf(u.cm));
             if (u.idUsuarios.size() > 0) {
                 System.out.print(",");
                 System.out.println("\"idUsuarios\": {");
@@ -223,11 +268,12 @@ public class GenerateJocProves {
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\",");
-            System.out.println("\"nombreGrupo\": " + "\"" + u.nombreGrupo + "\",");
-            System.out.println("\"descripcion\": " + "\"" + u.descripcion + "\",");
-            System.out.println("\"nickname\": " + "\"" + u.nickname + "\",");
-            System.out.println("\"idUsuario\": " + "\"" + u.idUsuario + "\"");
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println(",\"nombreGrupo\": " + "\"" + u.nombreGrupo + "\"");
+            if (u.descripcion != null)
+                System.out.println(",\"descripcion\": " + "\"" + u.descripcion + "\"");
+            System.out.println(",\"nickname\": " + "\"" + u.nickname + "\"");
+            System.out.println(",\"idUsuario\": " + "\"" + u.idUsuario + "\"");
             if (u.idTags.size() > 0) {
                 System.out.println(",");
                 System.out.println("\"idTags\": {");
@@ -282,17 +328,24 @@ public class GenerateJocProves {
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\",");
-            System.out.println("\"titulo\": " + "\"" + u.titulo + "\",");
-            System.out.println("\"descripcion\": " + "\"" + u.descripcion + "\",");
-            System.out.println("\"localizacion\": " + "\"" + u.localizacion + "\",");
-            System.out.println("\"dataInici\": " + "\"" + u.dataInici + "\",");
-            System.out.println("\"dataFinal\": " + "\"" + u.dataFinal + "\",");
-            System.out.println("\"precio\": " + "\"" + u.precio + "\",");
-            System.out.println("\"webpage\": " + "\"" + u.webpage + "\",");
-            System.out.println("\"latitud\": " + "\"" + u.latitud + "\",");
-            System.out.println("\"longitud\": " + "\"" + u.longitud + "\",");
-            System.out.println("\"idGrup\": " + "\"" + u.idGrup + "\"");
+            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            System.out.println(",\"titulo\": " + "\"" + u.titulo + "\"");
+            if (u.descripcion != null)
+                System.out.println(",\"descripcion\": " + "\"" + u.descripcion + "\"");
+            if (u.localizacion != null)
+                System.out.println(",\"localizacion\": " + "\"" + u.localizacion + "\"");
+            System.out.println(",\"dataInici\": " + "\"" + u.dataInici + "\"");
+            if (u.dataFinal != null)
+                System.out.println(",\"dataFinal\": " + "\"" + u.dataFinal + "\"");
+            if (u.precio != null)
+                System.out.println(",\"precio\": " + "\"" + u.precio + "\"");
+            if (u.webpage != null)
+                System.out.println(",\"webpage\": " + "\"" + u.webpage + "\"");
+            if (u.latitud != null)
+                System.out.println(",\"latitud\": " + "\"" + u.latitud + "\"");
+            if (u.longitud != null)
+                System.out.println(",\"longitud\": " + "\"" + u.longitud + "\"");
+            System.out.println(",\"idGrup\": " + "\"" + u.idGrup + "\"");
             System.out.println("}");
         }
         System.out.println("}"); //hem acabat els events

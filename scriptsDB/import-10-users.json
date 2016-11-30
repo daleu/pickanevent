@@ -1,16 +1,15 @@
 {
   "usuarios": {
-    "cm0-1480427759361": {
-      "id": "cm0-1480427759361",
+    "cm0-1480536079251": {
+      "id": "cm0-1480536079251",
       "email": "cm0@pickanevent.com",
       "password": "pickanevent",
       "username": "cm0",
       "nickname": "cm0",
-      "bio": "Esta es la descripcion de cm0",
       "cm": true
     },
-    "cm1-1480427759361": {
-      "id": "cm1-1480427759361",
+    "cm1-1480536079251": {
+      "id": "cm1-1480536079251",
       "email": "cm1@pickanevent.com",
       "password": "pickanevent",
       "username": "cm1",
@@ -18,20 +17,18 @@
       "bio": "Esta es la descripcion de cm1",
       "cm": true,
       "idGrupos": {
-        "grp0-1480427759361": "Villanos"
+        "grp0-1480536079251": "Villanos"
       }
     },
-    "usr0-1480427759361": {
-      "id": "usr0-1480427759361",
+    "usr0-1480536079251": {
+      "id": "usr0-1480536079251",
       "email": "usr0@pickanevent.com",
       "password": "pickanevent",
       "username": "usr0",
-      "nickname": "Deadpool",
-      "bio": "Esta es la bio-descripcion del usuario usr0",
-      "cm": false
+      "nickname": "Deadpool"
     },
-    "usr1-1480427759361": {
-      "id": "usr1-1480427759361",
+    "usr1-1480536079251": {
+      "id": "usr1-1480536079251",
       "email": "usr1@pickanevent.com",
       "password": "pickanevent",
       "username": "usr1",
@@ -39,41 +36,38 @@
       "bio": "Esta es la bio-descripcion del usuario usr1",
       "cm": false,
       "idTags": {
-        "tag0-1480427759360": "Venganza"
+        "tag0-1480536079251": "Venganza"
       }
     },
-    "usr2-1480427759361": {
-      "id": "usr2-1480427759361",
+    "usr2-1480536079251": {
+      "id": "usr2-1480536079251",
       "email": "usr2@pickanevent.com",
       "password": "pickanevent",
       "username": "usr2",
       "nickname": "Thor",
-      "bio": "Esta es la bio-descripcion del usuario usr2",
       "cm": false
     },
-    "usr3-1480427759361": {
-      "id": "usr3-1480427759361",
+    "usr3-1480536079251": {
+      "id": "usr3-1480536079251",
       "email": "usr3@pickanevent.com",
       "password": "pickanevent",
       "username": "usr3",
       "nickname": "Hulk",
       "bio": "Esta es la bio-descripcion del usuario usr3",
-      "cm": false,
       "idTags": {
-        "tag0-1480427759360": "Venganza"
+        "tag0-1480536079251": "Venganza"
       }
     },
-    "usr4-1480427759361": {
-      "id": "usr4-1480427759361",
+    "usr4-1480536079251": {
+      "id": "usr4-1480536079251",
       "email": "usr4@pickanevent.com",
       "password": "pickanevent",
       "username": "usr4",
       "nickname": "Antman",
-      "bio": "Esta es la bio-descripcion del usuario usr4",
       "cm": false
     },
-    "usr5-1480427759361": {
-      "id": "usr5-1480427759361",
+    "usr5-1480536079251": {
+      "id": "usr5-1480536079251",
       "email": "usr5@pickanevent.com",
       "password": "pickanevent",
       "username": "usr5",
@@ -81,20 +75,18 @@
       "bio": "Esta es la bio-descripcion del usuario usr5",
       "cm": false,
       "idTags": {
-        "tag0-1480427759360": "Venganza"
+        "tag0-1480536079251": "Venganza"
       }
     },
-    "usr6-1480427759361": {
-      "id": "usr6-1480427759361",
+    "usr6-1480536079251": {
+      "id": "usr6-1480536079251",
       "email": "usr6@pickanevent.com",
       "password": "pickanevent",
       "username": "usr6",
-      "nickname": "DrStrange",
-      "bio": "Esta es la bio-descripcion del usuario usr6",
-      "cm": false
+      "nickname": "DrStrange"
     },
-    "usr7-1480427759361": {
-      "id": "usr7-1480427759361",
+    "usr7-1480536079251": {
+      "id": "usr7-1480536079251",
       "email": "usr7@pickanevent.com",
       "password": "pickanevent",
       "username": "usr7",
@@ -102,47 +94,119 @@
       "bio": "Esta es la bio-descripcion del usuario usr7",
       "cm": false,
       "idTags": {
-        "tag0-1480427759360": "Venganza"
+        "tag0-1480536079251": "Venganza"
       }
     },
-    "usr8-1480427759361": {
-      "id": "usr8-1480427759361",
+    "usr8-1480536079251": {
+      "id": "usr8-1480536079251",
       "email": "usr8@pickanevent.com",
       "password": "pickanevent",
       "username": "usr8",
       "nickname": "Superman",
-      "bio": "Esta es la bio-descripcion del usuario usr8",
       "cm": false
     },
-    "usr9-1480427759361": {
-      "id": "usr9-1480427759361",
+    "usr9-1480536079251": {
+      "id": "usr9-1480536079251",
       "email": "usr9@pickanevent.com",
       "password": "pickanevent",
       "username": "usr9",
       "nickname": "WonderWoman",
       "bio": "Esta es la bio-descripcion del usuario usr9",
-      "cm": false,
       "idTags": {
-        "tag0-1480427759360": "Venganza"
+        "tag0-1480536079251": "Venganza"
       }
+    },
+    "2u9PWFE9uIhJTLVWfMW0wFH8Axt1": {
+      "id": "2u9PWFE9uIhJTLVWfMW0wFH8Axt1",
+      "nickname": "p4triot",
+      "cm": false
+    },
+    "AmI3weLwUfdn7HNxJ2yhp2gBja82": {
+      "id": "AmI3weLwUfdn7HNxJ2yhp2gBja82",
+      "nickname": "clara.gaset",
+      "cm": true
+    },
+    "OJIkFM2MVkY1EtOL8MELNYitJwO2": {
+      "id": "OJIkFM2MVkY1EtOL8MELNYitJwO2",
+      "nickname": "claraaaa",
+      "cm": false
+    },
+    "Qch3yrsCXwgyL4os8ujikGVaNwW2": {
+      "id": "Qch3yrsCXwgyL4os8ujikGVaNwW2",
+      "nickname": "aleueet",
+      "cm": false
+    },
+    "S8P83FZ1RLabdWFODCVZmUajWBs1": {
+      "id": "S8P83FZ1RLabdWFODCVZmUajWBs1",
+      "nickname": "PD",
+      "cm": false
+    },
+    "VSDWkL1WEqPEnAwSpTs8Oxi3WXz1": {
+      "id": "VSDWkL1WEqPEnAwSpTs8Oxi3WXz1",
+      "nickname": "PES",
+      "cm": false
+    },
+    "bcAaacBmcTa31VRZwhBejjeOTYT2": {
+      "id": "bcAaacBmcTa31VRZwhBejjeOTYT2",
+      "nickname": "leg",
+      "cm": false
+    },
+    "gIHcRzhypsY0tWkqjvIWkMNcEmZ2": {
+      "id": "gIHcRzhypsY0tWkqjvIWkMNcEmZ2",
+      "nickname": "nuevotest",
+      "cm": false
+    },
+    "gm1NcZBCG2WcKmZ1fjPgWdhjSTB2": {
+      "id": "gm1NcZBCG2WcKmZ1fjPgWdhjSTB2",
+      "nickname": "claraaa",
+      "cm": false
+    },
+    "haIMoULYKRhynBStMtfQl2c9SxC2": {
+      "id": "haIMoULYKRhynBStMtfQl2c9SxC2",
+      "nickname": "pop",
+      "cm": false
+    },
+    "hoQHu0NgpoT8bHJe97h2xfE3UAy2": {
+      "id": "hoQHu0NgpoT8bHJe97h2xfE3UAy2",
+      "nickname": "lega",
+      "cm": false
+    },
+    "jdcrPj4xCnNbwHXbY4o5upwY3i63": {
+      "id": "jdcrPj4xCnNbwHXbY4o5upwY3i63",
+      "nickname": "123",
+      "cm": true
+    },
+    "lvKSWbg21Qgye7CGsqIXtdSsGck2": {
+      "id": "lvKSWbg21Qgye7CGsqIXtdSsGck2",
+      "nickname": "z",
+      "cm": false
+    },
+    "n8ZrXPm2e0PvyiES4j1RK9CD4J12": {
+      "id": "n8ZrXPm2e0PvyiES4j1RK9CD4J12",
+      "nickname": "clara.gaset",
+      "cm": true
+    },
+    "vmSgGHa4RCPBXbORH64tZAgB5sG2": {
+      "id": "vmSgGHa4RCPBXbORH64tZAgB5sG2",
+      "nickname": "Legault",
+      "cm": true
     }
   },
   "grupos": {
-    "grp0-1480427759361": {
-      "id": "grp0-1480427759361",
+    "grp0-1480536079251": {
+      "id": "grp0-1480536079251",
       "nombreGrupo": "Villanos",
-      "descripcion": "Esta es la descripcion del grupo creado por cm1",
       "nickname": "cm1",
-      "idUsuario": "cm1-1480427759361"
+      "idUsuario": "cm1-1480536079251"
     }
   },
   "tags": {
-    "tag0-1480427759360": {
-      "id": "tag0-1480427759360",
+    "tag0-1480536079251": {
+      "id": "tag0-1480536079251",
       "nombreTag": "Venganza"
     },
-    "tag1-1480427759360": {
-      "id": "tag1-1480427759360",
+    "tag1-1480536079251": {
+      "id": "tag1-1480536079251",
       "nombreTag": "Justicia"
     }
   },
