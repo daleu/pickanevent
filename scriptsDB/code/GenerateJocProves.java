@@ -129,7 +129,7 @@ public class GenerateJocProves {
                     e.precio = String.valueOf(11*k);
                     if (k%2 == 0) e.precio = null;
                     e.idGrup = g.id;
-                    Date[] dates = generateDates(k);
+                    Date[] dates = generateDates(i,j,k);
                     e.dataInici = dates[0].getTime();
                     e.dataFinal = dates[1].getTime();
                     if (k%4 == 1) e.dataFinal = null;
@@ -395,18 +395,18 @@ public class GenerateJocProves {
     }
 
     //helping functions
-    private static Date[] generateDates(int j) {
+    private static Date[] generateDates(int i, int j, int k) {
         //generem unes dates
-        int year = 2016 + j;
+        int year = 2016 + i%2;
         int month = j%11;
-        int day = ((j+29)%29)+1;
-        int hour = j%24;
-        int min = (j%4)*15;
+        int day = ((k+29)%29)+1;
+        int hour = i%24;
+        int min = (k%4)*15;
         boolean sameDay = (j%2 == 0)? true : false;
         Date dataInici = new Date(year-1900, month, day, hour, min);
         Date dataFinal;
         if (sameDay) {
-            hour += 4;
+            hour += 4 + i%8;
             if (hour>24) {
                 hour%=24;
                 day++;
@@ -414,7 +414,7 @@ public class GenerateJocProves {
             dataFinal = new Date(year-1900, month, day, hour, min);
         }
         else {
-            day += (j+1);
+            day += (k+1);
             if (day>30) {
                 day%=30;
                 month++;
