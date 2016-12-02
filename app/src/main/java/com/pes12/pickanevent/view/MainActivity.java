@@ -124,7 +124,11 @@ BLOQUE DE TEST
     }
 
     public void goLogin(View _view) {
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        if (getAuth().getCurrentUser() != null)
+            Toast.makeText(MainActivity.this, "Ya hay un usuario logeado, haz signout para entrar con uno nuevo", Toast.LENGTH_SHORT).show();
+        else
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
     }
 
     public void goOtroUsuario(View _view) {

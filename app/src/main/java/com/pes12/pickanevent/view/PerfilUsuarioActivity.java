@@ -5,11 +5,15 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR;
@@ -70,6 +74,18 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
     }
 
+    public void restartPassword(View _view)
+    {
+        getAuth().sendPasswordResetEmail(current.getEmail())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(PerfilUsuarioActivity.this, "Email enviado.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
 
     public void abrirGaleria(View _view) {
         Intent galeria = new Intent(Intent.ACTION_PICK);
