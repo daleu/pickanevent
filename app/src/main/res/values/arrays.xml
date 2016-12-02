@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="options_array">
-        <item>Evento</item>
+    <string-array name="eventos_array">
+        <item>Nombre</item>
         <item>Dia</item>
         <item>Lugar</item>
         <item>Precio</item>
-        <item>Tag</item>
+    </string-array>
+    <string-array name="busqueda_array">
+        <item>Usuario</item>
+        <item>Grupo</item>
+        <item>Evento</item>
     </string-array>
 </resources>

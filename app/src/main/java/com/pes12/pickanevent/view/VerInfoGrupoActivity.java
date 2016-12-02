@@ -59,6 +59,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         idGrupo = "grp4-1480686504768";
 
+
         showProgressDialog();
 
         gMGR.getInfoGrupo(this, idGrupo);

@@ -31,7 +31,7 @@ public class LoginActivity extends BaseActivity {
 
     public void login(View view) {
 
-        String password = EncodeUtil.encodePasswordSHA1(pass.getText().toString());
+        String password = pass.getText().toString();
         getAuth().signInWithEmailAndPassword(correo.getText().toString(), password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

@@ -23,20 +23,9 @@
         android:layout_height="30dp"
         android:radius="20dip"
         android:onClick="buscarEvento"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/selectLugar"
+        android:layout_marginTop="74dp"
+        android:layout_below="@+id/selectEvento"
         android:layout_centerHorizontal="true" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="87dp"
-        android:id="@+id/spinner"
-        android:background="#008040"
-        android:spinnerMode="dropdown"
-        android:entries="@array/options_array"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="300dp"
@@ -46,7 +35,7 @@
         android:textColorHint="#8a939d"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="79dp"
         android:id="@+id/selectEvento"
         android:background="#eceff1"
         android:textStyle="normal"
@@ -64,8 +53,30 @@
         android:id="@+id/selectLugar"
         android:background="#eceff1"
         android:textStyle="normal"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignBaseline="@+id/selectEvento"
+        android:layout_alignBottom="@+id/selectEvento"
+        android:layout_alignStart="@+id/selectEvento" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="140dp"
+        android:id="@+id/spinner"
+        android:background="#008040"
+        android:spinnerMode="dropdown"
+        android:entries="@array/eventos_array"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="41dp"
+        android:id="@+id/spinner2"
+        android:background="#008040"
+        android:spinnerMode="dropdown"
+        android:entries="@array/busqueda_array"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
