@@ -81,7 +81,6 @@ public class AdapterTags extends ArrayAdapter<InfoTags> {
                 }
             }
         });
-
         return vistaTags;
     }
 

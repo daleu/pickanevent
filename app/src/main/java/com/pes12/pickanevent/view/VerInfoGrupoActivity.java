@@ -57,7 +57,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "grp14-1480686504769";
+        idGrupo = "grp4-1480686504768";
+
 
         showProgressDialog();
 

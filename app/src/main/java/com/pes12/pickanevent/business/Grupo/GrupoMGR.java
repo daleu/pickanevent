@@ -76,7 +76,7 @@ public class GrupoMGR {
         return result;
     }
 
-    private void actualizar(String _key, GrupoEntity _entity) {
+    public void actualizar(String _key, GrupoEntity _entity) {
         DatabaseReference grupo = bdRefGrupos.child(_key); //recogemos la rama con la ID del grupo en concreto
         grupo.setValue(_entity);
     }

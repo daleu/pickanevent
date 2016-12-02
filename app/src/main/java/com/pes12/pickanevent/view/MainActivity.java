@@ -182,7 +182,7 @@ BLOQUE DE TEST
 
     public void goIndicarTags(View _view) {
         //extra per simular el cas CM
-        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", "grp0-1480536025653"));
+        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", "grp0-1480689562005"));
     }
 
     public void goVerMiPerfil(View _view) {
