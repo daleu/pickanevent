@@ -17,8 +17,6 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import java.util.Random;
-
 /**
  * Created by Legault on 08/11/2016.
  */
@@ -26,46 +24,44 @@ import java.util.Random;
 public class CrearUsuarioActivity extends BaseActivity {
 
 
-    private  EditText correo;
-    private  EditText pass;
-    private  EditText repepass;
-    private  EditText username;
-    private  CheckBox cm;
+    private EditText correo;
+    private EditText pass;
+    private EditText repepass;
+    private EditText username;
+    private CheckBox cm;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_crear_usuario);
-        correo= (EditText)findViewById(R.id.correo);
-        pass= (EditText)findViewById(R.id.pass);
-        repepass= (EditText)findViewById(R.id.repepass);
-        username=(EditText)findViewById(R.id.username);
-        cm=(CheckBox)findViewById(R.id.cm);
+        correo = (EditText) findViewById(R.id.correo);
+        pass = (EditText) findViewById(R.id.pass);
+        repepass = (EditText) findViewById(R.id.repepass);
+        username = (EditText) findViewById(R.id.username);
+        cm = (CheckBox) findViewById(R.id.cm);
     }
 
 
-    public void crearUsuario(View _view)
-    {
-        if(!pass.getText().toString().equals(repepass.getText().toString()))
-        {
-            Toast.makeText(CrearUsuarioActivity.this,"Los passwords no coinciden",
+    public void crearUsuario(View _view) {
+        if (!pass.getText().toString().equals(repepass.getText().toString())) {
+            Toast.makeText(CrearUsuarioActivity.this, "Los passwords no coinciden",
                     Toast.LENGTH_SHORT).show();
             return;
         }
         String password = EncodeUtil.encodePasswordSHA1(pass.getText().toString());
-        getAuth().createUserWithEmailAndPassword(correo.getText().toString(),password).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
+        getAuth().createUserWithEmailAndPassword(correo.getText().toString(), password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(CrearUsuarioActivity.this,Constantes.ERROR_CREAR_USUARIO,
+                    Toast.makeText(CrearUsuarioActivity.this, Constantes.ERROR_CREAR_USUARIO,
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(CrearUsuarioActivity.this, Constantes.LOG_USUARI_CREADO_CORRECTO + ' ' +correo.getText().toString(),
+                Toast.makeText(CrearUsuarioActivity.this, Constantes.LOG_USUARI_CREADO_CORRECTO + ' ' + correo.getText().toString(),
                         Toast.LENGTH_SHORT).show();
                 UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
-                uMGR.actualizar(task.getResult().getUser().getUid(),new UsuarioEntity(username.getText().toString(),cm.isChecked()));
+                uMGR.actualizar(task.getResult().getUser().getUid(), new UsuarioEntity(username.getText().toString(), cm.isChecked()));
                 task.getResult().getUser().sendEmailVerification();
                 signOut();
                 CrearUsuarioActivity.this.finish();

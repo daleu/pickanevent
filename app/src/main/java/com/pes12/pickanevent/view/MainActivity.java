@@ -7,11 +7,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.MGRFactory;
-import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
@@ -89,14 +86,14 @@ BLOQUE DE TEST
     }
 
     //funcion para probar lecturas
-    public void printNicknames(Map<String,UsuarioEntity> _hm) {
+    public void printNicknames(Map<String, UsuarioEntity> _hm) {
 
         System.out.println("Mostrando los valores:");
-        TextView tv = (TextView)findViewById(R.id.texto);
+        TextView tv = (TextView) findViewById(R.id.texto);
         tv.setText("");
 
         for (Map.Entry<String, UsuarioEntity> entry : _hm.entrySet()) {
-            tv.setText(tv.getText()+ "\r\n"+entry.getValue().getUsername());
+            tv.setText(tv.getText() + "\r\n" + entry.getValue().getUsername());
             System.out.println("clave=" + entry.getKey() + ", nickanme=" + entry.getValue().toString());
         }
     }
@@ -134,9 +131,11 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, VerInfoOtroUsuarioActivity.class));
     }
 
-    public void showUsuarioActual(View _view){
-        if(getUsuarioActual()!=null) Toast.makeText(MainActivity.this, (CharSequence) getUsuarioActual().toString(), Toast.LENGTH_SHORT).show();
-        else Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
+    public void showUsuarioActual(View _view) {
+        if (getUsuarioActual() != null)
+            Toast.makeText(MainActivity.this, (CharSequence) getUsuarioActual().toString(), Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -152,13 +151,12 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, VerGruposCreadosActivity.class));
     }
 
-    public void cambiarModo(View _view){
+    public void cambiarModo(View _view) {
         if (cm) {
             cm = false;
             Toast.makeText(this, "Modo Usuario", Toast.LENGTH_SHORT).show();
             System.out.println("CM Despues del canvio" + cm);
-        }
-        else {
+        } else {
             cm = true;
             Toast.makeText(this, "Modo CM", Toast.LENGTH_SHORT).show();
             System.out.println("CM Despues del canvio" + cm);
@@ -170,8 +168,7 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, NavigationDrawer.class));
     }
 
-    public void goSignOut(View _view)
-    {
+    public void goSignOut(View _view) {
         signOut();
     }
 
@@ -184,7 +181,8 @@ BLOQUE DE TEST
     }
 
     public void goIndicarTags(View _view) {
-        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class));
+        //extra per simular el cas CM
+        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", "grp0-1480536025653"));
     }
 
     public void goVerMiPerfil(View _view) {

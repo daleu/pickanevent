@@ -64,28 +64,34 @@ public class BuscarEventoActivity extends BaseActivity {
                     });
                 }
             }
+
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
 
     }
+
     public void buscarEvento(View _view) {
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         if(spinner.getSelectedItem().toString().equals("Nombre")) {
             EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
-            if (textoEvento.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
-            else eMGR.getInfoEventoElegido(this,"titulo",textoEvento.getText().toString());
+            if (textoEvento.getText().toString().equals(""))
+                Toast.makeText(this, R.string.ERROR, Toast.LENGTH_LONG).show();
+            else eMGR.getInfoEventoElegido(this, "titulo", textoEvento.getText().toString());
         }
-        if(spinner.getSelectedItem().toString().equals("Lugar")) {
+        if (spinner.getSelectedItem().toString().equals("Lugar")) {
             EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
-            if (textoLugar.getText().toString().equals("")) Toast.makeText(this,R.string.ERROR,Toast.LENGTH_LONG).show();
-            else eMGR.getInfoEventoElegido(this,"localizacion",textoLugar.getText().toString());
+            if (textoLugar.getText().toString().equals(""))
+                Toast.makeText(this, R.string.ERROR, Toast.LENGTH_LONG).show();
+            else eMGR.getInfoEventoElegido(this, "localizacion", textoLugar.getText().toString());
         }
     }
+
     public void mostrarInfoEventoElegido(ArrayList<EventoEntity> _eventos) {
-        if (_eventos.isEmpty()) Toast.makeText(this,R.string.EVENTO_NO_ENCONTRADO,Toast.LENGTH_LONG).show();
+        if (_eventos.isEmpty())
+            Toast.makeText(this, R.string.EVENTO_NO_ENCONTRADO, Toast.LENGTH_LONG).show();
         else {
             for (int i = 0; i < _eventos.size(); ++i) {
                 Toast.makeText(this, _eventos.get(i).getTitulo(), Toast.LENGTH_LONG).show();

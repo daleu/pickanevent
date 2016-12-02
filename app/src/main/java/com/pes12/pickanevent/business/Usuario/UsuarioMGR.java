@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.util.Base64;
 import android.util.Log;
 
@@ -15,19 +14,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
-import com.pes12.pickanevent.business.EncodeUtil;
 import com.pes12.pickanevent.business.Info;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
-import com.pes12.pickanevent.view.LoginActivity;
 import com.pes12.pickanevent.view.MainActivity;
-import com.pes12.pickanevent.view.NavigationDrawer;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
-import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.util.ArrayList;
@@ -71,30 +65,27 @@ public class UsuarioMGR {
     }
 
 
-    public Map<String,UsuarioEntity>  guardarUsuario(Map<String,UsuarioEntity> _entities)
-    {
-        Map<String,UsuarioEntity> result = new HashMap<String,UsuarioEntity>();
+    public Map<String, UsuarioEntity> guardarUsuario(Map<String, UsuarioEntity> _entities) {
+        Map<String, UsuarioEntity> result = new HashMap<String, UsuarioEntity>();
         for (Map.Entry<String, UsuarioEntity> entry : _entities.entrySet()) {
 
-            Log.e(entry.getKey(),entry.getValue().getNickname());
-           if(entry.getKey()=="")
-           {
-               result.put(crear(entry.getValue()),entry.getValue());
-           }
-           else
-           {
-               actualizar(entry.getKey(),entry.getValue());
-               result.put(entry.getKey(),entry.getValue());
-           }
+            Log.e(entry.getKey(), entry.getValue().getNickname());
+            if (entry.getKey() == "") {
+                result.put(crear(entry.getValue()), entry.getValue());
+            } else {
+                actualizar(entry.getKey(), entry.getValue());
+                result.put(entry.getKey(), entry.getValue());
+            }
 
         }
         return result;
     }
-    public void getAllUsers(Activity _activity)
-    {
+
+    public void getAllUsers(Activity _activity) {
         bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
+            Map<String, UsuarioEntity> map = new LinkedHashMap<String, UsuarioEntity>();
             MainActivity activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
@@ -110,9 +101,8 @@ public class UsuarioMGR {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
 
-            public ValueEventListener setActivity (Activity _activity)
-            {
-                activity=(MainActivity)_activity;
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (MainActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));
@@ -120,10 +110,7 @@ public class UsuarioMGR {
     }
 
 
-
-
-    public void actualizar(String _key, UsuarioEntity _entity)
-    {
+    public void actualizar(String _key, UsuarioEntity _entity) {
 
 
         DatabaseReference usuario = bdRefUsuarios.child(_key); //recogemos la rama con la ID del usuario en concreto
@@ -132,11 +119,11 @@ public class UsuarioMGR {
 
     }
 
-    public String crear(UsuarioEntity _entity)
-    {
+    public String crear(UsuarioEntity _entity) {
 
         bdRefUsuarios.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_USUARIO).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity ent;
+
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
@@ -147,13 +134,13 @@ public class UsuarioMGR {
                     usuario.getKey();
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError _arg0) {
             }
 
-            public ValueEventListener setEntity (UsuarioEntity _ent)
-            {
-                ent=_ent;
+            public ValueEventListener setEntity(UsuarioEntity _ent) {
+                ent = _ent;
                 return this;
             }
         }.setEntity(_entity));
@@ -163,21 +150,21 @@ public class UsuarioMGR {
     }
 
 
-    public void getUsersByNickname(Activity _activity, String _text)
-    {
+    public void getUsersByNickname(Activity _activity, String _text) {
 
-        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.NICKNAME.getValue()).startAt(_text).endAt(_text+"\uf8ff");
+        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.NICKNAME.getValue()).startAt(_text).endAt(_text + "\uf8ff");
 
         queryRef.addValueEventListener(new ValueEventListener() {
             BuscarActivity activity;
-            Map<String,UsuarioEntity> map = new LinkedHashMap<String,UsuarioEntity>();
+            Map<String, UsuarioEntity> map = new LinkedHashMap<String, UsuarioEntity>();
+
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 ArrayList<Info> n = new ArrayList<Info>();
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                     System.out.println(usuario.getKey());
-                   // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
-                    n.add(new Info(null,usuario.getKey(),usuario.getValue(UsuarioEntity.class).getNickname(), "seguir!"));
+                    // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
+                    n.add(new Info(null, usuario.getKey(), usuario.getValue(UsuarioEntity.class).getNickname(), "seguir!"));
 
                 }
                 activity.printNicknames(n);
@@ -189,9 +176,8 @@ public class UsuarioMGR {
 
             }
 
-            public ValueEventListener setActivity (Activity _activity)
-            {
-                activity=(BuscarActivity) _activity;
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (BuscarActivity) _activity;
                 return this;
             }
 
@@ -199,17 +185,18 @@ public class UsuarioMGR {
     }
 
 
-
     public void getInfoUsuarioGrupos(Activity _activity, String _id) {
         bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             VerGruposCreadosActivity activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.mostrarInfoUsuarioGrupos(u);
             }
+
             @Override
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
@@ -226,12 +213,14 @@ public class UsuarioMGR {
         bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             VerInfoOtroUsuarioActivity activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.mostrarInfoUsuario(u);
             }
+
             @Override
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
@@ -248,12 +237,14 @@ public class UsuarioMGR {
         bdRefUsuarios.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             VerEventosUsuariosQueSigoActivity activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.mostrarInfoUsuario(u);
             }
+
             @Override
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
@@ -270,12 +261,14 @@ public class UsuarioMGR {
         bdRefUsuarios.child(_uid).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             BaseActivity activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.setUsuarioActual(u);
             }
+
             @Override
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
@@ -290,9 +283,10 @@ public class UsuarioMGR {
 
     public void getUsers(Activity _activity, Map<String, String> _idU) {
         bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,Map<String,String>> info = new LinkedHashMap<String, Map<String, String>>();
+            Map<String, Map<String, String>> info = new LinkedHashMap<String, Map<String, String>>();
             VerEventosUsuariosQueSigoActivity activity;
             Map<String, String> idU;
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -309,9 +303,9 @@ public class UsuarioMGR {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Activity _activity, Map<String, String> _idU)
-            {
-                activity=(VerEventosUsuariosQueSigoActivity) _activity;
+
+            public ValueEventListener setActivity(Activity _activity, Map<String, String> _idU) {
+                activity = (VerEventosUsuariosQueSigoActivity) _activity;
                 idU = _idU;
                 return this;
             }
@@ -333,12 +327,14 @@ public class UsuarioMGR {
         bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
             TimelineFragment activity;
+
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.getUsuarioEvents(u);
             }
+
             @Override
             public void onCancelled(DatabaseError _databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
@@ -353,9 +349,10 @@ public class UsuarioMGR {
 
     public void getUsersForFragment(Fragment _activity, Map<String, String> _idU) {
         bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,Map<String,String>> info = new LinkedHashMap<String, Map<String, String>>();
+            Map<String, Map<String, String>> info = new LinkedHashMap<String, Map<String, String>>();
             TimelineFragment activity;
             Map<String, String> idU;
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -372,9 +369,9 @@ public class UsuarioMGR {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println(Constantes.ERROR_INESPERADO);
             }
-            public ValueEventListener setActivity (Fragment _activity, Map<String, String> _idU)
-            {
-                activity=(TimelineFragment) _activity;
+
+            public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idU) {
+                activity = (TimelineFragment) _activity;
                 idU = _idU;
                 return this;
             }

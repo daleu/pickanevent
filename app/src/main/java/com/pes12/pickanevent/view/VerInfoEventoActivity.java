@@ -3,14 +3,10 @@ package com.pes12.pickanevent.view;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,7 +24,6 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
-import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
@@ -92,11 +87,11 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     }
 
-    public void mostrarInfoEvento(Map<String,EventoEntity> ge) {
+    public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
         idEvento = "-KWnZoC88q5OZrOjBhGp";
         EventoEntity gEntity = ge.get(idEvento);
 
-        imagenevento = (ImageView)findViewById(R.id.imagenEvento);
+        imagenevento = (ImageView) findViewById(R.id.imagenEvento);
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);
         titulo = (TextView) findViewById(R.id.textEvento);
@@ -106,7 +101,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         descripcion.setText(gEntity.getDescripcion());
         titulo.setText(gEntity.getTitulo());
-        horarios.setText(gEntity.getHorario());
+        horarios.setText("horario");
         precio.setText(gEntity.getPrecio());
         lugar.setText(gEntity.getLocalizacion());
 
@@ -149,7 +144,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         CameraPosition googlePlex = CameraPosition.builder()
-                .target(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
+                .target(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)))
                 .zoom(16)
                 .bearing(0)
                 .tilt(45)
@@ -158,7 +153,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         map.moveCamera(CameraUpdateFactory.newCameraPosition(googlePlex));
 
         map.addMarker(new MarkerOptions()
-                .position(new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud)))
+                .position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)))
                 .title("Palau Sant Jordi"));
 
     }

@@ -19,6 +19,7 @@ import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class VerInfoGrupoActivity extends BaseActivity {
@@ -41,12 +42,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_grupo);
         //////inicializacion elementos pantalla//////////
-        nombre = (TextView)findViewById(R.id.nombreGrupo);
-        descripcion = (TextView)findViewById(R.id.descripcion);
-        foto = (ImageView)findViewById(R.id.imagenGrupo);
+        nombre = (TextView) findViewById(R.id.nombreGrupo);
+        descripcion = (TextView) findViewById(R.id.descripcion);
+        foto = (ImageView) findViewById(R.id.imagenGrupo);
         tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
-        boton = (Button)findViewById(R.id.seguir);
+        boton = (Button) findViewById(R.id.seguir);
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
@@ -56,12 +57,11 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "-KUl_ie2eRYXdXKVJffQ";
+        idGrupo = "grp0-1480536025653";
 
         showProgressDialog();
 
         gMGR.getInfoGrupo(this, idGrupo);
-
 
 
         //PARA HACER QUE SEA SCROLLEABLE
@@ -87,14 +87,14 @@ public class VerInfoGrupoActivity extends BaseActivity {
         //gMGR.crear(ge);
 
 
-
     }
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
-        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(),cm);
-        Map<String,String> tagsMap = _grupo.getIdTags();
-        tagsMap.put(_grupo.getidTagGeneral(),"blabla");
+        if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
+        Map<String, String> tagsMap = _grupo.getIdTags();
+        if (tagsMap == null) tagsMap = new LinkedHashMap<>();
+        tagsMap.put(_grupo.getidTagGeneral(), "blabla");
         tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
@@ -107,10 +107,11 @@ public class VerInfoGrupoActivity extends BaseActivity {
         foto.setImageBitmap(imgBM);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
 
+        if (_grupo.getIdEventos() == null) hideProgressDialog();
     }
 
     public void mostrarEventosGrupo(ArrayList<Info> info) {
-        AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this,R.layout.vista_adapter_lista,info);
+        AdapterLista ale = new AdapterLista(VerInfoGrupoActivity.this, R.layout.vista_adapter_lista, info);
         eventos.setAdapter(ale);
         hideProgressDialog();
     }

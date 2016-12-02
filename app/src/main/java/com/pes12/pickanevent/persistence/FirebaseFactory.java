@@ -17,13 +17,10 @@ public class FirebaseFactory {
 
     }
 
-    public static FirebaseDatabase getInstance()
-    {
-        if(database==null)
-        {
+    public static FirebaseDatabase getInstance() {
+        if (database == null) {
             new FirebaseFactory();
             return database;
-        }
-        else return database;
+        } else return database;
     }
 }

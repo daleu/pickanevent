@@ -262,7 +262,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Hora del evento (hh.mm)"
+                android:hint="Hora del evento (hh:mm)"
                 android:ems="10"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="5dp"

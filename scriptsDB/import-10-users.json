@@ -1,150 +1,6359 @@
 {
-  "usuarios": {
-    "cm0-1480427759361": {
-      "id": "cm0-1480427759361",
-      "email": "cm0@pickanevent.com",
-      "password": "pickanevent",
-      "username": "cm0",
-      "nickname": "cm0",
-      "bio": "Esta es la descripcion de cm0",
-      "cm": true
-    },
-    "cm1-1480427759361": {
-      "id": "cm1-1480427759361",
-      "email": "cm1@pickanevent.com",
-      "password": "pickanevent",
-      "username": "cm1",
-      "nickname": "cm1",
-      "bio": "Esta es la descripcion de cm1",
-      "cm": true,
-      "idGrupos": {
-        "grp0-1480427759361": "Villanos"
-      }
-    },
-    "usr0-1480427759361": {
-      "id": "usr0-1480427759361",
-      "email": "usr0@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr0",
-      "nickname": "Deadpool",
-      "bio": "Esta es la bio-descripcion del usuario usr0",
-      "cm": false
-    },
-    "usr1-1480427759361": {
-      "id": "usr1-1480427759361",
-      "email": "usr1@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr1",
-      "nickname": "IronMan",
-      "bio": "Esta es la bio-descripcion del usuario usr1",
-      "cm": false,
-      "idTags": {
-        "tag0-1480427759360": "Venganza"
-      }
-    },
-    "usr2-1480427759361": {
-      "id": "usr2-1480427759361",
-      "email": "usr2@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr2",
-      "nickname": "Thor",
-      "bio": "Esta es la bio-descripcion del usuario usr2",
-      "cm": false
-    },
-    "usr3-1480427759361": {
-      "id": "usr3-1480427759361",
-      "email": "usr3@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr3",
-      "nickname": "Hulk",
-      "bio": "Esta es la bio-descripcion del usuario usr3",
-      "cm": false,
-      "idTags": {
-        "tag0-1480427759360": "Venganza"
-      }
-    },
-    "usr4-1480427759361": {
-      "id": "usr4-1480427759361",
-      "email": "usr4@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr4",
-      "nickname": "Antman",
-      "bio": "Esta es la bio-descripcion del usuario usr4",
-      "cm": false
-    },
-    "usr5-1480427759361": {
-      "id": "usr5-1480427759361",
-      "email": "usr5@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr5",
-      "nickname": "CapitanAmerica",
-      "bio": "Esta es la bio-descripcion del usuario usr5",
-      "cm": false,
-      "idTags": {
-        "tag0-1480427759360": "Venganza"
-      }
-    },
-    "usr6-1480427759361": {
-      "id": "usr6-1480427759361",
-      "email": "usr6@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr6",
-      "nickname": "DrStrange",
-      "bio": "Esta es la bio-descripcion del usuario usr6",
-      "cm": false
-    },
-    "usr7-1480427759361": {
-      "id": "usr7-1480427759361",
-      "email": "usr7@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr7",
-      "nickname": "Batman",
-      "bio": "Esta es la bio-descripcion del usuario usr7",
-      "cm": false,
-      "idTags": {
-        "tag0-1480427759360": "Venganza"
-      }
-    },
-    "usr8-1480427759361": {
-      "id": "usr8-1480427759361",
-      "email": "usr8@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr8",
-      "nickname": "Superman",
-      "bio": "Esta es la bio-descripcion del usuario usr8",
-      "cm": false
-    },
-    "usr9-1480427759361": {
-      "id": "usr9-1480427759361",
-      "email": "usr9@pickanevent.com",
-      "password": "pickanevent",
-      "username": "usr9",
-      "nickname": "WonderWoman",
-      "bio": "Esta es la bio-descripcion del usuario usr9",
-      "cm": false,
-      "idTags": {
-        "tag0-1480427759360": "Venganza"
-      }
-    }
-  },
-  "grupos": {
-    "grp0-1480427759361": {
-      "id": "grp0-1480427759361",
-      "nombreGrupo": "Villanos",
-      "descripcion": "Esta es la descripcion del grupo creado por cm1",
-      "nickname": "cm1",
-      "idUsuario": "cm1-1480427759361"
-    }
-  },
-  "tags": {
-    "tag0-1480427759360": {
-      "id": "tag0-1480427759360",
-      "nombreTag": "Venganza"
-    },
-    "tag1-1480427759360": {
-      "id": "tag1-1480427759360",
-      "nombreTag": "Justicia"
-    }
-  },
-  "eventos": {}
+"usuarios": {
+"cm0-1480686511950" : {
+"id": "cm0-1480686511950"
+,"email": "cm0@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm0"
+,"nickname": "cm0"
+,"cm": true
+}
+,"cm1-1480686511950" : {
+"id": "cm1-1480686511950"
+,"email": "cm1@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm1"
+,"nickname": "cm1"
+,"bio": "Esta es la descripcion de cm1"
+,"cm": true
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+}
+,"cm2-1480686511951" : {
+"id": "cm2-1480686511951"
+,"email": "cm2@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm2"
+,"nickname": "cm2"
+,"cm": true
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+}
+,"cm3-1480686511971" : {
+"id": "cm3-1480686511971"
+,"email": "cm3@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm3"
+,"nickname": "cm3"
+,"bio": "Esta es la descripcion de cm3"
+,"cm": true
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+}
+,"cm4-1480686511972" : {
+"id": "cm4-1480686511972"
+,"email": "cm4@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm4"
+,"nickname": "cm4"
+,"cm": true
+,"idGrupos": {
+"grp6-1480686511972": "X-Men"
+,"grp7-1480686511972": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp9-1480686511972": "La Liga de los hombres extraordinarios"
+}
+,"idEventos": {
+"Evt6-1480686511972": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"cm5-1480686511973" : {
+"id": "cm5-1480686511973"
+,"email": "cm5@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm5"
+,"nickname": "cm5"
+,"bio": "Esta es la descripcion de cm5"
+,"cm": true
+,"idGrupos": {
+"grp10-1480686511973": "Inhumans"
+,"grp14-1480686511973": "Los 4 Fantásticos"
+,"grp13-1480686511973": "Suicide Squad"
+,"grp12-1480686511973": "La Liga de los hombres extraordinarios"
+,"grp11-1480686511973": "Super Saiyans"
+}
+,"idEventos": {
+"Evt16-1480686511973": "Atraco a un banco"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt14-1480686511973": "Conquista del mundo"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt19-1480686511973": "Atraco a un geriatrico"
+}
+}
+,"cm6-1480686511975" : {
+"id": "cm6-1480686511975"
+,"email": "cm6@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm6"
+,"nickname": "cm6"
+,"cm": true
+,"idGrupos": {
+"grp19-1480686511975": "Los Vengadores"
+,"grp18-1480686511975": "Los 4 Fantásticos"
+,"grp20-1480686511975": "Villanos"
+,"grp17-1480686511975": "Suicide Squad"
+,"grp15-1480686511975": "Super Saiyans"
+,"grp16-1480686511975": "La Liga de los hombres extraordinarios"
+}
+,"idEventos": {
+"Evt34-1480686511975": "Ataque a los superheroes"
+,"Evt26-1480686511975": "Atraco a un banco"
+,"Evt27-1480686511975": "Conquista del mundo"
+,"Evt33-1480686511975": "Atraco a un geriatrico"
+,"Evt25-1480686511975": "Conquista de la galaxia"
+,"Evt30-1480686511975": "Atraco a un banco"
+,"Evt32-1480686511975": "Conquista de la galaxia"
+,"Evt31-1480686511975": "Conquista del mundo"
+,"Evt29-1480686511975": "Atraco a un geriatrico"
+,"Evt24-1480686511975": "Conquista del mundo"
+,"Evt23-1480686511975": "Atraco a un banco"
+,"Evt28-1480686511975": "Conquista de la galaxia"
+,"Evt22-1480686511975": "Conquista del mundo"
+,"Evt20-1480686511975": "Atraco a un banco"
+,"Evt21-1480686511975": "Atraco a un banco"
+}
+}
+,"cm7-1480686511976" : {
+"id": "cm7-1480686511976"
+,"email": "cm7@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm7"
+,"nickname": "cm7"
+,"bio": "Esta es la descripcion de cm7"
+,"cm": true
+,"idGrupos": {
+"grp26-1480686511976": "Justicieros"
+,"grp23-1480686511976": "Los 4 Fantásticos"
+,"grp21-1480686511976": "La Liga de los hombres extraordinarios"
+,"grp24-1480686511976": "Los Vengadores"
+,"grp22-1480686511976": "Suicide Squad"
+,"grp25-1480686511976": "Villanos"
+,"grp27-1480686511976": "Liga de la Justicia"
+}
+,"idEventos": {
+"Evt39-1480686511976": "Conquista del mundo"
+,"Evt47-1480686511976": "Conquista de la galaxia"
+,"Evt55-1480686511976": "Ataque a los villanos"
+,"Evt48-1480686511976": "Atraco a un geriatrico"
+,"Evt50-1480686511976": "Atraco a un banco"
+,"Evt54-1480686511976": "Ataque a los superheroes"
+,"Evt51-1480686511976": "Conquista del mundo"
+,"Evt53-1480686511976": "Atraco a un geriatrico"
+,"Evt46-1480686511976": "Conquista del mundo"
+,"Evt52-1480686511976": "Conquista de la galaxia"
+,"Evt37-1480686511976": "Conquista del mundo"
+,"Evt45-1480686511976": "Atraco a un banco"
+,"Evt44-1480686511976": "Atraco a un geriatrico"
+,"Evt38-1480686511976": "Atraco a un banco"
+,"Evt40-1480686511976": "Conquista de la galaxia"
+,"Evt43-1480686511976": "Conquista de la galaxia"
+,"Evt35-1480686511976": "Atraco a un banco"
+,"Evt49-1480686511976": "Ataque a los superheroes"
+,"Evt36-1480686511976": "Atraco a un banco"
+,"Evt41-1480686511976": "Atraco a un banco"
+,"Evt42-1480686511976": "Conquista del mundo"
+}
+}
+,"cm8-1480686511979" : {
+"id": "cm8-1480686511979"
+,"email": "cm8@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm8"
+,"nickname": "cm8"
+,"cm": true
+,"idGrupos": {
+"grp30-1480686511979": "Los Vengadores"
+,"grp29-1480686511979": "Los 4 Fantásticos"
+,"grp31-1480686511979": "Villanos"
+,"grp35-1480686511979": "Inhumans"
+,"grp32-1480686511979": "Justicieros"
+,"grp34-1480686511979": "X-Men"
+,"grp28-1480686511979": "Suicide Squad"
+,"grp33-1480686511979": "Liga de la Justicia"
+}
+,"idEventos": {
+"Evt68-1480686511979": "Conquista de la galaxia"
+,"Evt76-1480686511979": "Ataque a los villanos"
+,"Evt61-1480686511979": "Conquista de la galaxia"
+,"Evt71-1480686511979": "Atraco a un banco"
+,"Evt74-1480686511979": "Atraco a un geriatrico"
+,"Evt66-1480686511979": "Atraco a un banco"
+,"Evt78-1480686511979": "Conquista del mundo"
+,"Evt80-1480686511979": "Atraco a un geriatrico"
+,"Evt65-1480686511979": "Atraco a un geriatrico"
+,"Evt82-1480686511979": "Ataque a los villanos"
+,"Evt63-1480686511979": "Conquista del mundo"
+,"Evt57-1480686511979": "Atraco a un banco"
+,"Evt62-1480686511979": "Atraco a un banco"
+,"Evt83-1480686511979": "Defender a la poblacion"
+,"Evt70-1480686511979": "Ataque a los superheroes"
+,"Evt59-1480686511979": "Atraco a un banco"
+,"Evt75-1480686511979": "Ataque a los superheroes"
+,"Evt69-1480686511979": "Atraco a un geriatrico"
+,"Evt67-1480686511979": "Conquista del mundo"
+,"Evt73-1480686511979": "Conquista de la galaxia"
+,"Evt72-1480686511979": "Conquista del mundo"
+,"Evt79-1480686511979": "Conquista de la galaxia"
+,"Evt60-1480686511979": "Conquista del mundo"
+,"Evt81-1480686511979": "Ataque a los superheroes"
+,"Evt77-1480686511979": "Atraco a un banco"
+,"Evt56-1480686511979": "Atraco a un banco"
+,"Evt64-1480686511979": "Conquista de la galaxia"
+,"Evt58-1480686511979": "Conquista del mundo"
+}
+}
+,"cm9-1480686511981" : {
+"id": "cm9-1480686511981"
+,"email": "cm9@pickanevent.com"
+,"password": "pickanevent"
+,"username": "cm9"
+,"nickname": "cm9"
+,"bio": "Esta es la descripcion de cm9"
+,"cm": true
+,"idGrupos": {
+"grp38-1480686511981": "Villanos"
+,"grp40-1480686511981": "Liga de la Justicia"
+,"grp42-1480686511981": "Inhumans"
+,"grp37-1480686511981": "Los Vengadores"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp39-1480686511981": "Justicieros"
+,"grp36-1480686511981": "Los 4 Fantásticos"
+,"grp41-1480686511981": "X-Men"
+}
+,"idEventos": {
+"Evt98-1480686511981": "Ataque a los superheroes"
+,"Evt118-1480686511981": "Defender a la poblacion"
+,"Evt93-1480686511981": "Atraco a un geriatrico"
+,"Evt100-1480686511981": "Conquista del mundo"
+,"Evt105-1480686511981": "Atraco a un banco"
+,"Evt111-1480686511981": "Defender a la poblacion"
+,"Evt107-1480686511981": "Conquista de la galaxia"
+,"Evt85-1480686511981": "Atraco a un banco"
+,"Evt91-1480686511981": "Conquista del mundo"
+,"Evt113-1480686511981": "Conquista del mundo"
+,"Evt102-1480686511981": "Atraco a un geriatrico"
+,"Evt88-1480686511981": "Conquista del mundo"
+,"Evt110-1480686511981": "Ataque a los villanos"
+,"Evt115-1480686511981": "Atraco a un geriatrico"
+,"Evt94-1480686511981": "Atraco a un banco"
+,"Evt96-1480686511981": "Conquista de la galaxia"
+,"Evt117-1480686511981": "Ataque a los villanos"
+,"Evt92-1480686511981": "Conquista de la galaxia"
+,"Evt112-1480686511981": "Atraco a un banco"
+,"Evt84-1480686511981": "Atraco a un banco"
+,"Evt104-1480686511981": "Ataque a los villanos"
+,"Evt119-1480686511981": "Defender la guarida"
+,"Evt86-1480686511981": "Conquista del mundo"
+,"Evt109-1480686511981": "Ataque a los superheroes"
+,"Evt99-1480686511981": "Atraco a un banco"
+,"Evt106-1480686511981": "Conquista del mundo"
+,"Evt114-1480686511981": "Conquista de la galaxia"
+,"Evt95-1480686511981": "Conquista del mundo"
+,"Evt108-1480686511981": "Atraco a un geriatrico"
+,"Evt90-1480686511981": "Atraco a un banco"
+,"Evt116-1480686511981": "Ataque a los superheroes"
+,"Evt87-1480686511981": "Atraco a un banco"
+,"Evt101-1480686511981": "Conquista de la galaxia"
+,"Evt89-1480686511981": "Conquista de la galaxia"
+,"Evt97-1480686511981": "Atraco a un geriatrico"
+,"Evt103-1480686511981": "Ataque a los superheroes"
+}
+}
+,"usr0-1480686511985" : {
+"id": "usr0-1480686511985"
+,"email": "usr0@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr0"
+,"nickname": "Deadpool"
+}
+,"usr1-1480686511985" : {
+"id": "usr1-1480686511985"
+,"email": "usr1@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr1"
+,"nickname": "IronMan"
+,"bio": "Esta es la bio-descripcion del usuario usr1"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr2-1480686511985" : {
+"id": "usr2-1480686511985"
+,"email": "usr2@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr2"
+,"nickname": "Thor"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr3-1480686511985" : {
+"id": "usr3-1480686511985"
+,"email": "usr3@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr3"
+,"nickname": "Hulk"
+,"bio": "Esta es la bio-descripcion del usuario usr3"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr4-1480686511985" : {
+"id": "usr4-1480686511985"
+,"email": "usr4@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr4"
+,"nickname": "Antman"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr5-1480686511985" : {
+"id": "usr5-1480686511985"
+,"email": "usr5@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr5"
+,"nickname": "CapitanAmerica"
+,"bio": "Esta es la bio-descripcion del usuario usr5"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr6-1480686511985" : {
+"id": "usr6-1480686511985"
+,"email": "usr6@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr6"
+,"nickname": "DrStrange"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr7-1480686511985" : {
+"id": "usr7-1480686511985"
+,"email": "usr7@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr7"
+,"nickname": "Batman"
+,"bio": "Esta es la bio-descripcion del usuario usr7"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr8-1480686511985" : {
+"id": "usr8-1480686511985"
+,"email": "usr8@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr8"
+,"nickname": "Superman"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr9-1480686511985" : {
+"id": "usr9-1480686511985"
+,"email": "usr9@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr9"
+,"nickname": "WonderWoman"
+,"bio": "Esta es la bio-descripcion del usuario usr9"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr10-1480686511985" : {
+"id": "usr10-1480686511985"
+,"email": "usr10@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr10"
+,"nickname": "Aquaman"
+,"cm": false
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"usr11-1480686511985" : {
+"id": "usr11-1480686511985"
+,"email": "usr11@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr11"
+,"nickname": "Flash"
+,"bio": "Esta es la bio-descripcion del usuario usr11"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr12-1480686511985" : {
+"id": "usr12-1480686511985"
+,"email": "usr12@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr12"
+,"nickname": "Punisher"
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr13-1480686511985" : {
+"id": "usr13-1480686511985"
+,"email": "usr13@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr13"
+,"nickname": "DareDevil"
+,"bio": "Esta es la bio-descripcion del usuario usr13"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr14-1480686511985" : {
+"id": "usr14-1480686511985"
+,"email": "usr14@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr14"
+,"nickname": "Spiderman"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr15-1480686511985" : {
+"id": "usr15-1480686511985"
+,"email": "usr15@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr15"
+,"nickname": "LexLuthor"
+,"bio": "Esta es la bio-descripcion del usuario usr15"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr16-1480686511985" : {
+"id": "usr16-1480686511985"
+,"email": "usr16@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr16"
+,"nickname": "Joker"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr17-1480686511985" : {
+"id": "usr17-1480686511985"
+,"email": "usr17@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr17"
+,"nickname": "Bane"
+,"bio": "Esta es la bio-descripcion del usuario usr17"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr18-1480686511985" : {
+"id": "usr18-1480686511985"
+,"email": "usr18@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr18"
+,"nickname": "Catwoman"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr19-1480686511985" : {
+"id": "usr19-1480686511985"
+,"email": "usr19@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr19"
+,"nickname": "StarLord"
+,"bio": "Esta es la bio-descripcion del usuario usr19"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr20-1480686511985" : {
+"id": "usr20-1480686511985"
+,"email": "usr20@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr20"
+,"nickname": "Thanos"
+,"cm": false
+}
+,"usr21-1480686511985" : {
+"id": "usr21-1480686511985"
+,"email": "usr21@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr21"
+,"nickname": "Goku"
+,"bio": "Esta es la bio-descripcion del usuario usr21"
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr22-1480686511985" : {
+"id": "usr22-1480686511985"
+,"email": "usr22@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr22"
+,"nickname": "Vegeta"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr23-1480686511985" : {
+"id": "usr23-1480686511985"
+,"email": "usr23@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr23"
+,"nickname": "Trunks"
+,"bio": "Esta es la bio-descripcion del usuario usr23"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr24-1480686511985" : {
+"id": "usr24-1480686511985"
+,"email": "usr24@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr24"
+,"nickname": "Celula"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr25-1480686511985" : {
+"id": "usr25-1480686511985"
+,"email": "usr25@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr25"
+,"nickname": "CorPetit"
+,"bio": "Esta es la bio-descripcion del usuario usr25"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr26-1480686511985" : {
+"id": "usr26-1480686511985"
+,"email": "usr26@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr26"
+,"nickname": "Gohan"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr27-1480686511985" : {
+"id": "usr27-1480686511985"
+,"email": "usr27@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr27"
+,"nickname": "Krillin"
+,"bio": "Esta es la bio-descripcion del usuario usr27"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr28-1480686511985" : {
+"id": "usr28-1480686511985"
+,"email": "usr28@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr28"
+,"nickname": "Buu"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr29-1480686511985" : {
+"id": "usr29-1480686511985"
+,"email": "usr29@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr29"
+,"nickname": "Freezer"
+,"bio": "Esta es la bio-descripcion del usuario usr29"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr30-1480686511985" : {
+"id": "usr30-1480686511985"
+,"email": "usr30@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr30"
+,"nickname": "Sean Connery"
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"usr31-1480686511985" : {
+"id": "usr31-1480686511985"
+,"email": "usr31@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr31"
+,"nickname": "DeadShot"
+,"bio": "Esta es la bio-descripcion del usuario usr31"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr32-1480686511985" : {
+"id": "usr32-1480686511985"
+,"email": "usr32@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr32"
+,"nickname": "HarleyQuinn"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr33-1480686511985" : {
+"id": "usr33-1480686511985"
+,"email": "usr33@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr33"
+,"nickname": "LaCosa"
+,"bio": "Esta es la bio-descripcion del usuario usr33"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr34-1480686511985" : {
+"id": "usr34-1480686511985"
+,"email": "usr34@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr34"
+,"nickname": "InvisibleWoman"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr35-1480686511985" : {
+"id": "usr35-1480686511985"
+,"email": "usr35@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr35"
+,"nickname": "MrFantastic"
+,"bio": "Esta es la bio-descripcion del usuario usr35"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr36-1480686511985" : {
+"id": "usr36-1480686511985"
+,"email": "usr36@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr36"
+,"nickname": "HumanTorch"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr37-1480686511985" : {
+"id": "usr37-1480686511985"
+,"email": "usr37@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr37"
+,"nickname": "CharlesXavier"
+,"bio": "Esta es la bio-descripcion del usuario usr37"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr38-1480686511985" : {
+"id": "usr38-1480686511985"
+,"email": "usr38@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr38"
+,"nickname": "Wolverine"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr39-1480686511985" : {
+"id": "usr39-1480686511985"
+,"email": "usr39@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr39"
+,"nickname": "Deadpool2"
+,"bio": "Esta es la bio-descripcion del usuario usr39"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr40-1480686511985" : {
+"id": "usr40-1480686511985"
+,"email": "usr40@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr40"
+,"nickname": "IronMan2"
+,"cm": false
+}
+,"usr41-1480686511986" : {
+"id": "usr41-1480686511986"
+,"email": "usr41@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr41"
+,"nickname": "Thor2"
+,"bio": "Esta es la bio-descripcion del usuario usr41"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr42-1480686511986" : {
+"id": "usr42-1480686511986"
+,"email": "usr42@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr42"
+,"nickname": "Hulk2"
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr43-1480686511986" : {
+"id": "usr43-1480686511986"
+,"email": "usr43@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr43"
+,"nickname": "Antman2"
+,"bio": "Esta es la bio-descripcion del usuario usr43"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr44-1480686511986" : {
+"id": "usr44-1480686511986"
+,"email": "usr44@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr44"
+,"nickname": "CapitanAmerica2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr45-1480686511986" : {
+"id": "usr45-1480686511986"
+,"email": "usr45@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr45"
+,"nickname": "DrStrange2"
+,"bio": "Esta es la bio-descripcion del usuario usr45"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr46-1480686511986" : {
+"id": "usr46-1480686511986"
+,"email": "usr46@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr46"
+,"nickname": "Batman2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr47-1480686511986" : {
+"id": "usr47-1480686511986"
+,"email": "usr47@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr47"
+,"nickname": "Superman2"
+,"bio": "Esta es la bio-descripcion del usuario usr47"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr48-1480686511986" : {
+"id": "usr48-1480686511986"
+,"email": "usr48@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr48"
+,"nickname": "WonderWoman2"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr49-1480686511986" : {
+"id": "usr49-1480686511986"
+,"email": "usr49@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr49"
+,"nickname": "Aquaman2"
+,"bio": "Esta es la bio-descripcion del usuario usr49"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr50-1480686511986" : {
+"id": "usr50-1480686511986"
+,"email": "usr50@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr50"
+,"nickname": "Flash2"
+,"cm": false
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"usr51-1480686511986" : {
+"id": "usr51-1480686511986"
+,"email": "usr51@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr51"
+,"nickname": "Punisher2"
+,"bio": "Esta es la bio-descripcion del usuario usr51"
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr52-1480686511986" : {
+"id": "usr52-1480686511986"
+,"email": "usr52@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr52"
+,"nickname": "DareDevil2"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr53-1480686511986" : {
+"id": "usr53-1480686511986"
+,"email": "usr53@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr53"
+,"nickname": "Spiderman2"
+,"bio": "Esta es la bio-descripcion del usuario usr53"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr54-1480686511986" : {
+"id": "usr54-1480686511986"
+,"email": "usr54@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr54"
+,"nickname": "LexLuthor2"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr55-1480686511986" : {
+"id": "usr55-1480686511986"
+,"email": "usr55@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr55"
+,"nickname": "Joker2"
+,"bio": "Esta es la bio-descripcion del usuario usr55"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr56-1480686511986" : {
+"id": "usr56-1480686511986"
+,"email": "usr56@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr56"
+,"nickname": "Bane2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr57-1480686511986" : {
+"id": "usr57-1480686511986"
+,"email": "usr57@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr57"
+,"nickname": "Catwoman2"
+,"bio": "Esta es la bio-descripcion del usuario usr57"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr58-1480686511986" : {
+"id": "usr58-1480686511986"
+,"email": "usr58@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr58"
+,"nickname": "StarLord2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr59-1480686511986" : {
+"id": "usr59-1480686511986"
+,"email": "usr59@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr59"
+,"nickname": "Thanos2"
+,"bio": "Esta es la bio-descripcion del usuario usr59"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr60-1480686511986" : {
+"id": "usr60-1480686511986"
+,"email": "usr60@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr60"
+,"nickname": "Goku2"
+}
+,"usr61-1480686511986" : {
+"id": "usr61-1480686511986"
+,"email": "usr61@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr61"
+,"nickname": "Vegeta2"
+,"bio": "Esta es la bio-descripcion del usuario usr61"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr62-1480686511986" : {
+"id": "usr62-1480686511986"
+,"email": "usr62@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr62"
+,"nickname": "Trunks2"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr63-1480686511986" : {
+"id": "usr63-1480686511986"
+,"email": "usr63@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr63"
+,"nickname": "Celula2"
+,"bio": "Esta es la bio-descripcion del usuario usr63"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr64-1480686511986" : {
+"id": "usr64-1480686511986"
+,"email": "usr64@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr64"
+,"nickname": "CorPetit2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr65-1480686511986" : {
+"id": "usr65-1480686511986"
+,"email": "usr65@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr65"
+,"nickname": "Gohan2"
+,"bio": "Esta es la bio-descripcion del usuario usr65"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr66-1480686511986" : {
+"id": "usr66-1480686511986"
+,"email": "usr66@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr66"
+,"nickname": "Krillin2"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr67-1480686511986" : {
+"id": "usr67-1480686511986"
+,"email": "usr67@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr67"
+,"nickname": "Buu2"
+,"bio": "Esta es la bio-descripcion del usuario usr67"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr68-1480686511986" : {
+"id": "usr68-1480686511986"
+,"email": "usr68@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr68"
+,"nickname": "Freezer2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr69-1480686511986" : {
+"id": "usr69-1480686511986"
+,"email": "usr69@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr69"
+,"nickname": "Sean Connery2"
+,"bio": "Esta es la bio-descripcion del usuario usr69"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr70-1480686511986" : {
+"id": "usr70-1480686511986"
+,"email": "usr70@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr70"
+,"nickname": "DeadShot2"
+,"cm": false
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"usr71-1480686511986" : {
+"id": "usr71-1480686511986"
+,"email": "usr71@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr71"
+,"nickname": "HarleyQuinn2"
+,"bio": "Esta es la bio-descripcion del usuario usr71"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr72-1480686511986" : {
+"id": "usr72-1480686511986"
+,"email": "usr72@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr72"
+,"nickname": "LaCosa2"
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr73-1480686511986" : {
+"id": "usr73-1480686511986"
+,"email": "usr73@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr73"
+,"nickname": "InvisibleWoman2"
+,"bio": "Esta es la bio-descripcion del usuario usr73"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr74-1480686511986" : {
+"id": "usr74-1480686511986"
+,"email": "usr74@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr74"
+,"nickname": "MrFantastic2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr75-1480686511986" : {
+"id": "usr75-1480686511986"
+,"email": "usr75@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr75"
+,"nickname": "HumanTorch2"
+,"bio": "Esta es la bio-descripcion del usuario usr75"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr76-1480686511986" : {
+"id": "usr76-1480686511986"
+,"email": "usr76@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr76"
+,"nickname": "CharlesXavier2"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr77-1480686511986" : {
+"id": "usr77-1480686511986"
+,"email": "usr77@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr77"
+,"nickname": "Wolverine2"
+,"bio": "Esta es la bio-descripcion del usuario usr77"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr78-1480686511986" : {
+"id": "usr78-1480686511986"
+,"email": "usr78@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr78"
+,"nickname": "Deadpool3"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr79-1480686511986" : {
+"id": "usr79-1480686511986"
+,"email": "usr79@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr79"
+,"nickname": "IronMan3"
+,"bio": "Esta es la bio-descripcion del usuario usr79"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr80-1480686511986" : {
+"id": "usr80-1480686511986"
+,"email": "usr80@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr80"
+,"nickname": "Thor3"
+,"cm": false
+}
+,"usr81-1480686511986" : {
+"id": "usr81-1480686511986"
+,"email": "usr81@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr81"
+,"nickname": "Hulk3"
+,"bio": "Esta es la bio-descripcion del usuario usr81"
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr82-1480686511986" : {
+"id": "usr82-1480686511986"
+,"email": "usr82@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr82"
+,"nickname": "Antman3"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr83-1480686511986" : {
+"id": "usr83-1480686511986"
+,"email": "usr83@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr83"
+,"nickname": "CapitanAmerica3"
+,"bio": "Esta es la bio-descripcion del usuario usr83"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr84-1480686511986" : {
+"id": "usr84-1480686511986"
+,"email": "usr84@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr84"
+,"nickname": "DrStrange3"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr85-1480686511986" : {
+"id": "usr85-1480686511986"
+,"email": "usr85@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr85"
+,"nickname": "Batman3"
+,"bio": "Esta es la bio-descripcion del usuario usr85"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr86-1480686511986" : {
+"id": "usr86-1480686511986"
+,"email": "usr86@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr86"
+,"nickname": "Superman3"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr87-1480686511986" : {
+"id": "usr87-1480686511986"
+,"email": "usr87@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr87"
+,"nickname": "WonderWoman3"
+,"bio": "Esta es la bio-descripcion del usuario usr87"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr88-1480686511986" : {
+"id": "usr88-1480686511986"
+,"email": "usr88@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr88"
+,"nickname": "Aquaman3"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr89-1480686511986" : {
+"id": "usr89-1480686511986"
+,"email": "usr89@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr89"
+,"nickname": "Flash3"
+,"bio": "Esta es la bio-descripcion del usuario usr89"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr90-1480686511986" : {
+"id": "usr90-1480686511986"
+,"email": "usr90@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr90"
+,"nickname": "Punisher3"
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"usr91-1480686511986" : {
+"id": "usr91-1480686511986"
+,"email": "usr91@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr91"
+,"nickname": "DareDevil3"
+,"bio": "Esta es la bio-descripcion del usuario usr91"
+,"cm": false
+,"idUsuarios": {
+"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+}
+,"usr92-1480686511986" : {
+"id": "usr92-1480686511986"
+,"email": "usr92@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr92"
+,"nickname": "Spiderman3"
+,"cm": false
+,"idUsuarios": {
+"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+}
+,"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr93-1480686511986" : {
+"id": "usr93-1480686511986"
+,"email": "usr93@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr93"
+,"nickname": "LexLuthor3"
+,"bio": "Esta es la bio-descripcion del usuario usr93"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr94-1480686511986" : {
+"id": "usr94-1480686511986"
+,"email": "usr94@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr94"
+,"nickname": "Joker3"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+}
+,"usr95-1480686511986" : {
+"id": "usr95-1480686511986"
+,"email": "usr95@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr95"
+,"nickname": "Bane3"
+,"bio": "Esta es la bio-descripcion del usuario usr95"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr96-1480686511986" : {
+"id": "usr96-1480686511986"
+,"email": "usr96@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr96"
+,"nickname": "Catwoman3"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr97-1480686511986" : {
+"id": "usr97-1480686511986"
+,"email": "usr97@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr97"
+,"nickname": "StarLord3"
+,"bio": "Esta es la bio-descripcion del usuario usr97"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr98-1480686511986" : {
+"id": "usr98-1480686511986"
+,"email": "usr98@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr98"
+,"nickname": "Thanos3"
+,"cm": false
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"usr99-1480686511986" : {
+"id": "usr99-1480686511986"
+,"email": "usr99@pickanevent.com"
+,"password": "pickanevent"
+,"username": "usr99"
+,"nickname": "Goku3"
+,"bio": "Esta es la bio-descripcion del usuario usr99"
+,"idUsuarios": {
+"cm2-1480686511951": "cm2"
+,"cm3-1480686511971": "cm3"
+,"cm7-1480686511976": "cm7"
+,"cm1-1480686511950": "cm1"
+,"cm4-1480686511972": "cm4"
+,"cm6-1480686511975": "cm6"
+,"cm8-1480686511979": "cm8"
+,"cm0-1480686511950": "cm0"
+,"cm5-1480686511973": "cm5"
+}
+,"idGrupos": {
+"grp4-1480686511971": "X-Men"
+,"grp6-1480686511972": "X-Men"
+,"grp3-1480686511971": "Liga de la Justicia"
+,"grp7-1480686511972": "Inhumans"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp5-1480686511971": "Inhumans"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp0-1480686511950": "Villanos"
+,"grp1-1480686511951": "Justicieros"
+}
+,"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt13-1480686511973": "Atraco a un banco"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt12-1480686511973": "Conquista del mundo"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt4-1480686511972": "Atraco a un banco"
+,"Evt5-1480686511972": "Atraco a un banco"
+,"Evt10-1480686511973": "Atraco a un banco"
+,"Evt0-1480686511951": "Atraco a un banco"
+,"Evt6-1480686511972": "Conquista del mundo"
+,"Evt16-1480686511973": "Atraco a un banco"
+,"Evt11-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+,"Evt2-1480686511971": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt1-1480686511971": "Atraco a un banco"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+,"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag8-1480686511950": "Anarquia"
+,"tag4-1480686511950": "Indiferencia"
+}
+}
+,"2u9PWFE9uIhJTLVWfMW0wFH8Axt1" : {
+"id": "2u9PWFE9uIhJTLVWfMW0wFH8Axt1"
+,"nickname": "p4triot"
+,"cm": false
+}
+,"2UFk5r02iuRfuINh4jASrwnmFik2" : {
+"id": "2UFk5r02iuRfuINh4jASrwnmFik2"
+,"nickname": "Oscar"
+,"cm": true
+}
+,"GK87HBOwSkTmC12MjzZz16ghYXr2" : {
+"id": "GK87HBOwSkTmC12MjzZz16ghYXr2"
+,"nickname": "claraaaa"
+,"cm": false
+}
+,"PtYUmiUYA3S83ohzYmarVCACBeG2" : {
+"id": "PtYUmiUYA3S83ohzYmarVCACBeG2"
+,"nickname": "claraCM"
+,"cm": true
+}
+,"Qch3yrsCXwgyL4os8ujikGVaNwW2" : {
+"id": "Qch3yrsCXwgyL4os8ujikGVaNwW2"
+,"nickname": "Aleueet"
+,"cm": false
+}
+,"S8P83FZ1RLabdWFODCVZmUajWBs1" : {
+"id": "S8P83FZ1RLabdWFODCVZmUajWBs1"
+,"nickname": "PES"
+,"cm": false
+}
+,"VSDWkL1WEqPEnAwSpTs8Oxi3WXz1" : {
+"id": "VSDWkL1WEqPEnAwSpTs8Oxi3WXz1"
+,"nickname": "leg"
+,"cm": false
+}
+,"gIHcRzhypsY0tWkqjvIWkMNcEmZ2" : {
+"id": "gIHcRzhypsY0tWkqjvIWkMNcEmZ2"
+,"nickname": "nuevotest"
+,"cm": false
+}
+,"haIMoULYKRhynBStMtfQl2c9SxC2" : {
+"id": "haIMoULYKRhynBStMtfQl2c9SxC2"
+,"nickname": "pop"
+,"cm": false
+}
+,"lvKSWbg21Qgye7CGsqIXtdSsGck2" : {
+"id": "lvKSWbg21Qgye7CGsqIXtdSsGck2"
+,"nickname": "lega"
+,"cm": false
+}
+,"lvKSWbg21Qgye7CGsqIXtdSsGck2" : {
+"id": "lvKSWbg21Qgye7CGsqIXtdSsGck2"
+,"nickname": "z"
+,"cm": false
+}
+},
+"grupos": {
+"grp0-1480686511950" : {
+"id": "grp0-1480686511950"
+,"nombreGrupo": "Villanos"
+,"nickname": "cm1"
+,"idUsuario": "cm1-1480686511950"
+}
+,"grp1-1480686511951" : {
+"id": "grp1-1480686511951"
+,"nombreGrupo": "Justicieros"
+,"nickname": "cm2"
+,"idUsuario": "cm2-1480686511951"
+}
+,"grp2-1480686511951" : {
+"id": "grp2-1480686511951"
+,"nombreGrupo": "Liga de la Justicia"
+,"descripcion": "Esta es la descripcion del grupo creado por cm2"
+,"nickname": "cm2"
+,"idUsuario": "cm2-1480686511951"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt0-1480686511951": "Atraco a un banco"
+}
+}
+,"grp3-1480686511971" : {
+"id": "grp3-1480686511971"
+,"nombreGrupo": "Liga de la Justicia"
+,"nickname": "cm3"
+,"idUsuario": "cm3-1480686511971"
+}
+,"grp4-1480686511971" : {
+"id": "grp4-1480686511971"
+,"nombreGrupo": "X-Men"
+,"descripcion": "Esta es la descripcion del grupo creado por cm3"
+,"nickname": "cm3"
+,"idUsuario": "cm3-1480686511971"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt1-1480686511971": "Atraco a un banco"
+}
+}
+,"grp5-1480686511971" : {
+"id": "grp5-1480686511971"
+,"nombreGrupo": "Inhumans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm3"
+,"nickname": "cm3"
+,"idUsuario": "cm3-1480686511971"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt3-1480686511971": "Conquista del mundo"
+,"Evt2-1480686511971": "Atraco a un banco"
+}
+}
+,"grp6-1480686511972" : {
+"id": "grp6-1480686511972"
+,"nombreGrupo": "X-Men"
+,"nickname": "cm4"
+,"idUsuario": "cm4-1480686511972"
+}
+,"grp7-1480686511972" : {
+"id": "grp7-1480686511972"
+,"nombreGrupo": "Inhumans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm4"
+,"nickname": "cm4"
+,"idUsuario": "cm4-1480686511972"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt4-1480686511972": "Atraco a un banco"
+}
+}
+,"grp8-1480686511972" : {
+"id": "grp8-1480686511972"
+,"nombreGrupo": "Super Saiyans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm4"
+,"nickname": "cm4"
+,"idUsuario": "cm4-1480686511972"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt6-1480686511972": "Conquista del mundo"
+,"Evt5-1480686511972": "Atraco a un banco"
+}
+}
+,"grp9-1480686511972" : {
+"id": "grp9-1480686511972"
+,"nombreGrupo": "La Liga de los hombres extraordinarios"
+,"descripcion": "Esta es la descripcion del grupo creado por cm4"
+,"nickname": "cm4"
+,"idUsuario": "cm4-1480686511972"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt9-1480686511972": "Conquista de la galaxia"
+,"Evt8-1480686511972": "Conquista del mundo"
+,"Evt7-1480686511972": "Atraco a un banco"
+}
+}
+,"grp10-1480686511973" : {
+"id": "grp10-1480686511973"
+,"nombreGrupo": "Inhumans"
+,"nickname": "cm5"
+,"idUsuario": "cm5-1480686511973"
+}
+,"grp11-1480686511973" : {
+"id": "grp11-1480686511973"
+,"nombreGrupo": "Super Saiyans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm5"
+,"nickname": "cm5"
+,"idUsuario": "cm5-1480686511973"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt10-1480686511973": "Atraco a un banco"
+}
+}
+,"grp12-1480686511973" : {
+"id": "grp12-1480686511973"
+,"nombreGrupo": "La Liga de los hombres extraordinarios"
+,"descripcion": "Esta es la descripcion del grupo creado por cm5"
+,"nickname": "cm5"
+,"idUsuario": "cm5-1480686511973"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt11-1480686511973": "Atraco a un banco"
+,"Evt12-1480686511973": "Conquista del mundo"
+}
+}
+,"grp13-1480686511973" : {
+"id": "grp13-1480686511973"
+,"nombreGrupo": "Suicide Squad"
+,"descripcion": "Esta es la descripcion del grupo creado por cm5"
+,"nickname": "cm5"
+,"idUsuario": "cm5-1480686511973"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt13-1480686511973": "Atraco a un banco"
+,"Evt15-1480686511973": "Conquista de la galaxia"
+,"Evt14-1480686511973": "Conquista del mundo"
+}
+}
+,"grp14-1480686511973" : {
+"id": "grp14-1480686511973"
+,"nombreGrupo": "Los 4 Fantásticos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm5"
+,"nickname": "cm5"
+,"idUsuario": "cm5-1480686511973"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt16-1480686511973": "Atraco a un banco"
+,"Evt17-1480686511973": "Conquista del mundo"
+,"Evt18-1480686511973": "Conquista de la galaxia"
+,"Evt19-1480686511973": "Atraco a un geriatrico"
+}
+}
+,"grp15-1480686511975" : {
+"id": "grp15-1480686511975"
+,"nombreGrupo": "Super Saiyans"
+,"nickname": "cm6"
+,"idUsuario": "cm6-1480686511975"
+}
+,"grp16-1480686511975" : {
+"id": "grp16-1480686511975"
+,"nombreGrupo": "La Liga de los hombres extraordinarios"
+,"descripcion": "Esta es la descripcion del grupo creado por cm6"
+,"nickname": "cm6"
+,"idUsuario": "cm6-1480686511975"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt20-1480686511975": "Atraco a un banco"
+}
+}
+,"grp17-1480686511975" : {
+"id": "grp17-1480686511975"
+,"nombreGrupo": "Suicide Squad"
+,"descripcion": "Esta es la descripcion del grupo creado por cm6"
+,"nickname": "cm6"
+,"idUsuario": "cm6-1480686511975"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt22-1480686511975": "Conquista del mundo"
+,"Evt21-1480686511975": "Atraco a un banco"
+}
+}
+,"grp18-1480686511975" : {
+"id": "grp18-1480686511975"
+,"nombreGrupo": "Los 4 Fantásticos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm6"
+,"nickname": "cm6"
+,"idUsuario": "cm6-1480686511975"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt24-1480686511975": "Conquista del mundo"
+,"Evt23-1480686511975": "Atraco a un banco"
+,"Evt25-1480686511975": "Conquista de la galaxia"
+}
+}
+,"grp19-1480686511975" : {
+"id": "grp19-1480686511975"
+,"nombreGrupo": "Los Vengadores"
+,"descripcion": "Esta es la descripcion del grupo creado por cm6"
+,"nickname": "cm6"
+,"idUsuario": "cm6-1480686511975"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt29-1480686511975": "Atraco a un geriatrico"
+,"Evt26-1480686511975": "Atraco a un banco"
+,"Evt27-1480686511975": "Conquista del mundo"
+,"Evt28-1480686511975": "Conquista de la galaxia"
+}
+}
+,"grp20-1480686511975" : {
+"id": "grp20-1480686511975"
+,"nombreGrupo": "Villanos"
+,"nickname": "cm6"
+,"idUsuario": "cm6-1480686511975"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt34-1480686511975": "Ataque a los superheroes"
+,"Evt33-1480686511975": "Atraco a un geriatrico"
+,"Evt30-1480686511975": "Atraco a un banco"
+,"Evt32-1480686511975": "Conquista de la galaxia"
+,"Evt31-1480686511975": "Conquista del mundo"
+}
+}
+,"grp21-1480686511976" : {
+"id": "grp21-1480686511976"
+,"nombreGrupo": "La Liga de los hombres extraordinarios"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+}
+,"grp22-1480686511976" : {
+"id": "grp22-1480686511976"
+,"nombreGrupo": "Suicide Squad"
+,"descripcion": "Esta es la descripcion del grupo creado por cm7"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt35-1480686511976": "Atraco a un banco"
+}
+}
+,"grp23-1480686511976" : {
+"id": "grp23-1480686511976"
+,"nombreGrupo": "Los 4 Fantásticos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm7"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt37-1480686511976": "Conquista del mundo"
+,"Evt36-1480686511976": "Atraco a un banco"
+}
+}
+,"grp24-1480686511976" : {
+"id": "grp24-1480686511976"
+,"nombreGrupo": "Los Vengadores"
+,"descripcion": "Esta es la descripcion del grupo creado por cm7"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt39-1480686511976": "Conquista del mundo"
+,"Evt38-1480686511976": "Atraco a un banco"
+,"Evt40-1480686511976": "Conquista de la galaxia"
+}
+}
+,"grp25-1480686511976" : {
+"id": "grp25-1480686511976"
+,"nombreGrupo": "Villanos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm7"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt44-1480686511976": "Atraco a un geriatrico"
+,"Evt43-1480686511976": "Conquista de la galaxia"
+,"Evt41-1480686511976": "Atraco a un banco"
+,"Evt42-1480686511976": "Conquista del mundo"
+}
+}
+,"grp26-1480686511976" : {
+"id": "grp26-1480686511976"
+,"nombreGrupo": "Justicieros"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt45-1480686511976": "Atraco a un banco"
+,"Evt47-1480686511976": "Conquista de la galaxia"
+,"Evt48-1480686511976": "Atraco a un geriatrico"
+,"Evt49-1480686511976": "Ataque a los superheroes"
+,"Evt46-1480686511976": "Conquista del mundo"
+}
+}
+,"grp27-1480686511976" : {
+"id": "grp27-1480686511976"
+,"nombreGrupo": "Liga de la Justicia"
+,"descripcion": "Esta es la descripcion del grupo creado por cm7"
+,"nickname": "cm7"
+,"idUsuario": "cm7-1480686511976"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt52-1480686511976": "Conquista de la galaxia"
+,"Evt55-1480686511976": "Ataque a los villanos"
+,"Evt50-1480686511976": "Atraco a un banco"
+,"Evt54-1480686511976": "Ataque a los superheroes"
+,"Evt51-1480686511976": "Conquista del mundo"
+,"Evt53-1480686511976": "Atraco a un geriatrico"
+}
+}
+,"grp28-1480686511979" : {
+"id": "grp28-1480686511979"
+,"nombreGrupo": "Suicide Squad"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+}
+,"grp29-1480686511979" : {
+"id": "grp29-1480686511979"
+,"nombreGrupo": "Los 4 Fantásticos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm8"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt56-1480686511979": "Atraco a un banco"
+}
+}
+,"grp30-1480686511979" : {
+"id": "grp30-1480686511979"
+,"nombreGrupo": "Los Vengadores"
+,"descripcion": "Esta es la descripcion del grupo creado por cm8"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt58-1480686511979": "Conquista del mundo"
+,"Evt57-1480686511979": "Atraco a un banco"
+}
+}
+,"grp31-1480686511979" : {
+"id": "grp31-1480686511979"
+,"nombreGrupo": "Villanos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm8"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt60-1480686511979": "Conquista del mundo"
+,"Evt59-1480686511979": "Atraco a un banco"
+,"Evt61-1480686511979": "Conquista de la galaxia"
+}
+}
+,"grp32-1480686511979" : {
+"id": "grp32-1480686511979"
+,"nombreGrupo": "Justicieros"
+,"descripcion": "Esta es la descripcion del grupo creado por cm8"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt62-1480686511979": "Atraco a un banco"
+,"Evt65-1480686511979": "Atraco a un geriatrico"
+,"Evt64-1480686511979": "Conquista de la galaxia"
+,"Evt63-1480686511979": "Conquista del mundo"
+}
+}
+,"grp33-1480686511979" : {
+"id": "grp33-1480686511979"
+,"nombreGrupo": "Liga de la Justicia"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt68-1480686511979": "Conquista de la galaxia"
+,"Evt70-1480686511979": "Ataque a los superheroes"
+,"Evt69-1480686511979": "Atraco a un geriatrico"
+,"Evt66-1480686511979": "Atraco a un banco"
+,"Evt67-1480686511979": "Conquista del mundo"
+}
+}
+,"grp34-1480686511979" : {
+"id": "grp34-1480686511979"
+,"nombreGrupo": "X-Men"
+,"descripcion": "Esta es la descripcion del grupo creado por cm8"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt72-1480686511979": "Conquista del mundo"
+,"Evt76-1480686511979": "Ataque a los villanos"
+,"Evt75-1480686511979": "Ataque a los superheroes"
+,"Evt71-1480686511979": "Atraco a un banco"
+,"Evt74-1480686511979": "Atraco a un geriatrico"
+,"Evt73-1480686511979": "Conquista de la galaxia"
+}
+}
+,"grp35-1480686511979" : {
+"id": "grp35-1480686511979"
+,"nombreGrupo": "Inhumans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm8"
+,"nickname": "cm8"
+,"idUsuario": "cm8-1480686511979"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt83-1480686511979": "Defender a la poblacion"
+,"Evt78-1480686511979": "Conquista del mundo"
+,"Evt80-1480686511979": "Atraco a un geriatrico"
+,"Evt79-1480686511979": "Conquista de la galaxia"
+,"Evt81-1480686511979": "Ataque a los superheroes"
+,"Evt77-1480686511979": "Atraco a un banco"
+,"Evt82-1480686511979": "Ataque a los villanos"
+}
+}
+,"grp36-1480686511981" : {
+"id": "grp36-1480686511981"
+,"nombreGrupo": "Los 4 Fantásticos"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+}
+,"grp37-1480686511981" : {
+"id": "grp37-1480686511981"
+,"nombreGrupo": "Los Vengadores"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt84-1480686511981": "Atraco a un banco"
+}
+}
+,"grp38-1480686511981" : {
+"id": "grp38-1480686511981"
+,"nombreGrupo": "Villanos"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt86-1480686511981": "Conquista del mundo"
+,"Evt85-1480686511981": "Atraco a un banco"
+}
+}
+,"grp39-1480686511981" : {
+"id": "grp39-1480686511981"
+,"nombreGrupo": "Justicieros"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt87-1480686511981": "Atraco a un banco"
+,"Evt88-1480686511981": "Conquista del mundo"
+,"Evt89-1480686511981": "Conquista de la galaxia"
+}
+}
+,"grp40-1480686511981" : {
+"id": "grp40-1480686511981"
+,"nombreGrupo": "Liga de la Justicia"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+}
+,
+"idEventos": {
+"Evt92-1480686511981": "Conquista de la galaxia"
+,"Evt90-1480686511981": "Atraco a un banco"
+,"Evt93-1480686511981": "Atraco a un geriatrico"
+,"Evt91-1480686511981": "Conquista del mundo"
+}
+}
+,"grp41-1480686511981" : {
+"id": "grp41-1480686511981"
+,"nombreGrupo": "X-Men"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt98-1480686511981": "Ataque a los superheroes"
+,"Evt95-1480686511981": "Conquista del mundo"
+,"Evt94-1480686511981": "Atraco a un banco"
+,"Evt97-1480686511981": "Atraco a un geriatrico"
+,"Evt96-1480686511981": "Conquista de la galaxia"
+}
+}
+,"grp42-1480686511981" : {
+"id": "grp42-1480686511981"
+,"nombreGrupo": "Inhumans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt102-1480686511981": "Atraco a un geriatrico"
+,"Evt104-1480686511981": "Ataque a los villanos"
+,"Evt100-1480686511981": "Conquista del mundo"
+,"Evt101-1480686511981": "Conquista de la galaxia"
+,"Evt99-1480686511981": "Atraco a un banco"
+,"Evt103-1480686511981": "Ataque a los superheroes"
+}
+}
+,"grp43-1480686511981" : {
+"id": "grp43-1480686511981"
+,"nombreGrupo": "Super Saiyans"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt108-1480686511981": "Atraco a un geriatrico"
+,"Evt110-1480686511981": "Ataque a los villanos"
+,"Evt105-1480686511981": "Atraco a un banco"
+,"Evt109-1480686511981": "Ataque a los superheroes"
+,"Evt111-1480686511981": "Defender a la poblacion"
+,"Evt106-1480686511981": "Conquista del mundo"
+,"Evt107-1480686511981": "Conquista de la galaxia"
+}
+}
+,"grp44-1480686511981" : {
+"id": "grp44-1480686511981"
+,"nombreGrupo": "La Liga de los hombres extraordinarios"
+,"descripcion": "Esta es la descripcion del grupo creado por cm9"
+,"nickname": "cm9"
+,"idUsuario": "cm9-1480686511981"
+,
+"idTags": {
+"tag2-1480686511950": "Maldad"
+,"tag7-1480686511950": "Locura"
+,"tag5-1480686511950": "Diversion"
+,"tag1-1480686511950": "Justicia"
+,"tag3-1480686511950": "Bondad"
+,"tag6-1480686511950": "Poder"
+,"tag0-1480686511950": "Venganza"
+,"tag4-1480686511950": "Indiferencia"
+}
+,
+"idEventos": {
+"Evt118-1480686511981": "Defender a la poblacion"
+,"Evt112-1480686511981": "Atraco a un banco"
+,"Evt116-1480686511981": "Ataque a los superheroes"
+,"Evt119-1480686511981": "Defender la guarida"
+,"Evt115-1480686511981": "Atraco a un geriatrico"
+,"Evt114-1480686511981": "Conquista de la galaxia"
+,"Evt117-1480686511981": "Ataque a los villanos"
+,"Evt113-1480686511981": "Conquista del mundo"
+}
+}
+},
+"tags": {
+"tag0-1480686511950" : {
+"id": "tag0-1480686511950",
+"nombreTag": "Venganza"
+,
+"idGrupos": {
+"grp23-1480686511976": "Los 4 Fantásticos"
+,"grp40-1480686511981": "Liga de la Justicia"
+,"grp37-1480686511981": "Los Vengadores"
+,"grp7-1480686511972": "Inhumans"
+,"grp31-1480686511979": "Villanos"
+,"grp2-1480686511951": "Liga de la Justicia"
+,"grp17-1480686511975": "Suicide Squad"
+,"grp9-1480686511972": "La Liga de los hombres extraordinarios"
+,"grp4-1480686511971": "X-Men"
+,"grp19-1480686511975": "Los Vengadores"
+,"grp20-1480686511975": "Villanos"
+,"grp14-1480686511973": "Los 4 Fantásticos"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp12-1480686511973": "La Liga de los hombres extraordinarios"
+,"grp25-1480686511976": "Villanos"
+,"grp35-1480686511979": "Inhumans"
+,"grp39-1480686511981": "Justicieros"
+,"grp27-1480686511976": "Liga de la Justicia"
+,"grp33-1480686511979": "Liga de la Justicia"
+,"grp38-1480686511981": "Villanos"
+,"grp30-1480686511979": "Los Vengadores"
+,"grp24-1480686511976": "Los Vengadores"
+,"grp29-1480686511979": "Los 4 Fantásticos"
+,"grp22-1480686511976": "Suicide Squad"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp16-1480686511975": "La Liga de los hombres extraordinarios"
+,"grp41-1480686511981": "X-Men"
+,"grp26-1480686511976": "Justicieros"
+,"grp42-1480686511981": "Inhumans"
+,"grp18-1480686511975": "Los 4 Fantásticos"
+,"grp13-1480686511973": "Suicide Squad"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp5-1480686511971": "Inhumans"
+,"grp32-1480686511979": "Justicieros"
+,"grp34-1480686511979": "X-Men"
+,"grp11-1480686511973": "Super Saiyans"
+}
+}
+,"tag1-1480686511950" : {
+"id": "tag1-1480686511950",
+"nombreTag": "Justicia"
+,
+"idGrupos": {
+"grp23-1480686511976": "Los 4 Fantásticos"
+,"grp40-1480686511981": "Liga de la Justicia"
+,"grp31-1480686511979": "Villanos"
+,"grp17-1480686511975": "Suicide Squad"
+,"grp9-1480686511972": "La Liga de los hombres extraordinarios"
+,"grp19-1480686511975": "Los Vengadores"
+,"grp20-1480686511975": "Villanos"
+,"grp14-1480686511973": "Los 4 Fantásticos"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp12-1480686511973": "La Liga de los hombres extraordinarios"
+,"grp25-1480686511976": "Villanos"
+,"grp35-1480686511979": "Inhumans"
+,"grp39-1480686511981": "Justicieros"
+,"grp27-1480686511976": "Liga de la Justicia"
+,"grp33-1480686511979": "Liga de la Justicia"
+,"grp38-1480686511981": "Villanos"
+,"grp30-1480686511979": "Los Vengadores"
+,"grp24-1480686511976": "Los Vengadores"
+,"grp8-1480686511972": "Super Saiyans"
+,"grp41-1480686511981": "X-Men"
+,"grp26-1480686511976": "Justicieros"
+,"grp42-1480686511981": "Inhumans"
+,"grp18-1480686511975": "Los 4 Fantásticos"
+,"grp13-1480686511973": "Suicide Squad"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp5-1480686511971": "Inhumans"
+,"grp32-1480686511979": "Justicieros"
+,"grp34-1480686511979": "X-Men"
+}
+}
+,"tag2-1480686511950" : {
+"id": "tag2-1480686511950",
+"nombreTag": "Maldad"
+,
+"idGrupos": {
+"grp40-1480686511981": "Liga de la Justicia"
+,"grp24-1480686511976": "Los Vengadores"
+,"grp31-1480686511979": "Villanos"
+,"grp9-1480686511972": "La Liga de los hombres extraordinarios"
+,"grp41-1480686511981": "X-Men"
+,"grp19-1480686511975": "Los Vengadores"
+,"grp26-1480686511976": "Justicieros"
+,"grp42-1480686511981": "Inhumans"
+,"grp18-1480686511975": "Los 4 Fantásticos"
+,"grp20-1480686511975": "Villanos"
+,"grp14-1480686511973": "Los 4 Fantásticos"
+,"grp13-1480686511973": "Suicide Squad"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp25-1480686511976": "Villanos"
+,"grp35-1480686511979": "Inhumans"
+,"grp39-1480686511981": "Justicieros"
+,"grp32-1480686511979": "Justicieros"
+,"grp27-1480686511976": "Liga de la Justicia"
+,"grp34-1480686511979": "X-Men"
+,"grp33-1480686511979": "Liga de la Justicia"
+}
+}
+,"tag3-1480686511950" : {
+"id": "tag3-1480686511950",
+"nombreTag": "Bondad"
+,
+"idGrupos": {
+"grp40-1480686511981": "Liga de la Justicia"
+,"grp41-1480686511981": "X-Men"
+,"grp19-1480686511975": "Los Vengadores"
+,"grp26-1480686511976": "Justicieros"
+,"grp42-1480686511981": "Inhumans"
+,"grp20-1480686511975": "Villanos"
+,"grp14-1480686511973": "Los 4 Fantásticos"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp25-1480686511976": "Villanos"
+,"grp35-1480686511979": "Inhumans"
+,"grp32-1480686511979": "Justicieros"
+,"grp27-1480686511976": "Liga de la Justicia"
+,"grp34-1480686511979": "X-Men"
+,"grp33-1480686511979": "Liga de la Justicia"
+}
+}
+,"tag4-1480686511950" : {
+"id": "tag4-1480686511950",
+"nombreTag": "Indiferencia"
+,
+"idGrupos": {
+"grp26-1480686511976": "Justicieros"
+,"grp42-1480686511981": "Inhumans"
+,"grp20-1480686511975": "Villanos"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp35-1480686511979": "Inhumans"
+,"grp27-1480686511976": "Liga de la Justicia"
+,"grp34-1480686511979": "X-Men"
+,"grp33-1480686511979": "Liga de la Justicia"
+,"grp41-1480686511981": "X-Men"
+}
+}
+,"tag5-1480686511950" : {
+"id": "tag5-1480686511950",
+"nombreTag": "Diversion"
+,
+"idGrupos": {
+"grp42-1480686511981": "Inhumans"
+,"grp43-1480686511981": "Super Saiyans"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp35-1480686511979": "Inhumans"
+,"grp27-1480686511976": "Liga de la Justicia"
+,"grp34-1480686511979": "X-Men"
+}
+}
+,"tag6-1480686511950" : {
+"id": "tag6-1480686511950",
+"nombreTag": "Poder"
+,
+"idGrupos": {
+"grp43-1480686511981": "Super Saiyans"
+,"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+,"grp35-1480686511979": "Inhumans"
+}
+}
+,"tag7-1480686511950" : {
+"id": "tag7-1480686511950",
+"nombreTag": "Locura"
+,
+"idGrupos": {
+"grp44-1480686511981": "La Liga de los hombres extraordinarios"
+}
+}
+,"tag8-1480686511950" : {
+"id": "tag8-1480686511950",
+"nombreTag": "Anarquia"
+}
+,"tag9-1480686511950" : {
+"id": "tag9-1480686511950",
+"nombreTag": "Purga"
+}
+},
+"eventos": {
+"Evt0-1480686511951" : {
+"id": "Evt0-1480686511951"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp2-1480686511951"
+}
+,"Evt1-1480686511971" : {
+"id": "Evt1-1480686511971"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp4-1480686511971"
+}
+,"Evt2-1480686511971" : {
+"id": "Evt2-1480686511971"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp5-1480686511971"
+}
+,"Evt3-1480686511971" : {
+"id": "Evt3-1480686511971"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 3"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp5-1480686511971"
+}
+,"Evt4-1480686511972" : {
+"id": "Evt4-1480686511972"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp7-1480686511972"
+}
+,"Evt5-1480686511972" : {
+"id": "Evt5-1480686511972"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp8-1480686511972"
+}
+,"Evt6-1480686511972" : {
+"id": "Evt6-1480686511972"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 6"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp8-1480686511972"
+}
+,"Evt7-1480686511972" : {
+"id": "Evt7-1480686511972"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp9-1480686511972"
+}
+,"Evt8-1480686511972" : {
+"id": "Evt8-1480686511972"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 8"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp9-1480686511972"
+}
+,"Evt9-1480686511972" : {
+"id": "Evt9-1480686511972"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 9"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp9-1480686511972"
+}
+,"Evt10-1480686511973" : {
+"id": "Evt10-1480686511973"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp11-1480686511973"
+}
+,"Evt11-1480686511973" : {
+"id": "Evt11-1480686511973"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp12-1480686511973"
+}
+,"Evt12-1480686511973" : {
+"id": "Evt12-1480686511973"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 12"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp12-1480686511973"
+}
+,"Evt13-1480686511973" : {
+"id": "Evt13-1480686511973"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp13-1480686511973"
+}
+,"Evt14-1480686511973" : {
+"id": "Evt14-1480686511973"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 14"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp13-1480686511973"
+}
+,"Evt15-1480686511973" : {
+"id": "Evt15-1480686511973"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 15"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp13-1480686511973"
+}
+,"Evt16-1480686511973" : {
+"id": "Evt16-1480686511973"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp14-1480686511973"
+}
+,"Evt17-1480686511973" : {
+"id": "Evt17-1480686511973"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 17"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp14-1480686511973"
+}
+,"Evt18-1480686511973" : {
+"id": "Evt18-1480686511973"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 18"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp14-1480686511973"
+}
+,"Evt19-1480686511973" : {
+"id": "Evt19-1480686511973"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 19"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp14-1480686511973"
+}
+,"Evt20-1480686511975" : {
+"id": "Evt20-1480686511975"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp16-1480686511975"
+}
+,"Evt21-1480686511975" : {
+"id": "Evt21-1480686511975"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp17-1480686511975"
+}
+,"Evt22-1480686511975" : {
+"id": "Evt22-1480686511975"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 22"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp17-1480686511975"
+}
+,"Evt23-1480686511975" : {
+"id": "Evt23-1480686511975"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp18-1480686511975"
+}
+,"Evt24-1480686511975" : {
+"id": "Evt24-1480686511975"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 24"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp18-1480686511975"
+}
+,"Evt25-1480686511975" : {
+"id": "Evt25-1480686511975"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 25"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp18-1480686511975"
+}
+,"Evt26-1480686511975" : {
+"id": "Evt26-1480686511975"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp19-1480686511975"
+}
+,"Evt27-1480686511975" : {
+"id": "Evt27-1480686511975"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 27"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp19-1480686511975"
+}
+,"Evt28-1480686511975" : {
+"id": "Evt28-1480686511975"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 28"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp19-1480686511975"
+}
+,"Evt29-1480686511975" : {
+"id": "Evt29-1480686511975"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 29"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp19-1480686511975"
+}
+,"Evt30-1480686511975" : {
+"id": "Evt30-1480686511975"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp20-1480686511975"
+}
+,"Evt31-1480686511975" : {
+"id": "Evt31-1480686511975"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 31"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp20-1480686511975"
+}
+,"Evt32-1480686511975" : {
+"id": "Evt32-1480686511975"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 32"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp20-1480686511975"
+}
+,"Evt33-1480686511975" : {
+"id": "Evt33-1480686511975"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 33"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp20-1480686511975"
+}
+,"Evt34-1480686511975" : {
+"id": "Evt34-1480686511975"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 34"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp20-1480686511975"
+}
+,"Evt35-1480686511976" : {
+"id": "Evt35-1480686511976"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp22-1480686511976"
+}
+,"Evt36-1480686511976" : {
+"id": "Evt36-1480686511976"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp23-1480686511976"
+}
+,"Evt37-1480686511976" : {
+"id": "Evt37-1480686511976"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 37"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp23-1480686511976"
+}
+,"Evt38-1480686511976" : {
+"id": "Evt38-1480686511976"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp24-1480686511976"
+}
+,"Evt39-1480686511976" : {
+"id": "Evt39-1480686511976"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 39"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp24-1480686511976"
+}
+,"Evt40-1480686511976" : {
+"id": "Evt40-1480686511976"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 40"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp24-1480686511976"
+}
+,"Evt41-1480686511976" : {
+"id": "Evt41-1480686511976"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp25-1480686511976"
+}
+,"Evt42-1480686511976" : {
+"id": "Evt42-1480686511976"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 42"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp25-1480686511976"
+}
+,"Evt43-1480686511976" : {
+"id": "Evt43-1480686511976"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 43"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp25-1480686511976"
+}
+,"Evt44-1480686511976" : {
+"id": "Evt44-1480686511976"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 44"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp25-1480686511976"
+}
+,"Evt45-1480686511976" : {
+"id": "Evt45-1480686511976"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp26-1480686511976"
+}
+,"Evt46-1480686511976" : {
+"id": "Evt46-1480686511976"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 46"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp26-1480686511976"
+}
+,"Evt47-1480686511976" : {
+"id": "Evt47-1480686511976"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 47"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp26-1480686511976"
+}
+,"Evt48-1480686511976" : {
+"id": "Evt48-1480686511976"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 48"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp26-1480686511976"
+}
+,"Evt49-1480686511976" : {
+"id": "Evt49-1480686511976"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 49"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp26-1480686511976"
+}
+,"Evt50-1480686511976" : {
+"id": "Evt50-1480686511976"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp27-1480686511976"
+}
+,"Evt51-1480686511976" : {
+"id": "Evt51-1480686511976"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 51"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp27-1480686511976"
+}
+,"Evt52-1480686511976" : {
+"id": "Evt52-1480686511976"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 52"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp27-1480686511976"
+}
+,"Evt53-1480686511976" : {
+"id": "Evt53-1480686511976"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 53"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp27-1480686511976"
+}
+,"Evt54-1480686511976" : {
+"id": "Evt54-1480686511976"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 54"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp27-1480686511976"
+}
+,"Evt55-1480686511976" : {
+"id": "Evt55-1480686511976"
+,"titulo": "Ataque a los villanos"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sun Jun 06 05:15:00 CEST 2021"
+,"precio": "55"
+,"webpage": "www.Ataque.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp27-1480686511976"
+}
+,"Evt56-1480686511979" : {
+"id": "Evt56-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp29-1480686511979"
+}
+,"Evt57-1480686511979" : {
+"id": "Evt57-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp30-1480686511979"
+}
+,"Evt58-1480686511979" : {
+"id": "Evt58-1480686511979"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 58"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp30-1480686511979"
+}
+,"Evt59-1480686511979" : {
+"id": "Evt59-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp31-1480686511979"
+}
+,"Evt60-1480686511979" : {
+"id": "Evt60-1480686511979"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 60"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp31-1480686511979"
+}
+,"Evt61-1480686511979" : {
+"id": "Evt61-1480686511979"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 61"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp31-1480686511979"
+}
+,"Evt62-1480686511979" : {
+"id": "Evt62-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp32-1480686511979"
+}
+,"Evt63-1480686511979" : {
+"id": "Evt63-1480686511979"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 63"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp32-1480686511979"
+}
+,"Evt64-1480686511979" : {
+"id": "Evt64-1480686511979"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 64"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp32-1480686511979"
+}
+,"Evt65-1480686511979" : {
+"id": "Evt65-1480686511979"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 65"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp32-1480686511979"
+}
+,"Evt66-1480686511979" : {
+"id": "Evt66-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp33-1480686511979"
+}
+,"Evt67-1480686511979" : {
+"id": "Evt67-1480686511979"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 67"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp33-1480686511979"
+}
+,"Evt68-1480686511979" : {
+"id": "Evt68-1480686511979"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 68"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp33-1480686511979"
+}
+,"Evt69-1480686511979" : {
+"id": "Evt69-1480686511979"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 69"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp33-1480686511979"
+}
+,"Evt70-1480686511979" : {
+"id": "Evt70-1480686511979"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 70"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp33-1480686511979"
+}
+,"Evt71-1480686511979" : {
+"id": "Evt71-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp34-1480686511979"
+}
+,"Evt72-1480686511979" : {
+"id": "Evt72-1480686511979"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 72"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp34-1480686511979"
+}
+,"Evt73-1480686511979" : {
+"id": "Evt73-1480686511979"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 73"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp34-1480686511979"
+}
+,"Evt74-1480686511979" : {
+"id": "Evt74-1480686511979"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 74"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp34-1480686511979"
+}
+,"Evt75-1480686511979" : {
+"id": "Evt75-1480686511979"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 75"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp34-1480686511979"
+}
+,"Evt76-1480686511979" : {
+"id": "Evt76-1480686511979"
+,"titulo": "Ataque a los villanos"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sun Jun 06 05:15:00 CEST 2021"
+,"precio": "55"
+,"webpage": "www.Ataque.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp34-1480686511979"
+}
+,"Evt77-1480686511979" : {
+"id": "Evt77-1480686511979"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt78-1480686511979" : {
+"id": "Evt78-1480686511979"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 78"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt79-1480686511979" : {
+"id": "Evt79-1480686511979"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 79"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt80-1480686511979" : {
+"id": "Evt80-1480686511979"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 80"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt81-1480686511979" : {
+"id": "Evt81-1480686511979"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 81"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt82-1480686511979" : {
+"id": "Evt82-1480686511979"
+,"titulo": "Ataque a los villanos"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sun Jun 06 05:15:00 CEST 2021"
+,"precio": "55"
+,"webpage": "www.Ataque.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt83-1480686511979" : {
+"id": "Evt83-1480686511979"
+,"titulo": "Defender a la poblacion"
+,"descripcion": "Esta es la descripcion del evento 83"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Jul 07 06:30:00 CEST 2022"
+,"dataFinal": "Thu Jul 07 10:30:00 CEST 2022"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp35-1480686511979"
+}
+,"Evt84-1480686511981" : {
+"id": "Evt84-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp37-1480686511981"
+}
+,"Evt85-1480686511981" : {
+"id": "Evt85-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp38-1480686511981"
+}
+,"Evt86-1480686511981" : {
+"id": "Evt86-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 86"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp38-1480686511981"
+}
+,"Evt87-1480686511981" : {
+"id": "Evt87-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp39-1480686511981"
+}
+,"Evt88-1480686511981" : {
+"id": "Evt88-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 88"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp39-1480686511981"
+}
+,"Evt89-1480686511981" : {
+"id": "Evt89-1480686511981"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 89"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp39-1480686511981"
+}
+,"Evt90-1480686511981" : {
+"id": "Evt90-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp40-1480686511981"
+}
+,"Evt91-1480686511981" : {
+"id": "Evt91-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 91"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp40-1480686511981"
+}
+,"Evt92-1480686511981" : {
+"id": "Evt92-1480686511981"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 92"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp40-1480686511981"
+}
+,"Evt93-1480686511981" : {
+"id": "Evt93-1480686511981"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 93"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp40-1480686511981"
+}
+,"Evt94-1480686511981" : {
+"id": "Evt94-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp41-1480686511981"
+}
+,"Evt95-1480686511981" : {
+"id": "Evt95-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 95"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp41-1480686511981"
+}
+,"Evt96-1480686511981" : {
+"id": "Evt96-1480686511981"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 96"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp41-1480686511981"
+}
+,"Evt97-1480686511981" : {
+"id": "Evt97-1480686511981"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 97"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp41-1480686511981"
+}
+,"Evt98-1480686511981" : {
+"id": "Evt98-1480686511981"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 98"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp41-1480686511981"
+}
+,"Evt99-1480686511981" : {
+"id": "Evt99-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp42-1480686511981"
+}
+,"Evt100-1480686511981" : {
+"id": "Evt100-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 100"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp42-1480686511981"
+}
+,"Evt101-1480686511981" : {
+"id": "Evt101-1480686511981"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 101"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp42-1480686511981"
+}
+,"Evt102-1480686511981" : {
+"id": "Evt102-1480686511981"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 102"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp42-1480686511981"
+}
+,"Evt103-1480686511981" : {
+"id": "Evt103-1480686511981"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 103"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp42-1480686511981"
+}
+,"Evt104-1480686511981" : {
+"id": "Evt104-1480686511981"
+,"titulo": "Ataque a los villanos"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sun Jun 06 05:15:00 CEST 2021"
+,"precio": "55"
+,"webpage": "www.Ataque.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp42-1480686511981"
+}
+,"Evt105-1480686511981" : {
+"id": "Evt105-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt106-1480686511981" : {
+"id": "Evt106-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 106"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt107-1480686511981" : {
+"id": "Evt107-1480686511981"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 107"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt108-1480686511981" : {
+"id": "Evt108-1480686511981"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 108"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt109-1480686511981" : {
+"id": "Evt109-1480686511981"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 109"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt110-1480686511981" : {
+"id": "Evt110-1480686511981"
+,"titulo": "Ataque a los villanos"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sun Jun 06 05:15:00 CEST 2021"
+,"precio": "55"
+,"webpage": "www.Ataque.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt111-1480686511981" : {
+"id": "Evt111-1480686511981"
+,"titulo": "Defender a la poblacion"
+,"descripcion": "Esta es la descripcion del evento 111"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Jul 07 06:30:00 CEST 2022"
+,"dataFinal": "Thu Jul 07 10:30:00 CEST 2022"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp43-1480686511981"
+}
+,"Evt112-1480686511981" : {
+"id": "Evt112-1480686511981"
+,"titulo": "Atraco a un banco"
+,"dataInici": "Fri Jan 01 00:00:00 CET 2016"
+,"dataFinal": "Fri Jan 01 04:00:00 CET 2016"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt113-1480686511981" : {
+"id": "Evt113-1480686511981"
+,"titulo": "Conquista del mundo"
+,"descripcion": "Esta es la descripcion del evento 113"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Feb 02 01:15:00 CET 2017"
+,"precio": "11"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt114-1480686511981" : {
+"id": "Evt114-1480686511981"
+,"titulo": "Conquista de la galaxia"
+,"descripcion": "Esta es la descripcion del evento 114"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sat Mar 03 02:30:00 CET 2018"
+,"dataFinal": "Sat Mar 03 06:30:00 CET 2018"
+,"webpage": "www.Conquista.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt115-1480686511981" : {
+"id": "Evt115-1480686511981"
+,"titulo": "Atraco a un geriatrico"
+,"descripcion": "Esta es la descripcion del evento 115"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Apr 04 03:45:00 CEST 2019"
+,"dataFinal": "Mon Apr 08 03:45:00 CEST 2019"
+,"precio": "33"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt116-1480686511981" : {
+"id": "Evt116-1480686511981"
+,"titulo": "Ataque a los superheroes"
+,"descripcion": "Esta es la descripcion del evento 116"
+,"dataInici": "Tue May 05 04:00:00 CEST 2020"
+,"dataFinal": "Tue May 05 08:00:00 CEST 2020"
+,"webpage": "www.Ataque.com"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt117-1480686511981" : {
+"id": "Evt117-1480686511981"
+,"titulo": "Ataque a los villanos"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Sun Jun 06 05:15:00 CEST 2021"
+,"precio": "55"
+,"webpage": "www.Ataque.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt118-1480686511981" : {
+"id": "Evt118-1480686511981"
+,"titulo": "Defender a la poblacion"
+,"descripcion": "Esta es la descripcion del evento 118"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Thu Jul 07 06:30:00 CEST 2022"
+,"dataFinal": "Thu Jul 07 10:30:00 CEST 2022"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp44-1480686511981"
+}
+,"Evt119-1480686511981" : {
+"id": "Evt119-1480686511981"
+,"titulo": "Defender la guarida"
+,"descripcion": "Esta es la descripcion del evento 119"
+,"localizacion": "C/Falsa 123, Springfield, Colorado"
+,"dataInici": "Tue Aug 08 07:45:00 CEST 2023"
+,"dataFinal": "Wed Aug 16 07:45:00 CEST 2023"
+,"precio": "77"
+,"webpage": "www.Defender.com"
+,"latitud": "41.361585"
+,"longitud": "2.1507653"
+,"idGrup": "grp44-1480686511981"
+}
+}
 }
