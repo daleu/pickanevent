@@ -92,7 +92,10 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         info = _info;
         if (!esCM) {
             mapIdTags = getUsuarioActual().getIdTags();
-            tratarInfo(mapIdTags);
+            if (mapIdTags == null) {
+                mapIdTags = new LinkedHashMap<>();
+            }
+            tratarInfo();
         }
         else {
             gMGR.getGrupoParaTags(this, idGrupo);
@@ -101,16 +104,16 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     public void mostrarTagsGrupo(GrupoEntity g) {
         mapIdTags = g.getIdTags();
-        tratarInfo(mapIdTags);
+        tratarInfo();
     }
 
-    public void tratarInfo(Map<String,String> _mapIdTags) {
-        if (_mapIdTags == null) {
-            _mapIdTags = new LinkedHashMap<>();
+    public void tratarInfo() {
+        if (mapIdTags == null) {
+            mapIdTags = new LinkedHashMap<>();
         }
         //bucle que cambiara el estado de los tags a true si ya estan relacionados con el grupo
         for (int i = 0; i < info.size(); ++i) {
-            if (_mapIdTags.containsKey(info.get(i).getIdTag())) {
+            if (mapIdTags.containsKey(info.get(i).getIdTag())) {
                 info.get(i).setChecked(true);
             }
         }
