@@ -48,7 +48,7 @@ public class CrearUsuarioActivity extends BaseActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        String password = EncodeUtil.encodePasswordSHA1(pass.getText().toString());
+        String password = pass.getText().toString();
         getAuth().createUserWithEmailAndPassword(correo.getText().toString(), password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
