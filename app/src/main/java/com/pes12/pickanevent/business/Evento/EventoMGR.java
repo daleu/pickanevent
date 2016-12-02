@@ -159,10 +159,15 @@ public class EventoMGR {
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
-                    if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
-                        eventsElegits.add(evento.getValue(EventoEntity.class));
-                    } else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
-                        eventsElegits.add(evento.getValue(EventoEntity.class));
+                    if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo() != null) {
+                        if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
+                            eventsElegits.add(evento.getValue(EventoEntity.class));
+                        }
+                    }
+                    else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
+                        if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
+                            eventsElegits.add(evento.getValue(EventoEntity.class));
+                        }
                     }
                 }
                 activity.mostrarInfoEventoElegido(eventsElegits);

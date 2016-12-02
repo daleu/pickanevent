@@ -19,13 +19,15 @@ import java.util.ArrayList;
 public class BuscarEventoActivity extends BaseActivity {
 
     EventoMGR eMGR;
-    final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-    final Spinner spinner = (Spinner) findViewById(R.id.spinner);
     final Context context = this;
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_buscar_evento);
+        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        final EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
+        final EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(context,R.array.busqueda_array
                 ,android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -34,6 +36,7 @@ public class BuscarEventoActivity extends BaseActivity {
         {
             public void onItemSelected(AdapterView<?> _parent, View _view, int _pos, long _id) {
                 if (spinner2.getSelectedItem().toString().equals("Evento")) {
+                    spinner.setVisibility(View.VISIBLE);
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.eventos_array
                             , android.R.layout.simple_spinner_item);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -41,19 +44,13 @@ public class BuscarEventoActivity extends BaseActivity {
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> _parent, View _view, int _pos, long _id) {
                             if (spinner.getSelectedItem().toString().equals("Nombre")) {
-                                EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
                                 textoLugar.setVisibility(View.INVISIBLE);
-                                EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
                                 textoEvento.setVisibility(View.VISIBLE);
                             } else if (spinner.getSelectedItem().toString().equals("Lugar")) {
-                                EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
                                 textoLugar.setVisibility(View.VISIBLE);
-                                EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
                                 textoEvento.setVisibility(View.INVISIBLE);
                             } else {
-                                EditText textoLugar = (EditText) findViewById(R.id.selectLugar);
                                 textoLugar.setVisibility(View.INVISIBLE);
-                                EditText textoEvento = (EditText) findViewById(R.id.selectEvento);
                                 textoEvento.setVisibility(View.INVISIBLE);
                             }
                         }
@@ -62,6 +59,11 @@ public class BuscarEventoActivity extends BaseActivity {
 
                         }
                     });
+                }
+                else {
+                    spinner.setVisibility(View.INVISIBLE);
+                    textoLugar.setVisibility(View.INVISIBLE);
+                    textoEvento.setVisibility(View.INVISIBLE);
                 }
             }
 
