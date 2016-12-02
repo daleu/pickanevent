@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -58,7 +59,10 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                 public void onClick(View v) {
                     LayoutInflater inflater = getLayoutInflater();
                     View dialoglayout = inflater.inflate(R.layout.dialog_nuevo_tag, null);
-
+                    AlertDialog.Builder builder = new AlertDialog.Builder(IndicarTagsActivity.this);
+                    builder.setView(dialoglayout);
+                    final AlertDialog alert =  builder.create();
+                    alert.show();
                     Button crear = (Button) dialoglayout.findViewById(R.id.newTag);
                     final EditText nombreTag = (EditText) dialoglayout.findViewById(R.id.nombre);
                     crear.setOnClickListener(new View.OnClickListener() {
@@ -67,12 +71,12 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                             TagEntity tag = new TagEntity();
                             tag.setNombreTag(nombreTag.getText().toString());
                             tMGR.crear(tag);
+                            marcarComoCheck(tag);
+                            alert.hide();
                         }
                     });
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(IndicarTagsActivity.this);
-                    builder.setView(dialoglayout);
-                    builder.show();
+
                 }
             });
         } else { //el usuario no es CM: no mostrar ni el texto ni el boton superiores
@@ -84,6 +88,20 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR.getTodosLosTags(this);
+    }
+
+    private void marcarComoCheck(TagEntity tag) {
+        //bucle que cambiara el estado de los tags a true si ya estan relacionados con el grupo
+       /* for (int i = 0; i < info.size(); ++i) {
+            if (mapIdTags.containsKey(info.get(i).getIdTag())) {
+                info.get(i).setChecked(true);
+            }
+        }
+        mapIdTags.put(, tag.getNombreTag());
+        //AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
+        //tags.setAdapter(adapterTags);
+
+        */
     }
 
     public void mostrarTags(ArrayList<InfoTags> _info) {
@@ -102,7 +120,8 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     public void mostrarTagsGrupo(GrupoEntity _g) {
         grupo = _g;
-        mapIdTags = _g.getIdTags();
+        if (_g.getIdTags() != null) mapIdTags = _g.getIdTags();
+        else mapIdTags = new LinkedHashMap<>();
         tratarInfo();
     }
 
