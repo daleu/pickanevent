@@ -14,18 +14,16 @@ public class EventoEntity {
     private String precio;
     private String webpage;
     private String localizacion;
-    private String horario;
     private String dataInici;
     private String dataFinal;
     private String latitud;
     private String longitud;
 
-    public EventoEntity()
-    {
+    public EventoEntity() {
 
     }
 
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String horario, String latitud, String longitud){
+    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, String dataInici, String dataFinal) {
         setTitulo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -34,8 +32,26 @@ public class EventoEntity {
         setLocalizacion(localizacion);
         setLatitud(latitud);
         setLongitud(longitud);
+        setDataInici(dataInici);
+        setDataFinal(dataFinal);
     }
-    public boolean isEmpty() {return (titulo == null);}
+
+    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, Date dataIn, Date dataFi) {
+        setTitulo(nombre);
+        setDescripcion(descr);
+        setImagen(img);
+        setPrecio(precio);
+        setWebpage(webpage);
+        setLocalizacion(localizacion);
+        setLatitud(latitud);
+        setLongitud(longitud);
+        setDataIniciDate(dataIn);
+        setDataFinalDate(dataFi);
+    }
+
+    public boolean isEmpty() {
+        return (titulo == null);
+    }
 
     public String getTitulo() {
         return titulo;
@@ -101,19 +117,31 @@ public class EventoEntity {
         this.longitud = longitud;
     }
 
-    public String getDataInici() {
-        return dataInici;
+    public Date getDataInici() {
+        Date d = new Date(dataInici);
+        return d;
     }
 
     public void setDataInici(String dataInici) {
         this.dataInici = dataInici;
     }
 
-    public String getDataFinal() {
-        return dataFinal;
+    public Date getDataFinal() {
+        Date d = new Date(dataFinal);
+        return d;
     }
 
     public void setDataFinal(String dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    public void setDataFinalDate(Date dataFi) {
+        String s = String.valueOf(dataFi);
+        setDataFinal(s);
+    }
+
+    public void setDataIniciDate(Date dataIn) {
+        String s = String.valueOf(dataIn);
+        setDataInici(s);
     }
 }

@@ -6,11 +6,8 @@
     android:background="#bfffc2">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -28,8 +25,7 @@
             android:background="#fff"
             android:textStyle="normal|bold"
             android:layout_height="24dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+
             android:layout_alignParentStart="true"
             android:layout_marginTop="64dp" />
 
@@ -38,10 +34,8 @@
             android:id="@+id/eventtimeline"
             android:layout_below="@+id/EventosTituloMainline"
             android:layout_alignStart="@+id/EventosTituloMainline"
-            android:layout_marginRight="15dp"
+
             android:layout_height="wrap_content" />
 
-        </RelativeLayout>
-    </ScrollView>
-
+        </LinearLayout>
 </FrameLayout>

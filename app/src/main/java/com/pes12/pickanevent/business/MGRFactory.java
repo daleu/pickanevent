@@ -8,7 +8,6 @@ import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.FirebaseFactory;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 /**
  * Created by Clara on 23/10/2016.
@@ -16,6 +15,7 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 public class MGRFactory {
 
+    private static MGRFactory mgrFactory;
     private final EventoMGR eventoMGR;
     private final GrupoMGR grupoMGR;
     private final UsuarioMGR usuarioMGR;
@@ -23,7 +23,6 @@ public class MGRFactory {
     private final ImagenPerfilUsuarioMGR ipuMGR;
     private final FirebaseDatabase databse;
     private final FirebaseStorage storage;
-    private static MGRFactory mgrFactory;
 
 
     private MGRFactory() {
@@ -33,7 +32,7 @@ public class MGRFactory {
         tagMGR = new TagMGR();
         ipuMGR = new ImagenPerfilUsuarioMGR();
         databse = FirebaseFactory.getInstance();
-        storage= FirebaseStorage.getInstance();
+        storage = FirebaseStorage.getInstance();
 
         eventoMGR.inicializarDatabase(databse);
         grupoMGR.inicializarDatabase(databse);

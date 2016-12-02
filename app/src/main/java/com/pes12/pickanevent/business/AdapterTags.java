@@ -7,12 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.view.IndicarTagsActivity;
 
 import java.util.ArrayList;
 
@@ -26,7 +23,6 @@ public class AdapterTags extends ArrayAdapter<InfoTags> {
     ArrayList<InfoTags> tags;
     int layoutId;
     private Context context;
-
 
 
     public AdapterTags(Context _context, int _layoutId, ArrayList<InfoTags> _tags) {
@@ -56,19 +52,18 @@ public class AdapterTags extends ArrayAdapter<InfoTags> {
     @Override
     public View getView(final int _position, View _convertView, ViewGroup _parent) {
         final AdapterHolder holder;
-        View vistaTags =_convertView;
+        View vistaTags = _convertView;
         if (vistaTags == null) {
-            LayoutInflater inf = ((Activity)context).getLayoutInflater();
+            LayoutInflater inf = ((Activity) context).getLayoutInflater();
             vistaTags = inf.inflate(layoutId, _parent, false);
 
             holder = new AdapterHolder();
-            holder.nombreTag = (TextView)vistaTags.findViewById(R.id.nombre);
-            holder.check = (CheckBox)vistaTags.findViewById(R.id.checkBox);
+            holder.nombreTag = (TextView) vistaTags.findViewById(R.id.nombre);
+            holder.check = (CheckBox) vistaTags.findViewById(R.id.checkBox);
 
             vistaTags.setTag(holder);
-        }
-        else {
-            holder = (AdapterHolder)vistaTags.getTag();
+        } else {
+            holder = (AdapterHolder) vistaTags.getTag();
         }
 
         final InfoTags componentes = getItem(_position);
@@ -78,11 +73,11 @@ public class AdapterTags extends ArrayAdapter<InfoTags> {
         holder.check.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(context instanceof IEstadoCheckBox){
+                if (context instanceof IEstadoCheckBox) {
                     //paso la posicion del checkbox clicado
                     // y toda la informacion del tag correspondiente
                     componentes.setChecked(holder.check.isChecked());
-                    ((IEstadoCheckBox)context).actualizarChecked(componentes);
+                    ((IEstadoCheckBox) context).actualizarChecked(componentes);
                 }
             }
         });

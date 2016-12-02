@@ -3,7 +3,6 @@ package com.pes12.pickanevent.view;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,49 +24,48 @@ public class BuscarActivity extends BaseActivity {
     private TextView tv2;
     private ListView lvu;
     private ListView lvg;
+
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_busqueda);
-        tv2 = (TextView)findViewById(R.id.texto2);
-        tv1 = (TextView)findViewById(R.id.texto);
-        lvu  =(ListView)findViewById(R.id.lvUsers);
-        lvg  =(ListView)findViewById(R.id.lvGrupos);
+        tv2 = (TextView) findViewById(R.id.texto2);
+        tv1 = (TextView) findViewById(R.id.texto);
+        lvu = (ListView) findViewById(R.id.lvUsers);
+        lvg = (ListView) findViewById(R.id.lvGrupos);
         //uMGR= UsuarioMGR.getInstance(); VIEJA
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
 
         //gMGR= GrupoMGR.getInstance();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
-        final EditText tv = (EditText)findViewById(R.id.inputBusqueda);
+        final EditText tv = (EditText) findViewById(R.id.inputBusqueda);
         tv.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence _cs, int _arg1, int _arg2, int _arg3) {
 
-                if(_cs.toString().length()!=0)
-                {
+                if (_cs.toString().length() != 0) {
                     showProgressDialog();
                     uMGR.getUsersByNickname(BuscarActivity.this, tv.getText().toString());
                     gMGR.getGruposByNombreGrupo(BuscarActivity.this, tv.getText().toString());
-                }
-
-                else{
+                } else {
                     lvu.setAdapter(null);
                     lvg.setAdapter(null);
                 }
             }
 
             @Override
-            public void beforeTextChanged(CharSequence _arg0, int _arg1, int _arg2, int _arg3) { }
+            public void beforeTextChanged(CharSequence _arg0, int _arg1, int _arg2, int _arg3) {
+            }
 
             @Override
-            public void afterTextChanged(Editable _arg0) { }
+            public void afterTextChanged(Editable _arg0) {
+            }
 
         });
 
     }
-
 
 
     //funcion para probar lecturas
@@ -77,7 +75,7 @@ public class BuscarActivity extends BaseActivity {
 
 
         //arraylist Append
-        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,_info);
+        AdapterLista ale = new AdapterLista(BuscarActivity.this, R.layout.vista_adapter_lista, _info);
         lvu.setAdapter(ale);
     }
 
@@ -85,9 +83,8 @@ public class BuscarActivity extends BaseActivity {
         tv2.setText("Grupos");
 
 
-
         //arraylist Append
-        AdapterLista ale = new AdapterLista(BuscarActivity.this,R.layout.vista_adapter_lista,_info);
+        AdapterLista ale = new AdapterLista(BuscarActivity.this, R.layout.vista_adapter_lista, _info);
         lvg.setAdapter(ale);
 
     }

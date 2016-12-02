@@ -2,7 +2,6 @@ package com.pes12.pickanevent.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.widget.ListView;
@@ -53,18 +52,18 @@ public class VerGruposCreadosActivity extends BaseActivity {
 
     public void mostrarInfoUsuarioGrupos(UsuarioEntity usuario) {
 
-        Map<String,String> idGrupos = usuario.getIdGrupos();
+        Map<String, String> idGrupos = usuario.getIdGrupos();
 
         //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
-            //System.out.println(entry.getKey() + "/" + entry.getValue());
-            //if(entry.getValue()) {
-                idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-                gMGR.getInfoGruposCreados(this,/*entry.getKey()*/idGrupo);
-            //}
+        //System.out.println(entry.getKey() + "/" + entry.getValue());
+        //if(entry.getValue()) {
+        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+        gMGR.getInfoGruposCreados(this,/*entry.getKey()*/idGrupo);
+        //}
         //}
     }
 
-    public void rellenarListaGrupos (GrupoEntity grupo){
+    public void rellenarListaGrupos(GrupoEntity grupo) {
 
         String img = grupo.getImagen();
         Bitmap imBM = StringToBitMap(img);
@@ -72,7 +71,7 @@ public class VerGruposCreadosActivity extends BaseActivity {
         Info info = new Info(imBM, nombreGrupo, "adeu", "seguir!");
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
-        AdapterLista ale = new AdapterLista(VerGruposCreadosActivity.this,R.layout.vista_adapter_lista,grupos);
+        AdapterLista ale = new AdapterLista(VerGruposCreadosActivity.this, R.layout.vista_adapter_lista, grupos);
         listaGrupos.setAdapter(ale);
         hideProgressDialog();
     }
