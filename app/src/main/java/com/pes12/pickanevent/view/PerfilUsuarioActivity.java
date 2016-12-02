@@ -92,8 +92,8 @@ public class PerfilUsuarioActivity extends BaseActivity {
                     inputStream = getContentResolver().openInputStream(imageUri);
 
 
-                    iMGR.subirImagen(inputStream, current);
-                    mostrarInfoUsuario();
+                    iMGR.subirImagenPerfil(inputStream, current,PerfilUsuarioActivity.this);
+                    //mostrarInfoUsuario();
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
