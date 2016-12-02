@@ -38,6 +38,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     Map<String, String> mapIdTags;
     String idGrupo;
     ArrayList<InfoTags> info;
+    GrupoEntity grupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +100,9 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         }
     }
 
-    public void mostrarTagsGrupo(GrupoEntity g) {
-        mapIdTags = g.getIdTags();
+    public void mostrarTagsGrupo(GrupoEntity _g) {
+        grupo = _g;
+        mapIdTags = _g.getIdTags();
         tratarInfo();
     }
 
@@ -123,9 +125,13 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         if (!esCM && mapIdTags.size() < 3) {
             Toast.makeText(IndicarTagsActivity.this, "Indica un mínimo de 3 tags", Toast.LENGTH_SHORT).show();
         }
-        else {
+        else if (!esCM){
             getUsuarioActual().setIdTags(mapIdTags);
             actualizarUsuario();
+        }
+        else {
+            grupo.setIdTags(mapIdTags);
+            gMGR.actualizar(idGrupo, grupo);
         }
     }
 

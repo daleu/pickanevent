@@ -2,6 +2,7 @@ package com.pes12.pickanevent.view;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
@@ -34,7 +35,7 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eventos = (ListView) findViewById(R.id.eventos);
 
-        String idUsuario = "-KWMg9DPDSeFOLCWmVcg";
+        String idUsuario = getAuth().getCurrentUser().getUid();
         showProgressDialog();
 
         uMGR.getInfoUsuarioActivityVerEventosUsuarios(this, idUsuario); //obtengo la info del usuario en la funcion mostrarInfoUsuario
@@ -46,6 +47,10 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         //obtengo el username y los eventos que siguen los usuarios a los que sigo en la funcion info Usuarios
         if (_usuario.getIdEventos() != null) eventosUsuario = _usuario.getIdEventos();
         if (_usuario.getIdUsuarios() != null) uMGR.getUsers(this, _usuario.getIdUsuarios());
+        else {
+            hideProgressDialog();
+            Toast.makeText(VerEventosUsuariosQueSigoActivity.this, "No tienes amigos :D", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
