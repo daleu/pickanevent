@@ -19,6 +19,7 @@ import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class VerInfoGrupoActivity extends BaseActivity {
@@ -56,7 +57,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "grp8-1480427610872";
+        idGrupo = "grp0-1480536025653";
 
         showProgressDialog();
 
@@ -90,8 +91,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
 
-        eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
+        if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
         Map<String, String> tagsMap = _grupo.getIdTags();
+        if (tagsMap == null) tagsMap = new LinkedHashMap<>();
         tagsMap.put(_grupo.getidTagGeneral(), "blabla");
         tMGR.getInfoTag(this, tagsMap);
 
@@ -105,6 +107,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         foto.setImageBitmap(imgBM);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
 
+        if (_grupo.getIdEventos() == null) hideProgressDialog();
     }
 
     public void mostrarEventosGrupo(ArrayList<Info> info) {

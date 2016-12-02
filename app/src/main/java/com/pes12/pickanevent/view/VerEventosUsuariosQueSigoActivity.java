@@ -42,10 +42,10 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
     }
 
     public void mostrarInfoUsuario(UsuarioEntity _usuario) {
-        System.out.println("L'usuari " + _usuario.getNickname() + " te " + _usuario.getIdUsuarios().size() + " usuaris que segueix");
+        //System.out.println("L'usuari " + _usuario.getNickname() + " te " + _usuario.getIdUsuarios().size() + " usuaris que segueix");
         //obtengo el username y los eventos que siguen los usuarios a los que sigo en la funcion info Usuarios
-        eventosUsuario = _usuario.getIdEventos();
-        uMGR.getUsers(this, _usuario.getIdUsuarios());
+        if (_usuario.getIdEventos() != null) eventosUsuario = _usuario.getIdEventos();
+        if (_usuario.getIdUsuarios() != null) uMGR.getUsers(this, _usuario.getIdUsuarios());
 
     }
 
