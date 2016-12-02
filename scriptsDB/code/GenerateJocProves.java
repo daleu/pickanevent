@@ -130,8 +130,8 @@ public class GenerateJocProves {
                     if (k%2 == 0) e.precio = null;
                     e.idGrup = g.id;
                     Date[] dates = generateDates(k);
-                    e.dataInici = String.valueOf(dates[0]);
-                    e.dataFinal = String.valueOf(dates[1]);
+                    e.dataInici = dates[0].getTime();
+                    e.dataFinal = dates[1].getTime();
                     if (k%4 == 1) e.dataFinal = null;
                     ++num_evts;
                     g.idEventos.put(e.id, e.titulo);
@@ -180,8 +180,10 @@ public class GenerateJocProves {
             int mus = Math.min(max_users_seguits, num_users);
             for (int j=0; j<(i%mus); j++) {
                 if (j!=i) {
-                    String idUsuario = usuarios.get(j).id;
-                    String nickname = usuarios.get(j).nickname;
+                    int userPos = (j+num_cms)%num_users;
+                    Usuario aux = usuarios.get(userPos);
+                    String idUsuario = aux.id;
+                    String nickname = aux.nickname;
                     u.idUsuarios.put(idUsuario, nickname);
                 }
             }
@@ -357,8 +359,8 @@ public class GenerateJocProves {
         public String latitud;
         public String longitud;
         public String localizacion;
-        public String dataInici;
-        public String dataFinal;
+        public Long dataInici;
+        public Long dataFinal;
         public String idGrup;
     }
 
