@@ -15,7 +15,7 @@ public class GenerateJocProves {
         printJson();
     }
 
-    private static final int multiplier = 1;
+    private static final int multiplier = 10;
     //valors
     private static final int num_users = 10*multiplier;
     private static final int num_cms = (multiplier>1)? 1*multiplier : 2;
@@ -58,21 +58,16 @@ public class GenerateJocProves {
     private static void generacio_hardcoded() {
         ArrayList<Usuario> l = harcodedUsers;
         l.add(createU("2u9PWFE9uIhJTLVWfMW0wFH8Axt1", "p4triot", false));
-        l.add(createU("AmI3weLwUfdn7HNxJ2yhp2gBja82", "clara.gaset", true));
-        l.add(createU("OJIkFM2MVkY1EtOL8MELNYitJwO2", "claraaaa", false));
-        l.add(createU("Qch3yrsCXwgyL4os8ujikGVaNwW2", "aleueet", false));
-        l.add(createU("S8P83FZ1RLabdWFODCVZmUajWBs1", "PD", false));
-        l.add(createU("VSDWkL1WEqPEnAwSpTs8Oxi3WXz1", "PES", false));
-        l.add(createU("bcAaacBmcTa31VRZwhBejjeOTYT2", "leg", false));
+        l.add(createU("2UFk5r02iuRfuINh4jASrwnmFik2", "Oscar", true));
+        l.add(createU("GK87HBOwSkTmC12MjzZz16ghYXr2", "claraaaa", false));
+        l.add(createU("PtYUmiUYA3S83ohzYmarVCACBeG2", "claraCM", true));
+        l.add(createU("Qch3yrsCXwgyL4os8ujikGVaNwW2", "Aleueet", false));
+        l.add(createU("S8P83FZ1RLabdWFODCVZmUajWBs1", "PES", false));
+        l.add(createU("VSDWkL1WEqPEnAwSpTs8Oxi3WXz1", "leg", false));
         l.add(createU("gIHcRzhypsY0tWkqjvIWkMNcEmZ2", "nuevotest", false));
-        l.add(createU("gm1NcZBCG2WcKmZ1fjPgWdhjSTB2", "claraaa", false));
         l.add(createU("haIMoULYKRhynBStMtfQl2c9SxC2", "pop", false));
-        l.add(createU("hoQHu0NgpoT8bHJe97h2xfE3UAy2", "lega", false));
-        l.add(createU("jdcrPj4xCnNbwHXbY4o5upwY3i63", "123", true));
+        l.add(createU("lvKSWbg21Qgye7CGsqIXtdSsGck2", "lega", false));
         l.add(createU("lvKSWbg21Qgye7CGsqIXtdSsGck2", "z", false));
-        l.add(createU("n8ZrXPm2e0PvyiES4j1RK9CD4J12", "clara.gaset", true));
-        l.add(createU("vmSgGHa4RCPBXbORH64tZAgB5sG2", "Legault", true));
-
     }
 
     private static void generacio_joc_proves() {
