@@ -151,11 +151,10 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     }
 
     public void checkNuevoTag(String _id, String nombreTag) {
-        InfoTags infoNuevoTag = new InfoTags(nombreTag, true, _id);
-        info.add(infoNuevoTag);
         mapIdTags.put(_id, nombreTag);
-        AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
-        tags.setAdapter(adapterTags);
+        grupo.setIdTags(mapIdTags);
+        gMGR.actualizar(idGrupo, grupo);
+        gMGR.getGrupoParaTags(this, idGrupo);
     }
 
 }

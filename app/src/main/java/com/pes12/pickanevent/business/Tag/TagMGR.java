@@ -138,11 +138,12 @@ public class TagMGR {
             public void onCancelled(DatabaseError _arg0) {
             }
 
-            public ValueEventListener setActivity(Activity _activity) {
+            public ValueEventListener setActivity(Activity _activity, TagEntity _tag) {
                 activity = (IndicarTagsActivity) _activity;
+                ent = _tag;
                 return this;
             }
-        }.setActivity(_activity));
+        }.setActivity(_activity, _entity));
         return "";
     }
 }
