@@ -70,8 +70,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                         public void onClick(View view) {
                             TagEntity tag = new TagEntity();
                             tag.setNombreTag(nombreTag.getText().toString());
-                            tMGR.crear(tag);
-                            marcarComoCheck(tag);
+                            tMGR.crearNuevoTag(IndicarTagsActivity.this, tag);
                             alert.hide();
                         }
                     });
@@ -88,20 +87,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR.getTodosLosTags(this);
-    }
-
-    private void marcarComoCheck(TagEntity tag) {
-        //bucle que cambiara el estado de los tags a true si ya estan relacionados con el grupo
-       /* for (int i = 0; i < info.size(); ++i) {
-            if (mapIdTags.containsKey(info.get(i).getIdTag())) {
-                info.get(i).setChecked(true);
-            }
-        }
-        mapIdTags.put(, tag.getNombreTag());
-        //AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
-        //tags.setAdapter(adapterTags);
-
-        */
     }
 
     public void mostrarTags(ArrayList<InfoTags> _info) {
@@ -163,6 +148,14 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             mapIdTags.remove(infoTag.getIdTag());
         }
 
+    }
+
+    public void checkNuevoTag(String _id, String nombreTag) {
+        InfoTags infoNuevoTag = new InfoTags(nombreTag, true, _id);
+        info.add(infoNuevoTag);
+        mapIdTags.put(_id, nombreTag);
+        AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
+        tags.setAdapter(adapterTags);
     }
 
 }

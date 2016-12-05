@@ -31,7 +31,7 @@ public class TagMGR {
         bdRefTags.keepSynced(true);
     }
 
-    public String crear(TagEntity _entity) {
+    public String crear(final TagEntity _entity) {
         bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
 
@@ -40,9 +40,9 @@ public class TagMGR {
                 if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_TAG);
                 } else {
-                    DatabaseReference grupo = bdRefTags.push();
-                    grupo.setValue(ent);
-                    grupo.getKey();
+                    DatabaseReference tag = bdRefTags.push();
+                    tag.setValue(ent);
+                    tag.getKey();
                 }
             }
 
@@ -115,5 +115,34 @@ public class TagMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public String crearNuevoTag(Activity _activity, final TagEntity _entity) {
+        bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
+            TagEntity ent;
+            IndicarTagsActivity activity;
+            String id;
+            @Override
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
+                    System.out.println(Constantes.ERROR_EXISTE_TAG);
+                } else {
+                    DatabaseReference tag = bdRefTags.push();
+                    tag.setValue(ent);
+                    id = tag.getKey();
+                }
+                activity.checkNuevoTag(id, _entity.getNombreTag());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _arg0) {
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (IndicarTagsActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+        return "";
     }
 }
