@@ -2,15 +2,19 @@ package com.pes12.pickanevent.business;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.view.VerInfoEventoActivity;
 
 import java.util.ArrayList;
 
@@ -54,6 +58,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
     public View getView(int _position, View _convertView, ViewGroup _parent) {
         AdapterHolder holder;
         View vistaEvent = _convertView;
+
         if (vistaEvent == null) {
             LayoutInflater inf = ((Activity) context).getLayoutInflater();
             vistaEvent = inf.inflate(layoutId, _parent, false);
@@ -63,6 +68,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
             holder.linea1 = (TextView) vistaEvent.findViewById(R.id.text1);
             holder.linea2 = (TextView) vistaEvent.findViewById(R.id.text2);
             holder.button = (Button) vistaEvent.findViewById(R.id.button);
+            holder.lay = (LinearLayout) vistaEvent.findViewById(R.id.layoutAdapter);
 
             vistaEvent.setTag(holder);
         } else {
@@ -74,6 +80,17 @@ public class AdapterLista extends ArrayAdapter<Info> {
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);
+
+        holder.lay.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                
+                context.startActivity(new Intent(context, VerInfoEventoActivity.class));
+            }
+        });
+
         return vistaEvent;
     }
 
@@ -82,6 +99,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
         TextView linea1;
         TextView linea2;
         Button button;
+        LinearLayout lay;
     }
 
 }
