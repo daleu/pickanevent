@@ -118,7 +118,8 @@ public class EventoEntity {
     }
 
     public Date getDataInici() {
-        Date d = new Date(Long.parseLong(dataInici));
+        Date d = new Date();
+        if(dataInici!=null) d = new Date(Long.parseLong(dataInici));
         return d;
     }
 
@@ -127,7 +128,8 @@ public class EventoEntity {
     }
 
     public Date getDataFinal() {
-        Date d = new Date(Long.parseLong(dataFinal));
+        Date d = new Date();
+        if(dataFinal!=null) d = new Date(Long.parseLong(dataFinal));
         return d;
     }
 
@@ -135,8 +137,8 @@ public class EventoEntity {
         this.dataFinal = dataFinal;
     }
 
-    public void setDataFinalDate(Date dataFi) {
-        String s = String.valueOf(dataFi);
+    public void setDataFinalDate(Date dataFinal) {
+        String s = String.valueOf(dataFinal);
         setDataFinal(s);
     }
 

@@ -22,6 +22,7 @@ import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -271,7 +272,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (usuariosPorEvento.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "Asistir!"));
+                        info.add(new Info(StringToBitMap(e.getImagen()), "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "No Assistir!"));
                     }
                 }
 
@@ -293,19 +294,22 @@ public class EventoMGR {
 
     public void getInfoEventosUsuarioFromFragment(Fragment _activity, Map<String, String> _idS) {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
-            ArrayList<Info> info = new ArrayList();
+           //ArrayList<Info> info = new ArrayList();
+            ArrayList<EventoEntity> eventos = new ArrayList();
             TimelineFragment activity;
             Map<String, String> idS;
 
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
+                Date actual = new Date();
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
-                    if (idS.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "Asistir!"));
+                    if (idS.containsKey(evento.getKey()) && actual.before(e.getDataInici())) {
+                        eventos.add(e);
+                        //info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!"));
                     }
                 }
-                activity.mostrarEventosUsuario(info);
+                activity.mostrarEventosUsuario(eventos);
             }
 
             @Override
@@ -319,9 +323,5 @@ public class EventoMGR {
                 return this;
             }
         }.setActivity(_activity, _idS));
-    }
-
-    public String EventDate(Date ini, Date fi){
-        return "";
     }
 }

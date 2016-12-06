@@ -2,9 +2,12 @@ package com.pes12.pickanevent.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +21,14 @@ import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
+import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -155,10 +163,22 @@ public class TimelineFragment extends Fragment {
         eMGR.getInfoEventosUsuarioFromFragment(this, map);
     }
 
-    public void mostrarEventosUsuario(ArrayList<Info> info) {
-        Log.d("ACTIVITY", String.valueOf(getActivity()));
-        Log.d("LAYOUT", String.valueOf(R.layout.vista_adapter_lista));
-        Log.d("ACTIVITY", String.valueOf(info));
+    public void mostrarEventosUsuario(ArrayList<EventoEntity> events) {
+        ArrayList<Info> info = new ArrayList();
+
+        if (events.size() > 0) {
+            Collections.sort(events, new Comparator<EventoEntity>() {
+                @Override
+                public int compare(final EventoEntity object1, final EventoEntity object2) {
+                    return object1.getDataInici().compareTo(object2.getDataInici());
+                }
+            });
+        }
+
+        for(EventoEntity e : events){
+            info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!"));
+        }
+
         AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, info);
         eventos.setAdapter(ale);
 
@@ -194,6 +214,25 @@ public class TimelineFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public String EventDate(Date ini, Date fi){
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        String inici = sdfDate.format(ini);
+        String fina = sdfDate.format(fi);
+        String data = inici + " - " + fina;
+        return data;
+    }
+
+    private Bitmap StringToBitMap(String _encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 
 }
