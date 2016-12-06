@@ -7,6 +7,7 @@
     <string name="google_android_map_api_key">AIzaSyDcy7UoZ4LGYEBOp-8E4cJzsh1Tik9Hrro</string>
     <string name="DEFAULT_NOMBRE">Nombre</string>
     <string name="ESCRIBE_NOMBRE_EVENTO">Escribe el nombre del evento</string>
+    <string name="ESCRIBE_NOMBRE_USUARIO">Escribe el nombre del usuario</string>
     <string name="EVENTO_GRATUITO_PREG">El evento será gratuito?</string>
     <string name="DEFAULT_CREAR_EVENTO">Crear Evento</string>
     <string name="DEFAULT_BUSCAR_EVENTO">Buscar Evento</string>

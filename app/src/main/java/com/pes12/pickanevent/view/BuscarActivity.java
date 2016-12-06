@@ -40,7 +40,7 @@ public class BuscarActivity extends BaseActivity {
         //gMGR= GrupoMGR.getInstance();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         final EditText tv = (EditText) findViewById(R.id.inputBusqueda);
-        tv.addTextChangedListener(new TextWatcher() {
+         tv.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence _cs, int _arg1, int _arg2, int _arg3) {
