@@ -118,7 +118,7 @@ public class EventoEntity {
     }
 
     public Date getDataInici() {
-        Date d = new Date(dataInici);
+        Date d = new Date(Long.parseLong(dataInici));
         return d;
     }
 
@@ -127,7 +127,7 @@ public class EventoEntity {
     }
 
     public Date getDataFinal() {
-        Date d = new Date(dataFinal);
+        Date d = new Date(Long.parseLong(dataFinal));
         return d;
     }
 

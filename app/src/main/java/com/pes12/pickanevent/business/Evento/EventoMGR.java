@@ -23,6 +23,7 @@ import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -301,7 +302,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), "horario", "Asistir!"));
+                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "Asistir!"));
                     }
                 }
                 activity.mostrarEventosUsuario(info);
@@ -318,5 +319,9 @@ public class EventoMGR {
                 return this;
             }
         }.setActivity(_activity, _idS));
+    }
+
+    public String EventDate(Date ini, Date fi){
+        return "";
     }
 }
