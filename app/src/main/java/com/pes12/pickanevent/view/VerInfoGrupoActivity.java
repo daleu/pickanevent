@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static com.pes12.pickanevent.R.id.Primero;
 import static com.pes12.pickanevent.R.id.Tags;
 import static com.pes12.pickanevent.R.id.activity_ver_info_grupo;
 import static com.pes12.pickanevent.R.id.etiquetas;
@@ -137,14 +138,16 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void mostrarTags(ArrayList<String> info) {
-        //String tagsAsString = "as";
         LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
-        TextView test = new TextView(this);
-        test.setText("test");
-        linearLayout.addView(test);
-        /*for (int i = 0; i < info.size(); ++i) {
-            tagsAsString += info.get(i) + "     ";
-        }*/
+        TextView primero = (TextView) findViewById(Primero);
+        primero.setText(info.get(0));
+        primero.setPadding(3,3,3,3);
+        for (int i = 1; i < info.size(); ++i) {
+            TextView test = new TextView(this);
+            test.setText(info.get(i));
+            test.setPadding(3,3,3,3);
+            linearLayout.addView(test);
+        }
         //tags.setText(tagsAsString);
     }
 
