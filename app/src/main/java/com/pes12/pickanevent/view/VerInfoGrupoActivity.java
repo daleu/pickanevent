@@ -4,9 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
@@ -21,6 +25,10 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static com.pes12.pickanevent.R.id.Tags;
+import static com.pes12.pickanevent.R.id.activity_ver_info_grupo;
+import static com.pes12.pickanevent.R.id.etiquetas;
 
 public class VerInfoGrupoActivity extends BaseActivity {
 
@@ -45,7 +53,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         nombre = (TextView) findViewById(R.id.nombreGrupo);
         descripcion = (TextView) findViewById(R.id.descripcion);
         foto = (ImageView) findViewById(R.id.imagenGrupo);
-        tags = (TextView) findViewById(R.id.tags);
+        //tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
         boton = (Button) findViewById(R.id.seguir);
         eMGR = MGRFactory.getInstance().getEventoMGR();
@@ -129,11 +137,15 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void mostrarTags(ArrayList<String> info) {
-        String tagsAsString = "";
-        for (int i = 0; i < info.size(); ++i) {
+        //String tagsAsString = "as";
+        LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
+        TextView test = new TextView(this);
+        test.setText("test");
+        linearLayout.addView(test);
+        /*for (int i = 0; i < info.size(); ++i) {
             tagsAsString += info.get(i) + "     ";
-        }
-        tags.setText(tagsAsString);
+        }*/
+        //tags.setText(tagsAsString);
     }
 
     /*@Override
