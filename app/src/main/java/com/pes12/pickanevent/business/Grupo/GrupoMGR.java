@@ -318,11 +318,9 @@ public class GrupoMGR {
                 //System.out.println(dataSnapshot);
                 for (DataSnapshot grupo : dataSnapshot.getChildren()) {
                     GrupoEntity u = grupo.getValue(GrupoEntity.class);
-                    info.add(u);
-                    /*if (idU.containsKey(grupo.getKey())) {
-                        if (u.getIdEventos() != null)
-                            info.put(u.getId(), u.getIdEventos());
-                    }*/
+                    if (idU.containsKey(grupo.getKey())) {
+                        info.add(u);
+                    }
                 }
                 activity.setInfoGrupos(info);
             }
