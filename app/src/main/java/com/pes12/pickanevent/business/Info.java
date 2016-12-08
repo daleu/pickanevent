@@ -11,6 +11,7 @@ public class Info {
     public String primeraLinea;
     public String segonaLinea;
     public String textoBoton;
+    public String id;
 
     public Info(Bitmap _img, String _primeraLinea, String _segonaLinea, String _textoBoton) {
         super();
@@ -51,4 +52,8 @@ public class Info {
     public void setTextoBoton(String _textoBoton) {
         this.textoBoton = _textoBoton;
     }
+
+    public String getId() { return id; }
+
+    public void setId(String _id) {this.id = _id;}
 }

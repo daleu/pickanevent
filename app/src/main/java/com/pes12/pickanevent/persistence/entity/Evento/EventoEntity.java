@@ -18,6 +18,7 @@ public class EventoEntity {
     private String dataFinal;
     private String latitud;
     private String longitud;
+    private String id;
 
     public EventoEntity() {
 
@@ -145,5 +146,13 @@ public class EventoEntity {
     public void setDataIniciDate(Date dataIn) {
         String s = String.valueOf(dataIn);
         setDataInici(s);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

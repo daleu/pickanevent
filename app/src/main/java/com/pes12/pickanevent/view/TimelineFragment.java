@@ -176,7 +176,9 @@ public class TimelineFragment extends Fragment {
         }
 
         for(EventoEntity e : events){
-            info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!"));
+            Info aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!");
+            aux.setId(e.getId());
+            info.add(aux);
         }
 
         AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, info);
