@@ -109,31 +109,26 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="21dp" />
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:id="@+id/TagsScrollView"
+                android:layout_marginTop="6dp"
+                android:id="@+id/Tags"
                 android:layout_below="@+id/etiquetas">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Tags">
+                    android:text="prova1"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="3dp"
+                    android:id="@+id/Primero" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="prova1" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="prova2"/>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
+            </LinearLayout>
 
             <TextView
                 android:text="@string/DEFAULT_EVENTOS"
@@ -150,9 +145,9 @@
                 android:layout_height="24dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_below="@+id/TagsScrollView"
+                android:layout_below="@+id/Tags"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="6dp" />
 
             <ListView
                 android:layout_width="match_parent"
