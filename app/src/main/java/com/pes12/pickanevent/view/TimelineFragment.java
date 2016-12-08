@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
 import android.util.Log;
@@ -26,11 +27,14 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +99,8 @@ public class TimelineFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "usr39-1480690194879";
+        idUsuario = "cm3-1480690194869";
+        //idUsuario = "usr22-1480690194879";
 
         uMGR.getUserFromFragment(this, idUsuario);
 
@@ -139,16 +144,14 @@ public class TimelineFragment extends Fragment {
         if (_usuario.getIdUsuarios() != null) {
             uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
         } else getAllUsersEvents(null);
-        //eMGR.getInfoEventosUsuarioFromFragment(this, _usuario.getIdEventos());
     }
 
     public void getAllUsersEvents(Map<String, Map<String, String>> _usrs) {
         if (_usrs != null) {
-            _usrs.put(myUser.getUsername(), myUser.getIdEventos());
             listEvents = _usrs;
-        } else {
-            listEvents.put(myUser.getUsername(), myUser.getIdEventos());
         }
+        else listEvents = new LinkedHashMap<String, Map<String, String>>();
+        if (myUser.getIdEventos()!= null) listEvents.put(myUser.getUsername(), myUser.getIdEventos());
         if (myUser.getIdGrupos() == null) getAllGrupoEvents(null);
         else gMGR.getGrupoEventosForFragment(this, myUser.getIdGrupos());
     }
