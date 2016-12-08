@@ -15,6 +15,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
@@ -264,7 +265,7 @@ public class GrupoMGR {
                     GrupoEntity u = grupo.getValue(GrupoEntity.class);
                     if (idU.containsKey(grupo.getKey())) {
                         if (u.getIdEventos() != null)
-                            info.put(u.getNombreGrupo(), u.getIdEventos());
+                            info.put(u.getId(), u.getIdEventos());
                     }
                 }
                 activity.getAllGrupoEvents(info);
@@ -304,5 +305,38 @@ public class GrupoMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void getGrupoEventosForFragmentGrupos(Fragment _activity, Map<String, String> _idU) {
+        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<GrupoEntity> info = new ArrayList<GrupoEntity>();
+            GruposFragment activity;
+            Map<String, String> idU;
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //System.out.println(dataSnapshot);
+                for (DataSnapshot grupo : dataSnapshot.getChildren()) {
+                    GrupoEntity u = grupo.getValue(GrupoEntity.class);
+                    info.add(u);
+                    /*if (idU.containsKey(grupo.getKey())) {
+                        if (u.getIdEventos() != null)
+                            info.put(u.getId(), u.getIdEventos());
+                    }*/
+                }
+                activity.setInfoGrupos(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idU) {
+                activity = (GruposFragment) _activity;
+                idU = _idU;
+                return this;
+            }
+        }.setActivity(_activity, _idU));
     }
 }

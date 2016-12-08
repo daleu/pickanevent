@@ -19,6 +19,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -410,5 +411,29 @@ public class UsuarioMGR {
                 return this;
             }
         }.setActivity(_activity, _idU));
+    }
+
+    public void getUserFromFragmentGrupos(Fragment _activity, String _idUsuario) {
+        bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            GruposFragment activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.getGruposFromUser(u);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity) {
+                activity = (GruposFragment) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 }
