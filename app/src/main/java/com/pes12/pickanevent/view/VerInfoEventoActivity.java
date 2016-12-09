@@ -164,6 +164,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     }
 
+
     /*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
