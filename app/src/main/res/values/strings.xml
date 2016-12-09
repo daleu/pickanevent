@@ -58,6 +58,7 @@
     <string name="MES_DICIEMBRE">Diciembre</string>
     <string name="DEFAULT_EVENTO_CREADO">Evento creado</string>
     <string name="DEFAULT_CREAR_GRUPO">Crear grupo</string>
+    <string name="DEFAULT_EDITAR_GRUPO">Modificar grupo</string>
     <string name="ESCRIBE_NOMBRE_GRUPO">Escribe el nombre del grupo</string>
     <string name="ESCRIBE_DESCRIPCION_GRUPO">Escribe la descripción de tu grupo</string>
     <string name="ESCRIBE_TAG_PRINCIPAL_GRUPO">Escribe el tag principal de tu grupo</string>
@@ -65,6 +66,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

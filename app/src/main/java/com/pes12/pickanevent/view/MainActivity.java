@@ -180,6 +180,10 @@ BLOQUE DE TEST
         startActivity(new Intent(MainActivity.this, CrearGrupoActivity.class));
     }
 
+    public void goEditarGrupo(View _view) {
+        startActivity(new Intent(MainActivity.this, EditarGrupoActivity.class));
+    }
+
     public void goBuscarEvento(View _view) {
         startActivity(new Intent(MainActivity.this, BuscarEventoActivity.class));
     }

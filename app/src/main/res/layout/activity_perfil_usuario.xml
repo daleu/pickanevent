@@ -42,48 +42,47 @@
                 android:onClick="abrirGaleria"
                 android:layout_above="@+id/correo"
                 android:layout_alignParentStart="true" />
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-            <TextView
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Nickname: "
-                android:ems="10"
-                android:id="@+id/nickNameLabel"
-                />
-            <TextView
+                android:orientation="horizontal" >
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Nickname: "
+                    android:ems="10"
+                    android:id="@+id/nickNameLabel"
+                    />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/DEFAULT_NOMBRE_USUARIO"
+                    android:ems="10"
+                    android:id="@+id/nickName"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/DEFAULT_NOMBRE_USUARIO"
-                android:ems="10"
-                android:id="@+id/nickName"
-                />
-           </LinearLayout>
+                android:orientation="horizontal" >
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Email: "
+                    android:ems="10"
+                    android:id="@+id/correoLabel"
+                    />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Email: "
-                android:ems="10"
-                android:id="@+id/correoLabel"
-                />
+                <TextView
 
-            <TextView
-
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/DEFAULT_GRUPOS"
-                android:ems="10"
-                android:id="@+id/correo"
-                />
-        </LinearLayout>
-
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/DEFAULT_GRUPOS"
+                    android:ems="10"
+                    android:id="@+id/correo"
+                    />
+            </LinearLayout>
 
             <Button
                 android:text="Reiniciar contraseña"
@@ -91,8 +90,26 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonRestart"
                 android:onClick="restartPassword"
-                 />
+            />
 
+            <!-- Twitter Login Button -->
+            <Button android:id="@+id/btnLoginTwitter"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Iniciar sesión con Twitter"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="30dip"/>
+
+            <!-- Twitter Logout button -->
+            <Button android:id="@+id/btnLogoutTwitter"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Cerrar sessión con Twitter"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="50dip"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

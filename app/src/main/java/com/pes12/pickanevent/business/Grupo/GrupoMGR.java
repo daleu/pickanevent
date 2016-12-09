@@ -14,6 +14,7 @@ import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
+import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
@@ -132,6 +133,29 @@ public class GrupoMGR {
             }
         }.setActivity(_activity));
 
+    }
+
+    public void getInfoGrupoEditar(Activity _activity, String id) {
+        bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            EditarGrupoActivity activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class)); //<------------
+                activity.mostrarInfoGrupoEditar(g);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (EditarGrupoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 
     public void getInfoGrupoUsuario(Activity _activity, String _id) {

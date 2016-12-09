@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
 import java.io.File;
@@ -182,6 +183,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.crear(ee);
         Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
+        startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
     }
 
     public void comprovarCheckBox(View _view) {
