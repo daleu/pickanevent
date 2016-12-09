@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -20,6 +21,7 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class BuscarEventoActivity extends BaseActivity {
 
@@ -43,6 +45,9 @@ public class BuscarEventoActivity extends BaseActivity {
         final EditText textoGrupo = (EditText) findViewById(R.id.textoGrupo);
         final ListView lista = (ListView) findViewById(R.id.lista);
         final ListView lista2 = (ListView) findViewById(R.id.lista2);
+        final CalendarView calendar = (CalendarView) findViewById(R.id.calendar);
+        final EditText data = (EditText) findViewById(R.id.textoDiaEvento);
+
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(context,R.array.busqueda_array
                 ,android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -54,6 +59,7 @@ public class BuscarEventoActivity extends BaseActivity {
                 textoLugarEvento.setText(null);
                 textoNombreEvento.setText(null);
                 textoUsuario.setText(null);
+                data.setText(null);
                 if (spinner2.getSelectedItem().toString().equals("Evento")) {
                     lista.setVisibility(View.INVISIBLE);
                     lista2.setVisibility(View.VISIBLE);
@@ -67,6 +73,7 @@ public class BuscarEventoActivity extends BaseActivity {
                         public void onItemSelected(AdapterView<?> _parent, View _view, int _pos, long _id) {
                             textoLugarEvento.setText(null);
                             textoNombreEvento.setText(null);
+                            data.setText(null);
                             if (spinner.getSelectedItem().toString().equals("Nombre")) {
                                 lista2.setAdapter(null);
                                 textoNombreEvento.setVisibility(View.VISIBLE);
@@ -74,6 +81,8 @@ public class BuscarEventoActivity extends BaseActivity {
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
                                 spinner3.setVisibility(View.INVISIBLE);
+                                calendar.setVisibility(View.INVISIBLE);
+                                data.setVisibility(View.INVISIBLE);
                                 textoNombreEvento.addTextChangedListener(new TextWatcher() {
 
                                     @Override
@@ -106,6 +115,8 @@ public class BuscarEventoActivity extends BaseActivity {
                                 spinner3.setVisibility(View.INVISIBLE);
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
+                                calendar.setVisibility(View.INVISIBLE);
+                                data.setVisibility(View.INVISIBLE);
                                 textoLugarEvento.addTextChangedListener(new TextWatcher() {
 
                                     @Override
@@ -138,6 +149,8 @@ public class BuscarEventoActivity extends BaseActivity {
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
                                 spinner3.setVisibility(View.VISIBLE);
+                                calendar.setVisibility(View.INVISIBLE);
+                                data.setVisibility(View.INVISIBLE);
                                 ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.precio_array
                                         , android.R.layout.simple_spinner_item);
                                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -179,6 +192,25 @@ public class BuscarEventoActivity extends BaseActivity {
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
                                 spinner3.setVisibility(View.INVISIBLE);
+                                calendar.setVisibility(View.INVISIBLE);
+                                data.setVisibility(View.VISIBLE);
+                                calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                                    @Override
+                                    public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
+                                        data.setText(day + " de " + ViewSharedMethods.getNomMes(month+1, getApplicationContext()) + " de " + year);
+                                        calendar.setVisibility(View.INVISIBLE);
+                                        Date d = new Date(year, month, day);
+                                        long l = d.getTime();
+                                        eMGR.getInfoEventoElegido(BuscarEventoActivity.this, "dia", Long.toString(l));
+                                    }
+                                });
+
+                                data.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        calendar.setVisibility(View.VISIBLE);
+                                    }
+                                });
                             }
                         }
 
@@ -197,6 +229,8 @@ public class BuscarEventoActivity extends BaseActivity {
                     textoLugarEvento.setVisibility(View.INVISIBLE);
                     textoUsuario.setVisibility(View.VISIBLE);
                     textoGrupo.setVisibility(View.INVISIBLE);
+                    calendar.setVisibility(View.INVISIBLE);
+                    data.setVisibility(View.INVISIBLE);
                     textoUsuario.addTextChangedListener(new TextWatcher() {
 
                         @Override
@@ -231,6 +265,8 @@ public class BuscarEventoActivity extends BaseActivity {
                     textoLugarEvento.setVisibility(View.INVISIBLE);
                     textoUsuario.setVisibility(View.INVISIBLE);
                     textoGrupo.setVisibility(View.VISIBLE);
+                    calendar.setVisibility(View.INVISIBLE);
+                    data.setVisibility(View.INVISIBLE);
                     textoGrupo.addTextChangedListener(new TextWatcher() {
 
                         @Override

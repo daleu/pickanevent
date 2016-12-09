@@ -15,6 +15,7 @@
     <string name="ESCRIBE_PRECIO_EVENTO">Escribe el precio del evento</string>
     <string name="ESCRIBE_URL_ENTRADAS">En el caso que se puedan comprar online, escribe la URL de venta de entradas</string>
     <string name="ESCRIBE_LUGAR_EVENTO">Escribe el lugar del evento</string>
+    <string name="ESCRIBE_DIA_EVENTO">Escribe el día del evento</string>
     <string name="ERROR">Campo vacío</string>
     <string name="EVENTO_NO_ENCONTRADO">Evento no encontrado</string>
     <string name="PRIMER_DIA">Primer día</string>
