@@ -16,14 +16,13 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/editText"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="15dp"
             android:layout_above="@+id/button4"
             android:layout_marginBottom="10dp"
             android:id="@+id/eventos"
             android:clickable="true"
-            android:clipChildren="true" />
+            android:clipChildren="true"
+            android:layout_below="@+id/inputBusqueda" />
 
         <Button
             android:text="Siguiente"
@@ -64,7 +63,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/inputBusqueda"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:hint="Escribe el nombre del tag"

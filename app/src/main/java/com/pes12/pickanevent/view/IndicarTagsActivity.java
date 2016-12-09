@@ -3,6 +3,8 @@ package com.pes12.pickanevent.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.AdapterLista;
 import com.pes12.pickanevent.business.AdapterTags;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.IEstadoCheckBox;
@@ -50,6 +53,36 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         TextView textoNuevoTag = (TextView) findViewById(R.id.textoNuevo);
         tags = (ListView) findViewById(R.id.eventos);
 
+        final EditText tv = (EditText) findViewById(R.id.inputBusqueda);
+        tv.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence _cs, int _arg1, int _arg2, int _arg3) {
+
+                if (_cs.toString().length() != 0) {
+                    showProgressDialog();
+                    tMGR.getTagsByName(IndicarTagsActivity.this, tv.getText().toString());
+                } else {
+                    for (int i = 0; i < info.size(); ++i) {
+                        if (mapIdTags.containsKey(info.get(i).getIdTag())) {
+                            info.get(i).setChecked(true);
+                        }
+                    }
+                    AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
+                    tags.setAdapter(adapterTags);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence _arg0, int _arg1, int _arg2, int _arg3) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable _arg0) {
+            }
+
+        });
+
         esCM = getUsuarioActual().getCm();
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
             Bundle b = getIntent().getExtras();
@@ -78,7 +111,9 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
                 }
             });
-        } else { //el usuario no es CM: no mostrar ni el texto ni el boton superiores
+        }
+
+        else { //el usuario no es CM: no mostrar ni el texto ni el boton superiores
             botonNuevo.setVisibility(View.INVISIBLE);
             textoNuevoTag.setVisibility(View.INVISIBLE);
         }
@@ -157,4 +192,9 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         gMGR.getGrupoParaTags(this, idGrupo);
     }
 
+    public void mostrarResultadosBusquedaTags(ArrayList<InfoTags> _info) {
+
+        AdapterTags ale = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, _info);
+        tags.setAdapter(ale);
+    }
 }

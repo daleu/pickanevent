@@ -1,19 +1,24 @@
 package com.pes12.pickanevent.business.Tag;
 
 import android.app.Activity;
+import android.nfc.Tag;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
+import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
+import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -146,4 +151,39 @@ public class TagMGR {
         }.setActivity(_activity, _entity));
         return "";
     }
+
+    public void getTagsByName(Activity _activity, String _text) {
+
+
+        Query queryRef = bdRefTags.orderByChild(TagEntity.ATTRIBUTES.NOMBRETAG.getValue()).startAt(_text).endAt(_text + "\uf8ff");
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+            IndicarTagsActivity activity;
+            Map<String, TagEntity> map = new LinkedHashMap<String, TagEntity>();
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                ArrayList<InfoTags> n = new ArrayList<InfoTags>();
+                for (DataSnapshot tag : snapshot.getChildren()) {
+                    n.add(new InfoTags(tag.getValue(TagEntity.class).getNombreTag(), false, tag.getKey()));
+
+                }
+                activity.mostrarResultadosBusquedaTags(n);
+                activity.hideProgressDialog();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (IndicarTagsActivity) _activity;
+                return this;
+            }
+
+        }.setActivity(_activity));
+    }
+
+
 }
