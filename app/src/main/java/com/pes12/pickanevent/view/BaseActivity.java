@@ -1,7 +1,6 @@
 package com.pes12.pickanevent.view;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
@@ -23,7 +21,6 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -154,11 +151,16 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * USUARIO
      */
-
+    public boolean siguiendoUsuario(String _idSeguido) {
+        return siguiendoUsuario(getUsuarioActual(), _idSeguido);
+    }
     public boolean siguiendoUsuario(UsuarioEntity _seguidor, String _idSeguido) {
         return _seguidor.getIdUsuarios() != null && _seguidor.getIdUsuarios().containsKey(_idSeguido);
     }
 
+    public void seguirUsuario(String _idSeguido, String _nicknameSeguido) {
+        seguirUsuario(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idSeguido, _nicknameSeguido);
+    }
     public void seguirUsuario(String _idSeguidor, UsuarioEntity _seguidor, String _idSeguido, String _nicknameSeguido) {
         Map<String, String> siguiendo = _seguidor.getIdUsuarios();
         if (siguiendo == null) {
@@ -174,6 +176,9 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.SIGUIENDO_A + nick, Toast.LENGTH_LONG).show();
     }
 
+    public void dejarSeguirUsuario(String _idSeguido) {
+        dejarSeguirUsuario(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idSeguido);
+    }
     public void dejarSeguirUsuario(String _idSeguidor, UsuarioEntity _seguidor, String _idSeguido) {
         if (siguiendoUsuario(_seguidor, _idSeguido))
             _seguidor.getIdUsuarios().remove(_idSeguido);
@@ -187,11 +192,17 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * GRUPO
      */
-
+    public boolean siguiendoGrupo(String _idGrupo) {
+        return siguiendoGrupo(getUsuarioActual(), _idGrupo);
+    }
     public boolean siguiendoGrupo(UsuarioEntity _seguidor, String _idGrupo) {
+        if (_seguidor == null) return siguiendoGrupo(_idGrupo);
         return _seguidor.getIdGrupos() != null && _seguidor.getIdGrupos().containsKey(_idGrupo);
     }
 
+    public void seguirGrupo(String _idGrupo, String _nombreGrupo) {
+        seguirGrupo(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idGrupo, _nombreGrupo);
+    }
     public void seguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, String _idGrupo, String _nombreGrupo) {
         Map<String, String> siguiendo = _seguidor.getIdGrupos();
         if (siguiendo == null) {
@@ -207,7 +218,10 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.SIGUIENDO_A + nombre, Toast.LENGTH_LONG).show();
     }
 
-    public void dejarSeguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, GrupoEntity _grupo, String _idGrupo) {
+    public void dejarSeguirGrupo(String _idGrupo) {
+        dejarSeguirGrupo(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idGrupo);
+    }
+    public void dejarSeguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, String _idGrupo) {
         if (siguiendoGrupo(_seguidor, _idGrupo))
             _seguidor.getIdGrupos().remove(_idGrupo);
 
@@ -220,11 +234,16 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * EVENTO
      */
-
-    public boolean asistindiendoEvento(UsuarioEntity _asistidor, String _idEvento) {
+    public boolean asistiendoEvento(String _idEvento) {
+        return asistiendoEvento(getUsuarioActual(), _idEvento);
+    }
+    public boolean asistiendoEvento(UsuarioEntity _asistidor, String _idEvento) {
         return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey(_idEvento);
     }
 
+    public void asistirEvento(String _idEvento, String _tituloEvento) {
+        asistirEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento, _tituloEvento);
+    }
     public void asistirEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento, String _tituloEvento) {
         Map<String, String> asistiendo = _asistidor.getIdEventos();
         if (asistiendo == null) {
@@ -240,8 +259,11 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.ASISTIENDO_A + titulo, Toast.LENGTH_LONG).show();
     }
 
+    public void cancelarAsistenciaEvento(String _idEvento) {
+        cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
+    }
     public void cancelarAsistenciaEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento) {
-        if (asistindiendoEvento(_asistidor, _idEvento))
+        if (asistiendoEvento(_asistidor, _idEvento))
             _asistidor.getIdEventos().remove(_idEvento);
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
