@@ -79,7 +79,8 @@
             android:layout_width="100dp"
             android:layout_marginRight="10dp"
             android:layout_above="@+id/editText"
-            android:layout_alignStart="@+id/button4" />
+            android:layout_alignStart="@+id/button4"
+            android:layout_alignTop="@+id/textoNuevo" />
 
     </RelativeLayout>
 
