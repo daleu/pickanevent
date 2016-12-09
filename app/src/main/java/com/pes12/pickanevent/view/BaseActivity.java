@@ -136,9 +136,9 @@ public class BaseActivity extends AppCompatActivity {
             imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
         }
 
-        Date dataIn = new Date(primerDia.getText().toString());
-        Date dataFi = new Date(ultimoDia.getText().toString());
-        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu, url.getText().toString(), localitzacio.getText().toString(), lat, lng, dataIn, dataFi);
+        //Date dataIn = new Date(primerDia.getText().toString());
+        //Date dataFi = new Date(ultimoDia.getText().toString());
+        EventoEntity ee = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge, preu, url.getText().toString(), localitzacio.getText().toString(), lat, lng);//, dataIn, dataFi);
         return ee;
     }
 }

@@ -24,7 +24,9 @@ public class EventoEntity {
 
     }
 
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, String dataInici, String dataFinal) {
+    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud
+                        //Date dataIn, Date dataFi) {
+    ){
         setTitulo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -33,21 +35,8 @@ public class EventoEntity {
         setLocalizacion(localizacion);
         setLatitud(latitud);
         setLongitud(longitud);
-        setDataInici(dataInici);
-        setDataFinal(dataFinal);
-    }
-
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, Date dataIn, Date dataFi) {
-        setTitulo(nombre);
-        setDescripcion(descr);
-        setImagen(img);
-        setPrecio(precio);
-        setWebpage(webpage);
-        setLocalizacion(localizacion);
-        setLatitud(latitud);
-        setLongitud(longitud);
-        setDataIniciDate(dataIn);
-        setDataFinalDate(dataFi);
+        //setDataIniciDate(dataIn);
+        //setDataFinalDate(dataFi);
     }
 
     public boolean isEmpty() {

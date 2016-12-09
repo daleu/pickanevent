@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
@@ -37,13 +38,28 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Date;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
 public class CrearEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
+
+    EditText preuText;
+    EditText hora;
+    EditText data;
+    EditText dataFinal;
+    CheckBox gratuit;
+    CalendarView calendar;
+    CalendarView calendarFinal;
+
+    EditText nomEvent;
+    EditText descripcio;
+    EditText url;
+    EditText localitzacio;
 
 
     public static final int GALERIA_REQUEST = 20;
@@ -123,32 +139,35 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 .build();
         //-----------------------------------------------
 
+        nomEvent = (EditText) findViewById(R.id.editorNEvento);
+        descripcio = (EditText) findViewById(R.id.editorDescr);
+        url = (EditText) findViewById(R.id.editorEntradas);
+        localitzacio = (EditText) findViewById(R.id.editorLugar);
 
         setContentView(activity_crear_evento);
-        final CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+        calendar = (CalendarView) findViewById(R.id.calendarView);
         calendar.setVisibility(View.INVISIBLE);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                EditText data = (EditText) findViewById(R.id.editorFecha);
                 data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
-        final CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
+        calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
         calendarFinal.setVisibility(View.INVISIBLE);
         calendarFinal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                EditText data = (EditText) findViewById(R.id.editorFechaFinal);
                 data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
             }
         });
-        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
-        EditText hora = (EditText) findViewById(R.id.hora);
+        gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        preuText = (EditText) findViewById(R.id.editorPrecio);
+        hora = (EditText) findViewById(R.id.hora);
         preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
-        EditText data = (EditText) findViewById(R.id.editorFecha);
-        EditText dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
+        data = (EditText) findViewById(R.id.editorFecha);
+        dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
         data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,16 +198,44 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     }
 
     public void crearEvento(View _view) {
-        EventoEntity ee = parseEventViewToEntity(image, lat, lng);
-        eMGR = MGRFactory.getInstance().getEventoMGR();
-        eMGR.crear(ee);
-        Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
-        startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+        nomEvent = (EditText) findViewById(R.id.editorNEvento);
+        descripcio = (EditText) findViewById(R.id.editorDescr);
+        url = (EditText) findViewById(R.id.editorEntradas);
+        localitzacio = (EditText) findViewById(R.id.editorLugar);
+        gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        preuText = (EditText) findViewById(R.id.editorPrecio);
+        hora = (EditText) findViewById(R.id.hora);
+        data = (EditText) findViewById(R.id.editorFecha);
+        dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
+
+        if (nomEvent.getText().toString().equals(""))
+            Toast.makeText(this, "Debe indicar un nombre para el grupo",
+                    Toast.LENGTH_SHORT).show();
+        else {
+            String imatge;
+            if (image != null) {
+                ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+                image.recycle();
+                byte[] byteArray = bYtE.toByteArray();
+                imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            } else imatge = null;
+            EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
+                    descripcio.getText().toString(),
+                    imatge,
+                    preuText.getText().toString(),
+                    url.getText().toString(),
+                    localitzacio.getText().toString(), lat, lng
+                    //(Date) data.getText(), (Date) dataFinal.getText()
+            );
+            eMGR = MGRFactory.getInstance().getEventoMGR();
+            eMGR.crear(ee);
+            Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+        }
     }
 
     public void comprovarCheckBox(View _view) {
-        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
-        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
         if (gratuit.isChecked()) {
             preuText.setFocusable(false);
             preuText.setText("");
@@ -200,8 +247,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     }
 
     public void mostrarCalendar(View _view) {
-        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
-        CalendarView calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
         if (calendar.getVisibility() == _view.VISIBLE) {
             calendar.setVisibility(_view.INVISIBLE);
         } else {
@@ -214,13 +259,11 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     //---------------------- GOOGLE PLACES API ---------------
 
     public void mostrarCalendarFinal(View _view) {
-        CalendarView calendar = (CalendarView) findViewById(R.id.calendarViewFinal);
-        CalendarView calendarInicial = (CalendarView) findViewById(R.id.calendarView);
-        if (calendar.getVisibility() == _view.VISIBLE) {
-            calendar.setVisibility(_view.INVISIBLE);
+        if (calendarFinal.getVisibility() == _view.VISIBLE) {
+            calendarFinal.setVisibility(_view.INVISIBLE);
         } else {
-            calendar.setVisibility(_view.VISIBLE);
-            calendarInicial.setVisibility(_view.INVISIBLE);
+            calendarFinal.setVisibility(_view.VISIBLE);
+            calendar.setVisibility(_view.INVISIBLE);
         }
     }
 
