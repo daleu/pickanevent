@@ -8,6 +8,7 @@ public class TagEntity {
 
     /*nombreTag*/
     private String nombreTag;
+    private String id;
 
     public TagEntity() {
 
@@ -23,6 +24,14 @@ public class TagEntity {
 
     public void setNombreTag(String _nombreTag) {
         nombreTag = _nombreTag;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public enum ATTRIBUTES {
