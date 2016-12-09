@@ -188,7 +188,7 @@ public class EventoMGR {
                         String precio = evento.getValue(EventoEntity.class).getPrecio();
                         Double aux = null;
                         if (precio != null) aux = Double.parseDouble(precio);
-                        if ((precio == null && _val.equals("0"))) {
+                        if (precio == null && _val.equals("0")) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
                                         "Gratis", "asistir!"));
                         }
