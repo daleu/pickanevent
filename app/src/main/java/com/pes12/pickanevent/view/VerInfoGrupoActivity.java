@@ -1,9 +1,11 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
@@ -137,17 +139,37 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
     }
 
-    public void mostrarTags(ArrayList<String> info) {
+    public void mostrarTags(final ArrayList<String> info) {
         LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
         TextView primero = (TextView) findViewById(Primero);
         primero.setText(info.get(0));
         primero.setPadding(3,3,3,3);
+        primero.hasOnClickListeners();
+
+        primero.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+            }
+        });
+
         for (int i = 1; i < info.size(); ++i) {
             TextView test = new TextView(this);
             test.setText(info.get(i));
             test.setPadding(3,3,3,3);
             linearLayout.addView(test);
         }
+        TextView test2 = new TextView(this);
+        test2.setText("aaaaaaaaaaaaaaaaaaaaaa");
+        test2.setPadding(3,3,3,3);
+        linearLayout.addView(test2);
+        TextView test3 = new TextView(this);
+        test3.setText("aaaaaaaaaaaaaaaaaaaaaa");
+        test3.setPadding(3,3,3,3);
+        linearLayout.addView(test3);
+       /* TextView test4 = new TextView(this);
+        test4.setText("bbbbbbbbbbbbbbbbb");
+        test4.setPadding(3,3,3,3);
+        linearLayout.addView(test4);*/
         //tags.setText(tagsAsString);
     }
 
