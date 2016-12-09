@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.pes12.pickanevent.business.ConnectionDetector;
 import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -50,7 +52,8 @@ import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
 
 public class PerfilUsuarioActivity extends BaseActivity {
 
-    TextView nombre;
+    EditText nombre;
+    EditText bio;
     TextView correo;
     ImageView foto;
 
@@ -108,11 +111,13 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
 
         //Inicializaciones
-        nombre = (TextView) findViewById(R.id.nickName);
+        nombre = (EditText) findViewById(R.id.nickName);
         foto = (ImageView) findViewById(R.id.imagen);
         correo = (TextView) findViewById(R.id.correo);
+        bio  = (EditText) findViewById(R.id.bio);
         ///////////////////////////////////////////////////////////////////////
         current = getAuth().getCurrentUser();
+        uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
         iMGR = MGRFactory.getInstance().getImagenPerfilUsuarioMGR();
 
@@ -260,11 +265,27 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
     public void mostrarInfoUsuario() {
         nombre.setText(getUsuarioActual().getNickname());
+        bio.setText(getUsuarioActual().getBio());
         correo.setText(current.getEmail());
         //foto.setImageURI(current.getPhotoUrl());
         Picasso.with(this).load(current.getPhotoUrl()).into(foto);
         System.out.println(current.getPhotoUrl());
 
+    }
+
+    public void guardarInfo(View _view)
+    {
+        UsuarioEntity u = getUsuarioActual();
+        String nickCambiado = nombre.getText().toString();
+        String bioCambiado = bio.getText().toString();
+        if(!nickCambiado.equals(u.getNickname())) {
+            u.setNickname(nombre.getText().toString());
+        }
+        if(!bioCambiado.equals(u.getBio())) {
+            u.setBio(bio.getText().toString());
+        }
+        uMGR.actualizar(getAuth().getCurrentUser().getUid(), u);
+        setUsuarioActual(u);
     }
 
     public void restartPassword(View _view)

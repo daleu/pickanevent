@@ -137,15 +137,16 @@ public class UsuarioEntity {
     @Override
     public String toString() {
         return "UsuarioEntity{" +
-                "\nusername='" + username + '\'' +
-                "\n, nickname='" + nickname + '\'' +
-                "\n, password='" + password + '\'' +
-                "\n, email='" + email + '\'' +
-                "\n, cm=" + cm +
-                "\n, idGrupos=" + idGrupos +
-                "\n, idEventos=" + idEventos +
-                "\n, idTags=" + idTags +
+                "bio='" + bio + '\'' +
+                ", username='" + username + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", cm=" + cm +
+                ", idGrupos=" + idGrupos +
+                ", idEventos=" + idEventos +
+                ", idTags=" + idTags +
+                ", idUsuarios=" + idUsuarios +
                 '}';
     }
-
 }
