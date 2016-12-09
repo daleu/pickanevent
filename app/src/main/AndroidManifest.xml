@@ -55,6 +55,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".view.VerGruposCreadosActivity" />
         <activity android:name=".view.IndicarTagsActivity" />
+        <activity android:name=".view.VerGruposConTagActivity"></activity>
     </application>
 
 </manifest>

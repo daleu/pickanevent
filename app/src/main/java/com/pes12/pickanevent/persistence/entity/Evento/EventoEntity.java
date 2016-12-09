@@ -18,6 +18,7 @@ public class EventoEntity {
     private String dataFinal;
     private String latitud;
     private String longitud;
+    private String id;
 
     public EventoEntity() {
 
@@ -118,7 +119,8 @@ public class EventoEntity {
     }
 
     public Date getDataInici() {
-        Date d = new Date(dataInici);
+        Date d = new Date();
+        if(dataInici!=null) d = new Date(Long.parseLong(dataInici));
         return d;
     }
 
@@ -127,7 +129,8 @@ public class EventoEntity {
     }
 
     public Date getDataFinal() {
-        Date d = new Date(dataFinal);
+        Date d = new Date();
+        if(dataFinal!=null) d = new Date(Long.parseLong(dataFinal));
         return d;
     }
 
@@ -135,13 +138,21 @@ public class EventoEntity {
         this.dataFinal = dataFinal;
     }
 
-    public void setDataFinalDate(Date dataFi) {
-        String s = String.valueOf(dataFi);
+    public void setDataFinalDate(Date dataFinal) {
+        String s = String.valueOf(dataFinal);
         setDataFinal(s);
     }
 
     public void setDataIniciDate(Date dataIn) {
         String s = String.valueOf(dataIn);
         setDataInici(s);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

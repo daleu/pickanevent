@@ -1,12 +1,18 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
@@ -21,6 +27,11 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static com.pes12.pickanevent.R.id.Primero;
+import static com.pes12.pickanevent.R.id.Tags;
+import static com.pes12.pickanevent.R.id.activity_ver_info_grupo;
+import static com.pes12.pickanevent.R.id.etiquetas;
 
 public class VerInfoGrupoActivity extends BaseActivity {
 
@@ -45,7 +56,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         nombre = (TextView) findViewById(R.id.nombreGrupo);
         descripcion = (TextView) findViewById(R.id.descripcion);
         foto = (ImageView) findViewById(R.id.imagenGrupo);
-        tags = (TextView) findViewById(R.id.tags);
+        //tags = (TextView) findViewById(R.id.tags);
         eventos = (ListView) findViewById(R.id.event);
         boton = (Button) findViewById(R.id.seguir);
         eMGR = MGRFactory.getInstance().getEventoMGR();
@@ -57,7 +68,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "grp4-1480686504768";
+        idGrupo = "grp0-1480690194851";
 
 
         showProgressDialog();
@@ -128,12 +139,38 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
     }
 
-    public void mostrarTags(ArrayList<String> info) {
-        String tagsAsString = "";
-        for (int i = 0; i < info.size(); ++i) {
-            tagsAsString += info.get(i) + "     ";
+    public void mostrarTags(final ArrayList<String> info) {
+        LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
+        TextView primero = (TextView) findViewById(Primero);
+        primero.setText(info.get(0));
+        primero.setPadding(3,3,3,3);
+        primero.hasOnClickListeners();
+
+        primero.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+            }
+        });
+
+        for (int i = 1; i < info.size(); ++i) {
+            TextView test = new TextView(this);
+            test.setText(info.get(i));
+            test.setPadding(3,3,3,3);
+            linearLayout.addView(test);
         }
-        tags.setText(tagsAsString);
+        TextView test2 = new TextView(this);
+        test2.setText("aaaaaaaaaaaaaaaaaaaaaa");
+        test2.setPadding(3,3,3,3);
+        linearLayout.addView(test2);
+        TextView test3 = new TextView(this);
+        test3.setText("aaaaaaaaaaaaaaaaaaaaaa");
+        test3.setPadding(3,3,3,3);
+        linearLayout.addView(test3);
+       /* TextView test4 = new TextView(this);
+        test4.setText("bbbbbbbbbbbbbbbbb");
+        test4.setPadding(3,3,3,3);
+        linearLayout.addView(test4);*/
+        //tags.setText(tagsAsString);
     }
 
     /*@Override

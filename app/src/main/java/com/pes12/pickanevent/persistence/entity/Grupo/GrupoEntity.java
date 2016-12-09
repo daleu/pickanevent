@@ -27,6 +27,8 @@ public class GrupoEntity {
     /*    TAGS_ADICIONALES   */
     private Map<String, String> mapIdTags;
 
+    private String id;
+
     public GrupoEntity() {
 
     }
@@ -117,6 +119,14 @@ public class GrupoEntity {
 
     public void setIdTags(Map<String, String> _idTags) {
         mapIdTags = _idTags;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public enum ATTRIBUTES {

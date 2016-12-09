@@ -6,10 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,52 +15,45 @@ import android.widget.ListView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
-import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TimelineFragment.OnFragmentInteractionListener} interface
+ * {@link GruposFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TimelineFragment#newInstance} factory method to
+ * Use the {@link GruposFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TimelineFragment extends Fragment {
+public class GruposFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    EventoMGR eMGR;
+
     UsuarioMGR uMGR;
     GrupoMGR gMGR;
+
     ListView eventos;
+
     String idUsuario;
     UsuarioEntity myUser;
-    Map<String, Map<String, String>> listEvents;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private ProgressDialog mProgressDialog;
     private OnFragmentInteractionListener mListener;
 
-    public TimelineFragment() {
+    public GruposFragment() {
         // Required empty public constructor
     }
 
@@ -72,11 +63,11 @@ public class TimelineFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TimelineFragment.
+     * @return A new instance of fragment GruposFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TimelineFragment newInstance(String param1, String param2) {
-        TimelineFragment fragment = new TimelineFragment();
+    public static GruposFragment newInstance(String param1, String param2) {
+        GruposFragment fragment = new GruposFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -95,22 +86,19 @@ public class TimelineFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        eMGR = MGRFactory.getInstance().getEventoMGR();
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
         idUsuario = "cm3-1480690194869";
-        //idUsuario = "usr22-1480690194879";
 
-        uMGR.getUserFromFragment(this, idUsuario);
-
+        uMGR.getUserFromFragmentGrupos(this, idUsuario);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_timeline, container, false);
+        View view = inflater.inflate(R.layout.fragment_grupos, container, false);
         eventos = (ListView) view.findViewById(R.id.eventtimeline);
         return view;
     }
@@ -139,55 +127,40 @@ public class TimelineFragment extends Fragment {
         mListener = null;
     }
 
-    public void getUsuarioEvents(UsuarioEntity _usuario) {
+    public void getGruposFromUser(UsuarioEntity _usuario) {
         myUser = _usuario;
-        if (_usuario.getIdUsuarios() != null) {
-            uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
-        } else getAllUsersEvents(null);
+        if(myUser.getIdGrupos()!=null){
+            gMGR.getGrupoEventosForFragmentGrupos(this,myUser.getIdGrupos());
+        } else {
+            setInfoGrupos(null);
+        }
     }
 
-    public void getAllUsersEvents(Map<String, Map<String, String>> _usrs) {
-        if (_usrs != null) {
-            listEvents = _usrs;
+    public void setInfoGrupos(ArrayList<GrupoEntity> info) {
+        if(info!=null){
+            ArrayList<Info> infoAdapter = new ArrayList();
+            for(GrupoEntity e : info){
+                Info aux = new Info(StringToBitMap(e.getImagen()), e.getNombreGrupo(), "", "Seguir!");
+                aux.setId(e.getId());
+                infoAdapter.add(aux);
+            }
+
+            AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
+            eventos.setAdapter(ale);
+
+            hideProgressDialog();
         }
-        else listEvents = new LinkedHashMap<String, Map<String, String>>();
-        if (myUser.getIdEventos()!= null) listEvents.put(myUser.getUsername(), myUser.getIdEventos());
-        if (myUser.getIdGrupos() == null) getAllGrupoEvents(null);
-        else gMGR.getGrupoEventosForFragment(this, myUser.getIdGrupos());
     }
 
-    public void getAllGrupoEvents(Map<String, Map<String, String>> _info) {
-        if (_info != null) listEvents.putAll(_info);
-        Map<String, String> map = new HashMap<String, String>();
-        for (String key : listEvents.keySet()) {
-            Map<String, String> aux = listEvents.get(key);
-            if (aux != null) map.putAll(aux);
+    private Bitmap StringToBitMap(String _encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
         }
-        eMGR.getInfoEventosUsuarioFromFragment(this, map);
-    }
-
-    public void mostrarEventosUsuario(ArrayList<EventoEntity> events) {
-        ArrayList<Info> info = new ArrayList();
-
-        if (events.size() > 0) {
-            Collections.sort(events, new Comparator<EventoEntity>() {
-                @Override
-                public int compare(final EventoEntity object1, final EventoEntity object2) {
-                    return object1.getDataInici().compareTo(object2.getDataInici());
-                }
-            });
-        }
-
-        for(EventoEntity e : events){
-            Info aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!");
-            aux.setId(e.getId());
-            info.add(aux);
-        }
-
-        AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, info);
-        eventos.setAdapter(ale);
-
-        hideProgressDialog();
     }
 
     public void showProgressDialog() {
@@ -220,24 +193,4 @@ public class TimelineFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-    public String EventDate(Date ini, Date fi){
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
-        String inici = sdfDate.format(ini);
-        String fina = sdfDate.format(fi);
-        String data = inici + " - " + fina;
-        return data;
-    }
-
-    private Bitmap StringToBitMap(String _encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
-
 }
