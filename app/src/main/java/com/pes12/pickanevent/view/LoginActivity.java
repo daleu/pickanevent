@@ -14,6 +14,7 @@ import com.pes12.pickanevent.business.EncodeUtil;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 
+
 public class LoginActivity extends BaseActivity {
 
     private EditText correo;
@@ -22,12 +23,11 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         correo = (EditText) findViewById(R.id.correo);
         pass = (EditText) findViewById(R.id.pass);
-
     }
-
 
     public void login(View view) {
 

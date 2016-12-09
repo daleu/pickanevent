@@ -69,25 +69,30 @@ public class AdapterLista extends ArrayAdapter<Info> {
             holder.linea2 = (TextView) vistaEvent.findViewById(R.id.text2);
             holder.button = (Button) vistaEvent.findViewById(R.id.button);
             holder.lay = (LinearLayout) vistaEvent.findViewById(R.id.layoutAdapter);
+            holder.id = (TextView) vistaEvent.findViewById(R.id.id);
 
             vistaEvent.setTag(holder);
         } else {
             holder = (AdapterHolder) vistaEvent.getTag();
         }
 
-        Info componentes = getItem(_position);
+        final Info componentes = getItem(_position);
         holder.img.setImageBitmap(componentes.img);
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);
+        if(componentes.id!=null){
+            holder.id.setText(componentes.id);
+        }
 
         holder.lay.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                
-                context.startActivity(new Intent(context, VerInfoEventoActivity.class));
+                Intent intent = new Intent(context, VerInfoEventoActivity.class);
+                intent.putExtra("key",componentes.id);
+                context.startActivity(intent);
             }
         });
 
@@ -100,6 +105,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
         TextView linea2;
         Button button;
         LinearLayout lay;
+        TextView id;
     }
 
 }

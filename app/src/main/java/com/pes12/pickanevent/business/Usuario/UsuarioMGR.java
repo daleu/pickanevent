@@ -19,6 +19,7 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -185,21 +186,28 @@ public class UsuarioMGR {
         }.setActivity(_activity));
     }
 
-    public void getUsuariosByNombre(Activity _activity, String _text) {
+    public void getUsuariosByNombre(Activity _activity, final String _text) {
 
-        Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.NICKNAME.getValue()).startAt(_text).endAt(_text + "\uf8ff");
-
-        queryRef.addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
             BuscarEventoActivity activity;
-            Map<String, UsuarioEntity> map = new LinkedHashMap<String, UsuarioEntity>();
-
+            final CharSequence aux = _text.toLowerCase();
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                ArrayList<Info> n = new ArrayList<Info>();
+                ArrayList<Info> n = new ArrayList<>();
                 for (DataSnapshot usuario : snapshot.getChildren()) {
-                    System.out.println(usuario.getKey());
-                    // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
-                    n.add(new Info(null, usuario.getKey(), usuario.getValue(UsuarioEntity.class).getNickname(), "seguir!"));
+                        if (usuario.getValue(UsuarioEntity.class).getNickname().toLowerCase().contains(aux)) {
+                            if (usuario.getValue(UsuarioEntity.class).getEmail() != null) {
+                                n.add(new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
+                                        usuario.getValue(UsuarioEntity.class).getEmail(), "seguir!"));
+                            }
+                            else {
+                                n.add(new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
+                                        null, "seguir!"));
+                            }
+
+                        }
+
+
 
                 }
                 activity.mostrarInfoUsuarioElegido(n);
@@ -410,5 +418,29 @@ public class UsuarioMGR {
                 return this;
             }
         }.setActivity(_activity, _idU));
+    }
+
+    public void getUserFromFragmentGrupos(Fragment _activity, String _idUsuario) {
+        bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            GruposFragment activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.getGruposFromUser(u);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity) {
+                activity = (GruposFragment) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
     }
 }

@@ -16,7 +16,11 @@ import android.view.MenuItem;
 import com.pes12.pickanevent.R;
 
 public class NavigationDrawer extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, TimelineFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        EventsFragment.OnFragmentInteractionListener,
+        TimelineFragment.OnFragmentInteractionListener,
+        GruposFragment.OnFragmentInteractionListener,
+        AmistadesFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,15 +94,20 @@ public class NavigationDrawer extends BaseActivity
 
         if (id == R.id.nav_camera) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.main_fragment, new TimelineFragment());
-            ft.addToBackStack("tag_back");
+            ft.replace(R.id.main_fragment, new TimelineFragment());
             ft.commit();
         } else if (id == R.id.nav_gallery) {
-
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_fragment, new GruposFragment());
+            ft.commit();
         } else if (id == R.id.nav_slideshow) {
-
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_fragment, new AmistadesFragment());
+            ft.commit();
         } else if (id == R.id.nav_manage) {
-
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_fragment, new EventsFragment());
+            ft.commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

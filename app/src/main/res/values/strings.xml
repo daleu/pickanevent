@@ -59,13 +59,24 @@
     <string name="MES_DICIEMBRE">Diciembre</string>
     <string name="DEFAULT_EVENTO_CREADO">Evento creado</string>
     <string name="DEFAULT_CREAR_GRUPO">Crear grupo</string>
+    <string name="DEFAULT_EDITAR_GRUPO">Modificar grupo</string>
     <string name="ESCRIBE_NOMBRE_GRUPO">Escribe el nombre del grupo</string>
     <string name="ESCRIBE_DESCRIPCION_GRUPO">Escribe la descripción de tu grupo</string>
     <string name="ESCRIBE_TAG_PRINCIPAL_GRUPO">Escribe el tag principal de tu grupo</string>
+    <string name="SIGUIENDO_A">Siguiendo a </string>
+    <string name="USUARIO_UNFOLLOWED">Ya no sigues al usuario</string>
+    <string name="GRUPO_UNFOLLOWED">Ya no sigues al grupo</string>
+    <string name="ASISTIENDO_A">Has marcado tu asistencia al evento </string>
+    <string name="EVENTO_ASISTENCIA_CANCELADA">Has cancelado tu asistencia al evento</string>
+
+
+
+    <!-- Android created literals -->
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

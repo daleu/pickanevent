@@ -53,6 +53,12 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
 
+        Bundle param = getIntent().getExtras();
+        idEvento = "Evt102-1480690194876";
+        if(param!=null){
+            idEvento = param.getString("key");
+        }
+
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
 
@@ -88,7 +94,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
-        idEvento = "Evt102-1480690194876";
+
         EventoEntity gEntity = ge.get(idEvento);
 
         imagenevento = (ImageView) findViewById(R.id.imagenEvento);
@@ -157,6 +163,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 .title("Palau Sant Jordi"));
 
     }
+
 
     /*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)

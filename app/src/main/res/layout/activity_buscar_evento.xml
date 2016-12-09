@@ -14,19 +14,6 @@
         layout="@layout/toolbar"
         ></include>
 
-    <Button
-        android:text="@string/DEFAULT_BUSCAR_EVENTO"
-        android:id="@+id/buscarEvento"
-        android:background="@drawable/botton_application"
-        android:layout_width="150dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="30dp"
-        android:radius="20dip"
-        android:onClick="buscarEvento"
-        android:layout_marginTop="74dp"
-        android:layout_below="@+id/textoNombreEvento"
-        android:layout_centerHorizontal="true" />
-
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -35,7 +22,7 @@
         android:textColorHint="#8a939d"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:id="@+id/textoNombreEvento"
         android:background="#eceff1"
         android:textStyle="normal"
@@ -50,7 +37,7 @@
         android:textColorHint="#8a939d"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:id="@+id/textoLugarEvento"
         android:background="#eceff1"
         android:textStyle="normal"
@@ -90,18 +77,18 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="35dp"
         android:id="@+id/spinner"
         android:background="#008040"
         android:spinnerMode="dropdown"
         android:entries="@array/eventos_array"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/spinner2"
         android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="35dp"
         android:id="@+id/spinner2"
         android:background="#008040"
         android:spinnerMode="dropdown"
@@ -109,10 +96,28 @@
         android:layout_below="@+id/toolbar"
         android:layout_alignParentStart="true" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:id="@+id/spinner3"
+        android:background="#008040"
+        android:spinnerMode="dropdown"
+        android:entries="@array/precio_array"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentStart="true" />
+
     <ListView
         android:id="@+id/lista"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:id="@+id/lista2"
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 

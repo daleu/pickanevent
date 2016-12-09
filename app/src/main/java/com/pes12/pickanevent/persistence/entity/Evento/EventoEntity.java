@@ -18,12 +18,15 @@ public class EventoEntity {
     private String dataFinal;
     private String latitud;
     private String longitud;
+    private String id;
 
     public EventoEntity() {
 
     }
 
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, String dataInici, String dataFinal) {
+    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud
+                        //Date dataIn, Date dataFi) {
+    ){
         setTitulo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -32,21 +35,8 @@ public class EventoEntity {
         setLocalizacion(localizacion);
         setLatitud(latitud);
         setLongitud(longitud);
-        setDataInici(dataInici);
-        setDataFinal(dataFinal);
-    }
-
-    public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud, Date dataIn, Date dataFi) {
-        setTitulo(nombre);
-        setDescripcion(descr);
-        setImagen(img);
-        setPrecio(precio);
-        setWebpage(webpage);
-        setLocalizacion(localizacion);
-        setLatitud(latitud);
-        setLongitud(longitud);
-        setDataIniciDate(dataIn);
-        setDataFinalDate(dataFi);
+        //setDataIniciDate(dataIn);
+        //setDataFinalDate(dataFi);
     }
 
     public boolean isEmpty() {
@@ -145,5 +135,13 @@ public class EventoEntity {
     public void setDataIniciDate(Date dataIn) {
         String s = String.valueOf(dataIn);
         setDataInici(s);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

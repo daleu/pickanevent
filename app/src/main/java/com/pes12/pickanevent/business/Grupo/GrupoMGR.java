@@ -15,6 +15,8 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.GruposFragment;
+import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
@@ -135,6 +137,29 @@ public class GrupoMGR {
 
     }
 
+    public void getInfoGrupoEditar(Activity _activity, String id) {
+        bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            EditarGrupoActivity activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class)); //<------------
+                activity.mostrarInfoGrupoEditar(g);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (EditarGrupoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
     public void getInfoGrupoUsuario(Activity _activity, String _id) {
         bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity g;
@@ -219,23 +244,29 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
-    public void getGruposByNombre(Activity _activity, String _text) {
-        Query queryRef = bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).startAt(_text).endAt(_text + "\uf8ff");
-
-        queryRef.addValueEventListener(new ValueEventListener() {
+    public void getGruposByNombre(Activity _activity, final String _text) {
+        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
             BuscarEventoActivity activity;
-            Map<String, GrupoEntity> map = new LinkedHashMap<String, GrupoEntity>();
-
+            final CharSequence aux3 = _text.toLowerCase();
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 ArrayList<Info> n = new ArrayList<Info>();
                 for (DataSnapshot grupo : _snapshot.getChildren()) {
-                    System.out.println(grupo.getKey());
-                    //map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
-                    n.add(new Info(null, grupo.getKey(), grupo.getValue(GrupoEntity.class).getNombreGrupo(), "seguir!"));
+                    if (grupo.getValue(GrupoEntity.class).getNombreGrupo().toLowerCase().contains(aux3)) {
+                        if (grupo.getValue(GrupoEntity.class).getDescripcion() != null) {
+                            n.add(new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(),
+                                    grupo.getValue(GrupoEntity.class).getDescripcion(), "seguir!"));
+                        }
+                        else {
+                            n.add(new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(),
+                                    null, "seguir!"));
+                        }
+
+                    }
 
                 }
                 activity.mostrarInfoGrupoElegido(n);
+                activity.hideProgressDialog();
             }
 
             @Override
@@ -304,5 +335,36 @@ public class GrupoMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void getGrupoEventosForFragmentGrupos(Fragment _activity, Map<String, String> _idU) {
+        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<GrupoEntity> info = new ArrayList<GrupoEntity>();
+            GruposFragment activity;
+            Map<String, String> idU;
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //System.out.println(dataSnapshot);
+                for (DataSnapshot grupo : dataSnapshot.getChildren()) {
+                    GrupoEntity u = grupo.getValue(GrupoEntity.class);
+                    if (idU.containsKey(grupo.getKey())) {
+                        info.add(u);
+                    }
+                }
+                activity.setInfoGrupos(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idU) {
+                activity = (GruposFragment) _activity;
+                idU = _idU;
+                return this;
+            }
+        }.setActivity(_activity, _idU));
     }
 }

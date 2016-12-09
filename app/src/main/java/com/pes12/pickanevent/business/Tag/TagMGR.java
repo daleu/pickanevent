@@ -15,6 +15,8 @@ import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
+import com.pes12.pickanevent.view.VerGruposConTagActivity;
+import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
 import java.util.ArrayList;
@@ -92,6 +94,38 @@ public class TagMGR {
                 return this;
             }
         }.setActivity(_activity, _idS));
+    }
+
+    public void getInfoTagGrupos(Activity _activity, final String _tagName) {
+        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+            TagEntity info = new TagEntity();
+            VerGruposConTagActivity activity;
+            String tagName;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+
+                for (DataSnapshot tag : _dataSnapshot.getChildren()) {
+                    TagEntity t = tag.getValue(TagEntity.class);
+                    if (t.getNombreTag() == tagName) {
+
+                        info = t;
+                    }
+                }
+                activity.mostrarGruposTag(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity, String _tagName) {
+                activity = (VerGruposConTagActivity) _activity;
+                tagName = _tagName;
+                return this;
+            }
+        }.setActivity(_activity, _tagName));
     }
 
     public void getTodosLosTags(Activity _activity) {

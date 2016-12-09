@@ -22,7 +22,6 @@ import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -150,12 +149,12 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoElegido(Activity _activity, String _attr, String _val) {
+    public void getInfoEventoElegido(Activity _activity, String _attr, final String _val) {
         final String aux = _attr;
         final CharSequence aux2 = _val.toLowerCase();
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             BuscarEventoActivity activity;
-            ArrayList<EventoEntity> eventsElegits = new ArrayList<EventoEntity>();
+            ArrayList<Info> n = new ArrayList<>();
 
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
@@ -163,16 +162,60 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
-                            eventsElegits.add(evento.getValue(EventoEntity.class));
+                            if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
+                            }
+                            else {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        "Gratis", "asistir!"));
+                            }
                         }
                     }
                     else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
-                            eventsElegits.add(evento.getValue(EventoEntity.class));
+                            if (evento.getValue(EventoEntity.class).getDescripcion() != null) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
+                            }
+                            else {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        "Gratis", "asistir!"));
+                            }
+                        }
+                    }
+                    else if (aux.equals("precio")) {
+                        String precio = evento.getValue(EventoEntity.class).getPrecio();
+                        Double aux = null;
+                        if (precio != null) aux = Double.parseDouble(precio);
+                        if ((precio == null && _val.equals("0"))) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        "Gratis", "asistir!"));
+                        }
+                        if (precio != null) {
+                            if (precio.equals(_val) && _val.equals("0")) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        "Gratis", "asistir!"));
+                            }
+                            if(_val.equals("50") && aux < 50){
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        precio+"€", "asistir!"));
+                            }
+                            if(_val.equals("50<>200") && 50<=aux && aux<=200) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        precio+"€", "asistir!"));
+                            }
+                            if (_val.equals(">200")) {
+                                if (aux > 200) {
+                                    n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                            precio+"€", "asistir!"));
+                                }
+                            }
                         }
                     }
                 }
-                activity.mostrarInfoEventoElegido(eventsElegits);
+                activity.mostrarInfoEventoElegido(n);
+                activity.hideProgressDialog();
             }
 
             @Override

@@ -104,6 +104,13 @@
             android:onClick="goCrearGrupo" />
 
         <Button
+            android:text="Editar Grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonEditarGrupo"
+            android:onClick="goEditarGrupo" />
+
+        <Button
             android:text="Navigation Drawer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
