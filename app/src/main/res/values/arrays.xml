@@ -11,4 +11,10 @@
         <item>Grupo</item>
         <item>Evento</item>
     </string-array>
+    <string-array name="precio_array">
+        <item>Gratis</item>
+        <item>Menos de 50€</item>
+        <item>Entre 50€ y 200€</item>
+        <item>Más de 200€</item>
+    </string-array>
 </resources>

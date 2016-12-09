@@ -36,6 +36,7 @@ public class BuscarEventoActivity extends BaseActivity {
         eMGR = MGRFactory.getInstance().getEventoMGR();
         final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        final Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
         final EditText textoNombreEvento = (EditText) findViewById(R.id.textoNombreEvento);
         final EditText textoLugarEvento = (EditText) findViewById(R.id.textoLugarEvento);
         final EditText textoUsuario = (EditText) findViewById(R.id.textoUsuario);
@@ -72,6 +73,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                 textoLugarEvento.setVisibility(View.INVISIBLE);
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
+                                spinner3.setVisibility(View.INVISIBLE);
                                 textoNombreEvento.addTextChangedListener(new TextWatcher() {
 
                                     @Override
@@ -101,6 +103,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                 lista2.setAdapter(null);
                                 textoNombreEvento.setVisibility(View.INVISIBLE);
                                 textoLugarEvento.setVisibility(View.VISIBLE);
+                                spinner3.setVisibility(View.INVISIBLE);
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
                                 textoLugarEvento.addTextChangedListener(new TextWatcher() {
@@ -128,11 +131,54 @@ public class BuscarEventoActivity extends BaseActivity {
 
                                 });
 
-                            } else {
+                            } else if (spinner.getSelectedItem().toString().equals("Precio")) {
+                                lista2.setAdapter(null);
                                 textoNombreEvento.setVisibility(View.INVISIBLE);
                                 textoLugarEvento.setVisibility(View.INVISIBLE);
                                 textoUsuario.setVisibility(View.INVISIBLE);
                                 textoGrupo.setVisibility(View.INVISIBLE);
+                                spinner3.setVisibility(View.VISIBLE);
+                                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.precio_array
+                                        , android.R.layout.simple_spinner_item);
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                spinner3.setAdapter(adapter);
+                                spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> _parent, View _view, int _position, long _id) {
+                                        if (spinner.getSelectedItem().toString().equals("Gratis")) {
+                                            eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
+                                                    "precio", "0");
+                                        }
+                                        else if (spinner.getSelectedItem().toString().equals("Menos de 50€")) {
+                                            eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
+                                                    "precio", "50");
+                                        }
+                                        else if (spinner.getSelectedItem().toString().equals("Entre 50€ y 200€")) {
+                                            eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
+                                                    "precio", "50<>200");
+                                        }
+                                        else {
+                                            eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
+                                                    "precio", ">200");
+                                        }
+
+
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> _parent) {
+
+                                    }
+                                });
+
+                            }
+                            else {
+                                lista2.setAdapter(null);
+                                textoNombreEvento.setVisibility(View.INVISIBLE);
+                                textoLugarEvento.setVisibility(View.INVISIBLE);
+                                textoUsuario.setVisibility(View.INVISIBLE);
+                                textoGrupo.setVisibility(View.INVISIBLE);
+                                spinner3.setVisibility(View.INVISIBLE);
                             }
                         }
 
@@ -146,6 +192,7 @@ public class BuscarEventoActivity extends BaseActivity {
                     lista.setVisibility(View.VISIBLE);
                     lista.setAdapter(null);
                     spinner.setVisibility(View.INVISIBLE);
+                    spinner3.setVisibility(View.INVISIBLE);
                     textoNombreEvento.setVisibility(View.INVISIBLE);
                     textoLugarEvento.setVisibility(View.INVISIBLE);
                     textoUsuario.setVisibility(View.VISIBLE);
@@ -179,6 +226,7 @@ public class BuscarEventoActivity extends BaseActivity {
                     lista.setAdapter(null);
                     lista.setVisibility(View.VISIBLE);
                     spinner.setVisibility(View.INVISIBLE);
+                    spinner3.setVisibility(View.INVISIBLE);
                     textoNombreEvento.setVisibility(View.INVISIBLE);
                     textoLugarEvento.setVisibility(View.INVISIBLE);
                     textoUsuario.setVisibility(View.INVISIBLE);

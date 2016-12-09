@@ -149,7 +149,7 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoElegido(Activity _activity, String _attr, String _val) {
+    public void getInfoEventoElegido(Activity _activity, String _attr, final String _val) {
         final String aux = _attr;
         final CharSequence aux2 = _val.toLowerCase();
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
@@ -162,13 +162,13 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
-                            if (evento.getValue(EventoEntity.class).getDescripcion() != null) {
+                            if (evento.getValue(EventoEntity.class).getPrecio() != null) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getDescripcion(), "asistir!"));
+                                        evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
                             }
                             else {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
-                                        null, "asistir!"));
+                                        "Gratis", "asistir!"));
                             }
                         }
                     }
@@ -176,11 +176,40 @@ public class EventoMGR {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
                             if (evento.getValue(EventoEntity.class).getDescripcion() != null) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getDescripcion(), "asistir!"));
+                                        evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
                             }
                             else {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
-                                        null, "asistir!"));
+                                        "Gratis", "asistir!"));
+                            }
+                        }
+                    }
+                    else if (aux.equals("precio")) {
+                        String precio = evento.getValue(EventoEntity.class).getPrecio();
+                        Double aux = null;
+                        if (precio != null) aux = Double.parseDouble(precio);
+                        if ((precio == null && _val.equals("0"))) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        "Gratis", "asistir!"));
+                        }
+                        if (precio != null) {
+                            if (precio.equals(_val) && _val.equals("0")) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        "Gratis", "asistir!"));
+                            }
+                            if(_val.equals("50") && aux < 50){
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        precio+"€", "asistir!"));
+                            }
+                            if(_val.equals("50<>200") && 50<=aux && aux<=200) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        precio+"€", "asistir!"));
+                            }
+                            if (_val.equals(">200")) {
+                                if (aux > 200) {
+                                    n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                            precio+"€", "asistir!"));
+                                }
                             }
                         }
                     }
