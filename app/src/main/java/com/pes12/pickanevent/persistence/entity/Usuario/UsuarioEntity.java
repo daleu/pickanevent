@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class UsuarioEntity {
 
+    private String id;
     private String bio;
     private String username;
     private String nickname;
@@ -128,6 +129,14 @@ public class UsuarioEntity {
 
     public Map<String, String> getIdUsuarios() {
         return idUsuarios;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setIdUsuarios(Map<String, String> _idUsuarios) {
