@@ -22,7 +22,6 @@ import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -155,7 +154,7 @@ public class EventoMGR {
         final CharSequence aux2 = _val.toLowerCase();
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             BuscarEventoActivity activity;
-            ArrayList<EventoEntity> eventsElegits = new ArrayList<EventoEntity>();
+            ArrayList<Info> n = new ArrayList<>();
 
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
@@ -163,16 +162,31 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
-                            eventsElegits.add(evento.getValue(EventoEntity.class));
+                            if (evento.getValue(EventoEntity.class).getDescripcion() != null) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        evento.getValue(EventoEntity.class).getDescripcion(), "asistir!"));
+                            }
+                            else {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        null, "asistir!"));
+                            }
                         }
                     }
                     else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
-                            eventsElegits.add(evento.getValue(EventoEntity.class));
+                            if (evento.getValue(EventoEntity.class).getDescripcion() != null) {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        evento.getValue(EventoEntity.class).getDescripcion(), "asistir!"));
+                            }
+                            else {
+                                n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                        null, "asistir!"));
+                            }
                         }
                     }
                 }
-                activity.mostrarInfoEventoElegido(eventsElegits);
+                activity.mostrarInfoEventoElegido(n);
+                activity.hideProgressDialog();
             }
 
             @Override
