@@ -107,7 +107,8 @@ public class TagMGR {
 
                 for (DataSnapshot tag : _dataSnapshot.getChildren()) {
                     TagEntity t = tag.getValue(TagEntity.class);
-                    if (t.getNombreTag() == tagName) {
+                    System.out.println("111111111111111111111111111  " + t.getNombreTag());
+                    if (t.getNombreTag().equals(tagName)) {
 
                         info = t;
                     }

@@ -19,6 +19,7 @@ import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
+import com.pes12.pickanevent.view.VerGruposConTagActivity;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
@@ -238,6 +239,38 @@ public class GrupoMGR {
 
             public ValueEventListener setActivity(Activity _activity) {
                 activity = (BuscarActivity) _activity;
+                return this;
+            }
+
+        }.setActivity(_activity));
+    }
+
+    public void getGruposByNombreTag(Activity _activity, String _text) {
+        Query queryRef = bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).startAt(_text).endAt(_text + "\uf8ff");
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+            VerGruposConTagActivity activity;
+            Map<String, GrupoEntity> map = new LinkedHashMap<String, GrupoEntity>();
+
+            @Override
+            public void onDataChange(DataSnapshot _snapshot) {
+                ArrayList<Info> n = new ArrayList<Info>();
+                for (DataSnapshot grupo : _snapshot.getChildren()) {
+                    //System.out.println(grupo.getKey());
+                    //map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
+                    n.add(new Info(null, grupo.getKey(), grupo.getValue(GrupoEntity.class).getNombreGrupo(), "seguir!"));
+
+                }
+                activity.añadirGrupos(n);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerGruposConTagActivity) _activity;
                 return this;
             }
 

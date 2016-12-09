@@ -105,6 +105,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
         Map<String, String> tagsMap = _grupo.getIdTags();
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbb " + _grupo.getIdTags() );
         if (tagsMap == null) tagsMap = new LinkedHashMap<>();
         tagsMap.put(_grupo.getidTagGeneral(), "blabla");
         tMGR.getInfoTag(this, tagsMap);
@@ -154,20 +155,25 @@ public class VerInfoGrupoActivity extends BaseActivity {
             });
 
             for (int i = 1; i < info.size(); ++i) {
-                TextView test = new TextView(this);
-                test.setText(info.get(i));
-                test.setPadding(3, 3, 3, 3);
-                linearLayout.addView(test);
+                TextView siguiente = new TextView(this);
+                siguiente.setText(info.get(i));
+                siguiente.setPadding(3, 3, 3, 3);
+                siguiente.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+                    }
+                });
+                linearLayout.addView(siguiente);
             }
         }
-        TextView test2 = new TextView(this);
+        /*TextView test2 = new TextView(this);
         test2.setText("aaaaaaaaaaaaaaaaaaaaaa");
         test2.setPadding(3,3,3,3);
         linearLayout.addView(test2);
         TextView test3 = new TextView(this);
         test3.setText("aaaaaaaaaaaaaaaaaaaaaa");
         test3.setPadding(3,3,3,3);
-        linearLayout.addView(test3);
+        linearLayout.addView(test3);*/
     }
 
     /*@Override
