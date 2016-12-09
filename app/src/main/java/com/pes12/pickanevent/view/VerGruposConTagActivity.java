@@ -47,7 +47,7 @@ public class VerGruposConTagActivity extends BaseActivity {
     }
 
     public void mostrarGruposTag(TagEntity info){
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa  " + info);
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa  " + info.getNombreTag());
         hideProgressDialog();
     }
 

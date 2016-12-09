@@ -68,7 +68,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "grp0-1480690194851";
+        idGrupo = "grp11-1480690194870";
 
 
         showProgressDialog();
@@ -142,21 +142,23 @@ public class VerInfoGrupoActivity extends BaseActivity {
     public void mostrarTags(final ArrayList<String> info) {
         LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
         TextView primero = (TextView) findViewById(Primero);
-        primero.setText(info.get(0));
-        primero.setPadding(3,3,3,3);
-        primero.hasOnClickListeners();
+        if (info.size() > 0) {
+            primero.setText(info.get(0));
+            primero.setPadding(3, 3, 3, 3);
+            primero.hasOnClickListeners();
 
-        primero.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+            primero.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+                }
+            });
+
+            for (int i = 1; i < info.size(); ++i) {
+                TextView test = new TextView(this);
+                test.setText(info.get(i));
+                test.setPadding(3, 3, 3, 3);
+                linearLayout.addView(test);
             }
-        });
-
-        for (int i = 1; i < info.size(); ++i) {
-            TextView test = new TextView(this);
-            test.setText(info.get(i));
-            test.setPadding(3,3,3,3);
-            linearLayout.addView(test);
         }
         TextView test2 = new TextView(this);
         test2.setText("aaaaaaaaaaaaaaaaaaaaaa");
@@ -166,11 +168,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
         test3.setText("aaaaaaaaaaaaaaaaaaaaaa");
         test3.setPadding(3,3,3,3);
         linearLayout.addView(test3);
-       /* TextView test4 = new TextView(this);
-        test4.setText("bbbbbbbbbbbbbbbbb");
-        test4.setPadding(3,3,3,3);
-        linearLayout.addView(test4);*/
-        //tags.setText(tagsAsString);
     }
 
     /*@Override
