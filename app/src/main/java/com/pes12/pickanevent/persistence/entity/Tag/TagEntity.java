@@ -11,7 +11,8 @@ public class TagEntity {
 
     /*nombreTag*/
     private String nombreTag;
-    private Map<String,String> mapIdGrupos;
+    private String id;
+    private Map<String, String> idGrupos;
 
     public TagEntity() {
 
@@ -29,9 +30,23 @@ public class TagEntity {
         nombreTag = _nombreTag;
     }
 
-    public Map<String,String> getIdGrupos() {return mapIdGrupos;}
+    public String getId() {
+        return id;
+    }
 
-    public void setIdGrupos (Map<String,String> _mapIdGrupos) {mapIdGrupos = _mapIdGrupos;}
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Map<String, String> getIdGrupos() {
+
+        return idGrupos;
+    }
+
+    public void setIdGrupos(Map<String, String> idGrupos)
+    {
+        this.idGrupos = idGrupos;
+    }
 
     public enum ATTRIBUTES {
 

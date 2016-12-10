@@ -68,7 +68,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "grp0-1480690194851";
+        idGrupo = "grp11-1480690194870";
 
 
         showProgressDialog();
@@ -105,6 +105,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
         Map<String, String> tagsMap = _grupo.getIdTags();
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbb " + _grupo.getIdTags() );
         if (tagsMap == null) tagsMap = new LinkedHashMap<>();
         tagsMap.put(_grupo.getidTagGeneral(), "blabla");
         tMGR.getInfoTag(this, tagsMap);
@@ -142,35 +143,37 @@ public class VerInfoGrupoActivity extends BaseActivity {
     public void mostrarTags(final ArrayList<String> info) {
         LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
         TextView primero = (TextView) findViewById(Primero);
-        primero.setText(info.get(0));
-        primero.setPadding(3,3,3,3);
-        primero.hasOnClickListeners();
+        if (info.size() > 0) {
+            primero.setText(info.get(0));
+            primero.setPadding(3, 3, 3, 3);
+            primero.hasOnClickListeners();
 
-        primero.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+            primero.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+                }
+            });
+
+            for (int i = 1; i < info.size(); ++i) {
+                TextView siguiente = new TextView(this);
+                siguiente.setText(info.get(i));
+                siguiente.setPadding(3, 3, 3, 3);
+                siguiente.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+                    }
+                });
+                linearLayout.addView(siguiente);
             }
-        });
-
-        for (int i = 1; i < info.size(); ++i) {
-            TextView test = new TextView(this);
-            test.setText(info.get(i));
-            test.setPadding(3,3,3,3);
-            linearLayout.addView(test);
         }
-        TextView test2 = new TextView(this);
+        /*TextView test2 = new TextView(this);
         test2.setText("aaaaaaaaaaaaaaaaaaaaaa");
         test2.setPadding(3,3,3,3);
         linearLayout.addView(test2);
         TextView test3 = new TextView(this);
         test3.setText("aaaaaaaaaaaaaaaaaaaaaa");
         test3.setPadding(3,3,3,3);
-        linearLayout.addView(test3);
-       /* TextView test4 = new TextView(this);
-        test4.setText("bbbbbbbbbbbbbbbbb");
-        test4.setPadding(3,3,3,3);
-        linearLayout.addView(test4);*/
-        //tags.setText(tagsAsString);
+        linearLayout.addView(test3);*/
     }
 
     /*@Override

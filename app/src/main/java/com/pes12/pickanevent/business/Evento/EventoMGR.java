@@ -174,7 +174,7 @@ public class EventoMGR {
                     }
                     else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
-                            if (evento.getValue(EventoEntity.class).getDescripcion() != null) {
+                            if (evento.getValue(EventoEntity.class).getPrecio() != null) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
                             }
@@ -188,7 +188,7 @@ public class EventoMGR {
                         String precio = evento.getValue(EventoEntity.class).getPrecio();
                         Double aux = null;
                         if (precio != null) aux = Double.parseDouble(precio);
-                        if ((precio == null && _val.equals("0"))) {
+                        if (precio == null && _val.equals("0")) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
                                         "Gratis", "asistir!"));
                         }
@@ -209,6 +209,34 @@ public class EventoMGR {
                                 if (aux > 200) {
                                     n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
                                             precio+"€", "asistir!"));
+                                }
+                            }
+                        }
+                    }
+                    else if (aux.equals("dia") && evento.getValue(EventoEntity.class).getDataInici() != null) {
+                        long tiempo = evento.getValue(EventoEntity.class).getDataInici().getTime();
+                        if (evento.getValue(EventoEntity.class).getDataFinal() != null) {
+                            long tiempoFinal = evento.getValue(EventoEntity.class).getDataFinal().getTime();
+                            if (Long.parseLong(_val) >= tiempo && Long.parseLong(_val) <= tiempoFinal) {
+                                if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                                    n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                            evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
+                                }
+                                else {
+                                    n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                            "Gratis", "asistir!"));
+                                }
+                            }
+                        }
+                        else {
+                            if (Long.parseLong(_val) == tiempo) {
+                                if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                                    n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                            evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
+                                }
+                                else {
+                                    n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                            "Gratis", "asistir!"));
                                 }
                             }
                         }

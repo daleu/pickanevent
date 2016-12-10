@@ -1,7 +1,6 @@
 package com.pes12.pickanevent.view;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
@@ -23,7 +21,6 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -154,38 +151,40 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * USUARIO
      */
-
-    public boolean siguiendoUsuario(UsuarioEntity _seguidor, UsuarioEntity _seguido, String _idSeguido) {
-        return _seguidor.getIdUsuarios() != null && _seguidor.getIdUsuarios().containsKey((_idSeguido == null) ? _seguido.getId() : _idSeguido);
+    public boolean siguiendoUsuario(String _idSeguido) {
+        return siguiendoUsuario(getUsuarioActual(), _idSeguido);
+    }
+    public boolean siguiendoUsuario(UsuarioEntity _seguidor, String _idSeguido) {
+        return _seguidor.getIdUsuarios() != null && _seguidor.getIdUsuarios().containsKey(_idSeguido);
     }
 
-    public void seguirUsuario(UsuarioEntity _seguidor, UsuarioEntity _seguido, String _idSeguido, String _nicknameSeguido) {
+    public void seguirUsuario(String _idSeguido, String _nicknameSeguido) {
+        seguirUsuario(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idSeguido, _nicknameSeguido);
+    }
+    public void seguirUsuario(String _idSeguidor, UsuarioEntity _seguidor, String _idSeguido, String _nicknameSeguido) {
         Map<String, String> siguiendo = _seguidor.getIdUsuarios();
         if (siguiendo == null) {
             siguiendo = new HashMap<String, String>();
             _seguidor.setIdUsuarios(siguiendo);
         }
-        String nick = "";
-        if (_idSeguido != null && _nicknameSeguido != null) {
-            siguiendo.put(_idSeguido, _nicknameSeguido);
-            nick = _nicknameSeguido;
-        } else if (_seguido != null) {
-            siguiendo.put(_seguido.getId(), _seguido.getNickname());
-            nick = _seguido.getNickname();
-        }
+        siguiendo.put(_idSeguido, _nicknameSeguido);
+        String nick = _nicknameSeguido;
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_seguidor.getId(), _seguidor);
+        uMGR.actualizar(_idSeguidor, _seguidor);
 
         Toast.makeText(this, R.string.SIGUIENDO_A + nick, Toast.LENGTH_LONG).show();
     }
 
-    public void dejarSeguirUsuario(UsuarioEntity _seguidor, UsuarioEntity _seguido, String _idSeguido) {
-        if (siguiendoUsuario(_seguidor, _seguido, _idSeguido))
-            _seguidor.getIdUsuarios().remove((_idSeguido == null) ? _seguido.getId() : _idSeguido);
+    public void dejarSeguirUsuario(String _idSeguido) {
+        dejarSeguirUsuario(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idSeguido);
+    }
+    public void dejarSeguirUsuario(String _idSeguidor, UsuarioEntity _seguidor, String _idSeguido) {
+        if (siguiendoUsuario(_seguidor, _idSeguido))
+            _seguidor.getIdUsuarios().remove(_idSeguido);
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_seguidor.getId(), _seguidor);
+        uMGR.actualizar(_idSeguidor, _seguidor);
 
         Toast.makeText(this, R.string.USUARIO_UNFOLLOWED, Toast.LENGTH_LONG).show();
     }
@@ -193,38 +192,41 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * GRUPO
      */
-
-    public boolean siguiendoGrupo(UsuarioEntity _seguidor, GrupoEntity _grupo, String _idGrupo) {
-        return _seguidor.getIdGrupos() != null && _seguidor.getIdGrupos().containsKey((_idGrupo == null) ? _grupo.getId() : _idGrupo);
+    public boolean siguiendoGrupo(String _idGrupo) {
+        return siguiendoGrupo(getUsuarioActual(), _idGrupo);
+    }
+    public boolean siguiendoGrupo(UsuarioEntity _seguidor, String _idGrupo) {
+        if (_seguidor == null) return siguiendoGrupo(_idGrupo);
+        return _seguidor.getIdGrupos() != null && _seguidor.getIdGrupos().containsKey(_idGrupo);
     }
 
-    public void seguirGrupo(UsuarioEntity _seguidor, GrupoEntity _grupo, String _idGrupo, String _nombreGrupo) {
+    public void seguirGrupo(String _idGrupo, String _nombreGrupo) {
+        seguirGrupo(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idGrupo, _nombreGrupo);
+    }
+    public void seguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, String _idGrupo, String _nombreGrupo) {
         Map<String, String> siguiendo = _seguidor.getIdGrupos();
         if (siguiendo == null) {
             siguiendo = new HashMap<String, String>();
             _seguidor.setIdGrupos(siguiendo);
         }
-        String nombre = "";
-        if (_idGrupo != null && _nombreGrupo != null) {
-            siguiendo.put(_idGrupo, _nombreGrupo);
-            nombre = _nombreGrupo;
-        } else if (_grupo != null) {
-            siguiendo.put(_grupo.getId(), _grupo.getNombreGrupo());
-            nombre = _grupo.getNombreGrupo();
-        }
+        siguiendo.put(_idGrupo, _nombreGrupo);
+        String nombre = _nombreGrupo;
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_seguidor.getId(), _seguidor);
+        uMGR.actualizar(_idSeguidor, _seguidor);
 
         Toast.makeText(this, R.string.SIGUIENDO_A + nombre, Toast.LENGTH_LONG).show();
     }
 
-    public void dejarSeguirGrupo(UsuarioEntity _seguidor, GrupoEntity _grupo, String _idGrupo) {
-        if (siguiendoGrupo(_seguidor, _grupo, _idGrupo))
-            _seguidor.getIdGrupos().remove((_idGrupo == null) ? _grupo.getId() : _idGrupo);
+    public void dejarSeguirGrupo(String _idGrupo) {
+        dejarSeguirGrupo(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idGrupo);
+    }
+    public void dejarSeguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, String _idGrupo) {
+        if (siguiendoGrupo(_seguidor, _idGrupo))
+            _seguidor.getIdGrupos().remove(_idGrupo);
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_seguidor.getId(), _seguidor);
+        uMGR.actualizar(_idSeguidor, _seguidor);
 
         Toast.makeText(this, R.string.GRUPO_UNFOLLOWED, Toast.LENGTH_LONG).show();
     }
@@ -232,38 +234,40 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * EVENTO
      */
-
-    public boolean asistindiendoEvento(UsuarioEntity _asistidor, EventoEntity _evento, String _idEvento) {
-        return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey((_idEvento == null) ? _evento.getId() : _idEvento);
+    public boolean asistiendoEvento(String _idEvento) {
+        return asistiendoEvento(getUsuarioActual(), _idEvento);
+    }
+    public boolean asistiendoEvento(UsuarioEntity _asistidor, String _idEvento) {
+        return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey(_idEvento);
     }
 
-    public void asistirEvento(UsuarioEntity _asistidor, EventoEntity _evento, String _idEvento, String _tituloEvento) {
+    public void asistirEvento(String _idEvento, String _tituloEvento) {
+        asistirEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento, _tituloEvento);
+    }
+    public void asistirEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento, String _tituloEvento) {
         Map<String, String> asistiendo = _asistidor.getIdEventos();
         if (asistiendo == null) {
             asistiendo = new HashMap<String, String>();
             _asistidor.setIdGrupos(asistiendo);
         }
-        String titulo = "";
-        if (_idEvento != null && _tituloEvento != null) {
-            asistiendo.put(_idEvento, _tituloEvento);
-            titulo = _tituloEvento;
-        } else if (_evento != null) {
-            asistiendo.put(_evento.getId(), _evento.getTitulo());
-            titulo = _evento.getTitulo();
-        }
+        asistiendo.put(_idEvento, _tituloEvento);
+        String titulo = _tituloEvento;
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_asistidor.getId(), _asistidor);
+        uMGR.actualizar(_idAsistidor, _asistidor);
 
         Toast.makeText(this, R.string.ASISTIENDO_A + titulo, Toast.LENGTH_LONG).show();
     }
 
-    public void cancelarAsistenciaEvento(UsuarioEntity _asistidor, EventoEntity _evento, String _idEvento) {
-        if (asistindiendoEvento(_asistidor, _evento, _idEvento))
-            _asistidor.getIdEventos().remove((_idEvento == null) ? _evento.getId() : _idEvento);
+    public void cancelarAsistenciaEvento(String _idEvento) {
+        cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
+    }
+    public void cancelarAsistenciaEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento) {
+        if (asistiendoEvento(_asistidor, _idEvento))
+            _asistidor.getIdEventos().remove(_idEvento);
 
         UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_asistidor.getId(), _asistidor);
+        uMGR.actualizar(_idAsistidor, _asistidor);
 
         Toast.makeText(this, R.string.EVENTO_ASISTENCIA_CANCELADA, Toast.LENGTH_LONG).show();
     }
