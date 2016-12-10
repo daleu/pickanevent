@@ -45,7 +45,8 @@
             android:layout_alignTop="@+id/button4"
             android:layout_alignStart="@+id/editText"
             android:layout_toStartOf="@+id/button4"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:text="Si no encuentras el tag adecuado para definir tu grupo no dudes en crearlo!"
@@ -56,7 +57,8 @@
             android:textSize="18sp"
             android:layout_alignStart="@+id/editText"
             android:layout_toStartOf="@+id/crearTag"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp" />
 
         <EditText
             android:layout_width="match_parent"

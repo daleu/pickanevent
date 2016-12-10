@@ -38,6 +38,12 @@ public class TagMGR {
         bdRefTags.keepSynced(true);
     }
 
+    public void actualizar(String _key, TagEntity _entity) {
+        DatabaseReference tag = bdRefTags.child(_key); //recogemos la rama con la ID del tag en concreto
+        tag.setValue(_entity);
+
+    }
+
     public String crear(final TagEntity _entity) {
         bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
@@ -138,7 +144,7 @@ public class TagMGR {
                 info.clear();
                 for (DataSnapshot tag : _dataSnapshot.getChildren()) {
                     TagEntity t = tag.getValue(TagEntity.class);
-                    InfoTags iTag = new InfoTags(t.getNombreTag(), false, tag.getKey());
+                    InfoTags iTag = new InfoTags(t.getNombreTag(), false, tag.getKey(), t);
                     info.add(iTag);
                 }
                 activity.mostrarTags(info);
@@ -199,7 +205,7 @@ public class TagMGR {
             public void onDataChange(DataSnapshot snapshot) {
                 ArrayList<InfoTags> n = new ArrayList<InfoTags>();
                 for (DataSnapshot tag : snapshot.getChildren()) {
-                    n.add(new InfoTags(tag.getValue(TagEntity.class).getNombreTag(), false, tag.getKey()));
+                    n.add(new InfoTags(tag.getValue(TagEntity.class).getNombreTag(), false, tag.getKey(), tag.getValue(TagEntity.class)));
 
                 }
                 activity.mostrarResultadosBusquedaTags(n);
@@ -218,6 +224,4 @@ public class TagMGR {
 
         }.setActivity(_activity));
     }
-
-
 }

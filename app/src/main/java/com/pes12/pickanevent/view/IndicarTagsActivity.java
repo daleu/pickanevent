@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.view;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
@@ -171,6 +172,21 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         else {
             grupo.setIdTags(mapIdTags);
             gMGR.actualizar(idGrupo, grupo);
+            //falta "darlo de baja"
+            for (int i = 0; i < info.size(); ++i) {
+                TagEntity tagAux = info.get(i).getEntity();
+                if (info.get(i).getChecked()) {
+                    if (tagAux.getIdGrupos() == null) {
+                        Map<String,String> mapAux = new LinkedHashMap<>();
+                        tagAux.setIdGrupos(mapAux);
+                    }
+                    tagAux.getIdGrupos().put(idGrupo, grupo.getNombreGrupo());
+                }
+                else {
+                    if (tagAux.getIdGrupos() != null) tagAux.getIdGrupos().remove(idGrupo);
+                }
+                tMGR.actualizar(info.get(i).getIdTag(), tagAux);
+            }
         }
     }
 
@@ -193,7 +209,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     }
 
     public void mostrarResultadosBusquedaTags(ArrayList<InfoTags> _info) {
-
         AdapterTags ale = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, _info);
         tags.setAdapter(ale);
     }
