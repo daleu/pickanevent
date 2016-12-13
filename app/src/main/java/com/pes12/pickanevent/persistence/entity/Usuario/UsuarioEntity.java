@@ -21,14 +21,21 @@ public class UsuarioEntity {
     private Map<String, String> idTags;
     private Map<String, String> idUsuarios;
 
+    public static final String NOMBRETABLA = "usuarios";
+
     public enum ATTRIBUTES {
 
         USERNAME("username"),
+        BIO("bio"),
+        ID("id"),
         NICKNAME("nickname"),
         PASSWORD("password"),
         EMAIL("email"),
-        CM("cm");
-
+        CM("cm"),
+        ID_GRUPOS("idGrupos"),
+        ID_EVENTOS("idEventos"),
+        ID_TAGS("idTags"),
+        ID_USUARIOS("idUsuarios");
 
         private String value;
 

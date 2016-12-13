@@ -32,6 +32,7 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
@@ -95,7 +96,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                     .getPlaceById(mGoogleApiClient, placeId);
             placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
 
-            Toast.makeText(getApplicationContext(), "Clicked: " + primaryText,
+            Toast.makeText(getApplicationContext(), getString(R.string.HAS_SELECCIONAT) + primaryText,
                     Toast.LENGTH_SHORT).show();
             //Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
         }
@@ -169,12 +170,12 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         nomEvent.setText(evento.getTitulo());
         descripcio.setText(evento.getDescripcion());
         String img = evento.getImagen();
-        data.setText("horario");
+        data.setText(getString(R.string.DEFAULT_HORARIO));
         if (evento.getPrecio().equals("-1")) {
             gratuit.setChecked(true);
             preuText.setFocusable(false);
             preuText.setText("");
-            preuText.setHint("Escriba el precio del evento");
+            preuText.setHint(getString(R.string.ESCRIBE_PRECIO_EVENTO));
         } else {
             gratuit.setChecked(false);
             preuText.setText(evento.getPrecio());
@@ -205,7 +206,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         //guardem
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.actualizar(idEvento, ee);
-        Toast.makeText(this, "Evento editado", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.EVENTO_EDITADO), Toast.LENGTH_LONG).show();
         startActivity(new Intent(EditarEventoActivity.this, MainActivity.class));
     }
 
@@ -215,7 +216,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         if (gratuit.isChecked()) {
             preuText.setFocusable(false);
             preuText.setText("");
-            preuText.setHint("Escriba el precio del evento");
+            preuText.setHint(getString(R.string.ESCRIBE_PRECIO_EVENTO));
         } else {
             preuText.setFocusableInTouchMode(true);
             preuText.setFocusable(true);
@@ -239,7 +240,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         String dirGaleria = directorio.getPath();
         Uri data = Uri.parse(dirGaleria);
 
-        galeria.setDataAndType(data, "image/*"); //get all image types
+        galeria.setDataAndType(data, Constantes.SELECT_ALL_IMAGES); //get all image types
 
         startActivityForResult(galeria, GALERIA_REQUEST); //image return
     }
@@ -259,7 +260,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    Toast.makeText(this, "No s'ha pogut obrir la imatge", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getString(R.string.ERROR_OBRIR_IMATGE), Toast.LENGTH_LONG).show();
                 }
             }
         }

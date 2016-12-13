@@ -44,7 +44,7 @@ public class CrearUsuarioActivity extends BaseActivity {
 
     public void crearUsuario(View _view) {
         if (!pass.getText().toString().equals(repepass.getText().toString())) {
-            Toast.makeText(CrearUsuarioActivity.this, "Los passwords no coinciden",
+            Toast.makeText(CrearUsuarioActivity.this, getString(R.string.ERROR_PASSWORDS_DIFERENTES),
                     Toast.LENGTH_SHORT).show();
             return;
         }

@@ -80,10 +80,10 @@ public class EditarGrupoActivity extends BaseActivity{
 
     public void updateGrupo(View _view) {
         if (nombre.getText().toString().equals(""))
-            Toast.makeText(EditarGrupoActivity.this, "Debe indicar un nombre para el grupo",
+            Toast.makeText(EditarGrupoActivity.this, getString(R.string.INDICAR_NOMBRE_GRUPO),
                     Toast.LENGTH_SHORT).show();
         else if (tagPrincipal.getText().toString().equals(""))
-            Toast.makeText(EditarGrupoActivity.this, "Debe indicar un tag principal para el grupo",
+            Toast.makeText(EditarGrupoActivity.this, getString(R.string.INDICAR_TAG_GRUPO),
                     Toast.LENGTH_SHORT).show();
         else {
             String imatge;
@@ -100,7 +100,7 @@ public class EditarGrupoActivity extends BaseActivity{
 
             GrupoEntity update = new GrupoEntity(nombreG, descripG, imatge, null, "-KW3Au4_Mb-w4hnq3rSm", null, null);
             gMGR.actualizar(idGrupo,update);
-            Toast.makeText(EditarGrupoActivity.this, "Grupo editado :)",
+            Toast.makeText(EditarGrupoActivity.this, getString(R.string.GRUPO_EDITADO),
                     Toast.LENGTH_SHORT).show();
 
             //petaba con el setContentView
@@ -116,7 +116,7 @@ public class EditarGrupoActivity extends BaseActivity{
         String dirGaleria = directorio.getPath();
         Uri data = Uri.parse(dirGaleria);
 
-        galeria.setDataAndType(data, "image/*"); //get all image types
+        galeria.setDataAndType(data, Constantes.SELECT_ALL_IMAGES); //get all image types
 
         startActivityForResult(galeria, GALERIA_REQUEST); //image return
     }
@@ -135,7 +135,7 @@ public class EditarGrupoActivity extends BaseActivity{
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    Toast.makeText(this, "No s'ha pogut obrir la imatge", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getString(R.string.ERROR_OBRIR_IMATGE), Toast.LENGTH_LONG).show();
                 }
             }
         }

@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AlertDialogManager;
 import com.pes12.pickanevent.business.ConnectionDetector;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
@@ -250,7 +251,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
         } else {
             // user already logged into twitter
             Toast.makeText(getApplicationContext(),
-                    "Already Logged into twitter", Toast.LENGTH_LONG).show();
+                    getString(R.string.ERROR_TWITTER_LOGUEADO), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -295,7 +296,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(PerfilUsuarioActivity.this, "Email enviado.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(PerfilUsuarioActivity.this, getString(R.string.EMAIL_ENVIADO), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -307,7 +308,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
         String dirGaleria = directorio.getPath();
         Uri data = Uri.parse(dirGaleria);
 
-        galeria.setDataAndType(data, "image/*"); //get all image types
+        galeria.setDataAndType(data, Constantes.SELECT_ALL_IMAGES); //get all image types
 
         startActivityForResult(galeria, GALERIA_REQUEST); //image return
     }
@@ -327,7 +328,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    Toast.makeText(this, "No s'ha pogut obrir la imatge", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getString(R.string.ERROR_OBRIR_IMATGE), Toast.LENGTH_LONG).show();
                 }
             }
         }

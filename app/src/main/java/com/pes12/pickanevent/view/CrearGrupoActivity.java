@@ -47,10 +47,10 @@ public class CrearGrupoActivity extends BaseActivity {
 
     public void crearGrupo(View _view) {
         if (nombre.getText().toString().equals(""))
-            Toast.makeText(CrearGrupoActivity.this, "Debe indicar un nombre para el grupo",
+            Toast.makeText(CrearGrupoActivity.this, getString(R.string.INDICAR_NOMBRE_GRUPO),
                     Toast.LENGTH_SHORT).show();
         else if (tagPrincipal.getText().toString().equals(""))
-            Toast.makeText(CrearGrupoActivity.this, "Debe indicar un tag principal para el grupo",
+            Toast.makeText(CrearGrupoActivity.this, getString(R.string.INDICAR_TAG_GRUPO),
                     Toast.LENGTH_SHORT).show();
         else {
             String imatge;
@@ -66,7 +66,7 @@ public class CrearGrupoActivity extends BaseActivity {
             String descripG = descripcion.getText().toString();
             GrupoEntity nuevoGrupo = new GrupoEntity(nombreG, descripG, imatge, null, "-KW3Au4_Mb-w4hnq3rSm", null, null);
             gMGR.crear(nuevoGrupo);
-            Toast.makeText(CrearGrupoActivity.this, "Grupo creado :)",
+            Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
                     Toast.LENGTH_SHORT).show();
 
             //petaba con el setContentView
@@ -82,7 +82,7 @@ public class CrearGrupoActivity extends BaseActivity {
         String dirGaleria = directorio.getPath();
         Uri data = Uri.parse(dirGaleria);
 
-        galeria.setDataAndType(data, "image/*"); //get all image types
+        galeria.setDataAndType(data, Constantes.SELECT_ALL_IMAGES); //get all image types
 
         startActivityForResult(galeria, GALERIA_REQUEST); //image return
     }
@@ -101,7 +101,7 @@ public class CrearGrupoActivity extends BaseActivity {
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    Toast.makeText(this, "No s'ha pogut obrir la imatge", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.ERROR_OBRIR_IMATGE, Toast.LENGTH_LONG).show();
                 }
             }
         }

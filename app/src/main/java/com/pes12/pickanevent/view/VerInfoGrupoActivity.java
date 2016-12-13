@@ -6,13 +6,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
@@ -23,6 +20,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -30,8 +28,6 @@ import java.util.Map;
 
 import static com.pes12.pickanevent.R.id.Primero;
 import static com.pes12.pickanevent.R.id.Tags;
-import static com.pes12.pickanevent.R.id.activity_ver_info_grupo;
-import static com.pes12.pickanevent.R.id.etiquetas;
 
 public class VerInfoGrupoActivity extends BaseActivity {
 
@@ -112,8 +108,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         nombre.setText(_grupo.getNombreGrupo());
         descripcion.setText(_grupo.getDescripcion());
-        String texto = "SEGUIR!";
-        if (cm) texto = "EDITAR";
+        String texto = getString(R.string.DEFAULT_SEGUIR);
+        if (cm) texto = getString(R.string.DEFAULT_EDITAR);
         boton.setText(texto);
         String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
@@ -150,7 +146,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
             primero.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+                    startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
                 }
             });
 
@@ -160,7 +156,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
                 siguiente.setPadding(3, 3, 3, 3);
                 siguiente.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra("nombreTag", info.get(0).toString()));
+                        startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
                     }
                 });
                 linearLayout.addView(siguiente);
