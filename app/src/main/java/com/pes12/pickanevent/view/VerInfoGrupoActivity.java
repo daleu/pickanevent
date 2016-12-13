@@ -3,6 +3,7 @@ package com.pes12.pickanevent.view;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -64,7 +65,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        idGrupo = "grp11-1480690194870";
+        //idGrupo = "grp11-1480690194870";
+        idGrupo = "grp13-1480690194870";
+
 
 
         showProgressDialog();
@@ -140,9 +143,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
         TextView primero = (TextView) findViewById(Primero);
         if (info.size() > 0) {
+            //int id = 0;
             primero.setText(info.get(0));
-            primero.setPadding(3, 3, 3, 3);
+            primero.setPadding(3,3,6,3);
+            primero.setTextColor(Color.BLACK);
             primero.hasOnClickListeners();
+            //primero.setId(id);
 
             primero.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -153,7 +159,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
             for (int i = 1; i < info.size(); ++i) {
                 TextView siguiente = new TextView(this);
                 siguiente.setText(info.get(i));
-                siguiente.setPadding(3, 3, 3, 3);
+                siguiente.setPadding(3, 3, 6, 3);
+                siguiente.setTextColor(Color.BLACK);
+                //RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                //params1.addRule(RelativeLayout.RIGHT_OF,id);
+                //++id;
+                //siguiente.setId(id);
                 siguiente.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
@@ -164,12 +175,16 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
         /*TextView test2 = new TextView(this);
         test2.setText("aaaaaaaaaaaaaaaaaaaaaa");
-        test2.setPadding(3,3,3,3);
+        test2.setPadding(3,3,6,3);
         linearLayout.addView(test2);
         TextView test3 = new TextView(this);
         test3.setText("aaaaaaaaaaaaaaaaaaaaaa");
-        test3.setPadding(3,3,3,3);
-        linearLayout.addView(test3);*/
+        test3.setPadding(3,3,6,3);
+        linearLayout.addView(test3);
+        TextView test4 = new TextView(this);
+        test4.setText("aaaaaaaaaaaaaaaaaaaaaa");
+        test4.setPadding(3,3,6,3);
+        linearLayout.addView(test4);*/
     }
 
     /*@Override
