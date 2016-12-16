@@ -198,7 +198,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
             return null;
         }
     }
-
+/*
     public void updateEvento(View _view) {
         //cridem a la funcio compartida entre la creacio/edicio event
         EventoEntity ee = parseEventViewToEntity(image, lat, lng);
@@ -207,7 +207,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         eMGR.actualizar(idEvento, ee);
         Toast.makeText(this, "Evento editado", Toast.LENGTH_LONG).show();
         startActivity(new Intent(EditarEventoActivity.this, MainActivity.class));
-    }
+    } */
 
     public void comprovarCheckBox(View _view) {
         CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);

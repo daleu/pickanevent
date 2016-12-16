@@ -17,6 +17,7 @@
     <string name="ESCRIBE_LUGAR_EVENTO">Escribe el lugar del evento</string>
     <string name="ESCRIBE_DIA_EVENTO">Escribe el día del evento</string>
     <string name="ERROR">Campo vacío</string>
+    <string name="ERROR_HORA">Hora incorrecta</string>
     <string name="EVENTO_NO_ENCONTRADO">Evento no encontrado</string>
     <string name="PRIMER_DIA">Primer día</string>
     <string name="ULTIMO_DIA">Último día (opcional)</string>

@@ -42,6 +42,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.Date;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
@@ -62,6 +63,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     EditText localitzacio;
 
 
+    private Date dataIni;
+    private Date dataFi;
     public static final int GALERIA_REQUEST = 20;
     private static final LatLngBounds bounds =
             new LatLngBounds(new LatLng(35.871045, -9.919695), new LatLng(42.957396, 4.729860));
@@ -150,7 +153,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
+                data.setText(day + " de " + ViewSharedMethods.getNomMes(month+1, getApplicationContext()) + " de " + year);
+                Date d = new Date(year-1900, month, day);
+                dataIni = d;
             }
         });
         calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
@@ -158,7 +163,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         calendarFinal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
+                dataFinal.setText(day + " de " + ViewSharedMethods.getNomMes(month+1, getApplicationContext()) + " de " + year);
+                Date d = new Date(year-1900, month, day);
+                dataFi = d;
             }
         });
         gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
@@ -207,31 +214,50 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         hora = (EditText) findViewById(R.id.hora);
         data = (EditText) findViewById(R.id.editorFecha);
         dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
+        if (nomEvent.getText().toString().equals("") ||
+                localitzacio.getText().toString().equals("") ||
+                    !gratuit.isChecked() && preuText.getText().equals("") ||
+                        data.getText().toString().equals("") || hora.getText().toString().equals("")) {
 
-        if (nomEvent.getText().toString().equals(""))
-            Toast.makeText(this, "Debe indicar un nombre para el grupo",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.ERROR, Toast.LENGTH_SHORT).show();
+        }
         else {
             String imatge;
-            if (image != null) {
-                ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-                image.recycle();
-                byte[] byteArray = bYtE.toByteArray();
-                imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            } else imatge = null;
-            EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
-                    descripcio.getText().toString(),
-                    imatge,
-                    preuText.getText().toString(),
-                    url.getText().toString(),
-                    localitzacio.getText().toString(), lat, lng
-                    //(Date) data.getText(), (Date) dataFinal.getText()
-            );
-            eMGR = MGRFactory.getInstance().getEventoMGR();
-            eMGR.crear(ee);
-            Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
-            startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+            Calendar cal = Calendar.getInstance(); // creates calendar
+            cal.setTime(dataIni); // sets calendar time/date
+            String[] time = hora.getText().toString().split(":");
+            if (time.length != 2) Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+            else {
+                int hora = Integer.parseInt(time[0]);
+                int minuto = Integer.parseInt(time[1]);
+                if ((hora < 0 && hora > 23) || (minuto < 0 && minuto > 59)) {
+                    Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    cal.add(Calendar.HOUR, hora); // adds one hour
+                    cal.add(Calendar.MINUTE, minuto); // adds one hour
+                    Date d = cal.getTime(); // returns new date object, one hour in the future
+                    if (image != null) {
+                        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+                        image.recycle();
+                        byte[] byteArray = bYtE.toByteArray();
+                        imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                    } else imatge = null;
+                    EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
+                            descripcio.getText().toString(),
+                            imatge,
+                            preuText.getText().toString(),
+                            url.getText().toString(),
+                            localitzacio.getText().toString(), lat, lng,
+                            Long.toString(d.getTime()), Long.toString(dataFi.getTime())
+                    );
+                    eMGR = MGRFactory.getInstance().getEventoMGR();
+                    eMGR.crear(ee);
+                    Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+                }
+            }
         }
     }
 
