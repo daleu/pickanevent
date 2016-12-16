@@ -145,9 +145,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
         if (info.size() > 0) {
             //int id = 0;
             primero.setText(info.get(0));
-            primero.setPadding(3,3,6,3);
-            primero.setTextColor(Color.BLACK);
+            primero.setPadding(3,2,3,2);
+            primero.setTextColor(Color.rgb(100,100,100));
             primero.hasOnClickListeners();
+            primero.setBackgroundColor(Color.rgb(130,255,130));
             //primero.setId(id);
 
             primero.setOnClickListener(new View.OnClickListener() {
@@ -159,8 +160,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
             for (int i = 1; i < info.size(); ++i) {
                 TextView siguiente = new TextView(this);
                 siguiente.setText(info.get(i));
-                siguiente.setPadding(3, 3, 6, 3);
-                siguiente.setTextColor(Color.BLACK);
+                siguiente.setPadding(3, 2, 3, 2);
+                siguiente.setTextColor(Color.rgb(100,100,100));
+                siguiente.hasOnClickListeners();
+                siguiente.setBackgroundColor(Color.rgb(130,255,130));
                 //RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 //params1.addRule(RelativeLayout.RIGHT_OF,id);
                 //++id;
