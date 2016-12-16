@@ -59,6 +59,7 @@
                 android:ems="10"
                 android:id="@+id/correo"
                 />
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
@@ -112,7 +113,20 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonRestart"
                 android:layout_centerInParent="true"/>
+
+            <Button
+                android:id="@+id/twitter_logout_button"
+                android:text="Log out from Twitter"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonRestart"
+                android:visibility="gone"
+                android:onClick="logoutTwitter"
+                android:layout_centerInParent="true"
+                />
 
         </LinearLayout>
 

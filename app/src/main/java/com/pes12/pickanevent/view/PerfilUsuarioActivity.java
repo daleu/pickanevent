@@ -1,13 +1,18 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,8 +27,10 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
@@ -55,6 +62,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
     //Twitter
     private TwitterLoginButton loginButton;
+    private Button logout;
 
 
     @Override
@@ -68,6 +76,8 @@ public class PerfilUsuarioActivity extends BaseActivity {
         foto = (ImageView) findViewById(R.id.imagen);
         correo = (TextView) findViewById(R.id.correo);
         bio  = (EditText) findViewById(R.id.bio);
+        loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
+        logout = (Button) findViewById(R.id.twitter_logout_button);
         ///////////////////////////////////////////////////////////////////////
         current = getAuth().getCurrentUser();
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
@@ -77,7 +87,11 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
         mostrarInfoUsuario();
 
-        loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
+        if (Twitter.getInstance().core.getSessionManager().getActiveSession() != null) {
+            loginButton.setVisibility(View.GONE);
+            logout.setVisibility(View.VISIBLE);
+        }
+
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
@@ -88,6 +102,8 @@ public class PerfilUsuarioActivity extends BaseActivity {
                 // with your app's user model
                 String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                loginButton.setVisibility(View.GONE);
+                logout.setVisibility(View.VISIBLE);
             }
             @Override
             public void failure(TwitterException exception) {
@@ -95,6 +111,32 @@ public class PerfilUsuarioActivity extends BaseActivity {
             }
         });
 
+    }
+
+    public void logoutTwitter(View _view) {
+        TwitterSession twitterSession = TwitterCore.getInstance().getSessionManager().getActiveSession();
+        if (twitterSession != null) {
+            ClearCookies(getApplicationContext());
+            Twitter.getSessionManager().clearActiveSession();
+            Twitter.logOut();
+            loginButton.setVisibility(View.VISIBLE);
+            logout.setVisibility(View.GONE);
+        }
+    }
+
+    public static void ClearCookies(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+            CookieManager.getInstance().removeAllCookies(null);
+            CookieManager.getInstance().flush();
+        } else {
+            CookieSyncManager cookieSyncMngr=CookieSyncManager.createInstance(context);
+            cookieSyncMngr.startSync();
+            CookieManager cookieManager=CookieManager.getInstance();
+            cookieManager.removeAllCookie();
+            cookieManager.removeSessionCookie();
+            cookieSyncMngr.stopSync();
+            cookieSyncMngr.sync();
+        }
     }
 
     public void mostrarInfoUsuario() {
