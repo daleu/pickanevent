@@ -52,6 +52,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         Button botonNuevo = (Button) findViewById(R.id.crearTag);
         TextView textoNuevoTag = (TextView) findViewById(R.id.textoNuevo);
+        TextView textoMinimoTags = (TextView) findViewById(R.id.tagsMinimos);
         tags = (ListView) findViewById(R.id.eventos);
 
         final EditText tv = (EditText) findViewById(R.id.inputBusqueda);
@@ -86,6 +87,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         esCM = getUsuarioActual().getCm();
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
+            textoMinimoTags.setVisibility(View.INVISIBLE);
             Bundle b = getIntent().getExtras();
             idGrupo = b.getString("idGrupo");
             botonNuevo.setOnClickListener(new View.OnClickListener() {
