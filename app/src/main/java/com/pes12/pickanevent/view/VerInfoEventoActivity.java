@@ -7,10 +7,12 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +25,12 @@ import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.Map;
 
@@ -37,6 +45,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     private ImageView imagenevento;
 
     private Button comprarEntradas;
+    private Button share;
+
 
     private String idEvento;
     private String web;
@@ -90,7 +100,19 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 "Palau Sant Jordi",
                 "dissabte, 1 / octubre de 21:00 a 0:00 \n 1 octubre (21:00) - 2 octubre (0:00)");
         eMGR.crear(ge);*/
+    }
 
+    public void post(View _view) {
+        if (Twitter.getInstance().core.getSessionManager().getActiveSession() != null) {
+            TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                    .text("Te recomiendo el evento "
+                            + titulo.getText().toString() + " en " + lugar.getText().toString()
+                            + "!\nMe acompañas? \n\n"
+                            + "PickAnEvent");
+            builder.show();
+        }
+        else
+            Toast.makeText(this,"Tienes que logearte en Twitter en \"Perfil de Usuario\"",Toast.LENGTH_SHORT).show();
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
@@ -160,10 +182,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)))
-                .title("Palau Sant Jordi"));
-
+                .title(lugar.getText().toString()));
     }
-
 
     /*@Override
     public boolean onKeyDown(int keyCode, KeyEvent event)

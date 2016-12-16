@@ -59,6 +59,7 @@
                 android:ems="10"
                 android:id="@+id/correo"
                 />
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
@@ -107,24 +108,25 @@
                 android:onClick="restartPassword"
             />
 
-            <!-- Twitter Login Button -->
-            <Button android:id="@+id/btnLoginTwitter"
-                android:layout_width="fill_parent"
+            <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                android:id="@+id/twitter_login_button"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar sesión con Twitter"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="30dip"/>
+                android:layout_below="@+id/buttonRestart"
+                android:layout_centerInParent="true"/>
 
-            <!-- Twitter Logout button -->
-            <Button android:id="@+id/btnLogoutTwitter"
-                android:layout_width="fill_parent"
+            <Button
+                android:id="@+id/twitter_logout_button"
+                android:text="Log out from Twitter"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cerrar sessión con Twitter"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="50dip"
-                android:visibility="gone"/>
+                android:layout_below="@+id/buttonRestart"
+                android:visibility="gone"
+                android:onClick="logoutTwitter"
+                android:layout_centerInParent="true"
+                />
 
         </LinearLayout>
 

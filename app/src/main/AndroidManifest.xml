@@ -56,6 +56,9 @@
         <activity android:name=".view.VerGruposCreadosActivity" />
         <activity android:name=".view.IndicarTagsActivity" />
         <activity android:name=".view.VerGruposConTagActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="42c3fa39b750f2917f569731e9dba00f1c6bc6f5" />
     </application>
 
 </manifest>

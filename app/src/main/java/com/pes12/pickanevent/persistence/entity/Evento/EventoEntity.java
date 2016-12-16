@@ -52,8 +52,7 @@ public class EventoEntity {
     }
 
     public EventoEntity(String nombre, String descr, String img, String precio, String webpage, String localizacion, String latitud, String longitud
-                        //Date dataIn, Date dataFi) {
-    ){
+                        ,Date dataIn, Date dataFi) {
         setTitulo(nombre);
         setDescripcion(descr);
         setImagen(img);
@@ -62,8 +61,8 @@ public class EventoEntity {
         setLocalizacion(localizacion);
         setLatitud(latitud);
         setLongitud(longitud);
-        //setDataIniciDate(dataIn);
-        //setDataFinalDate(dataFi);
+        setDataIniciDate(dataIn);
+        setDataFinalDate(dataFi);
     }
 
     public boolean isEmpty() {
@@ -155,12 +154,12 @@ public class EventoEntity {
     }
 
     public void setDataFinalDate(Date dataFinal) {
-        String s = String.valueOf(dataFinal);
+        String s = dataFinal.toString();
         setDataFinal(s);
     }
 
     public void setDataIniciDate(Date dataIn) {
-        String s = String.valueOf(dataIn);
+        String s = dataIn.toString();
         setDataInici(s);
     }
 
