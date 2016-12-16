@@ -43,6 +43,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Date;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
