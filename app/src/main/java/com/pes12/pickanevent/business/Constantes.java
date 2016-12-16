@@ -6,16 +6,8 @@ package com.pes12.pickanevent.business;
 
 public final class Constantes {
 
-
-    /* CAMPOS DE LA BASE DE DATOS */
-    public static final String BBDD_TABLA_EVENTOS = "eventos";
-    public static final String BBDD_TABLA_GRUPOS = "grupos";
-    public static final String BBDD_TABLA_TAGS = "tags";
-    public static final String BBDD_TABLA_USUARIOS = "usuarios";
-    public static final String BBDD_ATRIBUTO_NOMBRE_EVENTO = "nombreEvento";
-    public static final String BBDD_ATRIBUTO_NOMBRE_GRUPO = "nombreGrupo";
-    public static final String BBDD_ATRIBUTO_NOMBRE_TAG = "nombreTag";
-    public static final String BBDD_ATRIBUTO_NOMBRE_USUARIO = "username";
+    /*URL/PATHs */
+    public static final String SELECT_ALL_IMAGES = "image/*";
 
     /* PRINT MESSAGES */
     /* ERROR MESSAGES */

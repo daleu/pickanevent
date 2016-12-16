@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Grupo;
 
+import com.pes12.pickanevent.business.Constantes;
+
 import java.util.Map;
 
 /**
@@ -8,26 +10,42 @@ import java.util.Map;
 
 public class GrupoEntity {
 
-    /*NombreGrupo*/
     private String nombreGrupo;
-    /*Descripcion*/
     private String descripcion;
-    /*Imagen*/
     private String imagen;
-    /*Nickname*/
     private String nickname;
-    /*idTag General*/
     private String idTagGeneral;
-    /*idUsuario*/
     private String idUsuario;
-    /*webPage*/
     private String webpage;
-    /*    EVENTOS   */
     private Map<String, String> mapIdEventos;
-    /*    TAGS_ADICIONALES   */
     private Map<String, String> mapIdTags;
-
     private String id;
+
+    public static final String NOMBRETABLA ="grupos";
+
+    public enum ATTRIBUTES {
+
+        NOMBREGRUPO("nombreGrupo"),
+        DESCRIPCION("descripcion"),
+        IMAGEN("imagen"),
+        NICKNAME("nickname"),
+        IDTAGGENERAL("idTagGeneral"),
+        IDUSUARIO("idUsuario"), //creador
+        WEBPAGE("webpage"),
+        MAP_ID_EVENTOS("mapIdEventos"),
+        MAP_ID_TAGS("mapIdTags"),
+        ID("id");
+
+        private String value;
+
+        ATTRIBUTES(String _value) {
+            value = _value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 
     public GrupoEntity() {
 
@@ -129,32 +147,6 @@ public class GrupoEntity {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public enum ATTRIBUTES {
-
-        NOMBREGRUPO("nombreGrupo"),
-        DESCRIPCION("descripcion"),
-        IMAGEN("imagen"),
-        NICKNAME("nickname"),
-        IDTAG("idtag"),
-        IDUSUARIO("idusuario"), //creador
-        WEBPAGE("webpage");
-
-
-        private String value;
-
-        ATTRIBUTES(String _value) {
-            value = _value;
-        }
-
-        ;
-
-        public String getValue() {
-            return value;
-        }
-
-        ;
     }
 
 

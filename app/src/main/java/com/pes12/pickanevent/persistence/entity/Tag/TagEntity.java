@@ -1,6 +1,5 @@
 package com.pes12.pickanevent.persistence.entity.Tag;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,6 +12,25 @@ public class TagEntity {
     private String nombreTag;
     private String id;
     private Map<String, String> idGrupos;
+
+    public static final String NOMBRETABLA = "tags";
+
+    public enum ATTRIBUTES {
+
+        NOMBRETAG("nombreTag"),
+        ID_GRUPOS("idGrupos"),
+        ID("id");
+
+        private String value;
+
+        ATTRIBUTES(String _value) {
+            value = _value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 
     public TagEntity() {
 
@@ -48,22 +66,4 @@ public class TagEntity {
         this.idGrupos = idGrupos;
     }
 
-    public enum ATTRIBUTES {
-
-        NOMBRETAG("nombreTag");
-
-        private String value;
-
-        ATTRIBUTES(String _value) {
-            value = _value;
-        }
-
-        ;
-
-        public String getValue() {
-            return value;
-        }
-
-        ;
-    }
 }

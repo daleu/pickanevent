@@ -36,33 +36,15 @@ public class EventoMGR {
 
     private FirebaseDatabase database;
     private DatabaseReference bdRefEventos;
-    //private static EventoMGR singleton;
-
-    /*public static EventoMGR getInstance()
-    {
-        if(singleton==null)
-        {
-            singleton= new EventoMGR();
-            return singleton;
-        }
-        else return singleton;
-    }
-
-    public EventoMGR () {
-
-        database = FirebaseFactory.getInstance();
-        bdRefEventos = database.getReference("eventos");
-
-    }*/
 
     public void inicializarDatabase(FirebaseDatabase _database) {
         this.database = _database;
-        bdRefEventos = _database.getReference(Constantes.BBDD_TABLA_EVENTOS);
+        bdRefEventos = _database.getReference(EventoEntity.NOMBRETABLA);
         bdRefEventos.keepSynced(true);
     }
 
     public String crear(EventoEntity _entity) {
-        bdRefEventos.orderByChild("titulo").equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
 
             @Override
@@ -160,7 +142,7 @@ public class EventoMGR {
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
-                    if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo() != null) {
+                    if (aux.equals(EventoEntity.ATTRIBUTES.TITULO.getValue()) && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
                             if (evento.getValue(EventoEntity.class).getPrecio() != null) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),

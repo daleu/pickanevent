@@ -20,6 +20,33 @@ public class EventoEntity {
     private String longitud;
     private String id;
 
+    public static final String NOMBRETABLA = "eventos";
+
+    public enum ATTRIBUTES {
+
+        TITULO("titulo"),
+        DESCRIPCION("descripcion"),
+        IMAGEN("imagen"),
+        PRECIO("precio"),
+        LOCALIZACION("localizacion"),
+        DATAINICI("dataInici"),
+        DATAFINAL("dataFinal"),
+        LATITUD("latitud"),
+        LONGITUD("longitud"),
+        WEBPAGE("webpage"),
+        ID("id");
+
+        private String value;
+
+        ATTRIBUTES(String _value) {
+            value = _value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+
     public EventoEntity() {
 
     }
@@ -143,4 +170,5 @@ public class EventoEntity {
     public void setId(String id) {
         this.id = id;
     }
+
 }

@@ -1,7 +1,6 @@
 package com.pes12.pickanevent.business.Tag;
 
 import android.app.Activity;
-import android.nfc.Tag;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -10,13 +9,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
-import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
-import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.VerGruposConTagActivity;
-import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 
 import java.util.ArrayList;
@@ -34,7 +30,7 @@ public class TagMGR {
 
     public void inicializarDatabase(FirebaseDatabase _database) {
         this.database = _database;
-        bdRefTags = _database.getReference(Constantes.BBDD_TABLA_TAGS);
+        bdRefTags = _database.getReference(TagEntity.NOMBRETABLA);
         bdRefTags.keepSynced(true);
     }
 
@@ -45,7 +41,7 @@ public class TagMGR {
     }
 
     public String crear(final TagEntity _entity) {
-        bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefTags.orderByChild(TagEntity.ATTRIBUTES.NOMBRETAG.getValue()).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
 
             @Override
@@ -164,7 +160,7 @@ public class TagMGR {
     }
 
     public String crearNuevoTag(Activity _activity, final TagEntity _entity) {
-        bdRefTags.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_TAG).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefTags.orderByChild(TagEntity.ATTRIBUTES.NOMBRETAG.getValue()).equalTo(_entity.getNombreTag()).addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity ent;
             IndicarTagsActivity activity;
             String id;

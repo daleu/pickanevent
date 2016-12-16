@@ -49,7 +49,7 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         if (_usuario.getIdUsuarios() != null) uMGR.getUsers(this, _usuario.getIdUsuarios());
         else {
             hideProgressDialog();
-            Toast.makeText(VerEventosUsuariosQueSigoActivity.this, "No tienes amigos :D", Toast.LENGTH_SHORT).show();
+            Toast.makeText(VerEventosUsuariosQueSigoActivity.this, getString(R.string.ERROR_SIN_AMIGOS), Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -163,7 +163,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     public void actualizarPreferencias(View view) {
         if (!esCM && mapIdTags.size() < 3) {
-            Toast.makeText(IndicarTagsActivity.this, "Indica un mínimo de 3 tags", Toast.LENGTH_SHORT).show();
+            Toast.makeText(IndicarTagsActivity.this, getString(R.string.INDICA_TRES_TAGS), Toast.LENGTH_SHORT).show();
         }
         else if (!esCM){
             getUsuarioActual().setIdTags(mapIdTags);

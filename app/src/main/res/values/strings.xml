@@ -32,6 +32,7 @@
     <string name="DEFAULT_LOGIN">Login</string>
     <string name="DEFAULT_USUARIO_LOGUEADO_PREG">Usuario conectado?</string>
     <string name="DEFAULT_INFORMACION_OTRO_USUARIO">Información otro usuario</string>
+    <string name="DEFAULT_EDITAR">Editar</string>
     <string name="DEFAULT_EDITAR_EVENTO">Editar evento</string>
     <string name="DEFAULT_DESCRIPCION">Descripción</string>
     <string name="DEFAULT_INFORMACION">Información</string>
@@ -71,6 +72,28 @@
     <string name="EVENTO_ASISTENCIA_CANCELADA">Has cancelado tu asistencia al evento</string>
     <string name="DEFAULT_COMPARTIR">Compartir!</string>
     <string name="DEFAULT_SHARE">Comparte en Twitter</string>
+    <string name="LOCALIZACION">Localización</string>
+    <string name="DEFAULT_USUARIOS">Usuarios</string>
+    <string name="HAS_SELECCIONAT">Has seleccionado</string>
+    <string name="INDICAR_NOMBRE_GRUPO">Debe indicar un nombre para el grupo</string>
+    <string name="INDICAR_TAG_GRUPO">Debe indicar un tag para el grupo</string>
+    <string name="ERROR_OBRIR_IMATGE">No se ha podido abrir la imagen</string>
+    <string name="DEFAULT_GRUPO_CREADO">Grupo creado</string>
+    <string name="ERROR_PASSWORDS_DIFERENTES">Las contraseñas no coinciden</string>
+    <string name="DEFAULT_HORARIO">horario</string>
+    <string name="EVENTO_EDITADO">Evento editado</string>
+    <string name="GRUPO_EDITADO">Grupo editado</string>
+    <string name="INDICA_TRES_TAGS">Grupo editado</string>
+    <string name="LOGIN_INCORRECTO">Login incorrecto</string>
+    <string name="LOGIN_CORRECTO">Login correcto </string>
+    <string name="CORREO_NO_VERIFICADO">Correo no verificado </string>
+    <string name="ERROR_USUARIO_YA_LOGUEADO">Desloguea el usuario actual antes de loguear con otro </string>
+    <string name="ERROR_NO_LOGUEADO">No hay usuario logueado</string>
+    <string name="MODO_USUARIO">Modo Usuario</string>
+    <string name="MODO_CM">Modo CM</string>
+    <string name="ERROR_TWITTER_LOGUEADO">Ya has logueado en twitter</string>
+    <string name="EMAIL_ENVIADO">Email enviado</string>
+    <string name="ERROR_SIN_AMIGOS">Sin amigos</string>
 
 
 

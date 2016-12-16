@@ -68,7 +68,7 @@ public class VerGruposCreadosActivity extends BaseActivity {
         String img = grupo.getImagen();
         Bitmap imBM = StringToBitMap(img);
         String nombreGrupo = grupo.getNombreGrupo();
-        Info info = new Info(imBM, nombreGrupo, "adeu", "seguir!");
+        Info info = new Info(imBM, nombreGrupo, "", getString(R.string.DEFAULT_SEGUIR));
         grupos.add(info);
         //System.out.println(grupos.get(0).primeraLinea);
         AdapterLista ale = new AdapterLista(VerGruposCreadosActivity.this, R.layout.vista_adapter_lista, grupos);

@@ -71,7 +71,7 @@ public class BuscarActivity extends BaseActivity {
     //funcion para probar lecturas
     public void printNicknames(ArrayList<Info> _info) {
 
-        tv1.setText("Usuarios");
+        tv1.setText(R.string.DEFAULT_USUARIOS);
 
 
         //arraylist Append
@@ -80,7 +80,7 @@ public class BuscarActivity extends BaseActivity {
     }
 
     public void printNombresGrupo(ArrayList<Info> _info) {
-        tv2.setText("Grupos");
+        tv2.setText(R.string.DEFAULT_GRUPOS);
 
 
         //arraylist Append

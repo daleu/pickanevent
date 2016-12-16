@@ -62,7 +62,7 @@ public class UsuarioMGR {
 
     public void inicializarDatabase(FirebaseDatabase _database) {
         this.database = _database;
-        bdRefUsuarios = _database.getReference(Constantes.BBDD_TABLA_USUARIOS);
+        bdRefUsuarios = _database.getReference(UsuarioEntity.NOMBRETABLA);
         bdRefUsuarios.keepSynced(true);
     }
 
@@ -123,7 +123,7 @@ public class UsuarioMGR {
 
     public String crear(UsuarioEntity _entity) {
 
-        bdRefUsuarios.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_USUARIO).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity ent;
 
             @Override
