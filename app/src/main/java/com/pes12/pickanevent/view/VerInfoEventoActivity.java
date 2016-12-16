@@ -25,6 +25,7 @@ import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
@@ -102,12 +103,16 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void post(View _view) {
-        TweetComposer.Builder builder = new TweetComposer.Builder(this)
-                .text("Te recomiendo el evento "
-                        + titulo.getText().toString() +" en " + lugar.getText().toString()
-                        + "!\nMe acompañas? \n\n"
-                        + "PickAnEvent");
-        builder.show();
+        if (Twitter.getInstance().core.getSessionManager().getActiveSession() != null) {
+            TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                    .text("Te recomiendo el evento "
+                            + titulo.getText().toString() + " en " + lugar.getText().toString()
+                            + "!\nMe acompañas? \n\n"
+                            + "PickAnEvent");
+            builder.show();
+        }
+        else
+            Toast.makeText(this,"Tienes que logearte en Twitter en \"Perfil de Usuario\"",Toast.LENGTH_SHORT).show();
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
@@ -178,14 +183,6 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)))
                 .title(lugar.getText().toString()));
-    }
-
-    public void asistirEvento() {
-        if (!asistiendoEvento(getUsuarioActual(),idEvento)){
-            asistirEvento(getUsuarioActual().getId(),getUsuarioActual(),idEvento,titulo.getText().toString());
-        }
-        else
-            Toast.makeText(this,"Ya asistes a este evento",Toast.LENGTH_SHORT).show();
     }
 
     /*@Override
