@@ -38,7 +38,7 @@
     <string name="DEFAULT_COMPRAR_ENTRADAS">Comprar Entradas!</string>
     <string name="DEFAULT_LOCALIZACION">Localización</string>
     <string name="DEFAULT_ASSISTIR">Asistir!</string>
-    <string name="DEFAULT_ASISTENCIA">Asistencia</string>
+    <string name="DEFAULT_ASISTENCIA">Asiste al evento</string>
     <string name="DEFAULT_SEGUIR">Seguir!</string>
     <string name="DEFAULT_ETIQUETAS">Etiquetas</string>
     <string name="DEFAULT_DATES_LLISTA_ESDEVENIMENT">1 i 2 de Octubre</string>
@@ -69,6 +69,8 @@
     <string name="GRUPO_UNFOLLOWED">Ya no sigues al grupo</string>
     <string name="ASISTIENDO_A">Has marcado tu asistencia al evento </string>
     <string name="EVENTO_ASISTENCIA_CANCELADA">Has cancelado tu asistencia al evento</string>
+    <string name="DEFAULT_COMPARTIR">Compartir!</string>
+    <string name="DEFAULT_SHARE">Comparte en Twitter</string>
 
 
 

@@ -220,13 +220,15 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 byte[] byteArray = bYtE.toByteArray();
                 imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
             } else imatge = null;
+            Date ini = (Date) data.getText();
+            String iniString = String.valueOf(ini.getTime());
             EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
                     descripcio.getText().toString(),
                     imatge,
                     preuText.getText().toString(),
                     url.getText().toString(),
                     localitzacio.getText().toString(), lat, lng
-                    //(Date) data.getText(), (Date) dataFinal.getText()
+                    ,(Date) data.getText(), (Date) dataFinal.getText()
             );
             eMGR = MGRFactory.getInstance().getEventoMGR();
             eMGR.crear(ee);

@@ -107,24 +107,11 @@
                 android:onClick="restartPassword"
             />
 
-            <!-- Twitter Login Button -->
-            <Button android:id="@+id/btnLoginTwitter"
-                android:layout_width="fill_parent"
+            <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                android:id="@+id/twitter_login_button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar sesión con Twitter"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="30dip"/>
-
-            <!-- Twitter Logout button -->
-            <Button android:id="@+id/btnLogoutTwitter"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Cerrar sessión con Twitter"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="50dip"
-                android:visibility="gone"/>
+                android:layout_centerInParent="true"/>
 
         </LinearLayout>
 

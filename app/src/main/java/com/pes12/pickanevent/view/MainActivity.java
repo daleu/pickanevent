@@ -9,15 +9,27 @@ import android.widget.Toast;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+
+import io.fabric.sdk.android.Fabric;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "PUlLyuMrqQzt61r7dmHgy6b6W";
+    private static final String TWITTER_SECRET = "EoOyglsIzCZZJ4ghHBU2ZoLgUduoPEGYuSy1mZZmrI7IjlVigQ";
+
 
     private boolean cm = false;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig),new TweetComposer());
         setContentView(R.layout.activity_main);
 
 /*
