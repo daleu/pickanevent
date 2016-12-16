@@ -59,7 +59,7 @@ public class GrupoMGR {
 
     public void inicializarDatabase(FirebaseDatabase _database) {
         this.database = _database;
-        bdRefGrupos = _database.getReference(Constantes.BBDD_TABLA_GRUPOS);
+        bdRefGrupos = _database.getReference(GrupoEntity.NOMBRETABLA);
         bdRefGrupos.keepSynced(true);
     }
 

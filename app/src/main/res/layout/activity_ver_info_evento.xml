@@ -229,6 +229,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layoutAssist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutMap"
@@ -249,6 +250,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_height="30dp"
+                    android:onClick="asistirEvento"
                     android:radius="20dip"/>
 
                 <TextView
@@ -259,6 +261,45 @@
                     android:textStyle="normal|bold"
                     android:textColor="#000"
                     android:id="@+id/textAssistencia"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutAssist"
+                android:background="#fff"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:text="@string/DEFAULT_COMPARTIR"
+                    android:id="@+id/buttonShare"
+                    style="@style/tw__Button"
+                    android:layout_width="120dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="30dp"
+                    android:onClick="post"
+                    android:radius="20dip"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/DEFAULT_SHARE"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textShare"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true" />

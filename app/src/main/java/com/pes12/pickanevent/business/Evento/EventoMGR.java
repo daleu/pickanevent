@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +17,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
+import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
@@ -36,33 +38,15 @@ public class EventoMGR {
 
     private FirebaseDatabase database;
     private DatabaseReference bdRefEventos;
-    //private static EventoMGR singleton;
-
-    /*public static EventoMGR getInstance()
-    {
-        if(singleton==null)
-        {
-            singleton= new EventoMGR();
-            return singleton;
-        }
-        else return singleton;
-    }
-
-    public EventoMGR () {
-
-        database = FirebaseFactory.getInstance();
-        bdRefEventos = database.getReference("eventos");
-
-    }*/
 
     public void inicializarDatabase(FirebaseDatabase _database) {
         this.database = _database;
-        bdRefEventos = _database.getReference(Constantes.BBDD_TABLA_EVENTOS);
+        bdRefEventos = _database.getReference(EventoEntity.NOMBRETABLA);
         bdRefEventos.keepSynced(true);
     }
 
     public String crear(EventoEntity _entity) {
-        bdRefEventos.orderByChild("titulo").equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
 
             @Override
@@ -160,7 +144,7 @@ public class EventoMGR {
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
-                    if (aux.equals("titulo") && evento.getValue(EventoEntity.class).getTitulo() != null) {
+                    if (aux.equals(EventoEntity.ATTRIBUTES.TITULO.getValue()) && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
                             if (evento.getValue(EventoEntity.class).getPrecio() != null) {
                                 n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
@@ -391,6 +375,39 @@ public class EventoMGR {
             public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idS) {
                 activity = (TimelineFragment) _activity;
                 idS = _idS;
+                return this;
+            }
+        }.setActivity(_activity, _idS));
+    }
+
+    public void getEventosForFragment(Fragment _activity, Map<String, String> _idS) {
+        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+            //ArrayList<Info> info = new ArrayList();
+            ArrayList<EventoEntity> eventos = new ArrayList();
+            EventsFragment activity;
+            Map<String, String> idS;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
+                    EventoEntity e = evento.getValue(EventoEntity.class);
+                    if (idS.containsKey(evento.getKey())) {
+                        eventos.add(e);
+                        //info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!"));
+                    }
+                }
+                activity.mostrarEventosUsuario(eventos);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idS) {
+                activity = (EventsFragment) _activity;
+                idS = _idS;
+                Log.e("vinga va", idS.toString());
                 return this;
             }
         }.setActivity(_activity, _idS));

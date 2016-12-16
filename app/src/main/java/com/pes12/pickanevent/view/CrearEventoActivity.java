@@ -33,6 +33,7 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
@@ -114,7 +115,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                     .getPlaceById(mGoogleApiClient, placeId);
             placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
 
-            Toast.makeText(getApplicationContext(), "Clicked: " + primaryText,
+            Toast.makeText(getApplicationContext(), getString(R.string.HAS_SELECCIONAT) + primaryText,
                     Toast.LENGTH_SHORT).show();
             //Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
         }
@@ -258,6 +259,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                     startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                 }
             }
+
         }
     }
 
@@ -265,7 +267,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         if (gratuit.isChecked()) {
             preuText.setFocusable(false);
             preuText.setText("");
-            preuText.setHint(R.string.ESCRIBE_PRECIO_EVENTO);
+            preuText.setHint(getString(R.string.ESCRIBE_PRECIO_EVENTO));
         } else {
             preuText.setFocusableInTouchMode(true);
             preuText.setFocusable(true);
@@ -299,7 +301,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         String dirGaleria = directorio.getPath();
         Uri data = Uri.parse(dirGaleria);
 
-        galeria.setDataAndType(data, "image/*"); //get all image types
+        galeria.setDataAndType(data, Constantes.SELECT_ALL_IMAGES); //get all image types
 
         startActivityForResult(galeria, GALERIA_REQUEST); //image return
     }
@@ -319,7 +321,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    Toast.makeText(this, "No s'ha pogut obrir la imatge", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.ERROR_OBRIR_IMATGE, Toast.LENGTH_LONG).show();
                 }
             }
         }

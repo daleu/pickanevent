@@ -9,15 +9,27 @@ import android.widget.Toast;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+
+import io.fabric.sdk.android.Fabric;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "PUlLyuMrqQzt61r7dmHgy6b6W";
+    private static final String TWITTER_SECRET = "EoOyglsIzCZZJ4ghHBU2ZoLgUduoPEGYuSy1mZZmrI7IjlVigQ";
+
 
     private boolean cm = false;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig),new TweetComposer());
         setContentView(R.layout.activity_main);
 
 /*
@@ -125,7 +137,7 @@ BLOQUE DE TEST
 
     public void goLogin(View _view) {
         if (getAuth().getCurrentUser() != null)
-            Toast.makeText(MainActivity.this, "Ya hay un usuario logeado, haz signout para entrar con uno nuevo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, getString(R.string.ERROR_USUARIO_YA_LOGUEADO), Toast.LENGTH_SHORT).show();
         else
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
@@ -139,7 +151,7 @@ BLOQUE DE TEST
         if (getUsuarioActual() != null)
             Toast.makeText(MainActivity.this, (CharSequence) getUsuarioActual().toString(), Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(MainActivity.this, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, getString(R.string.ERROR_NO_LOGUEADO), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -158,17 +170,17 @@ BLOQUE DE TEST
     public void cambiarModo(View _view) {
         if (cm) {
             cm = false;
-            Toast.makeText(this, "Modo Usuario", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.MODO_USUARIO), Toast.LENGTH_SHORT).show();
             System.out.println("CM Despues del canvio" + cm);
         } else {
             cm = true;
-            Toast.makeText(this, "Modo CM", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.MODO_CM), Toast.LENGTH_SHORT).show();
             System.out.println("CM Despues del canvio" + cm);
         }
     }
 
     public void goNavBar(View _view) {
-        System.out.println("HiiiHiiiHiiiiiiiii!");
+        System.out.println("Going navigation Bar!");
         startActivity(new Intent(MainActivity.this, NavigationDrawer.class));
     }
 

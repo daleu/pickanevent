@@ -52,6 +52,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         Button botonNuevo = (Button) findViewById(R.id.crearTag);
         TextView textoNuevoTag = (TextView) findViewById(R.id.textoNuevo);
+        TextView textoMinimoTags = (TextView) findViewById(R.id.tagsMinimos);
         tags = (ListView) findViewById(R.id.eventos);
 
         final EditText tv = (EditText) findViewById(R.id.inputBusqueda);
@@ -86,6 +87,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         esCM = getUsuarioActual().getCm();
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
+            textoMinimoTags.setVisibility(View.INVISIBLE);
             Bundle b = getIntent().getExtras();
             idGrupo = b.getString("idGrupo");
             botonNuevo.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +165,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
     public void actualizarPreferencias(View view) {
         if (!esCM && mapIdTags.size() < 3) {
-            Toast.makeText(IndicarTagsActivity.this, "Indica un mínimo de 3 tags", Toast.LENGTH_SHORT).show();
+            Toast.makeText(IndicarTagsActivity.this, getString(R.string.INDICA_TRES_TAGS), Toast.LENGTH_SHORT).show();
         }
         else if (!esCM){
             getUsuarioActual().setIdTags(mapIdTags);
@@ -172,7 +174,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         else {
             grupo.setIdTags(mapIdTags);
             gMGR.actualizar(idGrupo, grupo);
-            //falta "darlo de baja"
             for (int i = 0; i < info.size(); ++i) {
                 TagEntity tagAux = info.get(i).getEntity();
                 if (info.get(i).getChecked()) {

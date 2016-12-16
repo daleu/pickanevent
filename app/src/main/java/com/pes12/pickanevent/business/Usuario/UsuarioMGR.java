@@ -16,9 +16,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+import com.pes12.pickanevent.view.AmistadesFragment;
 import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
@@ -62,7 +64,7 @@ public class UsuarioMGR {
 
     public void inicializarDatabase(FirebaseDatabase _database) {
         this.database = _database;
-        bdRefUsuarios = _database.getReference(Constantes.BBDD_TABLA_USUARIOS);
+        bdRefUsuarios = _database.getReference(UsuarioEntity.NOMBRETABLA);
         bdRefUsuarios.keepSynced(true);
     }
 
@@ -123,7 +125,7 @@ public class UsuarioMGR {
 
     public String crear(UsuarioEntity _entity) {
 
-        bdRefUsuarios.orderByChild(Constantes.BBDD_ATRIBUTO_NOMBRE_USUARIO).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
+        bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity ent;
 
             @Override
@@ -442,5 +444,84 @@ public class UsuarioMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void getUserFromFragmentEventos(Fragment _activity, String _idUsuario) {
+        bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            EventsFragment activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.getEventsFromUser(u);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity) {
+                activity = (EventsFragment) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getUserFromFragmentAmistades(Fragment _activity, String _idUsuario) {
+        bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
+            UsuarioEntity u;
+            AmistadesFragment activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
+
+                activity.getAmistadesFromUser(u);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity) {
+                activity = (AmistadesFragment) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }
+
+    public void getUsersForFragmentAmistades(Fragment _activity, Map<String, String> _idU) {
+        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<UsuarioEntity> info = new ArrayList<UsuarioEntity>();
+            AmistadesFragment activity;
+            Map<String, String> idU;
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot usuario : dataSnapshot.getChildren()) {
+                    UsuarioEntity u = usuario.getValue(UsuarioEntity.class);
+                    if (idU.containsKey(usuario.getKey())) {
+                        info.add(u);
+                    }
+                }
+                activity.setAmistades(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Fragment _activity, Map<String, String> _idU) {
+                activity = (AmistadesFragment) _activity;
+                idU = _idU;
+                return this;
+            }
+        }.setActivity(_activity, _idU));
     }
 }

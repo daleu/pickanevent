@@ -93,18 +93,22 @@ public class NavigationDrawer extends BaseActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            getSupportActionBar().setTitle("Timeline");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.main_fragment, new TimelineFragment());
             ft.commit();
         } else if (id == R.id.nav_gallery) {
+            getSupportActionBar().setTitle("Mis Grupos");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.main_fragment, new GruposFragment());
             ft.commit();
         } else if (id == R.id.nav_slideshow) {
+            getSupportActionBar().setTitle("Mis Amistades");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.main_fragment, new AmistadesFragment());
             ft.commit();
         } else if (id == R.id.nav_manage) {
+            getSupportActionBar().setTitle("Mis Eventos");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.main_fragment, new EventsFragment());
             ft.commit();

@@ -140,7 +140,7 @@ public class GruposFragment extends Fragment {
         if(info!=null){
             ArrayList<Info> infoAdapter = new ArrayList();
             for(GrupoEntity e : info){
-                Info aux = new Info(StringToBitMap(e.getImagen()), e.getNombreGrupo(), "", "Seguir!");
+                Info aux = new Info(StringToBitMap(e.getImagen()), e.getNombreGrupo(), "", getString(R.string.DEFAULT_SEGUIR));
                 aux.setId(e.getId());
                 infoAdapter.add(aux);
             }
