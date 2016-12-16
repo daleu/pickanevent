@@ -83,7 +83,7 @@
     <string name="DEFAULT_HORARIO">horario</string>
     <string name="EVENTO_EDITADO">Evento editado</string>
     <string name="GRUPO_EDITADO">Grupo editado</string>
-    <string name="INDICA_TRES_TAGS">Grupo editado</string>
+    <string name="INDICA_TRES_TAGS">Indica un mínimo de 3 tags</string>
     <string name="LOGIN_INCORRECTO">Login incorrecto</string>
     <string name="LOGIN_CORRECTO">Login correcto </string>
     <string name="CORREO_NO_VERIFICADO">Correo no verificado </string>

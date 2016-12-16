@@ -172,7 +172,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         else {
             grupo.setIdTags(mapIdTags);
             gMGR.actualizar(idGrupo, grupo);
-            //falta "darlo de baja"
             for (int i = 0; i < info.size(); ++i) {
                 TagEntity tagAux = info.get(i).getEntity();
                 if (info.get(i).getChecked()) {
