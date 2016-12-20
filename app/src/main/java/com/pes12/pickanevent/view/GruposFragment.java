@@ -23,6 +23,7 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -136,14 +137,21 @@ public class GruposFragment extends Fragment {
         }
     }
 
-    public void setInfoGrupos(ArrayList<GrupoEntity> info) {
+    public void setInfoGrupos(Map<String, GrupoEntity> info) {
         if(info!=null){
+            Iterator it = info.entrySet().iterator();
             ArrayList<Info> infoAdapter = new ArrayList();
-            for(GrupoEntity e : info){
-                Info aux = new Info(StringToBitMap(e.getImagen()), e.getNombreGrupo(), "", getString(R.string.DEFAULT_SEGUIR));
-                aux.setId(e.getId());
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry)it.next();
+                System.out.println(pair.getKey() + " = " + pair.getValue());
+                GrupoEntity ge = (GrupoEntity)pair.getValue();
+                Info aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_SEGUIR));
+                aux.setId((String)pair.getKey());
                 infoAdapter.add(aux);
+
             }
+
+
 
             AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
             eventos.setAdapter(ale);
