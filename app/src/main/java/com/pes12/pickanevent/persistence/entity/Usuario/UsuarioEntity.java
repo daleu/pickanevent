@@ -15,9 +15,11 @@ public class UsuarioEntity {
     private String password;
     private String email;
     private Boolean cm;
-    /*GRUPOS, si cm==true serán los grupos creados, si cm == false serán los grupos seguidos */
+    /*GRUPOS, si cm == true serán los grupos creados, si cm == false serán los grupos seguidos */
     private Map<String, String> idGrupos;
+    /*EVENTOS, si cm == true serán los eventos creados, si cm == false serán los eventos a los que asiste*/
     private Map<String, String> idEventos;
+    /*solamente el usuario con cm == false debería tener idTags o idUsuarios*/
     private Map<String, String> idTags;
     private Map<String, String> idUsuarios;
 
