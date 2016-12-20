@@ -375,17 +375,19 @@ public class GrupoMGR {
             ArrayList<GrupoEntity> info = new ArrayList<GrupoEntity>();
             GruposFragment activity;
             Map<String, String> idU;
-
+            Map<String,GrupoEntity> gUI = new HashMap<String, GrupoEntity>();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //System.out.println(dataSnapshot);
+
                 for (DataSnapshot grupo : dataSnapshot.getChildren()) {
                     GrupoEntity u = grupo.getValue(GrupoEntity.class);
                     if (idU.containsKey(grupo.getKey())) {
                         info.add(u);
+                        gUI.put(grupo.getKey(),u);
                     }
                 }
-                activity.setInfoGrupos(info);
+                activity.setInfoGrupos(gUI);
             }
 
             @Override
