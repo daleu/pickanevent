@@ -1,7 +1,5 @@
 package com.pes12.pickanevent.persistence.entity.Grupo;
 
-import com.pes12.pickanevent.business.Constantes;
-
 import java.util.Map;
 
 /**
@@ -19,7 +17,7 @@ public class GrupoEntity {
     private String webpage;
     private Map<String, String> mapIdEventos;
     private Map<String, String> mapIdTags;
-    private String id;
+    //private String id;
 
     public static final String NOMBRETABLA ="grupos";
 
@@ -141,13 +139,13 @@ public class GrupoEntity {
         mapIdTags = _idTags;
     }
 
-    public String getId() {
+    /*public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
+    }*/
 
 
 }

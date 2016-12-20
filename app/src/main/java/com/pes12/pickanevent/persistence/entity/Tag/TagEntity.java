@@ -10,7 +10,7 @@ public class TagEntity {
 
     /*nombreTag*/
     private String nombreTag;
-    private String id;
+    //private String id;
     private Map<String, String> idGrupos;
 
     public static final String NOMBRETABLA = "tags";
@@ -48,13 +48,13 @@ public class TagEntity {
         nombreTag = _nombreTag;
     }
 
-    public String getId() {
+    /*public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
+    }*/
 
     public Map<String, String> getIdGrupos() {
 
