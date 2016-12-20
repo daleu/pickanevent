@@ -15,6 +15,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.AmistadesFragment;
 import com.pes12.pickanevent.view.BaseActivity;
@@ -499,7 +500,7 @@ public class UsuarioMGR {
             ArrayList<UsuarioEntity> info = new ArrayList<UsuarioEntity>();
             AmistadesFragment activity;
             Map<String, String> idU;
-
+            Map<String,UsuarioEntity> gUI = new HashMap<String, UsuarioEntity>();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -507,9 +508,10 @@ public class UsuarioMGR {
                     UsuarioEntity u = usuario.getValue(UsuarioEntity.class);
                     if (idU.containsKey(usuario.getKey())) {
                         info.add(u);
+                        gUI.put(usuario.getKey(),u);
                     }
                 }
-                activity.setAmistades(info);
+                activity.setAmistades(gUI);
             }
 
             @Override
