@@ -19,11 +19,6 @@
             android:value="@string/google_android_map_api_key" />
 
         <activity android:name=".view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.VerInfoGrupoActivity" />
         <activity android:name=".view.CrearEventoActivity" />
@@ -37,7 +32,7 @@
         <activity android:name=".view.VerEventosUsuariosQueSigoActivity" />
         <activity android:name=".view.CrearGrupoActivity" />
         <activity android:name=".view.EditarGrupoActivity" />
-        <activity android:name=".view.PerfilUsuarioActivity" >
+        <activity android:name=".view.PerfilUsuarioActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -55,10 +50,21 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".view.VerGruposCreadosActivity" />
         <activity android:name=".view.IndicarTagsActivity" />
-        <activity android:name=".view.VerGruposConTagActivity"></activity>
+        <activity android:name=".view.VerGruposConTagActivity" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="42c3fa39b750f2917f569731e9dba00f1c6bc6f5" />
+
+        <activity
+            android:name=".view.SplashScreenActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

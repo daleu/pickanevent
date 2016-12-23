@@ -180,7 +180,7 @@ public class TimelineFragment extends Fragment {
 
         for(EventoEntity e : events){
             Info aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!");
-            aux.setId(e.getId());
+            //aux.setId(e.getId());
             info.add(aux);
         }
 

@@ -48,7 +48,8 @@
                 android:layout_height="160dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:onClick="abrirGaleria"/>
+                android:onClick="abrirGaleria"
+                android:focusable="false" />
 
             <EditText
                 android:layout_width="match_parent"
