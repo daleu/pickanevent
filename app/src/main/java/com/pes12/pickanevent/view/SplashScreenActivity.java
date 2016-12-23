@@ -13,6 +13,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = new Intent(this, MainActivity.class);
+        //LA REDIRECCIÓN REAL SERA LA COMENTADA
+        //Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
