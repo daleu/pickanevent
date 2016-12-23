@@ -151,8 +151,6 @@ public class GruposFragment extends Fragment {
 
             }
 
-
-
             AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
             eventos.setAdapter(ale);
 

@@ -24,6 +24,8 @@ import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -132,13 +134,20 @@ public class AmistadesFragment extends Fragment {
         } else setAmistades(null);
     }
 
-    public void setAmistades(ArrayList<UsuarioEntity> info) {
+    public void setAmistades(Map<String, UsuarioEntity> info) {
         if(info!=null){
             ArrayList<Info> infoAdapter = new ArrayList();
-            for(UsuarioEntity e : info){
-                Info aux = new Info(StringToBitMap(null), e.getNickname(), "", getString(R.string.DEFAULT_SEGUIR));
-                aux.setId(e.getId());
-                infoAdapter.add(aux);
+
+            if(info!=null){
+                Iterator it = info.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    System.out.println(pair.getKey() + " = " + pair.getValue());
+                    GrupoEntity ge = (GrupoEntity) pair.getValue();
+                    Info aux = new Info(StringToBitMap(ge.getImagen()), ge.getNickname(), "", getString(R.string.DEFAULT_SEGUIR));
+                    aux.setId((String) pair.getKey());
+                    infoAdapter.add(aux);
+                }
             }
 
             AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
