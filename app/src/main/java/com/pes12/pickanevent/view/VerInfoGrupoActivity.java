@@ -104,7 +104,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
         Map<String, String> tagsMap = _grupo.getIdTags();
-        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbb " + _grupo.getIdTags() );
         if (tagsMap == null) tagsMap = new LinkedHashMap<>();
         tagsMap.put(_grupo.getidTagGeneral(), "blabla");
         tMGR.getInfoTag(this, tagsMap);

@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.view.CrearGrupoActivity;
 
 import java.util.ArrayList;
 
 /**
- * Created by usuario on 24/11/2016.
+ * Created by Clara on 24/11/2016.
  */
 
 public class AdapterTags extends ArrayAdapter<InfoTags> {

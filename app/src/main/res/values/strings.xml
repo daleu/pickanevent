@@ -65,7 +65,7 @@
     <string name="DEFAULT_EDITAR_GRUPO">Modificar grupo</string>
     <string name="ESCRIBE_NOMBRE_GRUPO">Escribe el nombre del grupo</string>
     <string name="ESCRIBE_DESCRIPCION_GRUPO">Escribe la descripción de tu grupo</string>
-    <string name="ESCRIBE_TAG_PRINCIPAL_GRUPO">Escribe el tag principal de tu grupo</string>
+    <string name="ESCRIBE_TAG_PRINCIPAL_GRUPO">Escribe el tag principal</string>
     <string name="SIGUIENDO_A">Siguiendo a </string>
     <string name="USUARIO_UNFOLLOWED">Ya no sigues al usuario</string>
     <string name="GRUPO_UNFOLLOWED">Ya no sigues al grupo</string>
