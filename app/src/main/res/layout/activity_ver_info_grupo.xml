@@ -64,7 +64,9 @@
                 android:layout_below="@+id/nombreGrupo"
                 android:layout_height="20dp"
                 android:background="#fff"
-                android:textStyle="normal|bold" />
+                android:textStyle="normal|bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -73,11 +75,12 @@
                 android:textSize="16sp"
                 android:textColor="#000"
                 android:layout_below="@+id/descr"
-                android:layout_alignParentStart="true"
                 android:paddingTop="5dp"
                 android:scrollbars = "vertical"
                 android:background="#fff"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_alignStart="@+id/descr"
+                android:layout_alignEnd="@+id/descr" />
 
             <TextView
                 android:text="@string/DEFAULT_ETIQUETAS"
@@ -89,18 +92,45 @@
                 android:scrollbars="vertical"
                 android:background="#fff"
                 android:layout_below="@+id/descripcion"
-                android:layout_centerHorizontal="true"
                 android:textStyle="normal|bold"
                 android:layout_marginTop="10dp"
-                android:layout_height="21dp" />
+                android:layout_height="21dp"
+                android:layout_alignStart="@+id/Horizontal"
+                android:layout_alignEnd="@+id/descripcion" />
+
+            <TextView
+                android:text="@string/DEFAULT_EVENTOS"
+                android:layout_width="match_parent"
+                android:id="@+id/EventosTitulo"
+                android:fontFamily="sans-serif"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:scrollbars="vertical"
+                android:background="#fff"
+                android:textStyle="normal|bold"
+                android:layout_height="24dp"
+                android:layout_below="@+id/Horizontal"
+                android:layout_marginTop="7dp"
+                android:layout_alignStart="@+id/Horizontal"
+                android:layout_alignEnd="@+id/Horizontal" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:id="@+id/event"
+                android:layout_below="@+id/EventosTitulo"
+                android:layout_alignStart="@+id/EventosTitulo"
+                android:layout_height="155dp"
+                android:layout_alignEnd="@+id/EventosTitulo" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff"
-                android:layout_below="@+id/etiquetas"
                 android:id="@+id/Horizontal"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:layout_below="@+id/etiquetas"
+                android:layout_alignEnd="@+id/descripcion"
+                android:layout_alignStart="@+id/descripcion">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -123,27 +153,16 @@
 
             </HorizontalScrollView>
 
-            <TextView
-                android:text="@string/DEFAULT_EVENTOS"
-                android:layout_width="match_parent"
-                android:id="@+id/EventosTitulo"
-                android:fontFamily="sans-serif"
-                android:textSize="16sp"
-                android:textColor="#000"
-                android:scrollbars="vertical"
-                android:background="#fff"
-                android:textStyle="normal|bold"
-                android:layout_height="24dp"
-                android:layout_below="@+id/Horizontal"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="7dp" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:id="@+id/event"
-                android:layout_below="@+id/EventosTitulo"
-                android:layout_alignStart="@+id/EventosTitulo"
-                android:layout_height="155dp" />
+            <Button
+                android:text="Editar tags"
+                android:id="@+id/editarTags"
+                android:background="@drawable/boton_amarillo_custom"
+                android:layout_width="120dp"
+                android:layout_height="26dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignEnd="@+id/seguir"
+                android:layout_marginTop="11dp"
+                android:onClick="editarTags" />
 
 
         </RelativeLayout>

@@ -15,6 +15,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.CrearGrupoActivity;
 import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
@@ -109,6 +110,38 @@ public class GrupoMGR {
                 return this;
             }
         }.setEntity(_entity));
+
+
+        return "";
+    }
+
+    public String crearConRedireccion(Activity _activity, GrupoEntity _entity) {
+        bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity ent;
+            CrearGrupoActivity activity;
+            String id;
+            @Override
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
+                } else {
+                    DatabaseReference grupo = bdRefGrupos.push();
+                    grupo.setValue(ent);
+                    id = grupo.getKey();
+                }
+                activity.redirecionarConIdGrupo(id);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _arg0) {
+            }
+
+            public ValueEventListener setActivity(Activity _activity, GrupoEntity _ent) {
+                activity = (CrearGrupoActivity) _activity;
+                ent = _ent;
+                return this;
+            }
+        }.setActivity(_activity, _entity));
 
 
         return "";

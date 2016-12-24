@@ -145,6 +145,11 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         grupo = _g;
         if (_g.getIdTags() != null) mapIdTags = _g.getIdTags();
         else mapIdTags = new LinkedHashMap<>();
+        for (int i = 0; i < info.size(); ++i) {
+            if ((info.get(i).getIdTag().equals(_g.getidTagGeneral()))) {
+                info.remove(i);
+            }
+        }
         tratarInfo();
     }
 
@@ -170,6 +175,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         else if (!esCM){
             getUsuarioActual().setIdTags(mapIdTags);
             actualizarUsuario();
+            startActivity(new Intent(IndicarTagsActivity.this, MainActivity.class));
         }
         else {
             grupo.setIdTags(mapIdTags);
@@ -187,6 +193,8 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     if (tagAux.getIdGrupos() != null) tagAux.getIdGrupos().remove(idGrupo);
                 }
                 tMGR.actualizar(info.get(i).getIdTag(), tagAux);
+                Bundle b = getIntent().getExtras();
+                startActivity(new Intent(IndicarTagsActivity.this, VerInfoGrupoActivity.class).putExtra("idGrupo", idGrupo));
             }
         }
     }

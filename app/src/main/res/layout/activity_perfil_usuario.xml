@@ -43,6 +43,13 @@
                 android:layout_above="@+id/correo"
                 android:layout_alignParentStart="true" />
 
+            <Button
+                android:text="Editar preferencias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button5"
+                android:onClick="editarPreferencias" />
+
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -115,6 +122,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/buttonRestart"
                 android:layout_centerInParent="true"/>
+
+            <Button
+                android:text="Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button6" />
 
             <Button
                 android:id="@+id/twitter_logout_button"

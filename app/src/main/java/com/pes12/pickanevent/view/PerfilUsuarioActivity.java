@@ -209,4 +209,14 @@ public class PerfilUsuarioActivity extends BaseActivity {
         }
         loginButton.onActivityResult(_requestCode, _resultCode, _data);
     }
+
+    public void editarPreferencias (View view) {
+        startActivity(new Intent(PerfilUsuarioActivity.this, IndicarTagsActivity.class));
+    }
+
+    //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PerfilUsuarioActivity.this, MainActivity.class));
+    }
 }

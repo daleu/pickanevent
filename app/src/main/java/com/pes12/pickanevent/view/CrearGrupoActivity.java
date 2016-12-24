@@ -147,11 +147,9 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
 
-            gMGR.crear(nuevoGrupo);
+            gMGR.crearConRedireccion(this, nuevoGrupo);
             Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
                     Toast.LENGTH_SHORT).show();
-
-            startActivity(new Intent(CrearGrupoActivity.this, MainActivity.class));
 
         }
     }
@@ -193,13 +191,6 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         listaTags.setAdapter(ale);
     }
 
-    /*public void checkNuevoTag(String _id, String nombreTag) {
-        mapIdTags.put(_id, nombreTag);
-        grupo.setIdTags(mapIdTags);
-        gMGR.actualizar(idGrupo, grupo);
-        gMGR.getGrupoParaTags(this, idGrupo);
-    }*/
-
     InfoTags ultimoMarcado = null;
 
     @Override
@@ -222,4 +213,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         }
     }
 
+    public void redirecionarConIdGrupo(String idGrupo) {
+        startActivity(new Intent(CrearGrupoActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", idGrupo));
+    }
 }

@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -70,6 +71,8 @@ public class CrearUsuarioActivity extends BaseActivity {
                 // ...
             }
         });
+
+        startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class));
 
     }
 }

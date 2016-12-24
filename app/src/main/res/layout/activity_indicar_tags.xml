@@ -25,7 +25,7 @@
             android:layout_below="@+id/inputBusqueda" />
 
         <Button
-            android:text="Siguiente"
+            android:text="Hecho!"
             android:id="@+id/button4"
             android:background="@drawable/boton_amarillo_custom"
             android:layout_height="50dp"

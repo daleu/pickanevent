@@ -7,40 +7,42 @@
     android:layout_height="match_parent"
     tools:context="com.pes12.pickanevent.view.CrearGrupoActivity">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:orientation="vertical"
-        android:layout_height="fill_parent"
-        android:background="#bfffc2">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:id="@+id/imagenGrupo"
-            android:layout_height="160dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:onClick="abrirGaleria"/>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_below="@+id/editorDescr"
-            android:layout_marginTop="10dp"
-            android:id="@+id/relative">
+            android:layout_height="wrap_content"
+            android:background="#bfffc2">
 
-        </RelativeLayout><![CDATA[
-
-
-
-
-
-
-
-        android:layout_marginRight="25dp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imagenGrupo"
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:onClick="abrirGaleria"/>
 
 
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/editorDescr"
+                android:layout_marginTop="10dp"
+                android:id="@+id/relative">
+
+            </RelativeLayout><![CDATA[
+
+
+
+
+
+
+
+            android:layout_marginRight="25dp" />
 
 
 
@@ -51,127 +53,130 @@
 
 
 
-        ]]>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:hint="@string/ESCRIBE_DESCRIPCION_GRUPO"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp"
-            android:textSize="18sp"
-            android:textColorHint="#8a939d"
-            android:id="@+id/editorDescrGrupo"
-            android:background="#eceff1"
-            android:textStyle="normal"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:elevation="1dp"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerInParent="false"
-            android:gravity="top"
-            android:layout_below="@+id/editorNGrupo"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="15dp"
-            android:layout_height="100dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:id="@+id/marcoContenido"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:paddingTop="5dp"
-            android:scrollbars="vertical"
-            android:background="#fff"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="26dp"
-            android:layout_below="@+id/imagenGrupo"
-            android:layout_centerHorizontal="true"
-            android:layout_height="375dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:hint="@string/ESCRIBE_NOMBRE_GRUPO"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:textSize="18sp"
-            android:textColorHint="#8a939d"
-            android:id="@+id/editorNGrupo"
-            android:layout_height="46dp"
-            android:background="#eceff1"
-            android:textStyle="normal"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="16dp"
-            android:layout_alignTop="@+id/marcoContenido"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:hint="@string/ESCRIBE_TAG_PRINCIPAL_GRUPO"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:textSize="18sp"
-            android:textColorHint="#8a939d"
-            android:id="@+id/editorTagPrincipal"
-            android:layout_height="46dp"
-            android:background="#eceff1"
-            android:textStyle="normal"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="85dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/editorDescrGrupo"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:text="@string/DEFAULT_CREAR_GRUPO"
-            android:id="@+id/buttonAcceptar"
-            android:background="@drawable/botton_application"
-            android:layout_width="150dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="30dp"
-            android:radius="20dip"
-            android:layout_marginTop="10dp"
-            android:onClick="crearGrupo"
-            android:layout_below="@+id/resultatTagPrin"
-            android:layout_centerHorizontal="true" />
-
-        <Button
-            android:text="+"
-            android:layout_height="40dp"
-            android:id="@+id/crearTag"
-            android:background="@drawable/botton_application"
-            android:layout_width="40dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignBaseline="@+id/editorTagPrincipal"
-            android:layout_alignBottom="@+id/editorTagPrincipal"
-            android:layout_alignEnd="@+id/editorDescrGrupo" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:id="@+id/resultatTagPrin"
-            android:clickable="true"
-            android:clipChildren="true"
-            android:layout_below="@+id/editorTagPrincipal"
-            android:layout_alignStart="@+id/editorTagPrincipal"
-            android:layout_marginTop="10dp"
-            android:layout_alignEnd="@+id/editorDescrGrupo" />
 
 
-    </RelativeLayout>
+            ]]>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="@string/ESCRIBE_DESCRIPCION_GRUPO"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorDescrGrupo"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:elevation="1dp"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_centerInParent="false"
+                android:gravity="top"
+                android:layout_below="@+id/editorNGrupo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/marcoContenido"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingTop="5dp"
+                android:scrollbars="vertical"
+                android:background="#fff"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="26dp"
+                android:layout_below="@+id/imagenGrupo"
+                android:layout_centerHorizontal="true"
+                android:layout_height="375dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="@string/ESCRIBE_NOMBRE_GRUPO"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorNGrupo"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:layout_alignTop="@+id/marcoContenido"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="@string/ESCRIBE_TAG_PRINCIPAL_GRUPO"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorTagPrincipal"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="85dp"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/editorDescrGrupo"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:text="@string/DEFAULT_CREAR_GRUPO"
+                android:id="@+id/buttonAcceptar"
+                android:background="@drawable/botton_application"
+                android:layout_width="150dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="30dp"
+                android:radius="20dip"
+                android:layout_marginTop="10dp"
+                android:onClick="crearGrupo"
+                android:layout_below="@+id/resultatTagPrin"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:text="+"
+                android:layout_height="40dp"
+                android:id="@+id/crearTag"
+                android:background="@drawable/botton_application"
+                android:layout_width="40dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignBaseline="@+id/editorTagPrincipal"
+                android:layout_alignBottom="@+id/editorTagPrincipal"
+                android:layout_alignEnd="@+id/editorDescrGrupo" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/resultatTagPrin"
+                android:clickable="true"
+                android:clipChildren="true"
+                android:layout_below="@+id/editorTagPrincipal"
+                android:layout_alignStart="@+id/editorTagPrincipal"
+                android:layout_marginTop="10dp"
+                android:layout_alignEnd="@+id/editorDescrGrupo" />
+
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

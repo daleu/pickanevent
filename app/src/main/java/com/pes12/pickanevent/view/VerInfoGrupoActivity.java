@@ -35,9 +35,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
     TextView nombre;
     TextView descripcion;
     ImageView foto;
-    TextView tags;
     ListView eventos;
     Button boton;
+    Button editarTags;
 
     String idGrupo;
     GrupoMGR gMGR;
@@ -59,14 +59,15 @@ public class VerInfoGrupoActivity extends BaseActivity {
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
+        editarTags = (Button) findViewById(R.id.editarTags);
         /////////////////////////////////////////////////
 
         Bundle b = getIntent().getExtras(); //Para pruebas
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        //idGrupo = "grp11-1480690194870";
-        idGrupo = "grp13-1480690194870";
+
+        idGrupo = "-KZlbhl-cvEnRUXKORqx";
 
 
 
@@ -74,28 +75,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         gMGR.getInfoGrupo(this, idGrupo);
 
-
-        //PARA HACER QUE SEA SCROLLEABLE
-        //tags.setMovementMethod(new ScrollingMovementMethod());
-
-
-        /* COMPRESION IMAGEN PARA GUARDARLA EN FIREBASE COMO STRING*/
-        /*Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.redhot);
-        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
-        bm.recycle();
-        byte[] byteArray = bYtE.toByteArray();
-        String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
-
-        GrupoEntity ge = new GrupoEntity("FCB D", "gooool", imageFile, "barcelona", "123", "321");
-        Map<String,Boolean> relaciones = new HashMap<>();
-        relaciones.put("key1",true);
-        relaciones.put("key2",true);
-        ge.setIdEventos(relaciones);
-        ge.setIdTags(relaciones);*/
-
-        //gMGR.crear(ge);
+        if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
+            editarTags.setVisibility(View.INVISIBLE);
+        }
 
 
     }
@@ -198,4 +180,14 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }*/
+
+    public void editarTags(View view) {
+        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", idGrupo));
+    }
+
+    //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(VerInfoGrupoActivity.this, MainActivity.class));
+    }
 }
