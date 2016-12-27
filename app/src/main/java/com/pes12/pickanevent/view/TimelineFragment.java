@@ -23,6 +23,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.text.SimpleDateFormat;
@@ -32,6 +33,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -99,7 +101,7 @@ public class TimelineFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "cm3-1480690194869";
+        idUsuario = "usr14-1480690194878";
         //idUsuario = "usr22-1480690194879";
 
         uMGR.getUserFromFragment(this, idUsuario);
@@ -163,28 +165,23 @@ public class TimelineFragment extends Fragment {
             Map<String, String> aux = listEvents.get(key);
             if (aux != null) map.putAll(aux);
         }
+        Log.e("here","Primer valor");
         eMGR.getInfoEventosUsuarioFromFragment(this, map);
     }
 
-    public void mostrarEventosUsuario(ArrayList<EventoEntity> events) {
-        ArrayList<Info> info = new ArrayList();
-
-        if (events.size() > 0) {
-            Collections.sort(events, new Comparator<EventoEntity>() {
-                @Override
-                public int compare(final EventoEntity object1, final EventoEntity object2) {
-                    return object1.getDataInici().compareTo(object2.getDataInici());
-                }
-            });
-        }
-
-        for(EventoEntity e : events){
+    public void mostrarEventosUsuario(Map<String, EventoEntity> events) {
+        Iterator it = events.entrySet().iterator();
+        ArrayList<Info> infoAdapter = new ArrayList();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+            EventoEntity e = (EventoEntity)pair.getValue();
             Info aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!");
-            //aux.setId(e.getId());
-            info.add(aux);
+            aux.setId((String)pair.getKey());
+            infoAdapter.add(aux);
         }
 
-        AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, info);
+        AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
         eventos.setAdapter(ale);
 
         hideProgressDialog();

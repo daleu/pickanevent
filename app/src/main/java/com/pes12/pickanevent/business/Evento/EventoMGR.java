@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
@@ -26,6 +27,7 @@ import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -350,9 +352,10 @@ public class EventoMGR {
     public void getInfoEventosUsuarioFromFragment(Fragment _activity, Map<String, String> _idS) {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
            //ArrayList<Info> info = new ArrayList();
-            ArrayList<EventoEntity> eventos = new ArrayList();
+            //ArrayList<EventoEntity> eventos = new ArrayList();
             TimelineFragment activity;
             Map<String, String> idS;
+            Map<String,EventoEntity> gUI = new HashMap<String, EventoEntity>();
 
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
@@ -360,11 +363,10 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey()) && actual.before(e.getDataInici())) {
-                        eventos.add(e);
-                        //info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!"));
+                        gUI.put(evento.getKey(),e);
                     }
                 }
-                activity.mostrarEventosUsuario(eventos);
+                activity.mostrarEventosUsuario(gUI);
             }
 
             @Override

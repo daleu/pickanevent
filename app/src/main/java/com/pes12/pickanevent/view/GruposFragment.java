@@ -148,7 +148,6 @@ public class GruposFragment extends Fragment {
                 Info aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_SEGUIR));
                 aux.setId((String)pair.getKey());
                 infoAdapter.add(aux);
-
             }
 
             AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
