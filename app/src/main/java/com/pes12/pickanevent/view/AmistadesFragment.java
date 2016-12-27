@@ -143,8 +143,8 @@ public class AmistadesFragment extends Fragment {
                 while (it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
                     System.out.println(pair.getKey() + " = " + pair.getValue());
-                    GrupoEntity ge = (GrupoEntity) pair.getValue();
-                    Info aux = new Info(StringToBitMap(ge.getImagen()), ge.getNickname(), "", getString(R.string.DEFAULT_SEGUIR));
+                    UsuarioEntity ge = (UsuarioEntity) pair.getValue();
+                    Info aux = new Info(StringToBitMap(null), ge.getNickname(), "", getString(R.string.DEFAULT_SEGUIR));
                     aux.setId((String) pair.getKey());
                     infoAdapter.add(aux);
                 }

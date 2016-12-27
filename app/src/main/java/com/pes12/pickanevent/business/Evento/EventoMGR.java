@@ -384,21 +384,19 @@ public class EventoMGR {
 
     public void getEventosForFragment(Fragment _activity, Map<String, String> _idS) {
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
-            //ArrayList<Info> info = new ArrayList();
-            ArrayList<EventoEntity> eventos = new ArrayList();
             EventsFragment activity;
             Map<String, String> idS;
+            Map<String,EventoEntity> gUI = new HashMap<String, EventoEntity>();
 
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
-                        eventos.add(e);
-                        //info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!"));
+                        gUI.put(evento.getKey(),e);
                     }
                 }
-                activity.mostrarEventosUsuario(eventos);
+                activity.mostrarEventosUsuario(gUI);
             }
 
             @Override
