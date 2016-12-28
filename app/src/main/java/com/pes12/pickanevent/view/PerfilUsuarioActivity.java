@@ -160,8 +160,10 @@ public class PerfilUsuarioActivity extends BaseActivity {
         if(!bioCambiado.equals(u.getBio())) {
             u.setBio(bio.getText().toString());
         }
+        u.setUrlPhoto(current.getPhotoUrl().toString());
         uMGR.actualizar(getAuth().getCurrentUser().getUid(), u);
         setUsuarioActual(u);
+        Toast.makeText(PerfilUsuarioActivity.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
     }
 
     public void restartPassword(View _view)
