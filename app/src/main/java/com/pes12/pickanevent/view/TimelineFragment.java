@@ -182,6 +182,7 @@ public class TimelineFragment extends Fragment {
             if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
             else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
             aux.setId((String)pair.getKey());
+            aux.setTipus("event");
             infoAdapter.add(aux);
         }
 

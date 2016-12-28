@@ -147,6 +147,7 @@ public class GruposFragment extends Fragment {
                 GrupoEntity ge = (GrupoEntity)pair.getValue();
                 Info aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_SEGUIR));
                 aux.setId((String)pair.getKey());
+                aux.setTipus("grup");
                 infoAdapter.add(aux);
             }
 

@@ -146,6 +146,7 @@ public class AmistadesFragment extends Fragment {
                     UsuarioEntity ge = (UsuarioEntity) pair.getValue();
                     Info aux = new Info(StringToBitMap(null), ge.getNickname(), "", getString(R.string.DEFAULT_SEGUIR));
                     aux.setId((String) pair.getKey());
+                    aux.setTipus("usuari");
                     infoAdapter.add(aux);
                 }
             }

@@ -62,7 +62,12 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         eMGR = MGRFactory.getInstance().getEventoMGR();
 
+
+        Bundle param = getIntent().getExtras();
         idUsuario = "-KUHeQd1dR1FT3FmbPLu";
+        if(param!=null){
+            idUsuario = param.getString("key");
+        }
         uMGR.getInfoUsuario(this, idUsuario);
 
 
