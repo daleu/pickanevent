@@ -40,6 +40,7 @@
     <string name="DEFAULT_COMPRAR_ENTRADAS">Comprar Entradas!</string>
     <string name="DEFAULT_LOCALIZACION">Localización</string>
     <string name="DEFAULT_ASSISTIR">Asistir!</string>
+    <string name="DEFAULT_NO_ASSISTIR">No Asistir!</string>
     <string name="DEFAULT_ASISTENCIA">Asiste al evento</string>
     <string name="DEFAULT_SEGUIR">Seguir!</string>
     <string name="DEFAULT_ETIQUETAS">Etiquetas</string>
