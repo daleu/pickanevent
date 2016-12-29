@@ -10,10 +10,16 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NavigationDrawer extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -22,10 +28,17 @@ public class NavigationDrawer extends BaseActivity
         GruposFragment.OnFragmentInteractionListener,
         AmistadesFragment.OnFragmentInteractionListener {
 
+    UsuarioEntity actual;
+    String idActual;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+
+        actual = getUsuarioActual();
+        idActual = getAuth().getCurrentUser().getUid();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Timeline");
@@ -41,6 +54,25 @@ public class NavigationDrawer extends BaseActivity
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        //Carregar dades al navigation drawer
+
+        View hView =  navigationView.getHeaderView(0);
+
+        if(actual.getUrlPhoto()!=null) {
+            CircleImageView nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
+            nav_user.setImageURI(Uri.parse(actual.getUrlPhoto()));
+        }
+
+        TextView nom = (TextView)hView.findViewById(R.id.name);
+        Log.e("username",actual.getNickname());
+        nom.setText(actual.getNickname());
+
+        if(actual.getCm()){
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_slideshow).setVisible(false);
+            nav_Menu.findItem(R.id.nav_share).setVisible(false);
+        }
+
         Fragment fragment = null;
         Class fragmentClass = null;
         fragmentClass = TimelineFragment.class;
@@ -52,6 +84,8 @@ public class NavigationDrawer extends BaseActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
+
+
     }
 
     @Override
