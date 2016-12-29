@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -19,6 +21,7 @@ public class LoginActivity extends BaseActivity {
 
     private EditText correo;
     private EditText pass;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +45,14 @@ public class LoginActivity extends BaseActivity {
                 }
 
                 if (task.getResult().getUser().isEmailVerified()) {
-                    Toast.makeText(LoginActivity.this, getString(R.string.LOGIN_CORRECTO) + correo.getText().toString(),
+                    Toast.makeText(LoginActivity.this, getString(R.string.LOGIN_CORRECTO) + " " + correo.getText().toString(),
                             Toast.LENGTH_SHORT).show();
                     UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
                     uMGR.getUsuarioLogin(LoginActivity.this, task.getResult().getUser().getUid());
                     LoginActivity.this.finish();
+                    //Intent intent = new Intent(context, NavigationDrawer.class);
+                    //context.startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, getString(R.string.CORREO_NO_VERIFICADO) + correo.getText().toString(),
                             Toast.LENGTH_SHORT).show();
