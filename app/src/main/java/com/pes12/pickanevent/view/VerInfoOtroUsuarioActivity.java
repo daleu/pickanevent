@@ -104,30 +104,34 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     public void rellenarListaGrupos(GrupoEntity grupo) {
         //System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(grupo.getImagen());
-        String img = grupo.getImagen();
-        Bitmap imBM = StringToBitMap(img);
-        String nombreGrupo = grupo.getNombreGrupo();
-        Info info = new Info(imBM, nombreGrupo, "adeu", getString(R.string.DEFAULT_SEGUIR));
-        eventos.add(info);
-        //System.out.println(grupos.get(0).primeraLinea);
-        AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
-        listaGrupos.setAdapter(ale);
-        //hideProgressDialog();
+        if(grupo!=null) {
+            String img = grupo.getImagen();
+            Bitmap imBM = StringToBitMap(img);
+            String nombreGrupo = grupo.getNombreGrupo();
+            Info info = new Info(imBM, nombreGrupo, "adeu", getString(R.string.DEFAULT_SEGUIR));
+            eventos.add(info);
+            //System.out.println(grupos.get(0).primeraLinea);
+            AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
+            listaGrupos.setAdapter(ale);
+            //hideProgressDialog();
+        }
     }
 
     public void rellenarListaEventos(EventoEntity evento) {
         //System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(evento.getHorario());
-        String img = evento.getImagen();
-        Bitmap imBM = StringToBitMap(img);
-        String nombreGrupo = evento.getTitulo();
-        String horario = getString(R.string.DEFAULT_HORARIO);
-        Info info = new Info(imBM, nombreGrupo, horario, getString(R.string.DEFAULT_SEGUIR));
-        grupos.add(info);
-        //System.out.println(grupos.get(0).primeraLinea);
-        //System.out.println(grupos.get(0).segonaLinea);
-        AdapterLista alg = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, grupos);
-        listaEventos.setAdapter(alg);
+        if(evento!=null) {
+            String img = evento.getImagen();
+            Bitmap imBM = StringToBitMap(img);
+            String nombreGrupo = evento.getTitulo();
+            String horario = getString(R.string.DEFAULT_HORARIO);
+            Info info = new Info(imBM, nombreGrupo, horario, getString(R.string.DEFAULT_SEGUIR));
+            grupos.add(info);
+            //System.out.println(grupos.get(0).primeraLinea);
+            //System.out.println(grupos.get(0).segonaLinea);
+            AdapterLista alg = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, grupos);
+            listaEventos.setAdapter(alg);
+        }
         hideProgressDialog();
     }
 
