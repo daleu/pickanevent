@@ -117,6 +117,28 @@ public class AdapterLista extends ArrayAdapter<Info> {
             }
         });
 
+        holder.button.setOnClickListener(new View.OnClickListener(){ //FALTA FER QUE CONSTI!!!!!!!!!
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Log.e("tipus",componentes.tipus);
+                if(componentes.tipus=="event") {
+                    Intent intent = new Intent(context, VerInfoEventoActivity.class);
+                    intent.putExtra("key", componentes.id);
+                    context.startActivity(intent);
+                }
+                else if(componentes.tipus=="usuari") {
+                    Intent intent = new Intent(context, VerInfoOtroUsuarioActivity.class);
+                    intent.putExtra("key", componentes.id);
+                    context.startActivity(intent);
+                }
+                else if(componentes.tipus=="grup") {
+                    Intent intent = new Intent(context, VerInfoGrupoActivity.class);
+                    intent.putExtra("key", componentes.id);
+                    context.startActivity(intent);
+                }
+            }
+        });
+
         return vistaEvent;
     }
 
