@@ -71,6 +71,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
         if(param.getString("key")!=null){
             idGrupo = param.getString("key");
         }
+        if(param.getString("action")!=null){
+            dejarSeguirGrupo(idGrupo);
+        }
 
         showProgressDialog();
 

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
@@ -87,6 +88,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);
+        final String aux = componentes.textoBoton;
         if(componentes.id!=null){
             holder.id.setText(componentes.id);
         }
@@ -121,18 +123,27 @@ public class AdapterLista extends ArrayAdapter<Info> {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Log.e("tipus",componentes.tipus);
-                if(componentes.tipus=="event") {
+                if(componentes.tipus=="event" && aux.equals(R.string.DEFAULT_NO_ASSISTIR)) { //SEGUIR GRUP
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
+                    //Falta l'extra
+                    intent.putExtra("key", componentes.id);
+                    context.startActivity(intent);
+                }
+                else if(componentes.tipus=="event" && !aux.equals(R.string.DEFAULT_NO_ASSISTIR)){//DEIXAR DE SEGUIR GRUP
+                    Intent intent = new Intent(context, VerInfoEventoActivity.class);
+                    //Falta l'extra
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
                 else if(componentes.tipus=="usuari") {
                     Intent intent = new Intent(context, VerInfoOtroUsuarioActivity.class);
+                    intent.putExtra("action","noseguir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
                 else if(componentes.tipus=="grup") {
                     Intent intent = new Intent(context, VerInfoGrupoActivity.class);
+                    intent.putExtra("action","noseguir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }

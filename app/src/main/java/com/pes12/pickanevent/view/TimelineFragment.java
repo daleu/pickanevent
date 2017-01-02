@@ -103,7 +103,8 @@ public class TimelineFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "usr14-1480690194878";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
+        //idUsuario = "usr14-1480690194878";
         //idUsuario = "usr22-1480690194879";
 
         uMGR.getUserFromFragment(this, idUsuario);

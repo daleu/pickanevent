@@ -89,7 +89,8 @@ public class AmistadesFragment extends Fragment {
 
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
-        idUsuario = "usr47-1480690194879";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
+        //idUsuario = "usr47-1480690194879";
 
         uMGR.getUserFromFragmentAmistades(this, idUsuario);
     }

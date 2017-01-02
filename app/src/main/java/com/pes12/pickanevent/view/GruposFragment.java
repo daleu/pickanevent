@@ -90,7 +90,7 @@ public class GruposFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "cm3-1480690194869";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
 
         uMGR.getUserFromFragmentGrupos(this, idUsuario);
     }
