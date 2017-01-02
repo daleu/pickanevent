@@ -19,6 +19,9 @@
             android:value="@string/google_android_map_api_key" />
 
         <activity android:name=".view.MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".view.VerInfoGrupoActivity" />
         <activity android:name=".view.CrearEventoActivity" />
