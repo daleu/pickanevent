@@ -154,10 +154,13 @@ public class EventsFragment extends Fragment {
                 System.out.println(pair.getKey() + " = " + pair.getValue());
                 EventoEntity e = (EventoEntity) pair.getValue();
                 Info aux;
-                if (my_events.containsKey(pair.getKey()))
-                    aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(), e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
-                else
-                    aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(), e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
+                if(myUser.getCm()){
+                    aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_EDITAR_EVENTO));
+                }
+                else{
+                    if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
+                    else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
+                }
                 aux.setId((String) pair.getKey());
                 aux.setTipus("event");
                 infoAdapter.add(aux);
