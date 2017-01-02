@@ -68,6 +68,9 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         if(param!=null){
             idUsuario = param.getString("key");
         }
+        if(param.getString("action")!=null){
+            if(param.getString("action")=="noseguir") dejarSeguirUsuario(idUsuario);
+        }
         uMGR.getInfoUsuario(this, idUsuario);
 
 
