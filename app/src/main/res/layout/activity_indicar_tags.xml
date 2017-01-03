@@ -41,12 +41,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tagsMinimos"
-            android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/button4"
             android:layout_alignStart="@+id/editText"
             android:layout_toStartOf="@+id/button4"
             android:textSize="18sp"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="9dp"
+            android:paddingBottom="10dp" />
 
         <TextView
             android:text="Si no encuentras el tag adecuado para definir tu grupo no dudes en crearlo!"
