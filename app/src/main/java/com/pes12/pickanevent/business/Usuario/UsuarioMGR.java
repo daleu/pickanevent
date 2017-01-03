@@ -312,6 +312,7 @@ public class UsuarioMGR {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.setUsuarioActual(u);
+
             }
 
             @Override

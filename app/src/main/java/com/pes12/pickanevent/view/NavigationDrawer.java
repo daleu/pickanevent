@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -69,7 +70,7 @@ public class NavigationDrawer extends BaseActivity
 
         View hView =  navigationView.getHeaderView(0);
 
-        if(actual.getUrlPhoto()!=null) {
+       /* if(actual.getUrlPhoto()!=null) {
             nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
             Thread aux = new Thread(new Runnable() {
                 public void run() {
@@ -82,7 +83,9 @@ public class NavigationDrawer extends BaseActivity
                 e.printStackTrace();
             }
             nav_user.setImageBitmap(imageAux);
-        }
+        }*/
+        nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
+        Picasso.with(this).load(getAuth().getCurrentUser().getPhotoUrl()).into(nav_user);
 
         TextView nom = (TextView)hView.findViewById(R.id.name);
         Log.e("username",actual.getNickname());

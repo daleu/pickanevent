@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
@@ -28,6 +29,7 @@ public class BaseActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
     private UsuarioMGR uMGR;
+    private String token;
 
     public static UsuarioEntity getUsuarioActual() {
         return usuarioActual;
@@ -35,6 +37,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setUsuarioActual(UsuarioEntity _usuarioActual) {
         usuarioActual = _usuarioActual;
+
     }
 
     public void showProgressDialog() {
