@@ -206,6 +206,9 @@ BLOQUE DE TEST
     }
 
     public void goVerMiPerfil(View _view) {
-        startActivity(new Intent(MainActivity.this, PerfilUsuarioActivity.class));
+        if (getUsuarioActual() != null)
+            startActivity(new Intent(MainActivity.this, PerfilUsuarioActivity.class));
+        else
+            Toast.makeText(MainActivity.this, getString(R.string.ERROR_NO_LOGUEADO), Toast.LENGTH_SHORT).show();
     }
 }

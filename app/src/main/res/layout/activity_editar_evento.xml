@@ -40,15 +40,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/imagenEvento"
                 android:layout_alignParentStart="true"
-                android:layout_height="620dp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:id="@+id/imagenEvento"
-                android:layout_height="160dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:onClick="abrirGaleria"/>
+                android:layout_height="1455dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -72,7 +64,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:hint="@string/ESCRIBE_DESCRIPCION_EVENTO"
                 android:ems="10"
                 android:fontFamily="sans-serif"
@@ -155,7 +147,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:hint="@string/ESCRIBE_URL_ENTRADAS"
                 android:ems="10"
                 android:fontFamily="sans-serif"
@@ -198,7 +190,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textView" />
             <!-- .............. GOOGLE PLACES API ....... -->
             <ListView android:id="@+id/listView1"
                 android:layout_width="match_parent"
@@ -215,53 +208,46 @@
 
             <!-- ..................................... -->
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:layout_below="@+id/editorLugar"
-                android:layout_marginTop="10dp"
-                android:id="@+id/relative2">
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:inputType="textPersonName"
-                    android:hint="@string/DEFAULT_FORMATO_FECHA"
-                    android:ems="10"
-                    android:fontFamily="sans-serif"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="18sp"
-                    android:textColorHint="#8a939d"
-                    android:id="@+id/editorFecha"
-                    android:layout_height="46dp"
-                    android:background="#eceff1"
-                    android:textStyle="normal"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="mostrarCalendar"
-                    android:src="@android:drawable/ic_menu_today"
-                    android:id="@+id/imageButtonCalendar"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@+id/editorFecha" />
-
-
-            </RelativeLayout>
-
-            <CalendarView
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/calendarView"
-                android:layout_alignParentBottom="true"
-                android:background="#FFF"
-                android:layout_alignStart="@+id/marcoContenido"
-                android:layout_below="@+id/marcoContenido"
-                android:layout_alignEnd="@+id/marcoContenido"
-                />
+                android:inputType="textPersonName"
+                android:hint="@string/PRIMER_DIA"
+                android:ems="10"
+                android:cursorVisible="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorFecha"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editorLugar"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="Hora del evento (hh.mm)"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/hora"
+                android:layout_below="@+id/calendarViewFinal"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
 
             <Button
                 android:text="@string/DEFAULT_GUARDAR_CAMBIOS"
@@ -276,6 +262,58 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="15dp" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imagenEvento"
+                android:layout_height="160dp"
+                android:onClick="abrirGaleria"
+                android:focusable="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/calendarView"
+                android:background="#eceff1"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/listView1"
+                android:layout_alignStart="@+id/editorFechaFinal"
+                android:layout_alignEnd="@+id/editorFechaFinal"
+                android:layout_marginBottom="10dp"/>
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/calendarViewFinal"
+                android:background="#eceff1"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/editorFechaFinal"
+                android:layout_alignStart="@+id/hora"
+                android:layout_alignEnd="@+id/hora"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:hint="@string/ULTIMO_DIA"
+                android:ems="10"
+                android:cursorVisible="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/editorFechaFinal"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/calendarView"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" />
 
         </RelativeLayout>
     </ScrollView>

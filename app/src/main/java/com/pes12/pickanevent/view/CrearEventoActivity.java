@@ -53,6 +53,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     EditText preuText;
     EditText hora;
     EditText data;
+
     EditText dataFinal;
     CheckBox gratuit;
     CalendarView calendar;
@@ -150,7 +151,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
         setContentView(activity_crear_evento);
         calendar = (CalendarView) findViewById(R.id.calendarView);
-        calendar.setVisibility(View.INVISIBLE);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
@@ -160,7 +160,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             }
         });
         calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
-        calendarFinal.setVisibility(View.INVISIBLE);
         calendarFinal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
@@ -176,19 +175,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         data = (EditText) findViewById(R.id.editorFecha);
         dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
-        data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mostrarCalendar(view);
-            }
-        });
-        dataFinal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mostrarCalendarFinal(view);
-            }
-        });
-
 
         //--------------------- GOOGLE PLACES API -----------------
         // Retrieve the AutoCompleteTextView that will display Place suggestions.
@@ -226,7 +212,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             String imatge;
             Calendar cal = Calendar.getInstance(); // creates calendar
             cal.setTime(dataIni); // sets calendar time/date
-            String[] time = hora.getText().toString().split(":");
+            String[] time = hora.getText().toString().split(".");
             if (time.length != 2) Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
             else {
                 int hora = Integer.parseInt(time[0]);
@@ -254,7 +240,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                             Long.toString(d.getTime()), Long.toString(dataFi.getTime())
                     );
                     eMGR = MGRFactory.getInstance().getEventoMGR();
-                    eMGR.crear(ee);
+                    //eMGR.crear(ee);
+                    eMGR.crearConRedireccion(this, ee);
                     Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
                     startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                 }
@@ -274,26 +261,12 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         }
     }
 
-    public void mostrarCalendar(View _view) {
-        if (calendar.getVisibility() == _view.VISIBLE) {
-            calendar.setVisibility(_view.INVISIBLE);
-        } else {
-            calendar.setVisibility(_view.VISIBLE);
-            calendarFinal.setVisibility(_view.INVISIBLE);
-        }
+    public void redirecionarConIdEvento(String idEvento) {
+        startActivity(new Intent(CrearEventoActivity.this, IndicarTagsActivity.class).putExtra("idEvento", idEvento));
     }
 
 
     //---------------------- GOOGLE PLACES API ---------------
-
-    public void mostrarCalendarFinal(View _view) {
-        if (calendarFinal.getVisibility() == _view.VISIBLE) {
-            calendarFinal.setVisibility(_view.INVISIBLE);
-        } else {
-            calendarFinal.setVisibility(_view.VISIBLE);
-            calendar.setVisibility(_view.INVISIBLE);
-        }
-    }
 
     public void abrirGaleria(View _view) {
         Intent galeria = new Intent(Intent.ACTION_PICK);

@@ -17,6 +17,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
+import com.pes12.pickanevent.view.CrearEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.TimelineFragment;
@@ -74,6 +75,38 @@ public class EventoMGR {
         return "";
     }
 
+    public String crearConRedireccion(Activity _activity, EventoEntity _entity) {
+        bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+            EventoEntity ent;
+            CrearEventoActivity activity;
+            String id;
+            @Override
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
+                } else {
+                    DatabaseReference evento = bdRefEventos.push();
+                    evento.setValue(ent);
+                    id = evento.getKey();
+                }
+                activity.redirecionarConIdEvento(id);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _arg0) {
+            }
+
+            public ValueEventListener setActivity(Activity _activity, EventoEntity _ent) {
+                activity = (CrearEventoActivity) _activity;
+                ent = _ent;
+                return this;
+            }
+        }.setActivity(_activity, _entity));
+
+
+        return "";
+    }
+
     public void actualizar(String _key, EventoEntity _entity) {
         DatabaseReference evento = bdRefEventos.child(_key); //recogemos la rama con la ID del evento en concreto
 
@@ -85,15 +118,17 @@ public class EventoMGR {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String, EventoEntity> map = new LinkedHashMap<String, EventoEntity>();
+            EventoEntity e;
             VerInfoEventoActivity activity;
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot evento : dataSnapshot.getChildren()) {
+                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
                 }
-                activity.mostrarInfoEvento(map);
+                /*e = _dataSnapshot.getValue((EventoEntity.class));
+                activity.mostrarInfoEvento(e);*/
             }
 
             @Override

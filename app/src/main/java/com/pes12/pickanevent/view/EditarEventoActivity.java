@@ -128,7 +128,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this);
         CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
-        calendar.setVisibility(View.INVISIBLE);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
@@ -224,15 +223,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     //---------------------- GOOGLE PLACES API ---------------
-
-    public void mostrarCalendar(View _view) {
-        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
-        if (calendar.getVisibility() == _view.VISIBLE) {
-            calendar.setVisibility(_view.INVISIBLE);
-        } else {
-            calendar.setVisibility(_view.VISIBLE);
-        }
-    }
 
     public void abrirGaleria(View _view) {
         Intent galeria = new Intent(Intent.ACTION_PICK);
