@@ -90,7 +90,7 @@ public class GruposFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "cm3-1480690194869";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
 
         uMGR.getUserFromFragmentGrupos(this, idUsuario);
     }
@@ -145,16 +145,19 @@ public class GruposFragment extends Fragment {
                 Map.Entry pair = (Map.Entry)it.next();
                 System.out.println(pair.getKey() + " = " + pair.getValue());
                 GrupoEntity ge = (GrupoEntity)pair.getValue();
-                Info aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_SEGUIR));
+                Info aux;
+                if(myUser.getCm()) aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_EDITAR_GRUPO));
+                else aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                 aux.setId((String)pair.getKey());
+                aux.setTipus("grup");
                 infoAdapter.add(aux);
             }
 
             AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
             eventos.setAdapter(ale);
 
-            hideProgressDialog();
         }
+        hideProgressDialog();
     }
 
     private Bitmap StringToBitMap(String _encodedString) {

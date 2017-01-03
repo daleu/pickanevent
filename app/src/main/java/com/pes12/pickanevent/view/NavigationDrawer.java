@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.view;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,10 +12,23 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NavigationDrawer extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -22,10 +37,19 @@ public class NavigationDrawer extends BaseActivity
         GruposFragment.OnFragmentInteractionListener,
         AmistadesFragment.OnFragmentInteractionListener {
 
+    UsuarioEntity actual;
+    String idActual;
+    CircleImageView nav_user;
+    Bitmap imageAux;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+
+        actual = getUsuarioActual();
+        idActual = getAuth().getCurrentUser().getUid();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Timeline");
@@ -41,6 +65,35 @@ public class NavigationDrawer extends BaseActivity
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        //Carregar dades al navigation drawer
+
+        View hView =  navigationView.getHeaderView(0);
+
+        if(actual.getUrlPhoto()!=null) {
+            nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
+            Thread aux = new Thread(new Runnable() {
+                public void run() {
+                    imageAux = getBitmapFromURL(actual.getUrlPhoto());
+                }});
+            aux.start();
+            try {
+                aux.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            nav_user.setImageBitmap(imageAux);
+        }
+
+        TextView nom = (TextView)hView.findViewById(R.id.name);
+        Log.e("username",actual.getNickname());
+        nom.setText(actual.getNickname());
+
+        if(actual.getCm()){
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_slideshow).setVisible(false);
+            nav_Menu.findItem(R.id.nav_share).setVisible(false);
+        }
+
         Fragment fragment = null;
         Class fragmentClass = null;
         fragmentClass = TimelineFragment.class;
@@ -52,6 +105,8 @@ public class NavigationDrawer extends BaseActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
+
+
     }
 
     @Override
@@ -126,5 +181,24 @@ public class NavigationDrawer extends BaseActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            // Log exception
+            return null;
+        }
+    }
+
+    public String getUsuariActual(){
+        return idActual;
     }
 }

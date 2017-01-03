@@ -67,9 +67,6 @@ public class EventoEntity {
 
     }
 
-    public boolean isEmpty() {
-        return (titulo == null);
-    }
 
     public String getTitulo() {
         return titulo;
@@ -155,15 +152,6 @@ public class EventoEntity {
         this.dataFinal = dataFinal;
     }
 
-    public void setDataFinalDate(Date dataFinal) {
-        String s = dataFinal.toString();
-        setDataFinal(s);
-    }
-
-    public void setDataIniciDate(Date dataIn) {
-        String s = dataIn.toString();
-        setDataInici(s);
-    }
 
     /*public String getId() {
         return id;

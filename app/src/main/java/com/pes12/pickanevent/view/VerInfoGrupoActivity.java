@@ -66,12 +66,14 @@ public class VerInfoGrupoActivity extends BaseActivity {
         cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
-        //CODIGO QUE DEBERA SUBSTITUIR AL HARDCODED
-        //Bundle id = getIntent().getExtras();
-        //idGrupo = id.getString("idGrupo");
-        idGrupo = "-KZlbhl-cvEnRUXKORqx";
-
-
+        Bundle param = getIntent().getExtras();
+        //idGrupo = "-KZlbhl-cvEnRUXKORqx";
+        if(param.getString("key")!=null){
+            idGrupo = param.getString("key");
+        }
+        if(param.getString("action")!=null){
+            if(param.getString("action")=="noseguir") dejarSeguirGrupo(idGrupo);
+        }
 
         showProgressDialog();
 

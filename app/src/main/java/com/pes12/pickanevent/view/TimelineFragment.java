@@ -58,6 +58,8 @@ public class TimelineFragment extends Fragment {
     String idUsuario;
     UsuarioEntity myUser;
     Map<String, Map<String, String>> listEvents;
+
+    Map<String,String> my_events;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -101,7 +103,8 @@ public class TimelineFragment extends Fragment {
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
-        idUsuario = "usr14-1480690194878";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
+        //idUsuario = "usr14-1480690194878";
         //idUsuario = "usr22-1480690194879";
 
         uMGR.getUserFromFragment(this, idUsuario);
@@ -143,6 +146,7 @@ public class TimelineFragment extends Fragment {
 
     public void getUsuarioEvents(UsuarioEntity _usuario) {
         myUser = _usuario;
+        if (myUser.getIdEventos() != null) my_events = myUser.getIdEventos();
         if (_usuario.getIdUsuarios() != null) {
             uMGR.getUsersForFragment(this, _usuario.getIdUsuarios());
         } else getAllUsersEvents(null);
@@ -165,7 +169,6 @@ public class TimelineFragment extends Fragment {
             Map<String, String> aux = listEvents.get(key);
             if (aux != null) map.putAll(aux);
         }
-        Log.e("here","Primer valor");
         eMGR.getInfoEventosUsuarioFromFragment(this, map);
     }
 
@@ -176,8 +179,16 @@ public class TimelineFragment extends Fragment {
             Map.Entry pair = (Map.Entry)it.next();
             System.out.println(pair.getKey() + " = " + pair.getValue());
             EventoEntity e = (EventoEntity)pair.getValue();
-            Info aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), "No Asistir!");
+            Info aux;
+            if(myUser.getCm()){
+                aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_EDITAR_EVENTO));
+            }
+            else{
+                if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
+                else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
+            }
             aux.setId((String)pair.getKey());
+            aux.setTipus("event");
             infoAdapter.add(aux);
         }
 

@@ -1,5 +1,8 @@
 package com.pes12.pickanevent.persistence.entity.Usuario;
 
+import android.net.Uri;
+
+import java.net.URL;
 import java.util.Map;
 
 /**
@@ -14,6 +17,7 @@ public class UsuarioEntity {
     private String nickname;
     private String password;
     private String email;
+    private String urlPhoto;
     private Boolean cm;
     /*GRUPOS, si cm == true serán los grupos creados, si cm == false serán los grupos seguidos */
     private Map<String, String> idGrupos;
@@ -95,6 +99,18 @@ public class UsuarioEntity {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setUrlPhoto(String _url) {
+        urlPhoto = _url;
+    }
+
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
+
+    public Uri parsedPhotoURI() {
+        return Uri.parse(urlPhoto);
     }
 
 
