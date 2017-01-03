@@ -71,6 +71,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
         if(param.getString("key")!=null){
             idGrupo = param.getString("key");
         }
+        if(param.getString("action")!=null){
+            if(param.getString("action")=="noseguir") dejarSeguirGrupo(idGrupo);
+        }
 
         showProgressDialog();
 
@@ -183,7 +186,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }*/
 
     public void editarTags(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", idGrupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras

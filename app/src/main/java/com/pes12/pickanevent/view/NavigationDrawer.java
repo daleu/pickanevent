@@ -197,4 +197,8 @@ public class NavigationDrawer extends BaseActivity
             return null;
         }
     }
+
+    public String getUsuariActual(){
+        return idActual;
+    }
 }

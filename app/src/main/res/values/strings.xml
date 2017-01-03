@@ -9,8 +9,13 @@
     <string name="ESCRIBE_NOMBRE_EVENTO">Escribe el nombre del evento</string>
     <string name="ESCRIBE_NOMBRE_USUARIO">Escribe el nombre del usuario</string>
     <string name="EVENTO_GRATUITO_PREG">El evento será gratuito?</string>
+    <string name="EVENTO_HORA_APER">Hora de apertura:</string>
+    <string name="EVENTO_HORA_CIERRE">Hora del cierre:</string>
     <string name="DEFAULT_CREAR_EVENTO">Crear Evento</string>
     <string name="DEFAULT_BUSCAR_EVENTO">Buscar Evento</string>
+    <string name="ERROR_PRECIO">Precio incorrecto</string>
+    <string name="ERROR_DIA">Fechas incorrectas</string>
+    <string name="ERROR_HORAS">Horas incorrectas</string>
     <string name="ESCRIBE_DESCRIPCION_EVENTO">Escribe la descripción de tu evento</string>
     <string name="ESCRIBE_PRECIO_EVENTO">Escribe el precio del evento</string>
     <string name="ESCRIBE_URL_ENTRADAS">En el caso que se puedan comprar online, escribe la URL de venta de entradas</string>
@@ -23,6 +28,7 @@
     <string name="ULTIMO_DIA">Último día (opcional)</string>
     <string name="DEFAULT_GUARDAR_CAMBIOS">Guardar Cambios</string>
     <string name="DEFAULT_FORMATO_FECHA">dd/mm/yyyy hh:mm</string>
+    <string name="DEFAULT_FORMATO_HORA">hh:mm</string>
     <string name="DEFAULT_NOMBRE_USUARIO">Nombre del Usuario</string>
     <string name="DEFAULT_GRUPOS">Grupos</string>
     <string name="DEFAULT_EVENTOS">Eventos</string>
@@ -43,6 +49,7 @@
     <string name="DEFAULT_NO_ASSISTIR">No Asistir!</string>
     <string name="DEFAULT_ASISTENCIA">Asiste al evento</string>
     <string name="DEFAULT_SEGUIR">Seguir!</string>
+    <string name="DEFAULT_NO_SEGUIR">Dejar de Seguir</string>
     <string name="DEFAULT_ETIQUETAS">Etiquetas</string>
     <string name="DEFAULT_DATES_LLISTA_ESDEVENIMENT">1 i 2 de Octubre</string>
     <string name="DEFAULT_BOTON">Button</string>

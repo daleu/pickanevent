@@ -66,5 +66,9 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    public void registro(View view) {
+        startActivity(new Intent(LoginActivity.this, CrearUsuarioActivity.class));
+    }
+
 
 }

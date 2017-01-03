@@ -96,7 +96,7 @@ public class EventsFragment extends Fragment {
         eMGR = MGRFactory.getInstance().getEventoMGR();
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
-        idUsuario = "cm3-1480690194869";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
 
         uMGR.getUserFromFragmentEventos(this, idUsuario);
 
@@ -146,22 +146,29 @@ public class EventsFragment extends Fragment {
     }
 
     public void mostrarEventosUsuario(Map<String, EventoEntity> events) {
-        Iterator it = events.entrySet().iterator();
-        ArrayList<Info> infoAdapter = new ArrayList();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-            EventoEntity e = (EventoEntity)pair.getValue();
-            Info aux;
-            if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
-            else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
-            aux.setId((String)pair.getKey());
-            aux.setTipus("event");
-            infoAdapter.add(aux);
-        }
+        if(events!=null) {
+            Iterator it = events.entrySet().iterator();
+            ArrayList<Info> infoAdapter = new ArrayList();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                System.out.println(pair.getKey() + " = " + pair.getValue());
+                EventoEntity e = (EventoEntity) pair.getValue();
+                Info aux;
+                if(myUser.getCm()){
+                    aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_EDITAR_EVENTO));
+                }
+                else{
+                    if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
+                    else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
+                }
+                aux.setId((String) pair.getKey());
+                aux.setTipus("event");
+                infoAdapter.add(aux);
+            }
 
-        AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
-        eventos.setAdapter(ale);
+            AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
+            eventos.setAdapter(ale);
+        }
 
         hideProgressDialog();
     }

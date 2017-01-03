@@ -103,12 +103,6 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
     }
 
     public void mostrarInfoEventosUsuariosSeguidos(ArrayList<Info> _info) {
-        System.out.println("tercera funcio: ");
-        System.out.println(_info.size());
-        for (int i = 0; i < _info.size(); ++i) {
-            System.out.println("L'event: " + _info.get(i).primeraLinea);
-            System.out.println("L'event: " + _info.get(i).segonaLinea);
-        }
         AdapterLista ale = new AdapterLista(VerEventosUsuariosQueSigoActivity.this, R.layout.vista_adapter_lista, _info);
         eventos.setAdapter(ale);
 

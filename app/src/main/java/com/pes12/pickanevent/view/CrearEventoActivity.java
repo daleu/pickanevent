@@ -52,8 +52,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
     EditText preuText;
     EditText hora;
+    EditText horaFi;
     EditText data;
-
     EditText dataFinal;
     CheckBox gratuit;
     CalendarView calendar;
@@ -170,9 +170,11 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         });
         gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         preuText = (EditText) findViewById(R.id.editorPrecio);
-        hora = (EditText) findViewById(R.id.hora);
+        hora = (EditText) findViewById(R.id.horaApertura);
+        horaFi = (EditText) findViewById(R.id.horaCierre);
         preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        horaFi.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         data = (EditText) findViewById(R.id.editorFecha);
         dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
 
@@ -198,56 +200,96 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         localitzacio = (EditText) findViewById(R.id.editorLugar);
         gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         preuText = (EditText) findViewById(R.id.editorPrecio);
-        hora = (EditText) findViewById(R.id.hora);
+        hora = (EditText) findViewById(R.id.horaApertura);
+        horaFi = (EditText) findViewById(R.id.horaCierre);
         data = (EditText) findViewById(R.id.editorFecha);
         dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
         if (nomEvent.getText().toString().equals("") ||
                 localitzacio.getText().toString().equals("") ||
-                    !gratuit.isChecked() && preuText.getText().equals("") ||
-                        data.getText().toString().equals("") || hora.getText().toString().equals("")) {
+                    !gratuit.isChecked() && preuText.getText().toString().equals("") ||
+                        data.getText().toString().equals("") || hora.getText().toString().equals("") ||
+                            horaFi.getText().toString().equals("")) {
 
             Toast.makeText(this, R.string.ERROR, Toast.LENGTH_SHORT).show();
         }
         else {
-            String imatge;
-            Calendar cal = Calendar.getInstance(); // creates calendar
-            cal.setTime(dataIni); // sets calendar time/date
-            String[] time = hora.getText().toString().split(".");
-            if (time.length != 2) Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+            if (!gratuit.isChecked() && !preuText.getText().toString().matches("[-+]?\\d*\\.?\\d+")) { //preu no és numéric
+                Toast.makeText(this, R.string.ERROR_PRECIO, Toast.LENGTH_SHORT).show();
+            }
             else {
+                String imatge;
+                if (image != null) {
+                    ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+                    image.recycle();
+                    byte[] byteArray = bYtE.toByteArray();
+                    imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                } else imatge = null;
+                Long aux = null;
+                if (dataFinal.getText().toString().equals(""))
+                    aux = añadirHoraADate(dataIni, horaFi.getText().toString());
+                else aux = añadirHoraADate(dataFi, horaFi.getText().toString());
+                Long aux2 = añadirHoraADate(dataIni, hora.getText().toString());
+                if (aux != null && aux2 != null) {
+                    if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
+                        if (aux2 < aux) {
+                            EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
+                                    descripcio.getText().toString(),
+                                    imatge,
+                                    preuText.getText().toString(),
+                                    url.getText().toString(),
+                                    localitzacio.getText().toString(), lat, lng,
+                                    Long.toString(aux2),
+                                    Long.toString(aux)
+                            );
+                            eMGR = MGRFactory.getInstance().getEventoMGR();
+                            eMGR.crear(ee);
+                            Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+                        } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
+                    }
+                    else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    public boolean esHoraCorrecta(String _hI, String _hF) {
+        String[] timeI = _hI.split(":");
+        String[] timeF = _hF.split(":");
+        int horaIni = Integer.parseInt(timeI[0]);
+        int minutoIni = Integer.parseInt(timeI[1]);
+        int horaFi = Integer.parseInt(timeF[0]);
+        int minutoFi = Integer.parseInt(timeF[1]);
+        if (horaIni < horaFi) return true;
+        else if (horaIni == horaFi) {
+            if (minutoIni < minutoFi) return true;
+            else return false;
+        }
+        else return false;
+    }
+
+    public Long añadirHoraADate(Date _d, String _s) {
+        Calendar cal = Calendar.getInstance(); // creates calendar
+        cal.setTime(_d); // sets calendar time/date
+        Long result = null;
+        String[] time = _s.split(":");
+        if (time.length != 2) Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+        else {
+            if (time[0].matches("[-+]?\\d*\\.?\\d+") && time[1].matches("[-+]?\\d*\\.?\\d+")) {
                 int hora = Integer.parseInt(time[0]);
                 int minuto = Integer.parseInt(time[1]);
                 if ((hora < 0 && hora > 23) || (minuto < 0 && minuto > 59)) {
                     Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     cal.add(Calendar.HOUR, hora); // adds one hour
                     cal.add(Calendar.MINUTE, minuto); // adds one hour
-                    Date d = cal.getTime(); // returns new date object, one hour in the future
-                    if (image != null) {
-                        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-                        image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-                        image.recycle();
-                        byte[] byteArray = bYtE.toByteArray();
-                        imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
-                    } else imatge = null;
-                    EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
-                            descripcio.getText().toString(),
-                            imatge,
-                            preuText.getText().toString(),
-                            url.getText().toString(),
-                            localitzacio.getText().toString(), lat, lng,
-                            Long.toString(d.getTime()), Long.toString(dataFi.getTime())
-                    );
-                    eMGR = MGRFactory.getInstance().getEventoMGR();
-                    //eMGR.crear(ee);
-                    eMGR.crearConRedireccion(this, ee);
-                    Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+                    result = cal.getTime().getTime(); // returns new date object, one hour in the future
                 }
             }
-
+            else Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
         }
+        return result;
     }
 
     public void comprovarCheckBox(View _view) {

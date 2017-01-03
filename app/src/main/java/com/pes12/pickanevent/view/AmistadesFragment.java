@@ -89,7 +89,8 @@ public class AmistadesFragment extends Fragment {
 
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
-        idUsuario = "usr47-1480690194879";
+        idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
+        //idUsuario = "usr47-1480690194879";
 
         uMGR.getUserFromFragmentAmistades(this, idUsuario);
     }
@@ -144,7 +145,7 @@ public class AmistadesFragment extends Fragment {
                     Map.Entry pair = (Map.Entry) it.next();
                     System.out.println(pair.getKey() + " = " + pair.getValue());
                     UsuarioEntity ge = (UsuarioEntity) pair.getValue();
-                    Info aux = new Info(StringToBitMap(null), ge.getNickname(), "", getString(R.string.DEFAULT_SEGUIR));
+                    Info aux = new Info(StringToBitMap(null), ge.getNickname(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                     aux.setId((String) pair.getKey());
                     aux.setTipus("usuari");
                     infoAdapter.add(aux);
@@ -154,8 +155,8 @@ public class AmistadesFragment extends Fragment {
             AdapterLista ale = new AdapterLista(getActivity(), R.layout.vista_adapter_lista, infoAdapter);
             eventos.setAdapter(ale);
 
-            hideProgressDialog();
         }
+        hideProgressDialog();
     }
 
     /**

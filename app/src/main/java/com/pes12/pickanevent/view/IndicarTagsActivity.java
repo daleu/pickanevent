@@ -89,7 +89,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
             textoMinimoTags.setVisibility(View.INVISIBLE);
             Bundle b = getIntent().getExtras();
-            idGrupo = b.getString("idGrupo");
+            idGrupo = b.getString("key");
             botonNuevo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -204,9 +204,18 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
         if (infoTag.getChecked()) { //se ha marcado -> deberemos añadirlo al map de seleccionados
             mapIdTags.put(infoTag.getIdTag(), infoTag.getNombreTag());
-        } else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados
-            mapIdTags.remove(infoTag.getIdTag());
         }
+        else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados
+            System.out.println("DESMARCAAAT" + infoTag.getIdTag());
+            mapIdTags.remove(infoTag.getIdTag());
+            for (int i = 0; i < info.size(); ++i) {
+                if (info.get(i).getIdTag().equals(infoTag.getIdTag())) {
+                    info.get(i).setChecked(false);
+                }
+            }
+
+        }
+
 
     }
 
@@ -218,6 +227,11 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     }
 
     public void mostrarResultadosBusquedaTags(ArrayList<InfoTags> _info) {
+        for (int i = 0; i < _info.size(); ++i) {
+            if (mapIdTags.containsKey(_info.get(i).getIdTag())) {
+                _info.get(i).setChecked(true);
+            }
+        }
         AdapterTags ale = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, _info);
         tags.setAdapter(ale);
     }
