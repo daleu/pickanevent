@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.HashMap;
@@ -45,7 +44,6 @@ public class ViewSharedMethods extends BaseActivity {
     public boolean asistiendoEvento(UsuarioEntity _asistidor, String _idEvento) {
         return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey(_idEvento);
     }
-
     public void asistirEvento(String _idEvento, String _tituloEvento) {
         asistirEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento, _tituloEvento);
     }
@@ -63,7 +61,6 @@ public class ViewSharedMethods extends BaseActivity {
 
         Toast.makeText(this, getString(R.string.ASISTIENDO_A) + titulo, Toast.LENGTH_LONG).show();
     }
-
     public void cancelarAsistenciaEvento(String _idEvento) {
         cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
     }
@@ -76,4 +73,36 @@ public class ViewSharedMethods extends BaseActivity {
 
         Toast.makeText(this, getString(R.string.EVENTO_ASISTENCIA_CANCELADA), Toast.LENGTH_LONG).show();
     }
+
+    /***
+     * BORRADOS
+     */
+    public void borrarCurrentUser() {
+        UsuarioEntity user = getUsuarioActual();
+        if (user.getCm())
+            borrarCM();
+        else
+            borrarUsuario();
+    }
+    public void borrarEvento(String _idEvento) {
+        //1st: recorrer todos los usuarios y borrar el evento del mapEventos de los que asistiran a el
+        //2nd: obtener el grupo y borrar el evento
+        //3rd: borrar evento del mapEventos del CM
+    }
+    public void borrarGrupo(String _idGrupo) {
+        //1st: recorrer todos los eventos del grupo y ejecutar la funcion borrar evento
+        //2nd: recorrer todos los mapGrupos de todos los usuarios y borrar el grupo con id _idGrupo
+        //3rd: obtener los tag en tagGrupos del grupo y editarlos borrando el grupo del tagsGrupo de tags
+        //4th: borrar el grupo de la base de datos
+        //5th: borrar el grupo del mapGrupos del currentUser
+    }
+    public void borrarCM() {
+        //1st: funcion borrarGrupo por cada grupo del mapGrupos del CM
+        //2nd: borrar CM
+    }
+    public void borrarUsuario() {
+        //1st: recorrer usuarios para ver quien le sigue, borrar usuario del mapUsuario de sus seguidores
+        //2nd: borrar usuario
+    }
+
 }
