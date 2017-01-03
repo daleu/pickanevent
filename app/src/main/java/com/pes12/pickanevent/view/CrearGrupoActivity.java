@@ -34,6 +34,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox {
 
@@ -47,6 +48,8 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
     TagMGR tMGR;
     ListView listaTags;
     ArrayList<InfoTags> info;
+
+    GrupoEntity nuevoGrupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +75,18 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
                 if (_cs.toString().length() != 0) {
                     showProgressDialog();
                     tMGR.getTagsByName_principal(CrearGrupoActivity.this, tv.getText().toString());
-                } /*else {
-                    for (int i = 0; i < info.size(); ++i) {
-                        if (mapIdTags.containsKey(info.get(i).getIdTag())) {
-                            info.get(i).setChecked(true);
+                }
+                else {
+                    if (ultimoMarcado != null) {
+                        for (int i = 0; i < info.size(); ++i) {
+                            if (info.get(i).getIdTag().equals(ultimoMarcado.getIdTag())) {
+                                info.get(i).setChecked(true);
+                            }
                         }
+                        AdapterTags ale = new AdapterTags(CrearGrupoActivity.this, R.layout.vista_adapter_tags, info);
+                        listaTags.setAdapter(ale);
                     }
-                    AdapterTags adapterTags = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, info);
-                    tags.setAdapter(adapterTags);
-                }*/
+                }
             }
 
             @Override
@@ -142,7 +148,8 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
 
             String nombreG = nombre.getText().toString();
             String descripG = descripcion.getText().toString();
-            GrupoEntity nuevoGrupo = new GrupoEntity(nombreG, descripG, imatge, null, "-KW3Au4_Mb-w4hnq3rSm", null, null);
+            System.out.println(ultimoMarcado.getIdTag());
+            nuevoGrupo = new GrupoEntity(nombreG, descripG, imatge, null, null, null, null);
 
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
@@ -186,6 +193,11 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
     }
 
     public void mostrarResultadosBusquedaTags(ArrayList<InfoTags> _info) {
+        for (int i = 0; i < _info.size(); ++i) {
+            if (ultimoMarcado != null && ultimoMarcado.getIdTag().equals(_info.get(i).getIdTag())) {
+                _info.get(i).setChecked(true);
+            }
+        }
         info = _info;
         AdapterTags ale = new AdapterTags(CrearGrupoActivity.this, R.layout.vista_adapter_tags, _info);
         listaTags.setAdapter(ale);
@@ -214,6 +226,11 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
     }
 
     public void redirecionarConIdGrupo(String idGrupo) {
-        startActivity(new Intent(CrearGrupoActivity.this, IndicarTagsActivity.class).putExtra("idGrupo", idGrupo));
+          /*ASIGNAR grupo al tag principal*/
+        LinkedHashMap<String, String> newMap = new LinkedHashMap<>();
+        if (ultimoMarcado.getEntity().getIdGrupos() == null) ultimoMarcado.getEntity().setIdGrupos(newMap);
+        ultimoMarcado.getEntity().getIdGrupos().put(idGrupo, nuevoGrupo.getNombreGrupo());
+        tMGR.actualizar(ultimoMarcado.getIdTag(), ultimoMarcado.getEntity());
+        startActivity(new Intent(CrearGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
     }
 }

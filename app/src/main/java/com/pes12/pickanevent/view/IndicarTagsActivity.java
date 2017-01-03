@@ -213,7 +213,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     info.get(i).setChecked(false);
                 }
             }
-            
+
         }
 
 
