@@ -279,7 +279,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             if (time[0].matches("[-+]?\\d*\\.?\\d+") && time[1].matches("[-+]?\\d*\\.?\\d+")) {
                 int hora = Integer.parseInt(time[0]);
                 int minuto = Integer.parseInt(time[1]);
-                if ((hora < 0 && hora > 23) || (minuto < 0 && minuto > 59)) {
+                if ((hora < 0 || hora > 23) || (minuto < 0 || minuto > 59)) {
                     Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
                 } else {
                     cal.add(Calendar.HOUR, hora); // adds one hour

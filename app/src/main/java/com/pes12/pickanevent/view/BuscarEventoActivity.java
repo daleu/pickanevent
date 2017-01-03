@@ -199,7 +199,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                     public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                                         data.setText(day + " de " + ViewSharedMethods.getNomMes(month+1, getApplicationContext()) + " de " + year);
                                         calendar.setVisibility(View.INVISIBLE);
-                                        Date d = new Date(year, month, day);
+                                        Date d = new Date(year-1900, month, day);
                                         long l = d.getTime();
                                         eMGR.getInfoEventoElegido(BuscarEventoActivity.this, "dia", Long.toString(l));
                                     }

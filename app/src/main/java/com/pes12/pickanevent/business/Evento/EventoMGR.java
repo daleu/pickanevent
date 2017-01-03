@@ -15,7 +15,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.CrearEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
@@ -237,7 +236,10 @@ public class EventoMGR {
                         long tiempo = evento.getValue(EventoEntity.class).getDataInici().getTime();
                         if (evento.getValue(EventoEntity.class).getDataFinal() != null) {
                             long tiempoFinal = evento.getValue(EventoEntity.class).getDataFinal().getTime();
-                            if (Long.parseLong(_val) >= tiempo && Long.parseLong(_val) <= tiempoFinal) {
+                            long auxVal = Long.parseLong(_val) + 86400000;
+                            if ((Long.parseLong(_val) <= tiempo && auxVal > tiempoFinal) ||
+                                    (tiempo <= Long.parseLong(_val) && Long.parseLong(_val) <= tiempoFinal && tiempoFinal < auxVal) ||
+                                    (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
                                 if (evento.getValue(EventoEntity.class).getPrecio() != null) {
                                     n.add(new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!"));
