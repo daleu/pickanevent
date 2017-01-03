@@ -143,50 +143,26 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    /*public void getInfoEventoEditar(Activity _activity) {
+    public void getInfoEventoEditar(Activity _activity) {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String, EventoEntity> map = new LinkedHashMap<String, EventoEntity>();
+            Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
             EditarEventoActivity activity;
-
             @Override
-            public void onDataChange(DataSnapshot _dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
+                for (DataSnapshot evento : dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
                 }
                 activity.mostrarInfoEventoEditar(map);
             }
 
             @Override
-            public void onCancelled(DatabaseError _databaseError) {
-                System.out.println(Constantes.ERROR_INESPERADO);
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("ERROR INESPERADO");
             }
-
-            public ValueEventListener setActivity(Activity _activity) {
-                activity = (EditarEventoActivity) _activity;
-                return this;
-            }
-        }.setActivity(_activity));
-    }*/
-
-    public void getInfoEventoEditar(Activity _activity, String id) {
-        bdRefEventos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-            EventoEntity e;
-            EditarEventoActivity activity;
-
-            @Override
-            public void onDataChange(DataSnapshot _dataSnapshot) {
-                e = _dataSnapshot.getValue((EventoEntity.class)); //<------------
-                activity.mostrarInfoEventoEditar(e);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError _databaseError) {
-                System.out.println(Constantes.ERROR_INESPERADO);
-            }
-
-            public ValueEventListener setActivity(Activity _activity) {
+            public ValueEventListener setActivity (Activity _activity)
+            {
                 activity = (EditarEventoActivity) _activity;
                 return this;
             }

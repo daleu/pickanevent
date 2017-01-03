@@ -170,10 +170,10 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         idEvento = "-K_ZUITEwSRxhMcbcKKQ";
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
-        eMGR.getInfoEventoEditar(this,idEvento);
+        eMGR.getInfoEventoEditar(this);
     }
 
-    /*public void mostrarInfoEventoEditar(Map<String, EventoEntity> _ge) {
+    public void mostrarInfoEventoEditar(Map<String, EventoEntity> _ge) {
         EventoEntity evento = _ge.get(idEvento);
 
         inicialitza();
@@ -196,30 +196,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         }
         localitzacio.setText(evento.getLocalizacion());
         url.setText(evento.getWebpage());
-    }*/
-
-    public void mostrarInfoEventoEditar(EventoEntity _ee) {
-
-        inicialitza();
-
-        nomEvent.setText(_ee.getTitulo());
-        descripcio.setText(_ee.getDescripcion());
-        String img = _ee.getImagen();
-        Bitmap imgBM = StringToBitMap(img);
-        foto.setImageBitmap(imgBM);
-        foto.setScaleType(ImageView.ScaleType.FIT_XY);
-        data.setText(getString(R.string.DEFAULT_HORARIO));
-        if (_ee.getPrecio().equals("-1")) {
-            gratuit.setChecked(true);
-            preuText.setFocusable(false);
-            preuText.setText("");
-            preuText.setHint(getString(R.string.ESCRIBE_PRECIO_EVENTO));
-        } else {
-            gratuit.setChecked(false);
-            preuText.setText(_ee.getPrecio());
-        }
-        localitzacio.setText(_ee.getLocalizacion());
-        url.setText(_ee.getWebpage());
     }
 
     private void inicialitza() {
