@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -59,6 +60,10 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+    }
+
+    public void registro(View view) {
+        startActivity(new Intent(LoginActivity.this, CrearUsuarioActivity.class));
     }
 
 

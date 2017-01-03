@@ -60,6 +60,12 @@
                     android:text="@string/DEFAULT_LOGIN"
                     android:onClick="login"/>
 
+            <Button
+                android:text="Registrarme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/registro"
+                android:onClick="registro" />
 
 
         </LinearLayout>
