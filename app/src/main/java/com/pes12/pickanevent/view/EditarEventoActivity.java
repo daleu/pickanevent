@@ -38,24 +38,47 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
+import static com.pes12.pickanevent.R.layout.activity_editar_evento;
 import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
 
 public class EditarEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
+    EditText preuText;
+    EditText hora;
+    EditText horaFi;
+    EditText data;
+    EditText dataFinal;
+    CheckBox gratuit;
+    CalendarView calendar;
+    CalendarView calendarFinal;
+    ImageView foto;
+
+    EditText nomEvent;
+    EditText descripcio;
+    EditText url;
+    EditText localitzacio;
+
+
+    private Date dataIni;
+    private Date dataFi;
+    public static final int GALERIA_REQUEST = 20;
     private static final LatLngBounds bounds =
             new LatLngBounds(new LatLng(35.871045, -9.919695), new LatLng(42.957396, 4.729860));
     //------------------- GOOGLE PLACES API ------------------
     protected GoogleApiClient mGoogleApiClient;
     EventoMGR eMGR;
-    String idEvento = "-KWnZoC88q5OZrOjBhGp";
     Bitmap image;
     String lat;
     String lng;
-    private ImageView imagenEvento;
+    String idEvento;
+
     private PlaceAutocompleteAdapter mAdapter;
     private AutoCompleteTextView mAutocompleteView;
     private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
@@ -124,20 +147,9 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                 .build();
         //-----------------------------------------------
 
-        setContentView(R.layout.activity_editar_evento);
-        eMGR = MGRFactory.getInstance().getEventoMGR();
-        eMGR.getInfoEventoEditar(this);
-        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                EditText data = (EditText) findViewById(R.id.editorFecha);
-                data.setText(day + " de " + ViewSharedMethods.getNomMes(month, getApplicationContext()) + " de " + year);
+        setContentView(activity_editar_evento);
 
-            }
-        });
-        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
-        preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        inicialitza();
 
         //--------------------- GOOGLE PLACES API -----------------
         // Retrieve the AutoCompleteTextView that will display Place suggestions.
@@ -153,22 +165,25 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                 null);
         mAutocompleteView.setAdapter(mAdapter);
 
+        //--------------------------------------------------------
+
+        idEvento = "-K_ZUITEwSRxhMcbcKKQ";
+
+        eMGR = MGRFactory.getInstance().getEventoMGR();
+        eMGR.getInfoEventoEditar(this,idEvento);
     }
 
-    public void mostrarInfoEvento(Map<String, EventoEntity> _ge) {
+    /*public void mostrarInfoEventoEditar(Map<String, EventoEntity> _ge) {
         EventoEntity evento = _ge.get(idEvento);
 
-        EditText nomEvent = (EditText) findViewById(R.id.editorNEvento);
-        EditText descripcio = (EditText) findViewById(R.id.editorDescr);
-        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
-        EditText url = (EditText) findViewById(R.id.editorEntradas);
-        EditText localitzacio = (EditText) findViewById(R.id.editorLugar);
-        EditText data = (EditText) findViewById(R.id.editorFecha);
-        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        inicialitza();
 
         nomEvent.setText(evento.getTitulo());
         descripcio.setText(evento.getDescripcion());
         String img = evento.getImagen();
+        Bitmap imgBM = StringToBitMap(img);
+        foto.setImageBitmap(imgBM);
+        foto.setScaleType(ImageView.ScaleType.FIT_XY);
         data.setText(getString(R.string.DEFAULT_HORARIO));
         if (evento.getPrecio().equals("-1")) {
             gratuit.setChecked(true);
@@ -181,16 +196,70 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         }
         localitzacio.setText(evento.getLocalizacion());
         url.setText(evento.getWebpage());
+    }*/
 
-        imagenEvento = (ImageView) findViewById(R.id.imagenEvento);
-        image = StringToBitMap(img);
-        imagenEvento.setImageBitmap(image);
-        imagenEvento.setScaleType(ImageView.ScaleType.FIT_XY);
+    public void mostrarInfoEventoEditar(EventoEntity _ee) {
+
+        inicialitza();
+
+        nomEvent.setText(_ee.getTitulo());
+        descripcio.setText(_ee.getDescripcion());
+        String img = _ee.getImagen();
+        Bitmap imgBM = StringToBitMap(img);
+        foto.setImageBitmap(imgBM);
+        foto.setScaleType(ImageView.ScaleType.FIT_XY);
+        data.setText(getString(R.string.DEFAULT_HORARIO));
+        if (_ee.getPrecio().equals("-1")) {
+            gratuit.setChecked(true);
+            preuText.setFocusable(false);
+            preuText.setText("");
+            preuText.setHint(getString(R.string.ESCRIBE_PRECIO_EVENTO));
+        } else {
+            gratuit.setChecked(false);
+            preuText.setText(_ee.getPrecio());
+        }
+        localitzacio.setText(_ee.getLocalizacion());
+        url.setText(_ee.getWebpage());
     }
 
-    private Bitmap StringToBitMap(String _encodedString) {
+    private void inicialitza() {
+        nomEvent = (EditText) findViewById(R.id.editorNEvento);
+        descripcio = (EditText) findViewById(R.id.editorDescr);
+        url = (EditText) findViewById(R.id.editorEntradas);
+        localitzacio = (EditText) findViewById(R.id.editorLugar);
+        foto = (ImageView) findViewById(R.id.imagenEvento);
+        calendar = (CalendarView) findViewById(R.id.calendarView);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
+                data.setText(day + " de " + ViewSharedMethods.getNomMes(month+1, getApplicationContext()) + " de " + year);
+                Date d = new Date(year-1900, month, day);
+                dataIni = d;
+            }
+        });
+        calendarFinal = (CalendarView) findViewById(R.id.calendarViewFinal);
+        calendarFinal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
+                dataFinal.setText(day + " de " + ViewSharedMethods.getNomMes(month+1, getApplicationContext()) + " de " + year);
+                Date d = new Date(year-1900, month, day);
+                dataFi = d;
+            }
+        });
+        gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
+        preuText = (EditText) findViewById(R.id.editorPrecio);
+        hora = (EditText) findViewById(R.id.horaApertura);
+        horaFi = (EditText) findViewById(R.id.horaCierre);
+        preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        horaFi.setRawInputType(InputType.TYPE_CLASS_NUMBER);
+        data = (EditText) findViewById(R.id.editorFecha);
+        dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
+    }
+
+    private Bitmap StringToBitMap(String encodedString) {
         try {
-            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
             return bitmap;
         } catch (Exception e) {
@@ -198,20 +267,92 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
             return null;
         }
     }
-/*
+
     public void updateEvento(View _view) {
-        //cridem a la funcio compartida entre la creacio/edicio event
-        EventoEntity ee = parseEventViewToEntity(image, lat, lng);
-        //guardem
-        eMGR = MGRFactory.getInstance().getEventoMGR();
-        eMGR.actualizar(idEvento, ee);
-        Toast.makeText(this, getString(R.string.EVENTO_EDITADO), Toast.LENGTH_LONG).show();
-        startActivity(new Intent(EditarEventoActivity.this, MainActivity.class));
-    } */
+        if (nomEvent.getText().toString().equals("") ||
+                localitzacio.getText().toString().equals("") ||
+                !gratuit.isChecked() && preuText.getText().toString().equals("") ||
+                data.getText().toString().equals("") || hora.getText().toString().equals("") ||
+                horaFi.getText().toString().equals("")) {
+
+            Toast.makeText(this, R.string.ERROR, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            if (!gratuit.isChecked() && !preuText.getText().toString().matches("[-+]?\\d*\\.?\\d+")) { //preu no és numéric
+                Toast.makeText(this, R.string.ERROR_PRECIO, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                String imatge;
+                if (image != null) {
+                    ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+                    image.recycle();
+                    byte[] byteArray = bYtE.toByteArray();
+                    imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                } else imatge = null;
+                Long aux = null;
+                if (dataFinal.getText().toString().equals(""))
+                    aux = añadirHoraADate(dataIni, horaFi.getText().toString());
+                else aux = añadirHoraADate(dataFi, horaFi.getText().toString());
+                Long aux2 = añadirHoraADate(dataIni, hora.getText().toString());
+                if (aux != null && aux2 != null) {
+                    if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
+                        if (aux2 < aux) {
+                            EventoEntity update = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge);
+                            eMGR.actualizar(idEvento,update);
+                            Toast.makeText(EditarEventoActivity.this, getString(R.string.EVENTO_EDITADO),
+                                    Toast.LENGTH_SHORT).show();
+
+                            //petaba con el setContentView
+                            //setContentView(R.layout.activity_main);
+                            startActivity(new Intent(EditarEventoActivity.this, MainActivity.class));
+                        } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
+                    }
+                    else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    public boolean esHoraCorrecta(String _hI, String _hF) {
+        String[] timeI = _hI.split(":");
+        String[] timeF = _hF.split(":");
+        int horaIni = Integer.parseInt(timeI[0]);
+        int minutoIni = Integer.parseInt(timeI[1]);
+        int horaFi = Integer.parseInt(timeF[0]);
+        int minutoFi = Integer.parseInt(timeF[1]);
+        if (horaIni < horaFi) return true;
+        else if (horaIni == horaFi) {
+            if (minutoIni < minutoFi) return true;
+            else return false;
+        }
+        else return false;
+    }
+
+    public Long añadirHoraADate(Date _d, String _s) {
+        Calendar cal = Calendar.getInstance(); // creates calendar
+        cal.setTime(_d); // sets calendar time/date
+        Long result = null;
+        String[] time = _s.split(":");
+        if (time.length != 2) Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+        else {
+            if (time[0].matches("[-+]?\\d*\\.?\\d+") && time[1].matches("[-+]?\\d*\\.?\\d+")) {
+                int hora = Integer.parseInt(time[0]);
+                int minuto = Integer.parseInt(time[1]);
+                if ((hora < 0 && hora > 23) || (minuto < 0 && minuto > 59)) {
+                    Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+                } else {
+                    cal.add(Calendar.HOUR, hora); // adds one hour
+                    cal.add(Calendar.MINUTE, minuto); // adds one hour
+                    result = cal.getTime().getTime(); // returns new date object, one hour in the future
+                }
+            }
+            else Toast.makeText(this, R.string.ERROR_HORA, Toast.LENGTH_SHORT).show();
+        }
+        return result;
+    }
 
     public void comprovarCheckBox(View _view) {
-        CheckBox gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
-        EditText preuText = (EditText) findViewById(R.id.editorPrecio);
         if (gratuit.isChecked()) {
             preuText.setFocusable(false);
             preuText.setText("");
@@ -221,6 +362,11 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
             preuText.setFocusable(true);
         }
     }
+
+    public void redirecionarConIdEvento(String idEvento) {
+        startActivity(new Intent(EditarEventoActivity.this, IndicarTagsActivity.class).putExtra("idEvento", idEvento));
+    }
+
 
     //---------------------- GOOGLE PLACES API ---------------
 
@@ -250,7 +396,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                    Toast.makeText(this, getString(R.string.ERROR_OBRIR_IMATGE), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.ERROR_OBRIR_IMATGE, Toast.LENGTH_LONG).show();
                 }
             }
         }

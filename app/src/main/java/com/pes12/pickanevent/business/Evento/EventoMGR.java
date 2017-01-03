@@ -143,7 +143,7 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoEditar(Activity _activity) {
+    /*public void getInfoEventoEditar(Activity _activity) {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String, EventoEntity> map = new LinkedHashMap<String, EventoEntity>();
@@ -155,7 +155,30 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
                 }
-                activity.mostrarInfoEvento(map);
+                activity.mostrarInfoEventoEditar(map);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (EditarEventoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }*/
+
+    public void getInfoEventoEditar(Activity _activity, String id) {
+        bdRefEventos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            EventoEntity e;
+            EditarEventoActivity activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                e = _dataSnapshot.getValue((EventoEntity.class)); //<------------
+                activity.mostrarInfoEventoEditar(e);
             }
 
             @Override

@@ -257,7 +257,7 @@
                 android:background="#eceff1"
                 android:textStyle="normal"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/editorFecha"
+                android:layout_below="@+id/calendarView"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp" />
 
@@ -281,10 +281,10 @@
                 android:id="@+id/calendarView"
                 android:background="#eceff1"
                 android:layout_marginTop="16dp"
-                android:layout_below="@+id/listView1"
-                android:layout_alignStart="@+id/editorFechaFinal"
+                android:layout_below="@+id/editorFecha"
                 android:layout_alignEnd="@+id/editorFechaFinal"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:layout_alignStart="@+id/listView1" />
 
             <CalendarView
                 android:layout_width="match_parent"
@@ -293,8 +293,8 @@
                 android:background="#eceff1"
                 android:layout_marginTop="16dp"
                 android:layout_below="@+id/editorFechaFinal"
-                android:layout_alignStart="@+id/hora"
-                android:layout_alignEnd="@+id/hora"
+                android:layout_alignStart="@+id/listView1"
+                android:layout_alignEnd="@+id/editorFechaFinal"
                 android:layout_marginBottom="10dp"/>
 
             <TextView
@@ -314,7 +314,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:layout_below="@+id/editorFechaFinal"/>
+                android:layout_below="@+id/calendarViewFinal"/>
 
 
             <TextView

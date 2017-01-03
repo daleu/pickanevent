@@ -42,6 +42,15 @@
                 android:layout_alignParentStart="true"
                 android:layout_height="1455dp" />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imagenEvento"
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:onClick="abrirGaleria"
+                android:focusable="false" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
@@ -233,72 +242,9 @@
             <EditText
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
-                android:hint="Hora del evento (hh.mm)"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/hora"
-                android:layout_below="@+id/calendarViewFinal"
-                android:layout_height="46dp"
-                android:layout_marginTop="10dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp" />
-
-            <Button
-                android:text="@string/DEFAULT_GUARDAR_CAMBIOS"
-                android:id="@+id/buttonAcceptar"
-                android:background="@drawable/botton_application"
-                android:layout_width="150dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="30dp"
-                android:radius="20dip"
-                android:onClick="updateEvento"
-                android:layout_alignBottom="@+id/marcoContenido"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:id="@+id/imagenEvento"
-                android:layout_height="160dp"
-                android:onClick="abrirGaleria"
-                android:focusable="false"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
-
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/calendarView"
-                android:background="#eceff1"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/listView1"
-                android:layout_alignStart="@+id/editorFechaFinal"
-                android:layout_alignEnd="@+id/editorFechaFinal"
-                android:layout_marginBottom="10dp"/>
-
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/calendarViewFinal"
-                android:background="#eceff1"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/editorFechaFinal"
-                android:layout_alignStart="@+id/hora"
-                android:layout_alignEnd="@+id/hora"
-                android:layout_marginBottom="10dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
                 android:hint="@string/ULTIMO_DIA"
                 android:ems="10"
-                android:cursorVisible="true"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:fontFamily="sans-serif"
@@ -314,6 +260,117 @@
                 android:layout_below="@+id/calendarView"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp" />
+
+            <Button
+                android:text="@string/DEFAULT_GUARDAR_CAMBIOS"
+                android:id="@+id/buttonAcceptar"
+                android:background="@drawable/botton_application"
+                android:layout_width="150dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="30dp"
+                android:radius="20dip"
+                android:onClick="updateEvento"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/horaCierre"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp" />
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/calendarView"
+                android:background="#eceff1"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/editorFecha"
+                android:layout_alignEnd="@+id/editorFechaFinal"
+                android:layout_marginBottom="10dp"
+                android:layout_alignStart="@+id/listView1" />
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/calendarViewFinal"
+                android:background="#eceff1"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/editorFechaFinal"
+                android:layout_alignStart="@+id/listView1"
+                android:layout_alignEnd="@+id/editorFechaFinal"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="180dp"
+                android:inputType="textPersonName"
+                android:text="@string/EVENTO_HORA_APER"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:background="#FFF"
+                android:textStyle="normal"
+                android:id="@+id/horaAp"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_below="@+id/calendarViewFinal"/>
+
+
+            <TextView
+                android:layout_width="180dp"
+                android:inputType="textPersonName"
+                android:text="@string/EVENTO_HORA_CIERRE"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:background="#FFF"
+                android:textStyle="normal"
+                android:id="@+id/horaC"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_below="@+id/horaAp"/>
+
+            <EditText
+                android:layout_width="150dp"
+                android:inputType="textPersonName"
+                android:hint="@string/DEFAULT_FORMATO_HORA"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/horaApertura"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginRight="25dp"
+                android:layout_above="@+id/horaC"
+                android:layout_alignParentEnd="true" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:inputType="textPersonName"
+                android:hint="@string/DEFAULT_FORMATO_HORA"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textSize="18sp"
+                android:textColorHint="#8a939d"
+                android:id="@+id/horaCierre"
+                android:layout_height="46dp"
+                android:background="#eceff1"
+                android:textStyle="normal"
+                android:layout_marginRight="25dp"
+                android:layout_alignTop="@+id/horaC"
+                android:layout_alignStart="@+id/horaApertura" />
 
         </RelativeLayout>
     </ScrollView>
