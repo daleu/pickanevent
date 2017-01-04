@@ -64,9 +64,7 @@
                 android:layout_below="@+id/nombreGrupo"
                 android:layout_height="20dp"
                 android:background="#fff"
-                android:textStyle="normal|bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:layout_width="match_parent"
