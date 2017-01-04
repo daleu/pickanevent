@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.ImagenEvento.ImagenEventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
@@ -58,11 +59,14 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     CheckBox gratuit;
     CalendarView calendar;
     CalendarView calendarFinal;
+    InputStream isImagen;
 
     EditText nomEvent;
     EditText descripcio;
     EditText url;
     EditText localitzacio;
+
+    ImagenEventoMGR iMGR;
 
 
     private Date dataIni;
@@ -149,6 +153,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         url = (EditText) findViewById(R.id.editorEntradas);
         localitzacio = (EditText) findViewById(R.id.editorLugar);
 
+        iMGR = MGRFactory.getInstance().getImagenEventoMGR();
+
         setContentView(activity_crear_evento);
         calendar = (CalendarView) findViewById(R.id.calendarView);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -219,11 +225,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             else {
                 String imatge;
                 if (image != null) {
-                    ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-                    image.recycle();
-                    byte[] byteArray = bYtE.toByteArray();
-                    imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
                 } else imatge = null;
                 Long aux = null;
                 if (dataFinal.getText().toString().equals(""))
@@ -235,7 +237,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                         if (aux2 < aux) {
                             EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
                                     descripcio.getText().toString(),
-                                    imatge,
                                     preuText.getText().toString(),
                                     url.getText().toString(),
                                     localitzacio.getText().toString(), lat, lng,
@@ -243,7 +244,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                                     Long.toString(aux)
                             );
                             eMGR = MGRFactory.getInstance().getEventoMGR();
-                            eMGR.crear(ee);
+                            eMGR.crear(ee,isImagen);
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
@@ -326,13 +327,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         if (_resultCode == RESULT_OK) {
             if (_requestCode == GALERIA_REQUEST) {
                 Uri imageUri = _data.getData();
-                InputStream inputStream;
+
                 try {
-                    inputStream = getContentResolver().openInputStream(imageUri);
-                    ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
-                    image = BitmapFactory.decodeStream(inputStream);
-                    //show the image to the user
-                    imgV.setImageBitmap(image);
+                    isImagen = getContentResolver().openInputStream(imageUri);
+
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

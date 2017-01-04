@@ -26,6 +26,7 @@ import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
@@ -144,6 +145,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     public void post(View _view) {
         if (Twitter.getInstance().core.getSessionManager().getActiveSession() != null) {
+
             TweetComposer.Builder builder = new TweetComposer.Builder(this)
                     .text("Te recomiendo el evento "
                             + titulo.getText().toString() + " en " + lugar.getText().toString()
@@ -192,9 +194,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             }
         });
 
-        Bitmap imgBM = StringToBitMap(gEntity.getImagen());
-        imagenevento.setImageBitmap(imgBM);
-        imagenevento.setScaleType(ImageView.ScaleType.FIT_XY);
+        Picasso.with(this).load(gEntity.getImagen()).into(imagenevento);
 
         //centrar mapa y poner pinlocation
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);

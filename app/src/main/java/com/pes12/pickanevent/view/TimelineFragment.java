@@ -6,10 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,20 +21,15 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -181,11 +174,11 @@ public class TimelineFragment extends Fragment {
             EventoEntity e = (EventoEntity)pair.getValue();
             Info aux;
             if(myUser.getCm()){
-                aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_EDITAR_EVENTO));
+                aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_EDITAR_EVENTO));
             }
             else{
-                if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_NO_ASSISTIR));
-                else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInici(),e.getDataFinal()), getString(R.string.DEFAULT_ASSISTIR));
+                if(my_events.containsKey(pair.getKey()))aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_NO_ASSISTIR));
+                else aux = new Info(StringToBitMap(e.getImagen()), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_ASSISTIR));
             }
             aux.setId((String)pair.getKey());
             aux.setTipus("event");
