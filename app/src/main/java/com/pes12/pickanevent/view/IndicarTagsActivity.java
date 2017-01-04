@@ -127,8 +127,8 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             if (getIntent().getExtras() != null) {
                 usuarioReg = (UsuarioEntity) getIntent().getExtras().getSerializable("usuarioReg");
                 idUsu = getIntent().getExtras().getString("keyUsuR");
-            }
 
+            }
 
         }
 
@@ -142,6 +142,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         info = _info;
         if (!esCM) {
             if (getUsuarioActual() != null) mapIdTags = getUsuarioActual().getIdTags();
+            else mapIdTags = new LinkedHashMap<>();
             if (mapIdTags == null) {
                 mapIdTags = new LinkedHashMap<>();
             }
@@ -187,12 +188,15 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             if (getUsuarioActual() != null) {
                 getUsuarioActual().setIdTags(mapIdTags);
                 actualizarUsuario();
+
             }
             else {
+
                 usuarioReg.setIdTags(mapIdTags);
-                uMGR.actualizar(idUsu ,usuarioReg);
+                uMGR.actualizar(idUsu, usuarioReg);
             }
             startActivity(new Intent(IndicarTagsActivity.this, MainActivity.class));
+
         }
         else {
             grupo.setIdTags(mapIdTags);
