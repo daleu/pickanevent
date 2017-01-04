@@ -189,6 +189,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
 
                 usuarioReg.setIdTags(mapIdTags);
                 uMGR.actualizar(idUsu, usuarioReg);
+                signOut();
             }
             startActivity(new Intent(IndicarTagsActivity.this, MainActivity.class));
 

@@ -67,8 +67,8 @@ public class CrearUsuarioActivity extends BaseActivity {
                 uMGR.actualizar(task.getResult().getUser().getUid(), usuarioNuevo);
                 task.getResult().getUser().sendEmailVerification();
 
-                signOut();
-                CrearUsuarioActivity.this.finish();
+                //signOut();
+                //CrearUsuarioActivity.this.finish();
 
                 startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class).putExtra("usuarioReg", usuarioNuevo).putExtra("keyUsuR", task.getResult().getUser().getUid()));
                 // ...
