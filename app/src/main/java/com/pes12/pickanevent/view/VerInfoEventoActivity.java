@@ -102,39 +102,43 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         eMGR.crear(ge);*/
 
         //Boton eliminar grupo
-        borrarEvento = (Button) findViewById(R.id.borrarEvento);
-        borrarEvento.setOnClickListener(new View.OnClickListener() {
-            Boolean esCM = getUsuarioActual().getCm();
+        if (getUsuarioActual().getCm()) {
+            borrarEvento = (Button) findViewById(R.id.borrarEvento);
+            borrarEvento.setOnClickListener(new View.OnClickListener() {
+                Boolean esCM = getUsuarioActual().getCm();
 
-            @Override
-            public void onClick(View v) {
-                LayoutInflater inflater = getLayoutInflater();
-                View dialoglayout = null;
-                dialoglayout = inflater.inflate(R.layout.dialog_borrar_grupo, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(VerInfoEventoActivity.this);
-                builder.setView(dialoglayout);
-                final AlertDialog alert = builder.create();
-                alert.show();
-                Button aceptar = (Button) dialoglayout.findViewById(borrarCuenta);
-                Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
-                aceptar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Boolean noError = ViewSharedMethods.borrarCurrentUser();
-                        String msg = noError ? getString(R.string.BORRADO_EVENTO_CORRECTO) : getString(R.string.ERROR_BORRAR);
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                        alert.hide();
-                        if (noError) signOut();
-                    }
-                });
-                cancelar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        alert.hide();
-                    }
-                });
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View dialoglayout = null;
+                    dialoglayout = inflater.inflate(R.layout.dialog_borrar_grupo, null);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(VerInfoEventoActivity.this);
+                    builder.setView(dialoglayout);
+                    final AlertDialog alert = builder.create();
+                    alert.show();
+                    Button aceptar = (Button) dialoglayout.findViewById(borrarCuenta);
+                    Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
+                    aceptar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                            String msg = noError ? getString(R.string.BORRADO_EVENTO_CORRECTO) : getString(R.string.ERROR_BORRAR);
+                            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            alert.hide();
+                            if (noError) signOut();
+                        }
+                    });
+                    cancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            alert.hide();
+                        }
+                    });
+                }
+            });
+        }else{
+            borrarEvento.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void post(View _view) {

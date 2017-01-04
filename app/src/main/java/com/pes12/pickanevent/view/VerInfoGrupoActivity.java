@@ -89,39 +89,43 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
 
         //Boton eliminar grupo
-        borrarGrupo = (Button) findViewById(R.id.borrarGrupo);
-        borrarGrupo.setOnClickListener(new View.OnClickListener() {
-            Boolean esCM = getUsuarioActual().getCm();
+        if (getUsuarioActual().getCm()) {
+            borrarGrupo = (Button) findViewById(R.id.borrarGrupo);
+            borrarGrupo.setOnClickListener(new View.OnClickListener() {
+                Boolean esCM = getUsuarioActual().getCm();
 
-            @Override
-            public void onClick(View v) {
-                LayoutInflater inflater = getLayoutInflater();
-                View dialoglayout = null;
-                dialoglayout = inflater.inflate(R.layout.dialog_borrar_grupo, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(VerInfoGrupoActivity.this);
-                builder.setView(dialoglayout);
-                final AlertDialog alert = builder.create();
-                alert.show();
-                Button aceptar = (Button) dialoglayout.findViewById(borrarCuenta);
-                Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
-                aceptar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Boolean noError = ViewSharedMethods.borrarCurrentUser();
-                        String msg = noError ? getString(R.string.BORRADO_GRUPO_CORRECTO) : getString(R.string.ERROR_BORRAR);
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                        alert.hide();
-                        if (noError) signOut();
-                    }
-                });
-                cancelar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        alert.hide();
-                    }
-                });
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View dialoglayout = null;
+                    dialoglayout = inflater.inflate(R.layout.dialog_borrar_grupo, null);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(VerInfoGrupoActivity.this);
+                    builder.setView(dialoglayout);
+                    final AlertDialog alert = builder.create();
+                    alert.show();
+                    Button aceptar = (Button) dialoglayout.findViewById(borrarCuenta);
+                    Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
+                    aceptar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                            String msg = noError ? getString(R.string.BORRADO_GRUPO_CORRECTO) : getString(R.string.ERROR_BORRAR);
+                            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            alert.hide();
+                            if (noError) signOut();
+                        }
+                    });
+                    cancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            alert.hide();
+                        }
+                    });
+                }
+            });
+        } else {
+            borrarGrupo.setVisibility(View.INVISIBLE);
+        }
 
 
     }
