@@ -117,9 +117,9 @@ public class EventoMGR {
 
     }
 
-    public void getInfoEvento(Activity _activity) {
+    public void getInfoEvento(Activity _activity, String idEvento) {
 
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.child(idEvento).addListenerForSingleValueEvent(new ValueEventListener() {
             Map<String, EventoEntity> map = new LinkedHashMap<String, EventoEntity>();
             EventoEntity e;
             VerInfoEventoActivity activity;
@@ -127,11 +127,12 @@ public class EventoMGR {
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
+                /*for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
-                }
+                }*/
                 Map<String,EventoEntity> evento = new HashMap<String,EventoEntity>();
-                /*e = _dataSnapshot.getValue((EventoEntity.class));*/
+                e = _dataSnapshot.getValue((EventoEntity.class));
+                evento.put(_dataSnapshot.getKey(),e);
                 activity.mostrarInfoEvento(evento);
             }
 

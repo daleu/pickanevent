@@ -128,7 +128,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
                 Log.e("teoric", getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO));
                 if(componentes.tipus=="event" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("action","assistir");
+                    intent.putExtra("action","noassistir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
@@ -139,7 +139,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
                 }
                 else if(componentes.tipus=="event" && !aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))){//DEIXAR DASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("action","noassistir");
+                    intent.putExtra("action","assistir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
