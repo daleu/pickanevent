@@ -54,6 +54,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     private MapFragment mapFragment;
     private Button borrarEvento;
+    Bundle param;
 
     private EventoMGR eMGR;
 
@@ -63,9 +64,9 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
 
-        Bundle param = getIntent().getExtras();
+        param = getIntent().getExtras();
         idEvento = "Evt102-1480690194876";
-        if(param!=null){
+        if(param.getString("key")!=null){
             idEvento = param.getString("key");
         }
 

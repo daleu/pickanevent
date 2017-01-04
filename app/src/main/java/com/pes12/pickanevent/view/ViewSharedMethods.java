@@ -36,45 +36,6 @@ public class ViewSharedMethods extends BaseActivity {
     }
 
     /***
-     * EVENTO
-     */
-    public boolean asistiendoEvento(String _idEvento) {
-        return asistiendoEvento(getUsuarioActual(), _idEvento);
-    }
-    public boolean asistiendoEvento(UsuarioEntity _asistidor, String _idEvento) {
-        return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey(_idEvento);
-    }
-    public void asistirEvento(String _idEvento, String _tituloEvento) {
-        asistirEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento, _tituloEvento);
-    }
-    public void asistirEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento, String _tituloEvento) {
-        Map<String, String> asistiendo = _asistidor.getIdEventos();
-        if (asistiendo == null) {
-            asistiendo = new HashMap<String, String>();
-            _asistidor.setIdGrupos(asistiendo);
-        }
-        asistiendo.put(_idEvento, _tituloEvento);
-        String titulo = _tituloEvento;
-
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_idAsistidor, _asistidor);
-
-        Toast.makeText(this, getString(R.string.ASISTIENDO_A) + titulo, Toast.LENGTH_LONG).show();
-    }
-    public void cancelarAsistenciaEvento(String _idEvento) {
-        cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
-    }
-    public void cancelarAsistenciaEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento) {
-        if (asistiendoEvento(_asistidor, _idEvento))
-            _asistidor.getIdEventos().remove(_idEvento);
-
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_idAsistidor, _asistidor);
-
-        Toast.makeText(this, getString(R.string.EVENTO_ASISTENCIA_CANCELADA), Toast.LENGTH_LONG).show();
-    }
-
-    /***
      * BORRADOS
      */
     public static Boolean borrarCurrentUser() {
