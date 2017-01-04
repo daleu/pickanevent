@@ -112,7 +112,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             String img = grupo.getImagen();
             Bitmap imBM = StringToBitMap(img);
             String nombreGrupo = grupo.getNombreGrupo();
-            Info info = new Info(imBM, nombreGrupo, "adeu", getString(R.string.DEFAULT_SEGUIR));
+            Info info = new Info(null, nombreGrupo, "adeu", getString(R.string.DEFAULT_SEGUIR));
             eventos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
@@ -129,7 +129,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             Bitmap imBM = StringToBitMap(img);
             String nombreGrupo = evento.getTitulo();
             String horario = getString(R.string.DEFAULT_HORARIO);
-            Info info = new Info(imBM, nombreGrupo, horario, getString(R.string.DEFAULT_SEGUIR));
+            Info info = new Info(null, nombreGrupo, horario, getString(R.string.DEFAULT_SEGUIR));
             grupos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             //System.out.println(grupos.get(0).segonaLinea);
