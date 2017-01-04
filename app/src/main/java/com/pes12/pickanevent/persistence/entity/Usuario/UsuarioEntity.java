@@ -2,6 +2,7 @@ package com.pes12.pickanevent.persistence.entity.Usuario;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Created by Legault on 14/10/2016.
  */
 
-public class UsuarioEntity {
+public class UsuarioEntity implements Serializable {
 
     //private String id;
     private String bio;
