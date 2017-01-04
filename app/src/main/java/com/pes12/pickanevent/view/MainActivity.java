@@ -113,7 +113,7 @@ BLOQUE DE TEST
     public void goVerInfoGrupo(View _view) {
         Intent intent = new Intent(MainActivity.this, VerInfoGrupoActivity.class);
         Bundle b = new Bundle();
-        System.out.println("CM Antes de passar -------------------------------------------------------- " + cm);
+        //System.out.println("CM Antes de passar -------------------------------------------------------- " + cm);
         b.putBoolean("CM", cm); //bool de si es CM o no
         intent.putExtras(b);
         startActivity(intent);

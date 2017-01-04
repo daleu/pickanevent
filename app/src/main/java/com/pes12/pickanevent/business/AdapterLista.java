@@ -126,7 +126,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
         holder.button.setOnClickListener(new View.OnClickListener(){ //FALTA FER QUE CONSTI!!!!!!!!!
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Log.e("tipus",componentes.tipus);
+                //Log.e("tipus",componentes.tipus);
                 Log.e("action",aux);
                 Log.e("teoric", getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO));
                 if(componentes.tipus=="event" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT

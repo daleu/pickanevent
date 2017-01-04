@@ -64,13 +64,15 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
 
         Bundle param = getIntent().getExtras();
-        idUsuario = "-KUHeQd1dR1FT3FmbPLu";
+        idUsuario = "Qch3yrsCXwgyL4os8ujikGVaNwW2";
         if(param!=null){
             idUsuario = param.getString("key");
+
+            if(param.getString("action")!=null){
+                if(param.getString("action")=="noseguir") dejarSeguirUsuario(idUsuario);
+            }
         }
-        if(param.getString("action")!=null){
-            if(param.getString("action")=="noseguir") dejarSeguirUsuario(idUsuario);
-        }
+
         uMGR.getInfoUsuario(this, idUsuario);
 
 
@@ -88,20 +90,19 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         foto.setImageResource(R.drawable.redhot); //Cambiar con imagen de usuario
         Map<String, String> idGrupos = usuario.getIdGrupos();
         Map<String, String> idEventos = usuario.getIdEventos();
-        //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
+        for (Map.Entry<String, String> entry : idGrupos.entrySet()){
+        //if(entry.getValue()) {
+        //idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+        gMGR.getInfoGrupoUsuario(this, entry.getKey());
+        //}
+        }
+        for (Map.Entry<String, String> entry : idEventos.entrySet()){
         //System.out.println(entry.getKey() + "/" + entry.getValue());
         //if(entry.getValue()) {
-        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-        gMGR.getInfoGrupoUsuario(this,/*entry.getKey()*/idGrupo);
+        //idEvento = "-KUavWyMfmX-uxtRqMo5";
+        eMGR.getInfoEventoUsuario(this, entry.getKey());
         //}
-        //}
-        //for (Map.Entry<String, Boolean> entry : idEventos.entrySet()){
-        //System.out.println(entry.getKey() + "/" + entry.getValue());
-        //if(entry.getValue()) {
-        idEvento = "-KUavWyMfmX-uxtRqMo5";
-        eMGR.getInfoEventoUsuario(this,/*entry.getKey()*/idEvento);
-        //}
-        //}
+        }
     }
 
     public void rellenarListaGrupos(GrupoEntity grupo) {
