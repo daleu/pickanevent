@@ -146,8 +146,8 @@ public class GruposFragment extends Fragment {
                 System.out.println(pair.getKey() + " = " + pair.getValue());
                 GrupoEntity ge = (GrupoEntity)pair.getValue();
                 Info aux;
-                if(myUser.getCm()) aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_EDITAR_GRUPO));
-                else aux = new Info(StringToBitMap(ge.getImagen()), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_NO_SEGUIR));
+                if(myUser.getCm()) aux = new Info(null, ge.getNombreGrupo(), "", getString(R.string.DEFAULT_EDITAR_GRUPO));
+                else aux = new Info(null, ge.getNombreGrupo(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                 aux.setId((String)pair.getKey());
                 aux.setTipus("grup");
                 infoAdapter.add(aux);

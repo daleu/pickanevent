@@ -48,6 +48,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
     TagMGR tMGR;
     ListView listaTags;
     ArrayList<InfoTags> info;
+    InputStream isImagen;
 
     GrupoEntity nuevoGrupo;
 
@@ -137,27 +138,35 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
             Toast.makeText(CrearGrupoActivity.this, getString(R.string.INDICAR_TAG_GRUPO),
                     Toast.LENGTH_SHORT).show();
         else {
-            String imatge;
-            if (image != null) {
-                ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
-                image.recycle();
-                byte[] byteArray = bYtE.toByteArray();
-                imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            } else imatge = null;
-
             String nombreG = nombre.getText().toString();
             String descripG = descripcion.getText().toString();
-            System.out.println(ultimoMarcado.getIdTag());
-            nuevoGrupo = new GrupoEntity(nombreG, descripG, imatge, null, null, null, null);
+            nuevoGrupo = new GrupoEntity(nombreG, descripG, null, null, null, null, null);
 
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
 
-            gMGR.crearConRedireccion(this, nuevoGrupo);
+            gMGR.crearConRedireccion(this, nuevoGrupo, isImagen);
             Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
                     Toast.LENGTH_SHORT).show();
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
+        if (_resultCode == RESULT_OK) {
+            if (_requestCode == GALERIA_REQUEST) {
+                Uri imageUri = _data.getData();
+
+                try {
+                    isImagen = getContentResolver().openInputStream(imageUri);
+
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, R.string.ERROR_OBRIR_IMATGE, Toast.LENGTH_LONG).show();
+                }
+            }
         }
     }
 
@@ -172,25 +181,6 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         startActivityForResult(galeria, GALERIA_REQUEST); //image return
     }
 
-    @Override
-    protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
-        if (_resultCode == RESULT_OK) {
-            if (_requestCode == GALERIA_REQUEST) {
-                Uri imageUri = _data.getData();
-                InputStream inputStream;
-                try {
-                    inputStream = getContentResolver().openInputStream(imageUri);
-                    image = BitmapFactory.decodeStream(inputStream);
-                    //show the image to the user
-                    foto.setImageBitmap(image);
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, R.string.ERROR_OBRIR_IMATGE, Toast.LENGTH_LONG).show();
-                }
-            }
-        }
-    }
 
     public void mostrarResultadosBusquedaTags(ArrayList<InfoTags> _info) {
         for (int i = 0; i < _info.size(); ++i) {

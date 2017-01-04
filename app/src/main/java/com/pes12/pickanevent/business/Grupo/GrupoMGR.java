@@ -12,6 +12,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
@@ -25,6 +26,7 @@ import com.pes12.pickanevent.view.VerGruposCreadosActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -70,7 +72,7 @@ public class GrupoMGR {
 
             Log.e(entry.getKey(), entry.getValue().getNickname());
             if (entry.getKey() == "") {
-                result.put(crear(entry.getValue()), entry.getValue());
+                //result.put(crear(entry.getValue()), entry.getValue());
             } else {
                 actualizar(entry.getKey(), entry.getValue());
                 result.put(entry.getKey(), entry.getValue());
@@ -86,10 +88,10 @@ public class GrupoMGR {
         grupo.setValue(_entity);
     }
 
-    public String crear(GrupoEntity _entity) {
+    public String crear(GrupoEntity _entity, InputStream _is) {
         bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity ent;
-
+            InputStream is;
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
@@ -98,6 +100,9 @@ public class GrupoMGR {
                     DatabaseReference grupo = bdRefGrupos.push();
                     grupo.setValue(ent);
                     grupo.getKey();
+
+                    MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey());
+
                 }
             }
 
@@ -105,21 +110,23 @@ public class GrupoMGR {
             public void onCancelled(DatabaseError _arg0) {
             }
 
-            public ValueEventListener setEntity(GrupoEntity _ent) {
+            public ValueEventListener setEntity(GrupoEntity _ent, InputStream _is) {
                 ent = _ent;
+                is = _is;
                 return this;
             }
-        }.setEntity(_entity));
+        }.setEntity(_entity, _is));
 
 
         return "";
     }
 
-    public String crearConRedireccion(Activity _activity, GrupoEntity _entity) {
+    public String crearConRedireccion(Activity _activity, GrupoEntity _entity, InputStream _is) {
         bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity ent;
             CrearGrupoActivity activity;
             String id;
+            InputStream is;
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
@@ -128,6 +135,9 @@ public class GrupoMGR {
                     DatabaseReference grupo = bdRefGrupos.push();
                     grupo.setValue(ent);
                     id = grupo.getKey();
+
+                    MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey());
+
                 }
                 activity.redirecionarConIdGrupo(id);
             }
@@ -136,12 +146,13 @@ public class GrupoMGR {
             public void onCancelled(DatabaseError _arg0) {
             }
 
-            public ValueEventListener setActivity(Activity _activity, GrupoEntity _ent) {
+            public ValueEventListener setActivity(Activity _activity, GrupoEntity _ent, InputStream _is) {
                 activity = (CrearGrupoActivity) _activity;
                 ent = _ent;
+                is = _is;
                 return this;
             }
-        }.setActivity(_activity, _entity));
+        }.setActivity(_activity, _entity, _is));
 
 
         return "";

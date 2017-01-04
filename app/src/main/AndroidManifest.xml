@@ -28,7 +28,8 @@
         <activity android:name=".view.EditarEventoActivity" />
         <activity android:name=".view.BuscarActivity" />
         <activity android:name=".view.VerInfoEventoActivity" />
-        <activity android:name=".view.VerInfoOtroUsuarioActivity" />
+        <activity android:name=".view.VerInfoOtroUsuarioActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.CrearUsuarioActivity" />
         <activity android:name=".view.BuscarEventoActivity" />
