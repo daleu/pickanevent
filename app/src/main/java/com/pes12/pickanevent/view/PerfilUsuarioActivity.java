@@ -8,7 +8,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
@@ -34,7 +36,6 @@ import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
-import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -63,6 +64,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
     //Twitter
     private TwitterLoginButton loginButton;
     private Button logout;
+    private Button borrarCuenta;
 
 
     @Override
@@ -75,7 +77,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
         nombre = (EditText) findViewById(R.id.nickName);
         foto = (ImageView) findViewById(R.id.imagen);
         correo = (TextView) findViewById(R.id.correo);
-        bio  = (EditText) findViewById(R.id.bio);
+        bio = (EditText) findViewById(R.id.bio);
         loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
         logout = (Button) findViewById(R.id.twitter_logout_button);
         ///////////////////////////////////////////////////////////////////////
@@ -105,12 +107,50 @@ public class PerfilUsuarioActivity extends BaseActivity {
                 loginButton.setVisibility(View.GONE);
                 logout.setVisibility(View.VISIBLE);
             }
+
             @Override
             public void failure(TwitterException exception) {
                 Log.d("TwitterKit", "Login with Twitter failure", exception);
             }
         });
 
+        //Boton eliminar cuenta
+        borrarCuenta = (Button) findViewById(R.id.borrarCuenta);
+        borrarCuenta.setOnClickListener(new View.OnClickListener() {
+            Boolean esCM = getUsuarioActual().getCm();
+
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = getLayoutInflater();
+                View dialoglayout = null;
+                if (getUsuarioActual().getCm())
+                    dialoglayout = inflater.inflate(R.layout.dialog_borrar_cm, null);
+                else
+                    dialoglayout = inflater.inflate(R.layout.dialog_borrar_usuario, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(PerfilUsuarioActivity.this);
+                builder.setView(dialoglayout);
+                final AlertDialog alert = builder.create();
+                alert.show();
+                Button aceptar = (Button) dialoglayout.findViewById(R.id.borrarCuenta);
+                Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
+                aceptar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                        String msg = noError ? getString(R.string.BORRADO_CUENTA_CORRECTO) : getString(R.string.ERROR_BORRAR);
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        alert.hide();
+                        if (noError) signOut();
+                    }
+                });
+                cancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alert.hide();
+                    }
+                });
+            }
+        });
     }
 
     public void logoutTwitter(View _view) {

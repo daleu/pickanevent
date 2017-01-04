@@ -1,7 +1,6 @@
 package com.pes12.pickanevent.view;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.AdapterLista;
 import com.pes12.pickanevent.business.AdapterTags;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.IEstadoCheckBox;
@@ -82,7 +80,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             @Override
             public void afterTextChanged(Editable _arg0) {
             }
-
         });
 
         esCM = getUsuarioActual().getCm();
@@ -110,8 +107,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                             alert.hide();
                         }
                     });
-
-
                 }
             });
         }

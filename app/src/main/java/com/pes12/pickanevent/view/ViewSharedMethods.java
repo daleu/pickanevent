@@ -77,32 +77,36 @@ public class ViewSharedMethods extends BaseActivity {
     /***
      * BORRADOS
      */
-    public void borrarCurrentUser() {
+    public static Boolean borrarCurrentUser() {
         UsuarioEntity user = getUsuarioActual();
         if (user.getCm())
-            borrarCM();
+            return borrarCM();
         else
-            borrarUsuario();
+            return borrarUsuario();
     }
-    public void borrarEvento(String _idEvento) {
+    public static Boolean borrarEvento(String _idEvento) {
         //1st: recorrer todos los usuarios y borrar el evento del mapEventos de los que asistiran a el
-        //2nd: obtener el grupo y borrar el evento
-        //3rd: borrar evento del mapEventos del CM
+        //2nd: obtener el grupo y borrar el evento de dicho grupo
+        //3rd: obtener el CM (del grupo) y borrar el evento del mapEventos del CM
+        return false;
     }
-    public void borrarGrupo(String _idGrupo) {
+    public static Boolean borrarGrupo(String _idGrupo) {
         //1st: recorrer todos los eventos del grupo y ejecutar la funcion borrar evento
         //2nd: recorrer todos los mapGrupos de todos los usuarios y borrar el grupo con id _idGrupo
         //3rd: obtener los tag en tagGrupos del grupo y editarlos borrando el grupo del tagsGrupo de tags
         //4th: borrar el grupo de la base de datos
         //5th: borrar el grupo del mapGrupos del currentUser
+        return false;
     }
-    public void borrarCM() {
+    public static Boolean borrarCM() {
         //1st: funcion borrarGrupo por cada grupo del mapGrupos del CM
         //2nd: borrar CM
+        return false;
     }
-    public void borrarUsuario() {
+    public static Boolean borrarUsuario() {
         //1st: recorrer usuarios para ver quien le sigue, borrar usuario del mapUsuario de sus seguidores
         //2nd: borrar usuario
+        return false;
     }
 
 }

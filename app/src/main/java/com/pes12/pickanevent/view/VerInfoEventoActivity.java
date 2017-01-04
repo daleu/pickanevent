@@ -6,8 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Base64;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,13 +27,11 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.Map;
+
+import static com.pes12.pickanevent.R.id.borrarCuenta;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
 
@@ -54,6 +53,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     private String longitud;
 
     private MapFragment mapFragment;
+    private Button borrarEvento;
 
     private EventoMGR eMGR;
 
@@ -100,6 +100,41 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 "Palau Sant Jordi",
                 "dissabte, 1 / octubre de 21:00 a 0:00 \n 1 octubre (21:00) - 2 octubre (0:00)");
         eMGR.crear(ge);*/
+
+        //Boton eliminar grupo
+        borrarEvento = (Button) findViewById(R.id.borrarEvento);
+        borrarEvento.setOnClickListener(new View.OnClickListener() {
+            Boolean esCM = getUsuarioActual().getCm();
+
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = getLayoutInflater();
+                View dialoglayout = null;
+                dialoglayout = inflater.inflate(R.layout.dialog_borrar_grupo, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(VerInfoEventoActivity.this);
+                builder.setView(dialoglayout);
+                final AlertDialog alert = builder.create();
+                alert.show();
+                Button aceptar = (Button) dialoglayout.findViewById(borrarCuenta);
+                Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
+                aceptar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                        String msg = noError ? getString(R.string.BORRADO_EVENTO_CORRECTO) : getString(R.string.ERROR_BORRAR);
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                        alert.hide();
+                        if (noError) signOut();
+                    }
+                });
+                cancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alert.hide();
+                    }
+                });
+            }
+        });
     }
 
     public void post(View _view) {

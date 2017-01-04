@@ -115,4 +115,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="place_details">&lt;b&gt;%1$s&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Place Id: %2$s&lt;/i&gt;&lt;br/&gt;Address: %3$s&lt;br/&gt;Phone: %4$s&lt;br/&gt;Website: %5$s</string>
+    <string name="DIALOG_BORRADO_CUENTA">El borrado de la cuenta es irreversible. Seguro que quieres continuar?</string>
+    <string name="DEFAULT_ACEPTAR">Aceptar</string>
+    <string name="DEFAULT_CANCELAR">Cancelar</string>
+    <string name="DIALOG_BORRADO_CUENTA_CM">Borrar la cuenta borrará también todos los grupos y eventos creados por esta. Estos cambios son irreversibles. Estas seguro de querer continuar?</string>
+    <string name="DIALOG_BORRADO_GRUPO">Borrar un grupo borrará también todos sus eventos. Estos cambios son irreversibles. Estas seguro de querer continuar?</string>
+    <string name="ELIMINAR_CUENTA">Eliminar cuenta</string>
+    <string name="ERROR_BORRAR">Error: no se ha podido borrar.</string>
+    <string name="BORRADO_CUENTA_CORRECTO">Cuenta borrada correctamente. Serás deslogueado de la aplicación.</string>
+    <string name="BORRADO_GRUPO_CORRECTO">El grupo y todos sus eventos se han borrado correctamente.</string>
+    <string name="BORRADO_EVENTO_CORRECTO">El evento se ha borrado correctamente.</string>
+    <string name="DIALOG_BORRADO_EVENTO">El borrado del evento es irreversible. Estas seguro de querer continuar?</string>
+    <string name="ELIMINAR_GRUPO">Eliminar grupo</string>
+    <string name="ELIMINAR_EVENTO">Eliminar evento</string>
 </resources>
