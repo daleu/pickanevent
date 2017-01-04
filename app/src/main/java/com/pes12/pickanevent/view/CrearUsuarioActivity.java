@@ -31,6 +31,7 @@ public class CrearUsuarioActivity extends BaseActivity {
     private EditText username;
     private CheckBox cm;
 
+
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
@@ -61,18 +62,20 @@ public class CrearUsuarioActivity extends BaseActivity {
                 Toast.makeText(CrearUsuarioActivity.this, Constantes.LOG_USUARI_CREADO_CORRECTO + ' ' + correo.getText().toString(),
                         Toast.LENGTH_SHORT).show();
                 UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
+                UsuarioEntity usuarioNuevo = new UsuarioEntity(username.getText().toString(), cm.isChecked());
 
-                uMGR.actualizar(task.getResult().getUser().getUid(), new UsuarioEntity(username.getText().toString(), cm.isChecked()));
+                uMGR.actualizar(task.getResult().getUser().getUid(), usuarioNuevo);
                 task.getResult().getUser().sendEmailVerification();
-                signOut();
-                CrearUsuarioActivity.this.finish();
 
+                //signOut();
+                //CrearUsuarioActivity.this.finish();
 
+                startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class).putExtra("usuarioReg", usuarioNuevo).putExtra("keyUsuR", task.getResult().getUser().getUid()));
                 // ...
             }
         });
 
-        startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class));
+
 
     }
 }

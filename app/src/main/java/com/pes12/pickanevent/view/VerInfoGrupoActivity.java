@@ -5,13 +5,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
@@ -29,6 +32,7 @@ import java.util.Map;
 
 import static com.pes12.pickanevent.R.id.Primero;
 import static com.pes12.pickanevent.R.id.Tags;
+import static com.pes12.pickanevent.R.id.borrarCuenta;
 
 public class VerInfoGrupoActivity extends BaseActivity {
 
@@ -44,6 +48,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     EventoMGR eMGR;
     TagMGR tMGR;
     Boolean cm = false;
+    private Button borrarGrupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,45 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
             editarTags.setVisibility(View.INVISIBLE);
+        }
+
+        //Boton eliminar grupo
+        borrarGrupo = (Button) findViewById(R.id.borrarGrupo);
+        if (getUsuarioActual().getCm()) {
+            borrarGrupo.setOnClickListener(new View.OnClickListener() {
+                Boolean esCM = getUsuarioActual().getCm();
+
+                @Override
+                public void onClick(View v) {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View dialoglayout = null;
+                    dialoglayout = inflater.inflate(R.layout.dialog_borrar_grupo, null);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(VerInfoGrupoActivity.this);
+                    builder.setView(dialoglayout);
+                    final AlertDialog alert = builder.create();
+                    alert.show();
+                    Button aceptar = (Button) dialoglayout.findViewById(borrarCuenta);
+                    Button cancelar = (Button) dialoglayout.findViewById(R.id.funcionVacia);
+                    aceptar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                            String msg = noError ? getString(R.string.BORRADO_GRUPO_CORRECTO) : getString(R.string.ERROR_BORRAR);
+                            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            alert.hide();
+                            if (noError) signOut();
+                        }
+                    });
+                    cancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            alert.hide();
+                        }
+                    });
+                }
+            });
+        } else {
+            borrarGrupo.setVisibility(View.INVISIBLE);
         }
 
 

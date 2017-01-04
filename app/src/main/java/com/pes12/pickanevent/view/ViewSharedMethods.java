@@ -6,7 +6,6 @@ import android.widget.Toast;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.HashMap;
@@ -37,43 +36,38 @@ public class ViewSharedMethods extends BaseActivity {
     }
 
     /***
-     * EVENTO
+     * BORRADOS
      */
-    public boolean asistiendoEvento(String _idEvento) {
-        return asistiendoEvento(getUsuarioActual(), _idEvento);
+    public static Boolean borrarCurrentUser() {
+        UsuarioEntity user = getUsuarioActual();
+        if (user.getCm())
+            return borrarCM();
+        else
+            return borrarUsuario();
     }
-    public boolean asistiendoEvento(UsuarioEntity _asistidor, String _idEvento) {
-        return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey(_idEvento);
+    public static Boolean borrarEvento(String _idEvento) {
+        //1st: recorrer todos los usuarios y borrar el evento del mapEventos de los que asistiran a el
+        //2nd: obtener el grupo y borrar el evento de dicho grupo
+        //3rd: obtener el CM (del grupo) y borrar el evento del mapEventos del CM
+        return false;
+    }
+    public static Boolean borrarGrupo(String _idGrupo) {
+        //1st: recorrer todos los eventos del grupo y ejecutar la funcion borrar evento
+        //2nd: recorrer todos los mapGrupos de todos los usuarios y borrar el grupo con id _idGrupo
+        //3rd: obtener los tag en tagGrupos del grupo y editarlos borrando el grupo del tagsGrupo de tags
+        //4th: borrar el grupo de la base de datos
+        //5th: borrar el grupo del mapGrupos del currentUser
+        return false;
+    }
+    public static Boolean borrarCM() {
+        //1st: funcion borrarGrupo por cada grupo del mapGrupos del CM
+        //2nd: borrar CM
+        return false;
+    }
+    public static Boolean borrarUsuario() {
+        //1st: recorrer usuarios para ver quien le sigue, borrar usuario del mapUsuario de sus seguidores
+        //2nd: borrar usuario
+        return false;
     }
 
-    public void asistirEvento(String _idEvento, String _tituloEvento) {
-        asistirEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento, _tituloEvento);
-    }
-    public void asistirEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento, String _tituloEvento) {
-        Map<String, String> asistiendo = _asistidor.getIdEventos();
-        if (asistiendo == null) {
-            asistiendo = new HashMap<String, String>();
-            _asistidor.setIdGrupos(asistiendo);
-        }
-        asistiendo.put(_idEvento, _tituloEvento);
-        String titulo = _tituloEvento;
-
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_idAsistidor, _asistidor);
-
-        Toast.makeText(this, getString(R.string.ASISTIENDO_A) + titulo, Toast.LENGTH_LONG).show();
-    }
-
-    public void cancelarAsistenciaEvento(String _idEvento) {
-        cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
-    }
-    public void cancelarAsistenciaEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento) {
-        if (asistiendoEvento(_asistidor, _idEvento))
-            _asistidor.getIdEventos().remove(_idEvento);
-
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-        uMGR.actualizar(_idAsistidor, _asistidor);
-
-        Toast.makeText(this, getString(R.string.EVENTO_ASISTENCIA_CANCELADA), Toast.LENGTH_LONG).show();
-    }
 }

@@ -23,6 +23,7 @@ import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.GruposFragment;
+import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -312,6 +313,7 @@ public class UsuarioMGR {
                 u = _dataSnapshot.getValue((UsuarioEntity.class)); //<------------
 
                 activity.setUsuarioActual(u);
+
             }
 
             @Override

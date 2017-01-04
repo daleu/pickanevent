@@ -18,6 +18,7 @@ public class EventoEntity {
     private String dataFinal;
     private String latitud;
     private String longitud;
+    private String idGrup;
     //private String id;
 
     public static final String NOMBRETABLA = "eventos";
@@ -146,7 +147,15 @@ public class EventoEntity {
         this.longitud = longitud;
     }
 
-    public Date getDataInici() {
+    public String getDataInici() {
+        return dataInici;
+    }
+
+    public String getDataFinal() {
+        return dataFinal;
+    }
+
+    public Date getDataInDate() {
         Date d = new Date();
         if(dataInici!=null) d = new Date(Long.parseLong(dataInici));
         return d;
@@ -156,7 +165,7 @@ public class EventoEntity {
         this.dataInici = dataInici;
     }
 
-    public Date getDataFinal() {
+    public Date getDataFiDate() {
         Date d = new Date();
         if(dataFinal!=null) d = new Date(Long.parseLong(dataFinal));
         return d;
@@ -166,6 +175,13 @@ public class EventoEntity {
         this.dataFinal = dataFinal;
     }
 
+    public String getIdGrup() {
+        return idGrup;
+    }
+
+    public void setIdGrup(String idGrup) {
+        this.idGrup = idGrup;
+    }
 
     /*public String getId() {
         return id;

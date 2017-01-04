@@ -1,7 +1,6 @@
 package com.pes12.pickanevent.view;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.business.AdapterLista;
 import com.pes12.pickanevent.business.AdapterTags;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.IEstadoCheckBox;
@@ -25,6 +23,7 @@ import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -44,6 +43,8 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     String idGrupo;
     ArrayList<InfoTags> info;
     GrupoEntity grupo;
+    UsuarioEntity usuarioReg;
+    String idUsu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +83,10 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             @Override
             public void afterTextChanged(Editable _arg0) {
             }
-
         });
+        esCM = false;
+        if (getUsuarioActual() != null) esCM = getUsuarioActual().getCm();
 
-        esCM = getUsuarioActual().getCm();
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
             textoMinimoTags.setVisibility(View.INVISIBLE);
             Bundle b = getIntent().getExtras();
@@ -110,8 +111,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                             alert.hide();
                         }
                     });
-
-
                 }
             });
         }
@@ -119,6 +118,13 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         else { //el usuario no es CM: no mostrar ni el texto ni el boton superiores
             botonNuevo.setVisibility(View.INVISIBLE);
             textoNuevoTag.setVisibility(View.INVISIBLE);
+
+            if (getIntent().getExtras() != null) {
+                usuarioReg = (UsuarioEntity) getIntent().getExtras().getSerializable("usuarioReg");
+                idUsu = getIntent().getExtras().getString("keyUsuR");
+
+            }
+
         }
 
         tMGR = MGRFactory.getInstance().getTagMGR();
@@ -130,7 +136,8 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
     public void mostrarTags(ArrayList<InfoTags> _info) {
         info = _info;
         if (!esCM) {
-            mapIdTags = getUsuarioActual().getIdTags();
+            if (getUsuarioActual() != null) mapIdTags = getUsuarioActual().getIdTags();
+            else mapIdTags = new LinkedHashMap<>();
             if (mapIdTags == null) {
                 mapIdTags = new LinkedHashMap<>();
             }
@@ -173,9 +180,19 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             Toast.makeText(IndicarTagsActivity.this, getString(R.string.INDICA_TRES_TAGS), Toast.LENGTH_SHORT).show();
         }
         else if (!esCM){
-            getUsuarioActual().setIdTags(mapIdTags);
-            actualizarUsuario();
+            if (usuarioReg == null) {
+                getUsuarioActual().setIdTags(mapIdTags);
+                actualizarUsuario();
+
+            }
+            else {
+
+                usuarioReg.setIdTags(mapIdTags);
+                uMGR.actualizar(idUsu, usuarioReg);
+                signOut();
+            }
             startActivity(new Intent(IndicarTagsActivity.this, MainActivity.class));
+
         }
         else {
             grupo.setIdTags(mapIdTags);
@@ -193,7 +210,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     if (tagAux.getIdGrupos() != null) tagAux.getIdGrupos().remove(idGrupo);
                 }
                 tMGR.actualizar(info.get(i).getIdTag(), tagAux);
-                Bundle b = getIntent().getExtras();
                 startActivity(new Intent(IndicarTagsActivity.this, VerInfoGrupoActivity.class).putExtra("idGrupo", idGrupo));
             }
         }
@@ -206,7 +222,6 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             mapIdTags.put(infoTag.getIdTag(), infoTag.getNombreTag());
         }
         else { //se ha desmarcado -> deberemos eliminarlo del map de seleccionados
-            System.out.println("DESMARCAAAT" + infoTag.getIdTag());
             mapIdTags.remove(infoTag.getIdTag());
             for (int i = 0; i < info.size(); ++i) {
                 if (info.get(i).getIdTag().equals(infoTag.getIdTag())) {
@@ -235,4 +250,5 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         AdapterTags ale = new AdapterTags(IndicarTagsActivity.this, R.layout.vista_adapter_tags, _info);
         tags.setAdapter(ale);
     }
+
 }
