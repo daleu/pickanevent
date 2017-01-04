@@ -5,6 +5,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.ImagenEvento.ImagenEventoMGR;
+import com.pes12.pickanevent.business.ImagenGrupo.ImagenGrupoMGR;
 import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR;
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
@@ -23,6 +24,7 @@ public class MGRFactory {
     private final TagMGR tagMGR;
     private final ImagenPerfilUsuarioMGR ipuMGR;
     private final ImagenEventoMGR ieMGR;
+    private final ImagenGrupoMGR igMGR;
     private final FirebaseDatabase databse;
     private final FirebaseStorage storage;
 
@@ -34,6 +36,7 @@ public class MGRFactory {
         tagMGR = new TagMGR();
         ipuMGR = new ImagenPerfilUsuarioMGR();
         ieMGR = new ImagenEventoMGR();
+        igMGR = new ImagenGrupoMGR();
         databse = FirebaseFactory.getInstance();
         storage = FirebaseStorage.getInstance();
 
@@ -43,6 +46,7 @@ public class MGRFactory {
         tagMGR.inicializarDatabase(databse);
         ipuMGR.inicializarDatabase(storage);
         ieMGR.inicializarDatabase(storage);
+        igMGR.inicializarDatabase(storage);
     }
 
     public static MGRFactory getInstance() {
@@ -74,5 +78,9 @@ public class MGRFactory {
 
     public ImagenEventoMGR getImagenEventoMGR() {
         return ieMGR;
+    }
+
+    public ImagenGrupoMGR getImagenGrupoMGR() {
+        return igMGR;
     }
 }
