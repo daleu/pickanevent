@@ -20,6 +20,8 @@ import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
+import com.squareup.picasso.Picasso;
+
 import android.content.Context;
 import org.w3c.dom.Text;
 
@@ -85,7 +87,8 @@ public class AdapterLista extends ArrayAdapter<Info> {
         }
 
         final Info componentes = getItem(_position);
-        holder.img.setImageBitmap(componentes.img);
+        Picasso.with(context).load(componentes.img).into(holder.img);
+       // holder.img.setImageBitmap(componentes.img);
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);

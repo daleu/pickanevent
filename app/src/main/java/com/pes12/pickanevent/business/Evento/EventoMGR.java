@@ -349,7 +349,7 @@ public class EventoMGR {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
                         System.out.println(textoBoton + "" + cm);
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), "horariii", textoBoton));
+                        info.add(new Info(null, e.getTitulo(), "horariii", textoBoton));
                     }
                 }
                 activity.mostrarEventosGrupo(info);
@@ -392,7 +392,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (usuariosPorEvento.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "No Assistir!"));
+                        info.add(new Info(null, "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "No Assistir!"));
                     }
                 }
 
