@@ -180,7 +180,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
             Toast.makeText(IndicarTagsActivity.this, getString(R.string.INDICA_TRES_TAGS), Toast.LENGTH_SHORT).show();
         }
         else if (!esCM){
-            if (getUsuarioActual() != null) {
+            if (usuarioReg == null) {
                 getUsuarioActual().setIdTags(mapIdTags);
                 actualizarUsuario();
 
