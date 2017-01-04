@@ -126,8 +126,9 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
                 }
-                /*e = _dataSnapshot.getValue((EventoEntity.class));
-                activity.mostrarInfoEvento(e);*/
+                Map<String,EventoEntity> evento = new HashMap<String,EventoEntity>();
+                /*e = _dataSnapshot.getValue((EventoEntity.class));*/
+                activity.mostrarInfoEvento(evento);
             }
 
             @Override

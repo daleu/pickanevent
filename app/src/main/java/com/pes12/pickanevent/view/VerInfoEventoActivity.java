@@ -159,6 +159,11 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
+        if(param.getString("action")!=null){
+            if(param.getString("action")=="assistir") asistirEvento(idEvento,gEntity.getTitulo());
+            else if(param.getString("action")=="noassistir") cancelarAsistenciaEvento(idEvento);
+        }
+
         imagenevento = (ImageView) findViewById(R.id.imagenEvento);
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);
