@@ -74,6 +74,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void signOut() {
+        System.out.println("ARRIBOOOOOOOOOO");
         mAuth.signOut();
         usuarioActual = null;
     }

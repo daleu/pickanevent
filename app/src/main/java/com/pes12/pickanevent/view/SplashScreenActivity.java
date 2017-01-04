@@ -6,15 +6,20 @@ import android.os.Bundle;
 
 import com.pes12.pickanevent.R;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends BaseActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent;
+        intent = new Intent(this, MainActivity.class);
         //LA REDIRECCIÓN REAL SERA LA COMENTADA
-        //Intent intent = new Intent(this, LoginActivity.class);
+        /*if (getUsuarioActual() == null) {
+            intent = new Intent(this, LoginActivity.class);
+        }
+        else {
+            intent = new Intent(this, NavigationDrawer.class);
+        }*/
         startActivity(intent);
         finish();
     }
