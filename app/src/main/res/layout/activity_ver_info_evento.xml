@@ -39,9 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/imagenEvento"
-                android:background="#fff"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:background="#fff">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -76,9 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutDescripcion"
                 android:background="#fff"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -173,9 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutInfo"
                 android:background="#fff"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -235,8 +229,6 @@
                 android:layout_below="@+id/layoutMap"
                 android:background="#fff"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp">
 
                 <Button
@@ -272,8 +264,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutAssist"
                 android:background="#fff"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp">
 
                 <Button

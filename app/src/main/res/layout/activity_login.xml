@@ -32,7 +32,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Correo"/>
+                    android:text="Correo"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:textSize="18sp"/>
 
                 <EditText
                     android:id="@+id/correo"
@@ -40,32 +43,51 @@
                     android:layout_height="wrap_content"
                     android:hint="alguien@correo.com"
                     android:inputType="textEmailAddress"
+                    android:background="@color/tw__solid_white"
+                    android:layout_marginTop="6dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contraseña"/>
+                    android:text="Contraseña"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:layout_marginTop="6dp"
+                    android:textSize="18sp"/>
                 <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType = "textPassword"
-
+                    android:background="@color/tw__solid_white"
+                    android:layout_marginTop="6dp"
                     />
 
 
             <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/DEFAULT_LOGIN"
-                    android:onClick="login"/>
+                android:text="@string/DEFAULT_LOGIN"
+                android:onClick="login"
+                android:layout_width="150dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="30dp"
+                android:radius="20dip"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/botton_application"
+                android:layout_gravity="center"/>
 
             <Button
                 android:text="Registrarme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="30dp"
+                android:radius="20dip"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
                 android:id="@+id/registro"
-                android:onClick="registro" />
+                android:onClick="registro"
+                android:background="@drawable/botton_application"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
