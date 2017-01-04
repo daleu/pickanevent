@@ -37,7 +37,6 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setUsuarioActual(UsuarioEntity _usuarioActual) {
         usuarioActual = _usuarioActual;
-
     }
 
     public void showProgressDialog() {
