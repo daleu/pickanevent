@@ -102,8 +102,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         eMGR.crear(ge);*/
 
         //Boton eliminar grupo
+        borrarEvento = (Button) findViewById(R.id.borrarEvento);
         if (getUsuarioActual().getCm()) {
-            borrarEvento = (Button) findViewById(R.id.borrarEvento);
             borrarEvento.setOnClickListener(new View.OnClickListener() {
                 Boolean esCM = getUsuarioActual().getCm();
 

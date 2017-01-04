@@ -89,8 +89,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
 
         //Boton eliminar grupo
+        borrarGrupo = (Button) findViewById(R.id.borrarGrupo);
         if (getUsuarioActual().getCm()) {
-            borrarGrupo = (Button) findViewById(R.id.borrarGrupo);
             borrarGrupo.setOnClickListener(new View.OnClickListener() {
                 Boolean esCM = getUsuarioActual().getCm();
 
