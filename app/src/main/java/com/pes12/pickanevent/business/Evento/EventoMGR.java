@@ -232,10 +232,10 @@ public class EventoMGR {
                             }
                         }
                     }
-                    else if (aux.equals("dia") && evento.getValue(EventoEntity.class).getDataInici() != null) {
-                        long tiempo = evento.getValue(EventoEntity.class).getDataInici().getTime();
-                        if (evento.getValue(EventoEntity.class).getDataFinal() != null) {
-                            long tiempoFinal = evento.getValue(EventoEntity.class).getDataFinal().getTime();
+                    else if (aux.equals("dia") && evento.getValue(EventoEntity.class).getDataInDate() != null) {
+                        long tiempo = evento.getValue(EventoEntity.class).getDataInDate().getTime();
+                        if (evento.getValue(EventoEntity.class).getDataFiDate() != null) {
+                            long tiempoFinal = evento.getValue(EventoEntity.class).getDataFiDate().getTime();
                             long auxVal = Long.parseLong(_val) + 86400000;
                             if ((Long.parseLong(_val) <= tiempo && auxVal > tiempoFinal) ||
                                     (tiempo <= Long.parseLong(_val) && Long.parseLong(_val) <= tiempoFinal && tiempoFinal < auxVal) ||
@@ -398,7 +398,7 @@ public class EventoMGR {
                 Date actual = new Date();
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
-                    if (idS.containsKey(evento.getKey()) && actual.before(e.getDataInici())) {
+                    if (idS.containsKey(evento.getKey()) && actual.before(e.getDataInDate())) {
                         gUI.put(evento.getKey(),e);
                     }
                 }
