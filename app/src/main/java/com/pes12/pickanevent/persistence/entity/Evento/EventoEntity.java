@@ -18,6 +18,7 @@ public class EventoEntity {
     private String dataFinal;
     private String latitud;
     private String longitud;
+    private String idGrup;
     //private String id;
 
     public static final String NOMBRETABLA = "eventos";
@@ -167,6 +168,13 @@ public class EventoEntity {
         this.dataFinal = dataFinal;
     }
 
+    public String getIdGrup() {
+        return idGrup;
+    }
+
+    public void setIdGrup(String idGrup) {
+        this.idGrup = idGrup;
+    }
 
     /*public String getId() {
         return id;
