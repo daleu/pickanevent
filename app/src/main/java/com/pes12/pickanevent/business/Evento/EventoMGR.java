@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
+import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
@@ -26,6 +27,7 @@ import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,10 +50,10 @@ public class EventoMGR {
         bdRefEventos.keepSynced(true);
     }
 
-    public String crear(EventoEntity _entity) {
+    public String crear(EventoEntity _entity, InputStream _is) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
-
+            InputStream is;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
@@ -59,7 +61,8 @@ public class EventoMGR {
                 } else {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
-                    evento.getKey();
+
+                    MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey());
                 }
             }
 
@@ -67,11 +70,12 @@ public class EventoMGR {
             public void onCancelled(DatabaseError arg0) {
             }
 
-            public ValueEventListener setEntity(EventoEntity _ent) {
+            public ValueEventListener setEntity(EventoEntity _ent,InputStream _is) {
                 ent = _ent;
+                is = _is;
                 return this;
             }
-        }.setEntity(_entity));
+        }.setEntity(_entity,_is));
         return "";
     }
 
@@ -143,7 +147,7 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoEditar(Activity _activity) {
+    /*public void getInfoEventoEditar(Activity _activity) {
 
         bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
@@ -152,7 +156,7 @@ public class EventoMGR {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot evento : dataSnapshot.getChildren()) {
-                    map.put(evento.getKey(), evento.getValue(EventoEntity.class));
+                    map.put(evento.getKey().toString(), null);//evento.getValue(EventoEntity.class));
                 }
                 activity.mostrarInfoEventoEditar(map);
             }
@@ -163,6 +167,28 @@ public class EventoMGR {
             }
             public ValueEventListener setActivity (Activity _activity)
             {
+                activity = (EditarEventoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+    }*/
+    public void getInfoEventoEditar(Activity _activity, String id) {
+        bdRefEventos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            EventoEntity e;
+            EditarEventoActivity activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                e = _dataSnapshot.getValue((EventoEntity.class)); //<------------
+                activity.mostrarInfoEventoEditar(e);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
                 activity = (EditarEventoActivity) _activity;
                 return this;
             }

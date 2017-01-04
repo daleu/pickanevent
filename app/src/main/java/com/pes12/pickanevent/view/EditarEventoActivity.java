@@ -167,14 +167,13 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
         //--------------------------------------------------------
 
-        idEvento = "-K_ZUITEwSRxhMcbcKKQ";
+        idEvento = "Evt1-1480690194869";
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
-        eMGR.getInfoEventoEditar(this);
+        eMGR.getInfoEventoEditar(this,idEvento);
     }
 
-    public void mostrarInfoEventoEditar(Map<String, EventoEntity> _ge) {
-        EventoEntity evento = _ge.get(idEvento);
+    public void mostrarInfoEventoEditar(EventoEntity evento) {
 
         inicialitza();
 
