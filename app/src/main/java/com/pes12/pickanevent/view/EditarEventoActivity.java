@@ -167,7 +167,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
         //--------------------------------------------------------
 
-        idEvento = "Evt1-1480690194869";
+        idEvento = getIntent().getExtras().getString("idEvento");
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this,idEvento);
@@ -184,7 +184,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         foto.setImageBitmap(imgBM);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
         data.setText(getString(R.string.DEFAULT_HORARIO));
-        if (evento.getPrecio().equals("-1")) {
+        if (evento.getPrecio().equals("")) {
             gratuit.setChecked(true);
             preuText.setFocusable(false);
             preuText.setText("");

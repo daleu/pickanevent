@@ -16,9 +16,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -263,6 +262,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutAssist"
+                android:id="@+id/layoutShare"
                 android:background="#fff"
                 android:layout_marginBottom="10dp">
 
@@ -294,6 +294,8 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true" />
 
+
+
             </RelativeLayout>
 
             <TextView
@@ -315,6 +317,41 @@
                 android:background="@android:color/holo_red_dark"
                 android:id="@+id/borrarEvento" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutEdit"
+                android:background="#fff"
+                android:layout_below="@+id/layoutShare"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/DEFAULT_EDITAR_EVENTO"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textEdit"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:text="@string/EDITAR_EVENTO"
+                    android:id="@+id/buttonEditar"
+                    android:background="@drawable/botton_application"
+                    android:layout_width="120dp"
+                    android:onClick="goEditarEvento"
+                    android:radius="20dip"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="30dp" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

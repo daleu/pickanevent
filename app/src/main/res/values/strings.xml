@@ -128,4 +128,5 @@
     <string name="DIALOG_BORRADO_EVENTO">El borrado del evento es irreversible. Estas seguro de querer continuar?</string>
     <string name="ELIMINAR_GRUPO">Eliminar grupo</string>
     <string name="ELIMINAR_EVENTO">Eliminar evento</string>
+    <string name="EDITAR_EVENTO">Editar evento</string>
 </resources>

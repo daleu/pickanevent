@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -236,6 +237,10 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud)))
                 .title(lugar.getText().toString()));
+    }
+
+    public void goEditarEvento(View _view) {
+        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra("idEvento",idEvento));
     }
 
     /*@Override
