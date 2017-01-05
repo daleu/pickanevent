@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import java.util.Map;
 
 import static com.pes12.pickanevent.R.id.borrarCuenta;
+import static com.pes12.pickanevent.R.id.layoutEdit;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
 
@@ -57,6 +59,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     private MapFragment mapFragment;
     private Button borrarEvento;
+    private RelativeLayout layoutEdit;
     Bundle param;
 
     private EventoMGR eMGR;
@@ -104,6 +107,13 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 "Palau Sant Jordi",
                 "dissabte, 1 / octubre de 21:00 a 0:00 \n 1 octubre (21:00) - 2 octubre (0:00)");
         eMGR.crear(ge);*/
+
+        //Boton editar evento
+        layoutEdit = (RelativeLayout) findViewById(R.id.layoutEdit);
+        if (getUsuarioActual().getCm())
+            layoutEdit.setVisibility(View.VISIBLE);
+        else
+            layoutEdit.setVisibility(View.INVISIBLE);
 
         //Boton eliminar grupo
         borrarEvento = (Button) findViewById(R.id.borrarEvento);
