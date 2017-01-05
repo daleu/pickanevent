@@ -62,6 +62,7 @@ public class EventoMGR {
                     evento.setValue(ent);
 
                     MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey());
+
                 }
             }
 
