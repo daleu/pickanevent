@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +15,9 @@ import android.widget.ListView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
-import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
 import java.util.ArrayList;
@@ -145,7 +142,7 @@ public class AmistadesFragment extends Fragment {
                     Map.Entry pair = (Map.Entry) it.next();
                     System.out.println(pair.getKey() + " = " + pair.getValue());
                     UsuarioEntity ge = (UsuarioEntity) pair.getValue();
-                    Info aux = new Info(StringToBitMap(null), ge.getNickname(), "", getString(R.string.DEFAULT_NO_SEGUIR));
+                    Info aux = new Info(null, ge.getNickname(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                     aux.setId((String) pair.getKey());
                     aux.setTipus("usuari");
                     infoAdapter.add(aux);

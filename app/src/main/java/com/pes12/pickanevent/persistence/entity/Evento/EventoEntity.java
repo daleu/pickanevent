@@ -1,5 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Evento;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Date;
 
 /**
@@ -154,7 +156,8 @@ public class EventoEntity {
     public String getDataFinal() {
         return dataFinal;
     }
-
+    
+    @Exclude
     public Date getDataInDate() {
         Date d = new Date();
         if(dataInici!=null) d = new Date(Long.parseLong(dataInici));
@@ -165,6 +168,7 @@ public class EventoEntity {
         this.dataInici = dataInici;
     }
 
+    @Exclude
     public Date getDataFiDate() {
         Date d = new Date();
         if(dataFinal!=null) d = new Date(Long.parseLong(dataFinal));

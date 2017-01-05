@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -84,7 +85,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         //Consultar informacion
         //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
-        eMGR.getInfoEvento(this);
+        eMGR.getInfoEvento(this,idEvento);
 
         //Crear Evento
         /*Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.redhot);
@@ -161,6 +162,18 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
+        if(param.getString("action")!=null){
+            Log.e("action",param.getString("action"));
+            if(param.getString("action").equals("assistir")){
+                asistirEvento(idEvento,gEntity.getTitulo());
+                Log.e("action",param.getString("action"));
+            }
+            else if(param.getString("action").equals("noassistir")){
+                cancelarAsistenciaEvento(idEvento);
+                Log.e("action",param.getString("action"));
+            }
+        }
+
         imagenevento = (ImageView) findViewById(R.id.imagenEvento);
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);
@@ -169,7 +182,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         precio = (TextView) findViewById(R.id.textPreu);
         lugar = (TextView) findViewById(R.id.textMapa);
 
-        descripcion.setText(gEntity.getDescripcion());
+        if(gEntity.getDescripcion()!=null)descripcion.setText(gEntity.getDescripcion());
         titulo.setText(gEntity.getTitulo());
         horarios.setText("horario");
         precio.setText(gEntity.getPrecio());

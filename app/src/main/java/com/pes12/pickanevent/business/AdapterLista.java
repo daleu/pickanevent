@@ -20,6 +20,8 @@ import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
+import com.squareup.picasso.Picasso;
+
 import android.content.Context;
 import org.w3c.dom.Text;
 
@@ -85,7 +87,8 @@ public class AdapterLista extends ArrayAdapter<Info> {
         }
 
         final Info componentes = getItem(_position);
-        holder.img.setImageBitmap(componentes.img);
+        Picasso.with(context).load(componentes.img).into(holder.img);
+       // holder.img.setImageBitmap(componentes.img);
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);
@@ -123,12 +126,12 @@ public class AdapterLista extends ArrayAdapter<Info> {
         holder.button.setOnClickListener(new View.OnClickListener(){ //FALTA FER QUE CONSTI!!!!!!!!!
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Log.e("tipus",componentes.tipus);
+                //Log.e("tipus",componentes.tipus);
                 Log.e("action",aux);
                 Log.e("teoric", getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO));
                 if(componentes.tipus=="event" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("action","assistir");
+                    intent.putExtra("action","noassistir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
@@ -139,7 +142,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
                 }
                 else if(componentes.tipus=="event" && !aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))){//DEIXAR DASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("action","noassistir");
+                    intent.putExtra("action","assistir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }

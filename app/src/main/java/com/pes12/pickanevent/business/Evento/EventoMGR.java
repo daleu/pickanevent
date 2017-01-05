@@ -118,9 +118,9 @@ public class EventoMGR {
 
     }
 
-    public void getInfoEvento(Activity _activity) {
+    public void getInfoEvento(Activity _activity, String idEvento) {
 
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.child(idEvento).addListenerForSingleValueEvent(new ValueEventListener() {
             Map<String, EventoEntity> map = new LinkedHashMap<String, EventoEntity>();
             EventoEntity e;
             VerInfoEventoActivity activity;
@@ -128,11 +128,13 @@ public class EventoMGR {
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
+                /*for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     map.put(evento.getKey(), evento.getValue(EventoEntity.class));
-                }
-                /*e = _dataSnapshot.getValue((EventoEntity.class));
-                activity.mostrarInfoEvento(e);*/
+                }*/
+                Map<String,EventoEntity> evento = new HashMap<String,EventoEntity>();
+                e = _dataSnapshot.getValue((EventoEntity.class));
+                evento.put(_dataSnapshot.getKey(),e);
+                activity.mostrarInfoEvento(evento);
             }
 
             @Override
@@ -349,7 +351,7 @@ public class EventoMGR {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
                         System.out.println(textoBoton + "" + cm);
-                        info.add(new Info(StringToBitMap(e.getImagen()), e.getTitulo(), "horariii", textoBoton));
+                        info.add(new Info(null, e.getTitulo(), "horariii", textoBoton));
                     }
                 }
                 activity.mostrarEventosGrupo(info);
@@ -392,7 +394,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (usuariosPorEvento.containsKey(evento.getKey())) {
-                        info.add(new Info(StringToBitMap(e.getImagen()), "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "No Assistir!"));
+                        info.add(new Info(null, "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "No Assistir!"));
                     }
                 }
 

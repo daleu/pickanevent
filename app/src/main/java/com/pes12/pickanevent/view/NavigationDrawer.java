@@ -42,6 +42,7 @@ public class NavigationDrawer extends BaseActivity
     String idActual;
     CircleImageView nav_user;
     Bitmap imageAux;
+    String controlActivity = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,21 +70,6 @@ public class NavigationDrawer extends BaseActivity
         //Carregar dades al navigation drawer
 
         View hView =  navigationView.getHeaderView(0);
-
-       /* if(actual.getUrlPhoto()!=null) {
-            nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
-            Thread aux = new Thread(new Runnable() {
-                public void run() {
-                    imageAux = getBitmapFromURL(actual.getUrlPhoto());
-                }});
-            aux.start();
-            try {
-                aux.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            nav_user.setImageBitmap(imageAux);
-        }*/
         nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
         Picasso.with(this).load(getAuth().getCurrentUser().getPhotoUrl()).into(nav_user);
 
@@ -109,7 +95,16 @@ public class NavigationDrawer extends BaseActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
 
+    }
 
+    protected void onResume(){
+        Log.e("resume","resume");
+        super.onResume();
+        if(controlActivity!=null) {
+            finish();
+            startActivity(getIntent());
+        }
+        else controlActivity = "1";
     }
 
     @Override

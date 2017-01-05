@@ -1,20 +1,18 @@
 package com.pes12.pickanevent.business;
 
-import android.graphics.Bitmap;
-
 /**
  * Created by Clara on 21/10/2016.
  */
 
 public class Info {
-    public Bitmap img;
+    public String img;
     public String primeraLinea;
     public String segonaLinea;
     public String textoBoton;
     public String id;
     public String tipus;
 
-    public Info(Bitmap _img, String _primeraLinea, String _segonaLinea, String _textoBoton) {
+    public Info(String _img, String _primeraLinea, String _segonaLinea, String _textoBoton) {
         super();
         this.img = _img;
         this.primeraLinea = _primeraLinea;
@@ -22,11 +20,11 @@ public class Info {
         this.textoBoton = _textoBoton;
     }
 
-    public Bitmap getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(Bitmap _img) {
+    public void setImg(String _img) {
         this.img = _img;
     }
 
