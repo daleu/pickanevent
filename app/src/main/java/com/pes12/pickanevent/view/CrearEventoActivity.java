@@ -223,10 +223,11 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 Toast.makeText(this, R.string.ERROR_PRECIO, Toast.LENGTH_SHORT).show();
             }
             else {
-                String imatge;
                 if (image != null) {
-
-                } else imatge = null;
+                    ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
+                    image.recycle();
+                }
                 Long aux = null;
                 if (dataFinal.getText().toString().equals(""))
                     aux = añadirHoraADate(dataIni, horaFi.getText().toString());
@@ -330,7 +331,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
-
+                    ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
+                    image = BitmapFactory.decodeStream(isImagen);
+                    //show the image to the user
+                    imgV.setImageBitmap(image);
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

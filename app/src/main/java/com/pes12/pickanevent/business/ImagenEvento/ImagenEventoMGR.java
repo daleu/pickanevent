@@ -16,6 +16,8 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.view.CrearEventoActivity;
+import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.PerfilUsuarioActivity;
 
 import java.io.InputStream;
@@ -48,7 +50,9 @@ public class ImagenEventoMGR {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 evento.setImagen(taskSnapshot.getDownloadUrl().toString());
                 EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
+                evento.setImagen(taskSnapshot.getDownloadUrl().toString());
                 eMGR.actualizar(id,evento);
+
             }
 
             public OnSuccessListener setEvento(EventoEntity _ee,String _id) {
@@ -57,6 +61,5 @@ public class ImagenEventoMGR {
                 return this;
             }
         }.setEvento(_ee,id));
-
     }
 }
