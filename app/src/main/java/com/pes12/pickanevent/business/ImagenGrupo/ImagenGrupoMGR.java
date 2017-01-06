@@ -35,6 +35,7 @@ public class ImagenGrupoMGR {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 grupo.setImagen(taskSnapshot.getDownloadUrl().toString());
                 GrupoMGR gMGR = MGRFactory.getInstance().getGrupoMGR();
+                System.out.println("actualitzo i la url es:  " + grupo.getImagen());
                 gMGR.actualizar(id,grupo);
             }
 

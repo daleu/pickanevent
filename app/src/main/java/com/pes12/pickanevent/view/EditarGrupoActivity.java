@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 
 /**
  * Created by Jan on 08/12/2016.
@@ -36,6 +37,7 @@ public class EditarGrupoActivity extends BaseActivity{
     Bitmap image;
     GrupoMGR gMGR;
     String idGrupo;
+    GrupoEntity grupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,8 @@ public class EditarGrupoActivity extends BaseActivity{
     }
 
     public void mostrarInfoGrupoEditar (GrupoEntity _ge) {
-
+        grupo = _ge;
+        System.out.println("el valor de la imatge es :  " + _ge.getImagen());
         nombre.setText(_ge.getNombreGrupo());
         descripcion.setText(_ge.getDescripcion());
 
@@ -66,6 +69,8 @@ public class EditarGrupoActivity extends BaseActivity{
         //Bitmap imgBM = StringToBitMap(img);
         //foto.setImageBitmap(imgBM);
         //foto.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
 
         Picasso.with(this).load(_ge.getImagen()).into(foto);
     }
@@ -99,8 +104,10 @@ public class EditarGrupoActivity extends BaseActivity{
             String nombreG = nombre.getText().toString();
             String descripG = descripcion.getText().toString();
 
-            GrupoEntity update = new GrupoEntity(nombreG, descripG, null); //falta arreglar tema imatge
-            gMGR.actualizar(idGrupo,update);
+            //GrupoEntity update = new GrupoEntity(nombreG, descripG); //falta arreglar tema imatge
+            if (!nombreG.equals(grupo.getNombreGrupo()))grupo.setNombreGrupo(nombreG);
+            if (!descripG.equals(grupo.getDescripcion()))grupo.setDescripcion(descripG);
+            gMGR.actualizar(idGrupo,grupo);
             Toast.makeText(EditarGrupoActivity.this, getString(R.string.GRUPO_EDITADO),
                     Toast.LENGTH_SHORT).show();
 
