@@ -32,7 +32,6 @@ public class EditarGrupoActivity extends BaseActivity{
     ImageView foto;
     EditText nombre;
     EditText descripcion;
-    EditText tagPrincipal;
     Bitmap image;
     GrupoMGR gMGR;
     String idGrupo;
@@ -42,7 +41,7 @@ public class EditarGrupoActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_grupo);
 
-        idGrupo = "grp0-1480690194851";
+        idGrupo = "-K_nRnww6x_a0SFChUQY";
 
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         gMGR.getInfoGrupoEditar(this,idGrupo);
@@ -50,7 +49,6 @@ public class EditarGrupoActivity extends BaseActivity{
         foto = (ImageView) findViewById(R.id.imagenGrupo);
         nombre = (EditText) findViewById(R.id.editorNGrupo);
         descripcion = (EditText) findViewById(R.id.editorDescrGrupo);
-        tagPrincipal = (EditText) findViewById(R.id.editorTagPrincipal);
 
     }
 
@@ -80,9 +78,7 @@ public class EditarGrupoActivity extends BaseActivity{
         if (nombre.getText().toString().equals(""))
             Toast.makeText(EditarGrupoActivity.this, getString(R.string.INDICAR_NOMBRE_GRUPO),
                     Toast.LENGTH_SHORT).show();
-        else if (tagPrincipal.getText().toString().equals(""))
-            Toast.makeText(EditarGrupoActivity.this, getString(R.string.INDICAR_TAG_GRUPO),
-                    Toast.LENGTH_SHORT).show();
+
         else {
             String imatge;
             if (image != null) {
@@ -96,7 +92,7 @@ public class EditarGrupoActivity extends BaseActivity{
             String nombreG = nombre.getText().toString();
             String descripG = descripcion.getText().toString();
 
-            GrupoEntity update = new GrupoEntity(nombreG, descripG, imatge, null, "-KW3Au4_Mb-w4hnq3rSm", null, null);
+            GrupoEntity update = new GrupoEntity(nombreG, descripG, null); //falta arreglar tema imatge
             gMGR.actualizar(idGrupo,update);
             Toast.makeText(EditarGrupoActivity.this, getString(R.string.GRUPO_EDITADO),
                     Toast.LENGTH_SHORT).show();

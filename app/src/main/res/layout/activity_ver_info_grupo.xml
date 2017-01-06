@@ -152,22 +152,21 @@
             </HorizontalScrollView>
 
             <Button
-                android:text="Editar tags"
-                android:id="@+id/editarTags"
-                android:background="@drawable/boton_amarillo_custom"
-                android:layout_width="120dp"
-                android:layout_height="26dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignEnd="@+id/seguir"
-                android:layout_marginTop="11dp"
-                android:onClick="editarTags" />
-
-            <Button
                 android:text="@string/ELIMINAR_GRUPO"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/holo_red_dark"
                 android:id="@+id/borrarGrupo" />
+
+            <Button
+                android:text="Editar tags"
+                android:id="@+id/editarTags"
+                android:background="@drawable/boton_amarillo_custom"
+                android:layout_width="120dp"
+                android:layout_height="26dp"
+                android:onClick="editarTags"
+                android:layout_below="@+id/borrarGrupo"
+                android:layout_alignParentEnd="true" />
 
 
         </RelativeLayout>

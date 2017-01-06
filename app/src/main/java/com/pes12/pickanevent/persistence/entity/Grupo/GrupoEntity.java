@@ -60,6 +60,19 @@ public class GrupoEntity {
 
     }
 
+    public GrupoEntity(String nombre, String descr) {
+        setNombreGrupo(nombre);
+        setDescripcion(descr);
+    }
+
+    public GrupoEntity(String nombre, String descr, String img) {
+        setNombreGrupo(nombre);
+        setDescripcion(descr);
+        setImagen(img);
+
+    }
+
+
     public String getNombreGrupo() {
         return nombreGrupo;
     }

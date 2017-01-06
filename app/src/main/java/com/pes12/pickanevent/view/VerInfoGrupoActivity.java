@@ -81,7 +81,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
 
         showProgressDialog();
-        System.out.println("REBO: " + idGrupo);
         gMGR.getInfoGrupo(this, idGrupo);
 
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
@@ -139,7 +138,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
         tMGR.getInfoTag(this, tagsMap);
 
         nombre.setText(_grupo.getNombreGrupo());
-        System.out.println("DESCRIPCIO" +_grupo.getDescripcion());
         descripcion.setText(_grupo.getDescripcion());
         String texto = getString(R.string.DEFAULT_SEGUIR);
         if (cm) texto = getString(R.string.DEFAULT_EDITAR);

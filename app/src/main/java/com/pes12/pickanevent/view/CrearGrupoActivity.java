@@ -140,10 +140,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         else {
             String nombreG = nombre.getText().toString();
             String descripG = descripcion.getText().toString();
-            System.out.println("DESCRIPCIO (al guardar)" + descripG);
-            nuevoGrupo = new GrupoEntity(nombreG, descripG, null, null, null, null, null);
-            nuevoGrupo.setDescripcion(descripG);
-
+            nuevoGrupo = new GrupoEntity(nombreG, descripG);
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
 
@@ -162,7 +159,10 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
-
+                    ImageView imgV = (ImageView) findViewById(R.id.imagenGrupo);
+                    image = BitmapFactory.decodeStream(isImagen);
+                    //show the image to the user
+                    imgV.setImageBitmap(image);
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
