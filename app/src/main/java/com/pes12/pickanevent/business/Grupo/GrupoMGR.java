@@ -136,7 +136,7 @@ public class GrupoMGR {
                     grupo.setValue(ent);
                     id = grupo.getKey();
 
-                    MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey());
+                    if (is != null) MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey());
 
                 }
                 activity.redirecionarConIdGrupo(id);

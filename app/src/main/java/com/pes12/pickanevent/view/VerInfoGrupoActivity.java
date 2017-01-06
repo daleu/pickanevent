@@ -67,12 +67,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         editarTags = (Button) findViewById(R.id.editarTags);
         /////////////////////////////////////////////////
 
-        Bundle b = getIntent().getExtras(); //Para pruebas
-        cm = b.getBoolean("CM");
+        //Bundle b = getIntent().getExtras(); //Para pruebas
+        //cm = b.getBoolean("CM");
         //System.out.println("Valor CM "+ cm);
 
         Bundle param = getIntent().getExtras();
-        idGrupo = "-KZlbhl-cvEnRUXKORqx";
+        //idGrupo = "-KZlbhl-cvEnRUXKORqx";
         if(param.getString("key")!=null){
             idGrupo = param.getString("key");
         }
@@ -81,7 +81,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
 
         showProgressDialog();
-
+        System.out.println("REBO: " + idGrupo);
         gMGR.getInfoGrupo(this, idGrupo);
 
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags

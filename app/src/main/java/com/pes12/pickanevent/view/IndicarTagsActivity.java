@@ -210,7 +210,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     if (tagAux.getIdGrupos() != null) tagAux.getIdGrupos().remove(idGrupo);
                 }
                 tMGR.actualizar(info.get(i).getIdTag(), tagAux);
-                startActivity(new Intent(IndicarTagsActivity.this, VerInfoGrupoActivity.class).putExtra("idGrupo", idGrupo));
+                startActivity(new Intent(IndicarTagsActivity.this, VerInfoGrupoActivity.class).putExtra("key", idGrupo));
             }
         }
     }
