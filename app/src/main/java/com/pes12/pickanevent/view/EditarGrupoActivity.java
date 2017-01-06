@@ -17,6 +17,7 @@ import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,7 +42,11 @@ public class EditarGrupoActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_grupo);
 
-        idGrupo = "-K_nRnww6x_a0SFChUQY";
+        Bundle param = getIntent().getExtras();
+        //idGrupo = "-K_nRnww6x_a0SFChUQY";
+        if(param.getString("key")!=null){
+            idGrupo = param.getString("key");
+        }
 
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         gMGR.getInfoGrupoEditar(this,idGrupo);
@@ -57,13 +62,15 @@ public class EditarGrupoActivity extends BaseActivity{
         nombre.setText(_ge.getNombreGrupo());
         descripcion.setText(_ge.getDescripcion());
 
-        String img = _ge.getImagen();
-        Bitmap imgBM = StringToBitMap(img);
-        foto.setImageBitmap(imgBM);
-        foto.setScaleType(ImageView.ScaleType.FIT_XY);
+        //String img = _ge.getImagen();
+        //Bitmap imgBM = StringToBitMap(img);
+        //foto.setImageBitmap(imgBM);
+        //foto.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        Picasso.with(this).load(_ge.getImagen()).into(foto);
     }
 
-    private Bitmap StringToBitMap(String encodedString) {
+    /*private Bitmap StringToBitMap(String encodedString) {
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
@@ -72,7 +79,7 @@ public class EditarGrupoActivity extends BaseActivity{
             e.getMessage();
             return null;
         }
-    }
+    }*/
 
     public void updateGrupo(View _view) {
         if (nombre.getText().toString().equals(""))

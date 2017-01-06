@@ -25,6 +25,7 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -42,6 +43,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     ListView eventos;
     Button boton;
     Button editarTags;
+    Button editar;
 
     String idGrupo;
     GrupoMGR gMGR;
@@ -65,6 +67,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
         editarTags = (Button) findViewById(R.id.editarTags);
+        editar = (Button) findViewById(R.id.editar);
         /////////////////////////////////////////////////
 
         //Bundle b = getIntent().getExtras(); //Para pruebas
@@ -72,7 +75,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         //System.out.println("Valor CM "+ cm);
 
         Bundle param = getIntent().getExtras();
-        //idGrupo = "-KZlbhl-cvEnRUXKORqx";
+        //idGrupo = "-K_oUuo3y5xY8iMliS0w";
         if(param.getString("key")!=null){
             idGrupo = param.getString("key");
         }
@@ -85,6 +88,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
             editarTags.setVisibility(View.INVISIBLE);
+            editar.setVisibility(View.INVISIBLE);
         }
 
         //Boton eliminar grupo
@@ -142,10 +146,13 @@ public class VerInfoGrupoActivity extends BaseActivity {
         String texto = getString(R.string.DEFAULT_SEGUIR);
         if (cm) texto = getString(R.string.DEFAULT_EDITAR);
         boton.setText(texto);
-        String img = _grupo.getImagen();
+
+        Picasso.with(this).load(_grupo.getImagen()).into(foto);
+
+        /*String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
-        foto.setScaleType(ImageView.ScaleType.FIT_XY);
+        foto.setScaleType(ImageView.ScaleType.FIT_XY);*/
 
         if (_grupo.getIdEventos() == null) hideProgressDialog();
     }
@@ -230,6 +237,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     public void editarTags(View view) {
         startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+    }
+
+    public void editar(View view) {
+        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras

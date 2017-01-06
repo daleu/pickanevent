@@ -223,6 +223,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         if (ultimoMarcado.getEntity().getIdGrupos() == null) ultimoMarcado.getEntity().setIdGrupos(newMap);
         ultimoMarcado.getEntity().getIdGrupos().put(idGrupo, nuevoGrupo.getNombreGrupo());
         tMGR.actualizar(ultimoMarcado.getIdTag(), ultimoMarcado.getEntity());
-        startActivity(new Intent(CrearGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+        //startActivity(new Intent(CrearGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(CrearGrupoActivity.this, VerInfoGrupoActivity.class).putExtra("key", idGrupo));
     }
 }
