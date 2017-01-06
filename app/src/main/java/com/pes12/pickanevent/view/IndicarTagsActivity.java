@@ -228,10 +228,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     info.get(i).setChecked(false);
                 }
             }
-
         }
-
-
     }
 
     public void checkNuevoTag(String _id, String nombreTag) {

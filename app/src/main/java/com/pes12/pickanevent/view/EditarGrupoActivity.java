@@ -61,7 +61,6 @@ public class EditarGrupoActivity extends BaseActivity{
 
     public void mostrarInfoGrupoEditar (GrupoEntity _ge) {
         grupo = _ge;
-        System.out.println("el valor de la imatge es :  " + _ge.getImagen());
         nombre.setText(_ge.getNombreGrupo());
         descripcion.setText(_ge.getDescripcion());
 
