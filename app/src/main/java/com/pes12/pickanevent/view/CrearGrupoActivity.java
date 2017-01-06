@@ -160,7 +160,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
                     ImageView imgV = (ImageView) findViewById(R.id.imagenGrupo);
-                    image = BitmapFactory.decodeStream(isImagen);
+                    image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
 

@@ -45,8 +45,8 @@ public class EditarGrupoActivity extends BaseActivity{
         setContentView(R.layout.activity_editar_grupo);
 
         Bundle param = getIntent().getExtras();
-        //idGrupo = "-K_nRnww6x_a0SFChUQY";
-        if(param.getString("key")!=null){
+        //idGrupo = "-K_pzKaJijDFG_eT0Zry";
+       if(param.getString("key")!=null){
             idGrupo = param.getString("key");
         }
 
@@ -70,8 +70,8 @@ public class EditarGrupoActivity extends BaseActivity{
         //foto.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
-
         Picasso.with(this).load(_ge.getImagen()).into(foto);
+
     }
 
     /*private Bitmap StringToBitMap(String encodedString) {
