@@ -140,7 +140,9 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         else {
             String nombreG = nombre.getText().toString();
             String descripG = descripcion.getText().toString();
+            System.out.println("DESCRIPCIO (al guardar)" + descripG);
             nuevoGrupo = new GrupoEntity(nombreG, descripG, null, null, null, null, null);
+            nuevoGrupo.setDescripcion(descripG);
 
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
