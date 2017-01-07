@@ -217,7 +217,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         }
     }
 
-    public void redirecionarConIdGrupo(String idGrupo) {
+    public void redireccionarConIdGrupo(String idGrupo) {
           /*ASIGNAR grupo al tag principal*/
         LinkedHashMap<String, String> newMap = new LinkedHashMap<>();
         if (ultimoMarcado.getEntity().getIdGrupos() == null) ultimoMarcado.getEntity().setIdGrupos(newMap);
