@@ -1,6 +1,5 @@
 package com.pes12.pickanevent.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +34,6 @@ import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import java.util.Map;
 
 import static com.pes12.pickanevent.R.id.borrarCuenta;
-import static com.pes12.pickanevent.R.id.layoutEdit;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
 
@@ -70,11 +67,11 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
 
-        param = getIntent().getExtras();
-        idEvento = "Evt102-1480690194876";
-        if(param.getString("key")!=null){
-            idEvento = param.getString("key");
-        }
+       // param = getIntent().getExtras();
+        idEvento = "-K_sQVheUkm7IiaNv9tT";
+       // if(param.getString("key")!=null){
+      //      idEvento = param.getString("key");
+     //   }
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -173,7 +170,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
-        if(param.getString("action")!=null){
+     /*   if(param.getString("action")!=null){
             Log.e("action",param.getString("action"));
             if(param.getString("action").equals("assistir")){
                 asistirEvento(idEvento,gEntity.getTitulo());
@@ -184,7 +181,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 Log.e("action",param.getString("action"));
             }
         }
-
+*/
         imagenevento = (ImageView) findViewById(R.id.imagenEvento);
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);

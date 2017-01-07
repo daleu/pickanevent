@@ -44,10 +44,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_editar_evento;
-import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
 
 public class EditarEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText preuText;
@@ -183,7 +181,14 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
-        data.setText(getString(R.string.DEFAULT_HORARIO));
+        Date dataI = evento.getDataInDate();
+        Date dataF = evento.getDataFiDate();
+        data.setText(dataI.getDay() + " de " + ViewSharedMethods.getNomMes(
+                dataI.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
+        dataFinal.setText(dataF.getDay() + " de " + ViewSharedMethods.getNomMes(
+                dataF.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
+        hora.setText(dataI.getHours() + ":" + dataI.getMinutes());
+        horaFi.setText(dataF.getHours() + ":" + dataF.getMinutes());
         if (evento.getPrecio().equals("")) {
             gratuit.setChecked(true);
             preuText.setFocusable(false);
@@ -273,7 +278,14 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                 if (aux != null && aux2 != null) {
                     if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
                         if (aux2 < aux) {
-                            EventoEntity update = new EventoEntity(nomEvent.getText().toString(), descripcio.getText().toString(), imatge);
+                            EventoEntity update = new EventoEntity(nomEvent.getText().toString(),
+                                    descripcio.getText().toString(),
+                                    preuText.getText().toString(),
+                                    url.getText().toString(),
+                                    localitzacio.getText().toString(), lat, lng,
+                                    Long.toString(aux2),
+                                    Long.toString(aux)
+                            );
                             eMGR.actualizar(idEvento,update);
                             Toast.makeText(EditarEventoActivity.this, getString(R.string.EVENTO_EDITADO),
                                     Toast.LENGTH_SHORT).show();
