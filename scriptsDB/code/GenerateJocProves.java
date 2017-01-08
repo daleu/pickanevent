@@ -117,22 +117,23 @@ public class GenerateJocProves {
                     eventos.add(e);
                     e.id = "Evt" + num_evts + "-" + String.valueOf(idLong);
                     e.descripcion = "Esta es la descripcion del evento " + num_evts;
-                    if (k%5 == 0) e.descripcion = null;
+                    if (k%5 == 0) e.descripcion = "";
                     e.titulo = eventnames.get(k%eventnames.size()) + getSufix(i, eventnames.size());
                     e.latitud = "41.361585";
                     e.longitud = "2.1507653";
                     e.localizacion = "C/Falsa 123, Springfield, Colorado";
-                    if (k%4 == 0) {e.latitud = null; e.longitud = null; e.localizacion = null;}
+                    //if (k%4 == 0) {e.latitud = null; e.longitud = null; e.localizacion = null;}
                     String separated[] = e.titulo.split(" ");
                     e.webpage = "www." +  separated[0] + getSufix(i, eventnames.size()) + ".com";
-                    if (k%3 == 0) e.webpage = null;
+                    if (k%2 == 0) e.webpage = "www.ticketmaster.es";
+                    if (k%3 == 0) e.webpage = "";
                     e.precio = String.valueOf(11*k);
-                    if (k%2 == 0) e.precio = null;
+                    if (k%2 == 0) e.precio = "";
                     e.idGrup = g.id;
                     Date[] dates = generateDates(i,j,k);
                     e.dataInici = dates[0].getTime();
                     e.dataFinal = dates[1].getTime();
-                    if (k%4 == 1) e.dataFinal = null;
+                    //if (k%4 == 1) e.dataFinal = null;
                     ++num_evts;
                     g.idEventos.put(e.id, e.titulo);
                     c.idEventos.put(e.id, e.titulo);
@@ -202,14 +203,14 @@ public class GenerateJocProves {
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
+            //System.out.println("\"id\": " + "\"" + u.id + "\",");
+            System.out.println("\"nickname\": " + "\"" + u.nickname + "\"");
             if (u.email != null)
                 System.out.println(",\"email\": " + "\"" + u.email + "\"");
             if (u.password != null)
                 System.out.println(",\"password\": " + "\"" + u.password + "\"");
             if (u.username != null)
                 System.out.println(",\"username\": " + "\"" + u.username + "\"");
-            System.out.println(",\"nickname\": " + "\"" + u.nickname + "\"");
             if (u.bio != null)
                 System.out.println(",\"bio\": " + "\"" + u.bio + "\"");
             if (u.cm != null)
@@ -265,8 +266,8 @@ public class GenerateJocProves {
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
-            System.out.println(",\"nombreGrupo\": " + "\"" + u.nombreGrupo + "\"");
+            //System.out.println("\"id\": " + "\"" + u.id + "\",");
+            System.out.println("\"nombreGrupo\": " + "\"" + u.nombreGrupo + "\"");
             if (u.descripcion != null)
                 System.out.println(",\"descripcion\": " + "\"" + u.descripcion + "\"");
             System.out.println(",\"nickname\": " + "\"" + u.nickname + "\"");
@@ -302,7 +303,7 @@ public class GenerateJocProves {
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\",");
+            //System.out.println("\"id\": " + "\"" + u.id + "\",");
             System.out.println("\"nombreTag\": " + "\"" + u.nombreTag + "\"");
             if (u.idGrupos.size() > 0) {
                 System.out.println(",");
@@ -325,8 +326,8 @@ public class GenerateJocProves {
             else
                 first = false;
             System.out.println("\"" + u.id + "\" : {");
-            System.out.println("\"id\": " + "\"" + u.id + "\"");
-            System.out.println(",\"titulo\": " + "\"" + u.titulo + "\"");
+            //System.out.println("\"id\": " + "\"" + u.id + "\",");
+            System.out.println("\"titulo\": " + "\"" + u.titulo + "\"");
             if (u.descripcion != null)
                 System.out.println(",\"descripcion\": " + "\"" + u.descripcion + "\"");
             if (u.localizacion != null)

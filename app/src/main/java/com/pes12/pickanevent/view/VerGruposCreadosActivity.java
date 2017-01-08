@@ -59,13 +59,13 @@ public class VerGruposCreadosActivity extends BaseActivity {
 
         Map<String, String> idGrupos = usuario.getIdGrupos();
 
-        //for (Map.Entry<String, Boolean> entry : idGrupos.entrySet()){
+        for (Map.Entry<String, String> entry : idGrupos.entrySet()){
         //System.out.println(entry.getKey() + "/" + entry.getValue());
-        //if(entry.getValue()) {
-        idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-        gMGR.getInfoGruposCreados(this,/*entry.getKey()*/idGrupo);
-        //}
-        //}
+            if(!entry.getValue().equals(null)) {
+                //idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+                gMGR.getInfoGruposCreados(this,entry.getKey());
+            }
+        }
     }
 
     public void rellenarListaGrupos(GrupoEntity grupo) {
