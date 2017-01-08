@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -68,6 +67,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
+
 
         ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
         if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
@@ -174,7 +174,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
-        if(param.getString("action")!=null){
+   /*     if(param.getString("action")!=null){
             Log.e("action",param.getString("action"));
             if(param.getString("action").equals("assistir")){
                 asistirEvento(idEvento,gEntity.getTitulo());
@@ -185,7 +185,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 Log.e("action",param.getString("action"));
             }
         }
-
+*/
         imagenevento = (ImageView) findViewById(R.id.imagenEvento);
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);

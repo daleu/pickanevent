@@ -46,6 +46,8 @@ public class CrearUsuarioActivity extends BaseActivity {
         repepass = (EditText) findViewById(R.id.repepass);
         username = (EditText) findViewById(R.id.username);
         cm = (CheckBox) findViewById(R.id.cm);
+
+        
     }
 
 
