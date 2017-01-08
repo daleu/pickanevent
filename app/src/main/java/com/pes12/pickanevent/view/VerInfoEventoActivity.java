@@ -259,4 +259,9 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         }
         return super.onKeyDown(keyCode, event);
     }*/
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+    }
 }
