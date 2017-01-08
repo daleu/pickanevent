@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -94,7 +95,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
     public void mostrarInfoUsuario(UsuarioEntity usuario) {
         nombre.setText(usuario.getNickname());
-        //System.out.println(usuario.getNickname());
+        Log.e("nickname",usuario.getNickname());
         if  (usuario != null) {
             if (usuario.getUrlPhoto() != null) {
                 Picasso.with(this).load(usuario.parsedPhotoURI()).into(foto);
@@ -103,19 +104,25 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         }
         Map<String, String> idGrupos = usuario.getIdGrupos();
         Map<String, String> idEventos = usuario.getIdEventos();
-        for (Map.Entry<String, String> entry : idGrupos.entrySet()){
-        //if(entry.getValue()) {
-        //idGrupo = "-KUbHqRIqgL1eDGWpHT0";
-        gMGR.getInfoGrupoUsuario(this, entry.getKey());
-        //}
+
+        if(idGrupos!=null) {
+            for (Map.Entry<String, String> entry : idGrupos.entrySet()) {
+                //if(entry.getValue()) {
+                //idGrupo = "-KUbHqRIqgL1eDGWpHT0";
+                gMGR.getInfoGrupoUsuario(this, entry.getKey());
+                //}
+            }
         }
-        for (Map.Entry<String, String> entry : idEventos.entrySet()){
-        //System.out.println(entry.getKey() + "/" + entry.getValue());
-        //if(entry.getValue()) {
-        //idEvento = "-KUavWyMfmX-uxtRqMo5";
-        eMGR.getInfoEventoUsuario(this, entry.getKey());
-        //}
+        if(idEventos!=null) {
+            for (Map.Entry<String, String> entry : idEventos.entrySet()) {
+                //System.out.println(entry.getKey() + "/" + entry.getValue());
+                //if(entry.getValue()) {
+                //idEvento = "-KUavWyMfmX-uxtRqMo5";
+                eMGR.getInfoEventoUsuario(this, entry.getKey());
+                //}
+            }
         }
+        if (idEventos==null && idGrupos==null) hideProgressDialog();
     }
 
     public void rellenarListaGrupos(GrupoEntity grupo, String id) {
@@ -132,6 +139,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
             listaGrupos.setAdapter(ale);
         }
+        hideProgressDialog();
     }
 
     public void rellenarListaEventos(EventoEntity evento, String id) {
@@ -139,7 +147,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         //System.out.println(evento.getHorario());
         if(evento!=null) {
             String img = evento.getImagen();
-            Bitmap imBM = StringToBitMap(img);
+            //Bitmap imBM = StringToBitMap(img);
             String nombreGrupo = evento.getTitulo();
             String dataInici=null;
             String dataFi=null;
