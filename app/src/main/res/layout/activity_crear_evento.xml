@@ -38,7 +38,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/imagenEvento"
                 android:layout_alignParentStart="true"
-                android:layout_height="1006dp" />
+                android:layout_height="1520dp" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -255,7 +255,7 @@
                 android:background="#eceff1"
                 android:textStyle="normal"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/calendarView"
+                android:layout_below="@+id/layoutCalendarI"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp" />
 
@@ -273,31 +273,40 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="28dp" />
 
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/calendarView"
-                android:background="#eceff1"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/editorFecha"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutCalendarI"
                 android:layout_alignEnd="@+id/editorFechaFinal"
-                android:layout_marginBottom="10dp"
-                android:layout_alignStart="@+id/listView1" />
+                android:layout_alignStart="@+id/listView1"
+                android:layout_below="@+id/editorFecha">
+                <CalendarView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/calendarView"
+                    android:background="#eceff1"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
 
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/calendarViewFinal"
-                android:background="#eceff1"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/editorFechaFinal"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutCalendarF"
                 android:layout_alignStart="@+id/listView1"
                 android:layout_alignEnd="@+id/editorFechaFinal"
-                android:layout_marginBottom="10dp"/>
+                android:layout_below="@+id/editorFechaFinal">
+                <CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/calendarViewFinal"
+                    android:background="#eceff1"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="180dp"
-                android:inputType="textPersonName"
                 android:text="@string/EVENTO_HORA_APER"
                 android:ems="10"
                 android:fontFamily="sans-serif"
@@ -312,12 +321,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:layout_below="@+id/calendarViewFinal"/>
+                android:layout_below="@+id/layoutCalendarF"/>
 
 
             <TextView
                 android:layout_width="180dp"
-                android:inputType="textPersonName"
                 android:text="@string/EVENTO_HORA_CIERRE"
                 android:ems="10"
                 android:fontFamily="sans-serif"
