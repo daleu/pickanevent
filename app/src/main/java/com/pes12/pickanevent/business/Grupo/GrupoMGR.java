@@ -332,12 +332,18 @@ public class GrupoMGR {
                 for (DataSnapshot grupo : _snapshot.getChildren()) {
                     if (grupo.getValue(GrupoEntity.class).getNombreGrupo().toLowerCase().contains(aux3)) {
                         if (grupo.getValue(GrupoEntity.class).getDescripcion() != null) {
-                            n.add(new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(),
-                                    grupo.getValue(GrupoEntity.class).getDescripcion(), "seguir!"));
+                            Info aux = new Info(grupo.getValue(GrupoEntity.class).getImagen(), grupo.getValue(GrupoEntity.class).getNombreGrupo(),
+                                    null, null);
+                            aux.setId((String)grupo.getKey());
+                            aux.setTipus("grup");
+                            n.add(aux);
                         }
                         else {
-                            n.add(new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(),
-                                    null, "seguir!"));
+                            Info aux = new Info(grupo.getValue(GrupoEntity.class).getImagen(), grupo.getValue(GrupoEntity.class).getNombreGrupo(),
+                                    null, null);
+                            aux.setId((String)grupo.getKey());
+                            aux.setTipus("grup");
+                            n.add(aux);
                         }
 
                     }

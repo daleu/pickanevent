@@ -49,7 +49,7 @@ public class EventoMGR {
         bdRefEventos.keepSynced(true);
     }
 
-    public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
+    /*public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             InputStream is;
@@ -79,35 +79,41 @@ public class EventoMGR {
             }
         }.setEntity(_entity,_is, _activity));
         return "";
-    }
+    }*/
 
-    public String crearConRedireccion(Activity _activity, EventoEntity _entity) {
+    public String crearConRedireccion(Activity _activity, EventoEntity _entity, InputStream _is) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             CrearEventoActivity activity;
             String id;
+            InputStream is;
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_GRUPO);
+                    activity.redireccionarConIdEvento(id);
                 } else {
-                    DatabaseReference evento = bdRefEventos.push();
-                    evento.setValue(ent);
-                    id = evento.getKey();
+                    DatabaseReference grupo = bdRefEventos.push();
+                    grupo.setValue(ent);
+                    id = grupo.getKey();
+
+                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,grupo.getKey(),activity);
+                    else activity.redireccionarConIdEvento(id);
                 }
-                activity.redirecionarConIdEvento(id);
+
             }
 
             @Override
             public void onCancelled(DatabaseError _arg0) {
             }
 
-            public ValueEventListener setActivity(Activity _activity, EventoEntity _ent) {
+            public ValueEventListener setActivity(Activity _activity, EventoEntity _ent, InputStream _is) {
                 activity = (CrearEventoActivity) _activity;
                 ent = _ent;
+                is = _is;
                 return this;
             }
-        }.setActivity(_activity, _entity));
+        }.setActivity(_activity, _entity, _is));
 
 
         return "";
@@ -151,31 +157,6 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    /*public void getInfoEventoEditar(Activity _activity) {
-
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
-            Map<String,EventoEntity> map = new LinkedHashMap<String,EventoEntity>();
-            EditarEventoActivity activity;
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot evento : dataSnapshot.getChildren()) {
-                    map.put(evento.getKey().toString(), null);//evento.getValue(EventoEntity.class));
-                }
-                activity.mostrarInfoEventoEditar(map);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("ERROR INESPERADO");
-            }
-            public ValueEventListener setActivity (Activity _activity)
-            {
-                activity = (EditarEventoActivity) _activity;
-                return this;
-            }
-        }.setActivity(_activity));
-    }*/
     public void getInfoEventoEditar(Activity _activity, String id) {
         bdRefEventos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity e;
