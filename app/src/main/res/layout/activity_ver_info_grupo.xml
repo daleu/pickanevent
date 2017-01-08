@@ -26,17 +26,6 @@
             android:orientation="vertical"
             android:layout_height="fill_parent">
 
-            <Button
-                android:text="@string/DEFAULT_SEGUIR"
-                android:layout_width="wrap_content"
-                android:id="@+id/seguir"
-                android:background="@drawable/boton_amarillo_custom"
-                android:layout_height="26dp"
-                android:layout_above="@+id/descr"
-                android:layout_alignEnd="@+id/descr"
-                android:layout_marginBottom="55dp"
-                android:onClick="seguirDejarDeSeguir" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/nombreGrupo"
@@ -176,13 +165,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:id="@+id/imagenGrupo"
-                android:layout_height="160dp"
-                android:layout_below="@+id/borrarGrupo"
-                android:layout_alignParentStart="true" />
-
             <ListView
                 android:layout_width="match_parent"
                 android:id="@+id/event"
@@ -202,6 +184,24 @@
                 android:layout_alignBottom="@+id/editarTags"
                 android:layout_alignEnd="@+id/EventosTitulo"
                 android:layout_marginBottom="10dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imagenGrupo"
+                android:layout_height="160dp"
+                android:layout_below="@+id/borrarGrupo"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:text="@string/DEFAULT_SEGUIR"
+                android:layout_width="wrap_content"
+                android:id="@+id/seguir"
+                android:background="@drawable/boton_amarillo_custom"
+                android:layout_height="26dp"
+                android:onClick="seguirDejarDeSeguir"
+                android:layout_above="@+id/descr"
+                android:layout_alignEnd="@+id/descr"
+                android:layout_marginBottom="47dp" />
 
 
         </RelativeLayout>
