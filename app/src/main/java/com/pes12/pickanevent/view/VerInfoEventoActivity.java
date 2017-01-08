@@ -143,7 +143,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                     aceptar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                            Boolean noError = borrarEvento(idEvento, false);
                             String msg = noError ? getString(R.string.BORRADO_EVENTO_CORRECTO) : getString(R.string.ERROR_BORRAR);
                             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                             alert.hide();

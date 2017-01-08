@@ -8,9 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
@@ -29,6 +33,8 @@ public class BaseActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
     private UsuarioMGR uMGR;
+    private GrupoMGR gMGR;
+    private EventoMGR eMGR;
     private String token;
 
     public static UsuarioEntity getUsuarioActual() {
@@ -274,36 +280,55 @@ public class BaseActivity extends AppCompatActivity {
     /***
      * BORRADOS
      */
-    public static Boolean borrarCurrentUser() {
+    public Boolean borrarCurrentUser() {
         UsuarioEntity user = getUsuarioActual();
         if (user.getCm())
             return borrarCM();
         else
             return borrarUsuario();
     }
-    public static Boolean borrarEvento(String _idEvento) {
-        //1st: comprobar idEvento existe en el mapEventos del usuario
-        //2nd: obtener evento
-        //3rd: obtener idGrupo
-        //4to: obtener grupo
-        //5to: borrar evento
-        //6to: borrar evento del mapEventos en grupos
-        return false;
+    public Boolean borrarEvento(String _idEvento, boolean vieneDeBorrarGrupo) {
+        if (!vieneDeBorrarGrupo) {
+            //borrar evento en el mapEventos del grupo
+            eMGR.borrarEventoEnGrupo(_idEvento, gMGR);
+            //borrar evento en el mapEventos del usuario
+            if (getUsuarioActual().getIdEventos().containsKey(_idEvento))
+                getUsuarioActual().getIdEventos().remove(_idEvento);
+            uMGR.actualizar(getAuth().getCurrentUser().getUid(), getUsuarioActual());
+        }
+        eMGR.borrarEvento(_idEvento);
+        return true;
     }
-    public static Boolean borrarGrupo(String _idGrupo) {
-        //1st: recorrer todos los eventos del grupo y ejecutar la funcion borrar evento
-        //2nd: borrar grupo
-        //3rd: borrar el grupo del mapGrupos del current user
-        return false;
+    public Boolean borrarGrupo(String _idGrupo, boolean vieneDeBorrarCM) {
+        //borramos los eventos del grupo y el grupo
+        if (!vieneDeBorrarCM)
+            gMGR.borrarEventosYRelacionesGrupo(this, _idGrupo, uMGR);
+        gMGR.borrarGrupo(_idGrupo);
+        return true;
     }
-    public static Boolean borrarCM() {
-        //1st: funcion borrarGrupo por cada grupo del mapGrupos del CM
-        //2nd: borrar CM
-        return false;
+    public Boolean borrarCM() {
+        String key = getAuth().getCurrentUser().getUid();
+        Map<String, String> grupos = getUsuarioActual().getIdGrupos();
+        for (String idGrupo : grupos.keySet())
+            borrarGrupo(idGrupo, true);
+        for (String idEvento : getUsuarioActual().getIdEventos().keySet())
+            borrarEvento(idEvento, true);
+        borrarUsuario();
+        return true;
     }
-    public static Boolean borrarUsuario() {
-        //2nd: borrar usuario
-        return false;
+    public Boolean borrarUsuario() {
+        uMGR.borrarUsuario(getAuth().getCurrentUser().getUid());
+        getAuth().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    System.out.println("User account deleted");
+                } else {
+                    System.out.println("Something went wrong");
+                }
+            }
+        });
+        return true;
     }
 
 }

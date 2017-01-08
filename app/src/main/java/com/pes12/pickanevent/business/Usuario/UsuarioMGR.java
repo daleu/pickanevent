@@ -123,6 +123,10 @@ public class UsuarioMGR {
 
     }
 
+    public void borrarUsuario(String _key) {
+        bdRefUsuarios.child(_key).removeValue();
+    }
+
     public String crear(UsuarioEntity _entity) {
 
         bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.USERNAME.getValue()).equalTo(_entity.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
