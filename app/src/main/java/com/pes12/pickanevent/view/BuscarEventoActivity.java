@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -47,6 +48,9 @@ public class BuscarEventoActivity extends BaseActivity {
         final ListView lista2 = (ListView) findViewById(R.id.lista2);
         final CalendarView calendar = (CalendarView) findViewById(R.id.calendar);
         final EditText data = (EditText) findViewById(R.id.textoDiaEvento);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null) searchImage.setVisibility(View.INVISIBLE);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(context,R.array.busqueda_array
                 ,android.R.layout.simple_spinner_item);

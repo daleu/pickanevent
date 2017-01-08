@@ -1,6 +1,8 @@
 package com.pes12.pickanevent.view;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,6 +32,9 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_ver_eventos_usuarios_que_sigo);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
         eMGR = MGRFactory.getInstance().getEventoMGR();

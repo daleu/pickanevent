@@ -11,6 +11,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -67,11 +68,20 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
 
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
    //    param = getIntent().getExtras();
-        idEvento = "-K_sQVheUkm7IiaNv9tT";
+        idEvento = "-K_xhR3NMID-9FN6W4Ym";
      //   if(param.getString("key")!=null){
     //        idEvento = param.getString("key");
     //    }
+
+
+
+
+
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");

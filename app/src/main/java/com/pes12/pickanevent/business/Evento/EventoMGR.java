@@ -194,17 +194,19 @@ public class EventoMGR {
                     if (aux.equals(EventoEntity.ATTRIBUTES.TITULO.getValue()) && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
                             if (evento.getValue(EventoEntity.class).getPrecio() != null) {
-                                Info aux = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
-                                Info aux = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         "Gratis", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                         }
@@ -212,17 +214,19 @@ public class EventoMGR {
                     else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
                             if (evento.getValue(EventoEntity.class).getPrecio() != null) {
-                                Info aux = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
-                                Info aux = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         "Gratis", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                         }
@@ -232,40 +236,45 @@ public class EventoMGR {
                         Double aux = null;
                         if (precio != null) aux = Double.parseDouble(precio);
                         if (precio == null && _val.equals("0")) {
-                            Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                            Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                     "Gratis", "asistir!");
                             auxEvento.setId((String) evento.getKey());
                             auxEvento.setTipus("evento");
+                            auxEvento.setBotonVisible(false);
                             n.add(auxEvento);
                         }
                         if (precio != null) {
                             if (precio.equals(_val) && _val.equals("0")) {
-                                Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         "Gratis", "asistir!");
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus("evento");
+                                auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50") && aux < 50){
-                                Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         precio+"€", "asistir!");
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus("evento");
+                                auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50<>200") && 50<=aux && aux<=200) {
-                                Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         precio+"€", "asistir!");
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus("evento");
+                                auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if (_val.equals(">200")) {
                                 if (aux > 200) {
-                                    Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             precio+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                             }
@@ -280,17 +289,19 @@ public class EventoMGR {
                                     (tiempo <= Long.parseLong(_val) && Long.parseLong(_val) <= tiempoFinal && tiempoFinal < auxVal) ||
                                     (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
                                 if (evento.getValue(EventoEntity.class).getPrecio() != null) {
-                                    Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                                 else {
-                                    Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             "Gratis", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                             }
@@ -298,17 +309,19 @@ public class EventoMGR {
                         else {
                             if (Long.parseLong(_val) == tiempo) {
                                 if (evento.getValue(EventoEntity.class).getPrecio() != null) {
-                                    Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                                 else {
-                                    Info auxEvento = new Info(null, evento.getValue(EventoEntity.class).getTitulo(),
+                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             "Gratis", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                             }
@@ -331,7 +344,7 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoUsuario(Activity _activity, String _id) {
+    public void getInfoEventoUsuario(Activity _activity, final String _id) {
         bdRefEventos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity e;
             VerInfoOtroUsuarioActivity activity;
@@ -342,7 +355,7 @@ public class EventoMGR {
                 //System.out.println(g.getNickname());
                 //System.out.println(g.getImagen());//<------------
 
-                activity.rellenarListaEventos(e);
+                activity.rellenarListaEventos(e, _id);
             }
 
             @Override

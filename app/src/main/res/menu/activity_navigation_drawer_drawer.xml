@@ -42,6 +42,10 @@
                 android:id="@+id/help"
                 android:icon="@drawable/question_mark"
                 android:title="Help" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:title="Logout" />
         </menu>
     </item>
 
