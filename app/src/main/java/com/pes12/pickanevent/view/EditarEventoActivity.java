@@ -37,6 +37,7 @@ import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -179,10 +180,10 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
         nomEvent.setText(evento.getTitulo());
         descripcio.setText(evento.getDescripcion());
-        String img = evento.getImagen();
+        /*String img = evento.getImagen();
         Bitmap imgBM = StringToBitMap(img);
         foto.setImageBitmap(imgBM);
-        foto.setScaleType(ImageView.ScaleType.FIT_XY);
+        foto.setScaleType(ImageView.ScaleType.FIT_XY);*/
         Date dataI = evento.getDataInDate();
         Date dataF = evento.getDataFiDate();
         data.setText(dataI.getDay() + " de " + ViewSharedMethods.getNomMes(
@@ -202,6 +203,9 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         }
         localitzacio.setText(evento.getLocalizacion());
         url.setText(evento.getWebpage());
+
+        Picasso.with(this).load(evento.getImagen()).into(foto);
+
     }
 
     private void inicialitza() {
