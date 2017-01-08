@@ -100,7 +100,7 @@ public class EventoMGR {
                     idEvento = evento.getKey();
                     activity.getUsuarioActual().getIdEventos().put(idEvento, ent.getTitulo());
                     MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
-                    MGRFactory.getInstance().getGrupoMGR().addEventoAlGrupo(ent.getIdGrup(), idEvento, ent.getTitulo());
+                    //MGRFactory.getInstance().getGrupoMGR().addEventoAlGrupo(ent.getIdGrup(), idEvento, ent.getTitulo());
                     if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey(),activity);
                     else activity.redireccionarConIdEvento(idEvento);
                 }
