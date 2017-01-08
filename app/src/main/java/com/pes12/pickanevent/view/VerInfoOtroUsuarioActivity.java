@@ -113,13 +113,15 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         }
     }
 
-    public void rellenarListaGrupos(GrupoEntity grupo) {
+    public void rellenarListaGrupos(GrupoEntity grupo, String id) {
         //System.out.println(grupo.getNickname()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(grupo.getImagen());
         if(grupo!=null) {
             String img = grupo.getImagen();
             String nombreGrupo = grupo.getNombreGrupo();
             Info info = new Info(img, nombreGrupo, null, getString(R.string.DEFAULT_SEGUIR));
+            info.setId(id);
+            info.setTipus("grup");
             eventos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
@@ -127,7 +129,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         }
     }
 
-    public void rellenarListaEventos(EventoEntity evento) {
+    public void rellenarListaEventos(EventoEntity evento, String id) {
         //System.out.println(evento.getTitulo()+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         //System.out.println(evento.getHorario());
         if(evento!=null) {
@@ -148,6 +150,8 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
 
             Info info = new Info(img, nombreGrupo, dataInici+" - "+ dataFi, getString(R.string.DEFAULT_SEGUIR));
+            info.setId(id);
+            info.setTipus("evento");
             grupos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             //System.out.println(grupos.get(0).segonaLinea);

@@ -344,7 +344,7 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoEventoUsuario(Activity _activity, String _id) {
+    public void getInfoEventoUsuario(Activity _activity, final String _id) {
         bdRefEventos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity e;
             VerInfoOtroUsuarioActivity activity;
@@ -355,7 +355,7 @@ public class EventoMGR {
                 //System.out.println(g.getNickname());
                 //System.out.println(g.getImagen());//<------------
 
-                activity.rellenarListaEventos(e);
+                activity.rellenarListaEventos(e, _id);
             }
 
             @Override

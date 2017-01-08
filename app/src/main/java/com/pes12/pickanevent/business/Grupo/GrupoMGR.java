@@ -206,7 +206,7 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoGrupoUsuario(Activity _activity, String _id) {
+    public void getInfoGrupoUsuario(Activity _activity, final String _id) {
         bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity g;
             VerInfoOtroUsuarioActivity activity;
@@ -217,7 +217,7 @@ public class GrupoMGR {
                 //System.out.println(g.getNickname());
                 //System.out.println(g.getImagen());//<------------
 
-                activity.rellenarListaGrupos(g);
+                activity.rellenarListaGrupos(g, _id);
             }
 
             @Override
