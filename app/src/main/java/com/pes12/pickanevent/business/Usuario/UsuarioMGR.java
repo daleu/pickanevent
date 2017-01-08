@@ -207,11 +207,15 @@ public class UsuarioMGR {
                             if (usr.getEmail() != null) {
                                 Info aux = new Info(usr.getUrlPhoto(), usr.getNickname(),
                                         usr.getEmail(), "seguir!");
+                                aux.setId((String) usuario.getKey());
+                                aux.setTipus("usuari");
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             } else {
                                 Info aux = new Info(usr.getUrlPhoto(), usr.getNickname(),
                                         null, "seguir!");
+                                aux.setId((String) usuario.getKey());
+                                aux.setTipus("usuari");
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }
