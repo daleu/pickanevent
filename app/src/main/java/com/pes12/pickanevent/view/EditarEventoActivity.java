@@ -186,9 +186,12 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         foto.setScaleType(ImageView.ScaleType.FIT_XY);*/
         Date dataI = evento.getDataInDate();
         Date dataF = evento.getDataFiDate();
-        data.setText(dataI.getDay() + " de " + ViewSharedMethods.getNomMes(
+        Calendar c = Calendar.getInstance();
+        c.setTime(dataI);
+        data.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
                 dataI.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
-        dataFinal.setText(dataF.getDay() + " de " + ViewSharedMethods.getNomMes(
+        c.setTime(dataF);
+        dataFinal.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
                 dataF.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
         hora.setText(dataI.getHours() + ":" + dataI.getMinutes());
         horaFi.setText(dataF.getHours() + ":" + dataF.getMinutes());

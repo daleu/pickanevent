@@ -155,8 +155,8 @@ public class EventsFragment extends Fragment {
                     aux = new Info(null, e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_EDITAR_EVENTO));
                 }
                 else{
-                    if(my_events.containsKey(pair.getKey()))aux = new Info(null, e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_NO_ASSISTIR));
-                    else aux = new Info(null, e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_ASSISTIR));
+                    if(my_events.containsKey(pair.getKey()))aux = new Info(e.getImagen(), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_NO_ASSISTIR));
+                    else aux = new Info(e.getImagen(), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_ASSISTIR));
                 }
                 aux.setId((String) pair.getKey());
                 aux.setTipus("evento");

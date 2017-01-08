@@ -33,7 +33,15 @@
             <item
                 android:id="@+id/cre_gru"
                 android:icon="@drawable/plus_sign_in_a_black_circle"
-                android:title="Añadir Grupo" />
+                android:title="Crear Grupo" />
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/about_icon"
+                android:title="About" />
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/question_mark"
+                android:title="Help" />
         </menu>
     </item>
 
