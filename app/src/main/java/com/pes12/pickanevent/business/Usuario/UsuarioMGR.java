@@ -201,12 +201,16 @@ public class UsuarioMGR {
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                         if (usuario.getValue(UsuarioEntity.class).getNickname().toLowerCase().contains(aux)) {
                             if (usuario.getValue(UsuarioEntity.class).getEmail() != null) {
-                                n.add(new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
-                                        usuario.getValue(UsuarioEntity.class).getEmail(), "seguir!"));
+                                Info aux = new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
+                                        usuario.getValue(UsuarioEntity.class).getEmail(), "seguir!");
+                                aux.setBotonVisible(false);
+                                n.add(aux);
                             }
                             else {
-                                n.add(new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
-                                        null, "seguir!"));
+                                Info aux = new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
+                                        null, "seguir!");
+                                aux.setBotonVisible(false);
+                                n.add(aux);
                             }
 
                         }
