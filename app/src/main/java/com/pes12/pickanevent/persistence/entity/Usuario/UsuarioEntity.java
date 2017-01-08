@@ -3,7 +3,6 @@ package com.pes12.pickanevent.persistence.entity.Usuario;
 import android.net.Uri;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -123,7 +122,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public Boolean getCm() {
-        return cm;
+        return (cm != null)? cm : false;
     }
 
     public void setCm(Boolean _cm) {
