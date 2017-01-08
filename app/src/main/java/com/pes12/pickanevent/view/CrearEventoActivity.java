@@ -46,6 +46,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedHashMap;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
@@ -245,9 +246,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                                     Long.toString(aux)
                             );
                             eMGR = MGRFactory.getInstance().getEventoMGR();
-                            eMGR.crear(ee,isImagen);
+                            eMGR.crearConRedireccion(this,ee,isImagen);
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+                            //startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
                     }
                     else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
@@ -332,7 +333,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
                     ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
-                    image = BitmapFactory.decodeStream(isImagen);
+                    image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
 
@@ -347,5 +348,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void redireccionarConIdEvento(String id) {
+        startActivity(new Intent(CrearEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", id));
     }
 }

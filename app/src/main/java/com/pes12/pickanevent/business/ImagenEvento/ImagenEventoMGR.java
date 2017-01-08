@@ -39,27 +39,28 @@ public class ImagenEventoMGR {
 
     }
 
-
-    public void subirImagen(InputStream _is, EventoEntity _ee, String id) {
+    public void subirImagen(InputStream _is, EventoEntity _ee, String id, Activity _activity) {
         UploadTask uploadTask = bdRefImagenes.child(id).putStream(_is);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             EventoEntity evento;
             String id;
+            CrearEventoActivity activity;
 
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 evento.setImagen(taskSnapshot.getDownloadUrl().toString());
                 EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
-                evento.setImagen(taskSnapshot.getDownloadUrl().toString());
-                eMGR.actualizar(id,evento);
+                eMGR.actualizar(id, evento);
+                activity.redireccionarConIdEvento(id);
 
             }
 
-            public OnSuccessListener setEvento(EventoEntity _ee,String _id) {
+            public OnSuccessListener setEvento(EventoEntity _ee, String _id, Activity _activity) {
                 evento = _ee;
-                id=_id;
+                id = _id;
+                activity = (CrearEventoActivity) _activity;
                 return this;
             }
-        }.setEvento(_ee,id));
+        }.setEvento(_ee, id, _activity));
     }
 }
