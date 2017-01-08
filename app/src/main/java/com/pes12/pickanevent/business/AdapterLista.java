@@ -92,6 +92,9 @@ public class AdapterLista extends ArrayAdapter<Info> {
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);
+        if (!componentes.getBotonVisible()) {
+            holder.button.setVisibility(View.INVISIBLE);
+        }
         final String aux = componentes.textoBoton;
         if(componentes.id!=null){
             holder.id.setText(componentes.id);

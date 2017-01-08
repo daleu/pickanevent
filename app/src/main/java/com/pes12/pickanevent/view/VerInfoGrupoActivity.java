@@ -255,6 +255,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(VerInfoGrupoActivity.this, MainActivity.class));
+        startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
     }
 }
