@@ -55,7 +55,7 @@ public class EventoEntity {
     }
 
     public EventoEntity(String nombre, String descr, String precio, String webpage, String localizacion, String latitud, String longitud,
-        String dataIn, String dataFi) {
+        String dataIn, String dataFi, String idGrupo) {
         setTitulo(nombre);
         setDescripcion(descr);
         setPrecio(precio);
@@ -65,6 +65,7 @@ public class EventoEntity {
         setLongitud(longitud);
         setDataInici(dataIn);
         setDataFinal(dataFi);
+        setIdGrup(idGrupo);
 
     }
 

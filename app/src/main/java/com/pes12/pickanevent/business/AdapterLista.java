@@ -105,7 +105,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Log.e("tipus",componentes.tipus);
-                if(componentes.tipus=="event") {
+                if(componentes.tipus=="evento") {
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);

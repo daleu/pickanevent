@@ -63,6 +63,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     EditText url;
     EditText localitzacio;
 
+    String idGrupo;
 
     private Date dataIni;
     private Date dataFi;
@@ -172,6 +173,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void mostrarInfoEventoEditar(EventoEntity evento) {
+        idGrupo = evento.getIdGrup();
 
         inicialitza();
 
@@ -284,7 +286,8 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                                     url.getText().toString(),
                                     localitzacio.getText().toString(), lat, lng,
                                     Long.toString(aux2),
-                                    Long.toString(aux)
+                                    Long.toString(aux),
+                                    idGrupo
                             );
                             eMGR.actualizar(idEvento,update);
                             Toast.makeText(EditarEventoActivity.this, getString(R.string.EVENTO_EDITADO),
