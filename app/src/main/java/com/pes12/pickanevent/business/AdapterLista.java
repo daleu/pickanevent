@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
+import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
@@ -162,7 +163,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
                     context.startActivity(intent);
                 }
                 else if(componentes.tipus=="grup" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO))) {
-                    Intent intent = new Intent(context, VerInfoGrupoActivity.class);
+                    Intent intent = new Intent(context, EditarGrupoActivity.class);
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
