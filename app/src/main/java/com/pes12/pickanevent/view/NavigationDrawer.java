@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -32,6 +34,8 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.pes12.pickanevent.R.drawable.question_mark;
 
 public class NavigationDrawer extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -182,11 +186,14 @@ public class NavigationDrawer extends BaseActivity
         } else if (id == R.id.cre_gru){
             Intent intent = new Intent(this,CrearGrupoActivity.class);
             startActivity(intent);
-        }
-        else if (id == R.id.logout){
+        } else if (id == R.id.logout){
             signOut();
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
+        } else if (id == R.id.about){
+            ShowDialog("About","Hecho por: PickAnEvent.SA \nContacto: support@pickanevent.com");
+        } else if (id == R.id.help){
+            ShowDialog("Help","Con esta aplicación, podras consultar y buscar todos los eventos ");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -216,5 +223,22 @@ public class NavigationDrawer extends BaseActivity
 
     public String getUsuariActual(){
         return idActual;
+    }
+
+    private void ShowDialog(String title, String content){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(content);
+        if(title.equals("About")) alertDialog.setIcon(android.R.drawable.ic_dialog_info);
+        else alertDialog.setIcon(android.R.drawable.ic_menu_help);
+        //alertDialog.setFeatureDrawableResource(question_mark,0);
+        alertDialog.setCancelable(true);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 }
