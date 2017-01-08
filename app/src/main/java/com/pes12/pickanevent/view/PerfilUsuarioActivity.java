@@ -139,7 +139,7 @@ public class PerfilUsuarioActivity extends BaseActivity {
                 aceptar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Boolean noError = ViewSharedMethods.borrarCurrentUser();
+                        Boolean noError = borrarCurrentUser();
                         String msg = noError ? getString(R.string.BORRADO_CUENTA_CORRECTO) : getString(R.string.ERROR_BORRAR);
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                         alert.hide();
