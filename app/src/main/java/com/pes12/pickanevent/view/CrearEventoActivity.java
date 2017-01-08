@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.view;
 
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -70,6 +71,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     EditText descripcio;
     EditText url;
     EditText localitzacio;
+    ImageView imgV;
+
 
     ImagenEventoMGR iMGR;
 
@@ -208,6 +211,20 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, bounds,
                 null);
         mAutocompleteView.setAdapter(mAdapter);
+
+
+        imgV = (ImageView) findViewById(R.id.imagenEvento);
+
+        Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + getResources().getResourcePackageName(R.drawable.profile)
+                + '/' + getResources().getResourceTypeName(R.drawable.profile) + '/' + getResources().getResourceEntryName(R.drawable.profile) );
+
+        imgV.setImageURI(uri);
+        try {
+            isImagen = getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void crearEvento(View _view) {
@@ -343,7 +360,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
-                    ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
                     image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);

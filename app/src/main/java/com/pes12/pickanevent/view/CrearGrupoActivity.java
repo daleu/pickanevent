@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,6 +50,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
     ListView listaTags;
     ArrayList<InfoTags> info;
     InputStream isImagen;
+    ImageView imgV;
 
     GrupoEntity nuevoGrupo;
 
@@ -66,6 +68,18 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
         descripcion = (EditText) findViewById(R.id.editorDescrGrupo);
         tagPrincipal = (EditText) findViewById(R.id.editorTagPrincipal);
         listaTags = (ListView) findViewById(R.id.resultatTagPrin);
+        imgV = (ImageView) findViewById(R.id.imagenGrupo);
+
+        Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + getResources().getResourcePackageName(R.drawable.profile)
+                + '/' + getResources().getResourceTypeName(R.drawable.profile) + '/' + getResources().getResourceEntryName(R.drawable.profile) );
+
+        imgV.setImageURI(uri);
+        try {
+            isImagen = getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         final EditText tv = (EditText) findViewById(R.id.editorTagPrincipal);
         tv.addTextChangedListener(new TextWatcher() {
@@ -159,7 +173,6 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
-                    ImageView imgV = (ImageView) findViewById(R.id.imagenGrupo);
                     image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
