@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -79,7 +80,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void signOut() {
-        System.out.println("ARRIBOOOOOOOOOO");
         mAuth.signOut();
         usuarioActual = null;
     }
@@ -119,6 +119,11 @@ public class BaseActivity extends AppCompatActivity {
 
     public void goBack(View _view) {
         onBackPressed();
+    }
+
+    public void goBusqueda(View _view){
+        Intent intent = new Intent(this,BuscarEventoActivity.class);
+        startActivity(intent);
     }
 
     /*public EventoEntity parseEventViewToEntity(Bitmap image, String lat, String lng) {

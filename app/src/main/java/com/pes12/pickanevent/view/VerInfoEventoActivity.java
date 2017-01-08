@@ -11,6 +11,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -67,11 +68,20 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
 
-       // param = getIntent().getExtras();
-        idEvento = "-K_sQVheUkm7IiaNv9tT";
-       // if(param.getString("key")!=null){
-      //      idEvento = param.getString("key");
-     //   }
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
+   //    param = getIntent().getExtras();
+        idEvento = "-K_xhR3NMID-9FN6W4Ym";
+     //   if(param.getString("key")!=null){
+    //        idEvento = param.getString("key");
+    //    }
+
+
+
+
+
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -84,7 +94,6 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         pinIcon.setTypeface(fontAwesomeFont);
 
         //Consultar informacion
-        //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.getInfoEvento(this,idEvento);
 
@@ -170,7 +179,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
-     /*   if(param.getString("action")!=null){
+   /*     if(param.getString("action")!=null){
             Log.e("action",param.getString("action"));
             if(param.getString("action").equals("assistir")){
                 asistirEvento(idEvento,gEntity.getTitulo());
@@ -259,4 +268,9 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         }
         return super.onKeyDown(keyCode, event);
     }*/
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+    }
 }

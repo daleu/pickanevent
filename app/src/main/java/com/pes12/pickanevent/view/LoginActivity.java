@@ -3,6 +3,7 @@ package com.pes12.pickanevent.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         correo = (EditText) findViewById(R.id.correo);
         pass = (EditText) findViewById(R.id.pass);
+        context = this;
     }
 
     public void login(View view) {
@@ -50,9 +52,15 @@ public class LoginActivity extends BaseActivity {
                     UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
 
                     uMGR.getUsuarioLogin(LoginActivity.this, task.getResult().getUser().getUid());
-                    LoginActivity.this.finish();
-                    //Intent intent = new Intent(context, NavigationDrawer.class);
-                    //context.startActivity(intent);
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            Intent intent = new Intent(context, NavigationDrawer.class);
+                            context.startActivity(intent);
+                            LoginActivity.this.finish();
+                        }
+                    }, 3000);
                 } else {
                     Toast.makeText(LoginActivity.this, getString(R.string.CORREO_NO_VERIFICADO) + correo.getText().toString(),
                             Toast.LENGTH_SHORT).show();

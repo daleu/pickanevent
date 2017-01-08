@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.view;
 
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,13 +13,13 @@ import android.support.annotation.NonNull;
 import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
-import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,10 +36,12 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.ImagenEvento.ImagenEventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -46,6 +49,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
@@ -65,9 +70,13 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     EditText descripcio;
     EditText url;
     EditText localitzacio;
+    ImageView imgV;
+
 
     ImagenEventoMGR iMGR;
 
+    String idGrupo;
+    GrupoEntity grupo;
 
     private Date dataIni;
     private Date dataFi;
@@ -77,6 +86,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     //------------------- GOOGLE PLACES API ------------------
     protected GoogleApiClient mGoogleApiClient;
     EventoMGR eMGR;
+    GrupoMGR gMGR;
     Bitmap image;
     String lat;
     String lng;
@@ -141,6 +151,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
 
+        idGrupo = getIntent().getExtras().getString("key");
+        grupo = (GrupoEntity) getIntent().getExtras().getSerializable("grupo");;
+
         //-------------- GOOGLE PLACES API -------------
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, 0 /* clientId */, (GoogleApiClient.OnConnectionFailedListener) this)
@@ -174,6 +187,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 dataFi = d;
             }
         });
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
         gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         preuText = (EditText) findViewById(R.id.editorPrecio);
         hora = (EditText) findViewById(R.id.horaApertura);
@@ -197,6 +214,20 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, bounds,
                 null);
         mAutocompleteView.setAdapter(mAdapter);
+
+
+        imgV = (ImageView) findViewById(R.id.imagenEvento);
+
+        Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + getResources().getResourcePackageName(R.drawable.profile)
+                + '/' + getResources().getResourceTypeName(R.drawable.profile) + '/' + getResources().getResourceEntryName(R.drawable.profile) );
+
+        imgV.setImageURI(uri);
+        try {
+            isImagen = getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void crearEvento(View _view) {
@@ -234,7 +265,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 else aux = añadirHoraADate(dataFi, horaFi.getText().toString());
                 Long aux2 = añadirHoraADate(dataIni, hora.getText().toString());
                 if (aux != null && aux2 != null) {
-                    if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
+                   // if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
                         if (aux2 < aux) {
                             EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
                                     descripcio.getText().toString(),
@@ -242,15 +273,16 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                                     url.getText().toString(),
                                     localitzacio.getText().toString(), lat, lng,
                                     Long.toString(aux2),
-                                    Long.toString(aux)
+                                    Long.toString(aux),
+                                    idGrupo
                             );
                             eMGR = MGRFactory.getInstance().getEventoMGR();
-                            eMGR.crear(ee,isImagen);
+                            eMGR.crearConRedireccion(this,ee,isImagen);
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+                            //startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
-                    }
-                    else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
+              //      }
+                  //  else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -331,8 +363,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
-                    ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
-                    image = BitmapFactory.decodeStream(isImagen);
+                    image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
 
@@ -347,5 +378,19 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void redireccionarConIdEvento(String id) {
+        startActivity(new Intent(CrearEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", id));
+    }
+
+    public void addEventoAlGrupo(String idEvento) {
+        Map<String,String> idEventosAux = grupo.getIdEventos();
+        if (idEventosAux == null) idEventosAux = new HashMap<String, String>();
+        idEventosAux.put(idEvento, nomEvent.getText().toString());
+        grupo.setIdEventos(idEventosAux);
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
+        System.out.println("actualitzare el grup: " + idGrupo);
+        gMGR.actualizar(idGrupo, grupo);
     }
 }

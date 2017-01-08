@@ -128,7 +128,7 @@ BLOQUE DE TEST
     }
 
     public void goCrearEvento(View _view) {
-        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
+        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class).putExtra("key", "-KZlbhl-cvEnRUXKORqx"));
     }
 
     public void goEditarEvento(View _view) {
@@ -193,7 +193,7 @@ BLOQUE DE TEST
     }
 
     public void goEditarGrupo(View _view) {
-        startActivity(new Intent(MainActivity.this, EditarGrupoActivity.class));
+        startActivity(new Intent(MainActivity.this, EditarGrupoActivity.class).putExtra("key", "-K_uA6od-hLX4ST5MOPa"));
     }
 
     public void goBuscarEvento(View _view) {

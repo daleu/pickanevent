@@ -92,6 +92,9 @@ public class AdapterLista extends ArrayAdapter<Info> {
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
         holder.button.setText(componentes.textoBoton);
+        if (!componentes.getBotonVisible()) {
+            holder.button.setVisibility(View.INVISIBLE);
+        }
         final String aux = componentes.textoBoton;
         if(componentes.id!=null){
             holder.id.setText(componentes.id);
@@ -105,7 +108,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Log.e("tipus",componentes.tipus);
-                if(componentes.tipus=="event") {
+                if(componentes.tipus=="evento") {
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);

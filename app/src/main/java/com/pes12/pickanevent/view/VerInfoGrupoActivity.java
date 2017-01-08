@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -44,8 +45,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
     Button boton;
     Button editarTags;
     Button editar;
+    Button addEvento;
 
     String idGrupo;
+    GrupoEntity grupo;
     GrupoMGR gMGR;
     EventoMGR eMGR;
     TagMGR tMGR;
@@ -56,6 +59,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_grupo);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
         //////inicializacion elementos pantalla//////////
         nombre = (TextView) findViewById(R.id.nombreGrupo);
         descripcion = (TextView) findViewById(R.id.descripcion);
@@ -68,6 +75,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         tMGR = MGRFactory.getInstance().getTagMGR();
         editarTags = (Button) findViewById(R.id.editarTags);
         editar = (Button) findViewById(R.id.editar);
+        addEvento = (Button) findViewById(R.id.addEvento);
         /////////////////////////////////////////////////
 
         //Bundle b = getIntent().getExtras(); //Para pruebas
@@ -89,6 +97,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
             editarTags.setVisibility(View.INVISIBLE);
             editar.setVisibility(View.INVISIBLE);
+            addEvento.setVisibility(View.INVISIBLE);
         }
 
         //Boton eliminar grupo
@@ -135,7 +144,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
-
+        grupo = _grupo;
         if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
         Map<String, String> tagsMap = _grupo.getIdTags();
         if (tagsMap == null) tagsMap = new LinkedHashMap<>();
@@ -244,9 +253,13 @@ public class VerInfoGrupoActivity extends BaseActivity {
         startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo));
     }
 
+    public void addEvento(View view) {
+        startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
+    }
+
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(VerInfoGrupoActivity.this, MainActivity.class));
+        startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
     }
 }

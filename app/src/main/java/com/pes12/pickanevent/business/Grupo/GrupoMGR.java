@@ -208,7 +208,7 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
-    public void getInfoGrupoUsuario(Activity _activity, String _id) {
+    public void getInfoGrupoUsuario(Activity _activity, final String _id) {
         bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity g;
             VerInfoOtroUsuarioActivity activity;
@@ -219,7 +219,7 @@ public class GrupoMGR {
                 //System.out.println(g.getNickname());
                 //System.out.println(g.getImagen());//<------------
 
-                activity.rellenarListaGrupos(g);
+                activity.rellenarListaGrupos(g, _id);
             }
 
             @Override
@@ -393,12 +393,20 @@ public class GrupoMGR {
                 for (DataSnapshot grupo : _snapshot.getChildren()) {
                     if (grupo.getValue(GrupoEntity.class).getNombreGrupo().toLowerCase().contains(aux3)) {
                         if (grupo.getValue(GrupoEntity.class).getDescripcion() != null) {
-                            n.add(new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(),
-                                    grupo.getValue(GrupoEntity.class).getDescripcion(), "seguir!"));
+                            Info aux = new Info(grupo.getValue(GrupoEntity.class).getImagen(), grupo.getValue(GrupoEntity.class).getNombreGrupo(),
+                                    null, null);
+                            aux.setId((String)grupo.getKey());
+                            aux.setTipus("grup");
+                            aux.setBotonVisible(false);
+                            n.add(aux);
                         }
                         else {
-                            n.add(new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(),
-                                    null, "seguir!"));
+                            Info aux = new Info(grupo.getValue(GrupoEntity.class).getImagen(), grupo.getValue(GrupoEntity.class).getNombreGrupo(),
+                                    null, null);
+                            aux.setId((String)grupo.getKey());
+                            aux.setTipus("grup");
+                            aux.setBotonVisible(false);
+                            n.add(aux);
                         }
 
                     }
