@@ -221,7 +221,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     if (aux.equals(EventoEntity.ATTRIBUTES.TITULO.getValue()) && evento.getValue(EventoEntity.class).getTitulo() != null) {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
-                            if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                            if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                 aux.setId((String) evento.getKey());
@@ -241,7 +241,7 @@ public class EventoMGR {
                     }
                     else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
-                            if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                            if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                 aux.setId((String) evento.getKey());
@@ -263,7 +263,7 @@ public class EventoMGR {
                         String precio = evento.getValue(EventoEntity.class).getPrecio();
                         Double aux = null;
                         if (precio != null) aux = Double.parseDouble(precio);
-                        if (precio == null && _val.equals("0")) {
+                        if (precio.equals("") && _val.equals("0")) {
                             Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                     "Gratis", "asistir!");
                             auxEvento.setId((String) evento.getKey());
@@ -316,7 +316,7 @@ public class EventoMGR {
                             if ((Long.parseLong(_val) <= tiempo && auxVal > tiempoFinal) ||
                                     (tiempo <= Long.parseLong(_val) && Long.parseLong(_val) <= tiempoFinal && tiempoFinal < auxVal) ||
                                     (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
-                                if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                                if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
@@ -336,7 +336,7 @@ public class EventoMGR {
                         }
                         else {
                             if (Long.parseLong(_val) == tiempo) {
-                                if (evento.getValue(EventoEntity.class).getPrecio() != null) {
+                                if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());

@@ -132,18 +132,18 @@ public class AdapterLista extends ArrayAdapter<Info> {
                 //Log.e("tipus",componentes.tipus);
                 Log.e("action",aux);
                 Log.e("teoric", getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO));
-                if(componentes.tipus=="event" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT
+                if(componentes.tipus=="evento" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
                     intent.putExtra("action","noassistir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="event" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_EVENTO))){//EDITAR GRUP
+                else if(componentes.tipus=="evento" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_EVENTO))){//EDITAR GRUP
                     Intent intent = new Intent(context, EditarEventoActivity.class);
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="event" && !aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))){//DEIXAR DASSISTIR EVENT
+                else if(componentes.tipus=="evento" && !aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))){//DEIXAR DASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
                     intent.putExtra("action","assistir");
                     intent.putExtra("key", componentes.id);
