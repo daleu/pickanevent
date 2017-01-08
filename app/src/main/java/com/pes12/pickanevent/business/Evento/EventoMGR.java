@@ -49,7 +49,7 @@ public class EventoMGR {
         bdRefEventos.keepSynced(true);
     }
 
-    public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
+    /*public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             InputStream is;
@@ -79,7 +79,7 @@ public class EventoMGR {
             }
         }.setEntity(_entity,_is, _activity));
         return "";
-    }
+    }*/
 
     public String crearConRedireccion(Activity _activity, EventoEntity _entity, InputStream _is) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
