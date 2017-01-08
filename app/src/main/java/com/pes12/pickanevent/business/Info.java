@@ -11,6 +11,7 @@ public class Info {
     public String textoBoton;
     public String id;
     public String tipus;
+    public Boolean botonVisible = true;
 
     public Info(String _img, String _primeraLinea, String _segonaLinea, String _textoBoton) {
         super();
@@ -59,4 +60,8 @@ public class Info {
     public String getTipus() { return tipus; }
 
     public void setTipus(String _tipus) {this.tipus = _tipus;}
+
+    public boolean getBotonVisible() {return botonVisible;}
+
+    public void setBotonVisible(Boolean visible) {botonVisible = visible;}
 }
