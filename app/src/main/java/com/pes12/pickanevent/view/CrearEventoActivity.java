@@ -257,10 +257,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                                     idGrupo
                             );
                             eMGR = MGRFactory.getInstance().getEventoMGR();
-                            eMGR.crear(ee,isImagen, this);
-
+                            eMGR.crearConRedireccion(this,ee,isImagen);
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
+                            //startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
                     }
                     else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
@@ -345,7 +344,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
                     ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
-                    image = BitmapFactory.decodeStream(isImagen);
+                    image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
 
@@ -360,6 +359,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void redireccionarConIdEvento(String id) {
+        startActivity(new Intent(CrearEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", id));
     }
 
     public void addEventoAlGrupo(String idEvento) {
