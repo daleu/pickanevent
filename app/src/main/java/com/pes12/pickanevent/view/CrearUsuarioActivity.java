@@ -113,6 +113,9 @@ public class CrearUsuarioActivity extends BaseActivity {
         uMGR.actualizar(uId, usuarioNuevo);
 
         if (!cm.isChecked())startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class).putExtra("usuarioReg", usuarioNuevo).putExtra("keyUsuR", uId));
-        else startActivity(new Intent(CrearUsuarioActivity.this, NavigationDrawer.class));
+        else {
+            setUsuarioActual(usuarioNuevo);
+            startActivity(new Intent(CrearUsuarioActivity.this, NavigationDrawer.class));
+        }
     }
 }
