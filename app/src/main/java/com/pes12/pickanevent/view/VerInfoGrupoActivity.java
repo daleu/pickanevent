@@ -45,6 +45,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     Button boton;
     Button editarTags;
     Button editar;
+    Button addEvento;
 
     String idGrupo;
     GrupoEntity grupo;
@@ -70,6 +71,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         tMGR = MGRFactory.getInstance().getTagMGR();
         editarTags = (Button) findViewById(R.id.editarTags);
         editar = (Button) findViewById(R.id.editar);
+        addEvento = (Button) findViewById(R.id.addEvento);
         /////////////////////////////////////////////////
 
         //Bundle b = getIntent().getExtras(); //Para pruebas
@@ -91,6 +93,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
             editarTags.setVisibility(View.INVISIBLE);
             editar.setVisibility(View.INVISIBLE);
+            addEvento.setVisibility(View.INVISIBLE);
         }
 
         //Boton eliminar grupo
@@ -242,7 +245,11 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void editar(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo));
+    }
+
+    public void addEvento(View view) {
+        startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras

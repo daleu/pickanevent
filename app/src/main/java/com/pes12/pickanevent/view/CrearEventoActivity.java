@@ -49,6 +49,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
@@ -363,8 +364,11 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
     public void addEventoAlGrupo(String idEvento) {
         Map<String,String> idEventosAux = grupo.getIdEventos();
+        if (idEventosAux == null) idEventosAux = new HashMap<String, String>();
         idEventosAux.put(idEvento, nomEvent.getText().toString());
         grupo.setIdEventos(idEventosAux);
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
+        System.out.println("actualitzare el grup: " + idGrupo);
         gMGR.actualizar(idGrupo, grupo);
     }
 }
