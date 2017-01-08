@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Grupo;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -138,6 +139,7 @@ public class GrupoEntity implements Serializable{
     }
 
     public Map<String, String> getIdEventos() {
+        if (mapIdEventos == null) mapIdEventos = new HashMap<String, String>();
         return mapIdEventos;
     }
 
@@ -146,6 +148,7 @@ public class GrupoEntity implements Serializable{
     }
 
     public Map<String, String> getIdTags() {
+        if (mapIdTags == null) mapIdTags = new HashMap<String, String>();
         return mapIdTags;
     }
 

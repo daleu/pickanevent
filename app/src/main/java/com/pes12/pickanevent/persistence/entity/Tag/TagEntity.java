@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.persistence.entity.Tag;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -57,7 +58,7 @@ public class TagEntity {
     }*/
 
     public Map<String, String> getIdGrupos() {
-
+        if (idGrupos == null) idGrupos = new HashMap<String, String>();
         return idGrupos;
     }
 

@@ -139,6 +139,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public Map<String, String> getIdEventos() {
+        if (idEventos == null) idEventos = new HashMap<String, String>();
         return idEventos;
     }
 
@@ -147,6 +148,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public Map<String, String> getIdTags() {
+        if (idTags == null) idTags = new HashMap<String, String>();
         return idTags;
     }
 
@@ -155,6 +157,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public Map<String, String> getIdUsuarios() {
+        if (idUsuarios == null) idUsuarios = new HashMap<String, String>();
         return idUsuarios;
     }
 

@@ -95,11 +95,12 @@ public class EventoMGR {
                     System.out.println(Constantes.ERROR_EXISTE_GRUPO);
                     activity.redireccionarConIdEvento(id);
                 } else {
-                    DatabaseReference grupo = bdRefEventos.push();
-                    grupo.setValue(ent);
-                    id = grupo.getKey();
-
-                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,grupo.getKey(),activity);
+                    DatabaseReference evento = bdRefEventos.push();
+                    evento.setValue(ent);
+                    id = evento.getKey();
+                    activity.getUsuarioActual().getIdEventos().put(id, ent.getTitulo());
+                    MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
+                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey(),activity);
                     else activity.redireccionarConIdEvento(id);
                 }
 
