@@ -32,6 +32,8 @@ import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import static com.pes12.pickanevent.R.id.borrarCuenta;
@@ -201,8 +203,42 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         if(gEntity.getDescripcion()!=null)descripcion.setText(gEntity.getDescripcion());
         titulo.setText(gEntity.getTitulo());
-        horarios.setText("horario");
-        precio.setText(gEntity.getPrecio());
+
+        Date dataI = gEntity.getDataInDate();
+        Date dataF = gEntity.getDataFiDate();
+
+        String hora1;
+        String hora2;
+
+        if (dataI.getHours() < 10) {
+            if (dataI.getMinutes() < 10) hora1 = "0" + dataI.getHours() + ":0" + dataI.getMinutes();
+            else hora1 = "0" + dataI.getHours() + ":" + dataI.getMinutes();
+        }
+        else {
+            if (dataI.getMinutes() < 10) hora1 = dataI.getHours() + ":0" + dataI.getMinutes();
+            else hora1 = dataI.getHours() + ":" + dataI.getMinutes();
+        }
+
+        if (dataI.getHours() < 10) {
+            if (dataI.getMinutes() < 10) hora2 = "0" + dataI.getHours() + ":0" + dataI.getMinutes();
+            else hora2 = "0" + dataI.getHours() + ":" + dataI.getMinutes();
+        }
+        else {
+            if (dataI.getMinutes() < 10) hora2 = dataI.getHours() + ":0" + dataI.getMinutes();
+            else hora2 = dataI.getHours() + ":" + dataI.getMinutes();
+        }
+
+        String dIni = dataI.getDay()+1 + "/" + dataI.getMonth()+1 + "/" + (dataI.getYear()+1900) + " a las " + hora1;
+        String dFi = dataF.getDay()+1 + "/" + dataF.getMonth()+1 + "/" + (dataF.getYear()+1900) + " a las " + hora2;
+
+        horarios.setText(dIni + " hasta el\n" +dFi);
+
+        if(gEntity.getPrecio().equals("")){
+            precio.setText("Gratis");
+        }
+        else{
+            precio.setText(gEntity.getPrecio());
+        }
         lugar.setText(gEntity.getLocalizacion());
 
         latitud = gEntity.getLatitud();
