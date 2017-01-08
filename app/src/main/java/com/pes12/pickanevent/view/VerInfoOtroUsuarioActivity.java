@@ -149,7 +149,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
                     dataF.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900)+ " "+ dataF.getHours() + ":" + dataF.getMinutes());
 
 
-            Info info = new Info(img, nombreGrupo, dataInici+" - "+ dataFi, getString(R.string.DEFAULT_SEGUIR));
+            Info info = new Info(img, nombreGrupo, dataInici +"\r"+ dataFi, getString(R.string.DEFAULT_SEGUIR));
             info.setId(id);
             info.setTipus("evento");
             grupos.add(info);
