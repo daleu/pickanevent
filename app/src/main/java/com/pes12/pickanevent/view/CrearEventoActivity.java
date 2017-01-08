@@ -19,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -185,6 +186,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 dataFi = d;
             }
         });
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
         gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         preuText = (EditText) findViewById(R.id.editorPrecio);
         hora = (EditText) findViewById(R.id.horaApertura);

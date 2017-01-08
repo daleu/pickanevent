@@ -336,6 +336,7 @@ public class GrupoMGR {
                                     null, null);
                             aux.setId((String)grupo.getKey());
                             aux.setTipus("grup");
+                            aux.setBotonVisible(false);
                             n.add(aux);
                         }
                         else {
@@ -343,6 +344,7 @@ public class GrupoMGR {
                                     null, null);
                             aux.setId((String)grupo.getKey());
                             aux.setTipus("grup");
+                            aux.setBotonVisible(false);
                             n.add(aux);
                         }
 

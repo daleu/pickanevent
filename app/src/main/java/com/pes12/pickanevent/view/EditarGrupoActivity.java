@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,6 +44,9 @@ public class EditarGrupoActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_grupo);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
         Bundle param = getIntent().getExtras();
         //idGrupo = "-K_pzKaJijDFG_eT0Zry";

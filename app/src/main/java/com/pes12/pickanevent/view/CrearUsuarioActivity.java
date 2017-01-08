@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +36,10 @@ public class CrearUsuarioActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
         setContentView(R.layout.activity_crear_usuario);
         correo = (EditText) findViewById(R.id.correo);
         pass = (EditText) findViewById(R.id.pass);

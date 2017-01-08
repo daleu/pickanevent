@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -56,6 +57,9 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_grupo);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();

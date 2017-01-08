@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -67,6 +68,9 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
         param = getIntent().getExtras();
         //idEvento = "-K_sQVheUkm7IiaNv9tT";
