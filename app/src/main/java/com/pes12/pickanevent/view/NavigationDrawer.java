@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -81,6 +82,10 @@ public class NavigationDrawer extends BaseActivity
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_slideshow).setVisible(false);
             nav_Menu.findItem(R.id.nav_share).setVisible(false);
+        }
+        else {
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.cre_gru).setVisible(false);
         }
 
         Fragment fragment = null;
@@ -166,9 +171,13 @@ public class NavigationDrawer extends BaseActivity
             ft.replace(R.id.main_fragment, new EventsFragment());
             ft.commit();
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent(this,PerfilUsuarioActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.cre_gru){
+            Intent intent = new Intent(this,CrearGrupoActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
