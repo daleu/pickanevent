@@ -1,11 +1,14 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,9 +17,13 @@ import com.google.firebase.auth.AuthResult;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.EncodeUtil;
+import com.pes12.pickanevent.business.ImagenPerfilUsuario.ImagenPerfilUsuarioMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 /**
  * Created by Legault on 08/11/2016.
@@ -30,6 +37,8 @@ public class CrearUsuarioActivity extends BaseActivity {
     private EditText repepass;
     private EditText username;
     private CheckBox cm;
+    private ImagenPerfilUsuarioMGR iMGR;
+    String uId;
 
 
     @Override
@@ -42,7 +51,6 @@ public class CrearUsuarioActivity extends BaseActivity {
         username = (EditText) findViewById(R.id.username);
         cm = (CheckBox) findViewById(R.id.cm);
 
-        
     }
 
 
@@ -63,21 +71,44 @@ public class CrearUsuarioActivity extends BaseActivity {
                 }
                 Toast.makeText(CrearUsuarioActivity.this, Constantes.LOG_USUARI_CREADO_CORRECTO + ' ' + correo.getText().toString(),
                         Toast.LENGTH_SHORT).show();
-                UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
-                UsuarioEntity usuarioNuevo = new UsuarioEntity(username.getText().toString(), cm.isChecked());
 
-                uMGR.actualizar(task.getResult().getUser().getUid(), usuarioNuevo);
+                iMGR = MGRFactory.getInstance().getImagenPerfilUsuarioMGR();
+                InputStream isImagen;
+
                 task.getResult().getUser().sendEmailVerification();
 
-                //signOut();
-                //CrearUsuarioActivity.this.finish();
+                Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                        "://" + getResources().getResourcePackageName(R.drawable.profile)
+                        + '/' + getResources().getResourceTypeName(R.drawable.profile) + '/' + getResources().getResourceEntryName(R.drawable.profile) );
 
-                startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class).putExtra("usuarioReg", usuarioNuevo).putExtra("keyUsuR", task.getResult().getUser().getUid()));
-                // ...
+                try {
+                    isImagen = getContentResolver().openInputStream(uri);
+                    MGRFactory.getInstance().getImagenPerfilUsuarioMGR().subirImagenCreacionUsuario(isImagen, task.getResult().getUser(), CrearUsuarioActivity.this);
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                uId = task.getResult().getUser().getUid();
+
+
+
+
+
             }
         });
 
 
 
+    }
+
+    public void addImagenPorDefecto(String img) {
+        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
+        UsuarioEntity usuarioNuevo = new UsuarioEntity(username.getText().toString(), cm.isChecked());
+        usuarioNuevo.setUrlPhoto(img);
+        uMGR.actualizar(uId, usuarioNuevo);
+
+        if (!cm.isChecked())startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class).putExtra("usuarioReg", usuarioNuevo).putExtra("keyUsuR", uId));
+        else startActivity(new Intent(CrearUsuarioActivity.this, NavigationDrawer.class));
     }
 }

@@ -14,6 +14,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.pes12.pickanevent.view.BaseActivity;
+import com.pes12.pickanevent.view.CrearUsuarioActivity;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.PerfilUsuarioActivity;
 
@@ -100,4 +101,38 @@ public class ImagenPerfilUsuarioMGR {
     }
 
 
+    public void subirImagenCreacionUsuario(InputStream _is, FirebaseUser _user, Activity _activity) {
+        UploadTask uploadTask = bdRefImagenes.child(_user.getUid()).putStream(_is);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            FirebaseUser user;
+            CrearUsuarioActivity activity;
+            String img;
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                img = taskSnapshot.getDownloadUrl().toString();
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setPhotoUri(taskSnapshot.getDownloadUrl())
+                        .build();
+                user.updateProfile(profileUpdates)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "User profile updated.");
+                                    activity.addImagenPorDefecto(img);
+                                }
+                            }
+                        });
+
+            }
+
+            public OnSuccessListener setUserAndActivity(FirebaseUser _user,Activity _activity) {
+                user = _user;
+                activity = (CrearUsuarioActivity) _activity;
+                return this;
+            }
+
+
+        }.setUserAndActivity(_user,_activity));
+    }
 }
