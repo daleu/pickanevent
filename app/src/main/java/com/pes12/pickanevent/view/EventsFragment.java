@@ -159,7 +159,7 @@ public class EventsFragment extends Fragment {
                     else aux = new Info(null, e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_ASSISTIR));
                 }
                 aux.setId((String) pair.getKey());
-                aux.setTipus("event");
+                aux.setTipus("evento");
                 infoAdapter.add(aux);
             }
 
