@@ -297,7 +297,7 @@ public class GrupoMGR {
                     if (idEventos.containsKey(idEvento))
                         idEventos.remove(idEvento);
                 }
-                Map<String,String> idGrupos = activity.getUsuarioActual().getIdEventos();
+                Map<String,String> idGrupos = activity.getUsuarioActual().getIdGrupos();
                 if(idGrupos.containsKey(_id))
                     idGrupos.remove(_id);
                 uMGR.actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
