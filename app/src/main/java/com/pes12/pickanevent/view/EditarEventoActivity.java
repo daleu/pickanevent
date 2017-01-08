@@ -79,6 +79,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     String lat;
     String lng;
     String idEvento;
+    Bundle param;
 
     private PlaceAutocompleteAdapter mAdapter;
     private AutoCompleteTextView mAutocompleteView;
@@ -171,7 +172,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
         //--------------------------------------------------------
 
-        idEvento = getIntent().getExtras().getString("idEvento");
+        idEvento = getIntent().getExtras().getString("key");
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this,idEvento);
