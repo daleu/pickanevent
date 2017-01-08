@@ -433,6 +433,22 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
+    public void addEventoAlGrupo(String idGrup, final String idEvento, final String titulo) {
+        bdRefGrupos.child(idGrup).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GrupoEntity g = dataSnapshot.getValue((GrupoEntity.class));
+                if (!g.getIdEventos().containsKey(idEvento))
+                    g.getIdEventos().put(idEvento, titulo);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void getGrupoEventosForFragment(Fragment _activity, Map<String, String> _idU) {
         bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
             Map<String, Map<String, String>> info = new LinkedHashMap<String, Map<String, String>>();
