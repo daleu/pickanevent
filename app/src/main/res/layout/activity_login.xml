@@ -86,7 +86,7 @@
                 android:layout_marginTop="12dp"
                 android:id="@+id/registro"
                 android:onClick="registro"
-                android:background="@drawable/botton_application"
+                android:background="@drawable/boton_amarillo_custom"
                 android:layout_gravity="center"/>
 
 

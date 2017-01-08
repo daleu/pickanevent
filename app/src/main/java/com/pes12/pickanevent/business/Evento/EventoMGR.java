@@ -415,6 +415,7 @@ public class EventoMGR {
                         if (cm) textoBoton = "Editar";
                         System.out.println(textoBoton + "" + cm);
                         info.add(new Info(null, e.getTitulo(), "horariii", textoBoton));
+
                     }
                 }
                 activity.mostrarEventosGrupo(info);

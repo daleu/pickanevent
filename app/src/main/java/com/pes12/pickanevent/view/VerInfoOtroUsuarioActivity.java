@@ -72,7 +72,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
 
         Bundle param = getIntent().getExtras();
-        idUsuario = "Qch3yrsCXwgyL4os8ujikGVaNwW2";
+        idUsuario = "usr15-1483884870397";
         if(param!=null){
             idUsuario = param.getString("key");
 
@@ -95,7 +95,12 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     public void mostrarInfoUsuario(UsuarioEntity usuario) {
         nombre.setText(usuario.getNickname());
         //System.out.println(usuario.getNickname());
-        if (!usuario.getUrlPhoto().equals(null)) Picasso.with(this).load(usuario.parsedPhotoURI()).into(foto);; //Cambiar con imagen de usuario
+        if  (usuario != null) {
+            if (usuario.getUrlPhoto() != null) {
+                Picasso.with(this).load(usuario.parsedPhotoURI()).into(foto);
+            }
+            ; //Cambiar con imagen de usuario
+        }
         Map<String, String> idGrupos = usuario.getIdGrupos();
         Map<String, String> idEventos = usuario.getIdEventos();
         for (Map.Entry<String, String> entry : idGrupos.entrySet()){

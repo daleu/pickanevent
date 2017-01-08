@@ -3,6 +3,7 @@ package com.pes12.pickanevent.persistence.entity.Usuario;
 import android.net.Uri;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -129,6 +130,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public Map<String, String> getIdGrupos() {
+        if(idGrupos==null)idGrupos=new HashMap<String, String>();
         return idGrupos;
     }
 

@@ -28,7 +28,7 @@ public class SplashScreenActivity extends BaseActivity{
                     intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                 }
                 else {
-                    intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    intent = new Intent(SplashScreenActivity.this, NavigationDrawer.class);
                 }
                 startActivity(intent);
                 finish();
