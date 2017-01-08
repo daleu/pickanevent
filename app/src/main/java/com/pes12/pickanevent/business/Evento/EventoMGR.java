@@ -13,9 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.CrearEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
@@ -195,6 +197,32 @@ public class EventoMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void borrarEventoEnGrupo(final String _idEvento, final GrupoMGR gMGR) {
+        bdRefEventos.child(_idEvento).addListenerForSingleValueEvent(new ValueEventListener() {
+            EventoEntity g;
+            BaseActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((EventoEntity.class));
+                gMGR.borrarEventoMapGrupo(activity, _idEvento, g.getIdGrup());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (BaseActivity) _activity;
+                return this;
+            }
+        });
+    }
+
+    public void borrarEvento(String _key) {
+        bdRefEventos.child(_key).removeValue();
     }
 
     public void getInfoEventoElegido(Activity _activity, String _attr, final String _val) {

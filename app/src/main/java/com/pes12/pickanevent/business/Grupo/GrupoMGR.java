@@ -13,12 +13,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.CrearGrupoActivity;
-import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.EditarGrupoActivity;
+import com.pes12.pickanevent.view.GruposFragment;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposConTagActivity;
@@ -256,6 +258,65 @@ public class GrupoMGR {
                 return this;
             }
         }.setActivity(_activity));
+    }
+
+    public void borrarEventoMapGrupo(Activity _activity, final String _idEvento, final String _idGrupo) {
+        bdRefGrupos.child(_idGrupo).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            BaseActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class));
+                if (g.getIdEventos().containsKey(_idEvento)) {
+                    g.getIdEventos().remove(_idEvento);
+                    actualizar(_idGrupo, g);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (BaseActivity) _activity;
+                return this;
+            }
+        });
+    }
+    public void borrarEventosYRelacionesGrupo(Activity _activity, final String _id, final UsuarioMGR uMGR) {
+        bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            BaseActivity activity;
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class));
+                Map<String,String> idEventos = activity.getUsuarioActual().getIdEventos();
+                for (String idEvento : g.getIdEventos().keySet()) {
+                    activity.borrarEvento(idEvento, true);
+                    if (idEventos.containsKey(idEvento))
+                        idEventos.remove(idEvento);
+                }
+                Map<String,String> idGrupos = activity.getUsuarioActual().getIdEventos();
+                if(idGrupos.containsKey(_id))
+                    idGrupos.remove(_id);
+                uMGR.actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (BaseActivity) _activity;
+                return this;
+            }
+        });
+    }
+
+    public void borrarGrupo(String _key) {
+        bdRefGrupos.child(_key).removeValue();
     }
 
     public void getGruposByNombreGrupo(Activity _activity, String _text) {

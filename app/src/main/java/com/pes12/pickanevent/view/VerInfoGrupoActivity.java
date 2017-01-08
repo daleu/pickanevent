@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
@@ -112,7 +111,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
                     aceptar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Boolean noError = ViewSharedMethods.borrarCurrentUser();
+
+                            Boolean noError = borrarGrupo(idGrupo, false);
                             String msg = noError ? getString(R.string.BORRADO_GRUPO_CORRECTO) : getString(R.string.ERROR_BORRAR);
                             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                             alert.hide();

@@ -15,7 +15,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.AmistadesFragment;
 import com.pes12.pickanevent.view.BaseActivity;
@@ -23,7 +22,6 @@ import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.GruposFragment;
-import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -123,6 +121,10 @@ public class UsuarioMGR {
 
         usuario.setValue(_entity);
 
+    }
+
+    public void borrarUsuario(String _key) {
+        bdRefUsuarios.child(_key).removeValue();
     }
 
     public String crear(UsuarioEntity _entity) {
