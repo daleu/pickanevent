@@ -161,7 +161,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
             nuevoGrupo = new GrupoEntity(nombreG, descripG);
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
-
+            nuevoGrupo.setIdUsuario(getAuth().getCurrentUser().getUid());
             gMGR.crearConRedireccion(this, nuevoGrupo, isImagen);
             Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
                     Toast.LENGTH_SHORT).show();
