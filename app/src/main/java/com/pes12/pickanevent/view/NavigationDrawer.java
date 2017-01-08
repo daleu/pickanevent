@@ -193,7 +193,7 @@ public class NavigationDrawer extends BaseActivity
         } else if (id == R.id.about){
             ShowDialog("About","Hecho por: PickAnEvent.SA \nContacto: support@pickanevent.com");
         } else if (id == R.id.help){
-            ShowDialog("Help","Con esta aplicación, podras consultar y buscar todos los eventos ");
+            ShowDialog("Help","Con esta aplicación, podras consultar y buscar todos los eventos que sean de tu interés!\nDes de la vista principal, podras ver todos los eventos, grupos y amistades a los que assistes o sigues, y a través de la lupa que se encuentra arriva de la pantalla podràs buscar todo lo que quieras! :D");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -229,7 +229,7 @@ public class NavigationDrawer extends BaseActivity
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(content);
-        if(title.equals("About")) alertDialog.setIcon(android.R.drawable.ic_dialog_info);
+        if(title.equals("About")) alertDialog.setIcon(android.R.drawable.ic_menu_info_details);
         else alertDialog.setIcon(android.R.drawable.ic_menu_help);
         //alertDialog.setFeatureDrawableResource(question_mark,0);
         alertDialog.setCancelable(true);
