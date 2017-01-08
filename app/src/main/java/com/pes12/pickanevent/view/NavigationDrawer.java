@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
@@ -78,10 +79,13 @@ public class NavigationDrawer extends BaseActivity
         Log.e("username",actual.getNickname());
         nom.setText(actual.getNickname());
 
-        if(actual.getCm()){
+        if(actual.getCm()) {
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_slideshow).setVisible(false);
             nav_Menu.findItem(R.id.nav_share).setVisible(false);
+
+            ImageButton aux = (ImageButton) toolbar.findViewById(R.id.search);
+            aux.setVisibility(View.INVISIBLE);
         }
         else {
             Menu nav_Menu = navigationView.getMenu();
