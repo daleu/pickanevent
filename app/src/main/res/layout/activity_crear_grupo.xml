@@ -65,7 +65,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:hint="@string/ESCRIBE_DESCRIPCION_GRUPO"
                 android:ems="10"
                 android:fontFamily="sans-serif"

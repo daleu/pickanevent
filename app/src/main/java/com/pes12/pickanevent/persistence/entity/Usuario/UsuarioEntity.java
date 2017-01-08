@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -130,6 +131,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public Map<String, String> getIdGrupos() {
+        if(idGrupos==null)idGrupos=new HashMap<String, String>();
         return idGrupos;
     }
 

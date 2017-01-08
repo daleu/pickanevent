@@ -15,6 +15,7 @@ import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
@@ -136,9 +137,12 @@ public class GrupoMGR {
                     activity.redireccionarConIdGrupo(id);
                 } else {
                     DatabaseReference grupo = bdRefGrupos.push();
+
                     grupo.setValue(ent);
                     id = grupo.getKey();
-
+                   UsuarioEntity ue =activity.getUsuarioActual();
+                    ue.getIdGrupos().put(id,ent.getNombreGrupo());
+                    MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(),ue);
                     if (is != null) MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey(), activity);
                     else activity.redireccionarConIdGrupo(id);
                 }
