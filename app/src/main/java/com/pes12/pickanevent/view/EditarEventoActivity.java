@@ -188,13 +188,26 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         Date dataF = evento.getDataFiDate();
         Calendar c = Calendar.getInstance();
         c.setTime(dataI);
-        data.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        data.setText(day + " de " + ViewSharedMethods.getNomMes(
                 dataI.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
         c.setTime(dataF);
-        dataFinal.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
-                dataF.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
-        hora.setText(dataI.getHours() + ":" + dataI.getMinutes());
-        horaFi.setText(dataF.getHours() + ":" + dataF.getMinutes());
+        if (dataI.getHours() < 10) {
+            if (dataI.getMinutes() < 10) hora.setText("0" + dataI.getHours() + ":0" + dataI.getMinutes());
+            else hora.setText("0" + dataI.getHours() + ":" + dataI.getMinutes());
+        }
+        else {
+            if (dataI.getMinutes() < 10) hora.setText(dataI.getHours() + ":0" + dataI.getMinutes());
+            else hora.setText(dataI.getHours() + ":" + dataI.getMinutes());
+        }
+        if (dataF.getHours() < 10) {
+            if (dataF.getMinutes() < 10) horaFi.setText("0" + dataF.getHours() + ":0" + dataF.getMinutes());
+            else horaFi.setText("0" + dataF.getHours() + ":" + dataF.getMinutes());
+        }
+        else {
+            if (dataF.getMinutes() < 10) horaFi.setText(dataF.getHours() + ":0" + dataF.getMinutes());
+            else horaFi.setText(dataF.getHours() + ":" + dataF.getMinutes());
+        }
         if (evento.getPrecio().equals("")) {
             gratuit.setChecked(true);
             preuText.setFocusable(false);
@@ -285,7 +298,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                 else aux = añadirHoraADate(dataFi, horaFi.getText().toString());
                 Long aux2 = añadirHoraADate(dataIni, hora.getText().toString());
                 if (aux != null && aux2 != null) {
-                    if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
+                    //if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
                         if (aux2 < aux) {
                             EventoEntity update = new EventoEntity(nomEvent.getText().toString(),
                                     descripcio.getText().toString(),
@@ -304,8 +317,8 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                             //setContentView(R.layout.activity_main);
                             startActivity(new Intent(EditarEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
-                    }
-                    else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
+                    //}
+                    //else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
                 }
             }
         }

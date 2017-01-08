@@ -68,7 +68,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         showProgressDialog();
 
    //    param = getIntent().getExtras();
-        idEvento = "-K_sQVheUkm7IiaNv9tT";
+        idEvento = "-K_xhR3NMID-9FN6W4Ym";
      //   if(param.getString("key")!=null){
     //        idEvento = param.getString("key");
     //    }

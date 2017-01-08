@@ -12,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
-import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
@@ -46,7 +45,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -245,7 +243,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 else aux = añadirHoraADate(dataFi, horaFi.getText().toString());
                 Long aux2 = añadirHoraADate(dataIni, hora.getText().toString());
                 if (aux != null && aux2 != null) {
-                    if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
+                   // if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
                         if (aux2 < aux) {
                             EventoEntity ee = new EventoEntity(nomEvent.getText().toString(),
                                     descripcio.getText().toString(),
@@ -261,8 +259,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
                             //startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
-                    }
-                    else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
+              //      }
+                  //  else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
                 }
             }
         }

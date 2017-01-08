@@ -15,7 +15,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
-import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.AmistadesFragment;
 import com.pes12.pickanevent.view.BaseActivity;
@@ -23,7 +22,6 @@ import com.pes12.pickanevent.view.BuscarActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.GruposFragment;
-import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -201,13 +199,13 @@ public class UsuarioMGR {
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                         if (usuario.getValue(UsuarioEntity.class).getNickname().toLowerCase().contains(aux)) {
                             if (usuario.getValue(UsuarioEntity.class).getEmail() != null) {
-                                Info aux = new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
+                                Info aux = new Info(usuario.getValue(UsuarioEntity.class).getUrlPhoto(), usuario.getValue(UsuarioEntity.class).getNickname(),
                                         usuario.getValue(UsuarioEntity.class).getEmail(), "seguir!");
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
-                                Info aux = new Info(null, usuario.getValue(UsuarioEntity.class).getNickname(),
+                                Info aux = new Info(usuario.getValue(UsuarioEntity.class).getUrlPhoto(), usuario.getValue(UsuarioEntity.class).getNickname(),
                                         null, "seguir!");
                                 aux.setBotonVisible(false);
                                 n.add(aux);
