@@ -49,10 +49,11 @@ public class EventoMGR {
         bdRefEventos.keepSynced(true);
     }
 
-    public String crear(EventoEntity _entity, InputStream _is) {
+    public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             InputStream is;
+            CrearEventoActivity activity;
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() != null) {
@@ -62,7 +63,7 @@ public class EventoMGR {
                     evento.setValue(ent);
 
                     if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey());
-
+                    activity.addEventoAlGrupo(evento.getKey());
                 }
             }
 
@@ -70,12 +71,13 @@ public class EventoMGR {
             public void onCancelled(DatabaseError arg0) {
             }
 
-            public ValueEventListener setEntity(EventoEntity _ent,InputStream _is) {
+            public ValueEventListener setEntity(EventoEntity _ent,InputStream _is, Activity _activity) {
                 ent = _ent;
                 is = _is;
+                activity = (CrearEventoActivity) _activity;
                 return this;
             }
-        }.setEntity(_entity,_is));
+        }.setEntity(_entity,_is, _activity));
         return "";
     }
 

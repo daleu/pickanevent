@@ -51,8 +51,8 @@ public class LoginActivity extends BaseActivity {
 
                     uMGR.getUsuarioLogin(LoginActivity.this, task.getResult().getUser().getUid());
                     LoginActivity.this.finish();
-                    //Intent intent = new Intent(context, NavigationDrawer.class);
-                    //context.startActivity(intent);
+                    Intent intent = new Intent(context, NavigationDrawer.class);
+                    context.startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, getString(R.string.CORREO_NO_VERIFICADO) + correo.getText().toString(),
                             Toast.LENGTH_SHORT).show();

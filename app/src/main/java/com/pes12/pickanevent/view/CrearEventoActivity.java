@@ -35,17 +35,22 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.ImagenEvento.ImagenEventoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.PlaceAutocompleteAdapter;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
@@ -68,6 +73,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
     ImagenEventoMGR iMGR;
 
+    String idGrupo;
+    GrupoEntity grupo;
 
     private Date dataIni;
     private Date dataFi;
@@ -77,6 +84,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     //------------------- GOOGLE PLACES API ------------------
     protected GoogleApiClient mGoogleApiClient;
     EventoMGR eMGR;
+    GrupoMGR gMGR;
     Bitmap image;
     String lat;
     String lng;
@@ -140,6 +148,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+
+        idGrupo = getIntent().getExtras().getString("key");
+        grupo = (GrupoEntity) getIntent().getExtras().getSerializable("grupo");;
 
         //-------------- GOOGLE PLACES API -------------
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -242,10 +253,12 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                                     url.getText().toString(),
                                     localitzacio.getText().toString(), lat, lng,
                                     Long.toString(aux2),
-                                    Long.toString(aux)
+                                    Long.toString(aux),
+                                    idGrupo
                             );
                             eMGR = MGRFactory.getInstance().getEventoMGR();
-                            eMGR.crear(ee,isImagen);
+                            eMGR.crear(ee,isImagen, this);
+
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
@@ -347,5 +360,15 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void addEventoAlGrupo(String idEvento) {
+        Map<String,String> idEventosAux = grupo.getIdEventos();
+        if (idEventosAux == null) idEventosAux = new HashMap<String, String>();
+        idEventosAux.put(idEvento, nomEvent.getText().toString());
+        grupo.setIdEventos(idEventosAux);
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
+        System.out.println("actualitzare el grup: " + idGrupo);
+        gMGR.actualizar(idGrupo, grupo);
     }
 }

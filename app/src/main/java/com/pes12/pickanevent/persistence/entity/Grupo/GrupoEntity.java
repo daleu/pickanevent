@@ -1,12 +1,13 @@
 package com.pes12.pickanevent.persistence.entity.Grupo;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * Created by Legault on 14/10/2016.
  */
 
-public class GrupoEntity {
+public class GrupoEntity implements Serializable{
 
     private String nombreGrupo;
     private String descripcion;
