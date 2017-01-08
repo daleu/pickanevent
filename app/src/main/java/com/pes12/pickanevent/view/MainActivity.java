@@ -128,7 +128,7 @@ BLOQUE DE TEST
     }
 
     public void goCrearEvento(View _view) {
-        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class));
+        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class).putExtra("key", "-KZlbhl-cvEnRUXKORqx"));
     }
 
     public void goEditarEvento(View _view) {

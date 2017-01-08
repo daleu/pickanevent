@@ -47,6 +47,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     Button editar;
 
     String idGrupo;
+    GrupoEntity grupo;
     GrupoMGR gMGR;
     EventoMGR eMGR;
     TagMGR tMGR;
@@ -135,7 +136,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void mostrarInfoGrupo(GrupoEntity _grupo) {
-
+        grupo = _grupo;
         if (_grupo.getIdEventos() != null) eMGR.getInfoEventosGrupo(this, _grupo.getIdEventos(), cm);
         Map<String, String> tagsMap = _grupo.getIdTags();
         if (tagsMap == null) tagsMap = new LinkedHashMap<>();
@@ -241,7 +242,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }
 
     public void editar(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
