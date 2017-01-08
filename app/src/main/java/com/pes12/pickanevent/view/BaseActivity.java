@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pes12.pickanevent.R;
@@ -265,6 +264,41 @@ public class BaseActivity extends AppCompatActivity {
         uMGR.actualizar(_idAsistidor, _asistidor);
 
         Toast.makeText(this, getString(R.string.EVENTO_ASISTENCIA_CANCELADA), Toast.LENGTH_LONG).show();
+    }
+
+    /***
+     * BORRADOS
+     */
+    public static Boolean borrarCurrentUser() {
+        UsuarioEntity user = getUsuarioActual();
+        if (user.getCm())
+            return borrarCM();
+        else
+            return borrarUsuario();
+    }
+    public static Boolean borrarEvento(String _idEvento) {
+        //1st: comprobar idEvento existe en el mapEventos del usuario
+        //2nd: obtener evento
+        //3rd: obtener idGrupo
+        //4to: obtener grupo
+        //5to: borrar evento
+        //6to: borrar evento del mapEventos en grupos
+        return false;
+    }
+    public static Boolean borrarGrupo(String _idGrupo) {
+        //1st: recorrer todos los eventos del grupo y ejecutar la funcion borrar evento
+        //2nd: borrar grupo
+        //3rd: borrar el grupo del mapGrupos del current user
+        return false;
+    }
+    public static Boolean borrarCM() {
+        //1st: funcion borrarGrupo por cada grupo del mapGrupos del CM
+        //2nd: borrar CM
+        return false;
+    }
+    public static Boolean borrarUsuario() {
+        //2nd: borrar usuario
+        return false;
     }
 
 }
