@@ -88,7 +88,7 @@ public class GrupoMGR {
         grupo.setValue(_entity);
     }
 
-    public String crear(GrupoEntity _entity, InputStream _is) {
+    /*public String crear(GrupoEntity _entity, InputStream _is) {
         bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity ent;
             InputStream is;
@@ -119,7 +119,7 @@ public class GrupoMGR {
 
 
         return "";
-    }
+    }*/
 
     public String crearConRedireccion(Activity _activity, GrupoEntity _entity, InputStream _is) {
         bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).equalTo(_entity.getNombreGrupo()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -131,15 +131,16 @@ public class GrupoMGR {
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_GRUPO);
+                    activity.redireccionarConIdGrupo(id);
                 } else {
                     DatabaseReference grupo = bdRefGrupos.push();
                     grupo.setValue(ent);
                     id = grupo.getKey();
 
-                    if (is != null) MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey());
-
+                    if (is != null) MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey(), activity);
+                    else activity.redireccionarConIdGrupo(id);
                 }
-                activity.redirecionarConIdGrupo(id);
+
             }
 
             @Override

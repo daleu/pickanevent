@@ -142,7 +142,7 @@ public class AmistadesFragment extends Fragment {
                     Map.Entry pair = (Map.Entry) it.next();
                     System.out.println(pair.getKey() + " = " + pair.getValue());
                     UsuarioEntity ge = (UsuarioEntity) pair.getValue();
-                    Info aux = new Info(null, ge.getNickname(), "", getString(R.string.DEFAULT_NO_SEGUIR));
+                    Info aux = new Info(ge.getUrlPhoto(), ge.getNickname(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                     aux.setId((String) pair.getKey());
                     aux.setTipus("usuari");
                     infoAdapter.add(aux);

@@ -1,6 +1,5 @@
 package com.pes12.pickanevent.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,7 +35,6 @@ import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import java.util.Map;
 
 import static com.pes12.pickanevent.R.id.borrarCuenta;
-import static com.pes12.pickanevent.R.id.layoutEdit;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
 
@@ -71,7 +69,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         showProgressDialog();
 
         param = getIntent().getExtras();
-        idEvento = "Evt102-1480690194876";
+        //idEvento = "-K_sQVheUkm7IiaNv9tT";
         if(param.getString("key")!=null){
             idEvento = param.getString("key");
         }
@@ -87,7 +85,6 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         pinIcon.setTypeface(fontAwesomeFont);
 
         //Consultar informacion
-        //eMGR = new EventoMGR().getInstance(); VIEJA
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.getInfoEvento(this,idEvento);
 

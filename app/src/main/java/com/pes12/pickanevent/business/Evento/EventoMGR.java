@@ -61,7 +61,7 @@ public class EventoMGR {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
 
-                    MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey());
+                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey());
 
                 }
             }

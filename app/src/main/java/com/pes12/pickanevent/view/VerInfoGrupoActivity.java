@@ -76,7 +76,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
         //System.out.println("Valor CM "+ cm);
 
         Bundle param = getIntent().getExtras();
-        //idGrupo = "-K_oUuo3y5xY8iMliS0w";
+        idGrupo = "-K_u6e_CtkHPfQA60xRK";
         if(param.getString("key")!=null){
             idGrupo = param.getString("key");
         }
