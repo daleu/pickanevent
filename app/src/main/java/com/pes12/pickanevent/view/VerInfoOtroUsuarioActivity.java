@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 public class VerInfoOtroUsuarioActivity extends BaseActivity {
@@ -46,6 +50,9 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_otro_usuario);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
         //Progres dialog
         showProgressDialog();
@@ -111,14 +118,12 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         //System.out.println(grupo.getImagen());
         if(grupo!=null) {
             String img = grupo.getImagen();
-            Bitmap imBM = StringToBitMap(img);
             String nombreGrupo = grupo.getNombreGrupo();
-            Info info = new Info(img, nombreGrupo, "adeu", getString(R.string.DEFAULT_SEGUIR));
+            Info info = new Info(img, nombreGrupo, null, getString(R.string.DEFAULT_SEGUIR));
             eventos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
             listaGrupos.setAdapter(ale);
-            //hideProgressDialog();
         }
     }
 
@@ -129,8 +134,20 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             String img = evento.getImagen();
             Bitmap imBM = StringToBitMap(img);
             String nombreGrupo = evento.getTitulo();
-            String horario = getString(R.string.DEFAULT_HORARIO);
-            Info info = new Info(img, nombreGrupo, horario, getString(R.string.DEFAULT_SEGUIR));
+            String dataInici=null;
+            String dataFi=null;
+            Date dataI = evento.getDataInDate();
+            Date dataF = evento.getDataFiDate();
+            Calendar c = Calendar.getInstance();
+            c.setTime(dataI);
+            dataInici =(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
+                    dataI.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900)+ " "+ dataI.getHours() + ":" + dataI.getMinutes());
+            c.setTime(dataF);
+            dataFi = (c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
+                    dataF.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900)+ " "+ dataF.getHours() + ":" + dataF.getMinutes());
+
+
+            Info info = new Info(img, nombreGrupo, dataInici+" - "+ dataFi, getString(R.string.DEFAULT_SEGUIR));
             grupos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             //System.out.println(grupos.get(0).segonaLinea);

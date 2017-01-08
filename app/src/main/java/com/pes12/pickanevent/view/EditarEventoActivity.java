@@ -18,6 +18,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -148,6 +149,9 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         //-----------------------------------------------
 
         setContentView(activity_editar_evento);
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
         inicialitza();
 

@@ -198,6 +198,7 @@ public class EventoMGR {
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
@@ -205,6 +206,7 @@ public class EventoMGR {
                                         "Gratis", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                         }
@@ -216,6 +218,7 @@ public class EventoMGR {
                                         evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
@@ -223,6 +226,7 @@ public class EventoMGR {
                                         "Gratis", "asistir!");
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus("evento");
+                                aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                         }
@@ -236,6 +240,7 @@ public class EventoMGR {
                                     "Gratis", "asistir!");
                             auxEvento.setId((String) evento.getKey());
                             auxEvento.setTipus("evento");
+                            auxEvento.setBotonVisible(false);
                             n.add(auxEvento);
                         }
                         if (precio != null) {
@@ -244,6 +249,7 @@ public class EventoMGR {
                                         "Gratis", "asistir!");
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus("evento");
+                                auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50") && aux < 50){
@@ -251,6 +257,7 @@ public class EventoMGR {
                                         precio+"€", "asistir!");
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus("evento");
+                                auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50<>200") && 50<=aux && aux<=200) {
@@ -258,6 +265,7 @@ public class EventoMGR {
                                         precio+"€", "asistir!");
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus("evento");
+                                auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if (_val.equals(">200")) {
@@ -266,6 +274,7 @@ public class EventoMGR {
                                             precio+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                             }
@@ -284,6 +293,7 @@ public class EventoMGR {
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                                 else {
@@ -291,6 +301,7 @@ public class EventoMGR {
                                             "Gratis", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                             }
@@ -302,6 +313,7 @@ public class EventoMGR {
                                             evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                                 else {
@@ -309,6 +321,7 @@ public class EventoMGR {
                                             "Gratis", "asistir!");
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus("evento");
+                                    auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                             }

@@ -183,6 +183,11 @@ public class NavigationDrawer extends BaseActivity
             Intent intent = new Intent(this,CrearGrupoActivity.class);
             startActivity(intent);
         }
+        else if (id == R.id.logout){
+            signOut();
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

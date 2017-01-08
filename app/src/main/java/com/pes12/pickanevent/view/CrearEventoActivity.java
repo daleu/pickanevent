@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.view;
 
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -68,6 +70,8 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     EditText descripcio;
     EditText url;
     EditText localitzacio;
+    ImageView imgV;
+
 
     ImagenEventoMGR iMGR;
 
@@ -183,6 +187,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                 dataFi = d;
             }
         });
+
+        ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
+        if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
+
         gratuit = (CheckBox) findViewById(R.id.checkBoxGratis);
         preuText = (EditText) findViewById(R.id.editorPrecio);
         hora = (EditText) findViewById(R.id.horaApertura);
@@ -206,6 +214,20 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, bounds,
                 null);
         mAutocompleteView.setAdapter(mAdapter);
+
+
+        imgV = (ImageView) findViewById(R.id.imagenEvento);
+
+        Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + getResources().getResourcePackageName(R.drawable.profile)
+                + '/' + getResources().getResourceTypeName(R.drawable.profile) + '/' + getResources().getResourceEntryName(R.drawable.profile) );
+
+        imgV.setImageURI(uri);
+        try {
+            isImagen = getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void crearEvento(View _view) {
@@ -341,7 +363,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
                 try {
                     isImagen = getContentResolver().openInputStream(imageUri);
-                    ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
                     image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
