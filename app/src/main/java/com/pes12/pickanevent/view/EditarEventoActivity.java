@@ -192,10 +192,11 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         Date dataF = evento.getDataFiDate();
         Calendar c = Calendar.getInstance();
         c.setTime(dataI);
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        data.setText(day + " de " + ViewSharedMethods.getNomMes(
+        data.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
                 dataI.getMonth()+1, getApplicationContext()) + " de " + (dataI.getYear()+1900));
         c.setTime(dataF);
+        dataFinal.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
+                dataF.getMonth()+1, getApplicationContext()) + " de " + (dataF.getYear()+1900));
         if (dataI.getHours() < 10) {
             if (dataI.getMinutes() < 10) hora.setText("0" + dataI.getHours() + ":0" + dataI.getMinutes());
             else hora.setText("0" + dataI.getHours() + ":" + dataI.getMinutes());

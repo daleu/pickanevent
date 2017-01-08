@@ -201,14 +201,14 @@ public class UsuarioMGR {
             public void onDataChange(DataSnapshot snapshot) {
                 ArrayList<Info> n = new ArrayList<>();
                 for (DataSnapshot usuario : snapshot.getChildren()) {
+                    if (!usuario.getValue(UsuarioEntity.class).getCm()) {
                         if (usuario.getValue(UsuarioEntity.class).getNickname().toLowerCase().contains(aux)) {
                             if (usuario.getValue(UsuarioEntity.class).getEmail() != null) {
                                 Info aux = new Info(usuario.getValue(UsuarioEntity.class).getUrlPhoto(), usuario.getValue(UsuarioEntity.class).getNickname(),
                                         usuario.getValue(UsuarioEntity.class).getEmail(), "seguir!");
                                 aux.setBotonVisible(false);
                                 n.add(aux);
-                            }
-                            else {
+                            } else {
                                 Info aux = new Info(usuario.getValue(UsuarioEntity.class).getUrlPhoto(), usuario.getValue(UsuarioEntity.class).getNickname(),
                                         null, "seguir!");
                                 aux.setBotonVisible(false);
@@ -217,7 +217,7 @@ public class UsuarioMGR {
 
                         }
 
-
+                    }
 
                 }
                 activity.mostrarInfoUsuarioElegido(n);
