@@ -124,7 +124,6 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         else
             layoutEdit.setVisibility(View.INVISIBLE);
 
-        boton = (Button) findViewById(R.id.seguir);
 
         //Boton eliminar grupo
         borrarEvento = (Button) findViewById(R.id.borrarEvento);
@@ -194,8 +193,6 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
-
-        boton = (Button) findViewById(R.id.seguir);
 
         EventoEntity gEntity = ge.get(idEvento);
 
@@ -337,12 +334,13 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     public void asistirNoAsistir(View view) {
         UsuarioEntity currentUser = getUsuarioActual();
         String texto;
+
         if (!currentUser.getCm()) { //solo se asistira o se dejara de asistir en caso de ser usuario "normal"
             if (asistiendoEvento(idEvento)) { //el usuario quiere no asistir al evento
                 cancelarAsistenciaEvento(idEvento);
                 texto = getString(R.string.DEFAULT_ASSISTIR);
             }
-            else { //el usuario quiere seguir el grupo
+            else { //el usuario quiere asistir al evento
                 asistirEvento(idEvento, titulo.getText().toString());
                 texto = getString(R.string.DEFAULT_NO_ASSISTIR);
             }
