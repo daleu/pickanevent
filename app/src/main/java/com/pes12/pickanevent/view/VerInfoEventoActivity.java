@@ -54,6 +54,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     private TextView descripcion;
     private TextView titulo;
+    private TextView nombreDelGrupo;
     private TextView horarios;
     private TextView precio;
     private TextView lugar;
@@ -123,6 +124,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         else
             layoutEdit.setVisibility(View.INVISIBLE);
 
+        boton = (Button) findViewById(R.id.seguir);
+
         //Boton eliminar grupo
         borrarEvento = (Button) findViewById(R.id.borrarEvento);
         if (getUsuarioActual().getCm()) {
@@ -162,6 +165,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             borrarEvento.setVisibility(View.INVISIBLE);
         }
 
+        boton = (Button) findViewById(R.id.asistir);
+
         if (getUsuarioActual().getCm()) { //si es com no podra asistir a eventos
             boton.setVisibility(View.INVISIBLE);
         }
@@ -185,6 +190,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     public void mostrarInfoGrupo (GrupoEntity _ge) {
         grupo = _ge;
         nombreGrupo = _ge.getNombreGrupo();
+        nombreDelGrupo.setText(nombreGrupo);
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
@@ -209,6 +215,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);
         titulo = (TextView) findViewById(R.id.textEvento);
+        nombreDelGrupo = (TextView) findViewById(R.id.textGrupo);
         horarios = (TextView) findViewById(R.id.textHora);
         precio = (TextView) findViewById(R.id.textPreu);
         lugar = (TextView) findViewById(R.id.textMapa);
@@ -277,6 +284,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         hideProgressDialog();
+
     }
 
     private Bitmap StringToBitMap(String encodedString) {
@@ -308,7 +316,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void goEditarEvento(View _view) {
-        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra("idEvento",idEvento));
+        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra("key",idEvento));
     }
 
     /*@Override

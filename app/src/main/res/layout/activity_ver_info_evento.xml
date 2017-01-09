@@ -305,8 +305,19 @@
                 android:textSize="24sp"
                 android:textStyle="normal|bold"
                 android:textColor="#fff"
-                android:textAlignment="center"
-                android:layout_marginBottom="45dp"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:layout_above="@+id/textGrupo"
+                android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textGrupo"
+                android:textSize="14sp"
+                android:textStyle="normal|bold"
+                android:textColor="#fff"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
                 android:layout_above="@+id/layoutDescripcion"
                 android:layout_centerHorizontal="true" />
 
@@ -359,7 +370,6 @@
                 android:id="@+id/asistir"
                 android:background="@drawable/boton_amarillo_custom"
                 android:layout_height="26dp"
-                android:layout_below="@+id/toolbar"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="12dp"
                 android:layout_marginTop="194dp"
