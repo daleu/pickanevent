@@ -290,7 +290,7 @@ public class BaseActivity extends AppCompatActivity {
     public Boolean borrarEvento(String _idEvento, boolean vieneDeBorrarGrupo) {
         if (!vieneDeBorrarGrupo) {
             //borrar evento en el mapEventos del grupo
-            eMGR.borrarEventoEnGrupo(_idEvento, gMGR);
+            eMGR.borrarEventoEnGrupo(this, _idEvento);
             //borrar evento en el mapEventos del usuario
             if (getUsuarioActual().getIdEventos().containsKey(_idEvento))
                 getUsuarioActual().getIdEventos().remove(_idEvento);
@@ -300,14 +300,12 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
     public Boolean borrarGrupo(String _idGrupo, boolean vieneDeBorrarCM) {
-        //borramos los eventos del grupo y el grupo
         if (!vieneDeBorrarCM)
-            gMGR.borrarEventosYRelacionesGrupo(this, _idGrupo, uMGR);
+            gMGR.borrarEventosYRelacionesGrupo(this, _idGrupo);
         gMGR.borrarGrupo(_idGrupo);
         return true;
     }
     public Boolean borrarCM() {
-        String key = getAuth().getCurrentUser().getUid();
         Map<String, String> grupos = getUsuarioActual().getIdGrupos();
         for (String idGrupo : grupos.keySet())
             borrarGrupo(idGrupo, true);

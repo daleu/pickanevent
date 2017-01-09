@@ -13,7 +13,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
-import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.pes12.pickanevent.view.BaseActivity;
@@ -313,7 +312,7 @@ public class GrupoMGR {
             }
         });
     }
-    public void borrarEventosYRelacionesGrupo(Activity _activity, final String _id, final UsuarioMGR uMGR) {
+    public void borrarEventosYRelacionesGrupo(Activity _activity, final String _id) {
         bdRefGrupos.child(_id).addListenerForSingleValueEvent(new ValueEventListener() {
             GrupoEntity g;
             BaseActivity activity;
@@ -329,7 +328,7 @@ public class GrupoMGR {
                 Map<String,String> idGrupos = activity.getUsuarioActual().getIdGrupos();
                 if(idGrupos.containsKey(_id))
                     idGrupos.remove(_id);
-                uMGR.actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
+                MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
             }
 
             @Override
@@ -341,7 +340,7 @@ public class GrupoMGR {
                 activity = (BaseActivity) _activity;
                 return this;
             }
-        });
+        }.setActivity(_activity));
     }
 
     public void borrarGrupo(String _key) {
@@ -458,7 +457,7 @@ public class GrupoMGR {
         }.setActivity(_activity));
     }
 
-    /*public void addEventoAlGrupo(final String idGrup, final String idEvento, final String titulo) {
+    public void addEventoAlGrupo(final String idGrup, final String idEvento, final String titulo) {
         bdRefGrupos.child(idGrup).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -474,7 +473,7 @@ public class GrupoMGR {
 
             }
         });
-    }*/
+    }
 
     public void getGrupoEventosForFragment(Fragment _activity, Map<String, String> _idU) {
         bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
