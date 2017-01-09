@@ -174,6 +174,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         //--------------------------------------------------------
 
         idEvento = getIntent().getExtras().getString("key");
+        System.out.println(idEvento);
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this,idEvento);
@@ -260,8 +261,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         hora = (EditText) findViewById(R.id.horaApertura);
         horaFi = (EditText) findViewById(R.id.horaCierre);
         preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
-        hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
-        horaFi.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         data = (EditText) findViewById(R.id.editorFecha);
         dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
     }

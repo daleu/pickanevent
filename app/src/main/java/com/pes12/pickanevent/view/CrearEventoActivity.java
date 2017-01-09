@@ -196,8 +196,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         hora = (EditText) findViewById(R.id.horaApertura);
         horaFi = (EditText) findViewById(R.id.horaCierre);
         preuText.setRawInputType(InputType.TYPE_CLASS_NUMBER);
-        hora.setRawInputType(InputType.TYPE_CLASS_NUMBER);
-        horaFi.setRawInputType(InputType.TYPE_CLASS_NUMBER);
         data = (EditText) findViewById(R.id.editorFecha);
         dataFinal = (EditText) findViewById(R.id.editorFechaFinal);
 
