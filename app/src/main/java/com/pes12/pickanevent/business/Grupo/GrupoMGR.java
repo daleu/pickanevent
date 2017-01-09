@@ -26,6 +26,7 @@ import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerGruposConTagActivity;
 import com.pes12.pickanevent.view.VerGruposCreadosActivity;
+import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
@@ -183,6 +184,30 @@ public class GrupoMGR {
 
             public ValueEventListener setActivity(Activity _activity) {
                 activity = (VerInfoGrupoActivity) _activity;
+                return this;
+            }
+        }.setActivity(_activity));
+
+    }
+
+    public void getInfoGrupoEvento(Activity _activity, String id) {
+        bdRefGrupos.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            GrupoEntity g;
+            VerInfoEventoActivity activity;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+                g = _dataSnapshot.getValue((GrupoEntity.class)); //<------------
+                activity.mostrarInfoGrupo(g);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity) {
+                activity = (VerInfoEventoActivity) _activity;
                 return this;
             }
         }.setActivity(_activity));

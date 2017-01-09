@@ -79,6 +79,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     String lat;
     String lng;
     String idEvento;
+    InputStream is;
     Bundle param;
 
     private PlaceAutocompleteAdapter mAdapter;
@@ -290,14 +291,11 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                 Toast.makeText(this, R.string.ERROR_PRECIO, Toast.LENGTH_SHORT).show();
             }
             else {
-                String imatge;
                 if (image != null) {
                     ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
                     image.compress(Bitmap.CompressFormat.JPEG, 75, bYtE);
                     image.recycle();
-                    byte[] byteArray = bYtE.toByteArray();
-                    imatge = Base64.encodeToString(byteArray, Base64.DEFAULT);
-                } else imatge = null;
+                }
                 Long aux = null;
                 if (dataFinal.getText().toString().equals(""))
                     aux = añadirHoraADate(dataIni, horaFi.getText().toString());
@@ -315,7 +313,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                                     Long.toString(aux),
                                     idGrupo
                             );
-                            eMGR.actualizar(idEvento,update);
+                            eMGR.actualizarConRedireccion(idEvento,this,update,is);
                             Toast.makeText(EditarEventoActivity.this, getString(R.string.EVENTO_EDITADO),
                                     Toast.LENGTH_SHORT).show();
 
@@ -380,7 +378,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void redirecionarConIdEvento(String idEvento) {
-        startActivity(new Intent(EditarEventoActivity.this, IndicarTagsActivity.class).putExtra("idEvento", idEvento));
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("idEvento", idEvento));
     }
 
 
@@ -402,11 +400,10 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         if (_resultCode == RESULT_OK) {
             if (_requestCode == GALERIA_REQUEST) {
                 Uri imageUri = _data.getData();
-                InputStream inputStream;
                 try {
-                    inputStream = getContentResolver().openInputStream(imageUri);
+                    is = getContentResolver().openInputStream(imageUri);
                     ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
-                    image = BitmapFactory.decodeStream(inputStream);
+                    image = BitmapFactory.decodeStream(is);
                     //show the image to the user
                     imgV.setImageBitmap(image);
 

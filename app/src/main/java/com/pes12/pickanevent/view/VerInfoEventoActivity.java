@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -26,19 +28,28 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
+import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
+import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
+import io.fabric.sdk.android.Fabric;
+
 import static com.pes12.pickanevent.R.id.borrarCuenta;
+import static com.pes12.pickanevent.R.id.nombreGrupo;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
+
+    private static final String TWITTER_KEY = "PUlLyuMrqQzt61r7dmHgy6b6W";
+    private static final String TWITTER_SECRET = "EoOyglsIzCZZJ4ghHBU2ZoLgUduoPEGYuSy1mZZmrI7IjlVigQ";
 
     private TextView descripcion;
     private TextView titulo;
@@ -63,27 +74,31 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     Bundle param;
 
     private EventoMGR eMGR;
+    private GrupoMGR gMGR;
+    GrupoEntity grupo;
+    private String idGrupo;
+    private String nombreGrupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_info_evento);
         showProgressDialog();
-
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig),new TweetComposer());
 
         ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
         if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
-   //    param = getIntent().getExtras();
-        idEvento = "-K_xhR3NMID-9FN6W4Ym";
-     //   if(param.getString("key")!=null){
-    //        idEvento = param.getString("key");
-    //    }
-
-
-
-
-
+        param = getIntent().getExtras();
+        //idEvento = "-K_xhR3NMID-9FN6W4Ym";
+        if(param.getString("key")!=null){
+            idEvento = param.getString("key");
+        }
+        else {
+            Toast.makeText(this, "Ya existe un evento con este nombre", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(VerInfoEventoActivity.this, CrearEventoActivity.class));
+        }
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -98,23 +113,6 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         //Consultar informacion
         eMGR = MGRFactory.getInstance().getEventoMGR(); //NUEVA
         eMGR.getInfoEvento(this,idEvento);
-
-        //Crear Evento
-        /*Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.redhot);
-        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
-        bm.recycle();
-        byte[] byteArray = bYtE.toByteArray();
-        String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
-        EventoEntity ge = new EventoEntity("Red Hot Chilli Peppers a Barcelona",
-                "Anthony Kiedis (voz), Flea (bajo), Chad Smith (batería) y Josh Klinghoffer (guitarra) regresan a nuestro país cinco años después de sus últimos conciertos. Red Hot Chili Peppers pisarán de nuevo el escenario del Palau Sant Jordi en el que presentarán su nuevo trabajo “The Getaway”.",
-                imageFile,
-                "90",
-                "http://www.ticketmaster.es",
-                "Palau Sant Jordi",
-                "dissabte, 1 / octubre de 21:00 a 0:00 \n 1 octubre (21:00) - 2 octubre (0:00)");
-        eMGR.crear(ge);*/
 
         //Boton editar evento
         layoutEdit = (RelativeLayout) findViewById(R.id.layoutEdit);
@@ -164,24 +162,24 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void post(View _view) {
-        if (Twitter.getInstance().core.getSessionManager().getActiveSession() != null) {
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text("Te recomiendo el evento "
+                        + titulo.getText().toString() + " de " + nombreGrupo
+                        + "!\nMe acompañas? \n\n"
+                        + "#PickAnEvent");
+        builder.show();
+    }
 
-            TweetComposer.Builder builder = new TweetComposer.Builder(this)
-                    .text("Te recomiendo el evento "
-                            + titulo.getText().toString() + " en " + lugar.getText().toString()
-                            + "!\nMe acompañas? \n\n"
-                            + "PickAnEvent");
-            builder.show();
-        }
-        else
-            Toast.makeText(this,"Tienes que logearte en Twitter en \"Perfil de Usuario\"",Toast.LENGTH_SHORT).show();
+    public void mostrarInfoGrupo (GrupoEntity _ge) {
+        grupo = _ge;
+        nombreGrupo = _ge.getNombreGrupo();
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
 
         EventoEntity gEntity = ge.get(idEvento);
 
-   /*     if(param.getString("action")!=null){
+        if(param.getString("action")!=null){
             Log.e("action",param.getString("action"));
             if(param.getString("action").equals("assistir")){
                 asistirEvento(idEvento,gEntity.getTitulo());
@@ -192,7 +190,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
                 Log.e("action",param.getString("action"));
             }
         }
-*/
+
         imagenevento = (ImageView) findViewById(R.id.imagenEvento);
         comprarEntradas = (Button) findViewById(R.id.buttonPreus);
         descripcion = (TextView) findViewById(R.id.descripcion);
@@ -203,6 +201,10 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         if(gEntity.getDescripcion()!=null)descripcion.setText(gEntity.getDescripcion());
         titulo.setText(gEntity.getTitulo());
+
+        idGrupo = gEntity.getIdGrup();
+        gMGR = MGRFactory.getInstance().getGrupoMGR();
+        gMGR.getInfoGrupoEvento(VerInfoEventoActivity.this,idGrupo);
 
         Date dataI = gEntity.getDataInDate();
         Date dataF = gEntity.getDataFiDate();

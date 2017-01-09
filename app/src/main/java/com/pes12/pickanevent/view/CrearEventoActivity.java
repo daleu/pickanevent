@@ -278,6 +278,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                             );
                             eMGR = MGRFactory.getInstance().getEventoMGR();
                             eMGR.crearConRedireccion(this,ee,isImagen);
+                            //eMGR.crear(ee,isImagen,this);
                             Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
                             //startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();

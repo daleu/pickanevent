@@ -50,17 +50,17 @@ public class ImagenEventoMGR {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 evento.setImagen(taskSnapshot.getDownloadUrl().toString());
                 EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
-                eMGR.actualizar(id, evento);
+                eMGR.actualizar(id,evento);
                 activity.redireccionarConIdEvento(id);
 
             }
 
-            public OnSuccessListener setEvento(EventoEntity _ee, String _id, Activity _activity) {
+            public OnSuccessListener setGrupo(EventoEntity _ee,String _id, Activity _activity) {
                 evento = _ee;
-                id = _id;
+                id=_id;
                 activity = (CrearEventoActivity) _activity;
                 return this;
             }
-        }.setEvento(_ee, id, _activity));
+        }.setGrupo(_ee,id, _activity));
     }
 }

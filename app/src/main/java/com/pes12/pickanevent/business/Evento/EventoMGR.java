@@ -51,7 +51,7 @@ public class EventoMGR {
         bdRefEventos.keepSynced(true);
     }
 
-    /*public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
+    public String crear(EventoEntity _entity, InputStream _is, Activity _activity) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             InputStream is;
@@ -64,7 +64,7 @@ public class EventoMGR {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
 
-                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey());
+                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey(),activity);
                     activity.addEventoAlGrupo(evento.getKey());
                 }
             }
@@ -81,7 +81,7 @@ public class EventoMGR {
             }
         }.setEntity(_entity,_is, _activity));
         return "";
-    }*/
+    }
 
     public String crearConRedireccion(Activity _activity, EventoEntity _entity, InputStream _is) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -127,6 +127,43 @@ public class EventoMGR {
 
         evento.setValue(_entity);
 
+    }
+
+    public String actualizarConRedireccion(String _key, Activity _activity, EventoEntity _entity, InputStream _is) {
+        bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
+            EventoEntity ent;
+            CrearEventoActivity activity;
+            String id;
+            InputStream is;
+            @Override
+            public void onDataChange(DataSnapshot _snapshot) {
+                if (_snapshot.getValue() != null) {
+                    System.out.println(Constantes.ERROR_EXISTE_GRUPO);
+                    activity.redireccionarConIdEvento(id);
+                } else {
+                    DatabaseReference evento = bdRefEventos.child(id);
+                    evento.setValue(ent);
+                    if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey(),activity);
+                    else activity.redireccionarConIdEvento(id);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _arg0) {
+            }
+
+            public ValueEventListener setActivity(String _key, Activity _activity, EventoEntity _ent, InputStream _is) {
+                activity = (CrearEventoActivity) _activity;
+                id = _key;
+                ent = _ent;
+                is = _is;
+                return this;
+            }
+        }.setActivity(_key, _activity, _entity, _is));
+
+
+        return "";
     }
 
     public void getInfoEvento(Activity _activity, String idEvento) {
@@ -496,7 +533,8 @@ public class EventoMGR {
                         gUI.put(evento.getKey(),e);
                     }
                 }
-                activity.mostrarEventosUsuario(gUI);
+                if (activity.isAdded())
+                    activity.mostrarEventosUsuario(gUI);
             }
 
             @Override
