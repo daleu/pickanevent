@@ -13,7 +13,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:text="Mis Grupos"
+            android:text="@string/mis_grupos"
             android:layout_width="match_parent"
             android:id="@+id/EventosTituloMainline"
             android:fontFamily="sans-serif"

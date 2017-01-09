@@ -35,7 +35,7 @@
                 android:cropToPadding="false" />
 
             <Button
-                android:text="Cambiar foto"
+                android:text="@string/CAMBIAR_FOTO"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonVerMiPerfil"
@@ -46,7 +46,7 @@
                 android:layout_alignParentStart="true" />
 
             <Button
-                android:text="Editar preferencias"
+                android:text="@string/editar_preferencias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button5"
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Email: "
+                android:text="@string/DEFAULT_EMAIL"
                 android:ems="10"
                 android:id="@+id/correoLabel"
                 />
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:text="Nickname: "
+                    android:text="@string/nickname"
                     android:ems="10"
                     android:id="@+id/nickNameLabel"
                     />
@@ -89,7 +89,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Bio: "
+                android:text="@string/bio"
                 android:ems="10"
                 android:id="@+id/bioLabel"
                 />
@@ -104,7 +104,7 @@
                 android:id="@+id/bio"
                 />
             <Button
-                android:text="Guardar cambios"
+                android:text="@string/guardar_cambios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
@@ -114,7 +114,7 @@
                 />
 
             <Button
-                android:text="Reiniciar contraseña"
+                android:text="@string/reiniciar_contrasena"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/boton_amarillo_custom"
@@ -147,7 +147,7 @@
 
             <Button
                 android:id="@+id/twitter_logout_button"
-                android:text="Log out from Twitter"
+                android:text="@string/DESLOGUEAR_TWITTER"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -130,7 +130,7 @@
             </HorizontalScrollView>
 
             <Button
-                android:text="editar"
+                android:text="@string/DEFAULT_EDITAR"
                 android:id="@+id/editar"
                 android:background="@drawable/boton_amarillo_custom"
                 android:layout_height="26dp"
@@ -142,7 +142,7 @@
                 android:layout_marginBottom="10dp" />
 
             <Button
-                android:text="Editar tags"
+                android:text="@string/editar_tags"
                 android:id="@+id/editarTags"
                 android:background="@drawable/boton_amarillo_custom"
                 android:layout_width="120dp"
@@ -174,7 +174,7 @@
                 android:layout_height="120dp" />
 
             <Button
-                android:text="Nuevo evento"
+                android:text="@string/nuevo_evento"
                 android:id="@+id/addEvento"
                 android:background="@drawable/boton_amarillo_custom"
                 android:layout_width="120dp"

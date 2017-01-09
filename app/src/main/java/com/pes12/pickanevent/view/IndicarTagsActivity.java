@@ -186,7 +186,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         else if (!esCM){
             if (usuarioReg == null) {
                 getUsuarioActual().setIdTags(mapIdTags);
-                actualizarUsuario();
+                actualizarCurrentUser();
 
             }
             else {

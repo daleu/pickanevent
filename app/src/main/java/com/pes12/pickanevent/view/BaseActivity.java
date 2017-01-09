@@ -22,9 +22,6 @@ import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Legault on 25/10/2016.
- */
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -32,10 +29,9 @@ public class BaseActivity extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
-    private UsuarioMGR uMGR;
-    private GrupoMGR gMGR;
-    private EventoMGR eMGR;
-    private String token;
+    private static final UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
+    private static final GrupoMGR gMGR = MGRFactory.getInstance().getGrupoMGR();
+    private static final EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
 
     public static UsuarioEntity getUsuarioActual() {
         return usuarioActual;
@@ -61,7 +57,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void actualizarUsuario() {
+    public void actualizarCurrentUser() {
         uMGR.actualizar(mAuth.getCurrentUser().getUid(), usuarioActual);
     }
 
@@ -70,7 +66,6 @@ public class BaseActivity extends AppCompatActivity {
         return mAuth;
     }
 
-    ;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -82,26 +77,21 @@ public class BaseActivity extends AppCompatActivity {
     public void signOut() {
         mAuth.signOut();
         usuarioActual = null;
+        Toast.makeText(this, getString(R.string.USUARIO_DESLOGUEADO), Toast.LENGTH_SHORT).show();
     }
 
     private void initAuth() {
-        uMGR = MGRFactory.getInstance().getUsuarioMGR();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+                if (user != null)
                     uMGR.getUsuarioLogin(BaseActivity.this, user.getUid());
-
-                } else {
-                    // User is signed out
-
-                }
-                // ...
+                else
+                    System.out.println("user == null !!");
             }
         };
-        // ...
     }
 
     @Override
@@ -174,12 +164,10 @@ public class BaseActivity extends AppCompatActivity {
             _seguidor.setIdUsuarios(siguiendo);
         }
         siguiendo.put(_idSeguido, _nicknameSeguido);
-        String nick = _nicknameSeguido;
 
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
         uMGR.actualizar(_idSeguidor, _seguidor);
 
-        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + nick, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + _nicknameSeguido, Toast.LENGTH_LONG).show();
     }
 
     public void dejarSeguirUsuario(String _idSeguido) {
@@ -189,7 +177,6 @@ public class BaseActivity extends AppCompatActivity {
         if (siguiendoUsuario(_seguidor, _idSeguido))
             _seguidor.getIdUsuarios().remove(_idSeguido);
 
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
         uMGR.actualizar(_idSeguidor, _seguidor);
 
         Toast.makeText(this, getString(R.string.USUARIO_UNFOLLOWED), Toast.LENGTH_LONG).show();
@@ -216,12 +203,10 @@ public class BaseActivity extends AppCompatActivity {
             _seguidor.setIdGrupos(siguiendo);
         }
         siguiendo.put(_idGrupo, _nombreGrupo);
-        String nombre = _nombreGrupo;
 
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
         uMGR.actualizar(_idSeguidor, _seguidor);
 
-        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + nombre, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + _nombreGrupo, Toast.LENGTH_LONG).show();
     }
 
     public void dejarSeguirGrupo(String _idGrupo) {
@@ -231,7 +216,6 @@ public class BaseActivity extends AppCompatActivity {
         if (siguiendoGrupo(_seguidor, _idGrupo))
             _seguidor.getIdGrupos().remove(_idGrupo);
 
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
         uMGR.actualizar(_idSeguidor, _seguidor);
 
         Toast.makeText(this, getString(R.string.GRUPO_UNFOLLOWED), Toast.LENGTH_LONG).show();
@@ -253,16 +237,14 @@ public class BaseActivity extends AppCompatActivity {
     public void asistirEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento, String _tituloEvento) {
         Map<String, String> asistiendo = _asistidor.getIdEventos();
         if (asistiendo == null) {
-            asistiendo = new HashMap<String, String>();
+            asistiendo = new HashMap<>();
             _asistidor.setIdGrupos(asistiendo);
         }
         asistiendo.put(_idEvento, _tituloEvento);
-        String titulo = _tituloEvento;
 
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
         uMGR.actualizar(_idAsistidor, _asistidor);
 
-        Toast.makeText(this, getString(R.string.ASISTIENDO_A) + titulo, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.ASISTIENDO_A) + _tituloEvento, Toast.LENGTH_LONG).show();
     }
     public void cancelarAsistenciaEvento(String _idEvento) {
         cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
@@ -271,7 +253,6 @@ public class BaseActivity extends AppCompatActivity {
         if (asistiendoEvento(_asistidor, _idEvento))
             _asistidor.getIdEventos().remove(_idEvento);
 
-        UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
         uMGR.actualizar(_idAsistidor, _asistidor);
 
         Toast.makeText(this, getString(R.string.EVENTO_ASISTENCIA_CANCELADA), Toast.LENGTH_LONG).show();

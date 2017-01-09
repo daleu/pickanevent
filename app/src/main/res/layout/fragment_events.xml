@@ -13,7 +13,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:text="Mis Eventos"
+            android:text="@string/mis_eventos"
             android:layout_width="match_parent"
             android:id="@+id/EventosTituloMainline"
             android:fontFamily="sans-serif"
