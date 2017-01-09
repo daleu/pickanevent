@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -31,21 +32,23 @@ import java.util.Map;
 
 public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
-    TextView nombre;
-    ImageView foto;
-    ListView listaGrupos;
-    ListView listaEventos;
+    private TextView nombre;
+    private ImageView foto;
+    private ListView listaGrupos;
+    private ListView listaEventos;
+    private Button boton;
 
-    String idUsuario;
-    String idGrupo;
-    String idEvento;
 
-    ArrayList<Info> grupos;
-    ArrayList<Info> eventos;
+    private String idUsuario;
+    private String idGrupo;
+    private String idEvento;
 
-    UsuarioMGR uMGR;
-    GrupoMGR gMGR;
-    EventoMGR eMGR;
+    private ArrayList<Info> grupos;
+    private ArrayList<Info> eventos;
+
+    private UsuarioMGR uMGR;
+    private GrupoMGR gMGR;
+    private EventoMGR eMGR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,13 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         }
 
         uMGR.getInfoUsuario(this, idUsuario);
+
+        boton = (Button) findViewById(R.id.seguir);
+        String texto;
+        if (siguiendoUsuario(idUsuario)) texto = getString(R.string.DEFAULT_NO_SEGUIR);
+        else texto = getString(R.string.DEFAULT_SEGUIR);
+        boton.setText(texto);
+
 
 
         //ListView gruposUsuario = (ListView) findViewById(R.id.listaGruposUsuario);
@@ -174,14 +184,19 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         hideProgressDialog();
     }
 
-    private Bitmap StringToBitMap(String encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
+    public void seguirNoSeguir(View view) {
+        UsuarioEntity currentUser = getUsuarioActual();
+        String texto;
+        if (!currentUser.getCm()) {
+            if (siguiendoUsuario(idUsuario)) { //el usuario quiere no seguir a este usuario
+                dejarSeguirUsuario(idUsuario);
+                texto = getString(R.string.DEFAULT_SEGUIR);
+            }
+            else {
+                seguirUsuario(idUsuario, nombre.getText().toString());
+                texto = getString(R.string.DEFAULT_NO_SEGUIR);
+            }
+            boton.setText(texto);
         }
     }
 }

@@ -32,6 +32,7 @@ import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -61,6 +62,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     private Button comprarEntradas;
     private Button share;
+    private Button boton;
 
 
     private String idEvento;
@@ -159,6 +161,16 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         }else{
             borrarEvento.setVisibility(View.INVISIBLE);
         }
+
+        if (getUsuarioActual().getCm()) { //si es com no podra asistir a eventos
+            boton.setVisibility(View.INVISIBLE);
+        }
+        else  {
+            String texto;
+            if (asistiendoEvento(idEvento)) texto = getString(R.string.DEFAULT_NO_ASSISTIR);
+            else texto = getString(R.string.DEFAULT_ASSISTIR);
+            boton.setText(texto);
+        }
     }
 
     public void post(View _view) {
@@ -176,6 +188,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void mostrarInfoEvento(Map<String, EventoEntity> ge) {
+
+        boton = (Button) findViewById(R.id.seguir);
 
         EventoEntity gEntity = ge.get(idEvento);
 
@@ -310,5 +324,21 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     @Override
     public void onBackPressed() {
         startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+    }
+
+    public void asistirNoAsistir(View view) {
+        UsuarioEntity currentUser = getUsuarioActual();
+        String texto;
+        if (!currentUser.getCm()) { //solo se asistira o se dejara de asistir en caso de ser usuario "normal"
+            if (asistiendoEvento(idEvento)) { //el usuario quiere no asistir al evento
+                cancelarAsistenciaEvento(idEvento);
+                texto = getString(R.string.DEFAULT_ASSISTIR);
+            }
+            else { //el usuario quiere seguir el grupo
+                asistirEvento(idEvento, titulo.getText().toString());
+                texto = getString(R.string.DEFAULT_NO_ASSISTIR);
+            }
+            boton.setText(texto);
+        }
     }
 }

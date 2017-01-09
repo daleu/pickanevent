@@ -353,6 +353,18 @@
 
             </RelativeLayout>
 
+            <Button
+                android:text="@string/DEFAULT_ASSISTIR"
+                android:layout_width="wrap_content"
+                android:id="@+id/asistir"
+                android:background="@drawable/boton_amarillo_custom"
+                android:layout_height="26dp"
+                android:layout_below="@+id/toolbar"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="194dp"
+                android:onClick="asistirNoAsistir" />
+
         </RelativeLayout>
 
 

@@ -26,6 +26,7 @@ import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
+import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,21 +39,21 @@ import static com.pes12.pickanevent.R.id.borrarCuenta;
 
 public class VerInfoGrupoActivity extends BaseActivity {
 
-    TextView nombre;
-    TextView descripcion;
-    ImageView foto;
-    ListView eventos;
-    Button boton;
-    Button editarTags;
-    Button editar;
-    Button addEvento;
+    private TextView nombre;
+    private TextView descripcion;
+    private ImageView foto;
+    private ListView eventos;
+    private Button boton;
+    private Button editarTags;
+    private Button editar;
+    private Button addEvento;
 
-    String idGrupo;
-    GrupoEntity grupo;
-    GrupoMGR gMGR;
-    EventoMGR eMGR;
-    TagMGR tMGR;
-    Boolean cm = false;
+    private String idGrupo;
+    private GrupoEntity grupo;
+    private GrupoMGR gMGR;
+    private EventoMGR eMGR;
+    private TagMGR tMGR;
+    private Boolean cm = false;
     private Button borrarGrupo;
 
     @Override
@@ -153,8 +154,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         nombre.setText(_grupo.getNombreGrupo());
         descripcion.setText(_grupo.getDescripcion());
-        String texto = getString(R.string.DEFAULT_SEGUIR);
+        String texto;
         if (cm) texto = getString(R.string.DEFAULT_EDITAR);
+        else {
+            if (siguiendoGrupo(idGrupo)) texto = getString(R.string.DEFAULT_NO_SEGUIR);
+            else texto = getString(R.string.DEFAULT_SEGUIR);
+        }
         boton.setText(texto);
 
         Picasso.with(this).load(_grupo.getImagen()).into(foto);
@@ -261,5 +266,21 @@ public class VerInfoGrupoActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
+    }
+
+    public void seguirDejarDeSeguir(View view) {
+        UsuarioEntity currentUser = getUsuarioActual();
+        String texto;
+        if (!currentUser.getCm()) { //solo se seguira o se dejara de seguir en caso de ser usuario "normal"
+            if (siguiendoGrupo(idGrupo)) { //el usuario quiere dejar de seguir el grupo
+                dejarSeguirGrupo(idGrupo);
+                texto = getString(R.string.DEFAULT_SEGUIR);
+            }
+            else { //el usuario quiere seguir el grupo
+                seguirGrupo(idGrupo, grupo.getNombreGrupo());
+                texto = getString(R.string.DEFAULT_NO_SEGUIR);
+            }
+            boton.setText(texto);
+        }
     }
 }

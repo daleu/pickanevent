@@ -87,21 +87,22 @@ public class EventoMGR {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
             CrearEventoActivity activity;
-            String id;
+            String idEvento;
             InputStream is;
             @Override
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_GRUPO);
-                    activity.redireccionarConIdEvento(id);
+                    activity.redireccionarConIdEvento(idEvento);
                 } else {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
-                    id = evento.getKey();
-                    activity.getUsuarioActual().getIdEventos().put(id, ent.getTitulo());
+                    idEvento = evento.getKey();
+                    activity.getUsuarioActual().getIdEventos().put(idEvento, ent.getTitulo());
                     MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
+                    //MGRFactory.getInstance().getGrupoMGR().addEventoAlGrupo(ent.getIdGrup(), idEvento, ent.getTitulo());
                     if (is != null) MGRFactory.getInstance().getImagenEventoMGR().subirImagen(is,ent,evento.getKey(),activity);
-                    else activity.redireccionarConIdEvento(id);
+                    else activity.redireccionarConIdEvento(idEvento);
                 }
 
             }
