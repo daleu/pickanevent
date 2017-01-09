@@ -13,7 +13,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pes12.pickanevent.business.Constantes;
-import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
@@ -221,14 +220,14 @@ public class EventoMGR {
         }.setActivity(_activity));
     }
 
-    public void borrarEventoEnGrupo(final String _idEvento, final GrupoMGR gMGR) {
+    public void borrarEventoEnGrupo(Activity _activity, final String _idEvento) {
         bdRefEventos.child(_idEvento).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity g;
             BaseActivity activity;
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
                 g = _dataSnapshot.getValue((EventoEntity.class));
-                gMGR.borrarEventoMapGrupo(activity, _idEvento, g.getIdGrup());
+                MGRFactory.getInstance().getGrupoMGR().borrarEventoMapGrupo(activity, _idEvento, g.getIdGrup());
             }
 
             @Override
@@ -240,7 +239,7 @@ public class EventoMGR {
                 activity = (BaseActivity) _activity;
                 return this;
             }
-        });
+        }.setActivity(_activity));
     }
 
     public void borrarEvento(String _key) {
