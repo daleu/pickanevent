@@ -156,4 +156,5 @@
     <string name="primera_linea">primera linea</string>
     <string name="registrarme">Registrarme</string>
     <string name="bio">Bio:</string>
+    <string name="DEFAULT_NO_CUENTA">Todavia no tienes cuenta? Registrate!</string>
 </resources>

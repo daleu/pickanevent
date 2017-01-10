@@ -24,7 +24,15 @@
             android:orientation="vertical"
             tools:context="com.pes12.pickanevent.view.LoginActivity"
             android:weightSum="1">
-                <TextView
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/ic_launcher"/>
+
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/DEFAULT_CORREO"
@@ -35,10 +43,14 @@
                 <EditText
                     android:id="@+id/correo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:hint="@string/DEFAULT_EXAMPLE_EMAIL"
                     android:inputType="textEmailAddress"
-                    android:background="@color/tw__solid_white"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
                     android:layout_marginTop="6dp"
                     />
                 <TextView
@@ -52,9 +64,14 @@
                 <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:hint="ExamplePass123"
                     android:inputType = "textPassword"
-                    android:background="@color/tw__solid_white"
+                    android:textColorHint="#8a939d"
+                    android:layout_height="46dp"
+                    android:textSize="18sp"
+                    android:background="#eceff1"
                     android:layout_marginTop="6dp"
                     />
 
@@ -63,26 +80,32 @@
                 android:text="@string/DEFAULT_LOGIN"
                 android:onClick="login"
                 android:layout_width="150dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:radius="20dip"
-                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/boton_amarillo_custom"
-                android:layout_gravity="center"/>
+                android:background="@drawable/boton_amarillo_custom" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="@string/DEFAULT_NO_CUENTA"
+                android:textStyle="normal|bold"
+                android:textColor="#000"
+                android:layout_marginTop="100dp"
+                android:textSize="18sp"/>
 
             <Button
                 android:text="@string/registrarme"
                 android:layout_width="150dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:radius="20dip"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/registro"
                 android:onClick="registro"
-                android:background="@drawable/boton_amarillo_custom"
-                android:layout_gravity="center"/>
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boton_amarillo_custom" />
 
 
         </LinearLayout>

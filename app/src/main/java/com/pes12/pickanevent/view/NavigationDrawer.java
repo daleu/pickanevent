@@ -177,7 +177,7 @@ public class NavigationDrawer extends BaseActivity
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent(this,PerfilUsuarioActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_send) {
+       // } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.cre_gru){
             Intent intent = new Intent(this,CrearGrupoActivity.class);
