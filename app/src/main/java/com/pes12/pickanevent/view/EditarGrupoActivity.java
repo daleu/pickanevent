@@ -116,7 +116,7 @@ public class EditarGrupoActivity extends BaseActivity{
 
             //petaba con el setContentView
             //setContentView(R.layout.activity_main);
-            startActivity(new Intent(EditarGrupoActivity.this, MainActivity.class));
+            startActivity(new Intent(EditarGrupoActivity.this, NavigationDrawer.class));
 
         }
     }

@@ -318,7 +318,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
                             //petaba con el setContentView
                             //setContentView(R.layout.activity_main);
-                            startActivity(new Intent(EditarEventoActivity.this, MainActivity.class));
+                            startActivity(new Intent(EditarEventoActivity.this, NavigationDrawer.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
                     //}
                     //else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
