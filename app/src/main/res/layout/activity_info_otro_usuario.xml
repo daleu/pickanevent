@@ -54,14 +54,24 @@
                 android:id="@+id/listaGruposUsuario"
                 android:layout_below="@+id/editTextGrups"
                 android:layout_alignParentStart="true"
-                android:layout_height="148dp" />
+                android:layout_height="148dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="7.0sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="7dp"/>
 
             <ListView
                 android:layout_width="match_parent"
                 android:id="@+id/listaEsdevenimentsUsuario"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/editTextEsdeveniments"
-                android:layout_height="148dp" />
+                android:layout_height="148dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="7.0sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="7dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
