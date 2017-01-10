@@ -70,6 +70,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     private String web;
     private String latitud;
     private String longitud;
+    private String desti;
 
     private MapFragment mapFragment;
     private Button borrarEvento;
@@ -102,6 +103,12 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             Toast.makeText(this, "Ya existe un evento con este nombre", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(VerInfoEventoActivity.this, CrearEventoActivity.class));
         }
+
+        if(param.getString("origen")!=null){
+            if(param.getString("origen").equals("crear")) desti = "intent";
+            else desti = "enrere";
+        }
+        else desti = "enrere";
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -326,9 +333,16 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         return super.onKeyDown(keyCode, event);
     }*/
 
-    @Override
+  /*  @Override
     public void onBackPressed() {
-        startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+
+
+    }*/
+
+    @Override
+    public void goBack(View _view) {
+        if(desti.equals("enrere")) onBackPressed();
+        else if (desti.equals("intent"))startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
     }
 
     public void asistirNoAsistir(View view) {

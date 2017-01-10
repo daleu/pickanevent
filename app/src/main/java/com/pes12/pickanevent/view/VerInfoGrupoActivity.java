@@ -55,6 +55,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
     private TagMGR tMGR;
     private Boolean cm = false;
     private Button borrarGrupo;
+    private String desti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
         if(param.getString("action")!=null){
             if(param.getString("action")=="noseguir") dejarSeguirGrupo(idGrupo);
         }
+
+        if(param.getString("origen")!=null){
+            if(param.getString("origen").equals("crear")) desti = "intent";
+            else desti = "enrere";
+        }
+        else desti = "enrere";
 
         showProgressDialog();
         gMGR.getInfoGrupo(this, idGrupo);
@@ -264,8 +271,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
     @Override
-    public void onBackPressed() {
-        startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
+    public void goBack(View _view) {
+        if(desti.equals("enrere")) onBackPressed();
+        else if (desti.equals("intent"))startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
     }
 
     public void seguirDejarDeSeguir(View view) {
