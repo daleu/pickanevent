@@ -27,5 +27,4 @@ public class ViewSharedMethods extends BaseActivity {
         if (m == 12) return _context.getString(R.string.MES_DICIEMBRE);
         return "Unknown";
     }
-
 }

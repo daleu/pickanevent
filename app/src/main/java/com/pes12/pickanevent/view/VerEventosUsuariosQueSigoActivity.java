@@ -40,7 +40,7 @@ public class VerEventosUsuariosQueSigoActivity extends BaseActivity {
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eventos = (ListView) findViewById(R.id.eventos);
 
-        String idUsuario = getAuth().getCurrentUser().getUid();
+        String idUsuario = getUsuarioId();
         showProgressDialog();
 
         uMGR.getInfoUsuarioActivityVerEventosUsuarios(this, idUsuario); //obtengo la info del usuario en la funcion mostrarInfoUsuario

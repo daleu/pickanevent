@@ -1,16 +1,12 @@
 package com.pes12.pickanevent.view;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
-import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,9 +19,6 @@ import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterSession;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +29,7 @@ public class BaseActivity extends AppCompatActivity {
     private static UsuarioEntity usuarioActual;
     private ProgressDialog mProgressDialog;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private FirebaseAuth mAuth;
+    protected FirebaseAuth mAuth;
     private static final UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
     private static final GrupoMGR gMGR = MGRFactory.getInstance().getGrupoMGR();
     private static final EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
@@ -66,7 +59,8 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void actualizarCurrentUser() {
-        uMGR.actualizar(mAuth.getCurrentUser().getUid(), usuarioActual);
+        if (getUsuarioId() != null)
+            uMGR.actualizar(mAuth.getCurrentUser().getUid(), usuarioActual);
     }
 
 
@@ -163,7 +157,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void seguirUsuario(String _idSeguido, String _nicknameSeguido) {
-        seguirUsuario(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idSeguido, _nicknameSeguido);
+        seguirUsuario(getUsuarioId(), getUsuarioActual(), _idSeguido, _nicknameSeguido);
     }
     public void seguirUsuario(String _idSeguidor, UsuarioEntity _seguidor, String _idSeguido, String _nicknameSeguido) {
         Map<String, String> siguiendo = _seguidor.getIdUsuarios();
@@ -179,7 +173,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void dejarSeguirUsuario(String _idSeguido) {
-        dejarSeguirUsuario(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idSeguido);
+        dejarSeguirUsuario(getUsuarioId(), getUsuarioActual(), _idSeguido);
     }
     public void dejarSeguirUsuario(String _idSeguidor, UsuarioEntity _seguidor, String _idSeguido) {
         if (siguiendoUsuario(_seguidor, _idSeguido))
@@ -202,7 +196,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void seguirGrupo(String _idGrupo, String _nombreGrupo) {
-        seguirGrupo(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idGrupo, _nombreGrupo);
+        seguirGrupo(getUsuarioId(), getUsuarioActual(), _idGrupo, _nombreGrupo);
     }
     public void seguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, String _idGrupo, String _nombreGrupo) {
         Map<String, String> siguiendo = _seguidor.getIdGrupos();
@@ -218,7 +212,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void dejarSeguirGrupo(String _idGrupo) {
-        dejarSeguirGrupo(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idGrupo);
+        dejarSeguirGrupo(getUsuarioId(), getUsuarioActual(), _idGrupo);
     }
     public void dejarSeguirGrupo(String _idSeguidor, UsuarioEntity _seguidor, String _idGrupo) {
         if (siguiendoGrupo(_seguidor, _idGrupo))
@@ -240,7 +234,7 @@ public class BaseActivity extends AppCompatActivity {
         return _asistidor.getIdEventos() != null && _asistidor.getIdEventos().containsKey(_idEvento);
     }
     public void asistirEvento(String _idEvento, String _tituloEvento) {
-        asistirEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento, _tituloEvento);
+        asistirEvento(getUsuarioId(), getUsuarioActual(), _idEvento, _tituloEvento);
     }
     public void asistirEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento, String _tituloEvento) {
         Map<String, String> asistiendo = _asistidor.getIdEventos();
@@ -255,7 +249,7 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, getString(R.string.ASISTIENDO_A) + _tituloEvento, Toast.LENGTH_LONG).show();
     }
     public void cancelarAsistenciaEvento(String _idEvento) {
-        cancelarAsistenciaEvento(getAuth().getCurrentUser().getUid(), getUsuarioActual(), _idEvento);
+        cancelarAsistenciaEvento(getUsuarioId(), getUsuarioActual(), _idEvento);
     }
     public void cancelarAsistenciaEvento(String _idAsistidor, UsuarioEntity _asistidor, String _idEvento) {
         if (asistiendoEvento(_asistidor, _idEvento))
@@ -283,7 +277,7 @@ public class BaseActivity extends AppCompatActivity {
             //borrar evento en el mapEventos del usuario
             if (getUsuarioActual().getIdEventos().containsKey(_idEvento))
                 getUsuarioActual().getIdEventos().remove(_idEvento);
-            uMGR.actualizar(getAuth().getCurrentUser().getUid(), getUsuarioActual());
+            uMGR.actualizar(getUsuarioId(), getUsuarioActual());
         }
         eMGR.borrarEvento(_idEvento);
         return true;
@@ -304,18 +298,41 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
     public Boolean borrarUsuario() {
-        uMGR.borrarUsuario(getAuth().getCurrentUser().getUid());
+        uMGR.borrarUsuario(getUsuarioId());
         getAuth().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     System.out.println("User account deleted");
+                    signOut();
                 } else {
                     System.out.println("Something went wrong");
                 }
             }
         });
         return true;
+    }
+
+    /**
+     * UTILITIES
+     */
+
+    public String getUsuarioId() {
+        if (mAuth != null && mAuth.getCurrentUser() != null)
+            return mAuth.getCurrentUser().getUid();
+        return null;
+    }
+
+    public Uri getUsuarioPhotoUrl() {
+        if (mAuth != null && mAuth.getCurrentUser() != null)
+            return mAuth.getCurrentUser().getPhotoUrl();
+        return null;
+    }
+
+    public String getUsuarioEmail() {
+        if (mAuth != null && mAuth.getCurrentUser() != null)
+            return mAuth.getCurrentUser().getEmail();
+        return null;
     }
 
 }

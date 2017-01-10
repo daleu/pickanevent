@@ -142,7 +142,7 @@ public class GrupoMGR {
                     id = grupo.getKey();
                    UsuarioEntity ue =activity.getUsuarioActual();
                     ue.getIdGrupos().put(id,ent.getNombreGrupo());
-                    MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(),ue);
+                    MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getUsuarioId(),ue);
                     if (is != null) MGRFactory.getInstance().getImagenGrupoMGR().subirImagen(is,ent,grupo.getKey(), activity);
                     else activity.redireccionarConIdGrupo(id);
                 }
@@ -328,7 +328,7 @@ public class GrupoMGR {
                 Map<String,String> idGrupos = activity.getUsuarioActual().getIdGrupos();
                 if(idGrupos.containsKey(_id))
                     idGrupos.remove(_id);
-                MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getAuth().getCurrentUser().getUid(), activity.getUsuarioActual());
+                MGRFactory.getInstance().getUsuarioMGR().actualizar(activity.getUsuarioId(), activity.getUsuarioActual());
             }
 
             @Override

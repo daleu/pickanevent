@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +30,6 @@ import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -161,7 +159,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
             nuevoGrupo = new GrupoEntity(nombreG, descripG);
             /*ASIGNAR TAG PRINCIPAAAAL*/
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
-            nuevoGrupo.setIdUsuario(getAuth().getCurrentUser().getUid());
+            nuevoGrupo.setIdUsuario(getUsuarioId());
             gMGR.crearConRedireccion(this, nuevoGrupo, isImagen);
             Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
                     Toast.LENGTH_SHORT).show();

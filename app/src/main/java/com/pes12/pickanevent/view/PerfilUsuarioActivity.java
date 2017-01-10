@@ -194,10 +194,10 @@ public class PerfilUsuarioActivity extends BaseActivity {
     public void mostrarInfoUsuario() {
         nombre.setText(getUsuarioActual().getNickname());
         bio.setText(getUsuarioActual().getBio());
-        correo.setText(current.getEmail());
-        //foto.setImageURI(current.getPhotoUrl());
-        Picasso.with(this).load(current.getPhotoUrl()).into(foto);
-        System.out.println(current.getPhotoUrl());
+        correo.setText(getUsuarioEmail());
+        //foto.setImageURI(current.getUsuarioPhotoUrl());
+        Picasso.with(this).load(getUsuarioPhotoUrl()).into(foto);
+        System.out.println(getUsuarioPhotoUrl());
 
     }
 
@@ -212,15 +212,15 @@ public class PerfilUsuarioActivity extends BaseActivity {
         if(!bioCambiado.equals(u.getBio())) {
             u.setBio(bio.getText().toString());
         }
-        u.setUrlPhoto(current.getPhotoUrl().toString());
-        uMGR.actualizar(getAuth().getCurrentUser().getUid(), u);
+        u.setUrlPhoto(getUsuarioPhotoUrl().toString());
+        uMGR.actualizar(getUsuarioId(), u);
         setUsuarioActual(u);
         Toast.makeText(PerfilUsuarioActivity.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
     }
 
     public void restartPassword(View _view)
     {
-        getAuth().sendPasswordResetEmail(current.getEmail())
+        getAuth().sendPasswordResetEmail(getUsuarioEmail())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

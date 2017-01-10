@@ -28,14 +28,11 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static com.pes12.pickanevent.R.drawable.question_mark;
 
 public class NavigationDrawer extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -56,7 +53,7 @@ public class NavigationDrawer extends BaseActivity
         setContentView(R.layout.activity_navigation_drawer);
 
         actual = getUsuarioActual();
-        idActual = getAuth().getCurrentUser().getUid();
+        idActual = getUsuarioId();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,7 +74,7 @@ public class NavigationDrawer extends BaseActivity
 
         View hView =  navigationView.getHeaderView(0);
         nav_user = (CircleImageView) hView.findViewById(R.id.profile_image);
-        Picasso.with(this).load(getAuth().getCurrentUser().getPhotoUrl()).into(nav_user);
+        Picasso.with(this).load(getUsuarioPhotoUrl()).into(nav_user);
 
         TextView nom = (TextView)hView.findViewById(R.id.name);
         Log.e("username",actual.getNickname());
