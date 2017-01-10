@@ -195,6 +195,8 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         Date dataF = evento.getDataFiDate();
         dataIni = dataI;
         dataFi = dataF;
+        lat = evento.getLatitud();
+        lng = evento.getLongitud();
         Calendar c = Calendar.getInstance();
         c.setTime(dataI);
         data.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
@@ -305,6 +307,11 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                 if (aux != null && aux2 != null) {
                     //if (esHoraCorrecta(hora.getText().toString(),horaFi.getText().toString())) {
                         if (aux2 < aux) {
+                            System.out.println(nomEvent.getText().toString());
+                            System.out.println(preuText.getText().toString());
+                            System.out.println(Long.toString(aux2));
+                            System.out.println(Long.toString(aux));
+                            System.out.println(descripcio.getText().toString());
                             EventoEntity update = new EventoEntity(nomEvent.getText().toString(),
                                     descripcio.getText().toString(),
                                     preuText.getText().toString(),
