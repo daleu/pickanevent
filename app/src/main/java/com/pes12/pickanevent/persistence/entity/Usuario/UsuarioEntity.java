@@ -60,9 +60,7 @@ public class UsuarioEntity implements Serializable {
     }
 
     public UsuarioEntity(String nickname, Boolean cm) {
-
         this.nickname = nickname;
-
         this.cm = cm;
     }
 

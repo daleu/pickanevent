@@ -35,7 +35,9 @@ public class BaseActivity extends AppCompatActivity {
     private static final EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
 
     public static UsuarioEntity getUsuarioActual() {
-        return usuarioActual;
+        if (usuarioActual != null)
+            return usuarioActual;
+        return new UsuarioEntity();
     }
 
     public void setUsuarioActual(UsuarioEntity _usuarioActual) {

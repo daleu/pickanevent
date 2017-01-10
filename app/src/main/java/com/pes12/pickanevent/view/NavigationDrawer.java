@@ -60,8 +60,7 @@ public class NavigationDrawer extends BaseActivity
         getSupportActionBar().setTitle("Timeline");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -77,7 +76,7 @@ public class NavigationDrawer extends BaseActivity
         Picasso.with(this).load(getUsuarioPhotoUrl()).into(nav_user);
 
         TextView nom = (TextView)hView.findViewById(R.id.name);
-        Log.e("username",actual.getNickname());
+        Log.e("username",(actual.getNickname()==null)? "user not logged in" : actual.getNickname());
         nom.setText(actual.getNickname());
 
         if(actual.getCm()) {
