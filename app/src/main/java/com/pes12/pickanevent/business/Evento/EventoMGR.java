@@ -132,7 +132,7 @@ public class EventoMGR {
     public String actualizarConRedireccion(String _key, Activity _activity, EventoEntity _entity, InputStream _is) {
         bdRefEventos.orderByChild(EventoEntity.ATTRIBUTES.TITULO.getValue()).equalTo(_entity.getTitulo()).addListenerForSingleValueEvent(new ValueEventListener() {
             EventoEntity ent;
-            CrearEventoActivity activity;
+            EditarEventoActivity activity;
             String id;
             InputStream is;
             @Override
@@ -154,7 +154,7 @@ public class EventoMGR {
             }
 
             public ValueEventListener setActivity(String _key, Activity _activity, EventoEntity _ent, InputStream _is) {
-                activity = (CrearEventoActivity) _activity;
+                activity = (EditarEventoActivity) _activity;
                 id = _key;
                 ent = _ent;
                 is = _is;

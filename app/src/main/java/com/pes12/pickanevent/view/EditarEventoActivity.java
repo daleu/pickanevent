@@ -193,6 +193,8 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         foto.setScaleType(ImageView.ScaleType.FIT_XY);*/
         Date dataI = evento.getDataInDate();
         Date dataF = evento.getDataFiDate();
+        dataIni = dataI;
+        dataFi = dataF;
         Calendar c = Calendar.getInstance();
         c.setTime(dataI);
         data.setText(c.get(Calendar.DAY_OF_MONTH) + " de " + ViewSharedMethods.getNomMes(
@@ -376,8 +378,8 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         }
     }
 
-    public void redirecionarConIdEvento(String idEvento) {
-        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("idEvento", idEvento));
+    public void redireccionarConIdEvento(String idEvento) {
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", idEvento));
     }
 
 
