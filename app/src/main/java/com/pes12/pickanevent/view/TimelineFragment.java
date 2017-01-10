@@ -44,9 +44,9 @@ public class TimelineFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    EventoMGR eMGR;
-    UsuarioMGR uMGR;
-    GrupoMGR gMGR;
+    EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
+    UsuarioMGR uMGR = MGRFactory.getInstance().getUsuarioMGR();
+    GrupoMGR gMGR = MGRFactory.getInstance().getGrupoMGR();
     ListView eventos;
     String idUsuario;
     UsuarioEntity myUser;
