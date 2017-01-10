@@ -144,6 +144,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             Info info = new Info(img, nombreGrupo, null, getString(R.string.DEFAULT_SEGUIR));
             info.setId(id);
             info.setTipus("grup");
+            info.setBotonVisible(false);
             eventos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             AdapterLista ale = new AdapterLista(VerInfoOtroUsuarioActivity.this, R.layout.vista_adapter_lista, eventos);
@@ -175,6 +176,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             Info info = new Info(img, nombreGrupo, dataInici +"\r"+ dataFi, getString(R.string.DEFAULT_SEGUIR));
             info.setId(id);
             info.setTipus("evento");
+            info.setBotonVisible(false);
             grupos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);
             //System.out.println(grupos.get(0).segonaLinea);

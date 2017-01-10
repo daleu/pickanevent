@@ -452,7 +452,9 @@ public class EventoMGR {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
                         System.out.println(textoBoton + "" + cm);
-                        info.add(new Info(null, e.getTitulo(), "horariii", textoBoton));
+                        Info aux = new Info(null, e.getTitulo(), "horariii", textoBoton);
+                        aux.setBotonVisible(false);
+                        info.add(aux);
 
                     }
                 }
