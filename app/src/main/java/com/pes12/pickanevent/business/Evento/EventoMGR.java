@@ -566,7 +566,8 @@ public class EventoMGR {
                         gUI.put(evento.getKey(),e);
                     }
                 }
-                activity.mostrarEventosUsuario(gUI);
+                if (activity.isAdded())
+                    activity.mostrarEventosUsuario(gUI);
             }
 
             @Override
