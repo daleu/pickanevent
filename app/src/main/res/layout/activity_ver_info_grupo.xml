@@ -152,8 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/event"
                 android:background="#fff"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginTop="10dp" >
 
                 <Button
                     android:text="@string/DEFAULT_EDITAR"
@@ -189,8 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutEditar"
                 android:background="#fff"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginTop="10dp" >
 
                 <Button
                     android:text="@string/editar_tags"

@@ -12,6 +12,7 @@ import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.InfoTags;
 import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.pes12.pickanevent.view.CrearGrupoActivity;
+import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.IndicarTagsActivity;
 import com.pes12.pickanevent.view.VerGruposConTagActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
@@ -93,6 +94,37 @@ public class TagMGR {
 
             public ValueEventListener setActivity(Activity _activity, Map<String, String> _idS) {
                 activity = (VerInfoGrupoActivity) _activity;
+                idS = _idS;
+                return this;
+            }
+        }.setActivity(_activity, _idS));
+    }
+
+    public void getInfoTagEditar(Activity _activity, Map<String, String> _idS) {
+        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+            ArrayList<String> info = new ArrayList();
+            EditarGrupoActivity activity;
+            Map<String, String> idS;
+
+            @Override
+            public void onDataChange(DataSnapshot _dataSnapshot) {
+
+                for (DataSnapshot tag : _dataSnapshot.getChildren()) {
+                    TagEntity t = tag.getValue(TagEntity.class);
+                    if (idS.containsKey(tag.getKey())) {
+                        info.add(t.getNombreTag());
+                    }
+                }
+                activity.mostrarTags(info);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError _databaseError) {
+                System.out.println(Constantes.ERROR_INESPERADO);
+            }
+
+            public ValueEventListener setActivity(Activity _activity, Map<String, String> _idS) {
+                activity = (EditarGrupoActivity) _activity;
                 idS = _idS;
                 return this;
             }

@@ -24,24 +24,6 @@
             android:layout_height="fill_parent"
             android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/marcoContenido"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="16sp"
-                android:textColor="#000"
-                android:paddingTop="5dp"
-                android:scrollbars="vertical"
-                android:background="#fff"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/imagenEvento"
-                android:layout_alignParentStart="true"
-                android:layout_height="1455dp" />
-
             <ImageView
                 android:layout_width="match_parent"
                 android:id="@+id/imagenEvento"
@@ -51,328 +33,340 @@
                 android:onClick="abrirGaleria"
                 android:focusable="false" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:hint="@string/ESCRIBE_NOMBRE_EVENTO"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorNEvento"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_alignTop="@+id/marcoContenido"
-                android:layout_centerHorizontal="true" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textMultiLine"
-                android:hint="@string/ESCRIBE_DESCRIPCION_EVENTO"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorDescr"
-                android:layout_height="184dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/editorNEvento"
-                android:elevation="1dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="false"
-                android:gravity="top"/>
-
-
-
             <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:layout_below="@+id/editorDescr"
+                android:layout_width="wrap_content"
+                android:id="@+id/marcoContenido"
+                android:fontFamily="sans-serif"
+                android:textColor="#000"
+                android:background="#fff"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/relative">
+                android:layout_below="@+id/imagenEvento"
+                android:layout_height="wrap_content" >
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:text="@string/EVENTO_GRATUITO_PREG"
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:hint="@string/ESCRIBE_NOMBRE_EVENTO"
+                    android:ems="10"
                     android:fontFamily="sans-serif"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:textSize="18sp"
-                    android:textColor="#000"
-                    android:id="@+id/textoGratis"
-                    android:background="#FFF"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorNEvento"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
                     android:textStyle="normal"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true" />
 
-                <CheckBox
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textMultiLine"
+                    android:hint="@string/ESCRIBE_DESCRIPCION_EVENTO"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorDescr"
+                    android:layout_height="184dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/editorNEvento"
+                    android:elevation="1dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerInParent="false"
+                    android:layout_centerVertical="false"
+                    android:gravity="top"/>
+
+
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/editorDescr"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/relative"
+                    android:layout_alignStart="@+id/editorDescr"
+                    android:layout_alignEnd="@+id/editorDescr">
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/EVENTO_GRATUITO_PREG"
+                        android:fontFamily="sans-serif"
+                        android:paddingRight="5dp"
+                        android:textSize="18sp"
+                        android:textColor="#000"
+                        android:id="@+id/textoGratis"
+                        android:background="#FFF"
+                        android:textStyle="normal"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentStart="true" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBoxGratis"
+                        android:layout_alignBaseline="@+id/textoGratis"
+                        android:layout_alignBottom="@+id/textoGratis"
+                        android:onClick="comprovarCheckBox"
+                        android:layout_toEndOf="@+id/textoGratis" />
+
+                </RelativeLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:hint="@string/ESCRIBE_PRECIO_EVENTO"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorPrecio"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/relative"
+                    android:layout_centerHorizontal="true" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textMultiLine"
+                    android:hint="@string/ESCRIBE_URL_ENTRADAS"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorEntradas"
+                    android:layout_height="75dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/editorPrecio"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="top" />
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:hint="@string/ESCRIBE_LUGAR_EVENTO"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorLugar"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/editorEntradas"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBoxGratis"
-                    android:layout_alignBaseline="@+id/textoGratis"
-                    android:layout_alignBottom="@+id/textoGratis"
-                    android:onClick="comprovarCheckBox"
-                    android:layout_toEndOf="@+id/textoGratis" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView" />
+                <!-- .............. GOOGLE PLACES API ....... -->
+                <ListView android:id="@+id/listView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_below="@+id/editorLugar"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"/>
+
+                <!-- ..................................... -->
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:hint="@string/PRIMER_DIA"
+                    android:ems="10"
+                    android:cursorVisible="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorFecha"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/editorLugar"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:hint="@string/ULTIMO_DIA"
+                    android:ems="10"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/editorFechaFinal"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/calendarView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+
+                <Button
+                    android:text="@string/DEFAULT_GUARDAR_CAMBIOS"
+                    android:id="@+id/buttonAcceptar"
+                    android:background="@drawable/botton_application"
+                    android:layout_width="150dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="30dp"
+                    android:radius="20dip"
+                    android:onClick="updateEvento"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/horaCierre"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp" />
+
+                <CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/calendarView"
+                    android:background="#eceff1"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/editorFecha"
+                    android:layout_alignEnd="@+id/editorFechaFinal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignStart="@+id/listView1" />
+
+                <CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/calendarViewFinal"
+                    android:background="#eceff1"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/editorFechaFinal"
+                    android:layout_alignStart="@+id/listView1"
+                    android:layout_alignEnd="@+id/editorFechaFinal"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:inputType="textPersonName"
+                    android:text="@string/EVENTO_HORA_APER"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColor="#000"
+                    android:background="#FFF"
+                    android:textStyle="normal"
+                    android:id="@+id/horaAp"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_below="@+id/calendarViewFinal"/>
+
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:inputType="textPersonName"
+                    android:text="@string/EVENTO_HORA_CIERRE"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColor="#000"
+                    android:background="#FFF"
+                    android:textStyle="normal"
+                    android:id="@+id/horaC"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_below="@+id/horaAp"/>
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:inputType="textPersonName"
+                    android:hint="@string/DEFAULT_FORMATO_HORA"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/horaApertura"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginRight="0dp"
+                    android:layout_above="@+id/horaC"
+                    android:layout_alignEnd="@+id/calendarViewFinal" />
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:inputType="textPersonName"
+                    android:hint="@string/DEFAULT_FORMATO_HORA"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:id="@+id/horaCierre"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:textStyle="normal"
+                    android:layout_marginRight="0dp"
+                    android:layout_alignTop="@+id/horaC"
+                    android:layout_alignStart="@+id/horaApertura" />
 
             </RelativeLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:hint="@string/ESCRIBE_PRECIO_EVENTO"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorPrecio"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/relative"
-                android:layout_centerHorizontal="true" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textMultiLine"
-                android:hint="@string/ESCRIBE_URL_ENTRADAS"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorEntradas"
-                android:layout_height="75dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/editorPrecio"
-                android:layout_centerHorizontal="true"
-                android:gravity="top" />
-
-            <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:hint="@string/ESCRIBE_LUGAR_EVENTO"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorLugar"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/editorEntradas"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textView" />
-            <!-- .............. GOOGLE PLACES API ....... -->
-            <ListView android:id="@+id/listView1"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_below="@+id/editorLugar"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"/>
-
-            <!-- ..................................... -->
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:hint="@string/PRIMER_DIA"
-                android:ems="10"
-                android:cursorVisible="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorFecha"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/editorLugar"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:hint="@string/ULTIMO_DIA"
-                android:ems="10"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/editorFechaFinal"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/calendarView"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp" />
-
-            <Button
-                android:text="@string/DEFAULT_GUARDAR_CAMBIOS"
-                android:id="@+id/buttonAcceptar"
-                android:background="@drawable/botton_application"
-                android:layout_width="150dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="30dp"
-                android:radius="20dip"
-                android:onClick="updateEvento"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/horaCierre"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="10dp" />
-
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/calendarView"
-                android:background="#eceff1"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/editorFecha"
-                android:layout_alignEnd="@+id/editorFechaFinal"
-                android:layout_marginBottom="10dp"
-                android:layout_alignStart="@+id/listView1" />
-
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/calendarViewFinal"
-                android:background="#eceff1"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/editorFechaFinal"
-                android:layout_alignStart="@+id/listView1"
-                android:layout_alignEnd="@+id/editorFechaFinal"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="180dp"
-                android:inputType="textPersonName"
-                android:text="@string/EVENTO_HORA_APER"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColor="#000"
-                android:background="#FFF"
-                android:textStyle="normal"
-                android:id="@+id/horaAp"
-                android:layout_height="46dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_below="@+id/calendarViewFinal"/>
-
-
-            <TextView
-                android:layout_width="180dp"
-                android:inputType="textPersonName"
-                android:text="@string/EVENTO_HORA_CIERRE"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColor="#000"
-                android:background="#FFF"
-                android:textStyle="normal"
-                android:id="@+id/horaC"
-                android:layout_height="46dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_below="@+id/horaAp"/>
-
-            <EditText
-                android:layout_width="150dp"
-                android:inputType="textPersonName"
-                android:hint="@string/DEFAULT_FORMATO_HORA"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/horaApertura"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginRight="25dp"
-                android:layout_above="@+id/horaC"
-                android:layout_alignParentEnd="true" />
-
-            <EditText
-                android:layout_width="150dp"
-                android:inputType="textPersonName"
-                android:hint="@string/DEFAULT_FORMATO_HORA"
-                android:ems="10"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="18sp"
-                android:textColorHint="#8a939d"
-                android:id="@+id/horaCierre"
-                android:layout_height="46dp"
-                android:background="#eceff1"
-                android:textStyle="normal"
-                android:layout_marginRight="25dp"
-                android:layout_alignTop="@+id/horaC"
-                android:layout_alignStart="@+id/horaApertura" />
-
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>

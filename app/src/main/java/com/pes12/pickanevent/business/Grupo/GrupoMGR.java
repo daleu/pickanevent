@@ -543,7 +543,8 @@ public class GrupoMGR {
                         gUI.put(grupo.getKey(),u);
                     }
                 }
-                activity.setInfoGrupos(gUI);
+                if (activity.isAdded())
+                    activity.setInfoGrupos(gUI);
             }
 
             @Override

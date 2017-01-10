@@ -11,11 +11,6 @@
     tools:context="com.pes12.pickanevent.view.LoginActivity"
     android:background="#bfffc2">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        ></include>
-
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"

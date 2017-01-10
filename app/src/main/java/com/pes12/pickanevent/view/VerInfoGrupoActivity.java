@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
     private Button editarTags;
     private Button editar;
     private Button addEvento;
+    private RelativeLayout layoutEditar;
+    private RelativeLayout layoutTags;
+    private RelativeLayout layoutCrearEvento;
 
     private String idGrupo;
     private GrupoEntity grupo;
@@ -78,6 +82,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
         editarTags = (Button) findViewById(R.id.editarTags);
         editar = (Button) findViewById(R.id.editar);
         addEvento = (Button) findViewById(R.id.addEvento);
+        layoutCrearEvento = (RelativeLayout) findViewById(R.id.layoutCrearEvento);
+        layoutEditar = (RelativeLayout) findViewById(R.id.layoutEditar);
+        layoutTags = (RelativeLayout) findViewById(R.id.layoutEditarTags);
         /////////////////////////////////////////////////
 
         //Bundle b = getIntent().getExtras(); //Para pruebas
@@ -103,9 +110,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
         gMGR.getInfoGrupo(this, idGrupo);
 
         if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
-            editarTags.setVisibility(View.INVISIBLE);
-            editar.setVisibility(View.INVISIBLE);
-            addEvento.setVisibility(View.INVISIBLE);
+            layoutEditar.setVisibility(View.INVISIBLE);
+            layoutTags.setVisibility(View.INVISIBLE);
+            layoutCrearEvento.setVisibility(View.INVISIBLE);
         }
 
         //Boton eliminar grupo

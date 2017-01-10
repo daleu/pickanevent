@@ -20,6 +20,7 @@ import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.CrearEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
+import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;

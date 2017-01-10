@@ -3,6 +3,7 @@ package com.pes12.pickanevent.view;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,13 +12,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
+import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
+import com.pes12.pickanevent.business.Tag.TagMGR;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
+import com.pes12.pickanevent.persistence.entity.Tag.TagEntity;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
@@ -25,6 +31,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static com.pes12.pickanevent.R.id.Primero;
+import static com.pes12.pickanevent.R.id.Tags;
 
 /**
  * Created by Jan on 08/12/2016.
@@ -37,6 +49,7 @@ public class EditarGrupoActivity extends BaseActivity{
     EditText descripcion;
     Bitmap image;
     GrupoMGR gMGR;
+    private TagMGR tMGR;
     String idGrupo;
     GrupoEntity grupo;
 
@@ -56,6 +69,7 @@ public class EditarGrupoActivity extends BaseActivity{
 
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         gMGR.getInfoGrupoEditar(this,idGrupo);
+        tMGR = MGRFactory.getInstance().getTagMGR();
 
         foto = (ImageView) findViewById(R.id.imagenGrupo);
         nombre = (EditText) findViewById(R.id.editorNGrupo);
@@ -65,6 +79,12 @@ public class EditarGrupoActivity extends BaseActivity{
 
     public void mostrarInfoGrupoEditar (GrupoEntity _ge) {
         grupo = _ge;
+
+        Map<String, String> tagsMap = grupo.getIdTags();
+        if (tagsMap == null) tagsMap = new LinkedHashMap<>();
+        tagsMap.put(grupo.getidTagGeneral(), "blabla");
+        tMGR.getInfoTagEditar(this, tagsMap);
+
         nombre.setText(_ge.getNombreGrupo());
         descripcion.setText(_ge.getDescripcion());
 
@@ -76,6 +96,45 @@ public class EditarGrupoActivity extends BaseActivity{
 
         Picasso.with(this).load(_ge.getImagen()).into(foto);
 
+    }
+
+    public void mostrarTags(final ArrayList<String> info) {
+        LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
+        TextView primero = (TextView) findViewById(Primero);
+        if (info.size() > 0) {
+            //int id = 0;
+            primero.setText(info.get(0));
+            primero.setPadding(3,2,3,2);
+            primero.setTextColor(Color.rgb(100,100,100));
+            primero.hasOnClickListeners();
+            primero.setBackgroundColor(Color.rgb(130,255,130));
+            //primero.setId(id);
+
+            primero.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(EditarGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
+                }
+            });
+
+            for (int i = 1; i < info.size(); ++i) {
+                TextView siguiente = new TextView(this);
+                siguiente.setText(info.get(i));
+                siguiente.setPadding(3, 2, 3, 2);
+                siguiente.setTextColor(Color.rgb(100,100,100));
+                siguiente.hasOnClickListeners();
+                siguiente.setBackgroundColor(Color.rgb(130,255,130));
+                //RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                //params1.addRule(RelativeLayout.RIGHT_OF,id);
+                //++id;
+                //siguiente.setId(id);
+                siguiente.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        startActivity(new Intent(EditarGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
+                    }
+                });
+                linearLayout.addView(siguiente);
+            }
+        }
     }
 
     /*private Bitmap StringToBitMap(String encodedString) {
@@ -150,5 +209,9 @@ public class EditarGrupoActivity extends BaseActivity{
                 }
             }
         }
+    }
+
+    public void editarTags(View view) {
+        startActivity(new Intent(EditarGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
     }
 }
