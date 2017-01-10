@@ -66,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:hint="ExamplePass123"
+                    android:hint="@string/EXAMPLE_PASS"
                     android:inputType = "textPassword"
                     android:textColorHint="#8a939d"
                     android:layout_height="46dp"

@@ -34,44 +34,77 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/DEFAULT_CORREO"/>
+                    android:text="@string/DEFAULT_CORREO"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:textSize="18sp"/>
 
                 <EditText
                     android:id="@+id/correo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="example@email.com"
                     android:inputType="textEmailAddress"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:layout_marginTop="6dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/DEFAULT_PASSWORD"/>
+                    android:text="@string/DEFAULT_PASSWORD"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"/>
                 <EditText
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:inputType = "textPassword"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/EXAMPLE_PASS"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/REPITE_PASSWORD"/>
+                    android:text="@string/REPITE_PASSWORD"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"/>
                 <EditText
                     android:id="@+id/repepass"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:inputType = "textPassword"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/EXAMPLE_PASS"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/DEFAULT_NOMBRE_USUARIO"/>
+                    android:text="@string/DEFAULT_NOMBRE_USUARIO"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"/>
                 <EditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="example123"
+                    android:textSize="18sp"
+                    android:textColorHint="#8a939d"
+                    android:layout_height="46dp"
+                    android:background="#eceff1"
+                    android:layout_marginTop="6dp"
 
                     />
 
@@ -79,13 +112,20 @@
                     android:text="@string/DEFAULT_CM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cm" />
+                    android:id="@+id/cm"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:textSize="18sp"/>
 
                 <Button
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/DEFAULT_CREAR_USUARIO"
-                        android:onClick="crearUsuario"/>
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:text="@string/DEFAULT_CREAR_USUARIO"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="crearUsuario"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/boton_amarillo_custom"/>
 
 
 
