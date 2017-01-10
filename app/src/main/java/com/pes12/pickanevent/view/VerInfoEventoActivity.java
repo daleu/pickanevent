@@ -1,6 +1,5 @@
 package com.pes12.pickanevent.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -38,14 +37,13 @@ import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
 import io.fabric.sdk.android.Fabric;
 
 import static com.pes12.pickanevent.R.id.borrarCuenta;
-import static com.pes12.pickanevent.R.id.nombreGrupo;
 
 public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCallback {
 
@@ -246,17 +244,20 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             else hora1 = dataI.getHours() + ":" + dataI.getMinutes();
         }
 
-        if (dataI.getHours() < 10) {
-            if (dataI.getMinutes() < 10) hora2 = "0" + dataI.getHours() + ":0" + dataI.getMinutes();
-            else hora2 = "0" + dataI.getHours() + ":" + dataI.getMinutes();
+        if (dataF.getHours() < 10) {
+            if (dataF.getMinutes() < 10) hora2 = "0" + dataF.getHours() + ":0" + dataF.getMinutes();
+            else hora2 = "0" + dataF.getHours() + ":" + dataF.getMinutes();
         }
         else {
-            if (dataI.getMinutes() < 10) hora2 = dataI.getHours() + ":0" + dataI.getMinutes();
-            else hora2 = dataI.getHours() + ":" + dataI.getMinutes();
+            if (dataF.getMinutes() < 10) hora2 = dataF.getHours() + ":0" + dataF.getMinutes();
+            else hora2 = dataF.getHours() + ":" + dataF.getMinutes();
         }
 
-        String dIni = dataI.getDay()+1 + "/" + dataI.getMonth()+1 + "/" + (dataI.getYear()+1900) + " a las " + hora1;
-        String dFi = dataF.getDay()+1 + "/" + dataF.getMonth()+1 + "/" + (dataF.getYear()+1900) + " a las " + hora2;
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        String inici = sdfDate.format(dataI);
+        String dIni = inici + " a las " + hora1;
+        String fi = sdfDate.format(dataF);
+        String dFi = fi + " a las " + hora2;
 
         horarios.setText(dIni + " hasta el\n" +dFi);
 
