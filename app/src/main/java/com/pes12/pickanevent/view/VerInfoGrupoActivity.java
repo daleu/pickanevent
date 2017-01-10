@@ -208,11 +208,15 @@ public class VerInfoGrupoActivity extends BaseActivity {
         TextView primero = (TextView) findViewById(Primero);
         if (info.size() > 0) {
             //int id = 0;
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            params.setMargins(10,0,10,0);
+            primero.setLayoutParams(params);
             primero.setText(info.get(0));
-            primero.setPadding(3,2,3,2);
+            primero.setPadding(15,7,15,7);
             primero.setTextColor(Color.rgb(100,100,100));
             primero.hasOnClickListeners();
-            primero.setBackgroundColor(Color.rgb(130,255,130));
+            primero.setBackground(getResources().getDrawable(R.drawable.tag_layout));
+            //primero.setBackgroundColor(Color.rgb(130,255,130));
             //primero.setId(id);
 
             primero.setOnClickListener(new View.OnClickListener() {
@@ -223,11 +227,13 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
             for (int i = 1; i < info.size(); ++i) {
                 TextView siguiente = new TextView(this);
+                siguiente.setLayoutParams(params);
                 siguiente.setText(info.get(i));
-                siguiente.setPadding(3, 2, 3, 2);
+                siguiente.setPadding(15, 7, 15, 7);
                 siguiente.setTextColor(Color.rgb(100,100,100));
                 siguiente.hasOnClickListeners();
-                siguiente.setBackgroundColor(Color.rgb(130,255,130));
+                siguiente.setBackground(getResources().getDrawable(R.drawable.tag_layout));
+                //siguiente.setBackgroundColor(Color.rgb(130,255,130));
                 //RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 //params1.addRule(RelativeLayout.RIGHT_OF,id);
                 //++id;
