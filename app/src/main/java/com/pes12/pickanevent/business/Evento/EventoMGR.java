@@ -453,6 +453,7 @@ public class EventoMGR {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
                         Info aux = new Info(null, e.getTitulo(), "horariii", textoBoton);
+                        aux.setTipus("evento");
                         aux.setId((String) evento.getKey());
                         aux.setTipus("evento");
                         aux.setBotonVisible(false);

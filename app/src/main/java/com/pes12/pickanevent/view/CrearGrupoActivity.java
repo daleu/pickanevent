@@ -205,6 +205,17 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
                 _info.get(i).setChecked(true);
             }
         }
+        //info = _info;
+        AdapterTags ale = new AdapterTags(CrearGrupoActivity.this, R.layout.vista_adapter_tags, _info);
+        listaTags.setAdapter(ale);
+    }
+
+    public void mostrarTags(ArrayList<InfoTags> _info) {
+        for (int i = 0; i < _info.size(); ++i) {
+            if (ultimoMarcado != null && ultimoMarcado.getIdTag().equals(_info.get(i).getIdTag())) {
+                _info.get(i).setChecked(true);
+            }
+        }
         info = _info;
         AdapterTags ale = new AdapterTags(CrearGrupoActivity.this, R.layout.vista_adapter_tags, _info);
         listaTags.setAdapter(ale);

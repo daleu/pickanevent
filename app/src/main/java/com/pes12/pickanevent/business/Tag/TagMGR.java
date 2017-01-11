@@ -334,7 +334,7 @@ public class TagMGR {
                     InfoTags iTag = new InfoTags(t.getNombreTag(), false, tag.getKey(), t);
                     info.add(iTag);
                 }
-                activity.mostrarResultadosBusquedaTags(info);
+                activity.mostrarTags(info);
             }
 
             @Override
