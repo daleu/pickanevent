@@ -70,22 +70,6 @@ public class EventoEntity {
     }
 
 
-    public EventoEntity(String nombre, String descr, String img) { //}), String precio, String webpage, String localizacion, String latitud, String longitud,
-                        //String dataIn, String dataFi) {
-        setTitulo(nombre);
-        setDescripcion(descr);
-        setImagen(img);
-        //setPrecio(precio);
-        //setWebpage(webpage);
-        //setLocalizacion(localizacion);
-        //setLatitud(latitud);
-        //setLongitud(longitud);
-        //setDataInici(dataIn);
-        //setDataFinal(dataFi);
-
-    }
-
-
     public String getTitulo() {
         return titulo;
     }

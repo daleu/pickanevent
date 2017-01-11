@@ -174,7 +174,7 @@ public class TimelineFragment extends Fragment {
             EventoEntity e = (EventoEntity)pair.getValue();
             Info aux;
             if(myUser.getCm()){
-                aux = new Info(null, e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_EDITAR_EVENTO));
+                aux = new Info(e.getImagen(), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_EDITAR_EVENTO));
             }
             else{
                 if(my_events.containsKey(pair.getKey()))aux = new Info(e.getImagen(), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_NO_ASSISTIR));
@@ -223,10 +223,10 @@ public class TimelineFragment extends Fragment {
     }
 
     public String EventDate(Date ini, Date fi){
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String inici = sdfDate.format(ini);
         String fina = sdfDate.format(fi);
-        String data = inici + " - " + fina;
+        String data = inici + "h  " + fina + "h";
         return data;
     }
 
