@@ -100,9 +100,9 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
                                 info.get(i).setChecked(true);
                             }
                         }
-                        AdapterTags ale = new AdapterTags(CrearGrupoActivity.this, R.layout.vista_adapter_tags, info);
-                        listaTags.setAdapter(ale);
                     }
+                    AdapterTags ale = new AdapterTags(CrearGrupoActivity.this, R.layout.vista_adapter_tags, info);
+                    listaTags.setAdapter(ale);
                 }
             }
 

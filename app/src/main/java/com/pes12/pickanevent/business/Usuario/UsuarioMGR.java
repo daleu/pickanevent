@@ -86,7 +86,7 @@ public class UsuarioMGR {
     }
 
     public void getAllUsers(Activity _activity) {
-        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             Map<String, UsuarioEntity> map = new LinkedHashMap<String, UsuarioEntity>();
             MainActivity activity;
 
@@ -162,7 +162,7 @@ public class UsuarioMGR {
 
         Query queryRef = bdRefUsuarios.orderByChild(UsuarioEntity.ATTRIBUTES.NICKNAME.getValue()).startAt(_text).endAt(_text + "\uf8ff");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             BuscarActivity activity;
             Map<String, UsuarioEntity> map = new LinkedHashMap<String, UsuarioEntity>();
 
@@ -194,7 +194,7 @@ public class UsuarioMGR {
 
     public void getUsuariosByNombre(Activity _activity, final String _text) {
 
-        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             BuscarEventoActivity activity;
             final CharSequence aux = _text.toLowerCase();
             @Override
@@ -340,7 +340,7 @@ public class UsuarioMGR {
     }
 
     public void getUsers(Activity _activity, Map<String, String> _idU) {
-        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             Map<String, Map<String, String>> info = new LinkedHashMap<String, Map<String, String>>();
             VerEventosUsuariosQueSigoActivity activity;
             Map<String, String> idU;
@@ -370,17 +370,6 @@ public class UsuarioMGR {
         }.setActivity(_activity, _idU));
     }
 
-    private Bitmap StringToBitMap(String encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
-
     public void getUserFromFragment(Fragment _activity, String _idUsuario) {
         bdRefUsuarios.child(_idUsuario).addListenerForSingleValueEvent(new ValueEventListener() {
             UsuarioEntity u;
@@ -406,7 +395,7 @@ public class UsuarioMGR {
     }
 
     public void getUsersForFragment(Fragment _activity, Map<String, String> _idU) {
-        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             Map<String, Map<String, String>> info = new LinkedHashMap<String, Map<String, String>>();
             TimelineFragment activity;
             Map<String, String> idU;
@@ -509,7 +498,7 @@ public class UsuarioMGR {
     }
 
     public void getUsersForFragmentAmistades(Fragment _activity, Map<String, String> _idU) {
-        bdRefUsuarios.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefUsuarios.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             ArrayList<UsuarioEntity> info = new ArrayList<UsuarioEntity>();
             AmistadesFragment activity;
             Map<String, String> idU;

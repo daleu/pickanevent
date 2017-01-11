@@ -70,7 +70,7 @@ public class TagMGR {
     }
 
     public void getInfoTag(Activity _activity, Map<String, String> _idS) {
-        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefTags.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             ArrayList<String> info = new ArrayList();
             VerInfoGrupoActivity activity;
             Map<String, String> idS;
@@ -101,7 +101,7 @@ public class TagMGR {
     }
 
     public void getInfoTagEditar(Activity _activity, Map<String, String> _idS) {
-        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefTags.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             ArrayList<String> info = new ArrayList();
             EditarGrupoActivity activity;
             Map<String, String> idS;
@@ -132,7 +132,7 @@ public class TagMGR {
     }
 
     public void getInfoTagGrupos(Activity _activity, final String _tagName) {
-        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefTags.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             TagEntity info = new TagEntity();
             VerGruposConTagActivity activity;
             String tagName;
@@ -165,7 +165,7 @@ public class TagMGR {
     }
 
     public void getTodosLosTags(Activity _activity) {
-        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefTags.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             ArrayList<InfoTags> info = new ArrayList();
             IndicarTagsActivity activity;
 
@@ -260,7 +260,7 @@ public class TagMGR {
 
         Query queryRef = bdRefTags.orderByChild(TagEntity.ATTRIBUTES.NOMBRETAG.getValue()).startAt(_text).endAt(_text + "\uf8ff");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             IndicarTagsActivity activity;
             Map<String, TagEntity> map = new LinkedHashMap<String, TagEntity>();
 
@@ -293,7 +293,7 @@ public class TagMGR {
 
         Query queryRef = bdRefTags.orderByChild(TagEntity.ATTRIBUTES.NOMBRETAG.getValue()).startAt(_text).endAt(_text + "\uf8ff");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             CrearGrupoActivity activity;
             Map<String, TagEntity> map = new LinkedHashMap<String, TagEntity>();
 
@@ -322,7 +322,7 @@ public class TagMGR {
     }
 
     public void getTodosLosTags_principal(Activity _activity) {
-        bdRefTags.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefTags.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             ArrayList<InfoTags> info = new ArrayList();
             CrearGrupoActivity activity;
 
