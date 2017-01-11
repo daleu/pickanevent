@@ -380,6 +380,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     }
 
     public void redireccionarConIdEvento(String id) {
+        addEventoAlGrupo(id);
         Intent intent = new Intent(CrearEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", id);
         intent.putExtra("origen","crear");
         startActivity(intent);

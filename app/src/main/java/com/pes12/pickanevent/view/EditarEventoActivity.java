@@ -176,7 +176,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         //--------------------------------------------------------
 
         idEvento = getIntent().getExtras().getString("key");
-        System.out.println(idEvento);
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this,idEvento);

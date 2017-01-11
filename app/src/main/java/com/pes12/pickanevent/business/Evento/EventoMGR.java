@@ -452,7 +452,6 @@ public class EventoMGR {
                     if (idS.containsKey(evento.getKey())) {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
-                        System.out.println(textoBoton + "" + cm);
                         Info aux = new Info(null, e.getTitulo(), "horariii", textoBoton);
                         aux.setId((String) evento.getKey());
                         aux.setTipus("evento");
