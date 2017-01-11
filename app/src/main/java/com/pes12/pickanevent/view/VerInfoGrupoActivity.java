@@ -190,17 +190,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
         hideProgressDialog();
     }
 
-    private Bitmap StringToBitMap(String encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
-
     public void mostrarTags(final ArrayList<String> info) {
         LinearLayout linearLayout = (LinearLayout) findViewById(Tags);
         TextView primero = (TextView) findViewById(Primero);
@@ -219,7 +208,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
             primero.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
+                    if (!getUsuarioActual().getCm()) startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
                 }
             });
 
@@ -238,7 +227,7 @@ public class VerInfoGrupoActivity extends BaseActivity {
                 //siguiente.setId(id);
                 siguiente.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
+                        if (!getUsuarioActual().getCm()) startActivity(new Intent(VerInfoGrupoActivity.this, VerGruposConTagActivity.class).putExtra(TagEntity.ATTRIBUTES.NOMBRETAG.getValue(), info.get(0).toString()));
                     }
                 });
                 linearLayout.addView(siguiente);

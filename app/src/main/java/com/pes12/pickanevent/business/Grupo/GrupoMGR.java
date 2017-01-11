@@ -392,7 +392,13 @@ public class GrupoMGR {
                 for (DataSnapshot grupo : _snapshot.getChildren()) {
                     //System.out.println(grupo.getKey());
                     //map.put(grupo.getKey(), grupo.getValue(GrupoEntity.class));
-                    n.add(new Info(null, grupo.getKey(), grupo.getValue(GrupoEntity.class).getNombreGrupo(), "seguir!"));
+                    int num = 0;
+                    if (grupo.getValue(GrupoEntity.class).getIdTags() != null) num = grupo.getValue(GrupoEntity.class).getIdTags().size() + 1; // el + 1 es pel principal
+                    Info aux = new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(), "Tags: "+ num , "seguir!");
+                    aux.setTipus("grup");
+                    aux.setId((String) grupo.getKey());
+                    aux.setBotonVisible(false);
+                    n.add(aux);
 
                 }
                 activity.añadirGrupos(n);
