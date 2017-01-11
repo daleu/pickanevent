@@ -109,15 +109,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
         showProgressDialog();
         gMGR.getInfoGrupo(this, idGrupo);
 
-        if (!getUsuarioActual().getCm()) { //si no es com no vera el boton para editar tags
-            layoutEditar.setVisibility(View.INVISIBLE);
-            layoutTags.setVisibility(View.INVISIBLE);
-            layoutCrearEvento.setVisibility(View.INVISIBLE);
-        }
-
         //Boton eliminar grupo
         borrarGrupo = (Button) findViewById(R.id.borrarGrupo);
         if (getUsuarioActual().getCm()) {
+            boton.setVisibility(View.INVISIBLE);
             borrarGrupo.setOnClickListener(new View.OnClickListener() {
                 Boolean esCM = getUsuarioActual().getCm();
 
@@ -153,6 +148,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
             });
         } else {
             borrarGrupo.setVisibility(View.INVISIBLE);
+            layoutEditar.setVisibility(View.INVISIBLE);
+            layoutTags.setVisibility(View.INVISIBLE);
+            layoutCrearEvento.setVisibility(View.INVISIBLE);
         }
 
 

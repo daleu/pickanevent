@@ -52,6 +52,7 @@ public class EditarGrupoActivity extends BaseActivity{
     private TagMGR tMGR;
     String idGrupo;
     GrupoEntity grupo;
+    InputStream isImagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,13 +170,14 @@ public class EditarGrupoActivity extends BaseActivity{
             //GrupoEntity update = new GrupoEntity(nombreG, descripG); //falta arreglar tema imatge
             if (!nombreG.equals(grupo.getNombreGrupo()))grupo.setNombreGrupo(nombreG);
             if (!descripG.equals(grupo.getDescripcion()))grupo.setDescripcion(descripG);
+
             gMGR.actualizar(idGrupo,grupo);
             Toast.makeText(EditarGrupoActivity.this, getString(R.string.GRUPO_EDITADO),
                     Toast.LENGTH_SHORT).show();
 
-            //petaba con el setContentView
-            //setContentView(R.layout.activity_main);
-            startActivity(new Intent(EditarGrupoActivity.this, NavigationDrawer.class));
+            MGRFactory.getInstance().getImagenGrupoMGR().subirImagenAlEditar(isImagen,grupo,idGrupo, this);
+
+
 
         }
     }
@@ -196,12 +198,12 @@ public class EditarGrupoActivity extends BaseActivity{
         if (_resultCode == RESULT_OK) {
             if (_requestCode == GALERIA_REQUEST) {
                 Uri imageUri = _data.getData();
-                InputStream inputStream;
                 try {
-                    inputStream = getContentResolver().openInputStream(imageUri);
-                    image = BitmapFactory.decodeStream(inputStream);
+                    isImagen = getContentResolver().openInputStream(imageUri);
+                    image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     foto.setImageBitmap(image);
+                    grupo.setImagen(image.toString());
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -213,5 +215,11 @@ public class EditarGrupoActivity extends BaseActivity{
 
     public void editarTags(View view) {
         startActivity(new Intent(EditarGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+    }
+
+    public void redireccionar() {
+
+        startActivity(new Intent(EditarGrupoActivity.this, NavigationDrawer.class));
+
     }
 }
