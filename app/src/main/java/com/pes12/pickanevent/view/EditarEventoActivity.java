@@ -67,6 +67,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
     String idGrupo;
 
+    private Boolean changed = false;
     private Date dataIni;
     private Date dataFi;
     public static final int GALERIA_REQUEST = 20;
@@ -79,6 +80,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     String lat;
     String lng;
     String idEvento;
+    EventoEntity evento;
     InputStream is;
     Bundle param;
 
@@ -182,7 +184,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
     public void mostrarInfoEventoEditar(EventoEntity evento) {
         idGrupo = evento.getIdGrup();
-
+        this.evento = evento;
         inicialitza();
 
         nomEvent.setText(evento.getTitulo());
@@ -321,13 +323,19 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
                                     Long.toString(aux),
                                     idGrupo
                             );
-                            eMGR.actualizarConRedireccion(idEvento,this,update,is);
+                            //eMGR.actualizarConRedireccion(idEvento,this,update,is);
+
+                            if (changed) MGRFactory.getInstance().getImagenEventoMGR().subirImagenAlEditar(is,update,idEvento, this);
+                            else {
+                                update.setImagen(evento.getImagen());
+                                redireccionar();
+                            }
+
+                            eMGR.actualizar(idEvento, update);
                             Toast.makeText(EditarEventoActivity.this, getString(R.string.EVENTO_EDITADO),
                                     Toast.LENGTH_SHORT).show();
 
-                            //petaba con el setContentView
-                            //setContentView(R.layout.activity_main);
-                            startActivity(new Intent(EditarEventoActivity.this, NavigationDrawer.class));
+                            //startActivity(new Intent(EditarEventoActivity.this, NavigationDrawer.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
                     //}
                     //else Toast.makeText(this, R.string.ERROR_HORAS, Toast.LENGTH_SHORT).show();
@@ -409,9 +417,10 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
             if (_requestCode == GALERIA_REQUEST) {
                 Uri imageUri = _data.getData();
                 try {
+                    changed = true;
                     is = getContentResolver().openInputStream(imageUri);
                     ImageView imgV = (ImageView) findViewById(R.id.imagenEvento);
-                    image = BitmapFactory.decodeStream(is);
+                    image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
                     imgV.setImageBitmap(image);
 
@@ -426,5 +435,9 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public void redireccionar() {
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", idEvento).putExtra("origen", "crear"));
     }
 }

@@ -53,6 +53,8 @@ public class EditarGrupoActivity extends BaseActivity{
     String idGrupo;
     GrupoEntity grupo;
     InputStream isImagen;
+    private Boolean changed = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,13 +173,12 @@ public class EditarGrupoActivity extends BaseActivity{
             if (!nombreG.equals(grupo.getNombreGrupo()))grupo.setNombreGrupo(nombreG);
             if (!descripG.equals(grupo.getDescripcion()))grupo.setDescripcion(descripG);
 
+            if (changed) MGRFactory.getInstance().getImagenGrupoMGR().subirImagenAlEditar(isImagen,grupo,idGrupo, this);
+            else redireccionar();
+
             gMGR.actualizar(idGrupo,grupo);
             Toast.makeText(EditarGrupoActivity.this, getString(R.string.GRUPO_EDITADO),
                     Toast.LENGTH_SHORT).show();
-
-            MGRFactory.getInstance().getImagenGrupoMGR().subirImagenAlEditar(isImagen,grupo,idGrupo, this);
-
-
 
         }
     }
@@ -199,6 +200,7 @@ public class EditarGrupoActivity extends BaseActivity{
             if (_requestCode == GALERIA_REQUEST) {
                 Uri imageUri = _data.getData();
                 try {
+                    changed = true;
                     isImagen = getContentResolver().openInputStream(imageUri);
                     image = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                     //show the image to the user
@@ -219,7 +221,7 @@ public class EditarGrupoActivity extends BaseActivity{
 
     public void redireccionar() {
 
-        startActivity(new Intent(EditarGrupoActivity.this, NavigationDrawer.class));
+        startActivity(new Intent(EditarGrupoActivity.this, VerInfoGrupoActivity.class).putExtra("key",idGrupo).putExtra("origen", "crear"));
 
     }
 }

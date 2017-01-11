@@ -18,6 +18,7 @@ import com.pes12.pickanevent.persistence.entity.Evento.EventoEntity;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
 import com.pes12.pickanevent.view.CrearEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
+import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.PerfilUsuarioActivity;
 
 import java.io.InputStream;
@@ -59,6 +60,31 @@ public class ImagenEventoMGR {
                 evento = _ee;
                 id=_id;
                 activity = (CrearEventoActivity) _activity;
+                return this;
+            }
+        }.setGrupo(_ee,id, _activity));
+    }
+
+    public void subirImagenAlEditar(InputStream _is, EventoEntity _ee, String id, EditarEventoActivity _activity) {
+        UploadTask uploadTask = bdRefImagenes.child(id).putStream(_is);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            EventoEntity evento;
+            String id;
+            EditarEventoActivity activity;
+
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                evento.setImagen(taskSnapshot.getDownloadUrl().toString());
+                EventoMGR eMGR = MGRFactory.getInstance().getEventoMGR();
+                eMGR.actualizar(id,evento);
+                activity.redireccionar();
+
+            }
+
+            public OnSuccessListener setGrupo(EventoEntity _ee,String _id, Activity _activity) {
+                evento = _ee;
+                id=_id;
+                activity = (EditarEventoActivity) _activity;
                 return this;
             }
         }.setGrupo(_ee,id, _activity));
