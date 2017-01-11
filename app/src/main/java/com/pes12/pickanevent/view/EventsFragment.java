@@ -213,10 +213,10 @@ public class EventsFragment extends Fragment {
     }
 
     public String EventDate(Date ini, Date fi){
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String inici = sdfDate.format(ini);
         String fina = sdfDate.format(fi);
-        String data = inici + " - " + fina;
+        String data = inici + "h  " + fina + "h";
         return data;
     }
 }
