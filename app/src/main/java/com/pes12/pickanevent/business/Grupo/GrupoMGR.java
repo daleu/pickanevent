@@ -350,7 +350,7 @@ public class GrupoMGR {
     public void getGruposByNombreGrupo(Activity _activity, String _text) {
         Query queryRef = bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).startAt(_text).endAt(_text + "\uf8ff");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             BuscarActivity activity;
             Map<String, GrupoEntity> map = new LinkedHashMap<String, GrupoEntity>();
 
@@ -382,7 +382,7 @@ public class GrupoMGR {
     public void getGruposByNombreTag(Activity _activity, String _text) {
         Query queryRef = bdRefGrupos.orderByChild(GrupoEntity.ATTRIBUTES.NOMBREGRUPO.getValue()).startAt(_text).endAt(_text + "\uf8ff");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             VerGruposConTagActivity activity;
             Map<String, GrupoEntity> map = new LinkedHashMap<String, GrupoEntity>();
 
@@ -412,7 +412,7 @@ public class GrupoMGR {
     }
 
     public void getGruposByNombre(Activity _activity, final String _text) {
-        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefGrupos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             BuscarEventoActivity activity;
             final CharSequence aux3 = _text.toLowerCase();
             @Override
@@ -458,7 +458,7 @@ public class GrupoMGR {
     }
 
     public void addEventoAlGrupo(final String idGrup, final String idEvento, final String titulo) {
-        bdRefGrupos.child(idGrup).addValueEventListener(new ValueEventListener() {
+        bdRefGrupos.child(idGrup).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GrupoEntity g = dataSnapshot.getValue((GrupoEntity.class));
@@ -476,7 +476,7 @@ public class GrupoMGR {
     }
 
     public void getGrupoEventosForFragment(Fragment _activity, Map<String, String> _idU) {
-        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefGrupos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             Map<String, Map<String, String>> info = new LinkedHashMap<String, Map<String, String>>();
             TimelineFragment activity;
             Map<String, String> idU;
@@ -531,7 +531,7 @@ public class GrupoMGR {
     }
 
     public void getGrupoEventosForFragmentGrupos(Fragment _activity, Map<String, String> _idU) {
-        bdRefGrupos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefGrupos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             GruposFragment activity;
             Map<String, String> idU;
             Map<String,GrupoEntity> gUI = new HashMap<String, GrupoEntity>();

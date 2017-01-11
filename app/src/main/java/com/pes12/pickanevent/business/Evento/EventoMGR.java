@@ -250,7 +250,7 @@ public class EventoMGR {
     public void getInfoEventoElegido(Activity _activity, String _attr, final String _val) {
         final String aux = _attr;
         final CharSequence aux2 = _val.toLowerCase();
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             BuscarEventoActivity activity;
             ArrayList<Info> n = new ArrayList<>();
 
@@ -438,7 +438,7 @@ public class EventoMGR {
     }
 
     public void getInfoEventosGrupo(Activity _activity, Map<String, String> _idS, final Boolean cm) {
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             ArrayList<Info> info = new ArrayList();
             VerInfoGrupoActivity activity;
             String id;
@@ -476,20 +476,9 @@ public class EventoMGR {
         }.setActivity(_activity, _idS));
     }
 
-    private Bitmap StringToBitMap(String _encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(_encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
-
 
     public void getInfoEventosUsuarios(Activity _activity, Map<String, List<String>> _usuariosPorEvento) {
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             VerEventosUsuariosQueSigoActivity activity;
             Map<String, List<String>> usuariosPorEvento;
             ArrayList<Info> info = new ArrayList<Info>();
@@ -521,7 +510,7 @@ public class EventoMGR {
     }
 
     public void getInfoEventosUsuarioFromFragment(Fragment _activity, Map<String, String> _idS) {
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
            //ArrayList<Info> info = new ArrayList();
             //ArrayList<EventoEntity> eventos = new ArrayList();
             TimelineFragment activity;
@@ -555,7 +544,7 @@ public class EventoMGR {
     }
 
     public void getEventosForFragment(Fragment _activity, Map<String, String> _idS) {
-        bdRefEventos.orderByKey().addValueEventListener(new ValueEventListener() {
+        bdRefEventos.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             EventsFragment activity;
             Map<String, String> idS;
             Map<String,EventoEntity> gUI = new HashMap<String, EventoEntity>();
