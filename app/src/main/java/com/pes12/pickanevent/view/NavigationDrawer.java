@@ -189,7 +189,7 @@ public class NavigationDrawer extends BaseActivity
         } else if (id == R.id.about){
             ShowDialog("About","Hecho por: PickAnEvent.SA \nContacto: support@pickanevent.com");
         } else if (id == R.id.help){
-            ShowDialog("Help","Con esta aplicación, podras consultar y buscar todos los eventos que sean de tu interés!\nDes de la vista principal, podras ver todos los eventos, grupos y amistades a los que assistes o sigues, y a través de la lupa que se encuentra arriva de la pantalla podràs buscar todo lo que quieras! :D");
+            ShowDialog("Help","¡Con esta aplicación, podrás consultar y buscar todos los eventos que sean de tu interés!\nDesde la vista principal, podrás ver todos los eventos, grupos y amistades a los que asistes o sigues. ¡Y a través de la lupa que se encuentra arriba de la pantalla podrás buscar todo lo que quieras! :D");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
