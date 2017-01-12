@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.webkit.URLUtil;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -52,6 +53,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.webkit.URLUtil.isContentUrl;
+import static android.webkit.URLUtil.isHttpUrl;
+import static android.webkit.URLUtil.isHttpsUrl;
 import static com.pes12.pickanevent.R.layout.activity_crear_evento;
 
 public class CrearEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
@@ -248,7 +252,10 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
             Toast.makeText(this, R.string.ERROR, Toast.LENGTH_SHORT).show();
         }
         else {
-            if (!gratuit.isChecked() && !preuText.getText().toString().matches("[-+]?\\d*\\.?\\d+")) { //preu no és numéric
+            if (!url.getText().toString().equals("") && !isHttpUrl(url.getText().toString()) && !isHttpsUrl(url.getText().toString())){
+                Toast.makeText(this, R.string.ERROR_URL, Toast.LENGTH_SHORT).show();
+            }
+            else if (!gratuit.isChecked() && !preuText.getText().toString().matches("[-+]?\\d*\\.?\\d+")) { //preu no és numéric
                 Toast.makeText(this, R.string.ERROR_PRECIO, Toast.LENGTH_SHORT).show();
             }
             else {

@@ -160,4 +160,5 @@
     <string name="bio">Bio:</string>
     <string name="DEFAULT_NO_CUENTA">¿Todavía no tienes cuenta? ¡Regístrate!</string>
     <string name="EXAMPLE_PASS">ExamplePass123</string>
+    <string name="ERROR_URL">La URL no es correcta</string>
 </resources>

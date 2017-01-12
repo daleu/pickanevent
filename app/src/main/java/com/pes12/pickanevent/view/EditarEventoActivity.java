@@ -48,6 +48,8 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 
+import static android.webkit.URLUtil.isHttpUrl;
+import static android.webkit.URLUtil.isHttpsUrl;
 import static com.pes12.pickanevent.R.layout.activity_editar_evento;
 
 public class EditarEventoActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener {
@@ -290,7 +292,10 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void updateEvento(View _view) {
-        if (nomEvent.getText().toString().equals("") ||
+        if (!url.getText().toString().equals("") && !isHttpUrl(url.getText().toString()) && !isHttpsUrl(url.getText().toString())){
+            Toast.makeText(this, R.string.ERROR_URL, Toast.LENGTH_SHORT).show();
+        }
+        else if (nomEvent.getText().toString().equals("") ||
                 localitzacio.getText().toString().equals("") ||
                 !gratuit.isChecked() && preuText.getText().toString().equals("") ||
                 data.getText().toString().equals("") || hora.getText().toString().equals("") ||

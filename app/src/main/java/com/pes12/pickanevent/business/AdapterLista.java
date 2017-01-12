@@ -3,6 +3,7 @@ package com.pes12.pickanevent.business;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,7 +84,10 @@ public class AdapterLista extends ArrayAdapter<Info> {
         }
 
         final Info componentes = getItem(_position);
-        Picasso.with(context).load(componentes.img).into(holder.img);
+        if(componentes.img == null){
+            holder.img.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.photo_not_available));
+        }
+        else Picasso.with(context).load(componentes.img).into(holder.img);
        // holder.img.setImageBitmap(componentes.img);
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
