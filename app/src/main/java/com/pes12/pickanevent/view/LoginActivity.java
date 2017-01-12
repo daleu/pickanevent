@@ -74,6 +74,11 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     public void registro(View view) {
         startActivity(new Intent(LoginActivity.this, CrearUsuarioActivity.class));
     }
