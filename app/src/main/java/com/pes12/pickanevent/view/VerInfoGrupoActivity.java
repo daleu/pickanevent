@@ -93,11 +93,11 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         Bundle param = getIntent().getExtras();
         //idGrupo = "-K_yYxivpF4D7ou8j-fT";
-        if(param.getString("key")!=null){
-            idGrupo = param.getString("key");
+        if(param.getString(Constantes.KEY)!=null){
+            idGrupo = param.getString(Constantes.KEY);
         }
-        if(param.getString("action")!=null){
-            if(param.getString("action")=="noseguir") dejarSeguirGrupo(idGrupo);
+        if(param.getString(Constantes.ACTION)!=null){
+            if(param.getString(Constantes.ACTION)==Constantes.ACTION_NOSEGUIR) dejarSeguirGrupo(idGrupo);
         }
 
         if(param.getString("origen")!=null){
@@ -265,15 +265,15 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }*/
 
     public void editarTags(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra(Constantes.KEY, idGrupo));
     }
 
     public void editar(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra(Constantes.KEY, idGrupo));
     }
 
     public void addEvento(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra(Constantes.KEY, idGrupo).putExtra("grupo", grupo));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras

@@ -76,10 +76,10 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
         Bundle param = getIntent().getExtras();
         idUsuario = "usr15-1483884870397";
         if(param!=null){
-            idUsuario = param.getString("key");
+            idUsuario = param.getString(Constantes.KEY);
 
-            if(param.getString("action")!=null){
-                if(param.getString("action").equals("noseguir")) dejarSeguirUsuario(idUsuario);
+            if(param.getString(Constantes.ACTION)!=null){
+                if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_NOSEGUIR)) dejarSeguirUsuario(idUsuario);
             }
         }
 

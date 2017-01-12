@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterTags;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.IEstadoCheckBox;
 import com.pes12.pickanevent.business.InfoTags;
@@ -94,7 +95,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
         if (esCM) { //el usuario es CM: mostrar texto y boton superiores
             textoMinimoTags.setVisibility(View.INVISIBLE);
             Bundle b = getIntent().getExtras();
-            idGrupo = b.getString("key");
+            idGrupo = b.getString(Constantes.KEY);
             botonNuevo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -214,7 +215,7 @@ public class IndicarTagsActivity extends BaseActivity implements IEstadoCheckBox
                     if (tagAux.getIdGrupos() != null) tagAux.getIdGrupos().remove(idGrupo);
                 }
                 tMGR.actualizar(info.get(i).getIdTag(), tagAux);
-                Intent intent = new Intent(IndicarTagsActivity.this, VerInfoGrupoActivity.class).putExtra("key", idGrupo);
+                Intent intent = new Intent(IndicarTagsActivity.this, VerInfoGrupoActivity.class).putExtra(Constantes.KEY, idGrupo);
                 intent.putExtra("origen","crear");
                 startActivity(intent);
             }

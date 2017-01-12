@@ -130,7 +130,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                         if (_cs.toString().length() != 0) {
                                             showProgressDialog();
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "localizacion", textoLugarEvento.getText().toString());
+                                                    Constantes.INFO_LOCALIZACION, textoLugarEvento.getText().toString());
                                         } else {
                                             ListView lista = (ListView) findViewById(R.id.lista);
                                             lista.setAdapter(null);
@@ -206,7 +206,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                         calendar.setVisibility(View.INVISIBLE);
                                         Date d = new Date(year-1900, month, day);
                                         long l = d.getTime();
-                                        eMGR.getInfoEventoElegido(BuscarEventoActivity.this, "dia", Long.toString(l));
+                                        eMGR.getInfoEventoElegido(BuscarEventoActivity.this, Constantes.INFO_DIA, Long.toString(l));
                                     }
                                 });
 
