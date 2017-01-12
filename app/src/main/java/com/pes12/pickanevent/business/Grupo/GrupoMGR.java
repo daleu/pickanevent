@@ -395,7 +395,7 @@ public class GrupoMGR {
                     int num = 0;
                     if (grupo.getValue(GrupoEntity.class).getIdTags() != null) num = grupo.getValue(GrupoEntity.class).getIdTags().size() + 1; // el + 1 es pel principal
                     Info aux = new Info(null, grupo.getValue(GrupoEntity.class).getNombreGrupo(), "Tags: "+ num , "seguir!");
-                    aux.setTipus("grup");
+                    aux.setTipus(Constantes.INFO_GRUPO);
                     aux.setId((String) grupo.getKey());
                     aux.setBotonVisible(false);
                     n.add(aux);
@@ -430,7 +430,7 @@ public class GrupoMGR {
                             Info aux = new Info(grupo.getValue(GrupoEntity.class).getImagen(), grupo.getValue(GrupoEntity.class).getNombreGrupo(),
                                     null, null);
                             aux.setId((String)grupo.getKey());
-                            aux.setTipus("grup");
+                            aux.setTipus(Constantes.INFO_GRUPO);
                             aux.setBotonVisible(false);
                             n.add(aux);
                         }
@@ -438,7 +438,7 @@ public class GrupoMGR {
                             Info aux = new Info(grupo.getValue(GrupoEntity.class).getImagen(), grupo.getValue(GrupoEntity.class).getNombreGrupo(),
                                     null, null);
                             aux.setId((String)grupo.getKey());
-                            aux.setTipus("grup");
+                            aux.setTipus(Constantes.INFO_GRUPO);
                             aux.setBotonVisible(false);
                             n.add(aux);
                         }

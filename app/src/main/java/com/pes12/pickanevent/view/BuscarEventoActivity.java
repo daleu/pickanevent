@@ -165,19 +165,19 @@ public class BuscarEventoActivity extends BaseActivity {
                                     public void onItemSelected(AdapterView<?> _parent, View _view, int _position, long _id) {
                                         if (spinner3.getSelectedItem().toString().equals(Constantes.INFO_GRATIS)) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", "0");
+                                                    Constantes.INFO_PRECIO, "0");
                                         }
                                         else if (spinner3.getSelectedItem().toString().equals("Menos de 50€")) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", "50");
+                                                    Constantes.INFO_PRECIO, "50");
                                         }
                                         else if (spinner3.getSelectedItem().toString().equals("Entre 50€ y 200€")) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", "50<>200");
+                                                    Constantes.INFO_PRECIO, "50<>200");
                                         }
                                         else {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", ">200");
+                                                    Constantes.INFO_PRECIO, ">200");
                                         }
 
 

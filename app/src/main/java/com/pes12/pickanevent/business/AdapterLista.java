@@ -119,7 +119,7 @@ public class AdapterLista extends ArrayAdapter<Info> {
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="grup") {
+                else if(componentes.tipus==Constantes.INFO_GRUPO) {
                     Intent intent = new Intent(context, VerInfoGrupoActivity.class);
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
@@ -156,13 +156,13 @@ public class AdapterLista extends ArrayAdapter<Info> {
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="grup" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_SEGUIR))) {
+                else if(componentes.tipus==Constantes.INFO_GRUPO && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_SEGUIR))) {
                     Intent intent = new Intent(context, VerInfoGrupoActivity.class);
                     intent.putExtra("action","noseguir");
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="grup" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO))) {
+                else if(componentes.tipus==Constantes.INFO_GRUPO && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO))) {
                     Intent intent = new Intent(context, EditarGrupoActivity.class);
                     intent.putExtra("key", componentes.id);
                     context.startActivity(intent);

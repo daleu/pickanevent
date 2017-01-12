@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
@@ -149,7 +150,7 @@ public class GruposFragment extends Fragment {
                 if(myUser.getCm()) aux = new Info(ge.getImagen(), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_EDITAR_GRUPO));
                 else aux = new Info(ge.getImagen(), ge.getNombreGrupo(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                 aux.setId((String)pair.getKey());
-                aux.setTipus("grup");
+                aux.setTipus(Constantes.INFO_GRUPO);
                 infoAdapter.add(aux);
             }
 

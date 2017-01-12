@@ -141,7 +141,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
             String nombreGrupo = grupo.getNombreGrupo();
             Info info = new Info(img, nombreGrupo, null, getString(R.string.DEFAULT_SEGUIR));
             info.setId(id);
-            info.setTipus("grup");
+            info.setTipus(Constantes.INFO_GRUPO);
             info.setBotonVisible(false);
             eventos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);

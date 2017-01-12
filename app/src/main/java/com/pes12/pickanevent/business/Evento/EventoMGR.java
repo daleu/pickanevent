@@ -258,7 +258,7 @@ public class EventoMGR {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
                             if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
+                                        evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus(Constantes.INFO_EVENTO);
                                 aux.setBotonVisible(false);
@@ -278,7 +278,7 @@ public class EventoMGR {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
                             if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
+                                        evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                 aux.setId((String) evento.getKey());
                                 aux.setTipus(Constantes.INFO_EVENTO);
                                 aux.setBotonVisible(false);
@@ -294,7 +294,7 @@ public class EventoMGR {
                             }
                         }
                     }
-                    else if (aux.equals("precio")) {
+                    else if (aux.equals(Constantes.INFO_PRECIO)) {
                         String precio = evento.getValue(EventoEntity.class).getPrecio();
                         Double aux = null;
                         if (precio != null) aux = Double.parseDouble(precio);
@@ -317,7 +317,7 @@ public class EventoMGR {
                             }
                             if(_val.equals("50") && aux < 50){
                                 Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        precio+"€", Constantes.INFO_ASISTIR);
+                                        precio+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
@@ -325,7 +325,7 @@ public class EventoMGR {
                             }
                             if(_val.equals("50<>200") && 50<=aux && aux<=200) {
                                 Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        precio+"€", Constantes.INFO_ASISTIR);
+                                        precio+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                 auxEvento.setId((String) evento.getKey());
                                 auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
@@ -334,7 +334,7 @@ public class EventoMGR {
                             if (_val.equals(">200")) {
                                 if (aux > 200) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            precio+"€", Constantes.INFO_ASISTIR);
+                                            precio+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
@@ -353,7 +353,7 @@ public class EventoMGR {
                                     (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
                                 if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
+                                            evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
@@ -373,7 +373,7 @@ public class EventoMGR {
                             if (Long.parseLong(_val) == tiempo) {
                                 if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
+                                            evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
                                     auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
@@ -447,7 +447,7 @@ public class EventoMGR {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
                         String textoBoton = Constantes.INFO_ASISTIR_CAMEL;
-                        if (cm) textoBoton = "Editar";
+                        if (cm) textoBoton = Constantes.INFO_EDITAR;
                         Info aux = new Info(null, e.getTitulo(), "horariii", textoBoton);
                         aux.setTipus(Constantes.INFO_EVENTO);
                         aux.setId((String) evento.getKey());
