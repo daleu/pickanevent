@@ -9,13 +9,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.pes12.pickanevent.view.BaseActivity;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.view.CrearUsuarioActivity;
-import com.pes12.pickanevent.view.MainActivity;
 import com.pes12.pickanevent.view.PerfilUsuarioActivity;
 
 import java.io.InputStream;
@@ -33,7 +31,7 @@ public class ImagenPerfilUsuarioMGR {
 
     public void inicializarDatabase(FirebaseStorage _storage) {
 
-        bdRefImagenes = _storage.getReference("ImagenPerfilUsuario");
+        bdRefImagenes = _storage.getReference(Constantes.BBDD_IMAGEN_PERFIL_USUARIO);
 
     }
 
