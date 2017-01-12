@@ -274,14 +274,17 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         web = gEntity.getWebpage();
 
-        comprarEntradas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(web));
-                startActivity(i);
-            }
-        });
+        if(web.equals("")) comprarEntradas.setVisibility(View.INVISIBLE);
+        else {
+            comprarEntradas.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(web));
+                    startActivity(i);
+                }
+            });
+        }
 
         Picasso.with(this).load(gEntity.getImagen()).into(imagenevento);
 
