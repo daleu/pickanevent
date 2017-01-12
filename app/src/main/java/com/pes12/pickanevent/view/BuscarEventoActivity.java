@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
@@ -162,7 +163,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> _parent, View _view, int _position, long _id) {
-                                        if (spinner3.getSelectedItem().toString().equals("Gratis")) {
+                                        if (spinner3.getSelectedItem().toString().equals(Constantes.INFO_GRATIS)) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
                                                     "precio", "0");
                                         }

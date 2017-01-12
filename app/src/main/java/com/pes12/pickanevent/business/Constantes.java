@@ -6,10 +6,15 @@ package com.pes12.pickanevent.business;
 
 public final class Constantes {
 
+    public static final String ENRERE = "enrere";
+    public static final String INTENT = "intent";
+
+    /* INFO */
     public static final String INFO_SYMBOL_EURO = "€";
     public static final String INFO_EVENTO = "evento";
     public static final String INFO_ASISTIR = "asistir!";
     public static final String INFO_ASISTIR_CAMEL = "Asistir!";
+    public static final String INFO_NO_ASISTIR = "No Assistir!";
     public static final String INFO_GRUPO = "grup";
     public static final String INFO_GRATIS = "Gratis";
     public static final String INFO_LOCALIZACION = "localizacion";

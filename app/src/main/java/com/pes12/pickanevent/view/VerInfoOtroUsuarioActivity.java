@@ -1,10 +1,7 @@
 package com.pes12.pickanevent.view;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +12,7 @@ import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
@@ -175,7 +173,7 @@ public class VerInfoOtroUsuarioActivity extends BaseActivity {
 
             Info info = new Info(img, nombreGrupo, dataInici +"\r"+ dataFi, getString(R.string.DEFAULT_SEGUIR));
             info.setId(id);
-            info.setTipus("evento");
+            info.setTipus(Constantes.INFO_EVENTO);
             info.setBotonVisible(false);
             grupos.add(info);
             //System.out.println(grupos.get(0).primeraLinea);

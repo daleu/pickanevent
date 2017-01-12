@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
@@ -103,10 +104,10 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         }
 
         if(param.getString("origen")!=null){
-            if(param.getString("origen").equals("crear")) desti = "intent";
-            else desti = "enrere";
+            if(param.getString("origen").equals("crear")) desti = Constantes.INTENT;
+            else desti = Constantes.ENRERE;
         }
-        else desti = "enrere";
+        else desti = Constantes.ENRERE;
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -262,7 +263,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         horarios.setText(dIni + " hasta el\n" +dFi);
 
         if(gEntity.getPrecio().equals("")){
-            precio.setText("Gratis");
+            precio.setText(Constantes.INFO_GRATIS);
         }
         else{
             precio.setText(gEntity.getPrecio());
@@ -342,8 +343,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void goBack(View _view) {
-        if(desti.equals("enrere")) onBackPressed();
-        else if (desti.equals("intent"))startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+        if(desti.equals(Constantes.ENRERE)) onBackPressed();
+        else if (desti.equals(Constantes.INTENT))startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
     }
 
     public void asistirNoAsistir(View view) {

@@ -101,10 +101,10 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
 
         if(param.getString("origen")!=null){
-            if(param.getString("origen").equals("crear")) desti = "intent";
-            else desti = "enrere";
+            if(param.getString("origen").equals("crear")) desti = Constantes.INTENT;
+            else desti = Constantes.ENRERE;
         }
-        else desti = "enrere";
+        else desti = Constantes.ENRERE;
 
         showProgressDialog();
         gMGR.getInfoGrupo(this, idGrupo);
@@ -272,8 +272,8 @@ public class VerInfoGrupoActivity extends BaseActivity {
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
     @Override
     public void goBack(View _view) {
-        if(desti.equals("enrere")) onBackPressed();
-        else if (desti.equals("intent"))startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
+        if(desti.equals(Constantes.ENRERE)) onBackPressed();
+        else if (desti.equals(Constantes.INTENT))startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
     }
 
     public void seguirDejarDeSeguir(View view) {

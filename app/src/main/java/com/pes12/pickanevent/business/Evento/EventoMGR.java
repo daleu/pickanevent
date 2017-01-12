@@ -1,10 +1,7 @@
 package com.pes12.pickanevent.business.Evento;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
-import android.util.Base64;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +17,6 @@ import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.BuscarEventoActivity;
 import com.pes12.pickanevent.view.CrearEventoActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
-import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.EventsFragment;
 import com.pes12.pickanevent.view.TimelineFragment;
 import com.pes12.pickanevent.view.VerEventosUsuariosQueSigoActivity;
@@ -262,17 +258,17 @@ public class EventoMGR {
                         if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
                             if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
+                                        evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
                                 aux.setId((String) evento.getKey());
-                                aux.setTipus("evento");
+                                aux.setTipus(Constantes.INFO_EVENTO);
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        "Gratis", "asistir!");
+                                        Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
                                 aux.setId((String) evento.getKey());
-                                aux.setTipus("evento");
+                                aux.setTipus(Constantes.INFO_EVENTO);
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }
@@ -282,17 +278,17 @@ public class EventoMGR {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
                             if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
+                                        evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
                                 aux.setId((String) evento.getKey());
-                                aux.setTipus("evento");
+                                aux.setTipus(Constantes.INFO_EVENTO);
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }
                             else {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        "Gratis", "asistir!");
+                                        Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
                                 aux.setId((String) evento.getKey());
-                                aux.setTipus("evento");
+                                aux.setTipus(Constantes.INFO_EVENTO);
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }
@@ -304,43 +300,43 @@ public class EventoMGR {
                         if (precio != null) aux = Double.parseDouble(precio);
                         if (precio.equals("") && _val.equals("0")) {
                             Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                    "Gratis", "asistir!");
+                                    Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
                             auxEvento.setId((String) evento.getKey());
-                            auxEvento.setTipus("evento");
+                            auxEvento.setTipus(Constantes.INFO_EVENTO);
                             auxEvento.setBotonVisible(false);
                             n.add(auxEvento);
                         }
                         if (precio != null) {
                             if (precio.equals(_val) && _val.equals("0")) {
                                 Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        "Gratis", "asistir!");
+                                        Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
                                 auxEvento.setId((String) evento.getKey());
-                                auxEvento.setTipus("evento");
+                                auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50") && aux < 50){
                                 Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        precio+"€", "asistir!");
+                                        precio+"€", Constantes.INFO_ASISTIR);
                                 auxEvento.setId((String) evento.getKey());
-                                auxEvento.setTipus("evento");
+                                auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50<>200") && 50<=aux && aux<=200) {
                                 Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        precio+"€", "asistir!");
+                                        precio+"€", Constantes.INFO_ASISTIR);
                                 auxEvento.setId((String) evento.getKey());
-                                auxEvento.setTipus("evento");
+                                auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if (_val.equals(">200")) {
                                 if (aux > 200) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            precio+"€", "asistir!");
+                                            precio+"€", Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus("evento");
+                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
@@ -357,17 +353,17 @@ public class EventoMGR {
                                     (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
                                 if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
+                                            evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus("evento");
+                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                                 else {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            "Gratis", "asistir!");
+                                            Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus("evento");
+                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
@@ -377,17 +373,17 @@ public class EventoMGR {
                             if (Long.parseLong(_val) == tiempo) {
                                 if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            evento.getValue(EventoEntity.class).getPrecio()+"€", "asistir!");
+                                            evento.getValue(EventoEntity.class).getPrecio()+"€", Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus("evento");
+                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
                                 else {
                                     Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            "Gratis", "asistir!");
+                                            Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
                                     auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus("evento");
+                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
                                 }
@@ -450,12 +446,12 @@ public class EventoMGR {
                 for (DataSnapshot evento : _dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (idS.containsKey(evento.getKey())) {
-                        String textoBoton = "Asistir!";
+                        String textoBoton = Constantes.INFO_ASISTIR_CAMEL;
                         if (cm) textoBoton = "Editar";
                         Info aux = new Info(null, e.getTitulo(), "horariii", textoBoton);
-                        aux.setTipus("evento");
+                        aux.setTipus(Constantes.INFO_EVENTO);
                         aux.setId((String) evento.getKey());
-                        aux.setTipus("evento");
+                        aux.setTipus(Constantes.INFO_EVENTO);
                         aux.setBotonVisible(false);
                         info.add(aux);
 
@@ -490,7 +486,7 @@ public class EventoMGR {
                 for (DataSnapshot evento : dataSnapshot.getChildren()) {
                     EventoEntity e = evento.getValue(EventoEntity.class);
                     if (usuariosPorEvento.containsKey(evento.getKey())) {
-                        info.add(new Info(null, "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), "No Assistir!"));
+                        info.add(new Info(null, "Asistiran: " + usuariosPorEvento.get(evento.getKey()).toString(), e.getTitulo(), Constantes.INFO_NO_ASISTIR));
                     }
                 }
 
