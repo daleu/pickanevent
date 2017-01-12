@@ -95,8 +95,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         param = getIntent().getExtras();
         //idEvento = "-K_xhR3NMID-9FN6W4Ym";
-        if(param.getString("key")!=null){
-            idEvento = param.getString("key");
+        if(param.getString(Constantes.KEY)!=null){
+            idEvento = param.getString(Constantes.KEY);
         }
         else {
             Toast.makeText(this, "Ya existe un evento con este nombre", Toast.LENGTH_SHORT).show();
@@ -202,15 +202,15 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
-        if(param.getString("action")!=null){
-            Log.e("action",param.getString("action"));
-            if(param.getString("action").equals("assistir")){
+        if(param.getString(Constantes.ACTION)!=null){
+            Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
+            if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_ASISTIR)){
                 asistirEvento(idEvento,gEntity.getTitulo());
-                Log.e("action",param.getString("action"));
+                Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             }
-            else if(param.getString("action").equals("noassistir")){
+            else if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_NOASISTIR)){
                 cancelarAsistenciaEvento(idEvento);
-                Log.e("action",param.getString("action"));
+                Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             }
         }
 
@@ -322,7 +322,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void goEditarEvento(View _view) {
-        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra("key",idEvento));
+        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra(Constantes.KEY,idEvento));
     }
 
     /*@Override

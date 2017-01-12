@@ -32,7 +32,7 @@ public class EventoEntity {
         DESCRIPCION("descripcion"),
         IMAGEN("imagen"),
         PRECIO(Constantes.INFO_PRECIO),
-        LOCALIZACION("localizacion"),
+        LOCALIZACION(Constantes.INFO_LOCALIZACION),
         DATAINICI("dataInici"),
         DATAFINAL("dataFinal"),
         LATITUD("latitud"),

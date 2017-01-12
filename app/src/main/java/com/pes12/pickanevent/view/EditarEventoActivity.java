@@ -175,7 +175,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
         //--------------------------------------------------------
 
-        idEvento = getIntent().getExtras().getString("key");
+        idEvento = getIntent().getExtras().getString(Constantes.KEY);
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this,idEvento);
@@ -393,7 +393,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void redireccionarConIdEvento(String idEvento) {
-        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", idEvento));
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra(Constantes.KEY, idEvento));
     }
 
 
@@ -437,6 +437,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void redireccionar() {
-        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", idEvento).putExtra("origen", "crear"));
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra(Constantes.KEY, idEvento).putExtra("origen", "crear"));
     }
 }

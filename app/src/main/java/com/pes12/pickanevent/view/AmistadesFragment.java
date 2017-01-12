@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Info;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Usuario.UsuarioMGR;
@@ -144,7 +145,7 @@ public class AmistadesFragment extends Fragment {
                     UsuarioEntity ge = (UsuarioEntity) pair.getValue();
                     Info aux = new Info(ge.getUrlPhoto(), ge.getNickname(), "", getString(R.string.DEFAULT_NO_SEGUIR));
                     aux.setId((String) pair.getKey());
-                    aux.setTipus("usuari");
+                    aux.setTipus(Constantes.INFO_USUARI);
                     infoAdapter.add(aux);
                 }
             }

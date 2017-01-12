@@ -274,7 +274,7 @@ public class EventoMGR {
                             }
                         }
                     }
-                    else if (aux.equals("localizacion") && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
+                    else if (aux.equals(Constantes.INFO_LOCALIZACION) && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
                         if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
                             if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
                                 Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
@@ -343,7 +343,7 @@ public class EventoMGR {
                             }
                         }
                     }
-                    else if (aux.equals("dia") && evento.getValue(EventoEntity.class).getDataInDate() != null) {
+                    else if (aux.equals(Constantes.INFO_DIA) && evento.getValue(EventoEntity.class).getDataInDate() != null) {
                         long tiempo = evento.getValue(EventoEntity.class).getDataInDate().getTime();
                         if (evento.getValue(EventoEntity.class).getDataFiDate() != null) {
                             long tiempoFinal = evento.getValue(EventoEntity.class).getDataFiDate().getTime();

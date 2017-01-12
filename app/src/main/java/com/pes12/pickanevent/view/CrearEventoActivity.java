@@ -151,7 +151,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
 
-        idGrupo = getIntent().getExtras().getString("key");
+        idGrupo = getIntent().getExtras().getString(Constantes.KEY);
         grupo = (GrupoEntity) getIntent().getExtras().getSerializable("grupo");;
 
         //-------------- GOOGLE PLACES API -------------
@@ -380,7 +380,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
 
     public void redireccionarConIdEvento(String id) {
         addEventoAlGrupo(id);
-        Intent intent = new Intent(CrearEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", id);
+        Intent intent = new Intent(CrearEventoActivity.this, VerInfoEventoActivity.class).putExtra(Constantes.KEY, id);
         intent.putExtra("origen","crear");
         startActivity(intent);
     }

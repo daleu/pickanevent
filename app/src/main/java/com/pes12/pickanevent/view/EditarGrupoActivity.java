@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
-import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
@@ -30,7 +29,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -66,8 +64,8 @@ public class EditarGrupoActivity extends BaseActivity{
 
         Bundle param = getIntent().getExtras();
         //idGrupo = "-K_pzKaJijDFG_eT0Zry";
-       if(param.getString("key")!=null){
-            idGrupo = param.getString("key");
+       if(param.getString(Constantes.KEY)!=null){
+            idGrupo = param.getString(Constantes.KEY);
         }
 
         gMGR = MGRFactory.getInstance().getGrupoMGR();
@@ -216,12 +214,12 @@ public class EditarGrupoActivity extends BaseActivity{
     }
 
     public void editarTags(View view) {
-        startActivity(new Intent(EditarGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(EditarGrupoActivity.this, IndicarTagsActivity.class).putExtra(Constantes.KEY, idGrupo));
     }
 
     public void redireccionar() {
 
-        startActivity(new Intent(EditarGrupoActivity.this, VerInfoGrupoActivity.class).putExtra("key",idGrupo).putExtra("origen", "crear"));
+        startActivity(new Intent(EditarGrupoActivity.this, VerInfoGrupoActivity.class).putExtra(Constantes.KEY,idGrupo).putExtra("origen", "crear"));
 
     }
 }

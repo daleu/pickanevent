@@ -12,6 +12,8 @@ public final class Constantes {
     /* INFO */
     public static final String INFO_SYMBOL_EURO = "€";
     public static final String INFO_EVENTO = "evento";
+    public static final String INFO_USUARI = "usuari";
+    public static final String INFO_SEGUIR = "seguir!";
     public static final String INFO_ASISTIR = "asistir!";
     public static final String INFO_ASISTIR_CAMEL = "Asistir!";
     public static final String INFO_NO_ASISTIR = "No Assistir!";
@@ -21,6 +23,13 @@ public final class Constantes {
     public static final String INFO_PRECIO = "precio";
     public static final String INFO_EDITAR = "Editar";
     public static final String INFO_DIA = "dia";
+
+    /* ACTIONS */
+    public static final String ACTION = "action";
+    public static final String KEY = "key";
+    public static final String ACTION_NOASISTIR = "noassistir";
+    public static final String ACTION_ASISTIR = "assistir";
+    public static final String ACTION_NOSEGUIR = "noseguir";
 
     /* DATABASE */
     public static final String BBDD_IMAGEN_GRUPO_TABLA = "ImagenGrupo";
