@@ -277,7 +277,6 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
                             eMGR = MGRFactory.getInstance().getEventoMGR();
                             eMGR.crearConRedireccion(this,ee,isImagen);
                             //eMGR.crear(ee,isImagen,this);
-                            Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
                             //startActivity(new Intent(CrearEventoActivity.this, MainActivity.class));
                         } else Toast.makeText(this, R.string.ERROR_DIA, Toast.LENGTH_SHORT).show();
               //      }
@@ -387,6 +386,7 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
     }
 
     public void addEventoAlGrupo(String idEvento) {
+        Toast.makeText(this, R.string.DEFAULT_EVENTO_CREADO, Toast.LENGTH_LONG).show();
         Map<String,String> idEventosAux = grupo.getIdEventos();
         if (idEventosAux == null) idEventosAux = new HashMap<String, String>();
         idEventosAux.put(idEvento, nomEvent.getText().toString());
@@ -394,5 +394,9 @@ public class CrearEventoActivity extends BaseActivity implements GoogleApiClient
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         System.out.println("actualitzare el grup: " + idGrupo);
         gMGR.actualizar(idGrupo, grupo);
+    }
+
+    public void errorTituloRepetido() {
+        Toast.makeText(this, R.string.titulo_evento_repetido, Toast.LENGTH_LONG).show();
     }
 }
