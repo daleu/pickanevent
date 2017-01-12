@@ -161,8 +161,7 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
             nuevoGrupo.setIdTagGeneral(ultimoMarcado.getIdTag());
             nuevoGrupo.setIdUsuario(getUsuarioId());
             gMGR.crearConRedireccion(this, nuevoGrupo, isImagen);
-            Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
-                    Toast.LENGTH_SHORT).show();
+
 
         }
     }
@@ -245,11 +244,17 @@ public class CrearGrupoActivity extends BaseActivity implements IEstadoCheckBox 
 
     public void redireccionarConIdGrupo(String idGrupo) {
           /*ASIGNAR grupo al tag principal*/
+        Toast.makeText(CrearGrupoActivity.this, getString(R.string.DEFAULT_GRUPO_CREADO),
+                Toast.LENGTH_SHORT).show();
         LinkedHashMap<String, String> newMap = new LinkedHashMap<>();
         if (ultimoMarcado.getEntity().getIdGrupos() == null) ultimoMarcado.getEntity().setIdGrupos(newMap);
         ultimoMarcado.getEntity().getIdGrupos().put(idGrupo, nuevoGrupo.getNombreGrupo());
         tMGR.actualizar(ultimoMarcado.getIdTag(), ultimoMarcado.getEntity());
         startActivity(new Intent(CrearGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
         //startActivity(new Intent(CrearGrupoActivity.this, VerInfoGrupoActivity.class).putExtra("key", idGrupo));
+    }
+
+    public void errorNombreRepetido() {
+        Toast.makeText(this, R.string.nombre_grupo_repetido, Toast.LENGTH_LONG).show();
     }
 }

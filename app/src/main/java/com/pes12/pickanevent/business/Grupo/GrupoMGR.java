@@ -134,7 +134,7 @@ public class GrupoMGR {
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_GRUPO);
-                    activity.redireccionarConIdGrupo(id);
+                    activity.errorNombreRepetido();
                 } else {
                     DatabaseReference grupo = bdRefGrupos.push();
 
