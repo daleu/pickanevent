@@ -1,7 +1,9 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -172,7 +174,14 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
         boton.setText(texto);
 
-        Picasso.with(this).load(_grupo.getImagen()).into(foto);
+        if (_grupo.getImagen() != null)Picasso.with(this).load(_grupo.getImagen()).into(foto);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
+
+            foto.setImageURI(uri);
+        }
 
         /*String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);

@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -284,7 +285,15 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             }
         });
 
-        Picasso.with(this).load(gEntity.getImagen()).into(imagenevento);
+        if (gEntity.getImagen() != null) Picasso.with(this).load(gEntity.getImagen()).into(imagenevento);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
+
+            imagenevento.setImageURI(uri);
+        }
+
 
         //centrar mapa y poner pinlocation
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);

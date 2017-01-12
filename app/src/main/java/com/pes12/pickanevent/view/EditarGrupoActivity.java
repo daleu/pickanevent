@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -95,9 +96,15 @@ public class EditarGrupoActivity extends BaseActivity{
         //Bitmap imgBM = StringToBitMap(img);
         //foto.setImageBitmap(imgBM);
         //foto.setScaleType(ImageView.ScaleType.FIT_XY);
+        
+        if (_ge.getImagen() != null)Picasso.with(this).load(_ge.getImagen()).into(foto);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
 
-
-        Picasso.with(this).load(_ge.getImagen()).into(foto);
+            foto.setImageURI(uri);
+        }
 
     }
 
