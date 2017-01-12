@@ -33,41 +33,6 @@
                 android:layout_alignParentStart="true" />
 
             <RelativeLayout
-                android:id="@+id/layoutDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/imagenEvento"
-                android:background="#fff">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/DEFAULT_DESCRIPCION"
-                    android:textSize="16sp"
-                    android:textStyle="normal|bold"
-                    android:textColor="#000"
-                    android:id="@+id/textDescripcion"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:textSize="16sp"
-                    android:id="@+id/descripcion"
-                    android:textColor="@color/background_material_dark"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/textDescripcion"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:id="@+id/layoutInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -262,29 +227,6 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textEvento"
-                android:textSize="24sp"
-                android:textStyle="normal|bold"
-                android:textColor="#fff"
-                android:layout_gravity="left"
-                android:layout_marginBottom="10dp"
-                android:layout_above="@+id/textGrupo"
-                android:layout_centerHorizontal="true" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textGrupo"
-                android:textSize="20sp"
-                android:textStyle="normal|bold"
-                android:textColor="#fff"
-                android:layout_gravity="left"
-                android:layout_marginBottom="10dp"
-                android:layout_above="@+id/layoutDescripcion"
-                android:layout_centerHorizontal="true" />
-
             <Button
                 android:text="@string/ELIMINAR_EVENTO"
                 android:layout_width="match_parent"
@@ -339,6 +281,64 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginTop="194dp"
                 android:onClick="asistirNoAsistir" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textEvento"
+                android:textSize="24sp"
+                android:textStyle="normal|bold"
+                android:textColor="#000"
+                android:layout_gravity="left"
+                android:layout_below="@+id/imagenEvento"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="11dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textGrupo"
+                android:textSize="20sp"
+                android:textStyle="normal|bold"
+                android:textColor="#000"
+                android:layout_gravity="left"
+                android:layout_below="@+id/textEvento"
+                android:layout_alignStart="@+id/textEvento" />
+
+            <RelativeLayout
+                android:id="@+id/layoutDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:layout_below="@+id/textGrupo"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/DEFAULT_DESCRIPCION"
+                    android:textSize="16sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="#000"
+                    android:id="@+id/textDescripcion"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="16sp"
+                    android:id="@+id/descripcion"
+                    android:textColor="@color/background_material_dark"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textDescripcion"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
