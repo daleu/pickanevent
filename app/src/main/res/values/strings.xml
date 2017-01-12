@@ -154,6 +154,8 @@
     <string name="mis_eventos">Mis Eventos</string>
     <string name="mis_grupos">Mis Grupos</string>
     <string name="primera_linea">primera linea</string>
+    <string name="nombre_grupo_repetido">Nombre de grupo ya existente</string>
+    <string name="titulo_evento_repetido">Título de evento ya existente</string>
     <string name="registrarme">Registrarme</string>
     <string name="bio">Bio:</string>
     <string name="DEFAULT_NO_CUENTA">¿Todavía no tienes cuenta? ¡Regístrate!</string>

@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
@@ -94,8 +96,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         param = getIntent().getExtras();
         //idEvento = "-K_xhR3NMID-9FN6W4Ym";
-        if(param.getString("key")!=null){
-            idEvento = param.getString("key");
+        if(param.getString(Constantes.KEY)!=null){
+            idEvento = param.getString(Constantes.KEY);
         }
         else {
             Toast.makeText(this, "Ya existe un evento con este nombre", Toast.LENGTH_SHORT).show();
@@ -103,10 +105,10 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         }
 
         if(param.getString("origen")!=null){
-            if(param.getString("origen").equals("crear")) desti = "intent";
-            else desti = "enrere";
+            if(param.getString("origen").equals("crear")) desti = Constantes.INTENT;
+            else desti = Constantes.ENRERE;
         }
-        else desti = "enrere";
+        else desti = Constantes.ENRERE;
 
         //Poner iconos
         Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
@@ -201,15 +203,15 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
         EventoEntity gEntity = ge.get(idEvento);
 
-        if(param.getString("action")!=null){
-            Log.e("action",param.getString("action"));
-            if(param.getString("action").equals("assistir")){
+        if(param.getString(Constantes.ACTION)!=null){
+            Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
+            if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_ASISTIR)){
                 asistirEvento(idEvento,gEntity.getTitulo());
-                Log.e("action",param.getString("action"));
+                Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             }
-            else if(param.getString("action").equals("noassistir")){
+            else if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_NOASISTIR)){
                 cancelarAsistenciaEvento(idEvento);
-                Log.e("action",param.getString("action"));
+                Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             }
         }
 
@@ -262,7 +264,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
         horarios.setText(dIni + " hasta el\n" +dFi);
 
         if(gEntity.getPrecio().equals("")){
-            precio.setText("Gratis");
+            precio.setText(Constantes.INFO_GRATIS);
         }
         else{
             precio.setText(gEntity.getPrecio());
@@ -286,7 +288,15 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             });
         }
 
-        Picasso.with(this).load(gEntity.getImagen()).into(imagenevento);
+        if (gEntity.getImagen() != null) Picasso.with(this).load(gEntity.getImagen()).into(imagenevento);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
+
+            imagenevento.setImageURI(uri);
+        }
+
 
         //centrar mapa y poner pinlocation
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
@@ -324,7 +334,7 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
     }
 
     public void goEditarEvento(View _view) {
-        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra("key",idEvento));
+        startActivity(new Intent(VerInfoEventoActivity.this, EditarEventoActivity.class).putExtra(Constantes.KEY,idEvento));
     }
 
     /*@Override
@@ -345,8 +355,8 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void goBack(View _view) {
-        if(desti.equals("enrere")) onBackPressed();
-        else if (desti.equals("intent"))startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+        if(desti.equals(Constantes.ENRERE)) onBackPressed();
+        else if (desti.equals(Constantes.INTENT))startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
     }
 
     public void asistirNoAsistir(View view) {

@@ -1,12 +1,11 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +19,7 @@ import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
@@ -93,18 +93,18 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
         Bundle param = getIntent().getExtras();
         //idGrupo = "-K_yYxivpF4D7ou8j-fT";
-        if(param.getString("key")!=null){
-            idGrupo = param.getString("key");
+        if(param.getString(Constantes.KEY)!=null){
+            idGrupo = param.getString(Constantes.KEY);
         }
-        if(param.getString("action")!=null){
-            if(param.getString("action")=="noseguir") dejarSeguirGrupo(idGrupo);
+        if(param.getString(Constantes.ACTION)!=null){
+            if(param.getString(Constantes.ACTION)==Constantes.ACTION_NOSEGUIR) dejarSeguirGrupo(idGrupo);
         }
 
         if(param.getString("origen")!=null){
-            if(param.getString("origen").equals("crear")) desti = "intent";
-            else desti = "enrere";
+            if(param.getString("origen").equals("crear")) desti = Constantes.INTENT;
+            else desti = Constantes.ENRERE;
         }
-        else desti = "enrere";
+        else desti = Constantes.ENRERE;
 
         showProgressDialog();
         gMGR.getInfoGrupo(this, idGrupo);
@@ -174,7 +174,14 @@ public class VerInfoGrupoActivity extends BaseActivity {
         }
         boton.setText(texto);
 
-        Picasso.with(this).load(_grupo.getImagen()).into(foto);
+        if (_grupo.getImagen() != null)Picasso.with(this).load(_grupo.getImagen()).into(foto);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
+
+            foto.setImageURI(uri);
+        }
 
         /*String img = _grupo.getImagen();
         Bitmap imgBM = StringToBitMap(img);
@@ -258,22 +265,22 @@ public class VerInfoGrupoActivity extends BaseActivity {
     }*/
 
     public void editarTags(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, IndicarTagsActivity.class).putExtra(Constantes.KEY, idGrupo));
     }
 
     public void editar(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, EditarGrupoActivity.class).putExtra(Constantes.KEY, idGrupo));
     }
 
     public void addEvento(View view) {
-        startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
+        startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra(Constantes.KEY, idGrupo).putExtra("grupo", grupo));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras
     @Override
     public void goBack(View _view) {
-        if(desti.equals("enrere")) onBackPressed();
-        else if (desti.equals("intent"))startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
+        if(desti.equals(Constantes.ENRERE)) onBackPressed();
+        else if (desti.equals(Constantes.INTENT))startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
     }
 
     public void seguirDejarDeSeguir(View view) {

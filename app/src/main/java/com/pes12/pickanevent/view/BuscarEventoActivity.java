@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
@@ -129,7 +130,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                         if (_cs.toString().length() != 0) {
                                             showProgressDialog();
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "localizacion", textoLugarEvento.getText().toString());
+                                                    Constantes.INFO_LOCALIZACION, textoLugarEvento.getText().toString());
                                         } else {
                                             ListView lista = (ListView) findViewById(R.id.lista);
                                             lista.setAdapter(null);
@@ -162,21 +163,21 @@ public class BuscarEventoActivity extends BaseActivity {
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> _parent, View _view, int _position, long _id) {
-                                        if (spinner3.getSelectedItem().toString().equals("Gratis")) {
+                                        if (spinner3.getSelectedItem().toString().equals(Constantes.INFO_GRATIS)) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", "0");
+                                                    Constantes.INFO_PRECIO, "0");
                                         }
                                         else if (spinner3.getSelectedItem().toString().equals("Menos de 50€")) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", "50");
+                                                    Constantes.INFO_PRECIO, "50");
                                         }
                                         else if (spinner3.getSelectedItem().toString().equals("Entre 50€ y 200€")) {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", "50<>200");
+                                                    Constantes.INFO_PRECIO, "50<>200");
                                         }
                                         else {
                                             eMGR.getInfoEventoElegido(BuscarEventoActivity.this,
-                                                    "precio", ">200");
+                                                    Constantes.INFO_PRECIO, ">200");
                                         }
 
 
@@ -205,7 +206,7 @@ public class BuscarEventoActivity extends BaseActivity {
                                         calendar.setVisibility(View.INVISIBLE);
                                         Date d = new Date(year-1900, month, day);
                                         long l = d.getTime();
-                                        eMGR.getInfoEventoElegido(BuscarEventoActivity.this, "dia", Long.toString(l));
+                                        eMGR.getInfoEventoElegido(BuscarEventoActivity.this, Constantes.INFO_DIA, Long.toString(l));
                                     }
                                 });
 

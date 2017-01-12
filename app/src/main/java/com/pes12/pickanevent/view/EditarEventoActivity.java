@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -177,7 +178,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
 
         //--------------------------------------------------------
 
-        idEvento = getIntent().getExtras().getString("key");
+        idEvento = getIntent().getExtras().getString(Constantes.KEY);
 
         eMGR = MGRFactory.getInstance().getEventoMGR();
         eMGR.getInfoEventoEditar(this,idEvento);
@@ -235,7 +236,14 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
         localitzacio.setText(evento.getLocalizacion());
         url.setText(evento.getWebpage());
 
-        Picasso.with(this).load(evento.getImagen()).into(foto);
+        if (evento.getImagen() != null)Picasso.with(this).load(evento.getImagen()).into(foto);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
+
+            foto.setImageURI(uri);
+        }
 
     }
 
@@ -398,7 +406,7 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void redireccionarConIdEvento(String idEvento) {
-        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", idEvento));
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra(Constantes.KEY, idEvento));
     }
 
 
@@ -442,6 +450,6 @@ public class EditarEventoActivity extends BaseActivity implements GoogleApiClien
     }
 
     public void redireccionar() {
-        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra("key", idEvento).putExtra("origen", "crear"));
+        startActivity(new Intent(EditarEventoActivity.this, VerInfoEventoActivity.class).putExtra(Constantes.KEY, idEvento).putExtra("origen", "crear"));
     }
 }

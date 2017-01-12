@@ -6,6 +6,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.persistence.entity.Grupo.GrupoEntity;
@@ -24,7 +25,7 @@ public class ImagenGrupoMGR {
 
     public void inicializarDatabase(FirebaseStorage _storage) {
 
-        bdRefImagenes = _storage.getReference("ImagenGrupo");
+        bdRefImagenes = _storage.getReference(Constantes.BBDD_IMAGEN_GRUPO_TABLA);
 
     }
 

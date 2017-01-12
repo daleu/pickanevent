@@ -1,10 +1,7 @@
 package com.pes12.pickanevent.business.Usuario;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
-import android.util.Base64;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -172,7 +169,7 @@ public class UsuarioMGR {
                 for (DataSnapshot usuario : snapshot.getChildren()) {
                     System.out.println(usuario.getKey());
                     // map.put(usuario.getKey(), usuario.getValue(UsuarioEntity.class));
-                    n.add(new Info(null, usuario.getKey(), usuario.getValue(UsuarioEntity.class).getNickname(), "seguir!"));
+                    n.add(new Info(null, usuario.getKey(), usuario.getValue(UsuarioEntity.class).getNickname(), Constantes.INFO_SEGUIR));
 
                 }
                 activity.printNicknames(n);
@@ -206,16 +203,16 @@ public class UsuarioMGR {
                         if (usr.getNickname().toLowerCase().contains(aux)) {
                             if (usr.getEmail() != null) {
                                 Info aux = new Info(usr.getUrlPhoto(), usr.getNickname(),
-                                        usr.getEmail(), "seguir!");
+                                        usr.getEmail(), Constantes.INFO_SEGUIR);
                                 aux.setId((String) usuario.getKey());
-                                aux.setTipus("usuari");
+                                aux.setTipus(Constantes.INFO_USUARI);
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             } else {
                                 Info aux = new Info(usr.getUrlPhoto(), usr.getNickname(),
-                                        null, "seguir!");
+                                        null, Constantes.INFO_SEGUIR);
                                 aux.setId((String) usuario.getKey());
-                                aux.setTipus("usuari");
+                                aux.setTipus(Constantes.INFO_USUARI);
                                 aux.setBotonVisible(false);
                                 n.add(aux);
                             }

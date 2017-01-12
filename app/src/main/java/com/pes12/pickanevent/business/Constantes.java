@@ -6,6 +6,36 @@ package com.pes12.pickanevent.business;
 
 public final class Constantes {
 
+    public static final String ENRERE = "enrere";
+    public static final String INTENT = "intent";
+
+    /* INFO */
+    public static final String INFO_SYMBOL_EURO = "€";
+    public static final String INFO_EVENTO = "evento";
+    public static final String INFO_USUARI = "usuari";
+    public static final String INFO_SEGUIR = "seguir!";
+    public static final String INFO_ASISTIR = "asistir!";
+    public static final String INFO_ASISTIR_CAMEL = "Asistir!";
+    public static final String INFO_NO_ASISTIR = "No Assistir!";
+    public static final String INFO_GRUPO = "grup";
+    public static final String INFO_GRATIS = "Gratis";
+    public static final String INFO_LOCALIZACION = "localizacion";
+    public static final String INFO_PRECIO = "precio";
+    public static final String INFO_EDITAR = "Editar";
+    public static final String INFO_DIA = "dia";
+
+    /* ACTIONS */
+    public static final String ACTION = "action";
+    public static final String KEY = "key";
+    public static final String ACTION_NOASISTIR = "noassistir";
+    public static final String ACTION_ASISTIR = "assistir";
+    public static final String ACTION_NOSEGUIR = "noseguir";
+
+    /* DATABASE */
+    public static final String BBDD_IMAGEN_GRUPO_TABLA = "ImagenGrupo";
+    public static final String BBDD_IMAGEN_EVENTO_TABLA = "ImagenEvento";
+    public static final String BBDD_IMAGEN_PERFIL_USUARIO = "ImagenPerfilUsuario";
+
     /*URL/PATHs */
     public static final String SELECT_ALL_IMAGES = "image/*";
 

@@ -1,6 +1,7 @@
 package com.pes12.pickanevent.persistence.entity.Evento;
 
 import com.google.firebase.database.Exclude;
+import com.pes12.pickanevent.business.Constantes;
 
 import java.util.Date;
 
@@ -30,8 +31,8 @@ public class EventoEntity {
         TITULO("titulo"),
         DESCRIPCION("descripcion"),
         IMAGEN("imagen"),
-        PRECIO("precio"),
-        LOCALIZACION("localizacion"),
+        PRECIO(Constantes.INFO_PRECIO),
+        LOCALIZACION(Constantes.INFO_LOCALIZACION),
         DATAINICI("dataInici"),
         DATAFINAL("dataFinal"),
         LATITUD("latitud"),

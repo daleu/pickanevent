@@ -168,7 +168,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutInfo"
                 android:background="#fff"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -222,46 +223,9 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/layoutAssist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layoutMap"
-                android:background="#fff"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <Button
-                    android:text="@string/DEFAULT_ASSISTIR"
-                    android:id="@+id/buttonAssistir"
-                    android:background="@drawable/botton_application"
-                    android:layout_width="120dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="30dp"
-                    android:onClick="asistirEvento"
-                    android:radius="20dip"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/DEFAULT_ASISTENCIA"
-                    android:textSize="16sp"
-                    android:textStyle="normal|bold"
-                    android:textColor="#000"
-                    android:id="@+id/textAssistencia"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layoutAssist"
                 android:id="@+id/layoutShare"
                 android:background="#fff"
                 android:layout_marginBottom="10dp">
