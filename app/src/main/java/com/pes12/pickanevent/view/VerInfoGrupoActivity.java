@@ -45,9 +45,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
     private ImageView foto;
     private ListView eventos;
     private Button boton;
-    private Button editarTags;
-    private Button editar;
-    private Button addEvento;
     private RelativeLayout layoutEditar;
     private RelativeLayout layoutTags;
     private RelativeLayout layoutCrearEvento;
@@ -79,9 +76,6 @@ public class VerInfoGrupoActivity extends BaseActivity {
         eMGR = MGRFactory.getInstance().getEventoMGR();
         gMGR = MGRFactory.getInstance().getGrupoMGR();
         tMGR = MGRFactory.getInstance().getTagMGR();
-        editarTags = (Button) findViewById(R.id.editarTags);
-        editar = (Button) findViewById(R.id.editar);
-        addEvento = (Button) findViewById(R.id.addEvento);
         layoutCrearEvento = (RelativeLayout) findViewById(R.id.layoutCrearEvento);
         layoutEditar = (RelativeLayout) findViewById(R.id.layoutEditar);
         layoutTags = (RelativeLayout) findViewById(R.id.layoutEditarTags);
@@ -267,6 +261,12 @@ public class VerInfoGrupoActivity extends BaseActivity {
 
     public void addEvento(View view) {
         startActivity(new Intent(VerInfoGrupoActivity.this, CrearEventoActivity.class).putExtra("key", idGrupo).putExtra("grupo", grupo));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(desti.equals("enrere")) super.onBackPressed();
+        else if (desti.equals("intent"))startActivity(new Intent(VerInfoGrupoActivity.this, NavigationDrawer.class));
     }
 
     //se tiene que poner para evitar que al volver de la edicion de tags se quede bloqueado si poder volver hacia atras

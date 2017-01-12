@@ -29,6 +29,7 @@ import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -452,7 +453,7 @@ public class EventoMGR {
                     if (idS.containsKey(evento.getKey())) {
                         String textoBoton = "Asistir!";
                         if (cm) textoBoton = "Editar";
-                        Info aux = new Info(null, e.getTitulo(), "horariii", textoBoton);
+                        Info aux = new Info(e.getImagen(), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), textoBoton);
                         aux.setTipus("evento");
                         aux.setId((String) evento.getKey());
                         aux.setTipus("evento");
@@ -542,6 +543,14 @@ public class EventoMGR {
                 return this;
             }
         }.setActivity(_activity, _idS));
+    }
+
+    public String EventDate(Date ini, Date fi){
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String inici = sdfDate.format(ini);
+        String fina = sdfDate.format(fi);
+        String data = inici + "h  " + fina + "h";
+        return data;
     }
 
     public void getEventosForFragment(Fragment _activity, Map<String, String> _idS) {

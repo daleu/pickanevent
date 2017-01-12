@@ -54,10 +54,6 @@ import static com.pes12.pickanevent.view.CrearEventoActivity.GALERIA_REQUEST;
 
 public class PerfilUsuarioActivity extends BaseActivity {
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "PUlLyuMrqQzt61r7dmHgy6b6W";
-    private static final String TWITTER_SECRET = "EoOyglsIzCZZJ4ghHBU2ZoLgUduoPEGYuSy1mZZmrI7IjlVigQ";
-
     EditText nombre;
     EditText bio;
     TextView correo;
@@ -70,9 +66,6 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
     FirebaseUser current;
 
-    //Twitter
-    private TwitterLoginButton loginButton;
-    private Button logout;
     private Button borrarCuenta;
 
 
@@ -80,8 +73,6 @@ public class PerfilUsuarioActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig),new TweetComposer());
         ImageButton searchImage = (ImageButton) findViewById(R.id.searchact);
         if (searchImage!=null && getUsuarioActual().getCm()) searchImage.setVisibility(View.INVISIBLE);
 
@@ -90,8 +81,6 @@ public class PerfilUsuarioActivity extends BaseActivity {
         foto = (ImageView) findViewById(R.id.imagen);
         correo = (TextView) findViewById(R.id.correo);
         bio = (EditText) findViewById(R.id.bio);
-        loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
-        logout = (Button) findViewById(R.id.twitter_logout_button);
         ///////////////////////////////////////////////////////////////////////
         current = getAuth().getCurrentUser();
         uMGR = MGRFactory.getInstance().getUsuarioMGR();
@@ -101,30 +90,6 @@ public class PerfilUsuarioActivity extends BaseActivity {
 
         mostrarInfoUsuario();
 
-        if (Twitter.getInstance().core.getSessionManager().getActiveSession() != null) {
-            loginButton.setVisibility(View.GONE);
-            logout.setVisibility(View.VISIBLE);
-        }
-
-        loginButton.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                // The TwitterSession is also available through:
-                // Twitter.getInstance().core.getSessionManager().getActiveSession()
-                TwitterSession session = result.data;
-                // TODO: Remove toast and use the TwitterSession's userID
-                // with your app's user model
-                String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                loginButton.setVisibility(View.GONE);
-                logout.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void failure(TwitterException exception) {
-                Log.d("TwitterKit", "Login with Twitter failure", exception);
-            }
-        });
 
         //Boton eliminar cuenta
         borrarCuenta = (Button) findViewById(R.id.borrarCuenta);
@@ -163,32 +128,6 @@ public class PerfilUsuarioActivity extends BaseActivity {
                 });
             }
         });
-    }
-
-    public void logoutTwitter(View _view) {
-        TwitterSession twitterSession = TwitterCore.getInstance().getSessionManager().getActiveSession();
-        if (twitterSession != null) {
-            ClearCookies(getApplicationContext());
-            Twitter.getSessionManager().clearActiveSession();
-            Twitter.logOut();
-            loginButton.setVisibility(View.VISIBLE);
-            logout.setVisibility(View.GONE);
-        }
-    }
-
-    public static void ClearCookies(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            CookieManager.getInstance().removeAllCookies(null);
-            CookieManager.getInstance().flush();
-        } else {
-            CookieSyncManager cookieSyncMngr=CookieSyncManager.createInstance(context);
-            cookieSyncMngr.startSync();
-            CookieManager cookieManager=CookieManager.getInstance();
-            cookieManager.removeAllCookie();
-            cookieManager.removeSessionCookie();
-            cookieSyncMngr.stopSync();
-            cookieSyncMngr.sync();
-        }
     }
 
     public void mostrarInfoUsuario() {
@@ -261,7 +200,6 @@ public class PerfilUsuarioActivity extends BaseActivity {
                 }
             }
         }
-        loginButton.onActivityResult(_requestCode, _resultCode, _data);
     }
 
     public void editarPreferencias (View view) {

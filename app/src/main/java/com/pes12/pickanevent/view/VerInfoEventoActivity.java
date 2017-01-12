@@ -1,16 +1,20 @@
 package com.pes12.pickanevent.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -339,6 +343,12 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
 
 
     }*/
+
+    @Override
+    public void onBackPressed() {
+        if(desti.equals("enrere")) super.onBackPressed();
+        else if (desti.equals("intent"))startActivity(new Intent(VerInfoEventoActivity.this, NavigationDrawer.class));
+    }
 
     @Override
     public void goBack(View _view) {
