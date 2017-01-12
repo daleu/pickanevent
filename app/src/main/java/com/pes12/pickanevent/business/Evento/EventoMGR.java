@@ -93,7 +93,7 @@ public class EventoMGR {
             public void onDataChange(DataSnapshot _snapshot) {
                 if (_snapshot.getValue() != null) {
                     System.out.println(Constantes.ERROR_EXISTE_GRUPO);
-                    activity.redireccionarConIdEvento(idEvento);
+                    activity.errorTituloRepetido();
                 } else {
                     DatabaseReference evento = bdRefEventos.push();
                     evento.setValue(ent);
