@@ -14,145 +14,153 @@
         layout="@layout/toolbar"
         ></include>
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="@string/ESCRIBE_NOMBRE_EVENTO"
-        android:textColorHint="#8a939d"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textoNombreEvento"
-        android:background="#eceff1"
-        android:textStyle="normal"
-        android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar" >
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="@string/ESCRIBE_LUGAR_EVENTO"
-        android:textColorHint="#8a939d"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textoLugarEvento"
-        android:background="#eceff1"
-        android:textStyle="normal"
-        android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPersonName"
+            android:hint="@string/ESCRIBE_NOMBRE_EVENTO"
+            android:textColorHint="#8a939d"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="35dp"
+            android:id="@+id/textoNombreEvento"
+            android:background="#eceff1"
+            android:textStyle="normal"
+            android:layout_below="@+id/spinner"
+            android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="@string/ESCRIBE_NOMBRE_USUARIO"
-        android:textColorHint="#8a939d"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textoUsuario"
-        android:background="#eceff1"
-        android:textStyle="normal"
-        android:layout_below="@+id/spinner2"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPersonName"
+            android:hint="@string/ESCRIBE_LUGAR_EVENTO"
+            android:textColorHint="#8a939d"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="35dp"
+            android:id="@+id/textoLugarEvento"
+            android:background="#eceff1"
+            android:textStyle="normal"
+            android:layout_below="@+id/spinner"
+            android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="@string/ESCRIBE_NOMBRE_GRUPO"
-        android:textColorHint="#8a939d"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textoGrupo"
-        android:background="#eceff1"
-        android:textStyle="normal"
-        android:layout_below="@+id/spinner2"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPersonName"
+            android:hint="@string/ESCRIBE_NOMBRE_USUARIO"
+            android:textColorHint="#8a939d"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="35dp"
+            android:id="@+id/textoUsuario"
+            android:background="#eceff1"
+            android:textStyle="normal"
+            android:layout_below="@+id/spinner2"
+            android:layout_centerHorizontal="true" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
-        android:id="@+id/spinner"
-        android:background="#008040"
-        android:spinnerMode="dropdown"
-        android:entries="@array/eventos_array"
-        android:layout_below="@+id/spinner2"
-        android:layout_alignParentStart="true" />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPersonName"
+            android:hint="@string/ESCRIBE_NOMBRE_GRUPO"
+            android:textColorHint="#8a939d"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="35dp"
+            android:id="@+id/textoGrupo"
+            android:background="#eceff1"
+            android:textStyle="normal"
+            android:layout_below="@+id/spinner2"
+            android:layout_centerHorizontal="true" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="0dp"
-        android:id="@+id/spinner2"
-        android:background="#008040"
-        android:spinnerMode="dropdown"
-        android:entries="@array/busqueda_array"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:id="@+id/spinner"
+            android:background="#008040"
+            android:spinnerMode="dropdown"
+            android:entries="@array/eventos_array"
+            android:layout_below="@+id/spinner2"
+            android:layout_alignParentStart="true" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
-        android:id="@+id/spinner3"
-        android:background="#008040"
-        android:spinnerMode="dropdown"
-        android:entries="@array/precio_array"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentStart="true" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:id="@+id/spinner2"
+            android:background="#008040"
+            android:spinnerMode="dropdown"
+            android:entries="@array/busqueda_array"
+            android:layout_alignParentStart="true" />
 
-    <ListView
-        android:id="@+id/lista"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="7.0sp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="7dp"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:id="@+id/spinner3"
+            android:background="#008040"
+            android:spinnerMode="dropdown"
+            android:entries="@array/precio_array"
+            android:layout_below="@+id/spinner"
+            android:layout_alignParentStart="true" />
 
-    <ListView
-        android:id="@+id/lista2"
-        android:layout_width="match_parent"
-        android:layout_height="265dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="7.0sp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="7dp"/>
+        <ListView
+            android:id="@+id/lista"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="7.0sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_below="@+id/textoDiaEvento"/>
 
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/calendar"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/spinner3"
-        android:layout_marginTop="35dp"
-        android:background="#FFF"/>
+        <ListView
+            android:id="@+id/lista2"
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="7.0sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_below="@+id/textoDiaEvento"/>
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:inputType="textPersonName"
-        android:hint="@string/ESCRIBE_DIA_EVENTO"
-        android:textColorHint="#8a939d"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textoDiaEvento"
-        android:background="#eceff1"
-        android:textStyle="normal"
-        android:layout_below="@+id/spinner"
-        android:layout_centerHorizontal="true" />
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/calendar"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/spinner3"
+            android:layout_marginTop="35dp"
+            android:background="#FFF"/>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPersonName"
+            android:hint="@string/ESCRIBE_DIA_EVENTO"
+            android:textColorHint="#8a939d"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="35dp"
+            android:id="@+id/textoDiaEvento"
+            android:background="#eceff1"
+            android:textStyle="normal"
+            android:layout_below="@+id/spinner"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
