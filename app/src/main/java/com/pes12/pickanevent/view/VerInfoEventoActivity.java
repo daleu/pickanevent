@@ -207,10 +207,12 @@ public class VerInfoEventoActivity extends BaseActivity implements OnMapReadyCal
             Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_ASISTIR)){
                 asistirEvento(idEvento,gEntity.getTitulo());
+                boton.setText(getString(R.string.DEFAULT_NO_ASSISTIR));
                 Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             }
             else if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_NOASISTIR)){
                 cancelarAsistenciaEvento(idEvento);
+                boton.setText(getString(R.string.DEFAULT_ASSISTIR));
                 Log.e(Constantes.ACTION,param.getString(Constantes.ACTION));
             }
         }

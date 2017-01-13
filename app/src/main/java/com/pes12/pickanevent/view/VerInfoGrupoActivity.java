@@ -91,7 +91,9 @@ public class VerInfoGrupoActivity extends BaseActivity {
             idGrupo = param.getString(Constantes.KEY);
         }
         if(param.getString(Constantes.ACTION)!=null){
-            if(param.getString(Constantes.ACTION)==Constantes.ACTION_NOSEGUIR) dejarSeguirGrupo(idGrupo);
+            if(param.getString(Constantes.ACTION).equals(Constantes.ACTION_NOSEGUIR)){
+                dejarSeguirGrupo(idGrupo);
+            }
         }
 
         if(param.getString("origen")!=null){

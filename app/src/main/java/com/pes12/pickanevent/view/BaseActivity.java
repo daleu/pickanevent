@@ -171,7 +171,7 @@ public class BaseActivity extends AppCompatActivity {
 
         uMGR.actualizar(_idSeguidor, _seguidor);
 
-        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + _nicknameSeguido, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + " " + _nicknameSeguido, Toast.LENGTH_LONG).show();
     }
 
     public void dejarSeguirUsuario(String _idSeguido) {
@@ -210,7 +210,7 @@ public class BaseActivity extends AppCompatActivity {
 
         uMGR.actualizar(_idSeguidor, _seguidor);
 
-        Toast.makeText(this, getString(R.string.SIGUIENDO_A) + _nombreGrupo, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.SIGUIENDO_A)+" " + _nombreGrupo, Toast.LENGTH_LONG).show();
     }
 
     public void dejarSeguirGrupo(String _idGrupo) {
