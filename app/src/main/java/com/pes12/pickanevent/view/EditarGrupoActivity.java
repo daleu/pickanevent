@@ -1,5 +1,6 @@
 package com.pes12.pickanevent.view;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,7 +19,6 @@ import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.Constantes;
-import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.MGRFactory;
 import com.pes12.pickanevent.business.Tag.TagMGR;
@@ -30,7 +30,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -66,8 +65,8 @@ public class EditarGrupoActivity extends BaseActivity{
 
         Bundle param = getIntent().getExtras();
         //idGrupo = "-K_pzKaJijDFG_eT0Zry";
-       if(param.getString("key")!=null){
-            idGrupo = param.getString("key");
+       if(param.getString(Constantes.KEY)!=null){
+            idGrupo = param.getString(Constantes.KEY);
         }
 
         gMGR = MGRFactory.getInstance().getGrupoMGR();
@@ -95,9 +94,15 @@ public class EditarGrupoActivity extends BaseActivity{
         //Bitmap imgBM = StringToBitMap(img);
         //foto.setImageBitmap(imgBM);
         //foto.setScaleType(ImageView.ScaleType.FIT_XY);
+        
+        if (_ge.getImagen() != null)Picasso.with(this).load(_ge.getImagen()).into(foto);
+        else {
+            Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(R.drawable.photo_not_available)
+                    + '/' + getResources().getResourceTypeName(R.drawable.photo_not_available) + '/' + getResources().getResourceEntryName(R.drawable.photo_not_available) );
 
-
-        Picasso.with(this).load(_ge.getImagen()).into(foto);
+            foto.setImageURI(uri);
+        }
 
     }
 
@@ -216,12 +221,12 @@ public class EditarGrupoActivity extends BaseActivity{
     }
 
     public void editarTags(View view) {
-        startActivity(new Intent(EditarGrupoActivity.this, IndicarTagsActivity.class).putExtra("key", idGrupo));
+        startActivity(new Intent(EditarGrupoActivity.this, IndicarTagsActivity.class).putExtra(Constantes.KEY, idGrupo));
     }
 
     public void redireccionar() {
 
-        startActivity(new Intent(EditarGrupoActivity.this, VerInfoGrupoActivity.class).putExtra("key",idGrupo).putExtra("origen", "crear"));
+        startActivity(new Intent(EditarGrupoActivity.this, VerInfoGrupoActivity.class).putExtra(Constantes.KEY,idGrupo).putExtra("origen", "crear"));
 
     }
 }

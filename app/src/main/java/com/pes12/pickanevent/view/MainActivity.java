@@ -7,13 +7,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes12.pickanevent.R;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.persistence.entity.Usuario.UsuarioEntity;
 
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.tweetcomposer.TweetComposer;
-
-import io.fabric.sdk.android.Fabric;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
@@ -125,7 +121,7 @@ BLOQUE DE TEST
     }
 
     public void goCrearEvento(View _view) {
-        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class).putExtra("key", "-KZlbhl-cvEnRUXKORqx"));
+        startActivity(new Intent(MainActivity.this, CrearEventoActivity.class).putExtra(Constantes.KEY, "-KZlbhl-cvEnRUXKORqx"));
     }
 
     public void goEditarEvento(View _view) {
@@ -190,7 +186,7 @@ BLOQUE DE TEST
     }
 
     public void goEditarGrupo(View _view) {
-        startActivity(new Intent(MainActivity.this, EditarGrupoActivity.class).putExtra("key", "-K_uA6od-hLX4ST5MOPa"));
+        startActivity(new Intent(MainActivity.this, EditarGrupoActivity.class).putExtra(Constantes.KEY, "-K_uA6od-hLX4ST5MOPa"));
     }
 
     public void goBuscarEvento(View _view) {
@@ -199,7 +195,7 @@ BLOQUE DE TEST
 
     public void goIndicarTags(View _view) {
         //extra per simular el cas CM
-        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra("key", "grp0-1480690194851"));
+        startActivity(new Intent(MainActivity.this, IndicarTagsActivity.class).putExtra(Constantes.KEY, "grp0-1480690194851"));
     }
 
     public void goVerMiPerfil(View _view) {

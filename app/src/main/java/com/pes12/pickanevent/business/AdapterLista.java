@@ -2,8 +2,8 @@ package com.pes12.pickanevent.business;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pes12.pickanevent.R;
-import com.pes12.pickanevent.view.BaseActivity;
 import com.pes12.pickanevent.view.EditarEventoActivity;
 import com.pes12.pickanevent.view.EditarGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoEventoActivity;
 import com.pes12.pickanevent.view.VerInfoGrupoActivity;
 import com.pes12.pickanevent.view.VerInfoOtroUsuarioActivity;
 import com.squareup.picasso.Picasso;
-
-import android.content.Context;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -88,7 +84,10 @@ public class AdapterLista extends ArrayAdapter<Info> {
         }
 
         final Info componentes = getItem(_position);
-        Picasso.with(context).load(componentes.img).into(holder.img);
+        if(componentes.img == null){
+            holder.img.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.photo_not_available));
+        }
+        else Picasso.with(context).load(componentes.img).into(holder.img);
        // holder.img.setImageBitmap(componentes.img);
         holder.linea1.setText(componentes.primeraLinea);
         holder.linea2.setText(componentes.segonaLinea);
@@ -109,19 +108,19 @@ public class AdapterLista extends ArrayAdapter<Info> {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Log.e("tipus",componentes.tipus);
-                if(componentes.tipus=="evento") {
+                if(componentes.tipus==Constantes.INFO_EVENTO) {
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="usuari") {
+                else if(componentes.tipus==Constantes.INFO_USUARI) {
                     Intent intent = new Intent(context, VerInfoOtroUsuarioActivity.class);
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="grup") {
+                else if(componentes.tipus==Constantes.INFO_GRUPO) {
                     Intent intent = new Intent(context, VerInfoGrupoActivity.class);
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
             }
@@ -131,40 +130,40 @@ public class AdapterLista extends ArrayAdapter<Info> {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 //Log.e("tipus",componentes.tipus);
-                Log.e("action",aux);
+                Log.e(Constantes.ACTION,aux);
                 Log.e("teoric", getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO));
-                if(componentes.tipus=="evento" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT
+                if(componentes.tipus==Constantes.INFO_EVENTO && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))) { //ASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("action","noassistir");
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.ACTION,Constantes.ACTION_NOASISTIR);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="evento" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_EVENTO))){//EDITAR GRUP
+                else if(componentes.tipus==Constantes.INFO_EVENTO && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_EVENTO))){//EDITAR GRUP
                     Intent intent = new Intent(context, EditarEventoActivity.class);
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="evento" && !aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))){//DEIXAR DASSISTIR EVENT
+                else if(componentes.tipus==Constantes.INFO_EVENTO && !aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_ASSISTIR))){//DEIXAR DASSISTIR EVENT
                     Intent intent = new Intent(context, VerInfoEventoActivity.class);
-                    intent.putExtra("action","assistir");
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.ACTION,Constantes.ACTION_ASISTIR);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="usuari") {
+                else if(componentes.tipus==Constantes.INFO_USUARI) {
                     Intent intent = new Intent(context, VerInfoOtroUsuarioActivity.class);
-                    intent.putExtra("action","noseguir");
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.ACTION,Constantes.ACTION_NOSEGUIR);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="grup" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_SEGUIR))) {
+                else if(componentes.tipus==Constantes.INFO_GRUPO && aux.equals(getContext().getResources().getString(R.string.DEFAULT_NO_SEGUIR))) {
                     Intent intent = new Intent(context, VerInfoGrupoActivity.class);
-                    intent.putExtra("action","noseguir");
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.ACTION,Constantes.ACTION_NOSEGUIR);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
-                else if(componentes.tipus=="grup" && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO))) {
+                else if(componentes.tipus==Constantes.INFO_GRUPO && aux.equals(getContext().getResources().getString(R.string.DEFAULT_EDITAR_GRUPO))) {
                     Intent intent = new Intent(context, EditarGrupoActivity.class);
-                    intent.putExtra("key", componentes.id);
+                    intent.putExtra(Constantes.KEY, componentes.id);
                     context.startActivity(intent);
                 }
             }

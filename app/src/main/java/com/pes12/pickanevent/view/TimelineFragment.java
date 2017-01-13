@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.pes12.pickanevent.R;
 import com.pes12.pickanevent.business.AdapterLista;
+import com.pes12.pickanevent.business.Constantes;
 import com.pes12.pickanevent.business.Evento.EventoMGR;
 import com.pes12.pickanevent.business.Grupo.GrupoMGR;
 import com.pes12.pickanevent.business.Info;
@@ -181,7 +182,7 @@ public class TimelineFragment extends Fragment {
                 else aux = new Info(e.getImagen(), e.getTitulo(), EventDate(e.getDataInDate(),e.getDataFiDate()), getString(R.string.DEFAULT_ASSISTIR));
             }
             aux.setId((String)pair.getKey());
-            aux.setTipus("evento");
+            aux.setTipus(Constantes.INFO_EVENTO);
             infoAdapter.add(aux);
         }
 

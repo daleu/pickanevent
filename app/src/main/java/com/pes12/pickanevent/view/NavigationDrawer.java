@@ -92,6 +92,9 @@ public class NavigationDrawer extends BaseActivity
             nav_Menu.findItem(R.id.cre_gru).setVisible(false);
         }
 
+
+
+
         Fragment fragment = null;
         Class fragmentClass = null;
         fragmentClass = TimelineFragment.class;
