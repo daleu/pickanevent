@@ -254,89 +254,63 @@ public class EventoMGR {
             @Override
             public void onDataChange(DataSnapshot _dataSnapshot) {
 
-                for (DataSnapshot evento : _dataSnapshot.getChildren()) {
-                    if (aux.equals(EventoEntity.ATTRIBUTES.TITULO.getValue()) && evento.getValue(EventoEntity.class).getTitulo() != null) {
-                        if (evento.getValue(EventoEntity.class).getTitulo().toLowerCase().contains(aux2)) {
-                            if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
-                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                aux.setId((String) evento.getKey());
-                                aux.setTipus(Constantes.INFO_EVENTO);
-                                aux.setBotonVisible(false);
-                                n.add(aux);
-                            }
-                            else {
-                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
-                                aux.setId((String) evento.getKey());
-                                aux.setTipus(Constantes.INFO_EVENTO);
-                                aux.setBotonVisible(false);
-                                n.add(aux);
-                            }
+                for (DataSnapshot e : _dataSnapshot.getChildren()) {
+                    EventoEntity evento = e.getValue(EventoEntity.class);
+                    if (aux.equals(EventoEntity.ATTRIBUTES.TITULO.getValue()) && evento.getTitulo() != null) {
+                        if (evento.getTitulo().toLowerCase().contains(aux2)) {
+                            Info aux = new Info(evento.getImagen(), evento.getTitulo(),
+                                    EventDate(evento.getDataInDate(),evento.getDataFiDate()), Constantes.INFO_ASISTIR);
+                            aux.setId((String) e.getKey());
+                            aux.setTipus(Constantes.INFO_EVENTO);
+                            aux.setBotonVisible(false);
+                            n.add(aux);
                         }
                     }
-                    else if (aux.equals(Constantes.INFO_LOCALIZACION) && evento.getValue(EventoEntity.class).getLocalizacion() != null) {
-                        if (evento.getValue(EventoEntity.class).getLocalizacion().toLowerCase().contains(aux2)) {
-                            if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
-                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                aux.setId((String) evento.getKey());
-                                aux.setTipus(Constantes.INFO_EVENTO);
-                                aux.setBotonVisible(false);
-                                n.add(aux);
-                            }
-                            else {
-                                Info aux = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
-                                aux.setId((String) evento.getKey());
-                                aux.setTipus(Constantes.INFO_EVENTO);
-                                aux.setBotonVisible(false);
-                                n.add(aux);
-                            }
+                    else if (aux.equals(Constantes.INFO_LOCALIZACION) && evento.getLocalizacion() != null) {
+                        if (evento.getLocalizacion().toLowerCase().contains(aux2)) {
+                            Info aux = new Info(evento.getImagen(), evento.getTitulo(),
+                                    evento.getLocalizacion(), Constantes.INFO_ASISTIR);
+                            aux.setId((String) e.getKey());
+                            aux.setTipus(Constantes.INFO_EVENTO);
+                            aux.setBotonVisible(false);
+                            n.add(aux);
                         }
                     }
                     else if (aux.equals(Constantes.INFO_PRECIO)) {
-                        String precio = evento.getValue(EventoEntity.class).getPrecio();
+                        String precio = evento.getPrecio();
                         Double aux = null;
-                        if (precio != null) aux = Double.parseDouble(precio);
-                        if (precio.equals("") && _val.equals("0")) {
-                            Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
+                        if (!precio.equals("")) aux = Double.parseDouble(precio);
+                        else aux = 0.0;
+                        if (aux == 0.0 && _val.equals("0")) {
+                            Info auxEvento = new Info(evento.getImagen(), evento.getTitulo(),
                                     Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
-                            auxEvento.setId((String) evento.getKey());
+                            auxEvento.setId((String) e.getKey());
                             auxEvento.setTipus(Constantes.INFO_EVENTO);
                             auxEvento.setBotonVisible(false);
                             n.add(auxEvento);
                         }
-                        if (precio != null) {
-                            if (precio.equals(_val) && _val.equals("0")) {
-                                Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                        Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
-                                auxEvento.setId((String) evento.getKey());
-                                auxEvento.setTipus(Constantes.INFO_EVENTO);
-                                auxEvento.setBotonVisible(false);
-                                n.add(auxEvento);
-                            }
-                            if(_val.equals("50") && aux < 50){
-                                Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
+                        if (aux > 0.0) {
+                            if(_val.equals("50") && aux < 50.0){
+                                Info auxEvento = new Info(evento.getImagen(), evento.getTitulo(),
                                         precio+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                auxEvento.setId((String) evento.getKey());
+                                auxEvento.setId((String) e.getKey());
                                 auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if(_val.equals("50<>200") && 50<=aux && aux<=200) {
-                                Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
+                                Info auxEvento = new Info(evento.getImagen(), evento.getTitulo(),
                                         precio+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                auxEvento.setId((String) evento.getKey());
+                                auxEvento.setId((String) e.getKey());
                                 auxEvento.setTipus(Constantes.INFO_EVENTO);
                                 auxEvento.setBotonVisible(false);
                                 n.add(auxEvento);
                             }
                             if (_val.equals(">200")) {
                                 if (aux > 200) {
-                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
+                                    Info auxEvento = new Info(evento.getImagen(), evento.getTitulo(),
                                             precio+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                    auxEvento.setId((String) evento.getKey());
+                                    auxEvento.setId((String) e.getKey());
                                     auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
@@ -344,50 +318,31 @@ public class EventoMGR {
                             }
                         }
                     }
-                    else if (aux.equals(Constantes.INFO_DIA) && evento.getValue(EventoEntity.class).getDataInDate() != null) {
-                        long tiempo = evento.getValue(EventoEntity.class).getDataInDate().getTime();
-                        if (evento.getValue(EventoEntity.class).getDataFiDate() != null) {
-                            long tiempoFinal = evento.getValue(EventoEntity.class).getDataFiDate().getTime();
+                    else if (aux.equals(Constantes.INFO_DIA) && evento.getDataInDate() != null) {
+                        long tiempo = evento.getDataInDate().getTime();
+                        if (evento.getDataFiDate() != null) {
+                            long tiempoFinal = evento.getDataFiDate().getTime();
                             long auxVal = Long.parseLong(_val) + 86400000;
                             if ((Long.parseLong(_val) <= tiempo && auxVal > tiempoFinal) ||
-                                    (tiempo <= Long.parseLong(_val) && Long.parseLong(_val) <= tiempoFinal && tiempoFinal < auxVal) ||
-                                    (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
-                                if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
-                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                    auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
-                                    auxEvento.setBotonVisible(false);
-                                    n.add(auxEvento);
-                                }
-                                else {
-                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
-                                    auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
-                                    auxEvento.setBotonVisible(false);
-                                    n.add(auxEvento);
-                                }
+                                (tiempo <= Long.parseLong(_val) && Long.parseLong(_val) <= tiempoFinal && tiempoFinal < auxVal) ||
+                                (tiempo >= Long.parseLong(_val) && auxVal < tiempoFinal && tiempo < auxVal)) {
+
+                                Info auxEvento = new Info(evento.getImagen(), evento.getTitulo(),
+                                        EventDate(evento.getDataInDate(),evento.getDataFiDate()), Constantes.INFO_ASISTIR);
+                                auxEvento.setId((String) e.getKey());
+                                auxEvento.setTipus(Constantes.INFO_EVENTO);
+                                auxEvento.setBotonVisible(false);
+                                n.add(auxEvento);
                             }
                         }
                         else {
                             if (Long.parseLong(_val) == tiempo) {
-                                if (!evento.getValue(EventoEntity.class).getPrecio().equals("")) {
-                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            evento.getValue(EventoEntity.class).getPrecio()+Constantes.INFO_SYMBOL_EURO, Constantes.INFO_ASISTIR);
-                                    auxEvento.setId((String) evento.getKey());
+                                    Info auxEvento = new Info(evento.getImagen(), evento.getTitulo(),
+                                            EventDate(evento.getDataInDate(),evento.getDataFiDate()), Constantes.INFO_ASISTIR);
+                                    auxEvento.setId((String) e.getKey());
                                     auxEvento.setTipus(Constantes.INFO_EVENTO);
                                     auxEvento.setBotonVisible(false);
                                     n.add(auxEvento);
-                                }
-                                else {
-                                    Info auxEvento = new Info(evento.getValue(EventoEntity.class).getImagen(), evento.getValue(EventoEntity.class).getTitulo(),
-                                            Constantes.INFO_GRATIS, Constantes.INFO_ASISTIR);
-                                    auxEvento.setId((String) evento.getKey());
-                                    auxEvento.setTipus(Constantes.INFO_EVENTO);
-                                    auxEvento.setBotonVisible(false);
-                                    n.add(auxEvento);
-                                }
                             }
                         }
                     }
