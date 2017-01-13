@@ -98,6 +98,8 @@ public class TimelineFragment extends Fragment {
         gMGR = MGRFactory.getInstance().getGrupoMGR();
 
         idUsuario = ((NavigationDrawer)getActivity()).getUsuariActual();
+        System.out.println("LA ID DEL USUARIO ES: " + idUsuario);
+
         //idUsuario = "usr14-1480690194878";
         //idUsuario = "usr22-1480690194879";
 

@@ -221,6 +221,7 @@ public class NavigationDrawer extends BaseActivity
     }
 
     public String getUsuariActual(){
+        if (idActual == null) idActual = getIntent().getExtras().getString("keyUsuR");
         return idActual;
     }
 

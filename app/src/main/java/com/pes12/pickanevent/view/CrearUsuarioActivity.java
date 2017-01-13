@@ -112,10 +112,11 @@ public class CrearUsuarioActivity extends BaseActivity {
         usuarioNuevo.setUrlPhoto(img);
         uMGR.actualizar(uId, usuarioNuevo);
 
+        setUsuarioActual(usuarioNuevo);
+
         if (!cm.isChecked())startActivity(new Intent(CrearUsuarioActivity.this, IndicarTagsActivity.class).putExtra("usuarioReg", usuarioNuevo).putExtra("keyUsuR", uId));
         else {
-            setUsuarioActual(usuarioNuevo);
-            startActivity(new Intent(CrearUsuarioActivity.this, NavigationDrawer.class));
+            startActivity(new Intent(CrearUsuarioActivity.this, NavigationDrawer.class).putExtra("keyUsuR", uId));
         }
     }
 }
