@@ -23,20 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.VerInfoGrupoActivity" />
-        <activity android:name=".view.CrearEventoActivity" />
-        <activity android:name=".view.EditarEventoActivity" />
-        <activity android:name=".view.BuscarActivity" />
-        <activity android:name=".view.VerInfoEventoActivity" />
-        <activity android:name=".view.VerInfoOtroUsuarioActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.LoginActivity" />
-        <activity android:name=".view.CrearUsuarioActivity" />
-        <activity android:name=".view.BuscarEventoActivity" />
-        <activity android:name=".view.VerEventosUsuariosQueSigoActivity" />
-        <activity android:name=".view.CrearGrupoActivity" />
-        <activity android:name=".view.EditarGrupoActivity" />
-        <activity android:name=".view.PerfilUsuarioActivity">
+        <activity android:name=".view.VerInfoGrupoActivity" android:screenOrientation="portrait" />
+        <activity android:name=".view.CrearEventoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.EditarEventoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.BuscarActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.VerInfoEventoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.VerInfoOtroUsuarioActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.CrearUsuarioActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.BuscarEventoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.VerEventosUsuariosQueSigoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.CrearGrupoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.EditarGrupoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.PerfilUsuarioActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -51,10 +50,11 @@
         <activity
             android:name=".view.NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".view.VerGruposCreadosActivity" />
-        <activity android:name=".view.IndicarTagsActivity" />
-        <activity android:name=".view.VerGruposConTagActivity" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.VerGruposCreadosActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.IndicarTagsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.VerGruposConTagActivity" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -62,7 +62,8 @@
 
         <activity
             android:name=".view.SplashScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
